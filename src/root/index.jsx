@@ -1,5 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { SignUpPage } from "../pages/signUp";
 
 export const Root = () => {
-  return <h1 className="text-red-500 text-2xl">Root</h1>;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<SignUpPage />} />
+      </Routes>
+    </>
+  );
 };
