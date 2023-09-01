@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { SignUpPage } from "../pages/signUp";
+import { SignInPage } from "../pages/signIn";
 
 export const Root = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<SignUpPage />} />
+        <Route path="/" element={<SignInPage />} />
       </Routes>
     </>
   );
