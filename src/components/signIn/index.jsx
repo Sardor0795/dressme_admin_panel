@@ -33,6 +33,7 @@ export const SignInComponent = () => {
                 type="email"
                 placeholder="Emailingizni kiriting"
                 required
+                inputMode="email"
               />
               <span>
                 <UserMailIcon />
