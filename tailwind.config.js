@@ -55,9 +55,9 @@ export default {
       },
       fontFamily: {
         // 500
-        AeonikProMedium: ["RobotoMedium", ...defaultTheme.fontFamily.sans], // 400
+        AeonikProMedium: ["AeonikPro-Medium"], // 400
         // 400
-        AeonikProRegular: ["RobotoRegular", ...defaultTheme.fontFamily.sans], // 500
+        AeonikProRegular: ["AeonikPro-Regular"], // 500
       },
     },
     screens: {

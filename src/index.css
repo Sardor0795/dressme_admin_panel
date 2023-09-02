@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "RobotoRegular";
-  src: url("./assets/font/") format("woff2"),
-    url("./assets/font/Roboto-Regular.woff") format("woff");
-  font-weight: normal;
+  font-family: "AeonikPro-Medium";
+  src: url("/src/assets/font/") format("woff2"),
+    url("/src/assets/font/AeonikPro-Medium.woff") format("woff");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "RobotoMedium";
-  src: url("./assets/font/Roboto-Medium.woff2") format("woff2"),
-    url("./assets/font/Roboto-Medium.woff") format("woff");
-  font-weight: 500;
+  font-family: "AeonikPro-Regular";
+  src: url("/src/assets/font/AeonikPro-Regular.woff2") format("woff2"),
+    url("/src/assets/font/AeonikPro-Regular.woff") format("woff");
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
