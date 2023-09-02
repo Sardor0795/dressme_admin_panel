@@ -16,7 +16,7 @@ export const SalesComponent = () => {
               required
               inputMode="search"
             />
-            <span className="cursor-pointer">
+            <span>
               <SearchIcon />
             </span>
           </label>
