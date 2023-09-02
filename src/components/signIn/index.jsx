@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CircleNextIcon, UserMailIcon } from "../../assets/icon";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export const SignInComponent = () => {
   const [state, setState] = useState({
@@ -68,14 +69,17 @@ export const SignInComponent = () => {
             </label>
           </div>
 
-          <button className="w-full active:scale-95  active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor">
+          <Link
+            to="/sales"
+            className="w-full active:scale-95  active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
+          >
             <span className="text-center text-base md:text-lg text-white not-italic font-AeonikProMedium">
               Войти в систему
             </span>
             <span>
               <CircleNextIcon />
             </span>
-          </button>
+          </Link>
         </div>
       </div>
     </div>
