@@ -23,7 +23,7 @@ export const SalesComponent = () => {
 
           <section className="mobileDate hidden md:flex items-center">
             <Space direction="vertical" size={12}>
-              <RangePicker style={{ fontSize: "16px", padding: "13px" }} />
+              <RangePicker style={{ fontSize: "16px", paddingBlock: "12px" }} />
             </Space>
           </section>
         </div>
