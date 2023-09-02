@@ -1,17 +1,18 @@
 import { useState } from "react";
-import { CircleNextIcon, UserMailIcon } from "../../assets/icon";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import {
+  CircleNextIcon,
+  ClosedEyeIcon,
+  MailIcon,
+  OpendEyeIcon,
+} from "../../assets/icon";
+
 import { Link } from "react-router-dom";
 
 export const SignInComponent = () => {
   const [state, setState] = useState({
     email: "",
-    oldPassword: "",
-    newPassword: "",
-    confirmPassword: "",
-    eyesShowOld: true,
-    eyesShowNew: true,
-    eyesShowConfirm: true,
+    password: "",
+    eyeShow: true,
   });
 
   return (
@@ -37,7 +38,7 @@ export const SignInComponent = () => {
                 inputMode="email"
               />
               <span>
-                <UserMailIcon />
+                <MailIcon />
               </span>
             </div>
           </label>
@@ -49,22 +50,15 @@ export const SignInComponent = () => {
             <label className="mt-[6px]  overflow-hidden px-[13px] w-full flex items-center border border-searchBgColor rounded-lg ">
               <input
                 className="text-[13px] md:text-base outline-none w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-leading-4 placeholder-text-black"
-                type={state?.eyesShowOld ? "password" : "text"}
+                type={state?.eyeShow ? "password" : "text"}
                 placeholder="Parolingizni kiriting"
                 required
               />
-              <span className="cursor-pointer">
-                {state?.eyesShowOld ? (
-                  <AiOutlineEyeInvisible
-                    onClick={() => setState({ ...state, eyesShowOld: false })}
-                    size={20}
-                  />
-                ) : (
-                  <AiOutlineEye
-                    onClick={() => setState({ ...state, eyesShowOld: true })}
-                    size={20}
-                  />
-                )}
+              <span
+                className="cursor-pointer"
+                onClick={() => setState({ ...state, eyeShow: !state.eyeShow })}
+              >
+                {state?.eyeShow ? <OpendEyeIcon /> : <ClosedEyeIcon />}
               </span>
             </label>
           </div>
