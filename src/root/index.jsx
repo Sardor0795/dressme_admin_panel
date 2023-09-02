@@ -2,13 +2,13 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { SignInPage } from "../pages/signIn";
 import { SalesPage } from "../pages/sales";
 import { ClothesComponent } from "../components/clothes";
-import { SideBar } from "../components/sidebar";
+import { Sidebar } from "../components/sidebar";
 
 export const Root = () => {
   return (
     <>
       <Routes>
-        <Route element={<SideBar />}>
+        <Route element={<Sidebar />}>
           <Route path="/sales" element={<SalesPage />} />
           <Route path="/clothes" element={<ClothesComponent />} />
         </Route>
