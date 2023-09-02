@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { UserIcon } from "../../assets/icon";
 import { sidebarData } from "../../utils/sidebarData";
 
-export const Sidebar = () => {
+export const SideBar = () => {
   return (
     <div className="flex h-[100vh]">
       <div className="w-full max-w-[300px] border-r bg-[#FCFCFC] px-2 py-5">
