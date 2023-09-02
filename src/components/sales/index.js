@@ -8,7 +8,7 @@ export const SalesComponent = () => {
     <div className="w-full">
       <div className="px-10">
         <div className="border-b py-[18px] flex items-center justify-between">
-          <label className="px-[13px] w-full max-w-[400px] flex items-center border border-searchBgColor rounded-lg ">
+          {/* <label className="px-[13px] w-full max-w-[400px] flex items-center border border-searchBgColor rounded-lg ">
             <input
               className="text-[13px] md:text-base outline-none	 w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
               type="email"
@@ -16,10 +16,10 @@ export const SalesComponent = () => {
               required
               inputMode="search"
             />
-            <span>
+            <span className="cursor-pointer">
               <SearchIcon />
             </span>
-          </label>
+          </label> */}
 
           <section className="mobileDate hidden md:flex items-center">
             <Space direction="vertical" size={12}>
