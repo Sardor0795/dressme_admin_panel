@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "AeonikPro-Medium";
-  src: url("/src/assets/font/") format("woff2"),
+  src: url("/src/assets/font/AeonikPro-Medium.woff2") format("woff2"),
     url("/src/assets/font/AeonikPro-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
