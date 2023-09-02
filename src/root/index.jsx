@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { SignInPage } from "../pages/signIn";
 import { SalesPage } from "../pages/sales";
-import { Sidebar } from "../components/sideBar";
+import { Sidebar } from "../components/sidebar";
 
 export const Root = () => {
   return (
