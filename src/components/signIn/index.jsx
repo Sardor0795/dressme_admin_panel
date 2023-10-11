@@ -64,7 +64,7 @@ export const SignInComponent = () => {
           </div>
 
           <Link
-            to="/sales"
+            to="/sellers"
             className="w-full active:scale-95  active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
           >
             <span className="text-center text-base md:text-lg text-white not-italic font-AeonikProMedium">

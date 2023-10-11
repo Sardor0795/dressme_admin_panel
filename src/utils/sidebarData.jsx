@@ -4,7 +4,7 @@ export const sidebarData = [
   {
     id: 1,
     title: "Продавцы",
-    path: "/sales",
+    path: "/sellers",
     icon: <UsersProfileIcon />,
   },
   {
