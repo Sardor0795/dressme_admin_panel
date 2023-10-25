@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SellerItems from "./SellerItems/SellerItems";
 
-import { SearchIcon } from "../../../assets/icon";
+import {
+  AllowedIcon,
+  NotAllowedIcon,
+  SearchIcon,
+  WaitingForAllowIcon,
+} from "../../../assets/icon";
 import { Space, DatePicker } from "antd";
 
-import {
-  ClockIcons,
-  RefusedUserIcons,
-  SoldUserIcons,
-} from "../../../assets/icon";
 import CancelModal from "./ModalCancel";
 
 export default function SellersList() {
@@ -112,6 +112,8 @@ export default function SellersList() {
     }
   }, [data]);
 
+  const [showSellers, setShowSellers] = useState("waiting");
+
   return (
     <div>
       <div className="border-b py-[18px] flex items-center justify-between">
@@ -149,31 +151,46 @@ export default function SellersList() {
           <section className="hidden md:flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
-              className="focus:border-[1.5px] focus:text-weatherWinterColor text[#303030] text-base not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1"
+              onClick={() => setShowSellers("waiting")}
+              className={`${
+                showSellers === "waiting"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
-              <span>
-                <ClockIcons />
+              <span className="mr-[5px]">
+                <WaitingForAllowIcon />
               </span>
               <span>Ожидающие продавцы (12)</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              className="focus:border-[1.5px] focus:text-weatherWinterColor text[#303030] text-base not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1"
+              onClick={() => setShowSellers("allowed")}
+              className={`${
+                showSellers === "allowed"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
-              <span>
-                <ClockIcons />
-              </span>{" "}
+              <span className="mr-[5px]">
+                <AllowedIcon />
+              </span>
               <span>Одобренные продавцы (7)</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              className="focus:border-[1.5px] focus:text-weatherWinterColor text[#303030] text-base not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1"
+              onClick={() => setShowSellers("notAllowed")}
+              className={`${
+                showSellers === "notAllowed"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
-              <span>
-                <ClockIcons />
-              </span>{" "}
+              <span className="mr-[5px]">
+                <NotAllowedIcon />
+              </span>
               <span>Отказанные продавцы (3)</span>
             </button>
           </section>

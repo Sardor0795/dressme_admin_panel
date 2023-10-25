@@ -244,108 +244,6 @@ const SearchIcon = () => {
   );
 };
 
-const ClockIcons = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={20}
-      height={20}
-      viewBox="0 0 20 20"
-      fill="none"
-    >
-      <g clipPath="url(#clip0_1522_49802)">
-        <path
-          d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z"
-          stroke="#007DCA"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M10 5V10L13.3333 11.6667"
-          stroke="#007DCA"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_1522_49802">
-          <rect width={20} height={20} fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
-  );
-};
-
-const SoldUserIcons = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={20}
-      height={20}
-      viewBox="0 0 20 20"
-      fill="none"
-    >
-      <g clipPath="url(#clip0_1522_49802)">
-        <path
-          d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z"
-          stroke="#007DCA"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M10 5V10L13.3333 11.6667"
-          stroke="#007DCA"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_1522_49802">
-          <rect width={20} height={20} fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
-  );
-};
-
-const RefusedUserIcons = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={20}
-      height={20}
-      viewBox="0 0 20 20"
-      fill="none"
-    >
-      <g clipPath="url(#clip0_1522_49802)">
-        <path
-          d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z"
-          stroke="#007DCA"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M10 5V10L13.3333 11.6667"
-          stroke="#007DCA"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_1522_49802">
-          <rect width={20} height={20} fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
-  );
-};
-
 const BackIcon = () => {
   return (
     <svg
@@ -366,6 +264,129 @@ const BackIcon = () => {
   );
 };
 
+const WaitingForAllowIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <g clipPath="url(#clip0_1522_49802)">
+        <path
+          d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z"
+          stroke="currentColor" //#007DCA
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M10 5V10L13.3333 11.6667"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_1522_49802">
+          <rect width={20} height={20} fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+const AllowedIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <mask
+        id="mask0_1522_49851"
+        style={{ maskType: "luminance" }}
+        maskUnits="userSpaceOnUse"
+        x={1}
+        y={0}
+        width={18}
+        height={20}
+      >
+        <path
+          d="M9.99984 8.33341C11.8408 8.33341 13.3332 6.84103 13.3332 5.00008C13.3332 3.15913 11.8408 1.66675 9.99984 1.66675C8.15889 1.66675 6.6665 3.15913 6.6665 5.00008C6.6665 6.84103 8.15889 8.33341 9.99984 8.33341Z"
+          fill="white"
+          stroke="white"
+          strokeWidth="1.66667"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M17.5 18.3335C17.5 14.1914 14.1421 10.8335 10 10.8335C5.85792 10.8335 2.5 14.1914 2.5 18.3335"
+          stroke="white"
+          strokeWidth="1.66667"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12.5 15L9.16667 18.3333L7.5 16.6667"
+          stroke="white"
+          strokeWidth="1.66667"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </mask>
+      <g mask="url(#mask0_1522_49851)">
+        <path d="M0 0H20V20H0V0Z" fill="currentColor" />
+      </g>
+    </svg>
+  );
+};
+
+const NotAllowedIcon = ({ color }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <mask
+        id="mask0_1522_49859"
+        style={{ maskType: "luminance" }}
+        maskUnits="userSpaceOnUse"
+        x={1}
+        y={0}
+        width={18}
+        height={20}
+      >
+        <path
+          d="M10.0003 8.33341C11.8413 8.33341 13.3337 6.84103 13.3337 5.00008C13.3337 3.15913 11.8413 1.66675 10.0003 1.66675C8.15938 1.66675 6.66699 3.15913 6.66699 5.00008C6.66699 6.84103 8.15938 8.33341 10.0003 8.33341Z"
+          fill="white"
+          stroke="white"
+          strokeWidth="1.66667"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M17.5 18.3335C17.5 14.1914 14.1421 10.8335 10 10.8335C5.85792 10.8335 2.5 14.1914 2.5 18.3335M8.33333 15.0002L11.6667 18.3335M11.6667 15.0002L8.33333 18.3335"
+          stroke="white"
+          strokeWidth="1.66667"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </mask>
+      <g mask="url(#mask0_1522_49859)">
+        <path d="M0 0H20V20H0V0Z" fill="currentColor" />
+      </g>
+    </svg>
+  );
+};
+
 export {
   CircleNextIcon,
   OpendEyeIcon,
@@ -375,8 +396,8 @@ export {
   UsersProfileIcon,
   ClothesIcon,
   SearchIcon,
-  ClockIcons,
-  SoldUserIcons,
-  RefusedUserIcons,
   BackIcon,
+  WaitingForAllowIcon,
+  AllowedIcon,
+  NotAllowedIcon,
 };
