@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import SellerItems from "./SellerItems/SellerItems";
+import { Link, useNavigate } from "react-router-dom";
+import SellerItems from "./SellerItems/clothestem";
 
 import {
   AllowedIcon,
@@ -12,7 +13,7 @@ import { Space, DatePicker } from "antd";
 
 import CancelModal from "./ModalCancel";
 
-export default function SellersList() {
+export default function ClothesList() {
   const { RangePicker } = DatePicker;
 
   const [modalOpen, setModalOpen] = useState(false);
