@@ -237,25 +237,25 @@ export default function SellersList() {
             </div>
 
             <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-              <div className="w-[5%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[7%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 No:
               </div>
               <div className="w-[10%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Имя
               </div>
-              <div className="w-[14%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Номер
               </div>
-              <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Тип
               </div>
-              <div className="w-[8%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[10%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Дата
               </div>
-              <div className="w-[14%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Регион
               </div>
-              <div className="w-[39%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Действие
               </div>
             </div>

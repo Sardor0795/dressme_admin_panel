@@ -50,25 +50,25 @@ export default function SellerItems({ data, click, setModalOpen }) {
         </span>
       </div>
       <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 h-[58px] md:flex items-center w-full">
-        <div className="w-[5%]   text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          1
+        <div className="w-[7%]   text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+          {data?.id}
         </div>
         <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           Abdulloh
         </div>
-        <div className="w-[14%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[16%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           +998 (95) 123-45-67
         </div>
-        <div className="w-[12%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[16%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           Юридическое лицо
         </div>
-        <div className="w-[8%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           15-08-2023
         </div>
-        <div className="w-[14%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[17%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           Ташкент, Юнусовод
         </div>
-        <div className="w-[14%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[16%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button className="w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]">
             Одобрить
           </button>
@@ -80,8 +80,8 @@ export default function SellerItems({ data, click, setModalOpen }) {
           </button>
         </div>
         <Link
-          to="seller/5"
-          className="w-[25%] cursor-pointer flex items-center justify-end pr-5 hover:underline text-weatherWinterColor text-base not-italic font-AeonikProMedium"
+          to={`seller/${data?.id}`}
+          className="w-[8%] cursor-pointer flex items-center justify-end pr-5 hover:underline text-weatherWinterColor text-base not-italic font-AeonikProMedium"
         >
           Подробнее
         </Link>
