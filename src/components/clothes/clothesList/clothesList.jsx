@@ -273,8 +273,8 @@ export default function ClothesList() {
           </div>
         </div>
 
-        <div className="mx-auto font-AeonikProRegular text-[16px]">
-          <div className="mb-[10px] flex items-center text-tableTextTitle">
+        <div className="flex items-center justify-between mb-7 font-AeonikProMedium text-[16px]">
+          <div className="text-[24px] font-AeonikProMedium flex items-center">
             <div
               onClick={() => {
                 onCheck(checkIndicator);
@@ -294,6 +294,47 @@ export default function ClothesList() {
                 <CheckIcon />
               </span>
             </div>
+            <button
+              onClick={() => {
+                onCheck(checkIndicator);
+                setAllChecked(!allChecked);
+              }}
+              className="text-[#007DCA] border-b-[3px] border-[#007DCA] mr-[7px]"
+            >
+              Umar
+            </button>
+            - Nike Store (6)
+          </div>
+
+          <div
+            onClick={() => {
+              onCheck(checkIndicator);
+              setAllChecked(!allChecked);
+            }}
+            className="flex items-center cursor-pointer select-none"
+          >
+            Выбрать все
+            <div
+              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
+                allChecked
+                  ? "bg-[#007DCA] border-[#007DCA]"
+                  : "bg-white border-checkboxBorder"
+              } hidden md:flex items-center justify-center rounded ml-[10px]`}
+            >
+              <span
+                className={`${
+                  allChecked ? "flex items-center justify-center" : "hidden"
+                }`}
+              >
+                <CheckIcon />
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto font-AeonikProRegular text-[16px]">
+          <div className="mb-[10px] flex items-center text-tableTextTitle">
+            <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
 
             <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
               <div className="w-[7%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
