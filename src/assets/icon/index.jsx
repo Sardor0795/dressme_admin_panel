@@ -346,6 +346,26 @@ const RefusedUserIcons = () => {
   );
 };
 
+const BackIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={32}
+      height={32}
+      viewBox="0 0 32 32"
+      fill="none"
+    >
+      <path
+        d="M18.6667 9.33329L12 16L18.6667 22.6666"
+        stroke="black"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
 export {
   CircleNextIcon,
   OpendEyeIcon,
@@ -358,4 +378,5 @@ export {
   ClockIcons,
   SoldUserIcons,
   RefusedUserIcons,
+  BackIcon,
 };
