@@ -33,7 +33,7 @@ export const Sidebar = () => {
         })}
       </div>
       <div className="w-full">
-        <div className="h-[80px] bg-[#FCFCFC] border-b px-10 py-3"></div>
+        {/* <div className="h-[80px] bg-[#FCFCFC] border-b px-10 py-3"></div> */}
         <Outlet />
       </div>
     </div>

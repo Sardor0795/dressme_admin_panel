@@ -243,52 +243,108 @@ const SearchIcon = () => {
     </svg>
   );
 };
+
 const ClockIcons = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <g clip-path="url(#clip0_1522_49802)">
-    <path d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z" stroke="#007DCA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M10 5V10L13.3333 11.6667" stroke="#007DCA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    <defs>
-    <clipPath id="clip0_1522_49802">
-    <rect width="20" height="20" fill="white"/>
-    </clipPath>
-    </defs>
-    </svg>
-  );
-};
-const SoldUserIcons = () => {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <g clip-path="url(#clip0_1522_49802)">
-    <path d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z" stroke="#007DCA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M10 5V10L13.3333 11.6667" stroke="#007DCA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    <defs>
-    <clipPath id="clip0_1522_49802">
-    <rect width="20" height="20" fill="white"/>
-    </clipPath>
-    </defs>
-    </svg>
-  );
-};
-const RefusedUserIcons = () => {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <g clip-path="url(#clip0_1522_49802)">
-    <path d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z" stroke="#007DCA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M10 5V10L13.3333 11.6667" stroke="#007DCA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    <defs>
-    <clipPath id="clip0_1522_49802">
-    <rect width="20" height="20" fill="white"/>
-    </clipPath>
-    </defs>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <g clipPath="url(#clip0_1522_49802)">
+        <path
+          d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z"
+          stroke="#007DCA"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M10 5V10L13.3333 11.6667"
+          stroke="#007DCA"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_1522_49802">
+          <rect width={20} height={20} fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   );
 };
 
+const SoldUserIcons = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <g clipPath="url(#clip0_1522_49802)">
+        <path
+          d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z"
+          stroke="#007DCA"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M10 5V10L13.3333 11.6667"
+          stroke="#007DCA"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_1522_49802">
+          <rect width={20} height={20} fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+const RefusedUserIcons = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <g clipPath="url(#clip0_1522_49802)">
+        <path
+          d="M9.99984 18.3334C14.6022 18.3334 18.3332 14.6025 18.3332 10.0001C18.3332 5.39771 14.6022 1.66675 9.99984 1.66675C5.39746 1.66675 1.6665 5.39771 1.6665 10.0001C1.6665 14.6025 5.39746 18.3334 9.99984 18.3334Z"
+          stroke="#007DCA"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M10 5V10L13.3333 11.6667"
+          stroke="#007DCA"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_1522_49802">
+          <rect width={20} height={20} fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
 
 export {
   CircleNextIcon,
@@ -301,5 +357,5 @@ export {
   SearchIcon,
   ClockIcons,
   SoldUserIcons,
-  RefusedUserIcons
+  RefusedUserIcons,
 };
