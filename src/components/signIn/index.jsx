@@ -35,6 +35,7 @@ export const SignInComponent = () => {
                 type="email"
                 placeholder="Emailingizni kiriting"
                 required
+                name="email"
                 inputMode="email"
               />
               <span>
