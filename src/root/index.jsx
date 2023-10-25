@@ -23,7 +23,7 @@ export const Root = () => {
           </Route>
         </Route>
         <Route path="/signin" element={<SignInPage />} />
-        <Route path="/" element={<Navigate to="/sellers" />} />
+        <Route path="/" element={<Navigate to="/signin" />} />
       </Routes>
     </>
   );
