@@ -1,6 +1,6 @@
 export default function CancelModal({ setModalOpen, modalOpen }) {
   return (
-    <div className={`w-full h-full  px-4  md:px-10 `}>
+    <div className={`w-full px-4  md:px-10`}>
       <div
         className={`fixed cursor-pointer z-[200] inset-0 w-full h-full bg-black opacity-40 ${
           modalOpen ? "" : "hidden"

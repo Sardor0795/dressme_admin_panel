@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SellerItems({ data, click, setModalOpen }) {
   const [toggleMobileMenu, setToggleMobileMenu] = useState(true);
@@ -79,9 +79,12 @@ export default function SellerItems({ data, click, setModalOpen }) {
             Отказать
           </button>
         </div>
-        <div className="w-[25%] cursor-pointer flex items-center justify-end pr-5 hover:underline text-weatherWinterColor text-base not-italic font-AeonikProMedium">
+        <Link
+          to="seller/5"
+          className="w-[25%] cursor-pointer flex items-center justify-end pr-5 hover:underline text-weatherWinterColor text-base not-italic font-AeonikProMedium"
+        >
           Подробнее
-        </div>
+        </Link>
       </div>
     </div>
   );
