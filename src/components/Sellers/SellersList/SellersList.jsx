@@ -111,6 +111,24 @@ export default function SellersList() {
     },
   ]);
 
+  // Count items -----------
+
+  let waitingCount = 0;
+  let allowedCount = 0;
+  let notAllowedCount = 0;
+
+  data.forEach((v) => {
+    if (v?.status === "waiting") {
+      ++waitingCount;
+    } else if (v?.status === "allowed") {
+      ++allowedCount;
+    } else {
+      ++notAllowedCount;
+    }
+  });
+
+  // -----------------
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -198,7 +216,7 @@ export default function SellersList() {
               <span className="mr-[5px]">
                 <WaitingForAllowIcon />
               </span>
-              <span>Ожидающие продавцы (12)</span>
+              <span>Ожидающие продавцы ({waitingCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -213,7 +231,7 @@ export default function SellersList() {
               <span className="mr-[5px]">
                 <AllowedIcon />
               </span>
-              <span>Одобренные продавцы (7)</span>
+              <span>Одобренные продавцы ({allowedCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -228,7 +246,7 @@ export default function SellersList() {
               <span className="mr-[5px]">
                 <NotAllowedIcon />
               </span>
-              <span>Отказанные продавцы (3)</span>
+              <span>Отказанные продавцы ({notAllowedCount})</span>
             </button>
           </section>
 
