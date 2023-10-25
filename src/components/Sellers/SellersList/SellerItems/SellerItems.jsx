@@ -1,21 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { CheckIcon } from "../../../../assets/icon";
 
 export default function SellerItems({ data, click, setModalOpen }) {
-  const [toggleMobileMenu, setToggleMobileMenu] = useState(true);
-
-  const navigate = useNavigate();
-  const goProductDetailEdit = (id) => {
-    navigate(`/locations-store/edit-detail/:${id}`);
-  };
-
-  const goMapCity = (id) => {
-    navigate(`/locations-store/city/:${id}`);
-  };
-  const goMapWear = (id) => {
-    navigate(`/locations-store/wears/:${id}`);
-  };
-
   return (
     <div className="flex items-center w-full">
       <div
@@ -33,20 +20,7 @@ export default function SellerItems({ data, click, setModalOpen }) {
             data?.isCheck ? "flex items-center justify-center" : "hidden"
           }`}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="11"
-            height="13"
-            viewBox="0 0 11 13"
-            fill="none"
-          >
-            <path
-              d="M1 9.5L5.88235 11L10 1"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
+          <CheckIcon />
         </span>
       </div>
       <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 h-[58px] md:flex items-center w-full">
@@ -69,18 +43,35 @@ export default function SellerItems({ data, click, setModalOpen }) {
           Ташкент, Юнусовод
         </div>
         <div className="w-[16%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          <button className="w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]">
+          <button
+            className={`${
+              data?.status === "waiting" || data?.status === "notAllowed"
+                ? ""
+                : "hidden"
+            } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+          >
             Одобрить
           </button>
           <button
             onClick={() => setModalOpen(true)}
-            className="w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]"
+            className={`${
+              data?.status === "waiting" || data?.status === "allowed"
+                ? ""
+                : "hidden"
+            } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
           >
             Отказать
           </button>
+          <button
+            className={`${
+              data?.status === "notAllowed" ? "" : "hidden"
+            } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
+          >
+            Удалить
+          </button>
         </div>
         <Link
-          to={`seller/${data?.id}`}
+          to={`seller/5`}
           className="w-[8%] cursor-pointer flex items-center justify-end pr-5 hover:underline text-weatherWinterColor text-base not-italic font-AeonikProMedium"
         >
           Подробнее

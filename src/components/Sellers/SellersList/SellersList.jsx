@@ -4,6 +4,7 @@ import SellerItems from "./SellerItems/SellerItems";
 
 import {
   AllowedIcon,
+  CheckIcon,
   NotAllowedIcon,
   SearchIcon,
   WaitingForAllowIcon,
@@ -26,6 +27,7 @@ export default function SellersList() {
       bgColor: "bg-[#4FB459]",
       state: "Одобренный",
       money: "96000",
+      status: "waiting",
     },
     {
       id: 2,
@@ -35,6 +37,7 @@ export default function SellersList() {
       bgColor: "bg-[#F1C116]",
       state: "Ожидающий",
       money: "96000",
+      status: "allowed",
     },
     {
       id: 3,
@@ -44,6 +47,7 @@ export default function SellersList() {
       bgColor: "bg-[#FF4747]",
       state: "Отказанный",
       money: "96000",
+      status: "waiting",
     },
     {
       id: 4,
@@ -53,6 +57,7 @@ export default function SellersList() {
       bgColor: "bg-[#AA3FFF]",
       state: "Замечание",
       money: "96000",
+      status: "notAllowed",
     },
     {
       id: 5,
@@ -62,6 +67,7 @@ export default function SellersList() {
       bgColor: "bg-[#F1C116]",
       state: "Ожидающий",
       money: "96000",
+      status: "notAllowed",
     },
     {
       id: 6,
@@ -71,6 +77,37 @@ export default function SellersList() {
       bgColor: "bg-[#AA3FFF]",
       state: "Замечание",
       money: "96000",
+      status: "allowed",
+    },
+    {
+      id: 7,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "allowed",
+    },
+    {
+      id: 8,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "allowed",
+    },
+    {
+      id: 9,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "notAllowed",
     },
   ]);
 
@@ -143,7 +180,7 @@ export default function SellersList() {
             Общее количество:
           </span>
           <span className="text[#303030] text-[20px] not-italic font-AeonikProMedium">
-            74
+            {data?.length}
           </span>
         </div>
 
@@ -236,20 +273,7 @@ export default function SellersList() {
                   allChecked ? "flex items-center justify-center" : "hidden"
                 }`}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={11}
-                  height={13}
-                  viewBox="0 0 11 13"
-                  fill="none"
-                >
-                  <path
-                    d="M1 9.5L5.88235 11L10 1"
-                    stroke="white"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <CheckIcon />
               </span>
             </div>
 
@@ -279,16 +303,56 @@ export default function SellersList() {
           </div>
 
           <div className="w-full flex flex-col gap-y-[10px]">
-            {data.map((data, i) => {
-              return (
-                <SellerItems
-                  setModalOpen={setModalOpen}
-                  key={data?.id}
-                  data={data}
-                  click={onCheck}
-                />
-              );
-            })}
+            {/* Status Waiting */}
+
+            {showSellers === "waiting"
+              ? data.map((data) => {
+                  if (data?.status === "waiting") {
+                    return (
+                      <SellerItems
+                        data={data}
+                        key={data?.id}
+                        click={onCheck}
+                        setModalOpen={setModalOpen}
+                      />
+                    );
+                  }
+                })
+              : null}
+
+            {/* Status Allowed */}
+
+            {showSellers === "allowed"
+              ? data.map((data) => {
+                  if (data?.status === "allowed") {
+                    return (
+                      <SellerItems
+                        data={data}
+                        key={data?.id}
+                        click={onCheck}
+                        setModalOpen={setModalOpen}
+                      />
+                    );
+                  }
+                })
+              : null}
+
+            {/* Status NotAllowed */}
+
+            {showSellers === "notAllowed"
+              ? data.map((data) => {
+                  if (data?.status === "notAllowed") {
+                    return (
+                      <SellerItems
+                        data={data}
+                        key={data?.id}
+                        click={onCheck}
+                        setModalOpen={setModalOpen}
+                      />
+                    );
+                  }
+                })
+              : null}
           </div>
         </div>
         <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />

@@ -346,7 +346,7 @@ const AllowedIcon = () => {
   );
 };
 
-const NotAllowedIcon = ({ color }) => {
+const NotAllowedIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -387,6 +387,25 @@ const NotAllowedIcon = ({ color }) => {
   );
 };
 
+const CheckIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="11"
+      height="13"
+      viewBox="0 0 11 13"
+      fill="none"
+    >
+      <path
+        d="M1 9.5L5.88235 11L10 1"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+};
+
 export {
   CircleNextIcon,
   OpendEyeIcon,
@@ -400,4 +419,5 @@ export {
   WaitingForAllowIcon,
   AllowedIcon,
   NotAllowedIcon,
+  CheckIcon,
 };
