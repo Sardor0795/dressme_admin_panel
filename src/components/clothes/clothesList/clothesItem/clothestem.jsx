@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
 
-export default function SellerItems({ data, click, setModalOpen }) {
+export default function ClothesItem({ data, click, setModalOpen }) {
   return (
     <div className="flex items-center w-full">
       <div

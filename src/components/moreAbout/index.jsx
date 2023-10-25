@@ -1,10 +1,12 @@
 import { Space, DatePicker } from "antd";
 import { BackIcon, SearchIcon } from "../../assets/icon";
 import { useNavigate } from "react-router-dom";
+import CancelModal from "./modalCancel";
+import { useState } from "react";
 
 export const MoreAbout = () => {
   const { RangePicker } = DatePicker;
-
+  const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -49,6 +51,7 @@ export const MoreAbout = () => {
           </button>
           <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
           <button
+            onClick={() => setModalOpen(true)}
             type="button"
             className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
           >
@@ -120,6 +123,7 @@ export const MoreAbout = () => {
           </div>
         </div>
       </div>
+      <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
     </div>
   );
 };

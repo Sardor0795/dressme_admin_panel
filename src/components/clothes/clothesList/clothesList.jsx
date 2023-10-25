@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import SellerItems from "./SellerItems/clothestem";
 
+import { Space, DatePicker } from "antd";
 import {
   AllowedIcon,
   CheckIcon,
@@ -9,9 +8,9 @@ import {
   SearchIcon,
   WaitingForAllowIcon,
 } from "../../../assets/icon";
-import { Space, DatePicker } from "antd";
 
 import CancelModal from "./ModalCancel";
+import ClothesItem from "./clothesItem/clothestem";
 
 export default function ClothesList() {
   const { RangePicker } = DatePicker;
@@ -111,7 +110,7 @@ export default function ClothesList() {
     },
   ]);
 
-  // Count items -----------
+  // // Count items -----------
 
   let waitingCount = 0;
   let allowedCount = 0;
@@ -127,7 +126,7 @@ export default function ClothesList() {
     }
   });
 
-  // -----------------
+  // // -----------------
 
   useEffect(() => {
     window.scrollTo({
@@ -328,7 +327,7 @@ export default function ClothesList() {
               ? data.map((data) => {
                   if (data?.status === "waiting") {
                     return (
-                      <SellerItems
+                      <ClothesItem
                         data={data}
                         key={data?.id}
                         click={onCheck}
@@ -345,7 +344,7 @@ export default function ClothesList() {
               ? data.map((data) => {
                   if (data?.status === "allowed") {
                     return (
-                      <SellerItems
+                      <ClothesItem
                         data={data}
                         key={data?.id}
                         click={onCheck}
@@ -362,7 +361,7 @@ export default function ClothesList() {
               ? data.map((data) => {
                   if (data?.status === "notAllowed") {
                     return (
-                      <SellerItems
+                      <ClothesItem
                         data={data}
                         key={data?.id}
                         click={onCheck}

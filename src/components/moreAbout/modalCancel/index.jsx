@@ -1,4 +1,4 @@
-export default function DeleteModal({ setModalOpen, modalOpen }) {
+export default function CancelModal({ setModalOpen, modalOpen }) {
   return (
     <div className={`w-full px-4  md:px-10`}>
       <div
