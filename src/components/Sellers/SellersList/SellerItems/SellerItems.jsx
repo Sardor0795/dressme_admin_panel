@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
 
-export default function SellerItems({ data, click, setModalOpen }) {
+export default function SellerItems({ data, click, setModalOpen, index }) {
   return (
     <div className="flex items-center w-full">
       <div
@@ -25,7 +25,7 @@ export default function SellerItems({ data, click, setModalOpen }) {
       </div>
       <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 h-[58px] md:flex items-center w-full">
         <div className="w-[7%]   text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.id}
+          {index}
         </div>
         <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           Abdulloh
@@ -71,7 +71,7 @@ export default function SellerItems({ data, click, setModalOpen }) {
           </button>
         </div>
         <Link
-          to={`seller/5`}
+          to={`seller/${data?.id}`}
           className="w-[8%] cursor-pointer flex items-center justify-end pr-5 hover:underline text-weatherWinterColor text-base not-italic font-AeonikProMedium"
         >
           Подробнее

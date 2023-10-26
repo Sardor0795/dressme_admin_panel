@@ -208,6 +208,8 @@ export default function ClothesList() {
 
   const [showSellers, setShowSellers] = useState("waiting");
 
+  let index = 0;
+
   return (
     <div>
       <div className="border-b py-[18px] flex items-center justify-between">
@@ -407,9 +409,11 @@ export default function ClothesList() {
             {showSellers === "waiting"
               ? data.map((data) => {
                   if (data?.status === "waiting") {
+                    ++index;
                     return (
                       <ClothesItem
                         data={data}
+                        index={index}
                         key={data?.id}
                         click={onCheck}
                         setModalOpen={setModalOpen}
@@ -424,10 +428,12 @@ export default function ClothesList() {
             {showSellers === "allowed"
               ? data.map((data) => {
                   if (data?.status === "allowed") {
+                    ++index;
                     return (
                       <ClothesItem
                         data={data}
                         key={data?.id}
+                        index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
                       />
@@ -441,10 +447,12 @@ export default function ClothesList() {
             {showSellers === "notAllowed"
               ? data.map((data) => {
                   if (data?.status === "notAllowed") {
+                    ++index;
                     return (
                       <ClothesItem
                         data={data}
                         key={data?.id}
+                        index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
                       />

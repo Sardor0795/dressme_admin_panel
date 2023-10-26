@@ -168,6 +168,8 @@ export default function SellersList() {
 
   const [showSellers, setShowSellers] = useState("waiting");
 
+  let index = 0;
+
   return (
     <div>
       <div className="border-b py-[18px] flex items-center justify-between">
@@ -326,10 +328,12 @@ export default function SellersList() {
             {showSellers === "waiting"
               ? data.map((data) => {
                   if (data?.status === "waiting") {
+                    ++index;
                     return (
                       <SellerItems
                         data={data}
                         key={data?.id}
+                        index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
                       />
@@ -337,16 +341,16 @@ export default function SellersList() {
                   }
                 })
               : null}
-
             {/* Status Allowed */}
-
             {showSellers === "allowed"
               ? data.map((data) => {
                   if (data?.status === "allowed") {
+                    ++index;
                     return (
                       <SellerItems
                         data={data}
                         key={data?.id}
+                        index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
                       />
@@ -354,17 +358,17 @@ export default function SellersList() {
                   }
                 })
               : null}
-
             {/* Status NotAllowed */}
-
             {showSellers === "notAllowed"
               ? data.map((data) => {
                   if (data?.status === "notAllowed") {
+                    ++index;
                     return (
                       <SellerItems
                         data={data}
                         key={data?.id}
                         click={onCheck}
+                        index={index}
                         setModalOpen={setModalOpen}
                       />
                     );
