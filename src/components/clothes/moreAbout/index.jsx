@@ -50,14 +50,12 @@ export const ClothMoreAbout = () => {
         </div>
       </div>
 
-        <div>
-            
-        </div>
-        <div>
-            <div></div>
-            <div></div>
-        </div>
+      <div>{/* Carousel */}</div>
+      <div>
         <div></div>
+        <div></div>
+      </div>
+      <div></div>
 
       <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
     </div>
