@@ -6,6 +6,7 @@ import { MoreAbout } from "../components/moreAbout";
 import SellersList from "../components/Sellers/SellersList/SellersList";
 import { ClothesPage } from "../pages/clothes";
 import ClothesList from "../components/clothes/clothesList/clothesList";
+import { ClothMoreAbout } from "../components/clothes/moreAbout";
 
 export const Root = () => {
   return (
@@ -18,8 +19,8 @@ export const Root = () => {
             <Route path="/sellers/sellerList" element={<SellersList />} />
           </Route>
           <Route path="/clothes" element={<ClothesPage />}>
-            {/* <Route index element={<SellersList />} /> */}
             <Route index element={<ClothesList />} />
+            <Route path="/clothes/cloth/:id" element={<ClothMoreAbout />} />
           </Route>
         </Route>
         <Route path="/signin" element={<SignInPage />} />

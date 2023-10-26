@@ -54,6 +54,7 @@ export const SignInComponent = () => {
                 type={state?.eyeShow ? "password" : "text"}
                 placeholder="Parolingizni kiriting"
                 required
+                name="password"
               />
               <span
                 className="cursor-pointer"

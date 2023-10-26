@@ -71,7 +71,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           </button>
         </div>
         <Link
-          to={`seller/${data?.id}`}
+          to={`cloth/${data?.id}`}
           className="w-[8%] cursor-pointer flex items-center justify-end pr-5 hover:underline text-weatherWinterColor text-base not-italic font-AeonikProMedium"
         >
           Подробнее
