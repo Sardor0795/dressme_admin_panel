@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { BackIcon, StarIcon } from "../../../assets/icon";
 import { Space, DatePicker } from "antd";
 import CancelModal from "./modalCancel";
+import ColorModal from "./modalColor";
 
 export const ClothMoreAbout = () => {
   const { RangePicker } = DatePicker;
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
+  const [colorModalOpen, setColorModalOpen] = useState(false);
 
   return (
     <div className="flex flex-col w-full">
@@ -129,7 +131,10 @@ export const ClothMoreAbout = () => {
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Цвет</span> <StarIcon />
             </div>
-            <div className="w-[42px] h-[42px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
+            <div
+              onClick={() => setColorModalOpen(true)}
+              className="cursor-pointer w-[42px] h-[42px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]"
+            >
               <div className="w-[22px] h-[22px] bg-black rounded-[50%]"></div>
             </div>
             <div className="flex items-center mb-[5px]">
@@ -213,6 +218,10 @@ export const ClothMoreAbout = () => {
       </div>
 
       <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
+      <ColorModal
+        setColorModalOpen={setColorModalOpen}
+        colorModalOpen={colorModalOpen}
+      />
     </div>
   );
 };
