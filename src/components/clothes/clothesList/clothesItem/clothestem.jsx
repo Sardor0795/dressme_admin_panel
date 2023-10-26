@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CheckIcon } from "../../../../assets/icon";
+import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 
 export default function ClothesItem({ data, click, setModalOpen, index }) {
   return (
@@ -23,26 +23,31 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           <CheckIcon />
         </span>
       </div>
-      <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 h-[58px] md:flex items-center w-full">
-        <div className="w-[7%]   text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+      <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[10px] md:flex items-center w-full">
+        <div className="w-[4%]   text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {index}
         </div>
-        <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          Abdulloh
+        <div className="w-[8%]">
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] w-[60px] h-[60px] flex items-center justify-center rounded-[12px]">
+            <NoImgIcon />
+          </div>
         </div>
         <div className="w-[16%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          +998 (95) 123-45-67
+          Футболка уличная
         </div>
-        <div className="w-[16%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          Юридическое лицо
+        <div className="w-[12%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+          BAA-00004
         </div>
         <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+          Футболка
+        </div>
+        <div className="w-[12%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           15-08-2023
         </div>
-        <div className="w-[17%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          Ташкент, Юнусовод
+        <div className="w-[12%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+          452 000 сум
         </div>
-        <div className="w-[16%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[18%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
             className={`${
               data?.status === "waiting" || data?.status === "notAllowed"

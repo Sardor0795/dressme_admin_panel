@@ -257,7 +257,7 @@ export default function ClothesList() {
               <span className="mr-[5px]">
                 <WaitingForAllowIcon />
               </span>
-              <span>Ожидающие продавцы ({waitingCount})</span>
+              <span>Ожидающие товары ({waitingCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -272,7 +272,7 @@ export default function ClothesList() {
               <span className="mr-[5px]">
                 <AllowedIcon />
               </span>
-              <span>Одобренные продавцы ({allowedCount})</span>
+              <span>Одобренные товары ({allowedCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -287,7 +287,7 @@ export default function ClothesList() {
               <span className="mr-[5px]">
                 <NotAllowedIcon />
               </span>
-              <span>Отказанные продавцы ({notAllowedCount})</span>
+              <span>Отказанные товары ({notAllowedCount})</span>
             </button>
           </section>
 
@@ -379,25 +379,28 @@ export default function ClothesList() {
             <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
 
             <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-              <div className="w-[7%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 No:
               </div>
-              <div className="w-[10%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Имя
+              <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                Фото
               </div>
               <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Номер
+                Название
               </div>
-              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Тип
+              <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                Артикул
               </div>
               <div className="w-[10%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                Тип
+              </div>
+              <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Дата
               </div>
-              <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Регион
+              <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                Цена
               </div>
-              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[18%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Действие
               </div>
             </div>

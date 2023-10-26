@@ -49,6 +49,7 @@ export const ClothMoreAbout = () => {
           </button>
         </div>
       </div>
+
       <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
     </div>
   );
