@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BackIcon } from "../../../assets/icon";
 import { Space, DatePicker } from "antd";
+import CancelModal from "./modalCancel";
 
 export const ClothMoreAbout = () => {
   const { RangePicker } = DatePicker;
   const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div>
@@ -46,6 +49,7 @@ export const ClothMoreAbout = () => {
           </button>
         </div>
       </div>
+      <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
     </div>
   );
 };
