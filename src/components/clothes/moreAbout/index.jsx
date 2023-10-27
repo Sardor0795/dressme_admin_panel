@@ -55,6 +55,12 @@ export const ClothMoreAbout = () => {
 
       <div className="flex mx-auto">
         <div className="w-[350px] h-[400px]">
+          <div className="flex items-center mb-[5px]">
+            <div className="font-AeonikProRegular text-[16px] mr-[5px] ml-[10px]">
+              Фото
+            </div>
+            <StarIcon />
+          </div>
           <Carousel />
         </div>
 
