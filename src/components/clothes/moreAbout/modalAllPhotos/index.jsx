@@ -3,17 +3,18 @@ import Carousel from "../carousel";
 export default function ModalAllPhotos({
   setAllPhotosModalOpen,
   allPhotosModalOpen,
+  setModalOpen,
 }) {
   return (
     <div className={`w-full px-4  md:px-10`}>
       <div
-        className={`fixed cursor-pointer z-[200] inset-0 w-full h-full bg-black opacity-40 ${
+        className={`fixed cursor-pointer z-[198] inset-0 w-full h-full bg-black opacity-40 ${
           allPhotosModalOpen ? "" : "hidden"
         }`}
         onClick={() => setAllPhotosModalOpen(false)}
       ></div>
       <section
-        className={`max-w-[1450px] z-[201] mx-auto w-full flex-col h-fit bg-white fixed px-4 py-5 md:py-[35px] md:px-[50px] rounded-t-lg md:rounded-b-lg left-0 right-0 md:top-[50%] duration-300 overflow-hidden md:left-1/2 md:right-1/2 md:translate-x-[-50%] md:translate-y-[-50%] ${
+        className={`max-w-[1450px] z-[199] mx-auto w-full flex-col h-fit bg-white fixed px-4 py-5 md:py-[35px] md:px-[50px] rounded-t-lg md:rounded-b-lg left-0 right-0 md:top-[50%] duration-300 overflow-hidden md:left-1/2 md:right-1/2 md:translate-x-[-50%] md:translate-y-[-50%] ${
           allPhotosModalOpen
             ? " bottom-0 md:flex"
             : "md:hidden bottom-[-800px] z-[-10]"
@@ -35,10 +36,13 @@ export default function ModalAllPhotos({
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5]">
+              <button
+                onClick={() => setModalOpen(true)}
+                className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+              >
                 Отказать
               </button>
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5]">
+              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
                 Одобрить
               </button>
             </div>
@@ -54,10 +58,13 @@ export default function ModalAllPhotos({
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5]">
+              <button
+                onClick={() => setModalOpen(true)}
+                className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+              >
                 Отказать
               </button>
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5]">
+              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
                 Одобрить
               </button>
             </div>
@@ -73,10 +80,13 @@ export default function ModalAllPhotos({
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5]">
+              <button
+                onClick={() => setModalOpen(true)}
+                className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+              >
                 Отказать
               </button>
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5]">
+              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
                 Одобрить
               </button>
             </div>
@@ -92,10 +102,13 @@ export default function ModalAllPhotos({
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5]">
+              <button
+                onClick={() => setModalOpen(true)}
+                className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+              >
                 Отказать
               </button>
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5]">
+              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
                 Одобрить
               </button>
             </div>

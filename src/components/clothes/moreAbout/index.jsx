@@ -244,6 +244,7 @@ export const ClothMoreAbout = () => {
       <ModalAllPhotos
         setAllPhotosModalOpen={setAllPhotosModalOpen}
         allPhotosModalOpen={allPhotosModalOpen}
+        setModalOpen={setModalOpen}
       />
     </div>
   );
