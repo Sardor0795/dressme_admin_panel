@@ -99,7 +99,10 @@ export const ClothMoreAbout = () => {
               <button className="font-AeonikProMedium text-[16px] min-w-[160px] rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
                 Верхняя одежда
               </button>
-              <button className="font-AeonikProMedium text-[16px] min-w-[160px] border-[1.5px] border-[#007DCA] rounded-lg text-[#007DCA] py-[12px] px-[15px] bg-white">
+              <button
+                onClick={() => setColorModalOpen(true)}
+                className="font-AeonikProMedium text-[16px] min-w-[160px] border-[1.5px] border-[#007DCA] rounded-lg text-[#007DCA] py-[12px] px-[15px] bg-white"
+              >
                 Все размеры
               </button>
             </div>
@@ -131,10 +134,7 @@ export const ClothMoreAbout = () => {
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Цвет</span> <StarIcon />
             </div>
-            <div
-              onClick={() => setColorModalOpen(true)}
-              className="cursor-pointer w-[42px] h-[42px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]"
-            >
+            <div className="w-[42px] h-[42px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
               <div className="w-[22px] h-[22px] bg-black rounded-[50%]"></div>
             </div>
             <div className="flex items-center mb-[5px]">
