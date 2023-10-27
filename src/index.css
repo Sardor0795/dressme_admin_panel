@@ -32,3 +32,23 @@ html {
   margin: 0 -5px;
   border-radius: 8px;
 }
+
+/* Scroll styles */
+
+*::-webkit-scrollbar {
+  width: 5px; /* Mostly for vertical scrollbars */
+  border-radius: 25px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  /* Foreground */
+  background: #007dca;
+  border-radius: 25px;
+}
+
+*::-webkit-scrollbar-track {
+  /* Background */
+  background: rgba(225, 220, 220, 0.845);
+  border-radius: 25px;
+}
