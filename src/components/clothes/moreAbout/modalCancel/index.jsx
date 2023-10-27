@@ -36,7 +36,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
 
         <button
           onClick={() => setModalOpen(false)}
-          className="absolute top-4 right-4 p-[5px] border border-[F2F2F2] rounded-lg"
+          className="absolute top-5 right-5 p-[5px] border border-[F2F2F2] rounded-lg"
         >
           <XIcon />
         </button>
