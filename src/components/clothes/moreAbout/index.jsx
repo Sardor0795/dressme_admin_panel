@@ -5,12 +5,14 @@ import { Space, DatePicker } from "antd";
 import CancelModal from "./modalCancel";
 import ColorModal from "./modalColor";
 import Carousel from "./carousel";
+import ModalAllPhotos from "./modalAllPhotos";
 
 export const ClothMoreAbout = () => {
   const { RangePicker } = DatePicker;
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [colorModalOpen, setColorModalOpen] = useState(false);
+  const [allPhotosModalOpen, setAllPhotosModalOpen] = useState(false);
 
   return (
     <div className="flex flex-col w-full">
@@ -62,6 +64,14 @@ export const ClothMoreAbout = () => {
             <StarIcon />
           </div>
           <Carousel />
+          <div className="mt-[10px] flex justify-end">
+            <button
+              onClick={() => setAllPhotosModalOpen(true)}
+              className="text-[#007DCA] font-AeonikProRegular text-[16px] border-b border-[#007DCA]"
+            >
+              Все фото
+            </button>
+          </div>
         </div>
 
         <div className="px-[30px] border-r border-[#E5E5E5] flex gap-[30px]">
@@ -230,6 +240,10 @@ export const ClothMoreAbout = () => {
       <ColorModal
         setColorModalOpen={setColorModalOpen}
         colorModalOpen={colorModalOpen}
+      />
+      <ModalAllPhotos
+        setAllPhotosModalOpen={setAllPhotosModalOpen}
+        allPhotosModalOpen={allPhotosModalOpen}
       />
     </div>
   );
