@@ -36,18 +36,18 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           Футболка уличная
         </div>
         <div className="w-[12%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          BAA-00004
+          BAA-0000448
         </div>
         <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           Футболка
         </div>
-        <div className="w-[12%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[11%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           15-08-2023
         </div>
-        <div className="w-[12%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          452 000 сум
+        <div className="w-[11%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+          1452 000 сум
         </div>
-        <div className="w-[18%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[20%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
             className={`${
               data?.status === "waiting" || data?.status === "notAllowed"
@@ -77,7 +77,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
         </div>
         <Link
           to={`cloth/${data?.id}`}
-          className="w-[8%] cursor-pointer flex items-center justify-end pr-5 hover:underline text-weatherWinterColor text-base not-italic font-AeonikProMedium"
+          className="w-[8%] cursor-pointer flex items-center justify-center text-center hover:underline text-weatherWinterColor text-[16px] not-italic font-AeonikProMedium"
         >
           Подробнее
         </Link>

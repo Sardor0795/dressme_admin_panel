@@ -55,15 +55,15 @@ export const ClothMoreAbout = () => {
         </div>
       </div>
 
-      <div className="flex mx-auto">
-        <div className="w-[350px] h-[400px]">
+      <div className="flex w-full gap-[30px]">
+        <div className="w-[25%] max-w-[350px] h-[400px]">
           <div className="flex items-center mb-[5px]">
             <div className="font-AeonikProRegular text-[16px] mr-[5px] ml-[10px]">
               Фото
             </div>
             <StarIcon />
           </div>
-          <Carousel />
+          <Carousel height={"h-[377px]"} />
           <div className="mt-[10px] flex justify-end">
             <button
               onClick={() => setAllPhotosModalOpen(true)}
@@ -74,8 +74,8 @@ export const ClothMoreAbout = () => {
           </div>
         </div>
 
-        <div className="px-[30px] border-r border-[#E5E5E5] flex gap-[30px]">
-          <div className="font-AeonikProRegular text-[16px] w-[350px]">
+        <div className="pr-[30px] border-r border-[#E5E5E5] flex gap-[30px] w-[50%]">
+          <div className="font-AeonikProRegular text-[16px] w-[50%]">
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Раздел одежды</span> <StarIcon />
             </div>
@@ -94,7 +94,7 @@ export const ClothMoreAbout = () => {
                   <span className="mr-[5px]">Пол</span> <StarIcon />
                 </div>
                 <div className="border border-[#E5E5E5] rounded-[8px] p-3">
-                  Lorem Ipsum
+                  Lorem
                 </div>
               </div>
               <div>
@@ -114,13 +114,13 @@ export const ClothMoreAbout = () => {
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Категория одежды</span> <StarIcon />
             </div>
-            <div className="flex justify-between mb-[25px]">
-              <button className="font-AeonikProMedium text-[16px] min-w-[160px] rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
+            <div className="flex flex-wrap xxxl:flex-nowrap justify-between mb-[25px] gap-[10px]">
+              <button className="whitespace-nowrap font-AeonikProMedium text-[16px] w-full xxxl:max-w-[160px] rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
                 Верхняя одежда
               </button>
               <button
                 onClick={() => setColorModalOpen(true)}
-                className="font-AeonikProMedium text-[16px] min-w-[160px] border-[1.5px] border-[#007DCA] rounded-lg text-[#007DCA] py-[12px] px-[15px] bg-white"
+                className="whitespace-nowrap font-AeonikProMedium text-[16px] w-full xxxl:max-w-[160px] border-[1.5px] border-[#007DCA] rounded-lg text-[#007DCA] py-[12px] px-[15px] bg-white"
               >
                 Все размеры
               </button>
@@ -143,7 +143,7 @@ export const ClothMoreAbout = () => {
             </div>
           </div>
 
-          <div className="w-[350px]">
+          <div className="w-[50%]">
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Подраздел одежды</span> <StarIcon />
             </div>
@@ -162,22 +162,24 @@ export const ClothMoreAbout = () => {
             <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               Lorem Ipsum
             </div>
-            <div className="flex justify-between">
-              <div>
+            <div className="flex justify-between gap-[10px]">
+              <div className="w-full">
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Тип</span>
                   <StarIcon />
                 </div>
-                <div className="w-[160px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-                  Lorem Ipsum
+                <div className="w-full max-w-[160px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                  Lorem
                 </div>
               </div>
-              <div>
+              <div className="w-full">
                 <div className="flex items-center mb-[5px]">
-                  <span className="mr-[5px]">Страна размера</span>
+                  <span className="mr-[5px] whitespace-nowrap">
+                    Страна размера
+                  </span>
                   <StarIcon />
                 </div>
-                <div className="w-[160px] border border-[#E5E5E5] text-[#A1A1A1] rounded-[8px] p-3 mb-[25px]">
+                <div className="w-full max-w-[160px] border border-[#E5E5E5] text-[#A1A1A1] rounded-[8px] p-3 mb-[25px]">
                   Выбрать
                 </div>
               </div>
@@ -198,7 +200,7 @@ export const ClothMoreAbout = () => {
           </div>
         </div>
 
-        <div className="ml-[40px] w-[350px]">
+        <div className="w-[25%]">
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Название на русском</span> <StarIcon />
           </div>

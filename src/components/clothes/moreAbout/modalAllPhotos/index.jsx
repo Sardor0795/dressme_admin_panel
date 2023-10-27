@@ -24,9 +24,9 @@ export default function ModalAllPhotos({
           Все фото
         </div>
 
-        <div className="flex justify-between">
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[319px] p-[10px]">
-            <Carousel />
+        <div className="flex flex-wrap h-[528px] overflow-y-auto w-full gap-[30px]">
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+            <Carousel height={'h-[327px]'}/>
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
                 Цвет:
@@ -35,20 +35,20 @@ export default function ModalAllPhotos({
                 Черный
               </div>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-[20px]">
               <button
                 onClick={() => setModalOpen(true)}
-                className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+                className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
               >
                 Отказать
               </button>
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
+              <button className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
                 Одобрить
               </button>
             </div>
           </div>
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[319px] p-[10px]">
-            <Carousel />
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+            <Carousel height={'h-[327px]'}/>
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
                 Цвет:
@@ -57,20 +57,20 @@ export default function ModalAllPhotos({
                 Черный
               </div>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-[20px]">
               <button
                 onClick={() => setModalOpen(true)}
-                className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+                className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
               >
                 Отказать
               </button>
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
+              <button className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
                 Одобрить
               </button>
             </div>
           </div>
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[319px] p-[10px]">
-            <Carousel />
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+            <Carousel height={'h-[327px]'}/>
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
                 Цвет:
@@ -79,20 +79,20 @@ export default function ModalAllPhotos({
                 Черный
               </div>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-[20px]">
               <button
                 onClick={() => setModalOpen(true)}
-                className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+                className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
               >
                 Отказать
               </button>
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
+              <button className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
                 Одобрить
               </button>
             </div>
           </div>
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[319px] p-[10px]">
-            <Carousel />
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+            <Carousel height={'h-[327px]'}/>
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
                 Цвет:
@@ -101,14 +101,58 @@ export default function ModalAllPhotos({
                 Черный
               </div>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-[20px]">
               <button
                 onClick={() => setModalOpen(true)}
-                className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+                className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
               >
                 Отказать
               </button>
-              <button className="py-[8px] px-[40px] font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
+              <button className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
+                Одобрить
+              </button>
+            </div>
+          </div>
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+            <Carousel height={'h-[327px]'}/>
+            <div className="flex items-center mt-[15px] mb-[20px]">
+              <div className="font-AeonikProRegular text-[16px] mr-[5px]">
+                Цвет:
+              </div>
+              <div className="py-[5px] px-[10px] rounded-3xl bg-black text-white">
+                Черный
+              </div>
+            </div>
+            <div className="flex items-center justify-between gap-[20px]">
+              <button
+                onClick={() => setModalOpen(true)}
+                className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+              >
+                Отказать
+              </button>
+              <button className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
+                Одобрить
+              </button>
+            </div>
+          </div>
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+            <Carousel height={'h-[327px]'}/>
+            <div className="flex items-center mt-[15px] mb-[20px]">
+              <div className="font-AeonikProRegular text-[16px] mr-[5px]">
+                Цвет:
+              </div>
+              <div className="py-[5px] px-[10px] rounded-3xl bg-black text-white">
+                Черный
+              </div>
+            </div>
+            <div className="flex items-center justify-between gap-[20px]">
+              <button
+                onClick={() => setModalOpen(true)}
+                className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#E51515] rounded-lg border border-[#E5E5E5] hover:border-[#E51515] transition-colors duration-[0.3]"
+              >
+                Отказать
+              </button>
+              <button className="py-[8px] w-full font-AeonikProRegular text-[14px] text-[#12C724] rounded-lg border border-[#E5E5E5] hover:border-[#12C724] transition-colors duration-[0.3]">
                 Одобрить
               </button>
             </div>

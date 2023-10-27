@@ -298,7 +298,7 @@ export default function SellersList() {
             </div>
 
             <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-              <div className="w-[7%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 No:
               </div>
               <div className="w-[10%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
@@ -316,7 +316,7 @@ export default function SellersList() {
               <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Регион
               </div>
-              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[19%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Действие
               </div>
             </div>
