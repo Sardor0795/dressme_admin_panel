@@ -148,6 +148,76 @@ export default function ClothesList() {
       money: "96000",
       status: "waiting",
     },
+    {
+      id: 14,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "allowed",
+    },
+    {
+      id: 15,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "allowed",
+    },
+    {
+      id: 16,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "waiting",
+    },
+    {
+      id: 17,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "waiting",
+    },
+    {
+      id: 18,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "waiting",
+    },
+    {
+      id: 19,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "waiting",
+    },
+    {
+      id: 20,
+      index: 3,
+      name: "Кроссовка Nike RUN",
+      isCheck: false,
+      bgColor: "bg-[#AA3FFF]",
+      state: "Замечание",
+      money: "96000",
+      status: "waiting",
+    },
   ]);
 
   // // Count items -----------
@@ -406,7 +476,7 @@ export default function ClothesList() {
             </div>
           </div>
 
-          <div className="w-full flex flex-col gap-y-[10px]">
+          <div className="w-full flex flex-col gap-y-[10px] h-[calc(100vh-325px)] overflow-y-auto pr-[5px]">
             {/* Status Waiting */}
 
             {showSellers === "waiting"
