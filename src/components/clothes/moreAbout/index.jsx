@@ -4,6 +4,7 @@ import { BackIcon, StarIcon } from "../../../assets/icon";
 import { Space, DatePicker } from "antd";
 import CancelModal from "./modalCancel";
 import ColorModal from "./modalColor";
+import Carousel from "./carousel";
 
 export const ClothMoreAbout = () => {
   const { RangePicker } = DatePicker;
@@ -53,7 +54,9 @@ export const ClothMoreAbout = () => {
       </div>
 
       <div className="flex mx-auto">
-        <div className="w-[350px] h-[400px] bg-slate-500"></div>
+        <div className="w-[350px] h-[400px]">
+          <Carousel />
+        </div>
 
         <div className="px-[30px] border-r border-[#E5E5E5] flex gap-[30px]">
           <div className="font-AeonikProRegular text-[16px] w-[350px]">
