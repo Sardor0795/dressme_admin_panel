@@ -387,12 +387,12 @@ const NotAllowedIcon = () => {
   );
 };
 
-const CheckIcon = () => {
+const CheckIcon = ({ size }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="11"
-      height="13"
+      width={size === "small" ? 8 : 11}
+      height={size === "small" ? 10 : 13}
       viewBox="0 0 11 13"
       fill="none"
     >
