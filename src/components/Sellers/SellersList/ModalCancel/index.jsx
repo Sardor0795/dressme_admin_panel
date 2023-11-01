@@ -2,7 +2,7 @@ import { XIcon } from "../../../../assets/icon";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
   return (
-    <div className={`w-full px-4  md:px-10`}>
+    <div className={`w-full px-4 md:px-10`}>
       <div
         className={`fixed cursor-pointer z-[200] inset-0 w-full h-full bg-black opacity-40 ${
           modalOpen ? "" : "hidden"
@@ -10,8 +10,8 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         onClick={() => setModalOpen(false)}
       ></div>
       <section
-        className={`max-w-[440px] md:max-w-[550px] z-[201] mx-auto w-full flex-col h-fit bg-white fixed px-4 py-5 md:py-[35px] md:px-[50px] rounded-t-lg md:rounded-b-lg left-0 right-0 md:top-[50%] duration-300 overflow-hidden md:left-1/2 md:right-1/2 md:translate-x-[-50%] md:translate-y-[-50%] ${
-          modalOpen ? "bottom-0 md:flex" : "md:hidden bottom-[-800px] z-[-10]"
+        className={`max-w-[90%] md:max-w-[550px] z-[201] mx-auto w-full flex-col h-fit bg-white fixed py-[30px] md:py-[35px] px-[20px] md:px-[50px] rounded-t-lg rounded-b-lg md:top-[50%] duration-300 overflow-hidden left-1/2 right-1/2 translate-x-[-50%] translate-y-[-50%] ${
+          modalOpen ? "bottom-0 flex" : "hidden z-[-10]"
         }`}
       >
         <div className="w-full h-fit flex items-center justify-center mb-6">
@@ -36,7 +36,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
 
         <button
           onClick={() => setModalOpen(false)}
-          className="absolute top-5 right-5 p-[5px] border border-[F2F2F2] rounded-lg"
+          className="absolute top-4 right-4 ls:top-5 ls:right-5 p-[5px] border border-[F2F2F2] rounded-lg"
         >
           <XIcon />
         </button>
