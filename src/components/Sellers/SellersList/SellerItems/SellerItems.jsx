@@ -79,6 +79,97 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           </Link>
         </div>
       </div>
+
+      {/* Mobile */}
+
+      <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px]">
+        <div className="flex w-full justify-between mb-[8px]">
+          <div
+            onClick={() => {
+              click(data?.id);
+            }}
+            className={`cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
+              data?.isCheck
+                ? "bg-[#007DCA] border-[#007DCA]"
+                : "bg-white border-checkboxBorder"
+            } md:hidden flex items-center justify-center rounded mr-[8px]`}
+          >
+            <span
+              className={`${
+                data?.isCheck ? "flex items-center justify-center" : "hidden"
+              }`}
+            >
+              <CheckIcon size={"small"} />
+            </span>
+          </div>
+
+          <div className="flex items-center">
+            <div className="border-b min-w-[10px]"></div>
+            <div className="mx-[5px] text-[16px] font-AeonikProRegular text-[#D2D2D2]">
+              0{index}
+            </div>
+            <div className="border-b min-w-[10px]"></div>
+          </div>
+
+          <div className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer">
+            Подробнее
+          </div>
+        </div>
+
+        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[25%]">
+            Имя
+          </div>
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+            Номер
+          </div>
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[35%]">
+            Тип
+          </div>
+        </div>
+
+        <div className="py-[5px] px-[15px] flex mb-[10px]">
+          <div className="w-[25%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            Abdulloh
+          </div>
+          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            +998 (95) 123-45-67
+          </div>
+          <div className="w-[35%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            Юридическое лицо
+          </div>
+        </div>
+
+        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[25%]">
+            Дата
+          </div>
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+            Регион
+          </div>
+        </div>
+
+        <div className="py-[5px] px-[15px] flex mb-[24px]">
+          <div className="w-[25%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            15-08-2023
+          </div>
+          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            Ташкент, Юнусовод
+          </div>
+        </div>
+
+        <div className="w-full flex gap-[30px]">
+          <button
+            onClick={() => setModalOpen(true)}
+            className="rounded-[8px] py-[8px] w-[50%] bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]"
+          >
+            Отказать
+          </button>
+          <button className="rounded-[8px] py-[8px] w-[50%] bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]">
+            Одобрить
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -205,7 +205,7 @@ export default function SellersList() {
           </div>
         </div>
 
-        <div className="mt-4 flex justify-end items-center md:justify-between mx-auto pb-6">
+        <div className="mt-4 flex justify-end items-center md:justify-between mx-auto md:pb-6">
           <section className="hidden md:flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
@@ -278,7 +278,7 @@ export default function SellersList() {
         </div>
 
         <div className="mx-auto font-AeonikProRegular text-[16px]">
-          <div className="mb-[10px] flex items-center text-tableTextTitle">
+          <div className="md:mb-[10px] flex items-center text-tableTextTitle">
             <div
               onClick={() => {
                 onCheck(checkIndicator);
