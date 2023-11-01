@@ -5,12 +5,16 @@ import { sellersMackData } from "../../../utils/mockData";
 
 import {
   AllowedIcon,
+  BurgerMenuIcon,
+  CalendarIcon,
   CheckIcon,
+  MobileSearchIcon,
   NotAllowedIcon,
   SearchIcon,
   WaitingForAllowIcon,
 } from "../../../assets/icon";
 import { Space, DatePicker } from "antd";
+import { PhoneNavbar } from "../../phoneNavbar";
 
 export default function SellersList() {
   const { RangePicker } = DatePicker;
@@ -82,7 +86,11 @@ export default function SellersList() {
   return (
     <div>
       <div className="border-b py-[18px] flex items-center justify-between">
-        <label className="px-[13px] w-full max-w-[400px] flex items-center border border-searchBgColor rounded-lg ">
+        <div className="block md:hidden w-full">
+          <PhoneNavbar />
+        </div>
+
+        <label className="px-[13px] w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input
             className="text-[13px] md:text-base outline-none	 w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
             type="email"
@@ -102,7 +110,7 @@ export default function SellersList() {
         </section>
       </div>
 
-      <div className="w-full px-4 md:px-0 mt-4">
+      <div className="w-full mt-4">
         <div className="flex items-center gap-x-1">
           <span className="text[#303030] text-[20px] not-italic font-AeonikProMedium">
             Общее количество:

@@ -530,6 +530,126 @@ const PlusIcon = () => {
   );
 };
 
+const BurgerMenuIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={30}
+      height={24}
+      viewBox="0 0 30 24"
+      fill="none"
+    >
+      <path
+        d="M5 8H25M5 16H25"
+        stroke="black"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+const CalendarIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M8 2V5"
+        stroke="black"
+        strokeMiterlimit={10}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16 2V5"
+        stroke="black"
+        strokeMiterlimit={10}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.5 9.08997H20.5"
+        stroke="black"
+        strokeMiterlimit={10}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
+        stroke="black"
+        strokeMiterlimit={10}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.6947 13.7H15.7037"
+        stroke="black"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.6947 16.7H15.7037"
+        stroke="black"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M11.9955 13.7H12.0045"
+        stroke="black"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M11.9955 16.7H12.0045"
+        stroke="black"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.29431 13.7H8.30329"
+        stroke="black"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.29431 16.7H8.30329"
+        stroke="black"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+const MobileSearchIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M20.0313 20.79C20.4913 21.25 21.2013 20.54 20.7413 20.09L16.9913 16.33C18.3068 14.8745 19.0339 12.9818 19.0313 11.02C19.0313 6.63 15.4613 3.06 11.0713 3.06C6.68133 3.06 3.11133 6.63 3.11133 11.02C3.11133 15.41 6.68133 18.98 11.0713 18.98C13.0513 18.98 14.8813 18.25 16.2813 17.04L20.0313 20.79ZM4.11033 11.02C4.11033 7.18 7.24033 4.06 11.0703 4.06C14.9103 4.06 18.0303 7.18 18.0303 11.02C18.0303 14.86 14.9103 17.98 11.0703 17.98C7.24033 17.98 4.11033 14.86 4.11033 11.02Z"
+        fill="black"
+      />
+    </svg>
+  );
+};
+
 export {
   CircleNextIcon,
   OpendEyeIcon,
@@ -549,4 +669,7 @@ export {
   ColoredCardsIcon,
   XIcon,
   PlusIcon,
+  BurgerMenuIcon,
+  CalendarIcon,
+  MobileSearchIcon,
 };
