@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-
+import CancelModal from "./ModalCancel";
+import ClothesItem from "./clothesItem/clothestem";
+import { clothesMockData } from "../../../utils/mockData";
 import { Space, DatePicker } from "antd";
+
 import {
   AllowedIcon,
   CheckIcon,
@@ -9,216 +12,12 @@ import {
   WaitingForAllowIcon,
 } from "../../../assets/icon";
 
-import CancelModal from "./ModalCancel";
-import ClothesItem from "./clothesItem/clothestem";
-
 export default function ClothesList() {
   const { RangePicker } = DatePicker;
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData] = useState([
-    {
-      id: 1,
-      index: 1,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#4FB459]",
-      state: "Одобренный",
-      money: "96000",
-      status: "waiting",
-    },
-    {
-      id: 2,
-      index: 2,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#F1C116]",
-      state: "Ожидающий",
-      money: "96000",
-      status: "allowed",
-    },
-    {
-      id: 3,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#FF4747]",
-      state: "Отказанный",
-      money: "96000",
-      status: "waiting",
-    },
-    {
-      id: 4,
-      index: 1,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "notAllowed",
-    },
-    {
-      id: 5,
-      index: 2,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#F1C116]",
-      state: "Ожидающий",
-      money: "96000",
-      status: "notAllowed",
-    },
-    {
-      id: 6,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "allowed",
-    },
-    {
-      id: 7,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "allowed",
-    },
-    {
-      id: 8,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "allowed",
-    },
-    {
-      id: 9,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "notAllowed",
-    },
-    {
-      id: 10,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "allowed",
-    },
-    {
-      id: 11,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "allowed",
-    },
-    {
-      id: 12,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "waiting",
-    },
-    {
-      id: 13,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "waiting",
-    },
-    {
-      id: 14,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "allowed",
-    },
-    {
-      id: 15,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "allowed",
-    },
-    {
-      id: 16,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "waiting",
-    },
-    {
-      id: 17,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "waiting",
-    },
-    {
-      id: 18,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "waiting",
-    },
-    {
-      id: 19,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "waiting",
-    },
-    {
-      id: 20,
-      index: 3,
-      name: "Кроссовка Nike RUN",
-      isCheck: false,
-      bgColor: "bg-[#AA3FFF]",
-      state: "Замечание",
-      money: "96000",
-      status: "waiting",
-    },
-  ]);
+  const [data, setData] = useState(clothesMockData);
 
   // // Count items -----------
 
