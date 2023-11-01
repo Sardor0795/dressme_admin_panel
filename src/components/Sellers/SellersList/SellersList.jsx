@@ -110,7 +110,7 @@ export default function SellersList() {
         </section>
       </div>
 
-      <div className="flex mb-[24px]">
+      <div className="flex mb-[24px] md:hidden">
         <button
           onClick={() => setShowSellers("waiting")}
           className={`${
