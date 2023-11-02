@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BackIcon, StarIcon } from "../../../assets/icon";
-import { Space, DatePicker } from "antd";
 import CancelModal from "./modalCancel";
 import ColorModal from "./modalColor";
 import Carousel from "./carousel";
 import ModalAllPhotos from "./modalAllPhotos";
 
 export const ClothMoreAbout = () => {
-  const { RangePicker } = DatePicker;
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [colorModalOpen, setColorModalOpen] = useState(false);

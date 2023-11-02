@@ -1,16 +1,9 @@
-import { Space, DatePicker } from "antd";
-import {
-  BackIcon,
-  CalendarIcon,
-  MobileSearchIcon,
-  SearchIcon,
-} from "../../assets/icon";
+import { BackIcon, MobileSearchIcon, SearchIcon } from "../../assets/icon";
 import { useNavigate } from "react-router-dom";
 import CancelModal from "./modalCancel";
 import { useState } from "react";
 
 export const MoreAbout = () => {
-  const { RangePicker } = DatePicker;
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 

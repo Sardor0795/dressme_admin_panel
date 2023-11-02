@@ -13,12 +13,9 @@ import {
   SearchIcon,
   WaitingForAllowIcon,
 } from "../../../assets/icon";
-import { Space, DatePicker } from "antd";
 import { PhoneNavbar } from "../../phoneNavbar";
 
 export default function SellersList() {
-  const { RangePicker } = DatePicker;
-
   const [modalOpen, setModalOpen] = useState(false);
 
   const [data, setData] = useState(sellersMackData);

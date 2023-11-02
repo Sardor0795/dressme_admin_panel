@@ -1,9 +1,6 @@
 import { SearchIcon } from "../../assets/icon";
-import { Space, DatePicker } from "antd";
 
 export const SalesComponent = () => {
-  const { RangePicker } = DatePicker;
-
   return (
     <div className="w-full">
       <div className="px-10">

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import CancelModal from "./ModalCancel";
 import ClothesItem from "./clothesItem/clothestem";
 import { clothesMockData } from "../../../utils/mockData";
-import { Space, DatePicker } from "antd";
 
 import {
   AllowedIcon,
@@ -14,8 +13,6 @@ import {
 import { PhoneNavbar } from "../../phoneNavbar";
 
 export default function ClothesList() {
-  const { RangePicker } = DatePicker;
-
   const [modalOpen, setModalOpen] = useState(false);
 
   const [data, setData] = useState(clothesMockData);
