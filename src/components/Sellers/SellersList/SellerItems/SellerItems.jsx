@@ -106,7 +106,8 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           <div className="flex items-center">
             <div className="border-b min-w-[10px]"></div>
             <div className="mx-[5px] text-[16px] font-AeonikProRegular text-[#D2D2D2]">
-              0{index}
+              {index < 10 ? "0" : ""}
+              {index}
             </div>
             <div className="border-b min-w-[10px]"></div>
           </div>
