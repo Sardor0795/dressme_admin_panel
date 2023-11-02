@@ -117,7 +117,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           </div>
 
           <Link
-            to={`seller/${data?.id}`}
+            to={`cloth/${data?.id}`}
             className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer"
           >
             Подробнее
