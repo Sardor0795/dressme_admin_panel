@@ -83,7 +83,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
       {/* Mobile */}
 
       <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px]">
-        <div className="flex w-full justify-between mb-[8px]">
+        <div className="flex items-center w-full justify-between mb-[8px]">
           <div
             onClick={() => {
               click(data?.id);
