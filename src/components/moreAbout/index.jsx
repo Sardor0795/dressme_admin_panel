@@ -40,21 +40,12 @@ export const MoreAbout = () => {
             <SearchIcon />
           </span>
         </label>
-
-        <section className="mobileDate hidden md:flex items-center">
-          <Space direction="vertical" size={12}>
-            <RangePicker style={{ fontSize: "16px", paddingBlock: "12px" }} />
-          </Space>
-        </section>
       </div>
 
       <div className="flex mb-[4px] md:hidden w-full items-center justify-end">
         <div>
           <button className="mr-[16px]">
             <MobileSearchIcon />
-          </button>
-          <button>
-            <CalendarIcon />
           </button>
         </div>
       </div>

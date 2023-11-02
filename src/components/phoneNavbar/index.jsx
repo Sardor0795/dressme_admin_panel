@@ -20,9 +20,6 @@ export const PhoneNavbar = () => {
           <button className="mr-[16px]">
             <MobileSearchIcon />
           </button>
-          <button>
-            <CalendarIcon />
-          </button>
         </div>
       </div>
       <PhoneModal

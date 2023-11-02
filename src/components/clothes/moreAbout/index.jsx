@@ -23,12 +23,6 @@ export const ClothMoreAbout = () => {
         >
           <BackIcon />
         </button>
-
-        <section className="mobileDate hidden md:flex items-center">
-          <Space direction="vertical" size={12}>
-            <RangePicker style={{ fontSize: "16px", paddingBlock: "12px" }} />
-          </Space>
-        </section>
       </div>
 
       <div className="flex items-center md:hidden">

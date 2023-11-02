@@ -82,7 +82,7 @@ export default function ClothesList() {
 
   return (
     <div>
-      <div className="border-b py-[18px] flex items-center justify-between">
+      <div className="border-b py-[18px] flex items-center justify-between md:justify-end">
         <div className="block md:hidden w-full">
           <PhoneNavbar />
         </div>
@@ -99,12 +99,6 @@ export default function ClothesList() {
             <SearchIcon />
           </span>
         </label>
-
-        <section className="mobileDate hidden md:flex items-center">
-          <Space direction="vertical" size={12}>
-            <RangePicker style={{ fontSize: "16px", paddingBlock: "12px" }} />
-          </Space>
-        </section>
       </div>
 
       <div className="w-full mt-4">
