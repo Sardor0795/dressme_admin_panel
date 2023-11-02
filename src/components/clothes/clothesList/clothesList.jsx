@@ -108,17 +108,102 @@ export default function ClothesList() {
       </div>
 
       <div className="w-full mt-4">
-        <div className="flex items-center gap-x-1">
-          <span className="text[#303030] text-[20px] not-italic font-AeonikProMedium">
+        <div className="flex items-center gap-x-1 mb-[25px] md:mb-[0]">
+          <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
             Общее количество:
           </span>
-          <span className="text[#303030] text-[20px] not-italic font-AeonikProMedium">
+          <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
             {data?.length}
           </span>
         </div>
 
-        <div className="mt-4 flex justify-end items-center md:justify-between mx-auto pb-6">
-          <section className="hidden md:flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
+        <div className="flex mb-[24px] md:hidden">
+          <button
+            onClick={() => setShowSellers("waiting")}
+            className={`${
+              showSellers === "waiting"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-left text-[14px] font-AeonikProRegular`}
+          >
+            Ожидающие продавцы ({waitingCount})
+          </button>
+          <div className="min-w-[5%] ll:min-w-[13%] border-b border-[#F2F2F2]"></div>
+          <button
+            onClick={() => setShowSellers("allowed")}
+            className={`${
+              showSellers === "allowed"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
+          >
+            Одобренные продавцы ({allowedCount})
+          </button>
+          <div className="min-w-[5%] ll:min-w-[13%] border-b border-[#F2F2F2]"></div>
+          <button
+            onClick={() => setShowSellers("notAllowed")}
+            className={`${
+              showSellers === "notAllowed"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-right text-[14px] font-AeonikProRegular`}
+          >
+            Отказанные продавцы ({notAllowedCount})
+          </button>
+        </div>
+
+        <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
+          <div
+            onClick={() => {
+              onCheck(checkIndicator);
+              setAllChecked(!allChecked);
+            }}
+            className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
+          >
+            Выбрать все
+            <div
+              className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
+                allChecked
+                  ? "bg-[#007DCA] border-[#007DCA]"
+                  : "bg-white border-checkboxBorder"
+              } flex items-center justify-center rounded`}
+            >
+              <span
+                className={`${
+                  allChecked ? "flex items-center justify-center" : "hidden"
+                }`}
+              >
+                <CheckIcon size={"small"} />
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile selected */}
+        <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
+          <div className=" font-AeonikProMedium text-[14px] ll:text-sm md:text-lg text-mobileTextColor">
+            Выбранные:
+          </div>
+          <div className="flex items-center">
+            <button
+              type="button"
+              className="text-[#12C724] text-sm not-italic font-AeonikProMedium"
+            >
+              Одобрить
+            </button>
+            <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
+            <button
+              onClick={() => setModalOpen(true)}
+              type="button"
+              className="text-[#E51515] text-sm not-italic font-AeonikProMedium"
+            >
+              Отказать
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-4 hidden md:flex justify-end items-center md:justify-between mx-auto pb-6">
+          <section className="flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
               onClick={() => setShowSellers("waiting")}
@@ -166,7 +251,7 @@ export default function ClothesList() {
           </section>
 
           {/* Выбранные */}
-          <div className="w-full md:w-fit flex items-center gap-x-[30px] border-b md:border-b-0 border-[#F2F2F2] pb-[25px] md:pb-0">
+          <div className="hidden w-full md:w-fit md:flex items-center gap-x-[30px] border-b md:border-b-0 border-[#F2F2F2] pb-[25px] md:pb-0">
             <span className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
               Выбранные:
             </span>
@@ -190,24 +275,35 @@ export default function ClothesList() {
         </div>
 
         <div className="flex items-center justify-between mb-7 font-AeonikProMedium text-[16px]">
-          <div className="text-[24px] font-AeonikProMedium flex items-center">
+          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
             <div
               onClick={() => {
                 onCheck(checkIndicator);
                 setAllChecked(!allChecked);
               }}
-              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
+              className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                 allChecked
                   ? "bg-[#007DCA] border-[#007DCA]"
                   : "bg-white border-checkboxBorder"
-              } hidden md:flex items-center justify-center rounded mr-[8px]`}
+              } flex items-center justify-center rounded mr-[8px]`}
             >
               <span
                 className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
+                  allChecked
+                    ? "hidden md:flex items-center justify-center"
+                    : "hidden"
                 }`}
               >
                 <CheckIcon />
+              </span>
+              <span
+                className={`${
+                  allChecked
+                    ? "flex md:hidden items-center justify-center"
+                    : "hidden"
+                }`}
+              >
+                <CheckIcon size={"small"} />
               </span>
             </div>
             <button
@@ -227,7 +323,7 @@ export default function ClothesList() {
               onCheck(checkIndicator);
               setAllChecked(!allChecked);
             }}
-            className="flex items-center cursor-pointer select-none"
+            className="hidden md:flex items-center cursor-pointer select-none"
           >
             Выбрать все
             <div
