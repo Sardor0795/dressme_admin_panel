@@ -81,7 +81,7 @@ export const ClothMoreAbout = () => {
           </div>
         </div>
 
-        <div className="md:pr-[30px] md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[30px] w-full md:w-[50%]">
+        <div className="md:pr-[30px] pt-[20px] md:pt-0 md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[30px] w-full md:w-[50%]">
           {/* 1 */}
           <div className="font-AeonikProRegular text-[16px] w-full md:w-[50%]">
             <div className="flex gap-[11px] md:gap-[0]">

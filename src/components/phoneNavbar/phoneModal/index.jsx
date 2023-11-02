@@ -20,7 +20,7 @@ export default function PhoneModal({ setPhoneModalOpen, phoneModalOpen }) {
           {sidebarData.map((item) => {
             return (
               <NavLink
-                className="flex px-6 py-4 rounded-md text-lg font-AeonikProMedium"
+                className="flex justify-center px-6 py-4 rounded-md text-lg font-AeonikProMedium"
                 key={item?.id}
                 to={item.path}
                 style={({ isActive }) => ({

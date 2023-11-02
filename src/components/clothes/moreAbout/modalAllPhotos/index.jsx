@@ -26,7 +26,7 @@ export default function ModalAllPhotos({
         </div>
 
         <div className="flex flex-wrap h-[528px] overflow-y-auto w-full gap-[30px]">
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-full md:w-[23%] p-[10px]">
             <Carousel height={"h-[327px]"} />
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
@@ -48,7 +48,7 @@ export default function ModalAllPhotos({
               </button>
             </div>
           </div>
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-full md:w-[23%] p-[10px]">
             <Carousel height={"h-[327px]"} />
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
@@ -70,7 +70,7 @@ export default function ModalAllPhotos({
               </button>
             </div>
           </div>
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-full md:w-[23%] p-[10px]">
             <Carousel height={"h-[327px]"} />
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
@@ -92,7 +92,7 @@ export default function ModalAllPhotos({
               </button>
             </div>
           </div>
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-full md:w-[23%] p-[10px]">
             <Carousel height={"h-[327px]"} />
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
@@ -114,7 +114,7 @@ export default function ModalAllPhotos({
               </button>
             </div>
           </div>
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-full md:w-[23%] p-[10px]">
             <Carousel height={"h-[327px]"} />
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
@@ -136,7 +136,7 @@ export default function ModalAllPhotos({
               </button>
             </div>
           </div>
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-[23%] p-[10px]">
+          <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-full md:w-[23%] p-[10px]">
             <Carousel height={"h-[327px]"} />
             <div className="flex items-center mt-[15px] mb-[20px]">
               <div className="font-AeonikProRegular text-[16px] mr-[5px]">
@@ -164,7 +164,7 @@ export default function ModalAllPhotos({
 
         <button
           onClick={() => setAllPhotosModalOpen(false)}
-          className="absolute top-6 right-6 p-[5px] border border-[F2F2F2] rounded-lg"
+          className="absolute top-4 right-4 md:top-6 md:right-6 p-[5px] border border-[F2F2F2] rounded-lg"
         >
           <XIcon />
         </button>
