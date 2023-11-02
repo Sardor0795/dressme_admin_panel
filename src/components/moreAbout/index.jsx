@@ -36,11 +36,18 @@ export const MoreAbout = () => {
       </div>
 
       <div className="flex mb-[4px] md:hidden w-full items-center justify-end">
-        <div>
-          <button className="mr-[16px]">
-            <MobileSearchIcon />
+        <label className="px-[13px] w-full max-w-[200px] md:hidden flex items-center border border-searchBgColor rounded-lg">
+          <input
+            className="text-[13px] md:text-base outline-none w-full h-[30px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black pr-2"
+            type="email"
+            placeholder="Поиск"
+            required
+            inputMode="search"
+          />
+          <button className="cursor-pointer">
+            <SearchIcon />
           </button>
-        </div>
+        </label>
       </div>
 
       <div className="w-full hidden md:flex items-center my-9">

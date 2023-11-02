@@ -265,7 +265,7 @@ export default function ClothesList() {
           </div>
         </div>
 
-        <div className="h-[calc(100vh-270px)] md:h-[calc(100vh-220px)] overflow-y-auto pr-[5px]">
+        <div className="h-[calc(100vh-275px)] md:h-[calc(100vh-220px)] overflow-y-auto pr-[5px]">
           <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
             <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
               <div
