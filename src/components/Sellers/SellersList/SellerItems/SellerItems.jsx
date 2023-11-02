@@ -111,9 +111,12 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
             <div className="border-b min-w-[10px]"></div>
           </div>
 
-          <div className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer">
+          <Link
+            to={`seller/${data?.id}`}
+            className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer"
+          >
             Подробнее
-          </div>
+          </Link>
         </div>
 
         <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">

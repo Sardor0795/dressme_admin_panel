@@ -121,7 +121,7 @@ export default function SellersList() {
         >
           Ожидающие продавцы ({waitingCount})
         </button>
-        <div className="min-w-[5%] srsm:min-w-[0%] ll:min-w-[13%] border-b border-[#F2F2F2]"></div>
+        <div className="min-w-[5%] ll:min-w-[13%] border-b border-[#F2F2F2]"></div>
         <button
           onClick={() => setShowSellers("allowed")}
           className={`${
@@ -132,7 +132,7 @@ export default function SellersList() {
         >
           Одобренные продавцы ({allowedCount})
         </button>
-        <div className="min-w-[5%] srsm:min-w-[0%] ll:min-w-[13%] border-b border-[#F2F2F2]"></div>
+        <div className="min-w-[5%] ll:min-w-[13%] border-b border-[#F2F2F2]"></div>
         <button
           onClick={() => setShowSellers("notAllowed")}
           className={`${

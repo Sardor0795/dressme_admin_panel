@@ -1,5 +1,10 @@
 import { Space, DatePicker } from "antd";
-import { BackIcon, SearchIcon } from "../../assets/icon";
+import {
+  BackIcon,
+  CalendarIcon,
+  MobileSearchIcon,
+  SearchIcon,
+} from "../../assets/icon";
 import { useNavigate } from "react-router-dom";
 import CancelModal from "./modalCancel";
 import { useState } from "react";
@@ -11,17 +16,19 @@ export const MoreAbout = () => {
 
   return (
     <div>
-      <div className="border-b py-[18px] flex items-center">
-        <div className="flex items-center font-AeonikProMedium text-[24px]">
+      <div className="md:border-b py-[18px] flex items-center mb-[7px] md:mb-[0]">
+        <div className="flex w-full items-center font-AeonikProMedium text-[20px] md:text-[24px]">
           <button
             onClick={() => navigate(-1)}
             className="rounded-md border border-[#D5D5D5] mr-[30px]"
           >
             <BackIcon />
           </button>
-          Ожидающие продавцы
+          <div className="w-full md:w-fit text-center md:text-left ml-[-30px] md:ml-[0]">
+            Ожидающие продавцы
+          </div>
         </div>
-        <label className="ml-auto mr-5 px-[13px] w-full max-w-[400px] flex items-center border border-searchBgColor rounded-lg ">
+        <label className="hidden md:flex ml-auto mr-5 px-[13px] w-full max-w-[400px] items-center border border-searchBgColor rounded-lg ">
           <input
             className="text-[13px] md:text-base outline-none	 w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
             type="email"
@@ -41,7 +48,18 @@ export const MoreAbout = () => {
         </section>
       </div>
 
-      <div className="w-full flex items-center my-9">
+      <div className="flex mb-[4px] md:hidden w-full items-center justify-end">
+        <div>
+          <button className="mr-[16px]">
+            <MobileSearchIcon />
+          </button>
+          <button>
+            <CalendarIcon />
+          </button>
+        </div>
+      </div>
+
+      <div className="w-full hidden md:flex items-center my-9">
         <div className="flex items-center ml-auto">
           <button
             type="button"
@@ -123,6 +141,95 @@ export const MoreAbout = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile */}
+
+      <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px]">
+        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+            Имя и Фамилия
+          </div>
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+            Тип
+          </div>
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[20%]">
+            Дата
+          </div>
+        </div>
+
+        <div className="py-[5px] px-[15px] flex mb-[10px]">
+          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            Umar Bahodirov
+          </div>
+          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            Юридическое лицо
+          </div>
+          <div className="w-[20%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            15-08-2023
+          </div>
+        </div>
+
+        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+            Номер
+          </div>
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+            Email
+          </div>
+        </div>
+
+        <div className="py-[5px] px-[15px] flex mb-[12px]">
+          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            +998 (95) 123-45-67
+          </div>
+          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            Example123@gmail.com
+          </div>
+        </div>
+
+        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+            Раздел
+          </div>
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+            Имя организации
+          </div>
+        </div>
+
+        <div className="py-[5px] px-[15px] flex mb-[12px]">
+          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+            Общество с ограниченной о тветственностью (ООО)
+          </div>
+          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+            Nike Store Officia
+          </div>
+        </div>
+
+        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+            Номер карты
+          </div>
+        </div>
+
+        <div className="py-[5px] px-[15px] flex mb-[24px]">
+          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+            0000-0000-0000-0000
+          </div>
+        </div>
+
+        <div className="w-full flex gap-[30px]">
+          <button
+            onClick={() => setModalOpen(true)}
+            className="rounded-[8px] py-[8px] w-[50%] bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]"
+          >
+            Отказать
+          </button>
+          <button className="rounded-[8px] py-[8px] w-[50%] bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]">
+            Одобрить
+          </button>
+        </div>
+      </div>
+
       <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
     </div>
   );
