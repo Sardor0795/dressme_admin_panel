@@ -277,108 +277,111 @@ export default function SellersList() {
           </div>
         </div>
 
-        <div className="mx-auto font-AeonikProRegular text-[16px]">
-          <div className="md:mb-[10px] flex items-center text-tableTextTitle">
-            <div
-              onClick={() => {
-                onCheck(checkIndicator);
-                setAllChecked(!allChecked);
-              }}
-              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } hidden md:flex items-center justify-center rounded mr-[8px]`}
-            >
-              <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
+        <div className="h-[calc(100vh-220px)] overflow-y-auto pr-[5px]">
+          <div className="mx-auto font-AeonikProRegular text-[16px]">
+            <div className="md:mb-[10px] flex items-center text-tableTextTitle">
+              <div
+                onClick={() => {
+                  onCheck(checkIndicator);
+                  setAllChecked(!allChecked);
+                }}
+                className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
+                  allChecked
+                    ? "bg-[#007DCA] border-[#007DCA]"
+                    : "bg-white border-checkboxBorder"
+                } hidden md:flex items-center justify-center rounded mr-[8px]`}
               >
-                <CheckIcon />
-              </span>
+                <span
+                  className={`${
+                    allChecked ? "flex items-center justify-center" : "hidden"
+                  }`}
+                >
+                  <CheckIcon />
+                </span>
+              </div>
+
+              <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  No:
+                </div>
+                <div className="w-[10%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Имя
+                </div>
+                <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Номер
+                </div>
+                <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Тип
+                </div>
+                <div className="w-[10%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Дата
+                </div>
+                <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Регион
+                </div>
+                <div className="w-[19%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Действие
+                </div>
+              </div>
             </div>
 
-            <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-              <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                No:
-              </div>
-              <div className="w-[10%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Имя
-              </div>
-              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Номер
-              </div>
-              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Тип
-              </div>
-              <div className="w-[10%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Дата
-              </div>
-              <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Регион
-              </div>
-              <div className="w-[19%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Действие
-              </div>
+            <div className="w-full flex flex-col gap-y-[10px]">
+              {/* Status Waiting */}
+
+              {showSellers === "waiting"
+                ? data.map((data) => {
+                    if (data?.status === "waiting") {
+                      ++index;
+                      return (
+                        <SellerItems
+                          data={data}
+                          key={data?.id}
+                          index={index}
+                          click={onCheck}
+                          setModalOpen={setModalOpen}
+                        />
+                      );
+                    }
+                  })
+                : null}
+              {/* Status Allowed */}
+              {showSellers === "allowed"
+                ? data.map((data) => {
+                    if (data?.status === "allowed") {
+                      ++index;
+                      return (
+                        <SellerItems
+                          data={data}
+                          key={data?.id}
+                          index={index}
+                          click={onCheck}
+                          setModalOpen={setModalOpen}
+                        />
+                      );
+                    }
+                  })
+                : null}
+              {/* Status NotAllowed */}
+              {showSellers === "notAllowed"
+                ? data.map((data) => {
+                    if (data?.status === "notAllowed") {
+                      ++index;
+                      return (
+                        <SellerItems
+                          data={data}
+                          key={data?.id}
+                          click={onCheck}
+                          index={index}
+                          setModalOpen={setModalOpen}
+                        />
+                      );
+                    }
+                  })
+                : null}
             </div>
-          </div>
-
-          <div className="w-full flex flex-col gap-y-[10px]">
-            {/* Status Waiting */}
-
-            {showSellers === "waiting"
-              ? data.map((data) => {
-                  if (data?.status === "waiting") {
-                    ++index;
-                    return (
-                      <SellerItems
-                        data={data}
-                        key={data?.id}
-                        index={index}
-                        click={onCheck}
-                        setModalOpen={setModalOpen}
-                      />
-                    );
-                  }
-                })
-              : null}
-            {/* Status Allowed */}
-            {showSellers === "allowed"
-              ? data.map((data) => {
-                  if (data?.status === "allowed") {
-                    ++index;
-                    return (
-                      <SellerItems
-                        data={data}
-                        key={data?.id}
-                        index={index}
-                        click={onCheck}
-                        setModalOpen={setModalOpen}
-                      />
-                    );
-                  }
-                })
-              : null}
-            {/* Status NotAllowed */}
-            {showSellers === "notAllowed"
-              ? data.map((data) => {
-                  if (data?.status === "notAllowed") {
-                    ++index;
-                    return (
-                      <SellerItems
-                        data={data}
-                        key={data?.id}
-                        click={onCheck}
-                        index={index}
-                        setModalOpen={setModalOpen}
-                      />
-                    );
-                  }
-                })
-              : null}
           </div>
         </div>
+
         <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
       </div>
     </div>

@@ -274,167 +274,170 @@ export default function ClothesList() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between mb-7 font-AeonikProMedium text-[16px]">
-          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+        <div className="h-[calc(100vh-270px)] md:h-[calc(100vh-220px)] overflow-y-auto pr-[5px]">
+          <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+            <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+              <div
+                onClick={() => {
+                  onCheck(checkIndicator);
+                  setAllChecked(!allChecked);
+                }}
+                className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                  allChecked
+                    ? "bg-[#007DCA] border-[#007DCA]"
+                    : "bg-white border-checkboxBorder"
+                } flex items-center justify-center rounded mr-[8px]`}
+              >
+                <span
+                  className={`${
+                    allChecked
+                      ? "hidden md:flex items-center justify-center"
+                      : "hidden"
+                  }`}
+                >
+                  <CheckIcon />
+                </span>
+                <span
+                  className={`${
+                    allChecked
+                      ? "flex md:hidden items-center justify-center"
+                      : "hidden"
+                  }`}
+                >
+                  <CheckIcon size={"small"} />
+                </span>
+              </div>
+              <button
+                onClick={() => {
+                  onCheck(checkIndicator);
+                  setAllChecked(!allChecked);
+                }}
+                className="text-[#007DCA] border-b-[3px] border-[#007DCA] mr-[7px]"
+              >
+                Umar
+              </button>
+              - Nike Store (6)
+            </div>
+
             <div
               onClick={() => {
                 onCheck(checkIndicator);
                 setAllChecked(!allChecked);
               }}
-              className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } flex items-center justify-center rounded mr-[8px]`}
+              className="hidden md:flex items-center cursor-pointer select-none"
             >
-              <span
-                className={`${
+              Выбрать все
+              <div
+                className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
                   allChecked
-                    ? "hidden md:flex items-center justify-center"
-                    : "hidden"
-                }`}
+                    ? "bg-[#007DCA] border-[#007DCA]"
+                    : "bg-white border-checkboxBorder"
+                } hidden md:flex items-center justify-center rounded ml-[10px]`}
               >
-                <CheckIcon />
-              </span>
-              <span
-                className={`${
-                  allChecked
-                    ? "flex md:hidden items-center justify-center"
-                    : "hidden"
-                }`}
-              >
-                <CheckIcon size={"small"} />
-              </span>
+                <span
+                  className={`${
+                    allChecked ? "flex items-center justify-center" : "hidden"
+                  }`}
+                >
+                  <CheckIcon />
+                </span>
+              </div>
             </div>
-            <button
-              onClick={() => {
-                onCheck(checkIndicator);
-                setAllChecked(!allChecked);
-              }}
-              className="text-[#007DCA] border-b-[3px] border-[#007DCA] mr-[7px]"
-            >
-              Umar
-            </button>
-            - Nike Store (6)
           </div>
 
-          <div
-            onClick={() => {
-              onCheck(checkIndicator);
-              setAllChecked(!allChecked);
-            }}
-            className="hidden md:flex items-center cursor-pointer select-none"
-          >
-            Выбрать все
-            <div
-              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } hidden md:flex items-center justify-center rounded ml-[10px]`}
-            >
-              <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
-              >
-                <CheckIcon />
-              </span>
+          <div className="mx-auto font-AeonikProRegular text-[16px]">
+            <div className="mb-[10px] flex items-center text-tableTextTitle">
+              <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+
+              <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  No:
+                </div>
+                <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Фото
+                </div>
+                <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Название
+                </div>
+                <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Артикул
+                </div>
+                <div className="w-[10%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Тип
+                </div>
+                <div className="w-[11%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Дата
+                </div>
+                <div className="w-[11%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Цена
+                </div>
+                <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Действие
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full flex flex-col gap-y-[10px]">
+              {/* Status Waiting */}
+
+              {showSellers === "waiting"
+                ? data.map((data) => {
+                    if (data?.status === "waiting") {
+                      ++index;
+                      return (
+                        <ClothesItem
+                          data={data}
+                          index={index}
+                          key={data?.id}
+                          click={onCheck}
+                          setModalOpen={setModalOpen}
+                        />
+                      );
+                    }
+                  })
+                : null}
+
+              {/* Status Allowed */}
+
+              {showSellers === "allowed"
+                ? data.map((data) => {
+                    if (data?.status === "allowed") {
+                      ++index;
+                      return (
+                        <ClothesItem
+                          data={data}
+                          key={data?.id}
+                          index={index}
+                          click={onCheck}
+                          setModalOpen={setModalOpen}
+                        />
+                      );
+                    }
+                  })
+                : null}
+
+              {/* Status NotAllowed */}
+
+              {showSellers === "notAllowed"
+                ? data.map((data) => {
+                    if (data?.status === "notAllowed") {
+                      ++index;
+                      return (
+                        <ClothesItem
+                          data={data}
+                          key={data?.id}
+                          index={index}
+                          click={onCheck}
+                          setModalOpen={setModalOpen}
+                        />
+                      );
+                    }
+                  })
+                : null}
             </div>
           </div>
         </div>
 
-        <div className="mx-auto font-AeonikProRegular text-[16px]">
-          <div className="mb-[10px] flex items-center text-tableTextTitle">
-            <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-
-            <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-              <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                No:
-              </div>
-              <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Фото
-              </div>
-              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Название
-              </div>
-              <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Артикул
-              </div>
-              <div className="w-[10%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Тип
-              </div>
-              <div className="w-[11%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Дата
-              </div>
-              <div className="w-[11%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Цена
-              </div>
-              <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Действие
-              </div>
-            </div>
-          </div>
-
-          <div className="w-full flex flex-col gap-y-[10px] h-[calc(100vh-325px)] overflow-y-auto pr-[5px]">
-            {/* Status Waiting */}
-
-            {showSellers === "waiting"
-              ? data.map((data) => {
-                  if (data?.status === "waiting") {
-                    ++index;
-                    return (
-                      <ClothesItem
-                        data={data}
-                        index={index}
-                        key={data?.id}
-                        click={onCheck}
-                        setModalOpen={setModalOpen}
-                      />
-                    );
-                  }
-                })
-              : null}
-
-            {/* Status Allowed */}
-
-            {showSellers === "allowed"
-              ? data.map((data) => {
-                  if (data?.status === "allowed") {
-                    ++index;
-                    return (
-                      <ClothesItem
-                        data={data}
-                        key={data?.id}
-                        index={index}
-                        click={onCheck}
-                        setModalOpen={setModalOpen}
-                      />
-                    );
-                  }
-                })
-              : null}
-
-            {/* Status NotAllowed */}
-
-            {showSellers === "notAllowed"
-              ? data.map((data) => {
-                  if (data?.status === "notAllowed") {
-                    ++index;
-                    return (
-                      <ClothesItem
-                        data={data}
-                        key={data?.id}
-                        index={index}
-                        click={onCheck}
-                        setModalOpen={setModalOpen}
-                      />
-                    );
-                  }
-                })
-              : null}
-          </div>
-        </div>
         <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
       </div>
     </div>
