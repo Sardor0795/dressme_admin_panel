@@ -15,19 +15,19 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         }`}
       >
         <div className="w-full h-fit flex items-center justify-center mb-6">
-          <p className="text-tableTextTitle2 text-2xl not-italic font-AeonikProRegular">
+          <p className="text-tableTextTitle2 text-lg md:text-2xl not-italic font-AeonikProRegular">
             Причина отказа
           </p>
         </div>
         <textarea
-          className="border p-3 h-32 mb-10 outline-none font-AeonikProRegular resize-none border-borderColor2 rounded-[6px]"
+          className="border text-sm md:text-base p-3 h-32 mb-10 outline-none font-AeonikProRegular resize-none border-borderColor2 rounded-[6px]"
           placeholder="Опишите проблему"
         ></textarea>
         <button
           onClick={() => setModalOpen(false)}
           className="w-full active:scale-95  active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
         >
-          <span className="text-center text-base md:text-lg text-white not-italic font-AeonikProMedium">
+          <span className="text-center text-sm md:text-lg text-white not-italic font-AeonikProMedium">
             Отправить
           </span>
         </button>
