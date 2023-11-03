@@ -25,7 +25,7 @@ export default function ModalAllPhotos({
           Все фото
         </div>
 
-        <div className="flex flex-wrap h-[528px] overflow-y-auto w-full gap-[30px]">
+        <div className="flex flex-wrap h-[70vh] md:h-[528px] overflow-y-auto w-full gap-[30px]">
           <div className="bg-[#FCFCFC] border border-[#F2F2F2] rounded-xl w-full md:w-[23%] p-[10px]">
             <Carousel height={"h-[327px]"} />
             <div className="flex items-center mt-[15px] mb-[20px]">
