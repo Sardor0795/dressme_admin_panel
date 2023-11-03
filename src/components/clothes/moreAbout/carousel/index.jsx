@@ -15,6 +15,7 @@ export default function Carousel({ height }) {
         ref={(slider1) => setNav1(slider1)}
         className="mb-[10px] w-full"
         outline={false}
+        arrows={false}
       >
         <div
           className={`w-full ${height} rounded-lg overflow-hidden cursor-pointer`}
