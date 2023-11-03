@@ -109,7 +109,7 @@ export default function SellersList() {
               showSellers === "waiting"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-left text-[14px] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
           >
             Ожидающие продавцы ({waitingCount})
           </button>
@@ -131,7 +131,7 @@ export default function SellersList() {
               showSellers === "notAllowed"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-right text-[14px] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
           >
             Отказанные продавцы ({notAllowedCount})
           </button>

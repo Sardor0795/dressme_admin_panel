@@ -41,7 +41,7 @@ export default function ColorModal({ setColorModalOpen, colorModalOpen }) {
           </button>
         </div>
 
-        <div className="h-[70vh] md:h-auto overflow-y-auto">
+        <div className="h-[70vh] md:h-auto overflow-y-auto pr-[5px]">
           <div className="hidden md:flex items-center mb-5">
             <div className="mr-2 font-AeonikProRegular text-[14px]">
               Выбранный цвет:
