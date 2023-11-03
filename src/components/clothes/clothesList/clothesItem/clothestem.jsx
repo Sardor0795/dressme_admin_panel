@@ -86,7 +86,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
 
       {/* Mobile */}
 
-      <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px]">
+      <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px] last:mb-[0]">
         <div className="flex items-center w-full justify-between mb-[8px]">
           <div
             onClick={() => {

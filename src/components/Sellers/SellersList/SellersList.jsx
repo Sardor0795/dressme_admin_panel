@@ -82,7 +82,7 @@ export default function SellersList() {
 
   return (
     <div>
-      <div className="md:border-b py-[18px] flex items-center justify-between md:justify-end">
+      <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between md:justify-end">
         <div className="block md:hidden w-full">
           <PhoneNavbar />
         </div>
@@ -101,158 +101,52 @@ export default function SellersList() {
         </label>
       </div>
 
-      <div className="flex mb-[24px] md:hidden">
-        <button
-          onClick={() => setShowSellers("waiting")}
-          className={`${
-            showSellers === "waiting"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-left text-[14px] font-AeonikProRegular`}
-        >
-          Ожидающие продавцы ({waitingCount})
-        </button>
-        <div className="min-w-[5%] ll:min-w-[13%] border-b border-[#F2F2F2]"></div>
-        <button
-          onClick={() => setShowSellers("allowed")}
-          className={`${
-            showSellers === "allowed"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
-        >
-          Одобренные продавцы ({allowedCount})
-        </button>
-        <div className="min-w-[5%] ll:min-w-[13%] border-b border-[#F2F2F2]"></div>
-        <button
-          onClick={() => setShowSellers("notAllowed")}
-          className={`${
-            showSellers === "notAllowed"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-right text-[14px] font-AeonikProRegular`}
-        >
-          Отказанные продавцы ({notAllowedCount})
-        </button>
-      </div>
-
-      <div className="w-full mt-4">
-        {/* Mobile selected */}
-        <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
-          <div className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
-            Выбранные:
-          </div>
-          <div className="flex items-center">
-            <button
-              type="button"
-              className="text-[#12C724] text-sm not-italic font-AeonikProMedium"
-            >
-              Одобрить
-            </button>
-            <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-            <button
-              onClick={() => setModalOpen(true)}
-              type="button"
-              className="text-[#E51515] text-sm not-italic font-AeonikProMedium"
-            >
-              Отказать
-            </button>
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between gap-x-1">
-          <div>
-            <span className="text[#303030] text-[13px] md:text-[20px] mr-[5px] not-italic font-AeonikProMedium">
-              Общее количество:
-            </span>
-            <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
-              {data?.length}
-            </span>
-          </div>
-
-          <div
-            onClick={() => {
-              onCheck(checkIndicator);
-              setAllChecked(!allChecked);
-            }}
-            className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
+      <div className="h-[calc(100vh-80px)] md:h-[calc(100vh-115px)] overflow-y-auto pr-[8px]">
+        <div className="flex mb-[24px] md:hidden">
+          <button
+            onClick={() => setShowSellers("waiting")}
+            className={`${
+              showSellers === "waiting"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-left text-[14px] font-AeonikProRegular`}
           >
-            Выбрать все
-            <div
-              className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } flex items-center justify-center rounded`}
-            >
-              <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
-              >
-                <CheckIcon size={"small"} />
-              </span>
-            </div>
-          </div>
+            Ожидающие продавцы ({waitingCount})
+          </button>
+          <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
+          <button
+            onClick={() => setShowSellers("allowed")}
+            className={`${
+              showSellers === "allowed"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
+          >
+            Одобренные продавцы ({allowedCount})
+          </button>
+          <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
+          <button
+            onClick={() => setShowSellers("notAllowed")}
+            className={`${
+              showSellers === "notAllowed"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-right text-[14px] font-AeonikProRegular`}
+          >
+            Отказанные продавцы ({notAllowedCount})
+          </button>
         </div>
 
-        <div className="mt-4 flex justify-end items-center md:justify-between mx-auto md:pb-6">
-          <section className="hidden md:flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
-            <button
-              type="button"
-              onClick={() => setShowSellers("waiting")}
-              className={`${
-                showSellers === "waiting"
-                  ? "text-weatherWinterColor border-[1.5px]"
-                  : "text[#303030]"
-              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
-            >
-              <span className="mr-[5px]">
-                <WaitingForAllowIcon />
-              </span>
-              <span>Ожидающие продавцы ({waitingCount})</span>
-            </button>
-            <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
-            <button
-              type="button"
-              onClick={() => setShowSellers("allowed")}
-              className={`${
-                showSellers === "allowed"
-                  ? "text-weatherWinterColor border-[1.5px]"
-                  : "text[#303030]"
-              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
-            >
-              <span className="mr-[5px]">
-                <AllowedIcon />
-              </span>
-              <span>Одобренные продавцы ({allowedCount})</span>
-            </button>
-            <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
-            <button
-              type="button"
-              onClick={() => setShowSellers("notAllowed")}
-              className={`${
-                showSellers === "notAllowed"
-                  ? "text-weatherWinterColor border-[1.5px]"
-                  : "text[#303030]"
-              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
-            >
-              <span className="mr-[5px]">
-                <NotAllowedIcon />
-              </span>
-              <span>Отказанные продавцы ({notAllowedCount})</span>
-            </button>
-          </section>
-
-          {/* Выбранные */}
-          <div className="w-full md:w-fit hidden md:flex items-center gap-x-[30px] border-b md:border-b-0 border-[#F2F2F2] pb-[25px] md:pb-0">
-            <span className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
+        <div className="w-full mt-4">
+          {/* Mobile selected */}
+          <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
+            <div className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
               Выбранные:
-            </span>
+            </div>
             <div className="flex items-center">
               <button
                 type="button"
-                className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                className="text-[#12C724] text-sm not-italic font-AeonikProMedium"
               >
                 Одобрить
               </button>
@@ -260,15 +154,121 @@ export default function SellersList() {
               <button
                 onClick={() => setModalOpen(true)}
                 type="button"
-                className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                className="text-[#E51515] text-sm not-italic font-AeonikProMedium"
               >
                 Отказать
               </button>
             </div>
           </div>
-        </div>
 
-        <div className="h-[calc(100vh-220px)] overflow-y-auto pr-[5px]">
+          <div className="flex items-center justify-between gap-x-1">
+            <div>
+              <span className="text[#303030] text-[13px] md:text-[20px] mr-[5px] not-italic font-AeonikProMedium">
+                Общее количество:
+              </span>
+              <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
+                {data?.length}
+              </span>
+            </div>
+
+            <div
+              onClick={() => {
+                onCheck(checkIndicator);
+                setAllChecked(!allChecked);
+              }}
+              className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
+            >
+              Выбрать все
+              <div
+                className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
+                  allChecked
+                    ? "bg-[#007DCA] border-[#007DCA]"
+                    : "bg-white border-checkboxBorder"
+                } flex items-center justify-center rounded`}
+              >
+                <span
+                  className={`${
+                    allChecked ? "flex items-center justify-center" : "hidden"
+                  }`}
+                >
+                  <CheckIcon size={"small"} />
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 flex justify-end items-center md:justify-between mx-auto md:pb-6">
+            <section className="hidden md:flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setShowSellers("waiting")}
+                className={`${
+                  showSellers === "waiting"
+                    ? "text-weatherWinterColor border-[1.5px]"
+                    : "text[#303030]"
+                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              >
+                <span className="mr-[5px]">
+                  <WaitingForAllowIcon />
+                </span>
+                <span>Ожидающие продавцы ({waitingCount})</span>
+              </button>
+              <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
+              <button
+                type="button"
+                onClick={() => setShowSellers("allowed")}
+                className={`${
+                  showSellers === "allowed"
+                    ? "text-weatherWinterColor border-[1.5px]"
+                    : "text[#303030]"
+                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              >
+                <span className="mr-[5px]">
+                  <AllowedIcon />
+                </span>
+                <span>Одобренные продавцы ({allowedCount})</span>
+              </button>
+              <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
+              <button
+                type="button"
+                onClick={() => setShowSellers("notAllowed")}
+                className={`${
+                  showSellers === "notAllowed"
+                    ? "text-weatherWinterColor border-[1.5px]"
+                    : "text[#303030]"
+                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              >
+                <span className="mr-[5px]">
+                  <NotAllowedIcon />
+                </span>
+                <span>Отказанные продавцы ({notAllowedCount})</span>
+              </button>
+            </section>
+
+            {/* Выбранные */}
+            <div className="w-full md:w-fit hidden md:flex items-center gap-x-[30px] border-b md:border-b-0 border-[#F2F2F2] pb-[25px] md:pb-0">
+              <span className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
+                Выбранные:
+              </span>
+              <div className="flex items-center">
+                <button
+                  type="button"
+                  className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                >
+                  Одобрить
+                </button>
+                <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
+                <button
+                  onClick={() => setModalOpen(true)}
+                  type="button"
+                  className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                >
+                  Отказать
+                </button>
+              </div>
+            </div>
+          </div>
+
           <div className="mx-auto font-AeonikProRegular text-[16px]">
             <div className="md:mb-[10px] flex items-center text-tableTextTitle">
               <div

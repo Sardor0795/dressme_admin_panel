@@ -250,7 +250,7 @@ export const clothesMockData = [
     bgColor: "bg-[#AA3FFF]",
     state: "Замечание",
     money: "96000",
-    status: "notAllowed",
+    status: "allowed",
   },
   {
     id: 10,
@@ -270,7 +270,7 @@ export const clothesMockData = [
     bgColor: "bg-[#AA3FFF]",
     state: "Замечание",
     money: "96000",
-    status: "allowed",
+    status: "waiting",
   },
   {
     id: 12,
@@ -290,7 +290,7 @@ export const clothesMockData = [
     bgColor: "bg-[#AA3FFF]",
     state: "Замечание",
     money: "96000",
-    status: "waiting",
+    status: "allowed",
   },
   {
     id: 14,
@@ -310,7 +310,7 @@ export const clothesMockData = [
     bgColor: "bg-[#AA3FFF]",
     state: "Замечание",
     money: "96000",
-    status: "allowed",
+    status: "waiting",
   },
   {
     id: 16,
@@ -364,16 +364,6 @@ export const clothesMockData = [
   },
   {
     id: 21,
-    index: 3,
-    name: "Кроссовка Nike RUN",
-    isCheck: false,
-    bgColor: "bg-[#AA3FFF]",
-    state: "Замечание",
-    money: "96000",
-    status: "waiting",
-  },
-  {
-    id: 22,
     index: 3,
     name: "Кроссовка Nike RUN",
     isCheck: false,
