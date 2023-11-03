@@ -16,15 +16,15 @@ export const PhoneNavbar = () => {
           <BurgerMenuIcon />
         </button>
 
-        <label className="px-[13px] w-full max-w-[200px] md:hidden flex items-center border border-searchBgColor rounded-lg">
+        <label className="px-[13px] relative w-full max-w-[200px] md:hidden flex items-center border border-searchBgColor rounded-lg">
           <input
-            className="text-[13px] md:text-base outline-none w-full h-[30px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black pr-2"
+            className="text-[13px] md:text-base outline-none w-full h-[30px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black pr-8"
             type="email"
             placeholder="Поиск"
             required
             inputMode="search"
           />
-          <button className="cursor-pointer">
+          <button className="absolute top-0 right-0 active:scale-90 rounded-r-lg bg-[#F7F7F7] h-full w-[35px] flex items-center justify-center">
             <SearchIcon />
           </button>
         </label>

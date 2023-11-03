@@ -84,7 +84,7 @@ export default function ClothesList() {
           <PhoneNavbar />
         </div>
 
-        <label className="px-[13px] w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
+        <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input
             className="text-[13px] md:text-base outline-none	 w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
             type="email"
@@ -92,9 +92,9 @@ export default function ClothesList() {
             required
             inputMode="search"
           />
-          <span className="cursor-pointer">
+          <button className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
             <SearchIcon />
-          </span>
+          </button>
         </label>
       </div>
 

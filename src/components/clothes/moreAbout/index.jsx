@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { BackIcon, StarIcon } from "../../../assets/icon";
 import CancelModal from "./modalCancel";
 import ColorModal from "./modalColor";
 import Carousel from "./carousel";
 import ModalAllPhotos from "./modalAllPhotos";
+import { Link } from "react-router-dom";
 
 export const ClothMoreAbout = () => {
-  const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [colorModalOpen, setColorModalOpen] = useState(false);
   const [allPhotosModalOpen, setAllPhotosModalOpen] = useState(false);
@@ -15,12 +14,12 @@ export const ClothMoreAbout = () => {
   return (
     <div className="flex flex-col w-full">
       <div className="md:border-b py-[18px] flex items-center mb-[6px]">
-        <button
-          onClick={() => navigate(-1)}
+        <Link
+          to="/clothes"
           className="rounded-md border border-[#D5D5D5] mr-auto"
         >
           <BackIcon />
-        </button>
+        </Link>
       </div>
 
       <div className="flex items-center md:hidden">

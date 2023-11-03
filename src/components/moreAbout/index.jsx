@@ -1,50 +1,34 @@
-import { BackIcon, MobileSearchIcon, SearchIcon } from "../../assets/icon";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { BackIcon, SearchIcon } from "../../assets/icon";
 import CancelModal from "./modalCancel";
 import { useState } from "react";
 
 export const MoreAbout = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
 
   return (
     <div>
       <div className="md:border-b py-[18px] flex items-center mb-[7px] md:mb-[0]">
         <div className="flex w-full items-center font-AeonikProMedium text-[20px] md:text-[24px]">
-          <button
-            onClick={() => navigate(-1)}
+          <Link
+            to="/sellers"
             className="rounded-md border border-[#D5D5D5] mr-[30px]"
           >
             <BackIcon />
-          </button>
+          </Link>
           <div className="w-full md:w-fit text-center md:text-left ml-[-30px] md:ml-[0]">
             Ожидающие продавцы
           </div>
         </div>
-        <label className="hidden md:flex ml-auto mr-5 px-[13px] w-full max-w-[400px] items-center border border-searchBgColor rounded-lg ">
+        <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input
-            className="text-[13px] md:text-base outline-none	 w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
+            className="text-[13px] md:text-base outline-none w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
             type="email"
             placeholder="Поиск"
             required
             inputMode="search"
           />
-          <span className="cursor-pointer">
-            <SearchIcon />
-          </span>
-        </label>
-      </div>
-
-      <div className="flex mb-[4px] md:hidden w-full items-center justify-end">
-        <label className="px-[13px] w-full max-w-[200px] md:hidden flex items-center border border-searchBgColor rounded-lg">
-          <input
-            className="text-[13px] md:text-base outline-none w-full h-[30px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black pr-2"
-            type="email"
-            placeholder="Поиск"
-            required
-            inputMode="search"
-          />
-          <button className="cursor-pointer">
+          <button className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
             <SearchIcon />
           </button>
         </label>
