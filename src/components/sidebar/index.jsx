@@ -5,7 +5,7 @@ import { sidebarData } from "../../utils/sidebarData";
 export const Sidebar = () => {
   return (
     <div className="flex h-[100vh]">
-      <div className="hidden md:block w-full min-w-[215px] max-w-[270px] border-r bg-[#FCFCFC] px-2 py-5">
+      <div className="fixed h-[100vh] hidden md:block w-full min-w-[253px] max-w-[253px] border-r bg-[#FCFCFC] px-2 py-5">
         <Link
           className="ml-3 mb-8 flex items-center w-fit font-AeonikProRegular text-xl"
           to="/signin"
@@ -32,7 +32,7 @@ export const Sidebar = () => {
           );
         })}
       </div>
-      <div className="w-full">
+      <div className="w-full md:pl-[253px]">
         <Outlet />
       </div>
     </div>

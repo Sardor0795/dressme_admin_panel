@@ -47,12 +47,12 @@ html {
 
 *::-webkit-scrollbar-thumb {
   /* Foreground */
-  background: #007dca;
-  border-radius: 25px;
+  background: #a1a1a1;
+  border-radius: 8px;
 }
 
 *::-webkit-scrollbar-track {
   /* Background */
   background: rgba(225, 220, 220, 0.845);
-  border-radius: 25px;
+  border-radius: 8px;
 }
