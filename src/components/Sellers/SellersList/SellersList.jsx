@@ -5,6 +5,7 @@ import { sellersMackData } from "../../../utils/mockData";
 
 import {
   AllowedIcon,
+  BackIcon,
   BurgerMenuIcon,
   CalendarIcon,
   CheckIcon,
@@ -80,6 +81,27 @@ export default function SellersList() {
 
   let index = 0;
 
+  // up btn
+
+  useEffect(() => {
+    let scrolableElement = document.querySelector("#scrolableElement");
+    let upBtn = document.querySelector("#upBtn");
+
+    upBtn.addEventListener("click", () => {
+      scrolableElement.scrollTop = 0;
+    });
+
+    scrolableElement.addEventListener("scroll", () => {
+      let scrollTop = scrolableElement.scrollTop;
+
+      if (scrollTop > 80) {
+        upBtn.style.display = "flex";
+      } else {
+        upBtn.style.display = "none";
+      }
+    });
+  }, []);
+
   return (
     <div>
       <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between md:justify-end">
@@ -101,7 +123,10 @@ export default function SellersList() {
         </label>
       </div>
 
-      <div className="h-[calc(100vh-80px)] md:h-[calc(100vh-115px)] overflow-y-auto pr-[8px]">
+      <div
+        id="scrolableElement"
+        className="relative h-[calc(100vh-80px)] md:h-[calc(100vh-115px)] overflow-y-auto pr-[8px]"
+      >
         <div className="flex mb-[24px] md:hidden">
           <button
             onClick={() => setShowSellers("waiting")}
@@ -374,6 +399,14 @@ export default function SellersList() {
         </div>
 
         <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
+        <div
+          id="upBtn"
+          className="hover:translate-y-[-5px] duration-150 fixed bg-[#FBFBFB] bottom-5 right-5 md:right-14 hidden items-center justify-center cursor-pointer w-[50px] h-[50px] border rounded-full"
+        >
+          <div className="rotate-90">
+            <BackIcon />
+          </div>
+        </div>
       </div>
     </div>
   );

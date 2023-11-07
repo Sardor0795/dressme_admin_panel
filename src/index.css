@@ -24,6 +24,10 @@ html {
   line-height: 1;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 .slick-slide > div {
   margin: 0 5px;
   border-radius: 8px;
