@@ -15,11 +15,28 @@ import {
   WaitingForAllowIcon,
 } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
+import axios from "axios";
 
 export default function SellersList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData] = useState(sellersMackData);
+  const [data, setData] = useState([]);
+
+  const url = "https://api.dressme.uz";
+
+  let token = localStorage.getItem("token");
+
+  useEffect(() => {
+    axios(`${url}/api/admin/sellers`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((d) => {
+      setData(d.data.sellers.data);
+    });
+
+    setData(data);
+  }, []);
 
   // Count items -----------
 
@@ -28,7 +45,7 @@ export default function SellersList() {
   let notAllowedCount = 0;
 
   data.forEach((v) => {
-    if (v?.status === "waiting") {
+    if (v?.status === "pending") {
       ++waitingCount;
     } else if (v?.status === "allowed") {
       ++allowedCount;
@@ -68,16 +85,16 @@ export default function SellersList() {
     }
   };
 
-  useEffect(() => {
-    let newData = data.filter((item) => item.isCheck === true);
-    if (newData.length) {
-      setSomeChecked(true);
-    } else {
-      setSomeChecked(false);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   let newData = data.filter((item) => item.isCheck === true);
+  //   if (newData.length) {
+  //     setSomeChecked(true);
+  //   } else {
+  //     setSomeChecked(false);
+  //   }
+  // }, [data]);
 
-  const [showSellers, setShowSellers] = useState("waiting");
+  const [showSellers, setShowSellers] = useState("pending");
 
   let index = 0;
 
@@ -221,7 +238,7 @@ export default function SellersList() {
           <section className="hidden md:flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
-              onClick={() => setShowSellers("waiting")}
+              onClick={() => setShowSellers("pending")}
               className={`${
                 showSellers === "waiting"
                   ? "text-weatherWinterColor border-[1.5px]"
@@ -339,9 +356,9 @@ export default function SellersList() {
           <div className="w-full flex flex-col gap-y-[10px]">
             {/* Status Waiting */}
 
-            {showSellers === "waiting"
+            {showSellers === "pending"
               ? data.map((data) => {
-                  if (data?.status === "waiting") {
+                  if (data?.status === "pending") {
                     ++index;
                     return (
                       <SellerItems

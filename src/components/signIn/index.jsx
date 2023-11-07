@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+
 import {
   CircleNextIcon,
   ClosedEyeIcon,
@@ -6,14 +7,52 @@ import {
   OpendEyeIcon,
 } from "../../assets/icon";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const url = "https://api.dressme.uz";
 
 export const SignInComponent = () => {
   const [state, setState] = useState({
-    email: "",
-    password: "",
     eyeShow: true,
   });
+
+  const [errorMsg, setErrorMsg] = useState({
+    msg: "",
+    visibility: false,
+  });
+
+  const navigate = useNavigate();
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const signIn = async () => {
+    const reqObj = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      rememberToken: true,
+    };
+    try {
+      const data = await axios.post(`${url}/api/admin/login`, reqObj);
+
+      if (data.status === 200) {
+        localStorage.setItem("token", data.data.access_token);
+        navigate("/sellers");
+      }
+
+      console.log(data.status);
+    } catch (error) {
+      setErrorMsg({ visibility: true, msg: error?.response?.data?.message });
+      setTimeout(() => {
+        setErrorMsg({ ...errorMsg, visibility: false });
+      }, 5000);
+    }
+
+    // if (data.status !== 200) {
+    //   setErrorMsg(data.response.data.message);
+    // }
+  };
 
   return (
     <div className="flex items-center justify-center h-[100vh] px-[35px]">
@@ -26,7 +65,7 @@ export const SignInComponent = () => {
           <label className="w-full h-fit mb-[20px] block">
             <div className=" flex items-center justify-between w-full">
               <div className="not-italic font-AeonikProRegular text-sm md:text-lg text-black  tracking-[0,16px] ">
-                Электронная почта{" "}
+                Электронная почта
               </div>
             </div>
             <div className="mt-[10px] px-[13px] w-full flex items-center border border-searchBgColor rounded-lg ">
@@ -37,6 +76,7 @@ export const SignInComponent = () => {
                 required
                 name="email"
                 inputMode="email"
+                ref={emailRef}
               />
               <span>
                 <MailIcon />
@@ -55,6 +95,7 @@ export const SignInComponent = () => {
                 placeholder="Parolingizni kiriting"
                 required
                 name="password"
+                ref={passwordRef}
               />
               <span
                 className="cursor-pointer"
@@ -65,8 +106,14 @@ export const SignInComponent = () => {
             </label>
           </div>
 
-          <Link
-            to="/sellers"
+          {errorMsg.visibility ? (
+            <div className="text-center mb-[20px] mt-[-15px] text-red-600 font-AeonikProMedium text-[18px]">
+              {errorMsg.msg}
+            </div>
+          ) : null}
+
+          <button
+            onClick={signIn}
             className="w-full active:scale-95  active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
           >
             <span className="text-center text-base md:text-lg text-white not-italic font-AeonikProMedium">
@@ -75,7 +122,7 @@ export const SignInComponent = () => {
             <span>
               <CircleNextIcon />
             </span>
-          </Link>
+          </button>
         </div>
       </div>
     </div>

@@ -28,13 +28,13 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           {index}
         </div>
         <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          Abdulloh
+          {data?.name}
         </div>
         <div className="w-[16%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          +998 (95) 123-45-67
+          {data?.phone}
         </div>
         <div className="w-[16%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          Юридическое лицо
+          {data?.seller_type_id}
         </div>
         <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           15-08-2023
