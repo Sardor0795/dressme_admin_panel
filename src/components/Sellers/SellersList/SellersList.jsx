@@ -401,10 +401,10 @@ export default function SellersList() {
         <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
         <div
           id="upBtn"
-          className="hover:translate-y-[-5px] duration-150 fixed bg-[#FBFBFB] bottom-5 right-5 md:right-14 hidden items-center justify-center cursor-pointer w-[50px] h-[50px] border rounded-full"
+          className="fixed bg-bgColor opacity-70 bottom-5 right-5 md:right-14 hidden items-center justify-center cursor-pointer w-[48px] h-[48px] border border-[#c1c1c1] rounded-full shadow-[0_9px_25px_0_#8480b147] active:scale-90"
         >
           <div className="rotate-90">
-            <BackIcon />
+            <BackIcon width={24} height={24} />
           </div>
         </div>
       </div>

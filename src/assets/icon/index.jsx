@@ -244,12 +244,12 @@ const SearchIcon = () => {
   );
 };
 
-const BackIcon = () => {
+const BackIcon = ({ width, height }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={32}
-      height={32}
+      width={width ? width : 32}
+      height={height ? height : 32}
       viewBox="0 0 32 32"
       fill="none"
     >
