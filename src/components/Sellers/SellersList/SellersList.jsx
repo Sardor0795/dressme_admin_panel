@@ -1,21 +1,17 @@
 import { useEffect, useState } from "react";
 import SellerItems from "./SellerItems/SellerItems";
 import CancelModal from "./ModalCancel";
-import { sellersMackData } from "../../../utils/mockData";
+import axios from "axios";
 
 import {
   AllowedIcon,
   BackIcon,
-  BurgerMenuIcon,
-  CalendarIcon,
   CheckIcon,
-  MobileSearchIcon,
   NotAllowedIcon,
   SearchIcon,
   WaitingForAllowIcon,
 } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
-import axios from "axios";
 
 export default function SellersList() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -85,14 +81,14 @@ export default function SellersList() {
     }
   };
 
-  // useEffect(() => {
-  //   let newData = data.filter((item) => item.isCheck === true);
-  //   if (newData.length) {
-  //     setSomeChecked(true);
-  //   } else {
-  //     setSomeChecked(false);
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    let newData = data.filter((item) => item.isCheck === true);
+    if (newData.length) {
+      setSomeChecked(true);
+    } else {
+      setSomeChecked(false);
+    }
+  }, [data]);
 
   const [showSellers, setShowSellers] = useState("pending");
 
@@ -329,25 +325,25 @@ export default function SellersList() {
             </div>
 
             <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-              <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 No:
               </div>
-              <div className="w-[10%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[14%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Имя
               </div>
-              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[14%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Номер
               </div>
-              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[14%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Тип
               </div>
-              <div className="w-[10%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[10%] px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Дата
               </div>
-              <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[19%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Регион
               </div>
-              <div className="w-[19%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[18%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Действие
               </div>
             </div>
