@@ -126,7 +126,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[25%]">
             Имя
           </div>
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+          <div className="text-[#3F6175] text-[12px] px-3 font-AeonikProMedium w-[40%]">
             Номер
           </div>
           <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[35%]">
@@ -138,7 +138,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           <div className="w-[25%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.name}
           </div>
-          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] px-3 text-[11px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.phone}
           </div>
           <div className="w-[35%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
@@ -150,7 +150,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[25%]">
             Дата
           </div>
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+          <div className="text-[#3F6175] px-3 text-[12px] font-AeonikProMedium w-[40%]">
             Регион
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           <div className="w-[25%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.created_at}
           </div>
-          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] px-3 text-[11px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.region?.name_ru}, {data?.sub_region?.name_ru}
           </div>
         </div>
