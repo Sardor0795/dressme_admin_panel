@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
-
+// pending
+// approved
+// declined
 export default function SellerItems({ data, click, setModalOpen, index }) {
   return (
     <div className="flex items-center w-full">
@@ -34,18 +36,18 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           {data?.phone}
         </div>
         <div className="w-[16%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.seller_type_id}
+          {data?.seller_type?.type_ru}
         </div>
         <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          15-08-2023
+          {data?.created_at}
         </div>
         <div className="w-[17%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          Ташкент, Юнусовод
+          {data?.region?.name_ru}, {data?.sub_region?.name_ru}
         </div>
         <div className="w-[19%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
             className={`${
-              data?.status === "waiting" || data?.status === "notAllowed"
+              data?.status === "pending" || data?.status === "declined"
                 ? ""
                 : "hidden"
             } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
@@ -55,7 +57,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           <button
             onClick={() => setModalOpen(true)}
             className={`${
-              data?.status === "waiting" || data?.status === "allowed"
+              data?.status === "pending" || data?.status === "approved"
                 ? ""
                 : "hidden"
             } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
@@ -64,7 +66,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           </button>
           <button
             className={`${
-              data?.status === "notAllowed" ? "" : "hidden"
+              data?.status === "declined" ? "" : "hidden"
             } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
           >
             Удалить
@@ -134,13 +136,13 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
 
         <div className="py-[5px] px-[15px] flex mb-[10px]">
           <div className="w-[25%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            Abdulloh
+            {data?.name}
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            +998 (95) 123-45-67
+            {data?.phone}
           </div>
           <div className="w-[35%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            Юридическое лицо
+            {data?.seller_type?.type_ru}
           </div>
         </div>
 
@@ -155,10 +157,10 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
 
         <div className="py-[5px] px-[15px] flex mb-[24px]">
           <div className="w-[25%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            15-08-2023
+            {data?.created_at}
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            Ташкент, Юнусовод
+            {data?.region?.name_ru}, {data?.sub_region?.name_ru}
           </div>
         </div>
 
@@ -166,7 +168,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           <button
             onClick={() => setModalOpen(true)}
             className={`${
-              data?.status === "waiting" || data?.status === "allowed"
+              data?.status === "pending" || data?.status === "approved"
                 ? ""
                 : "hidden"
             } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
@@ -175,7 +177,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           </button>
           <button
             className={`${
-              data?.status === "waiting" || data?.status === "notAllowed"
+              data?.status === "pending" || data?.status === "declined"
                 ? ""
                 : "hidden"
             } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
@@ -184,7 +186,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           </button>
           <button
             className={`${
-              data?.status === "notAllowed" ? "" : "hidden"
+              data?.status === "declined" ? "" : "hidden"
             } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
           >
             Удалить

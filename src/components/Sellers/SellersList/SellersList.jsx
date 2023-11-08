@@ -47,7 +47,7 @@ export default function SellersList() {
   data.forEach((v) => {
     if (v?.status === "pending") {
       ++waitingCount;
-    } else if (v?.status === "allowed") {
+    } else if (v?.status === "approved") {
       ++allowedCount;
     } else {
       ++notAllowedCount;
@@ -141,9 +141,9 @@ export default function SellersList() {
 
       <div className="flex mb-[24px] md:hidden">
         <button
-          onClick={() => setShowSellers("waiting")}
+          onClick={() => setShowSellers("pending")}
           className={`${
-            showSellers === "waiting"
+            showSellers === "pending"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
           } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
@@ -152,9 +152,9 @@ export default function SellersList() {
         </button>
         <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
         <button
-          onClick={() => setShowSellers("allowed")}
+          onClick={() => setShowSellers("approved")}
           className={`${
-            showSellers === "allowed"
+            showSellers === "approved"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
           } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
@@ -163,9 +163,9 @@ export default function SellersList() {
         </button>
         <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
         <button
-          onClick={() => setShowSellers("notAllowed")}
+          onClick={() => setShowSellers("declined")}
           className={`${
-            showSellers === "notAllowed"
+            showSellers === "declined"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
           } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
@@ -240,7 +240,7 @@ export default function SellersList() {
               type="button"
               onClick={() => setShowSellers("pending")}
               className={`${
-                showSellers === "waiting"
+                showSellers === "pending"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -253,9 +253,9 @@ export default function SellersList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("allowed")}
+              onClick={() => setShowSellers("approved")}
               className={`${
-                showSellers === "allowed"
+                showSellers === "approved"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -268,9 +268,9 @@ export default function SellersList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("notAllowed")}
+              onClick={() => setShowSellers("declined")}
               className={`${
-                showSellers === "notAllowed"
+                showSellers === "declined"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -373,9 +373,9 @@ export default function SellersList() {
                 })
               : null}
             {/* Status Allowed */}
-            {showSellers === "allowed"
+            {showSellers === "approved"
               ? data.map((data) => {
-                  if (data?.status === "allowed") {
+                  if (data?.status === "approved") {
                     ++index;
                     return (
                       <SellerItems
@@ -390,9 +390,9 @@ export default function SellersList() {
                 })
               : null}
             {/* Status NotAllowed */}
-            {showSellers === "notAllowed"
+            {showSellers === "declined"
               ? data.map((data) => {
-                  if (data?.status === "notAllowed") {
+                  if (data?.status === "declined") {
                     ++index;
                     return (
                       <SellerItems
