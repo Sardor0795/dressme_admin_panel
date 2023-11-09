@@ -40,7 +40,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
         </span>
       </div>
       <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[10px] md:flex items-center w-full">
-        <div className="w-[4%]   text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[4%] text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {index}
         </div>
         <div className="w-[8%]">
@@ -48,22 +48,22 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
             <NoImgIcon />
           </div>
         </div>
-        <div className="w-[16%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[16%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.name_ru}
         </div>
-        <div className="w-[12%] break-all flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[12%] px-4 break-all flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.sku}
         </div>
-        <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[10%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.type?.name_ru}
         </div>
-        <div className="w-[11%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.created_at}
         </div>
-        <div className="w-[11%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {price ? price + " сум" : "-"}
         </div>
-        <div className="w-[20%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[20%] px-4 flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
             className={`${
               data?.status === "pending" || data?.status === "declined"
@@ -157,13 +157,13 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
 
         <div className="py-[5px] px-[15px] flex mb-[10px]">
           <div className="w-[45%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            Футболка уличная
+            {data?.name_ru}
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            BAA-00004
+            {data?.sku}
           </div>
           <div className="w-[15%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            Футболка
+            {data?.type?.name_ru}
           </div>
         </div>
 
@@ -178,10 +178,10 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
 
         <div className="py-[5px] px-[15px] flex mb-[24px]">
           <div className="w-[45%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            15-08-2023
+            {data?.created_at}
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            452 000 сум
+            {price ? price + " сум" : "-"}
           </div>
         </div>
 

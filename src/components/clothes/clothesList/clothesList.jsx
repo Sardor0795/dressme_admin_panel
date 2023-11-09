@@ -384,22 +384,22 @@ export default function ClothesList() {
               <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Фото
               </div>
-              <div className="w-[16%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Название
               </div>
-              <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Артикул
               </div>
-              <div className="w-[10%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Тип
               </div>
-              <div className="w-[11%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Дата
               </div>
-              <div className="w-[11%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Цена
               </div>
-              <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Действие
               </div>
             </div>
