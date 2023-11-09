@@ -75,25 +75,25 @@ export const MoreAbout = () => {
           <div className="w-[5%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
             Имя
           </div>
-          <div className="w-[7%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div className="w-[8%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
             Фамилия
           </div>
-          <div className="w-[11%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div className="w-[12%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
             Имя организации
           </div>
-          <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div className="w-[12%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
             Номер
           </div>
-          <div className="w-[15%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div className="w-[15%] px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
             Email
           </div>
-          <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div className="w-[11%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
             Тип
           </div>
-          <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div className="w-[13%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
             Раздел
           </div>
-          <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div className="w-[8%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
             Дата
           </div>
           <div className="w-[15%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
@@ -107,25 +107,25 @@ export const MoreAbout = () => {
           <div className="w-[5%]  text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.name}
           </div>
-          <div className="w-[7%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div className="w-[8%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.surname}
           </div>
-          <div className="w-[11%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div className="w-[12%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.company ? data?.company : "-"}
           </div>
-          <div className="w-[12%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div className="w-[12%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.phone}
           </div>
-          <div className="w-[15%]  text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div className="w-[15%] px-2  text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.email}
           </div>
-          <div className="w-[9%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div className="w-[11%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.seller_type?.type_ru}
           </div>
-          <div className="w-[17%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div className="w-[13%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.seller_type?.name_ru}
           </div>
-          <div className="w-[8%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div className="w-[8%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.created_at}
           </div>
           <div className="w-[15%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
