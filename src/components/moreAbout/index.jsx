@@ -151,13 +151,13 @@ export const MoreAbout = () => {
 
         <div className="py-[5px] px-[15px] flex mb-[10px]">
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            Umar Bahodirov
+            {data?.name} {data?.surname}
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            Юридическое лицо
+            {data?.seller_type?.type_ru}
           </div>
           <div className="w-[20%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            15-08-2023
+            {data?.created_at}
           </div>
         </div>
 
@@ -172,10 +172,10 @@ export const MoreAbout = () => {
 
         <div className="py-[5px] px-[15px] flex mb-[12px]">
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            +998 (95) 123-45-67
+            {data?.phone}
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            Example123@gmail.com
+            {data?.email}
           </div>
         </div>
 
@@ -190,10 +190,10 @@ export const MoreAbout = () => {
 
         <div className="py-[5px] px-[15px] flex mb-[12px]">
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
-            Общество с ограниченной о тветственностью (ООО)
+            {data?.seller_type?.type_ru}
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            Nike Store Officia
+            {data?.company ? data?.company : "-"}
           </div>
         </div>
 
@@ -205,7 +205,7 @@ export const MoreAbout = () => {
 
         <div className="py-[5px] px-[15px] flex mb-[24px]">
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
-            0000-0000-0000-0000
+            {data?.card_number}
           </div>
         </div>
 
