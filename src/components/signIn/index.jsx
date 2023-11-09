@@ -38,10 +38,10 @@ export const SignInComponent = () => {
 
       if (data.status === 200) {
         localStorage.setItem("token", data.data.access_token);
+        localStorage.setItem("email", reqObj.email);
+        localStorage.setItem("password", reqObj.password);
         navigate("/sellers");
       }
-
-      console.log(data.status);
     } catch (error) {
       setErrorMsg({ visibility: true, msg: error?.response?.data?.message });
       setTimeout(() => {
