@@ -2,10 +2,23 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 import SoonImg from "../../../../assets/img/coming_soon.jpg";
-// pending
-// approved
-// declined
+
 export default function ClothesItem({ data, click, setModalOpen, index }) {
+  let price = 0;
+  let type = data?.type?.category_id;
+
+  if (type === "1") {
+    price = data?.headwear_price?.price;
+  } else if (type === "2") {
+    price = data?.outwear_price?.price;
+  } else if (type === "3") {
+    price = data?.underwear_price?.price;
+  } else if (type === "4") {
+    price = data?.footwear_price?.price;
+  } else if (type === "5") {
+    price = data?.accessory_price?.price;
+  }
+
   return (
     <div className="flex items-center w-full">
       <div
@@ -42,13 +55,13 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           {data?.sku}
         </div>
         <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.type_id}
+          {data?.type?.name_ru}
         </div>
         <div className="w-[11%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.created_at}
         </div>
         <div className="w-[11%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.headwear_price?.price} сум
+          {price ? price + " сум" : "-"}
         </div>
         <div className="w-[20%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
