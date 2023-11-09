@@ -116,7 +116,7 @@ export const MoreAbout = () => {
           <div className="w-[12%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.phone}
           </div>
-          <div className="w-[15%] px-2  text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div className="w-[15%] break-all px-2  text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.email}
           </div>
           <div className="w-[11%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
