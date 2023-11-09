@@ -1,10 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BackIcon, SearchIcon } from "../../assets/icon";
 import CancelModal from "./modalCancel";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export const MoreAbout = () => {
+  const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
+  const [data, setData] = useState([]);
+  console.log(data);
+  const params = useParams();
+  let token = localStorage.getItem("token");
+  useEffect(() => {
+    axios(`${url}/api/admin/sellers/${params?.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((d) => {
+      setData(d?.data?.seller);
+    });
+
+    setData(data);
+  }, []);
 
   return (
     <div>
@@ -88,32 +105,26 @@ export const MoreAbout = () => {
       <div className="mb-[10px] flex items-center text-tableTextTitle">
         <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[15px] md:flex items-center w-full">
           <div className="w-[5%]  text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            Umar
+            {data?.name}
           </div>
           <div className="w-[7%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            Bahodirov
+            {data?.surname}
           </div>
-          <div className="w-[11%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            Nike Store Officia
-          </div>
+          <div className="w-[11%] text-[#3F6175] text-base not-italic font-AeonikProMedium"></div>
           <div className="w-[12%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            +998 (95) 123-45-67
+            {data?.phone}
           </div>
           <div className="w-[15%]  text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            Example123@gmail.com
+            {data?.email}
           </div>
           <div className="w-[9%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            Юридическое лицо
+            {data?.seller_type?.type_ru}
           </div>
-          <div className="w-[17%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            Общество с ограниченной о тветственностью (ООО)
-          </div>
+          <div className="w-[17%] text-[#3F6175] text-base not-italic font-AeonikProMedium"></div>
           <div className="w-[8%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            15-08-2023
+            {data?.created_at}
           </div>
-          <div className="w-[15%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            0000-0000-0000-0000
-          </div>
+          <div className="w-[15%] text-[#3F6175] text-base not-italic font-AeonikProMedium"></div>
         </div>
       </div>
 
