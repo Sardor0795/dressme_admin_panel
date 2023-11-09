@@ -1,8 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { XIcon } from "../../../assets/icon";
+import { ExitIcon, XIcon } from "../../../assets/icon";
 import { sidebarData } from "../../../utils/sidebarData";
+import ExitModal from "../exitModal";
+import { useState } from "react";
 
 export default function PhoneModal({ setPhoneModalOpen, phoneModalOpen }) {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <div className={`w-full px-4 md:px-10`}>
       <div
@@ -16,7 +20,7 @@ export default function PhoneModal({ setPhoneModalOpen, phoneModalOpen }) {
           phoneModalOpen ? "bottom-0 flex" : "hidden z-[-10]"
         }`}
       >
-        <div className="w-full py-16">
+        <div className="w-full py-10">
           {sidebarData.map((item) => {
             return (
               <NavLink
@@ -37,6 +41,20 @@ export default function PhoneModal({ setPhoneModalOpen, phoneModalOpen }) {
           })}
         </div>
 
+        <button
+          onClick={() => setModalOpen(true)}
+          className="justify-center mt-auto w-full text-[#ff2d55] rounded-md text-lg font-AeonikProMedium flex px-6 py-4 hover:bg-[#F2F2F2]"
+        >
+          <div className="flex w-[135px]">
+            <div className="mr-4 flex w-[24px]">
+              <ExitIcon color={"red"} />
+            </div>
+            Выйти
+          </div>
+        </button>
+
+        {/* exit modal */}
+        <ExitModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
         {/* X button */}
 
         <button

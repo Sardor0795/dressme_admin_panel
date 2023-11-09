@@ -39,7 +39,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
   };
 
   return (
-    <div className={`w-full px-4 md:px-10 hidden md:block`}>
+    <div className={`w-full px-4 md:px-10 md:hidden`}>
       <div
         className={`fixed cursor-pointer z-[200] inset-0 w-full h-full bg-black opacity-40 ${
           modalOpen ? "" : "hidden"
@@ -47,20 +47,20 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
         onClick={() => setModalOpen(false)}
       ></div>
       <section
-        className={`max-w-[90%] md:max-w-[550px] z-[201] mx-auto w-full flex-col h-fit bg-white fixed py-[30px] md:py-[35px] px-[20px] md:px-[50px] rounded-t-lg rounded-b-lg md:top-[50%] duration-300 overflow-hidden left-1/2 right-1/2 translate-x-[-50%] translate-y-[-50%] ${
+        className={`max-w-[90%] md:max-w-[550px] z-[201] mx-auto w-full flex-col bg-white fixed py-[30px] md:py-[35px] px-[20px] md:px-[50px] rounded-t-lg rounded-b-lg md:top-[50%] duration-300  left-1/2 right-1/2 translate-x-[-50%] translate-y-[-50%] ${
           modalOpen ? "bottom-0 flex" : "hidden z-[-10]"
         }`}
       >
-        <div className="text-black text-lg xs:text-xl not-italic font-AeonikProMedium text-center mb-24">
+        <div className="text-black text-lg xs:text-xl not-italic font-AeonikProMedium text-center mb-14">
           Вы уверены?
         </div>
 
         <div className="flex gap-x-10 items-center">
           <button
             onClick={() => setModalOpen(false)}
-            className="w-full active:scale-95  active:opacity-70 h-[20px] xs:h-11 rounded-lg flex items-center gap-x-[10px] justify-center text-weatherWinterColor border border-weatherWinterColor"
+            className="w-full active:scale-95  active:opacity-70 h-8 xs:h-11 rounded-lg flex items-center gap-x-[10px] justify-center text-weatherWinterColor border border-weatherWinterColor"
           >
-            <span className="text-center text-base not-italic font-AeonikProMedium">
+            <span className="text-center text-sm not-italic font-AeonikProMedium">
               Oтмена
             </span>
           </button>
@@ -68,14 +68,13 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
           <button
             onClick={() => {
               logOut();
-              // setModalOpen(false);
             }}
-            className="w-full active:scale-95  active:opacity-70 h-[20px] xs:h-11 rounded-lg flex items-center gap-x-[10px] justify-center text-white bg-[#FF4343] border border-[#FF4343]"
+            className="w-full active:scale-95  active:opacity-70 h-8 xs:h-11 rounded-lg flex items-center gap-x-[10px] justify-center text-white bg-[#FF4343] border border-[#FF4343]"
           >
             <div>
               <ExitIcon />
             </div>
-            <span className="text-base not-italic font-AeonikProMedium">
+            <span className="text-sm not-italic font-AeonikProMedium">
               Выйти
             </span>
           </button>

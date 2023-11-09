@@ -12,11 +12,28 @@ import {
   WaitingForAllowIcon,
 } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
+import axios from "axios";
 
 export default function ClothesList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData] = useState(clothesMockData);
+  const [data, setData] = useState([]);
+
+  const url = "https://api.dressme.uz";
+
+  let token = localStorage.getItem("token");
+
+  useEffect(() => {
+    axios(`${url}/api/admin/products`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((d) => {
+      setData(d?.data?.products);
+    });
+
+    setData(data);
+  }, []);
 
   // // Count items -----------
 
@@ -25,9 +42,9 @@ export default function ClothesList() {
   let notAllowedCount = 0;
 
   data.forEach((v) => {
-    if (v?.status === "waiting") {
+    if (v?.status === "pending") {
       ++waitingCount;
-    } else if (v?.status === "allowed") {
+    } else if (v?.status === "approved") {
       ++allowedCount;
     } else {
       ++notAllowedCount;
@@ -74,7 +91,7 @@ export default function ClothesList() {
     }
   }, [data]);
 
-  const [showSellers, setShowSellers] = useState("waiting");
+  const [showSellers, setShowSellers] = useState("pending");
 
   let index = 0;
 
@@ -131,7 +148,7 @@ export default function ClothesList() {
 
         <div className="flex mb-[24px] md:hidden">
           <button
-            onClick={() => setShowSellers("waiting")}
+            onClick={() => setShowSellers("pending")}
             className={`${
               showSellers === "waiting"
                 ? "text-[#007DCA] border-[#007DCA]"
@@ -142,9 +159,9 @@ export default function ClothesList() {
           </button>
           <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
           <button
-            onClick={() => setShowSellers("allowed")}
+            onClick={() => setShowSellers("approved")}
             className={`${
-              showSellers === "allowed"
+              showSellers === "approved"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
@@ -153,9 +170,9 @@ export default function ClothesList() {
           </button>
           <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
           <button
-            onClick={() => setShowSellers("notAllowed")}
+            onClick={() => setShowSellers("declined")}
             className={`${
-              showSellers === "notAllowed"
+              showSellers === "declined"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
@@ -218,9 +235,9 @@ export default function ClothesList() {
           <section className="flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
-              onClick={() => setShowSellers("waiting")}
+              onClick={() => setShowSellers("pending")}
               className={`${
-                showSellers === "waiting"
+                showSellers === "pending"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -233,9 +250,9 @@ export default function ClothesList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("allowed")}
+              onClick={() => setShowSellers("approved")}
               className={`${
-                showSellers === "allowed"
+                showSellers === "approved"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -248,9 +265,9 @@ export default function ClothesList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("notAllowed")}
+              onClick={() => setShowSellers("declined")}
               className={`${
-                showSellers === "notAllowed"
+                showSellers === "declined"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -391,9 +408,9 @@ export default function ClothesList() {
           <div className="w-full flex flex-col gap-y-[10px]">
             {/* Status Waiting */}
 
-            {showSellers === "waiting"
+            {showSellers === "pending"
               ? data.map((data) => {
-                  if (data?.status === "waiting") {
+                  if (data?.status === "pending") {
                     ++index;
                     return (
                       <ClothesItem
@@ -410,9 +427,9 @@ export default function ClothesList() {
 
             {/* Status Allowed */}
 
-            {showSellers === "allowed"
+            {showSellers === "approved"
               ? data.map((data) => {
-                  if (data?.status === "allowed") {
+                  if (data?.status === "approved") {
                     ++index;
                     return (
                       <ClothesItem
@@ -429,9 +446,9 @@ export default function ClothesList() {
 
             {/* Status NotAllowed */}
 
-            {showSellers === "notAllowed"
+            {showSellers === "declined"
               ? data.map((data) => {
-                  if (data?.status === "notAllowed") {
+                  if (data?.status === "declined") {
                     ++index;
                     return (
                       <ClothesItem

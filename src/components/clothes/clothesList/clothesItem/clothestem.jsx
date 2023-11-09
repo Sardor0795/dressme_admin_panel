@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 import SoonImg from "../../../../assets/img/coming_soon.jpg";
-
+// pending
+// approved
+// declined
 export default function ClothesItem({ data, click, setModalOpen, index }) {
   return (
     <div className="flex items-center w-full">
@@ -34,24 +36,24 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           </div>
         </div>
         <div className="w-[16%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          Футболка уличная
+          {data?.name_ru}
         </div>
-        <div className="w-[12%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          BAA-0000448
+        <div className="w-[12%] break-all flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+          {data?.sku}
         </div>
         <div className="w-[10%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          Футболка
+          {data?.type_id}
         </div>
         <div className="w-[11%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          15-08-2023
+          {data?.created_at}
         </div>
         <div className="w-[11%] flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          1452 000 сум
+          {data?.headwear_price?.price} сум
         </div>
         <div className="w-[20%] flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
             className={`${
-              data?.status === "waiting" || data?.status === "notAllowed"
+              data?.status === "pending" || data?.status === "declined"
                 ? ""
                 : "hidden"
             } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
@@ -61,7 +63,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           <button
             onClick={() => setModalOpen(true)}
             className={`${
-              data?.status === "waiting" || data?.status === "allowed"
+              data?.status === "pending" || data?.status === "approved"
                 ? ""
                 : "hidden"
             } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
@@ -70,7 +72,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           </button>
           <button
             className={`${
-              data?.status === "notAllowed" ? "" : "hidden"
+              data?.status === "declined" ? "" : "hidden"
             } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
           >
             Удалить
@@ -174,7 +176,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           <button
             onClick={() => setModalOpen(true)}
             className={`${
-              data?.status === "waiting" || data?.status === "allowed"
+              data?.status === "pending" || data?.status === "approved"
                 ? ""
                 : "hidden"
             } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
@@ -183,7 +185,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           </button>
           <button
             className={`${
-              data?.status === "waiting" || data?.status === "notAllowed"
+              data?.status === "pending" || data?.status === "declined"
                 ? ""
                 : "hidden"
             } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
@@ -192,7 +194,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           </button>
           <button
             className={`${
-              data?.status === "notAllowed" ? "" : "hidden"
+              data?.status === "declined" ? "" : "hidden"
             } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
           >
             Удалить
