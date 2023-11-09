@@ -110,7 +110,9 @@ export const MoreAbout = () => {
           <div className="w-[7%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.surname}
           </div>
-          <div className="w-[11%] text-[#3F6175] text-base not-italic font-AeonikProMedium"></div>
+          <div className="w-[11%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+            {data?.company ? data?.company : "-"}
+          </div>
           <div className="w-[12%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.phone}
           </div>
@@ -120,11 +122,15 @@ export const MoreAbout = () => {
           <div className="w-[9%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.seller_type?.type_ru}
           </div>
-          <div className="w-[17%] text-[#3F6175] text-base not-italic font-AeonikProMedium"></div>
+          <div className="w-[17%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+            {data?.seller_type?.name_ru}
+          </div>
           <div className="w-[8%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
             {data?.created_at}
           </div>
-          <div className="w-[15%] text-[#3F6175] text-base not-italic font-AeonikProMedium"></div>
+          <div className="w-[15%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+            {data?.card_number}
+          </div>
         </div>
       </div>
 
