@@ -268,7 +268,7 @@ export const ClothMoreAbout = () => {
                   <StarIcon />
                 </div>
                 <div className="w-full max-w-[160px] border border-[#E5E5E5] text-[#A1A1A1] rounded-[8px] p-3 mb-[25px]">
-                  Выбрать
+                  {data?.producer?.name_ru}
                 </div>
               </div>
             </div>
