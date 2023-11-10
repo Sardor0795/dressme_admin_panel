@@ -1,15 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BackIcon, StarIcon } from "../../../assets/icon";
 import CancelModal from "./modalCancel";
 import ColorModal from "./modalColor";
 import Carousel from "./carousel";
 import ModalAllPhotos from "./modalAllPhotos";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 export const ClothMoreAbout = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [colorModalOpen, setColorModalOpen] = useState(false);
   const [allPhotosModalOpen, setAllPhotosModalOpen] = useState(false);
+
+  const url = "https://api.dressme.uz";
+  const [data, setData] = useState([]);
+  console.log(data);
+  const params = useParams();
+  let token = localStorage.getItem("token");
+
+  useEffect(() => {
+    axios(`${url}/api/admin/products/${params?.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((d) => {
+      setData(d?.data?.product);
+    });
+  }, []);
 
   return (
     <div className="flex flex-col w-full">
@@ -81,7 +98,7 @@ export const ClothMoreAbout = () => {
                   <span className="mr-[5px]">Раздел одежды</span> <StarIcon />
                 </div>
                 <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-                  Lorem Ipsum
+                  {data?.category?.name_ru}
                 </div>
               </div>
               <div className="w-full md:hidden">
@@ -109,7 +126,9 @@ export const ClothMoreAbout = () => {
                   <span className="mr-[5px]">Цвет</span> <StarIcon />
                 </div>
                 <div className="p-[5px] w-fit h-[42px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
-                  <div className="w-[22px] h-[22px] bg-black rounded-[50%] mr-[5px]"></div>{" "}
+                  <div
+                    className={`w-[22px] h-[22px] bg-black rounded-[50%] mr-[5px]`}
+                  ></div>
                   3+
                 </div>
               </div>
@@ -121,18 +140,18 @@ export const ClothMoreAbout = () => {
                   <span className="mr-[5px]">Пол</span> <StarIcon />
                 </div>
                 <div className="border border-[#E5E5E5] rounded-[8px] p-3">
-                  Lorem
+                  {data?.gender?.name_ru}
                 </div>
               </div>
               <div className="w-full md:w-fit">
                 <div className="mr-[5px] mb-[5px]">Возрастная категория</div>
                 <div className="flex items-center">
                   <div className="border border-[#E5E5E5] rounded-[8px] py-3 px-5">
-                    10
+                    {data?.min_age_category}
                   </div>
                   <span className="border-t border-[#E5E5E5] w-[15px] mx-[5px]"></span>
                   <div className="border border-[#E5E5E5] rounded-[8px] py-3 px-5">
-                    20
+                    {data?.max_age_category}
                   </div>
                 </div>
               </div>
@@ -191,7 +210,9 @@ export const ClothMoreAbout = () => {
               <span className="mr-[5px]">Цвет</span> <StarIcon />
             </div>
             <div className="w-[42px] h-[42px] hidden md:flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
-              <div className="w-[22px] h-[22px] bg-black rounded-[50%]"></div>
+              <div
+                className={`w-[22px] h-[22px] bg-[#71717a] rounded-[50%]`}
+              ></div>
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Артикул</span>

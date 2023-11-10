@@ -328,19 +328,19 @@ export default function SellersList() {
               <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 No:
               </div>
-              <div className="w-[14%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[10%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Имя
               </div>
-              <div className="w-[14%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[15%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Номер
               </div>
-              <div className="w-[14%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[15%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Тип
               </div>
-              <div className="w-[10%] px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[11%] px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Дата
               </div>
-              <div className="w-[19%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+              <div className="w-[20%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                 Регион
               </div>
               <div className="w-[18%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">

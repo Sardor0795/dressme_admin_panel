@@ -29,19 +29,19 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
         <div className="w-[3%]   text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {index}
         </div>
-        <div className="w-[14%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[10%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.name}
         </div>
-        <div className="w-[14%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.phone}
         </div>
-        <div className="w-[14%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.seller_type?.type_ru}
         </div>
-        <div className="w-[10%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[11%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.created_at}
         </div>
-        <div className="w-[19%] px-2 pr-3 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[20%] px-2 pr-3 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.region?.name_ru}, {data?.sub_region?.name_ru}
         </div>
         <div className="w-[18%] px-2 flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">

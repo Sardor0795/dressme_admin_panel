@@ -8,7 +8,7 @@ export const MoreAbout = () => {
   const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
   const [data, setData] = useState([]);
-  console.log(data);
+
   const params = useParams();
   let token = localStorage.getItem("token");
   useEffect(() => {
@@ -19,8 +19,6 @@ export const MoreAbout = () => {
     }).then((d) => {
       setData(d?.data?.seller);
     });
-
-    setData(data);
   }, []);
 
   return (
@@ -72,31 +70,83 @@ export const MoreAbout = () => {
 
       <div className="mb-[10px] flex items-center text-tableTextTitle">
         <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 py-[10px] md:flex items-center w-full">
-          <div className="w-[5%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[6%]"
+                : "w-[6%]"
+            } text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+          >
             Имя
           </div>
-          <div className="w-[8%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[9%]"
+                : "w-[9%]"
+            } px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+          >
             Фамилия
           </div>
-          <div className="w-[12%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-            Имя организации
-          </div>
-          <div className="w-[12%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          {data?.seller_type?.type_ru === "Физическое лицо" ? null : (
+            <div
+              className={`w-[14%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+            >
+              Имя организации
+            </div>
+          )}
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[14%]"
+                : "w-[12%]"
+            }  px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+          >
             Номер
           </div>
-          <div className="w-[15%] px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[17%]"
+                : "w-[15%]"
+            }  px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+          >
             Email
           </div>
-          <div className="w-[11%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[13%]"
+                : "w-[11%]"
+            }  px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+          >
             Тип
           </div>
-          <div className="w-[13%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[12%]"
+                : "w-[11%]"
+            }  px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+          >
             Раздел
           </div>
-          <div className="w-[8%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[12%]"
+                : "w-[8%]"
+            }  px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+          >
             Дата
           </div>
-          <div className="w-[15%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[16%]"
+                : "w-[15%]"
+            }  text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+          >
             Номер карты
           </div>
         </div>
@@ -104,31 +154,83 @@ export const MoreAbout = () => {
 
       <div className="mb-[10px] flex items-center text-tableTextTitle">
         <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[15px] md:flex items-center w-full">
-          <div className="w-[5%]  text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[6%]"
+                : "w-[6%]"
+            }   text-[#3F6175] text-base not-italic font-AeonikProMedium`}
+          >
             {data?.name}
           </div>
-          <div className="w-[8%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[9%]"
+                : "w-[9%]"
+            }  px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium`}
+          >
             {data?.surname}
           </div>
-          <div className="w-[12%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
-            {data?.company ? data?.company : "-"}
-          </div>
-          <div className="w-[12%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          {data?.seller_type?.type_ru === "Физическое лицо" ? null : (
+            <div
+              className={`w-[14%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium`}
+            >
+              {data?.company ? data?.company : "-"}
+            </div>
+          )}
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[14%]"
+                : "w-[12%]"
+            }  px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium`}
+          >
             {data?.phone}
           </div>
-          <div className="w-[15%] break-all px-2  text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[17%]"
+                : "w-[15%]"
+            }  break-all px-2  text-[#3F6175] text-base not-italic font-AeonikProMedium`}
+          >
             {data?.email}
           </div>
-          <div className="w-[11%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[13%]"
+                : "w-[11%]"
+            }  px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium`}
+          >
             {data?.seller_type?.type_ru}
           </div>
-          <div className="w-[13%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[12%]"
+                : "w-[11%]"
+            }  px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium`}
+          >
             {data?.seller_type?.name_ru}
           </div>
-          <div className="w-[8%] px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[12%]"
+                : "w-[8%]"
+            }  px-2 text-[#3F6175] text-base not-italic font-AeonikProMedium`}
+          >
             {data?.created_at}
           </div>
-          <div className="w-[15%] text-[#3F6175] text-base not-italic font-AeonikProMedium">
+          <div
+            className={`${
+              data?.seller_type?.type_ru === "Физическое лицо"
+                ? "w-[16%]"
+                : "w-[15%]"
+            } w-[15%] text-[#3F6175] text-base not-italic font-AeonikProMedium`}
+          >
             {data?.card_number}
           </div>
         </div>
@@ -183,31 +285,47 @@ export const MoreAbout = () => {
           <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
             Раздел
           </div>
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
-            Имя организации
-          </div>
+          {data?.seller_type?.type_ru === "Физическое лицо" ? (
+            <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+              Номер карты
+            </div>
+          ) : (
+            <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+              Имя организации
+            </div>
+          )}
         </div>
 
         <div className="py-[5px] px-[15px] flex mb-[12px]">
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
             {data?.seller_type?.type_ru}
           </div>
-          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.company ? data?.company : "-"}
-          </div>
+          {data?.seller_type?.type_ru === "Физическое лицо" ? (
+            <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+              {data?.card_number}
+            </div>
+          ) : (
+            <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+              {data?.company ? data?.company : "-"}
+            </div>
+          )}
         </div>
 
-        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
-            Номер карты
+        {data?.seller_type?.type_ru === "Физическое лицо" ? null : (
+          <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+            <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+              Номер карты
+            </div>
           </div>
-        </div>
+        )}
 
-        <div className="py-[5px] px-[15px] flex mb-[24px]">
-          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
-            {data?.card_number}
+        {data?.seller_type?.type_ru === "Физическое лицо" ? null : (
+          <div className="py-[5px] px-[15px] flex mb-[24px]">
+            <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+              {data?.card_number}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="w-full flex gap-[30px]">
           <button
