@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
-// pending
-// approved
-// declined
+
 export default function SellerItems({ data, click, setModalOpen, index }) {
   return (
     <div className="flex items-center w-full">

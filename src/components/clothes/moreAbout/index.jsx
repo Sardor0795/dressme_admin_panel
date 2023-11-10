@@ -14,7 +14,10 @@ export const ClothMoreAbout = () => {
 
   const url = "https://api.dressme.uz";
   const [data, setData] = useState([]);
-  console.log(data);
+
+  const seasons = data?.seasons;
+  const colors = data?.colors;
+
   const params = useParams();
   let token = localStorage.getItem("token");
 
@@ -118,7 +121,13 @@ export const ClothMoreAbout = () => {
                   <span className="mr-[5px]">Сезон одежды</span> <StarIcon />
                 </div>
                 <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-                  Lorem Ipsum
+                  {seasons?.length
+                    ? seasons?.map((item) => {
+                        return (
+                          <span key={item?.id}>{item?.name_ru + " "}</span>
+                        );
+                      })
+                    : "-"}
                 </div>
               </div>
               <div className="w-full md:hidden">
@@ -185,7 +194,7 @@ export const ClothMoreAbout = () => {
               <span className="mr-[5px]">Качество на русском</span> <StarIcon />
             </div>
             <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-              Lorem Ipsum
+              {data?.quality_ru}
             </div>
 
             <div className="flex items-center mb-[5px]">
@@ -193,7 +202,7 @@ export const ClothMoreAbout = () => {
             </div>
             <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               <span className="font-AeonikProMedium text-[16px] py-[6px] px-5 bg-[#007DCA] rounded-md text-white">
-                хлопок
+                {data?.composition_ru}
               </span>
             </div>
           </div>
@@ -209,16 +218,22 @@ export const ClothMoreAbout = () => {
             <div className="hidden md:flex items-center mb-[5px]">
               <span className="mr-[5px]">Цвет</span> <StarIcon />
             </div>
-            <div className="w-[42px] h-[42px] hidden md:flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
-              <div
-                className={`w-[22px] h-[22px] bg-[#71717a] rounded-[50%]`}
-              ></div>
+            <div className="w-fit h-[42px] px-[10px] hidden md:flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
+              {colors?.map((item) => {
+                return (
+                  <div
+                    key={item?.id}
+                    style={{ backgroundColor: item?.hex }}
+                    className={`mr-[8px] last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
+                  ></div>
+                );
+              })}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Артикул</span>
             </div>
             <div className="block border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-              Lorem Ipsum
+              {data?.sku}
             </div>
             <div className="flex justify-between gap-[10px]">
               <div className="w-full">
@@ -227,7 +242,7 @@ export const ClothMoreAbout = () => {
                   <StarIcon />
                 </div>
                 <div className="w-full max-w-[160px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-                  Lorem
+                  {data?.type?.name_ru}
                 </div>
               </div>
               <div className="w-full">
@@ -247,13 +262,15 @@ export const ClothMoreAbout = () => {
               <StarIcon />
             </div>
             <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-              Lorem Ipsum
+              {data?.quality_uz}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Состав на узбекском</span>
             </div>
             <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-              Lorem Ipsum
+              <span className="font-AeonikProMedium text-[16px] py-[6px] px-5 bg-[#007DCA] rounded-md text-white">
+                {data?.composition_uz}
+              </span>
             </div>
           </div>
         </div>
@@ -263,35 +280,31 @@ export const ClothMoreAbout = () => {
             <span className="mr-[5px]">Название на русском</span> <StarIcon />
           </div>
           <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-            Lorem Ipsum
+            {data?.name_ru}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Название на узбекском</span> <StarIcon />
           </div>
           <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-            Lorem Ipsum
+            {data?.name_uz}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Описание на русском</span> <StarIcon />
           </div>
           <div className="border border-[#E5E5E5] rounded-[8px] text-[14px] text-[#666] p-3 mb-[25px]">
-            Lorem ipsum dolor sit amet consectetur. Accumsan pulvinar eros sed
-            et. Neque vestibulum turpis eu dignissim nisl in tellus. Adipiscing
-            morbi lacinia morbi duis non nec.
+            {data?.description_ru}
           </div>
           <div className="flex items-center mb-[5px]">
-            <span className="mr-[5px]">Описание на русском</span> <StarIcon />
+            <span className="mr-[5px]">Описание на узбекском</span> <StarIcon />
           </div>
           <div className="border border-[#E5E5E5] rounded-[8px] text-[14px] text-[#666] p-3 mb-[25px]">
-            Lorem ipsum dolor sit amet consectetur. Accumsan pulvinar eros sed
-            et. Neque vestibulum turpis eu dignissim nisl in tellus. Adipiscing
-            morbi lacinia morbi duis non nec.
+            {data?.description_uz}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Бренд</span>
           </div>
           <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-            Lorem Ipsum
+            {data?.brand?.name}
           </div>
         </div>
 
