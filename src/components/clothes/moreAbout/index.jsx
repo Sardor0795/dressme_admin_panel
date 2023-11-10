@@ -142,7 +142,7 @@ export const ClothMoreAbout = () => {
                         className={`last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
                       ></div>
                       <div className={colors.length > 1 ? "ml-[10px]" : null}>
-                        {colors.length > 1 ? colors.length + "+" : null}
+                        {colors.length > 1 ? colors.length - 1 + "+" : null}
                       </div>
                     </div>
                   ) : (

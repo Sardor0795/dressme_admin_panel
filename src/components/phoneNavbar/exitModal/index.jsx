@@ -68,6 +68,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
           <button
             onClick={() => {
               logOut();
+              navigate("/signin");
             }}
             className="w-full active:scale-95  active:opacity-70 h-8 xs:h-11 rounded-lg flex items-center gap-x-[10px] justify-center text-white bg-[#FF4343] border border-[#FF4343]"
           >
