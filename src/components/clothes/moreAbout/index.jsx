@@ -134,11 +134,20 @@ export const ClothMoreAbout = () => {
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Цвет</span> <StarIcon />
                 </div>
-                <div className="p-[5px] w-fit h-[42px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
-                  <div
-                    className={`w-[22px] h-[22px] bg-black rounded-[50%] mr-[5px]`}
-                  ></div>
-                  3+
+                <div className="p-[8px] w-fit h-[42px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
+                  {colors?.length ? (
+                    <div className="flex items-center">
+                      <div
+                        style={{ backgroundColor: colors[0]?.hex }}
+                        className={`last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
+                      ></div>
+                      <div className={colors.length > 1 ? "ml-[10px]" : null}>
+                        {colors.length > 1 ? colors.length + "+" : null}
+                      </div>
+                    </div>
+                  ) : (
+                    "-"
+                  )}
                 </div>
               </div>
             </div>
@@ -201,9 +210,13 @@ export const ClothMoreAbout = () => {
               <span className="mr-[5px]">Состав на русском</span>
             </div>
             <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-              <span className="font-AeonikProMedium text-[16px] py-[6px] px-5 bg-[#007DCA] rounded-md text-white">
-                {data?.composition_ru}
-              </span>
+              {data?.composition_ru ? (
+                <span className="font-AeonikProMedium text-[16px] py-[6px] px-5 bg-[#007DCA] rounded-md text-white">
+                  {data?.composition_ru}
+                </span>
+              ) : (
+                "-"
+              )}
             </div>
           </div>
 
@@ -219,15 +232,17 @@ export const ClothMoreAbout = () => {
               <span className="mr-[5px]">Цвет</span> <StarIcon />
             </div>
             <div className="w-fit h-[42px] px-[10px] hidden md:flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
-              {colors?.map((item) => {
-                return (
-                  <div
-                    key={item?.id}
-                    style={{ backgroundColor: item?.hex }}
-                    className={`mr-[8px] last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
-                  ></div>
-                );
-              })}
+              {colors?.length
+                ? colors?.map((item) => {
+                    return (
+                      <div
+                        key={item?.id}
+                        style={{ backgroundColor: item?.hex }}
+                        className={`mr-[8px] last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
+                      ></div>
+                    );
+                  })
+                : "-"}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Артикул</span>
@@ -268,9 +283,13 @@ export const ClothMoreAbout = () => {
               <span className="mr-[5px]">Состав на узбекском</span>
             </div>
             <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-              <span className="font-AeonikProMedium text-[16px] py-[6px] px-5 bg-[#007DCA] rounded-md text-white">
-                {data?.composition_uz}
-              </span>
+              {data?.composition_uz ? (
+                <span className="font-AeonikProMedium text-[16px] py-[6px] px-5 bg-[#007DCA] rounded-md text-white">
+                  {data?.composition_uz}
+                </span>
+              ) : (
+                "-"
+              )}
             </div>
           </div>
         </div>
@@ -304,7 +323,7 @@ export const ClothMoreAbout = () => {
             <span className="mr-[5px]">Бренд</span>
           </div>
           <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-            {data?.brand?.name}
+            {data?.brand?.name ? data?.brand?.name : "-"}
           </div>
         </div>
 
