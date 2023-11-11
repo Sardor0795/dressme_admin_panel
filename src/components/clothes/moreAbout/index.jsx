@@ -17,6 +17,8 @@ export const ClothMoreAbout = () => {
 
   const seasons = data?.seasons;
   const colors = data?.colors;
+  const sections = data?.sections ? data?.sections : [];
+  const subSections = data?.sub_sections ? data?.sub_sections : [];
 
   const params = useParams();
   let token = localStorage.getItem("token");
@@ -101,16 +103,37 @@ export const ClothMoreAbout = () => {
                   <span className="mr-[5px]">Раздел одежды</span> <StarIcon />
                 </div>
                 <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-                  {data?.category?.name_ru}
+                  {sections?.length > 1
+                    ? sections?.map((item) => {
+                        return item?.name_ru + ", ";
+                      })
+                    : sections[0]?.name_ru}
                 </div>
               </div>
               <div className="w-full md:hidden">
                 <div className="md:hidden flex items-center mb-[5px]">
-                  <span className="mr-[5px]">Подраздел одежды</span>
+                  <span
+                    className={`${
+                      subSections?.length ? "" : "text-[#b5b5b5]"
+                    } mr-[5px]`}
+                  >
+                    Подраздел одежды
+                  </span>
+
                   <StarIcon />
                 </div>
-                <div className="md:hidden block border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-                  Lorem Ipsum
+                <div
+                  className={`${
+                    subSections?.length ? "" : "bg-[#EAEAEA] text-[#b5b5b5]"
+                  } md:hidden block border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]`}
+                >
+                  {subSections?.length > 1
+                    ? subSections?.map((item) => {
+                        return item?.name_ru + ", ";
+                      })
+                    : subSections[0]?.name_ru
+                    ? subSections[0]?.name_ru
+                    : "-"}
                 </div>
               </div>
             </div>
@@ -223,10 +246,27 @@ export const ClothMoreAbout = () => {
           {/* 2 */}
           <div className="w-full md:w-[50%]">
             <div className="hidden md:flex items-center mb-[5px]">
-              <span className="mr-[5px]">Подраздел одежды</span> <StarIcon />
+              <span
+                className={`${
+                  subSections?.length ? "" : "text-[#b5b5b5]"
+                } mr-[5px]`}
+              >
+                Подраздел одежды
+              </span>{" "}
+              <StarIcon />
             </div>
-            <div className="hidden md:block border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-              Lorem Ipsum
+            <div
+              className={`${
+                subSections?.length ? "" : "bg-[#EAEAEA] text-[#b5b5b5]"
+              } hidden md:block border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]`}
+            >
+              {subSections?.length > 1
+                ? subSections?.map((item) => {
+                    return item?.name_ru + ", ";
+                  })
+                : subSections[0]?.name_ru
+                ? subSections[0]?.name_ru
+                : "-"}
             </div>
             <div className="hidden md:flex items-center mb-[5px]">
               <span className="mr-[5px]">Цвет</span> <StarIcon />
