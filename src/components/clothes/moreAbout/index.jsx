@@ -234,7 +234,7 @@ export const ClothMoreAbout = () => {
             </div>
             <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.composition_ru ? (
-                <span className="font-AeonikProMedium text-[16px] py-[6px] px-5 bg-[#007DCA] rounded-md text-white">
+                <span className="font-AeonikProRegular text-[14px]">
                   {data?.composition_ru}
                 </span>
               ) : (
@@ -324,7 +324,7 @@ export const ClothMoreAbout = () => {
             </div>
             <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.composition_uz ? (
-                <span className="font-AeonikProMedium text-[16px] py-[6px] px-5 bg-[#007DCA] rounded-md text-white">
+                <span className="font-AeonikProRegular text-[14px]">
                   {data?.composition_uz}
                 </span>
               ) : (
