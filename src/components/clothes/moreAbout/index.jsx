@@ -204,7 +204,7 @@ export const ClothMoreAbout = () => {
             <div className="flex w-full mb:block gap-[11px] md:gap-[0]">
               <div className="flex w-full md:flex-wrap xxxl:flex-nowrap justify-between mb-[25px] gap-[10px]">
                 <button className="whitespace-nowrap font-AeonikProMedium text-[16px] w-full xxxl:max-w-[160px] rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
-                  Верхняя одежда
+                  {data?.category?.name_ru}
                 </button>
                 <button
                   onClick={() => setColorModalOpen(true)}
