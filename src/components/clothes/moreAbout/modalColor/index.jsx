@@ -12,8 +12,6 @@ export default function ColorModal({
   category,
   data,
 }) {
-  console.log(data);
-
   return (
     <div className={`w-full px-4  md:px-10`}>
       <div
@@ -24,7 +22,7 @@ export default function ColorModal({
       ></div>
 
       <section
-        className={`max-w-[650px] pt-[85px] z-[201] w-full flex-col h-fit bg-white fixed px-10 py-10 rounded-t-lg md:rounded-b-lg left-0 right-0 md:top-[50%] duration-300 overflow-hidden md:left-1/2 md:right-1/2 md:translate-x-[-50%] md:translate-y-[-50%] ${
+        className={`max-w-[650px] pt-[70px] z-[201] w-full flex-col h-fit bg-white fixed px-10 py-10 rounded-t-lg md:rounded-b-lg left-0 right-0 md:top-[50%] duration-300 overflow-hidden md:left-1/2 md:right-1/2 md:translate-x-[-50%] md:translate-y-[-50%] ${
           colorModalOpen
             ? " bottom-0 md:flex"
             : "md:hidden bottom-[-800px] z-[-10]"
@@ -54,7 +52,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className="px-[10px] mb-[34px]">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   One Size <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
                 </div>
@@ -85,7 +83,7 @@ export default function ColorModal({
               </div>
             </div>
             <div className="flex flex-wrap md:flex-nowrap justify-between">
-              <div className="mb-[34px]">
+              <div className="">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   Возраст
                 </div>
@@ -97,7 +95,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className="px-[10px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
                   <span className="mr-[8px]">Цена</span> <StarIcon />
                 </div>
@@ -112,7 +110,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
                   Скидка
                   <span className="text-[#8C8C8C] ml-[8px]">
@@ -169,7 +167,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className="px-[10px] mb-[34px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
                   <div className="mr-[5px]">Размер</div> <StarIcon />
                 </div>
@@ -221,7 +219,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="mb-[34px] px-[10px]">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   Обхват Бедер
                   <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
@@ -240,7 +238,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className="mb-[34px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
                   <span className="mr-[8px]">Количество</span> <StarIcon />
                 </div>
@@ -257,7 +255,7 @@ export default function ColorModal({
             </div>
 
             <div className="flex flex-wrap md:flex-nowrap justify-between">
-              <div className="mb-[34px]">
+              <div className="">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   Возраст
                 </div>
@@ -267,7 +265,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className="px-[20px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
                   <span className="mr-[8px]">Цена</span> <StarIcon />
                 </div>
@@ -282,7 +280,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
                   Скидка
                   <span className="text-[#8C8C8C] ml-[8px]">
@@ -315,12 +313,12 @@ export default function ColorModal({
           </div>
         ) : null}
 
-        {/* Category 3 full */}
+        {/* Category 3 full ++*/}
 
         {category === "3" ? (
           <div className="text-[#303030] border border-[F0F0F0] p-[30px] rounded-lg h-[70vh] md:h-auto overflow-y-auto">
             <div className="flex flex-wrap md:flex-nowrap justify-between">
-              <div className="mb-[34px]">
+              <div className="mb-[34px] pr-[10px]">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   Обхват Талии
                   <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
@@ -339,7 +337,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className="mb-[34px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
                   <div className="mr-[5px]">Размер</div> <StarIcon />
                 </div>
@@ -353,18 +351,6 @@ export default function ColorModal({
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     {data?.underwear_price?.max_wear_size
                       ? data?.underwear_price?.max_wear_size
-                      : "-"}
-                  </div>
-                </div>
-              </div>
-              <div className="mb-[34px]">
-                <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
-                  Буквенный Размер
-                </div>
-                <div className="flex items-center">
-                  <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.letter_size
-                      ? data?.underwear_price?.letter_size
                       : "-"}
                   </div>
                 </div>
@@ -391,7 +377,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="mb-[34px] px-[10px]">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   Рост
                 </div>
@@ -409,7 +395,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className="mb-[34px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
                   <span className="mr-[8px]">Количество</span> <StarIcon />
                 </div>
@@ -426,7 +412,7 @@ export default function ColorModal({
             </div>
 
             <div className="flex flex-wrap md:flex-nowrap justify-between">
-              <div className="px-[20px] mb-[34px]">
+              <div className="">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
                   <span className="mr-[8px]">Цена</span> <StarIcon />
                 </div>
@@ -441,7 +427,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="px-[10px]">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
                   Скидка
                   <span className="text-[#8C8C8C] ml-[8px]">
@@ -470,16 +456,28 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
+              <div className="">
+                <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
+                  Буквенный Размер
+                </div>
+                <div className="flex items-center">
+                  <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                    {data?.underwear_price?.letter_size
+                      ? data?.underwear_price?.letter_size
+                      : "-"}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         ) : null}
 
-        {/* Category 4 full */}
+        {/* Category 4 full ++*/}
 
         {category === "4" ? (
           <div className="text-[#303030] border border-[F0F0F0] p-[30px] rounded-lg h-[70vh] md:h-auto overflow-y-auto">
             <div className="flex flex-wrap md:flex-nowrap justify-between">
-              <div className="px-[20px] mb-[34px]">
+              <div className="mb-[34px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
                   <div className="mr-[5px]">Размер</div> <StarIcon />
                 </div>
@@ -491,7 +489,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="mb-[34px] px-[20px]">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   Длина Стопы
                   <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
@@ -511,7 +509,7 @@ export default function ColorModal({
                 </div>
               </div>
 
-              <div className="px-[20px] mb-[34px]">
+              <div className="mb-[34px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
                   <span className="mr-[8px]">Количество</span> <StarIcon />
                 </div>
@@ -528,7 +526,7 @@ export default function ColorModal({
             </div>
 
             <div className="flex flex-wrap md:flex-nowrap justify-between">
-              <div className="mb-[34px]">
+              <div className="">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   Возраст
                 </div>
@@ -540,7 +538,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className="px-[20px] ">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
                   <span className="mr-[8px]">Цена</span> <StarIcon />
                 </div>
@@ -555,7 +553,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
                   Скидка
                   <span className="text-[#8C8C8C] ml-[8px]">
@@ -588,12 +586,12 @@ export default function ColorModal({
           </div>
         ) : null}
 
-        {/* Category 5 full */}
+        {/* Category 5 full ++*/}
 
         {category === "5" ? (
           <div className="text-[#303030] border border-[F0F0F0] p-[30px] rounded-lg h-[70vh] md:h-auto overflow-y-auto">
             <div className="flex flex-wrap md:flex-nowrap justify-between">
-              <div className="px-[20px] mb-[34px]">
+              <div className="mb-[34px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
                   <div className="mr-[5px]">Размер</div> <StarIcon />
                 </div>
@@ -605,7 +603,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="mb-[34px] px-[20px]">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   Буквенный Размер
                 </div>
@@ -613,6 +611,18 @@ export default function ColorModal({
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     {data?.accessory_price?.letter_size
                       ? data?.accessory_price?.letter_size
+                      : "-"}
+                  </div>
+                </div>
+              </div>
+              <div className="mb-[34px]">
+                <div className="font-AeonikProMedium text-[16px] mb-[10px]">
+                  Возраст
+                </div>
+                <div className="flex items-center">
+                  <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                    {data?.accessory_price?.age
+                      ? data?.accessory_price?.age
                       : "-"}
                   </div>
                 </div>
@@ -633,7 +643,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="mb-[34px] px-[20px]">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                   Ширина
                 </div>
@@ -645,7 +655,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className=" mb-[34px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
                   <span className="mr-[8px]">Количество</span> <StarIcon />
                 </div>
@@ -662,19 +672,7 @@ export default function ColorModal({
             </div>
 
             <div className="flex flex-wrap md:flex-nowrap justify-between">
-              <div className="mb-[34px]">
-                <div className="font-AeonikProMedium text-[16px] mb-[10px]">
-                  Возраст
-                </div>
-                <div className="flex items-center">
-                  <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.accessory_price?.age
-                      ? data?.accessory_price?.age
-                      : "-"}
-                  </div>
-                </div>
-              </div>
-              <div className="px-[20px] mb-[34px]">
+              <div className="pr-[20px]">
                 <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
                   <span className="mr-[8px]">Цена</span> <StarIcon />
                 </div>
@@ -689,7 +687,7 @@ export default function ColorModal({
                   </div>
                 </div>
               </div>
-              <div className="mb-[34px]">
+              <div className="">
                 <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
                   Скидка
                   <span className="text-[#8C8C8C] ml-[8px]">
