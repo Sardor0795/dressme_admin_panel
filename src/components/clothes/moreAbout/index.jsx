@@ -385,6 +385,7 @@ export const ClothMoreAbout = () => {
         setColorModalOpen={setColorModalOpen}
         colorModalOpen={colorModalOpen}
         category={data?.category_id}
+        data={data}
       />
       <ModalAllPhotos
         setAllPhotosModalOpen={setAllPhotosModalOpen}
