@@ -30,7 +30,7 @@ export default function ColorModal({
             : "md:hidden bottom-[-800px] z-[-10]"
         }`}
       >
-        {/* Category 1 */}
+        {/* Category 1 full ++ */}
 
         {category === "1" ? (
           <div className="text-[#303030] border border-[F0F0F0] p-[30px] rounded-lg h-[70vh] md:h-auto overflow-y-auto">
@@ -42,11 +42,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.headwear_price?.min_head_girth}
+                    {data?.headwear_price?.min_head_girth
+                      ? data?.headwear_price?.min_head_girth
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.headwear_price?.max_head_girth}
+                    {data?.headwear_price?.max_head_girth
+                      ? data?.headwear_price?.max_head_girth
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -73,7 +77,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.headwear_price?.amount}
+                    {data?.headwear_price?.amount
+                      ? data?.headwear_price?.amount
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -85,7 +91,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.headwear_price?.age}
+                    {data?.headwear_price?.age
+                      ? data?.headwear_price?.age
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -96,7 +104,9 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     <div className="mr-[15px]">
-                      {data?.headwear_price?.price}
+                      {data?.headwear_price?.price
+                        ? data?.headwear_price?.price
+                        : "-"}
                     </div>{" "}
                     <div className="text-[#8C8C8C]">сум</div>
                   </div>
@@ -113,14 +123,18 @@ export default function ColorModal({
                   <div className="flex items-center">
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.headwear_price?.discount_price}
+                        {data?.headwear_price?.discount_price
+                          ? data?.headwear_price?.discount_price
+                          : "-"}
                       </div>{" "}
                       <div className="text-[#8C8C8C]">сум</div>
                     </div>
                     <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.headwear_price?.discount_percent}
+                        {data?.headwear_price?.discount_percent
+                          ? data?.headwear_price?.discount_percent
+                          : "-"}
                       </div>{" "}
                       <div className="text-[#8C8C8C]">%</div>
                     </div>
@@ -131,7 +145,7 @@ export default function ColorModal({
           </div>
         ) : null}
 
-        {/* Category 2 */}
+        {/* Category 2 full ++ */}
 
         {category === "2" ? (
           <div className="text-[#303030] border border-[F0F0F0] p-[30px] rounded-lg h-[70vh] md:h-auto overflow-y-auto">
@@ -143,11 +157,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.min_chest_girth}
+                    {data?.outwear_price?.min_chest_girth
+                      ? data?.outwear_price?.min_chest_girth
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.max_chest_girth}
+                    {data?.outwear_price?.max_chest_girth
+                      ? data?.outwear_price?.max_chest_girth
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -157,11 +175,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.min_wear_size}
+                    {data?.outwear_price?.min_wear_size
+                      ? data?.outwear_price?.min_wear_size
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.max_wear_size}
+                    {data?.outwear_price?.max_wear_size
+                      ? data?.outwear_price?.max_wear_size
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -171,7 +193,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.letter_size}
+                    {data?.outwear_price?.letter_size
+                      ? data?.outwear_price?.letter_size
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -185,11 +209,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.min_waist_girth}
+                    {data?.outwear_price?.min_waist_girth
+                      ? data?.outwear_price?.min_waist_girth
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.max_waist_girth}
+                    {data?.outwear_price?.max_waist_girth
+                      ? data?.outwear_price?.max_waist_girth
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -200,11 +228,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.min_hip_girth}
+                    {data?.outwear_price?.min_hip_girth
+                      ? data?.outwear_price?.min_hip_girth
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.max_hip_girth}
+                    {data?.outwear_price?.max_hip_girth
+                      ? data?.outwear_price?.max_hip_girth
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -215,7 +247,9 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     <div className="mr-[15px]">
-                      {data?.outwear_price?.amount}
+                      {data?.outwear_price?.amount
+                        ? data?.outwear_price?.amount
+                        : "-"}
                     </div>
                   </div>
                 </div>
@@ -229,7 +263,7 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.outwear_price?.age}
+                    {data?.outwear_price?.age ? data?.outwear_price?.age : "-"}
                   </div>
                 </div>
               </div>
@@ -240,7 +274,9 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     <div className="mr-[15px]">
-                      {data?.outwear_price?.price}
+                      {data?.outwear_price?.price
+                        ? data?.outwear_price?.price
+                        : "-"}
                     </div>{" "}
                     <div className="text-[#8C8C8C]">сум</div>
                   </div>
@@ -257,14 +293,18 @@ export default function ColorModal({
                   <div className="flex items-center">
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.outwear_price?.discount_price}
+                        {data?.outwear_price?.discount_price
+                          ? data?.outwear_price?.discount_price
+                          : "-"}
                       </div>{" "}
                       <div className="text-[#8C8C8C]">сум</div>
                     </div>
                     <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.outwear_price?.discount_percent}
+                        {data?.outwear_price?.discount_percent
+                          ? data?.outwear_price?.discount_percent
+                          : "-"}
                       </div>{" "}
                       <div className="text-[#8C8C8C]">%</div>
                     </div>
@@ -287,11 +327,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.min_waist_girth}
+                    {data?.underwear_price?.min_waist_girth
+                      ? data?.underwear_price?.min_waist_girth
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.max_waist_girth}
+                    {data?.underwear_price?.max_waist_girth
+                      ? data?.underwear_price?.max_waist_girth
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -301,11 +345,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.min_wear_size}
+                    {data?.underwear_price?.min_wear_size
+                      ? data?.underwear_price?.min_wear_size
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.max_wear_size}
+                    {data?.underwear_price?.max_wear_size
+                      ? data?.underwear_price?.max_wear_size
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -315,7 +363,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.letter_size}
+                    {data?.underwear_price?.letter_size
+                      ? data?.underwear_price?.letter_size
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -329,11 +379,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.min_hip_girth}
+                    {data?.underwear_price?.min_hip_girth
+                      ? data?.underwear_price?.min_hip_girth
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.max_hip_girth}
+                    {data?.underwear_price?.max_hip_girth
+                      ? data?.underwear_price?.max_hip_girth
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -343,11 +397,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.min_height}
+                    {data?.underwear_price?.min_height
+                      ? data?.underwear_price?.min_height
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.underwear_price?.max_height}
+                    {data?.underwear_price?.max_height
+                      ? data?.underwear_price?.max_height
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -358,7 +416,9 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     <div className="mr-[15px]">
-                      {data?.underwear_price?.amount}
+                      {data?.underwear_price?.amount
+                        ? data?.underwear_price?.amount
+                        : "-"}
                     </div>
                   </div>
                 </div>
@@ -373,7 +433,9 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     <div className="mr-[15px]">
-                      {data?.underwear_price?.price}
+                      {data?.underwear_price?.price
+                        ? data?.underwear_price?.price
+                        : "-"}
                     </div>
                     <div className="text-[#8C8C8C]">сум</div>
                   </div>
@@ -390,14 +452,18 @@ export default function ColorModal({
                   <div className="flex items-center">
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.underwear_price?.discount_percent}
+                        {data?.underwear_price?.discount_percent
+                          ? data?.underwear_price?.discount_percent
+                          : "-"}
                       </div>
                       <div className="text-[#8C8C8C]">%</div>
                     </div>
                     <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.underwear_price?.discount_price}
+                        {data?.underwear_price?.discount_price
+                          ? data?.underwear_price?.discount_price
+                          : "-"}
                       </div>
                       <div className="text-[#8C8C8C]">сум</div>
                     </div>
@@ -419,7 +485,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.footwear_price?.wear_size}
+                    {data?.footwear_price?.wear_size
+                      ? data?.footwear_price?.wear_size
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -430,11 +498,15 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.footwear_price?.min_foot_length}
+                    {data?.footwear_price?.min_foot_length
+                      ? data?.footwear_price?.min_foot_length
+                      : "-"}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.footwear_price?.wear_size}
+                    {data?.footwear_price?.wear_size
+                      ? data?.footwear_price?.wear_size
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -446,7 +518,9 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     <div className="mr-[15px]">
-                      {data?.footwear_price?.amount}
+                      {data?.footwear_price?.amount
+                        ? data?.footwear_price?.amount
+                        : "-"}
                     </div>
                   </div>
                 </div>
@@ -460,7 +534,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.footwear_price?.age}
+                    {data?.footwear_price?.age
+                      ? data?.footwear_price?.age
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -471,7 +547,9 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     <div className="mr-[15px]">
-                      {data?.footwear_price?.price}
+                      {data?.footwear_price?.price
+                        ? data?.footwear_price?.price
+                        : "-"}
                     </div>{" "}
                     <div className="text-[#8C8C8C]">сум</div>
                   </div>
@@ -488,14 +566,18 @@ export default function ColorModal({
                   <div className="flex items-center">
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.footwear_price?.discount_percent}
+                        {data?.footwear_price?.discount_percent
+                          ? data?.footwear_price?.discount_percent
+                          : "-"}
                       </div>{" "}
                       <div className="text-[#8C8C8C]">%</div>
                     </div>
                     <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.footwear_price?.discount_price}
+                        {data?.footwear_price?.discount_price
+                          ? data?.footwear_price?.discount_price
+                          : "-"}
                       </div>{" "}
                       <div className="text-[#8C8C8C]">сум</div>
                     </div>
@@ -517,7 +599,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.accessory_price?.wear_size}
+                    {data?.accessory_price?.wear_size
+                      ? data?.accessory_price?.wear_size
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -527,7 +611,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.accessory_price?.letter_size}
+                    {data?.accessory_price?.letter_size
+                      ? data?.accessory_price?.letter_size
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -541,7 +627,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.accessory_price?.length}
+                    {data?.accessory_price?.length
+                      ? data?.accessory_price?.length
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -551,7 +639,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.accessory_price?.width}
+                    {data?.accessory_price?.width
+                      ? data?.accessory_price?.width
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -562,7 +652,9 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     <div className="mr-[15px]">
-                      {data?.accessory_price?.amount}
+                      {data?.accessory_price?.amount
+                        ? data?.accessory_price?.amount
+                        : "-"}
                     </div>
                   </div>
                 </div>
@@ -576,7 +668,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    {data?.accessory_price?.age}
+                    {data?.accessory_price?.age
+                      ? data?.accessory_price?.age
+                      : "-"}
                   </div>
                 </div>
               </div>
@@ -587,7 +681,9 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                     <div className="mr-[15px]">
-                      {data?.accessory_price?.price}
+                      {data?.accessory_price?.price
+                        ? data?.accessory_price?.price
+                        : "-"}
                     </div>
                     <div className="text-[#8C8C8C]">сум</div>
                   </div>
@@ -604,14 +700,18 @@ export default function ColorModal({
                   <div className="flex items-center">
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.accessory_price?.discount_percent}
+                        {data?.accessory_price?.discount_percent
+                          ? data?.accessory_price?.discount_percent
+                          : "-"}
                       </div>{" "}
                       <div className="text-[#8C8C8C]">%</div>
                     </div>
                     <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                       <div className="mr-[15px]">
-                        {data?.accessory_price?.discount_price}
+                        {data?.accessory_price?.discount_price
+                          ? data?.accessory_price?.discount_price
+                          : "-"}
                       </div>{" "}
                       <div className="text-[#8C8C8C]">сум</div>
                     </div>
