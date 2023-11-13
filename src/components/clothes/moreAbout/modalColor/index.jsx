@@ -350,7 +350,7 @@ export default function ColorModal({ setColorModalOpen, colorModalOpen, id }) {
 
         {/* Category 1 */}
 
-        <div className="text-[#303030] border border-[F0F0F0] p-[30px] rounded-lg h-[70vh] md:h-auto overflow-y-auto">
+        {/* <div className="text-[#303030] border border-[F0F0F0] p-[30px] rounded-lg h-[70vh] md:h-auto overflow-y-auto">
           <div className="flex flex-wrap md:flex-nowrap justify-between">
             <div className="mb-[34px]">
               <div className="font-AeonikProMedium text-[16px] mb-[10px]">
@@ -389,6 +389,139 @@ export default function ColorModal({ setColorModalOpen, colorModalOpen, id }) {
               </div>
             </div>
           </div>
+          <div className="flex flex-wrap md:flex-nowrap justify-between">
+            <div className="mb-[34px]">
+              <div className="font-AeonikProMedium text-[16px] mb-[10px]">
+                Возраст
+              </div>
+              <div className="flex items-center">
+                <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  2
+                </div>
+              </div>
+            </div>
+            <div className="px-[20px] mb-[34px]">
+              <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
+                <span className="mr-[8px]">Цена</span> <StarIcon />
+              </div>
+              <div className="flex items-center">
+                <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  <div className="mr-[15px]">2</div>{" "}
+                  <div className="text-[#8C8C8C]">сум</div>
+                </div>
+              </div>
+            </div>
+            <div className="mb-[34px]">
+              <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
+                Скидка
+                <span className="text-[#8C8C8C] ml-[8px]">(необязательно)</span>
+              </div>
+              <div className="flex items-center">
+                <div className="flex items-center">
+                  <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                    <div className="mr-[15px]">2</div>{" "}
+                    <div className="text-[#8C8C8C]">сум</div>
+                  </div>
+                  <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
+                  <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                    <div className="mr-[15px]">2</div>{" "}
+                    <div className="text-[#8C8C8C]">%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> */}
+
+        {/* Category 2 */}
+
+        <div className="text-[#303030] border border-[F0F0F0] p-[30px] rounded-lg h-[70vh] md:h-auto overflow-y-auto">
+          <div className="flex flex-wrap md:flex-nowrap justify-between">
+            <div className="mb-[34px]">
+              <div className="font-AeonikProMedium text-[16px] mb-[10px]">
+                Обхват Груди
+                <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
+              </div>
+              <div className="flex items-center">
+                <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  2
+                </div>
+                <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
+                <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  5
+                </div>
+              </div>
+            </div>
+            <div className="px-[20px] mb-[34px]">
+              <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
+                <div className="mr-[5px]">Размер</div> <StarIcon />
+              </div>
+              <div className="flex items-center">
+                <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  21
+                </div>
+                <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
+                <div className="bg-[#F8FCFF] h-[38px] w-[60px] flex items-center justify-center border border-[#E5E5E5] rounded-lg">
+                  <PlusIcon />
+                </div>
+              </div>
+            </div>
+            <div className="mb-[34px]">
+              <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
+                Буквенный Размер
+              </div>
+              <div className="flex items-center">
+                <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  2
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* ----------------- */}
+
+          <div className="flex flex-wrap md:flex-nowrap justify-between">
+            <div className="mb-[34px]">
+              <div className="font-AeonikProMedium text-[16px] mb-[10px]">
+                Обхват Талии
+                <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
+              </div>
+              <div className="flex items-center">
+                <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  2
+                </div>
+                <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
+                <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  5
+                </div>
+              </div>
+            </div>
+            <div className="mb-[34px]">
+              <div className="font-AeonikProMedium text-[16px] mb-[10px]">
+                Обхват Бедер
+                <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
+              </div>
+              <div className="flex items-center">
+                <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  2
+                </div>
+                <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
+                <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  5
+                </div>
+              </div>
+            </div>
+            <div className="px-[20px] mb-[34px]">
+              <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
+                <span className="mr-[8px]">Количество</span> <StarIcon />
+              </div>
+              <div className="flex items-center">
+                <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                  <div className="mr-[15px]">2</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* ----------------- */}
           <div className="flex flex-wrap md:flex-nowrap justify-between">
             <div className="mb-[34px]">
@@ -434,7 +567,6 @@ export default function ColorModal({ setColorModalOpen, colorModalOpen, id }) {
           </div>
         </div>
 
-        {/* Category 2 */}
         {/* Category 3 */}
         {/* Category 4 */}
         {/* Category 5 */}
