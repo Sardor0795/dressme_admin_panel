@@ -409,7 +409,7 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    21
+                    {data?.footwear_price?.wear_size}
                   </div>
                 </div>
               </div>
@@ -420,11 +420,11 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    2
+                    {data?.footwear_price?.min_foot_length}
                   </div>
                   <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    5
+                    {data?.footwear_price?.wear_size}
                   </div>
                 </div>
               </div>
@@ -435,7 +435,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    <div className="mr-[15px]">2</div>
+                    <div className="mr-[15px]">
+                      {data?.footwear_price?.amount}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -448,7 +450,7 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    2
+                    {data?.footwear_price?.age}
                   </div>
                 </div>
               </div>
@@ -458,7 +460,9 @@ export default function ColorModal({
                 </div>
                 <div className="flex items-center">
                   <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                    <div className="mr-[15px]">2</div>{" "}
+                    <div className="mr-[15px]">
+                      {data?.footwear_price?.price}
+                    </div>{" "}
                     <div className="text-[#8C8C8C]">сум</div>
                   </div>
                 </div>
@@ -473,12 +477,16 @@ export default function ColorModal({
                 <div className="flex items-center">
                   <div className="flex items-center">
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                      <div className="mr-[15px]">2</div>{" "}
+                      <div className="mr-[15px]">
+                        {data?.footwear_price?.discount_percent}
+                      </div>{" "}
                       <div className="text-[#8C8C8C]">%</div>
                     </div>
                     <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
                     <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                      <div className="mr-[15px]">2</div>{" "}
+                      <div className="mr-[15px]">
+                        {data?.footwear_price?.discount_price}
+                      </div>{" "}
                       <div className="text-[#8C8C8C]">сум</div>
                     </div>
                   </div>
@@ -488,7 +496,7 @@ export default function ColorModal({
           </div>
         ) : null}
 
-        {/* Category 5 */}
+        {/* Category 5 full */}
 
         {category === "5" ? (
           <div className="text-[#303030] border border-[F0F0F0] p-[30px] rounded-lg h-[70vh] md:h-auto overflow-y-auto">
