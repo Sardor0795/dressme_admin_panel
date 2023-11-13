@@ -162,7 +162,7 @@ export const ClothMoreAbout = () => {
                     <div className="flex items-center">
                       <div
                         style={{ backgroundColor: colors[0]?.hex }}
-                        className={`last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
+                        className={`last:mr-0 w-[22px] h-[22px] border rounded-[50%]`}
                       ></div>
                       <div className={colors.length > 1 ? "ml-[10px]" : null}>
                         {colors.length > 1 ? colors.length - 1 + "+" : null}
@@ -278,7 +278,7 @@ export const ClothMoreAbout = () => {
                       <div
                         key={item?.id}
                         style={{ backgroundColor: item?.hex }}
-                        className={`mr-[8px] last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
+                        className={`mr-[8px] border last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
                       ></div>
                     );
                   })
