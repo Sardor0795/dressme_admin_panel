@@ -102,7 +102,7 @@ export const ClothMoreAbout = () => {
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Раздел одежды</span> <StarIcon />
                 </div>
-                <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                <div className="border h-[40px] border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                   {sections?.length > 1
                     ? sections?.map((item) => {
                         return item?.name_ru + ", ";
@@ -111,7 +111,7 @@ export const ClothMoreAbout = () => {
                 </div>
               </div>
               <div className="w-full md:hidden">
-                <div className="md:hidden flex items-center mb-[5px]">
+                <div className="md:hidden flex h-[40px] items-center mb-[5px]">
                   <span
                     className={`${
                       subSections?.length ? "" : "text-[#b5b5b5]"
@@ -125,7 +125,7 @@ export const ClothMoreAbout = () => {
                 <div
                   className={`${
                     subSections?.length ? "" : "bg-[#EAEAEA] text-[#b5b5b5]"
-                  } md:hidden block border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]`}
+                  } md:hidden block h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]`}
                 >
                   {subSections?.length > 1
                     ? subSections?.map((item) => {
@@ -143,7 +143,7 @@ export const ClothMoreAbout = () => {
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Сезон одежды</span> <StarIcon />
                 </div>
-                <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                <div className="border h-[40px] border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                   {seasons?.length
                     ? seasons?.map((item) => {
                         return (
@@ -180,18 +180,18 @@ export const ClothMoreAbout = () => {
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Пол</span> <StarIcon />
                 </div>
-                <div className="border border-[#E5E5E5] rounded-[8px] p-3">
+                <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3">
                   {data?.gender?.name_ru}
                 </div>
               </div>
               <div className="w-full md:w-fit">
                 <div className="mr-[5px] mb-[5px]">Возрастная категория</div>
                 <div className="flex items-center">
-                  <div className="border border-[#E5E5E5] rounded-[8px] py-3 px-5">
+                  <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] py-3 px-5">
                     {data?.min_age_category}
                   </div>
                   <span className="border-t border-[#E5E5E5] w-[15px] mx-[5px]"></span>
-                  <div className="border border-[#E5E5E5] rounded-[8px] py-3 px-5">
+                  <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] py-3 px-5">
                     {data?.max_age_category}
                   </div>
                 </div>
@@ -203,7 +203,7 @@ export const ClothMoreAbout = () => {
             </div>
             <div className="flex w-full mb:block gap-[11px] md:gap-[0]">
               <div className="flex w-full md:flex-wrap xxxl:flex-nowrap justify-between mb-[25px] gap-[10px]">
-                <button className="whitespace-nowrap font-AeonikProMedium text-[16px] w-full xxxl:max-w-[160px] rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
+                <button className="h-[40px] whitespace-nowrap font-AeonikProMedium text-[16px] w-full xxxl:max-w-[160px] rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
                   {data?.category?.name_ru}
                 </button>
                 <button
@@ -225,14 +225,14 @@ export const ClothMoreAbout = () => {
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Качество на русском</span> <StarIcon />
             </div>
-            <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+            <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.quality_ru}
             </div>
 
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Состав на русском</span>
             </div>
-            <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+            <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.composition_ru ? (
                 <span className="font-AeonikProRegular text-[14px]">
                   {data?.composition_ru}
@@ -287,7 +287,7 @@ export const ClothMoreAbout = () => {
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Артикул</span>
             </div>
-            <div className="block border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+            <div className="h-[40px] block border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.sku}
             </div>
             <div className="flex justify-between gap-[10px]">
@@ -296,7 +296,7 @@ export const ClothMoreAbout = () => {
                   <span className="mr-[5px]">Тип</span>
                   <StarIcon />
                 </div>
-                <div className="w-full max-w-[160px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                <div className="h-[40px] w-full max-w-[160px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                   {data?.type?.name_ru}
                 </div>
               </div>
@@ -307,7 +307,7 @@ export const ClothMoreAbout = () => {
                   </span>
                   <StarIcon />
                 </div>
-                <div className="w-full max-w-[160px] border border-[#E5E5E5] text-[#A1A1A1] rounded-[8px] p-3 mb-[25px]">
+                <div className="h-[40px] w-full max-w-[160px] border border-[#E5E5E5] text-[#A1A1A1] rounded-[8px] p-3 mb-[25px]">
                   {data?.producer?.name_ru}
                 </div>
               </div>
@@ -316,13 +316,13 @@ export const ClothMoreAbout = () => {
               <span className="mr-[5px]">Качество на узбекском</span>{" "}
               <StarIcon />
             </div>
-            <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+            <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.quality_uz}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Состав на узбекском</span>
             </div>
-            <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+            <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.composition_uz ? (
                 <span className="font-AeonikProRegular text-[14px]">
                   {data?.composition_uz}
@@ -338,31 +338,31 @@ export const ClothMoreAbout = () => {
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Название на русском</span> <StarIcon />
           </div>
-          <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+          <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
             {data?.name_ru}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Название на узбекском</span> <StarIcon />
           </div>
-          <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+          <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
             {data?.name_uz}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Описание на русском</span> <StarIcon />
           </div>
-          <div className="border border-[#E5E5E5] rounded-[8px] text-[14px] text-[#666] p-3 mb-[25px]">
+          <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] text-[14px] text-[#666] p-3 mb-[25px]">
             {data?.description_ru}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Описание на узбекском</span> <StarIcon />
           </div>
-          <div className="border border-[#E5E5E5] rounded-[8px] text-[14px] text-[#666] p-3 mb-[25px]">
+          <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] text-[14px] text-[#666] p-3 mb-[25px]">
             {data?.description_uz}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Бренд</span>
           </div>
-          <div className="border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+          <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
             {data?.brand?.name ? data?.brand?.name : "-"}
           </div>
         </div>
