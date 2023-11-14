@@ -29,128 +29,129 @@ export default function ColorModal({
         }`}
       >
         <div className="border p-[20px] rounded-lg w-full h-fit max-h-[70vh] md:max-h-[60vh] overflow-y-auto">
-          {/* Category 1 full ++ */}
+          {/* Category 1 */}
 
-          {category === "1" ? (
-            <div className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg">
-              <div className="flex flex-wrap md:flex-nowrap justify-between">
-                <div className="mb-[34px]">
-                  <div className="font-AeonikProMedium text-[16px] mb-[10px]">
-                    Обхват головы{" "}
-                    <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                      {data?.headwear_price?.min_head_girth
-                        ? data?.headwear_price?.min_head_girth
-                        : "-"}
-                    </div>
-                    <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
-                    <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                      {data?.headwear_price?.max_head_girth
-                        ? data?.headwear_price?.max_head_girth
-                        : "-"}
-                    </div>
-                  </div>
-                </div>
-                <div className="px-[10px] mb-[34px]">
-                  <div className="font-AeonikProMedium text-[16px] mb-[10px]">
-                    One Size{" "}
-                    <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
-                  </div>
-                  <div>
-                    <div
-                      className={`w-[44px] h-[22px] ${
-                        data?.headwear_price?.one_size
-                          ? "bg-[#1677FF] justify-end"
-                          : "bg-[#8B8B8B] justify-start"
-                      }  rounded-2xl p-[1px] flex`}
-                    >
-                      <div className="h-[20px] w-[20px] bg-white rounded-full"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="mb-[34px]">
-                  <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
-                    Количество <span className="text-[#8C8C8C] mx-2">(см)</span>
-                    <StarIcon />
-                  </div>
-                  <div className="flex items-center">
-                    <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                      {data?.headwear_price?.amount
-                        ? data?.headwear_price?.amount
-                        : "-"}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-wrap md:flex-nowrap justify-between">
-                <div className="">
-                  <div className="font-AeonikProMedium text-[16px] mb-[10px]">
-                    Возраст
-                  </div>
-                  <div className="flex items-center">
-                    <div className="py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                      {data?.headwear_price?.age
-                        ? data?.headwear_price?.age
-                        : "-"}
-                    </div>
-                  </div>
-                </div>
-                <div className="px-[10px]">
-                  <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
-                    <span className="mr-[8px]">Цена</span> <StarIcon />
-                  </div>
-                  <div className="flex items-center">
-                    <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                      <div className="mr-[15px]">
-                        {data?.headwear_price?.price
-                          ? data?.headwear_price?.price
-                          : "-"}
-                      </div>{" "}
-                      <div className="text-[#8C8C8C]">сум</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="">
-                  <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
-                    Скидка
-                    <span className="text-[#8C8C8C] ml-[8px]">
-                      (необязательно)
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="flex items-center">
-                      <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                        <div className="mr-[15px]">
-                          {data?.headwear_price?.discount_price
-                            ? data?.headwear_price?.discount_price
-                            : "-"}
-                        </div>{" "}
-                        <div className="text-[#8C8C8C]">сум</div>
+          {category === "1"
+            ? data?.headwear_sizes?.map((item) => {
+                return (
+                  <div
+                    key={item?.id}
+                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
+                  >
+                    <div className="flex flex-wrap md:flex-nowrap justify-between">
+                      <div className="w-full md:w-fit mb-[34px]">
+                        <div className="font-AeonikProMedium text-[16px] mb-[10px]">
+                          Обхват головы{" "}
+                          <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
+                        </div>
+                        <div className="w-full md:w-fit flex items-center">
+                          <div className="w-full md:w-fit py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                            {item?.min_head_girth ? item?.min_head_girth : "-"}
+                          </div>
+                          <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
+                          <div className="w-full md:w-fit py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                            {item?.max_head_girth ? item?.max_head_girth : "-"}
+                          </div>
+                        </div>
                       </div>
-                      <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
-                      <div className="flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
-                        <div className="mr-[15px]">
-                          {data?.headwear_price?.discount_percent
-                            ? data?.headwear_price?.discount_percent
-                            : "-"}
-                        </div>{" "}
-                        <div className="text-[#8C8C8C]">%</div>
+                      <div className="w-full md:w-fit md:px-[10px] mb-[34px]">
+                        <div className="font-AeonikProMedium text-[16px] mb-[10px]">
+                          One Size{" "}
+                          <span className="text-[#8C8C8C] ml-[8px]">(см)</span>
+                        </div>
+                        <div>
+                          <div
+                            className={`w-[44px] h-[22px] ${
+                              item?.one_size
+                                ? "bg-[#1677FF] justify-end"
+                                : "bg-[#8B8B8B] justify-start"
+                            }  rounded-2xl p-[1px] flex`}
+                          >
+                            <div className="h-[20px] w-[20px] bg-white rounded-full"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="w-full md:w-fit mb-[34px]">
+                        <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
+                          Количество{" "}
+                          <span className="text-[#8C8C8C] mx-2">(см)</span>
+                          <StarIcon />
+                        </div>
+                        <div className="w-full md:w-fit flex items-center">
+                          <div className="w-full md:w-fit py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                            {item?.amount ? item?.amount : "-"}
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    <div className="flex flex-wrap md:flex-nowrap justify-between">
+                      <div className="w-full md:w-fit mb-[34px] md:mb-0">
+                        <div className="font-AeonikProMedium text-[16px] mb-[10px]">
+                          Возраст
+                        </div>
+                        <div className="w-full md:w-fit flex items-center">
+                          <div className="w-full md:w-fit py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                            {item?.age ? item?.age : "-"}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mb-[34px] md:mb-0 w-full md:w-fit md:px-[10px]">
+                        <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px]">
+                          <span className="mr-[8px]">Цена</span> <StarIcon />
+                        </div>
+                        <div className="w-full md:w-fit flex items-center">
+                          <div className="w-full md:w-fit flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                            <div className="mr-[15px]">
+                              {item?.price ? item?.price : "-"}
+                            </div>{" "}
+                            <div className="text-[#8C8C8C]">сум</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="w-full md:w-fit">
+                        <div className="font-AeonikProMedium text-[16px] mb-[10px] flex items-center">
+                          Скидка
+                          <span className="text-[#8C8C8C] ml-[8px]">
+                            (необязательно)
+                          </span>
+                        </div>
+                        <div className="w-full md:w-fit flex items-center">
+                          <div className="w-full md:w-fit flex items-center">
+                            <div className="w-full md:w-fit flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                              <div className="mr-[15px]">
+                                {item?.discount_price
+                                  ? item?.discount_price
+                                  : "-"}
+                              </div>{" "}
+                              <div className="text-[#8C8C8C]">сум</div>
+                            </div>
+                            <div className="w-[15px] border-t border-[#E5E5E5] mx-[5px]"></div>
+                            <div className="w-full md:w-fit flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
+                              <div className="mr-[15px]">
+                                {item?.discount_percent
+                                  ? item?.discount_percent
+                                  : "-"}
+                              </div>{" "}
+                              <div className="text-[#8C8C8C]">%</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          ) : null}
+                );
+              })
+            : null}
 
-          {/* Category 2 full ++ */}
+          {/* Category 2 */}
 
           {category === "2"
             ? data?.outwear_sizes?.map((item) => {
                 return (
-                  <div className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg">
+                  <div
+                    key={item?.id}
+                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
+                  >
                     <div className=" flex flex-wrap md:flex-nowrap justify-between">
                       <div className="w-full md:w-fit mb-[34px]">
                         <div className="font-AeonikProMedium text-[16px] mb-[10px]">
@@ -311,7 +312,10 @@ export default function ColorModal({
           {category === "3"
             ? data?.underwear_sizes?.map((item) => {
                 return (
-                  <div className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg">
+                  <div
+                    key={item?.id}
+                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
+                  >
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="w-full md:w-fit mb-[34px] pr-[10px]">
                         <div className="font-AeonikProMedium text-[16px] mb-[10px]">
@@ -457,7 +461,10 @@ export default function ColorModal({
           {category === "4"
             ? data?.footwear_sizes?.map((item) => {
                 return (
-                  <div className="text-[#303030] border border-[F0F0F0] p-[20px] md:p-[30px] mb-[15px] last:mb-[0] rounded-lg">
+                  <div
+                    key={item?.id}
+                    className="text-[#303030] border border-[F0F0F0] p-[20px] md:p-[30px] mb-[15px] last:mb-[0] rounded-lg"
+                  >
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="mb-[34px] w-full md:w-fit">
                         <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
@@ -566,7 +573,10 @@ export default function ColorModal({
           {category === "5"
             ? data?.accessory_sizes?.map((item) => {
                 return (
-                  <div className="text-[#303030] border mb-[15px] last:mb-[0] border-[F0F0F0] p-[30px] rounded-lg">
+                  <div
+                    key={item?.id}
+                    className="text-[#303030] border mb-[15px] last:mb-[0] border-[F0F0F0] p-[30px] rounded-lg"
+                  >
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="mb-[34px] w-full md:w-fit">
                         <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
