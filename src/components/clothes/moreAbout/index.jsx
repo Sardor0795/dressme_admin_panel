@@ -102,7 +102,7 @@ export const ClothMoreAbout = () => {
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Раздел одежды</span> <StarIcon />
                 </div>
-                <div className="border whitespace-nowrap overflow-x-auto h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                <div className="border whitespace-nowrap overflow-x-auto min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                   {sections?.length > 1
                     ? sections?.map((item) => {
                         return item?.name_ru + ", ";
@@ -270,7 +270,7 @@ export const ClothMoreAbout = () => {
             <div className="hidden md:flex items-center mb-[5px]">
               <span className="mr-[5px]">Цвет</span> <StarIcon />
             </div>
-            <div className="w-fit h-[42px] px-[10px] hidden md:flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
+            <div className="w-fit h-[42px] px-[10px] hidden md:flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px] min-w-[43px]">
               {colors?.length
                 ? colors?.map((item) => {
                     return (
@@ -314,27 +314,26 @@ export const ClothMoreAbout = () => {
               </div>
             </div>
             <div className="flex items-center mb-[5px]">
-              <span className="mr-[5px]">Качество на узбекском</span>{" "}
-              <StarIcon />
+              <span className="mr-[5px]">Состав на узбекском</span>
             </div>
             <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-              {data?.quality_uz}
+              {data?.composition_uz ? (
+                <span className="font-AeonikProRegular text-[14px]">
+                  {data?.composition_uz}
+                </span>
+              ) : (
+                "-"
+              )}
             </div>
           </div>
         </div>
 
         <div className="w-full md:w-[25%]">
           <div className="flex items-center mb-[5px]">
-            <span className="mr-[5px]">Состав на узбекском</span>
+            <span className="mr-[5px]">Качество на узбекском</span> <StarIcon />
           </div>
           <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-            {data?.composition_uz ? (
-              <span className="font-AeonikProRegular text-[14px]">
-                {data?.composition_uz}
-              </span>
-            ) : (
-              "-"
-            )}
+            {data?.quality_uz}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Название на русском</span> <StarIcon />
