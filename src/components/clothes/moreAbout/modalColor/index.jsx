@@ -515,7 +515,7 @@ export default function ColorModal({
             </div>
           ) : null}
 
-          {/* Category 4 /}
+          {/* Category 4 */}
 
           {category === "4"
             ? data?.footwear_sizes?.map((item) => {
