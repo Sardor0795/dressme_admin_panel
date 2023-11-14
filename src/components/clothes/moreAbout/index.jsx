@@ -97,12 +97,12 @@ export const ClothMoreAbout = () => {
         <div className="md:pr-[30px] pt-[20px] md:pt-0 md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[30px] w-full md:w-[50%]">
           {/* 1 */}
           <div className="font-AeonikProRegular text-[16px] w-full md:w-[50%]">
-            <div className="flex gap-[11px] md:gap-[0]">
+            <div className="flex flex-wrap gap-[11px] md:gap-[0]">
               <div className="w-full">
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Раздел одежды</span> <StarIcon />
                 </div>
-                <div className="border h-[40px] border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                <div className="border whitespace-nowrap overflow-x-auto h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                   {sections?.length > 1
                     ? sections?.map((item) => {
                         return item?.name_ru + ", ";
@@ -111,7 +111,7 @@ export const ClothMoreAbout = () => {
                 </div>
               </div>
               <div className="w-full md:hidden">
-                <div className="md:hidden flex h-[40px] items-center mb-[5px]">
+                <div className="whitespace-nowrap overflow-x-auto h-fit md:hidden flex items-center mb-[5px]">
                   <span
                     className={`${
                       subSections?.length ? "" : "text-[#b5b5b5]"
@@ -125,7 +125,7 @@ export const ClothMoreAbout = () => {
                 <div
                   className={`${
                     subSections?.length ? "" : "bg-[#EAEAEA] text-[#b5b5b5]"
-                  } md:hidden block h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]`}
+                  } md:hidden block whitespace-nowrap overflow-x-auto h-fit border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]`}
                 >
                   {subSections?.length > 1
                     ? subSections?.map((item) => {
@@ -157,12 +157,12 @@ export const ClothMoreAbout = () => {
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Цвет</span> <StarIcon />
                 </div>
-                <div className="p-[8px] w-fit h-[42px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
+                <div className="p-[8px] w-fit h-[40px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
                   {colors?.length ? (
                     <div className="flex items-center">
                       <div
                         style={{ backgroundColor: colors[0]?.hex }}
-                        className={`last:mr-0 w-[22px] h-[22px] border rounded-[50%]`}
+                        className={`last:mr-0 w-[20px] h-[20px] border rounded-[50%]`}
                       ></div>
                       <div className={colors.length > 1 ? "ml-[10px]" : null}>
                         {colors.length > 1 ? colors.length - 1 + "+" : null}
@@ -232,7 +232,7 @@ export const ClothMoreAbout = () => {
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Состав на русском</span>
             </div>
-            <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+            <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 md:mb-[25px]">
               {data?.composition_ru ? (
                 <span className="font-AeonikProRegular text-[14px]">
                   {data?.composition_ru}
@@ -290,25 +290,27 @@ export const ClothMoreAbout = () => {
             <div className="h-[40px] block border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.sku}
             </div>
-            <div className="flex justify-between gap-[10px]">
+            <div className="flex">
+              <div className="w-full">
+                <div className="flex items-center mb-[5px]">
+                  <span className="mr-[5px] whitespace-nowrap">
+                    Производитель
+                  </span>
+                  <StarIcon />
+                </div>
+                <div className="h-[40px] w-full border border-[#E5E5E5] text-[#A1A1A1] rounded-[8px] p-3 mb-[25px]">
+                  {data?.producer?.name_ru}
+                </div>
+              </div>
+            </div>
+            <div>
               <div className="w-full">
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Тип</span>
                   <StarIcon />
                 </div>
-                <div className="h-[40px] w-full max-w-[160px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                <div className="h-[40px] w-full border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                   {data?.type?.name_ru}
-                </div>
-              </div>
-              <div className="w-full">
-                <div className="flex items-center mb-[5px]">
-                  <span className="mr-[5px] whitespace-nowrap">
-                    Страна размера
-                  </span>
-                  <StarIcon />
-                </div>
-                <div className="h-[40px] w-full max-w-[160px] border border-[#E5E5E5] text-[#A1A1A1] rounded-[8px] p-3 mb-[25px]">
-                  {data?.producer?.name_ru}
                 </div>
               </div>
             </div>
@@ -319,22 +321,22 @@ export const ClothMoreAbout = () => {
             <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.quality_uz}
             </div>
-            <div className="flex items-center mb-[5px]">
-              <span className="mr-[5px]">Состав на узбекском</span>
-            </div>
-            <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-              {data?.composition_uz ? (
-                <span className="font-AeonikProRegular text-[14px]">
-                  {data?.composition_uz}
-                </span>
-              ) : (
-                "-"
-              )}
-            </div>
           </div>
         </div>
 
         <div className="w-full md:w-[25%]">
+          <div className="flex items-center mb-[5px]">
+            <span className="mr-[5px]">Состав на узбекском</span>
+          </div>
+          <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+            {data?.composition_uz ? (
+              <span className="font-AeonikProRegular text-[14px]">
+                {data?.composition_uz}
+              </span>
+            ) : (
+              "-"
+            )}
+          </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Название на русском</span> <StarIcon />
           </div>

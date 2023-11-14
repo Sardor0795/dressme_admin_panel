@@ -79,13 +79,13 @@ export default function ColorModal({
       ></div>
 
       <section
-        className={`max-w-[750px] pt-[70px] z-[201] w-full flex-col h-fit bg-white fixed px-10 py-10 rounded-t-lg md:rounded-b-lg left-0 right-0 md:top-[50%] duration-300 overflow-hidden md:left-1/2 md:right-1/2 md:translate-x-[-50%] md:translate-y-[-50%] ${
+        className={`max-w-[750px] pt-[70px] z-[201] w-full flex-col h-fit bg-white fixed px-5 py-10 rounded-t-lg md:rounded-b-lg left-0 right-0 md:top-[50%] duration-300 overflow-hidden md:left-1/2 md:right-1/2 md:translate-x-[-50%] md:translate-y-[-50%] ${
           colorModalOpen
             ? " bottom-0 md:flex"
             : "md:hidden bottom-[-800px] z-[-10]"
         }`}
       >
-        <div className="w-full h-fit max-h-[60vh] overflow-y-auto pr-[10px]">
+        <div className="border p-[20px] rounded-lg w-full h-fit max-h-[70vh] md:max-h-[60vh] overflow-y-auto">
           {/* Category 1 full ++ */}
 
           {category === "1" ? (
@@ -533,12 +533,12 @@ export default function ColorModal({
             </div>
           ) : null}
 
-          {/* Category 4 full ++*/}
+          {/* Category 4 full ++ *****/}
 
           {category === "4"
             ? mockData.map((item) => {
                 return (
-                  <div className="text-[#303030] border border-[F0F0F0] p-[30px] mb-[15px] last:mb-[0] rounded-lg">
+                  <div className="text-[#303030] border border-[F0F0F0] p-[20px] md:p-[30px] mb-[15px] last:mb-[0] rounded-lg">
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="mb-[34px] w-full md:w-fit">
                         <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
