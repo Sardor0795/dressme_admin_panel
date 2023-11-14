@@ -32,7 +32,7 @@ export default function ColorModal({
           {/* Category 1 */}
 
           {category === "1"
-            ? data?.headwear_sizes?.map((item) => {
+            ? data?.sizes?.map((item) => {
                 return (
                   <div
                     key={item?.id}
@@ -146,7 +146,7 @@ export default function ColorModal({
           {/* Category 2 */}
 
           {category === "2"
-            ? data?.outwear_sizes?.map((item) => {
+            ? data?.sizes?.map((item) => {
                 return (
                   <div
                     key={item?.id}
@@ -310,7 +310,7 @@ export default function ColorModal({
           {/* Category 3 */}
 
           {category === "3"
-            ? data?.underwear_sizes?.map((item) => {
+            ? data?.sizes?.map((item) => {
                 return (
                   <div
                     key={item?.id}
@@ -459,7 +459,7 @@ export default function ColorModal({
           {/* Category 4 */}
 
           {category === "4"
-            ? data?.footwear_sizes?.map((item) => {
+            ? data?.sizes?.map((item) => {
                 return (
                   <div
                     key={item?.id}
@@ -571,7 +571,7 @@ export default function ColorModal({
           {/* Category 5 */}
 
           {category === "5"
-            ? data?.accessory_sizes?.map((item) => {
+            ? data?.sizes?.map((item) => {
                 return (
                   <div
                     key={item?.id}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 import SoonImg from "../../../../assets/img/coming_soon.jpg";
+import axios from "axios";
 
 export default function ClothesItem({ data, click, setModalOpen, index }) {
   let price = 0;
@@ -18,6 +19,34 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
   } else if (type === "5") {
     price = data?.accessory_price?.price;
   }
+
+  const url = "https://api.dressme.uz";
+
+  let token = localStorage.getItem("token");
+
+  const approveFunc = () => {
+    axios
+      .post(
+        `${url}/api/admin/change-product-status/${data?.id}`,
+        {
+          status: "approved",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((d) => {
+        if (d.status === 200) {
+          location.reload();
+        }
+      })
+      .catch((v) => {
+        console.log(v);
+      });
+  };
 
   return (
     <div className="flex items-center w-full">
@@ -65,6 +94,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
         </div>
         <div className="w-[20%] px-4 flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
+            onClick={() => approveFunc()}
             className={`${
               data?.status === "pending" || data?.status === "declined"
                 ? ""
@@ -197,6 +227,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
             Отказать
           </button>
           <button
+            onClick={() => approveFunc()}
             className={`${
               data?.status === "pending" || data?.status === "declined"
                 ? ""

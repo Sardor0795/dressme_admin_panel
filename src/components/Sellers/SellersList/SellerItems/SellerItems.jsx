@@ -1,8 +1,37 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
+import axios from "axios";
 
 export default function SellerItems({ data, click, setModalOpen, index }) {
+  const url = "https://api.dressme.uz";
+
+  let token = localStorage.getItem("token");
+
+  const approveFunc = () => {
+    axios
+      .post(
+        `${url}/api/admin/change-seller-status/${data?.id}`,
+        {
+          status: "approved",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((d) => {
+        if (d.status === 200) {
+          location.reload();
+        }
+      })
+      .catch((v) => {
+        console.log(v);
+      });
+  };
+
   return (
     <div className="flex items-center w-full">
       <div
@@ -44,6 +73,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
         </div>
         <div className="w-[18%] px-2 flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
+            onClick={() => approveFunc()}
             className={`${
               data?.status === "pending" || data?.status === "declined"
                 ? ""
@@ -174,6 +204,7 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
             Отказать
           </button>
           <button
+            onClick={() => approveFunc()}
             className={`${
               data?.status === "pending" || data?.status === "declined"
                 ? ""
