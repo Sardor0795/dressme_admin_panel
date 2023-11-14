@@ -119,8 +119,7 @@ export const ClothMoreAbout = () => {
                   >
                     Подраздел одежды
                   </span>
-
-                  <StarIcon />
+                  {subSections?.length ? <StarIcon /> : null}
                 </div>
                 <div
                   className={`${
@@ -253,7 +252,7 @@ export const ClothMoreAbout = () => {
               >
                 Подраздел одежды
               </span>{" "}
-              <StarIcon />
+              {subSections?.length ? <StarIcon /> : null}
             </div>
             <div
               className={`${
