@@ -3,7 +3,7 @@ import { XIcon } from "../../../../assets/icon";
 import { useContext, useRef } from "react";
 import { IdsContext } from "../../../../context/idContext";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
 
@@ -87,8 +87,6 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
           <XIcon />
         </button>
       </section>
-
-      <ToastContainer />
     </div>
   );
 }
