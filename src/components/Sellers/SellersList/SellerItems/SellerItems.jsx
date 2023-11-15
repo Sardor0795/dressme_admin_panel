@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
+import { SellersDataContext } from "../../../../context/sellersDataContext";
 
 export default function SellerItems({
   data,
@@ -12,8 +13,9 @@ export default function SellerItems({
   toast,
 }) {
   const url = "https://api.dressme.uz";
-
   let token = localStorage.getItem("token");
+
+  const [, , reFetch] = useContext(SellersDataContext);
 
   const approveFunc = () => {
     axios
@@ -31,8 +33,8 @@ export default function SellerItems({
       )
       .then((d) => {
         if (d.status === 200) {
-          // location.reload();
           toast.success(d?.data?.message);
+          reFetch();
         }
       })
       .catch((v) => {

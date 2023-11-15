@@ -5,14 +5,16 @@ import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SellersDataContext } from "../../../../context/sellersDataContext";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
   let token = localStorage.getItem("token");
 
   const [id] = useContext(IdsContext);
-
   const ref = useRef();
+
+  const [, , reFetch] = useContext(SellersDataContext);
 
   const declineFunc = () => {
     axios
@@ -32,7 +34,8 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
       .then((d) => {
         if (d.status === 200) {
           toast.success(d?.data?.message);
-          // location.reload();
+          reFetch();
+          ref.current.value = "";
         }
       })
       .catch((v) => {

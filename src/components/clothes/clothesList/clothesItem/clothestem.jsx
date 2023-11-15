@@ -4,6 +4,7 @@ import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 import SoonImg from "../../../../assets/img/coming_soon.jpg";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
+import { ClothesDataContext } from "../../../../context/clothesDataContext";
 
 export default function ClothesItem({
   data,
@@ -13,8 +14,9 @@ export default function ClothesItem({
   toast,
 }) {
   const url = "https://api.dressme.uz";
-
   let token = localStorage.getItem("token");
+
+  const [, , reFetch] = useContext(ClothesDataContext);
 
   const approveFunc = () => {
     axios
@@ -33,7 +35,7 @@ export default function ClothesItem({
       .then((d) => {
         if (d.status === 200) {
           toast.success(d?.data?.message);
-          // location.reload();
+          reFetch();
         }
       })
       .catch((v) => {

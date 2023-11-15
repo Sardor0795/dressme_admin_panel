@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import SellerItems from "./SellerItems/SellerItems";
 import CancelModal from "./ModalCancel";
-import axios from "axios";
 import { SellersContext } from "../../../context/sellersContext";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -16,27 +15,12 @@ import {
   WaitingForAllowIcon,
 } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
+import { SellersDataContext } from "../../../context/sellersDataContext";
 
 export default function SellersList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData] = useState([]);
-
-  const url = "https://api.dressme.uz";
-
-  let token = localStorage.getItem("token");
-
-  useEffect(() => {
-    axios(`${url}/api/admin/sellers`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((d) => {
-      setData(d.data.sellers.data);
-    });
-
-    setData(data);
-  }, []);
+  const [data, setData] = useContext(SellersDataContext);
 
   // Count items -----------
 

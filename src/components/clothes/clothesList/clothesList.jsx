@@ -15,28 +15,12 @@ import {
   WaitingForAllowIcon,
 } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
-import axios from "axios";
+import { ClothesDataContext } from "../../../context/clothesDataContext";
 
 export default function ClothesList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData] = useState([]);
-
-  const url = "https://api.dressme.uz";
-
-  let token = localStorage.getItem("token");
-
-  useEffect(() => {
-    axios(`${url}/api/admin/products`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((d) => {
-      setData(d?.data?.products);
-    });
-
-    setData(data);
-  }, []);
+  const [data, setData] = useContext(ClothesDataContext);
 
   // // Count items -----------
 
