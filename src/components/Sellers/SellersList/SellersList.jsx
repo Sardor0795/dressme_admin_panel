@@ -20,23 +20,8 @@ import { SellersDataContext } from "../../../context/sellersDataContext";
 export default function SellersList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData] = useContext(SellersDataContext);
-
-  // Count items -----------
-
-  let waitingCount = 0;
-  let allowedCount = 0;
-  let notAllowedCount = 0;
-
-  data.forEach((v) => {
-    if (v?.status === "pending") {
-      ++waitingCount;
-    } else if (v?.status === "approved") {
-      ++allowedCount;
-    } else {
-      ++notAllowedCount;
-    }
-  });
+  const [data, setData, , waitingCount, allowedCount, notAllowedCount] =
+    useContext(SellersDataContext);
 
   // -----------------
 

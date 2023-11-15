@@ -28,7 +28,7 @@ export const MoreAbout = () => {
 
   // Sellers Context
 
-  const [showSellers, setShowSellers] = useContext(SellersContext);
+  const [showSellers] = useContext(SellersContext);
 
   return (
     <div>

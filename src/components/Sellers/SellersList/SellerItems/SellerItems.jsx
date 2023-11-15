@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
@@ -42,7 +42,7 @@ export default function SellerItems({
       });
   };
 
-  const [id, setId] = useContext(IdsContext);
+  const [, setId] = useContext(IdsContext);
 
   return (
     <div className="flex items-center w-full">
