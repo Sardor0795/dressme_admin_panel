@@ -1,21 +1,24 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { BackIcon, SearchIcon } from "../../assets/icon";
 import CancelModal from "./modalCancel";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { SellersContext } from "../../context/sellersContext";
+import { SellersDataContext } from "../../context/sellersDataContext";
+import { toast } from "react-toastify";
 
 export const MoreAbout = () => {
   const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
   const [data, setData] = useState([]);
-
-  console.log(data?.status);
+  const [, , reFetch] = useContext(SellersDataContext);
 
   const dataTypeIsPersonal = data?.seller_type?.type_ru === "Физическое лицо";
 
+  const navigate = useNavigate();
   const params = useParams();
   let token = localStorage.getItem("token");
+
   useEffect(() => {
     axios(`${url}/api/admin/sellers/${params?.id}`, {
       headers: {
@@ -25,6 +28,32 @@ export const MoreAbout = () => {
       setData(d?.data?.seller);
     });
   }, []);
+
+  const approveFunc = () => {
+    axios
+      .post(
+        `${url}/api/admin/change-seller-status/${params?.id}`,
+        {
+          status: "approved",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((d) => {
+        if (d.status === 200) {
+          toast.success(d?.data?.message);
+          reFetch();
+          navigate("/sellers");
+        }
+      })
+      .catch((v) => {
+        console.log(v);
+      });
+  };
 
   // Sellers Context
 
@@ -72,22 +101,47 @@ export const MoreAbout = () => {
       </div>
 
       <div className="w-full hidden md:flex items-center my-9">
-        <div className="flex items-center ml-auto">
-          <button
-            type="button"
-            className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
-          >
-            Одобрить
-          </button>
-          <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-          <button
-            onClick={() => setModalOpen(true)}
-            type="button"
-            className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
-          >
-            Отказать
-          </button>
-        </div>
+        {showSellers === "pending" ? (
+          <div className="flex items-center ml-auto">
+            <button
+              onClick={() => approveFunc()}
+              type="button"
+              className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+            >
+              Одобрить
+            </button>
+            <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
+            <button
+              onClick={() => setModalOpen(true)}
+              type="button"
+              className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+            >
+              Отказать
+            </button>
+          </div>
+        ) : null}
+        {showSellers === "approved" ? (
+          <div className="flex items-center ml-auto">
+            <button
+              onClick={() => setModalOpen(true)}
+              type="button"
+              className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+            >
+              Отказать
+            </button>
+          </div>
+        ) : null}
+        {showSellers === "declined" ? (
+          <div className="flex items-center ml-auto">
+            <button
+              onClick={() => approveFunc()}
+              type="button"
+              className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+            >
+              Одобрить
+            </button>
+          </div>
+        ) : null}
       </div>
 
       <div className="mb-[10px] flex items-center text-tableTextTitle">
@@ -330,7 +384,11 @@ export const MoreAbout = () => {
         </div>
       </div>
 
-      <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
+      <CancelModal
+        setModalOpen={setModalOpen}
+        modalOpen={modalOpen}
+        id={params?.id}
+      />
     </div>
   );
 };

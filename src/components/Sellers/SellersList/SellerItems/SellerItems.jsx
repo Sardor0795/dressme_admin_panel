@@ -12,10 +12,10 @@ export default function SellerItems({
   index,
   toast,
 }) {
+  const [, , reFetch] = useContext(SellersDataContext);
+
   const url = "https://api.dressme.uz";
   let token = localStorage.getItem("token");
-
-  const [, , reFetch] = useContext(SellersDataContext);
 
   const approveFunc = () => {
     axios
