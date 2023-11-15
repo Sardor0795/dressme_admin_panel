@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 import SoonImg from "../../../../assets/img/coming_soon.jpg";
 import axios from "axios";
+import { IdsContext } from "../../../../context/idContext";
 
 export default function ClothesItem({ data, click, setModalOpen, index }) {
   const url = "https://api.dressme.uz";
@@ -32,6 +33,8 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
         console.log(v);
       });
   };
+
+  const [, setId] = useContext(IdsContext);
 
   return (
     <div className="flex items-center w-full">
@@ -89,7 +92,10 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
             Одобрить
           </button>
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => {
+              setId(data?.id);
+              setModalOpen(true);
+            }}
             className={`${
               data?.status === "pending" || data?.status === "approved"
                 ? ""
@@ -202,7 +208,10 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
 
         <div className="w-full flex gap-[30px]">
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => {
+              setId(data?.id);
+              setModalOpen(true);
+            }}
             className={`${
               data?.status === "pending" || data?.status === "approved"
                 ? ""
