@@ -5,21 +5,6 @@ import SoonImg from "../../../../assets/img/coming_soon.jpg";
 import axios from "axios";
 
 export default function ClothesItem({ data, click, setModalOpen, index }) {
-  let price = 0;
-  let type = data?.type?.category_id;
-
-  if (type === "1") {
-    price = data?.headwear_price?.price;
-  } else if (type === "2") {
-    price = data?.outwear_price?.price;
-  } else if (type === "3") {
-    price = data?.underwear_price?.price;
-  } else if (type === "4") {
-    price = data?.footwear_price?.price;
-  } else if (type === "5") {
-    price = data?.accessory_price?.price;
-  }
-
   const url = "https://api.dressme.uz";
 
   let token = localStorage.getItem("token");
@@ -90,7 +75,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
           {data?.created_at}
         </div>
         <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {price ? price + " сум" : "-"}
+          {data?.cost?.price ? data?.cost?.price + " сум" : "-"}
         </div>
         <div className="w-[20%] px-4 flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
@@ -211,7 +196,7 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
             {data?.created_at}
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {price ? price + " сум" : "-"}
+            {data?.cost?.price ? data?.cost?.price + " сум" : "-"}
           </div>
         </div>
 
