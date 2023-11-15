@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BackIcon, StarIcon } from "../../../assets/icon";
 import CancelModal from "./modalCancel";
 import ColorModal from "./modalColor";
@@ -6,6 +6,7 @@ import Carousel from "./carousel";
 import ModalAllPhotos from "./modalAllPhotos";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { ProductsContext } from "../../../context/productsContext";
 
 export const ClothMoreAbout = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -33,15 +34,33 @@ export const ClothMoreAbout = () => {
     });
   }, []);
 
+  // Products Context
+  const [showProducts] = useContext(ProductsContext);
+
   return (
     <div className="flex flex-col w-full">
       <div className="md:border-b py-[18px] flex items-center mb-[6px]">
         <Link
           to="/clothes"
-          className="rounded-md border border-[#D5D5D5] mr-auto"
+          className="rounded-md border border-[#D5D5D5] mr-[30px]"
         >
           <BackIcon />
         </Link>
+        {showProducts === "pending" ? (
+          <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+            Ожидающие товары
+          </div>
+        ) : null}
+        {showProducts === "approved" ? (
+          <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+            Одобренные товары
+          </div>
+        ) : null}
+        {showProducts === "declined" ? (
+          <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+            Отказанные товары
+          </div>
+        ) : null}
       </div>
 
       <div className="flex items-center md:hidden">

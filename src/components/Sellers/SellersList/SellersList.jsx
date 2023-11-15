@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SellerItems from "./SellerItems/SellerItems";
 import CancelModal from "./ModalCancel";
 import axios from "axios";
+import { SellersContext } from "../../../context/sellersContext";
 
 import {
   AllowedIcon,
@@ -90,7 +91,8 @@ export default function SellersList() {
     }
   }, [data]);
 
-  const [showSellers, setShowSellers] = useState("pending");
+  // ------- sellers context
+  const [showSellers, setShowSellers] = useContext(SellersContext);
 
   let index = 0;
 
@@ -116,10 +118,26 @@ export default function SellersList() {
 
   return (
     <div>
-      <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between md:justify-end">
+      <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
           <PhoneNavbar />
         </div>
+
+        {showSellers === "pending" ? (
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Ожидающие продавцы
+          </div>
+        ) : null}
+        {showSellers === "approved" ? (
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Одобренные продавцы
+          </div>
+        ) : null}
+        {showSellers === "declined" ? (
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Отказанные продавцы
+          </div>
+        ) : null}
 
         <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input
@@ -363,6 +381,8 @@ export default function SellersList() {
                         index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
+                        showSellers={showSellers}
+                        setShowSellers={setShowSellers}
                       />
                     );
                   }
@@ -380,6 +400,8 @@ export default function SellersList() {
                         index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
+                        showSellers={showSellers}
+                        setShowSellers={setShowSellers}
                       />
                     );
                   }
@@ -397,6 +419,8 @@ export default function SellersList() {
                         click={onCheck}
                         index={index}
                         setModalOpen={setModalOpen}
+                        showSellers={showSellers}
+                        setShowSellers={setShowSellers}
                       />
                     );
                   }

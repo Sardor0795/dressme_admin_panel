@@ -1,13 +1,16 @@
 import { Link, useParams } from "react-router-dom";
 import { BackIcon, SearchIcon } from "../../assets/icon";
 import CancelModal from "./modalCancel";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { SellersContext } from "../../context/sellersContext";
 
 export const MoreAbout = () => {
   const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
   const [data, setData] = useState([]);
+
+  console.log(data?.status);
 
   const dataTypeIsPersonal = data?.seller_type?.type_ru === "Физическое лицо";
 
@@ -23,6 +26,10 @@ export const MoreAbout = () => {
     });
   }, []);
 
+  // Sellers Context
+
+  const [showSellers, setShowSellers] = useContext(SellersContext);
+
   return (
     <div>
       <div className="md:border-b py-[18px] flex items-center mb-[7px] md:mb-[0]">
@@ -33,9 +40,22 @@ export const MoreAbout = () => {
           >
             <BackIcon />
           </Link>
-          <div className="w-full md:w-fit text-center md:text-left ml-[-30px] md:ml-[0]">
-            Ожидающие продавцы
-          </div>
+
+          {showSellers === "pending" ? (
+            <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+              Ожидающие продавцы
+            </div>
+          ) : null}
+          {showSellers === "approved" ? (
+            <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+              Одобренные продавцы
+            </div>
+          ) : null}
+          {showSellers === "declined" ? (
+            <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+              Отказанные продавцы
+            </div>
+          ) : null}
         </div>
         <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input

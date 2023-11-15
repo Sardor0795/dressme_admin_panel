@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CancelModal from "./ModalCancel";
 import ClothesItem from "./clothesItem/clothestem";
-import { clothesMockData } from "../../../utils/mockData";
+import { ProductsContext } from "../../../context/productsContext";
 
 import {
   AllowedIcon,
@@ -91,7 +91,8 @@ export default function ClothesList() {
     }
   }, [data]);
 
-  const [showSellers, setShowSellers] = useState("pending");
+  // Products Context
+  const [showProducts, setShowProducts] = useContext(ProductsContext);
 
   let index = 0;
 
@@ -117,10 +118,26 @@ export default function ClothesList() {
 
   return (
     <div>
-      <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between md:justify-end">
+      <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
           <PhoneNavbar />
         </div>
+
+        {showProducts === "pending" ? (
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Ожидающие товары
+          </div>
+        ) : null}
+        {showProducts === "approved" ? (
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Одобренные товары
+          </div>
+        ) : null}
+        {showProducts === "declined" ? (
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Отказанные товары
+          </div>
+        ) : null}
 
         <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input
@@ -148,36 +165,36 @@ export default function ClothesList() {
 
         <div className="flex mb-[24px] md:hidden">
           <button
-            onClick={() => setShowSellers("pending")}
+            onClick={() => setShowProducts("pending")}
             className={`${
-              showSellers === "waiting"
+              showProducts === "waiting"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
           >
-            Ожидающие продавцы ({waitingCount})
+            Ожидающие товары ({waitingCount})
           </button>
           <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
           <button
-            onClick={() => setShowSellers("approved")}
+            onClick={() => setShowProducts("approved")}
             className={`${
-              showSellers === "approved"
+              showProducts === "approved"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
           >
-            Одобренные продавцы ({allowedCount})
+            Одобренные товары ({allowedCount})
           </button>
           <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
           <button
-            onClick={() => setShowSellers("declined")}
+            onClick={() => setShowProducts("declined")}
             className={`${
-              showSellers === "declined"
+              showProducts === "declined"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
           >
-            Отказанные продавцы ({notAllowedCount})
+            Отказанные товары ({notAllowedCount})
           </button>
         </div>
 
@@ -235,9 +252,9 @@ export default function ClothesList() {
           <section className="flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
-              onClick={() => setShowSellers("pending")}
+              onClick={() => setShowProducts("pending")}
               className={`${
-                showSellers === "pending"
+                showProducts === "pending"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -250,9 +267,9 @@ export default function ClothesList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("approved")}
+              onClick={() => setShowProducts("approved")}
               className={`${
-                showSellers === "approved"
+                showProducts === "approved"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -265,9 +282,9 @@ export default function ClothesList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("declined")}
+              onClick={() => setShowProducts("declined")}
               className={`${
-                showSellers === "declined"
+                showProducts === "declined"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -408,7 +425,7 @@ export default function ClothesList() {
           <div className="w-full flex flex-col gap-y-[10px]">
             {/* Status Waiting */}
 
-            {showSellers === "pending"
+            {showProducts === "pending"
               ? data.map((data) => {
                   if (data?.status === "pending") {
                     ++index;
@@ -427,7 +444,7 @@ export default function ClothesList() {
 
             {/* Status Allowed */}
 
-            {showSellers === "approved"
+            {showProducts === "approved"
               ? data.map((data) => {
                   if (data?.status === "approved") {
                     ++index;
@@ -446,7 +463,7 @@ export default function ClothesList() {
 
             {/* Status NotAllowed */}
 
-            {showSellers === "declined"
+            {showProducts === "declined"
               ? data.map((data) => {
                   if (data?.status === "declined") {
                     ++index;

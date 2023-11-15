@@ -3,7 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
 import axios from "axios";
 
-export default function SellerItems({ data, click, setModalOpen, index }) {
+export default function SellerItems({
+  data,
+  click,
+  setModalOpen,
+  index,
+  showSellers,
+  setShowSellers,
+}) {
   const url = "https://api.dressme.uz";
 
   let token = localStorage.getItem("token");
