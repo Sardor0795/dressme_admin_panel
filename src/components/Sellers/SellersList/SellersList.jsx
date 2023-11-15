@@ -381,8 +381,6 @@ export default function SellersList() {
                         index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
-                        showSellers={showSellers}
-                        setShowSellers={setShowSellers}
                       />
                     );
                   }
@@ -400,8 +398,6 @@ export default function SellersList() {
                         index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
-                        showSellers={showSellers}
-                        setShowSellers={setShowSellers}
                       />
                     );
                   }
@@ -419,8 +415,6 @@ export default function SellersList() {
                         click={onCheck}
                         index={index}
                         setModalOpen={setModalOpen}
-                        showSellers={showSellers}
-                        setShowSellers={setShowSellers}
                       />
                     );
                   }

@@ -1,6 +1,41 @@
+import { useContext, useRef } from "react";
 import { XIcon } from "../../../../assets/icon";
+import { IdsContext } from "../../../../context/idContext";
+import axios from "axios";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
+  const url = "https://api.dressme.uz";
+  let token = localStorage.getItem("token");
+
+  const [id] = useContext(IdsContext);
+
+  const ref = useRef();
+
+  const declineFunc = () => {
+    axios
+      .post(
+        `${url}/api/admin/decline-seller/${id}`,
+        {
+          status: "declined",
+          status_reason: ref.current.value,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((d) => {
+        if (d.status === 200) {
+          location.reload();
+        }
+      })
+      .catch((v) => {
+        console.log(v);
+      });
+  };
+
   return (
     <div className={`w-full px-4 md:px-10`}>
       <div
@@ -20,11 +55,15 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
           </p>
         </div>
         <textarea
+          ref={ref}
           className="border text-sm md:text-base p-3 h-32 mb-10 outline-none font-AeonikProRegular resize-none border-borderColor2 rounded-[6px]"
           placeholder="Опишите проблему"
         ></textarea>
         <button
-          onClick={() => setModalOpen(false)}
+          onClick={() => {
+            declineFunc();
+            setModalOpen(false);
+          }}
           className="w-full active:scale-95  active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
         >
           <span className="text-center text-sm md:text-lg text-white not-italic font-AeonikProMedium">

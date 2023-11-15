@@ -1,16 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
 import axios from "axios";
+import { IdsContext } from "../../../../context/idContext";
 
-export default function SellerItems({
-  data,
-  click,
-  setModalOpen,
-  index,
-  showSellers,
-  setShowSellers,
-}) {
+export default function SellerItems({ data, click, setModalOpen, index }) {
   const url = "https://api.dressme.uz";
 
   let token = localStorage.getItem("token");
@@ -38,6 +32,8 @@ export default function SellerItems({
         console.log(v);
       });
   };
+
+  const [id, setId] = useContext(IdsContext);
 
   return (
     <div className="flex items-center w-full">
@@ -90,7 +86,10 @@ export default function SellerItems({
             Одобрить
           </button>
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => {
+              setModalOpen(true);
+              setId(data?.id);
+            }}
             className={`${
               data?.status === "pending" || data?.status === "approved"
                 ? ""
@@ -201,7 +200,10 @@ export default function SellerItems({
 
         <div className="w-full flex gap-[30px]">
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => {
+              setId(data?.id);
+              setModalOpen(true);
+            }}
             className={`${
               data?.status === "pending" || data?.status === "approved"
                 ? ""

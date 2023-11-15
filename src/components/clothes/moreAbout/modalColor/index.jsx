@@ -1,7 +1,5 @@
 import { useState } from "react";
 import {
-  ColoredCardsIcon,
-  PlusIcon,
   StarIcon,
   XIcon,
 } from "../../../../assets/icon";
