@@ -92,13 +92,13 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           >
             Отказать
           </button>
-          <button
+          {/* <button
             className={`${
               data?.status === "declined" ? "" : "hidden"
             } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
           >
             Удалить
-          </button>
+          </button> */}
         </div>
         <div className="w-[8%]">
           <Link
@@ -213,13 +213,13 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
           >
             Одобрить
           </button>
-          <button
+          {/* <button
             className={`${
               data?.status === "declined" ? "" : "hidden"
             } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
           >
             Удалить
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
