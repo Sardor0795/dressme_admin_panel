@@ -3,6 +3,9 @@ import CancelModal from "./ModalCancel";
 import ClothesItem from "./clothesItem/clothestem";
 import { ProductsContext } from "../../../context/productsContext";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   AllowedIcon,
   BackIcon,
@@ -436,6 +439,7 @@ export default function ClothesList() {
                         key={data?.id}
                         click={onCheck}
                         setModalOpen={setModalOpen}
+                        toast={toast}
                       />
                     );
                   }
@@ -455,6 +459,7 @@ export default function ClothesList() {
                         index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
+                        toast={toast}
                       />
                     );
                   }
@@ -474,6 +479,7 @@ export default function ClothesList() {
                         index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
+                        toast={toast}
                       />
                     );
                   }
@@ -493,6 +499,8 @@ export default function ClothesList() {
           <BackIcon width={24} height={24} />
         </div>
       </button>
+
+      <ToastContainer />
     </div>
   );
 }

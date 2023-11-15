@@ -4,6 +4,9 @@ import CancelModal from "./ModalCancel";
 import axios from "axios";
 import { SellersContext } from "../../../context/sellersContext";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   AllowedIcon,
   BackIcon,
@@ -381,6 +384,7 @@ export default function SellersList() {
                         index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
+                        toast={toast}
                       />
                     );
                   }
@@ -398,6 +402,7 @@ export default function SellersList() {
                         index={index}
                         click={onCheck}
                         setModalOpen={setModalOpen}
+                        toast={toast}
                       />
                     );
                   }
@@ -415,6 +420,7 @@ export default function SellersList() {
                         click={onCheck}
                         index={index}
                         setModalOpen={setModalOpen}
+                        toast={toast}
                       />
                     );
                   }
@@ -434,6 +440,8 @@ export default function SellersList() {
           <BackIcon width={24} height={24} />
         </div>
       </button>
+
+      <ToastContainer />
     </div>
   );
 }

@@ -5,7 +5,13 @@ import SoonImg from "../../../../assets/img/coming_soon.jpg";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
 
-export default function ClothesItem({ data, click, setModalOpen, index }) {
+export default function ClothesItem({
+  data,
+  click,
+  setModalOpen,
+  index,
+  toast,
+}) {
   const url = "https://api.dressme.uz";
 
   let token = localStorage.getItem("token");
@@ -26,7 +32,8 @@ export default function ClothesItem({ data, click, setModalOpen, index }) {
       )
       .then((d) => {
         if (d.status === 200) {
-          location.reload();
+          toast.success(d?.data?.message);
+          // location.reload();
         }
       })
       .catch((v) => {

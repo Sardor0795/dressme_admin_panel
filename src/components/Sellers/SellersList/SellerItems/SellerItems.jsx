@@ -4,7 +4,13 @@ import { CheckIcon } from "../../../../assets/icon";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
 
-export default function SellerItems({ data, click, setModalOpen, index }) {
+export default function SellerItems({
+  data,
+  click,
+  setModalOpen,
+  index,
+  toast,
+}) {
   const url = "https://api.dressme.uz";
 
   let token = localStorage.getItem("token");
@@ -25,7 +31,8 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
       )
       .then((d) => {
         if (d.status === 200) {
-          location.reload();
+          // location.reload();
+          toast.success(d?.data?.message);
         }
       })
       .catch((v) => {
@@ -76,7 +83,9 @@ export default function SellerItems({ data, click, setModalOpen, index }) {
         </div>
         <div className="w-[18%] px-2 flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
-            onClick={() => approveFunc()}
+            onClick={() => {
+              approveFunc();
+            }}
             className={`${
               data?.status === "pending" || data?.status === "declined"
                 ? ""

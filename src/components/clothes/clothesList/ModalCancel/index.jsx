@@ -3,6 +3,9 @@ import { XIcon } from "../../../../assets/icon";
 import { useContext, useRef } from "react";
 import { IdsContext } from "../../../../context/idContext";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
   let token = localStorage.getItem("token");
@@ -27,7 +30,8 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
       )
       .then((d) => {
         if (d.status === 200) {
-          location.reload();
+          toast.success(d?.data?.message);
+          // location.reload();
         }
       })
       .catch((v) => {
@@ -79,6 +83,8 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
           <XIcon />
         </button>
       </section>
+
+      <ToastContainer />
     </div>
   );
 }
