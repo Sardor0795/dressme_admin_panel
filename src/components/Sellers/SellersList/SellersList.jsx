@@ -23,6 +23,24 @@ export default function SellersList() {
   const [data, setData, , waitingCount, allowedCount, notAllowedCount] =
     useContext(SellersDataContext);
 
+  let newData = data;
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    setFilteredData(newData);
+  }, [newData]);
+
+  console.log(filteredData, "ffff");
+
+  const filterFunc = (e) => {
+    console.log(e.target.value.toLowerCase());
+    const filteredData = data.filter((v) =>
+      v?.name.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredData(filteredData);
+  };
+
   // -----------------
 
   useEffect(() => {
@@ -118,6 +136,7 @@ export default function SellersList() {
             placeholder="Поиск"
             required
             inputMode="search"
+            onChange={(e) => filterFunc(e)}
           />
           <button className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
             <SearchIcon />
@@ -397,7 +416,7 @@ export default function SellersList() {
             {/* Status Waiting */}
 
             {showSellers === "pending"
-              ? data.map((data) => {
+              ? filteredData.map((data) => {
                   if (data?.status === "pending") {
                     ++index;
                     return (
@@ -415,7 +434,7 @@ export default function SellersList() {
               : null}
             {/* Status Allowed */}
             {showSellers === "approved"
-              ? data.map((data) => {
+              ? filteredData.map((data) => {
                   if (data?.status === "approved") {
                     ++index;
                     return (
@@ -433,7 +452,7 @@ export default function SellersList() {
               : null}
             {/* Status NotAllowed */}
             {showSellers === "declined"
-              ? data.map((data) => {
+              ? filteredData.map((data) => {
                   if (data?.status === "declined") {
                     ++index;
                     return (
