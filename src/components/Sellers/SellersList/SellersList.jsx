@@ -31,8 +31,6 @@ export default function SellersList() {
     setFilteredData(newData);
   }, [newData]);
 
-  console.log(filteredData, "ffff");
-
   const filterFunc = (e) => {
     console.log(e.target.value.toLowerCase());
     const filteredData = data.filter((v) =>

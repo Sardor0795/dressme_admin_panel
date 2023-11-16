@@ -23,6 +23,24 @@ export default function ClothesList() {
   const [data, setData, , waitingCount, allowedCount, notAllowedCount] =
     useContext(ClothesDataContext);
 
+  console.log(data);
+
+  let newData = data;
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    setFilteredData(newData);
+  }, [newData]);
+
+  const filterFunc = (e) => {
+    console.log(e.target.value.toLowerCase());
+    const filteredData = data.filter((v) =>
+      v?.name_ru.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredData(filteredData);
+  };
+
   // // -----------------
 
   useEffect(() => {
@@ -118,6 +136,7 @@ export default function ClothesList() {
             placeholder="Поиск"
             required
             inputMode="search"
+            onChange={(e) => filterFunc(e)}
           />
           <button className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
             <SearchIcon />
@@ -452,7 +471,7 @@ export default function ClothesList() {
             {/* Status Waiting */}
 
             {showProducts === "pending"
-              ? data.map((data) => {
+              ? filteredData.map((data) => {
                   if (data?.status === "pending") {
                     ++index;
                     return (
@@ -472,7 +491,7 @@ export default function ClothesList() {
             {/* Status Allowed */}
 
             {showProducts === "approved"
-              ? data.map((data) => {
+              ? filteredData.map((data) => {
                   if (data?.status === "approved") {
                     ++index;
                     return (
@@ -492,7 +511,7 @@ export default function ClothesList() {
             {/* Status NotAllowed */}
 
             {showProducts === "declined"
-              ? data.map((data) => {
+              ? filteredData.map((data) => {
                   if (data?.status === "declined") {
                     ++index;
                     return (
