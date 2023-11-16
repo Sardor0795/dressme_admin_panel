@@ -249,7 +249,7 @@ export default function ClothesList() {
               showProducts === "pending"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Ожидающие товары</div>{" "}
             <div>({waitingCount})</div>
@@ -260,7 +260,7 @@ export default function ClothesList() {
               showProducts === "approved"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Одобренные товары</div>{" "}
             <div>({allowedCount})</div>
@@ -271,7 +271,7 @@ export default function ClothesList() {
               showProducts === "declined"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Отказанные товары</div>{" "}
             <div>({notAllowedCount})</div>
@@ -282,7 +282,7 @@ export default function ClothesList() {
               showProducts === "status_update"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Обновленные товары</div>{" "}
             <div>({updatedCount})</div>
