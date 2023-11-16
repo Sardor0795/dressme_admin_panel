@@ -4,7 +4,6 @@ import { useContext, useRef } from "react";
 import { IdsContext } from "../../../../context/idContext";
 
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {

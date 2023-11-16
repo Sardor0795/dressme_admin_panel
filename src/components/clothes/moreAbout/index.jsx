@@ -4,9 +4,11 @@ import CancelModal from "./modalCancel";
 import ColorModal from "./modalColor";
 import Carousel from "./carousel";
 import ModalAllPhotos from "./modalAllPhotos";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { ProductsContext } from "../../../context/productsContext";
+import { toast } from "react-toastify";
+import { ClothesDataContext } from "../../../context/clothesDataContext";
 
 export const ClothMoreAbout = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,6 +26,8 @@ export const ClothMoreAbout = () => {
   const params = useParams();
   let token = localStorage.getItem("token");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios(`${url}/api/admin/products/${params?.id}`, {
       headers: {
@@ -36,6 +40,33 @@ export const ClothMoreAbout = () => {
 
   // Products Context
   const [showProducts] = useContext(ProductsContext);
+  const [, , reFetch] = useContext(ClothesDataContext);
+
+  const approveFunc = () => {
+    axios
+      .post(
+        `${url}/api/admin/change-product-status/${params?.id}`,
+        {
+          status: "approved",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((d) => {
+        if (d.status === 200) {
+          toast.success(d?.data?.message);
+          reFetch();
+          navigate("/clothes");
+        }
+      })
+      .catch((v) => {
+        console.log(v);
+      });
+  };
 
   return (
     <div className="flex flex-col w-full">
@@ -77,20 +108,47 @@ export const ClothMoreAbout = () => {
         </div>
 
         <div className="hidden md:flex items-center ml-auto">
-          <button
-            type="button"
-            className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
-          >
-            Одобрить
-          </button>
-          <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-          <button
-            onClick={() => setModalOpen(true)}
-            type="button"
-            className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
-          >
-            Отказать
-          </button>
+          {showProducts === "pending" ? (
+            <div className="flex items-center ml-auto">
+              <button
+                onClick={() => approveFunc()}
+                type="button"
+                className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+              >
+                Одобрить
+              </button>
+              <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
+              <button
+                onClick={() => setModalOpen(true)}
+                type="button"
+                className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+              >
+                Отказать
+              </button>
+            </div>
+          ) : null}
+          {showProducts === "approved" ? (
+            <div className="flex items-center ml-auto">
+              <button
+                onClick={() => setModalOpen(true)}
+                type="button"
+                className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+              >
+                Отказать
+              </button>
+            </div>
+          ) : null}
+          {showProducts === "declined" ? (
+            <div className="flex items-center ml-auto">
+              <button
+                onClick={() => approveFunc()}
+                type="button"
+                className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+              >
+                Одобрить
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
 
@@ -389,17 +447,32 @@ export const ClothMoreAbout = () => {
         <div className="flex md:hidden w-full gap-[12px] mb-[20px]">
           <button
             onClick={() => setModalOpen(true)}
-            className="w-full text-[16px] font-AeonikProMedium text-white p-[12px] rounded-lg bg-[#E85151]"
+            className={`${
+              data?.status === "pending" || data?.status === "approved"
+                ? ""
+                : "hidden"
+            } w-full text-[16px] font-AeonikProMedium text-white p-[12px] rounded-lg bg-[#E85151]`}
           >
             Отказать
           </button>
-          <button className="w-full text-[16px] font-AeonikProMedium text-white p-[12px] rounded-lg bg-[#1BD22D]">
+          <button
+            onClick={() => approveFunc()}
+            className={`${
+              data?.status === "pending" || data?.status === "declined"
+                ? ""
+                : "hidden"
+            } w-full text-[16px] font-AeonikProMedium text-white p-[12px] rounded-lg bg-[#1BD22D]`}
+          >
             Одобрить
           </button>
         </div>
       </div>
 
-      <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
+      <CancelModal
+        setModalOpen={setModalOpen}
+        modalOpen={modalOpen}
+        id={data?.id}
+      />
       <ColorModal
         setColorModalOpen={setColorModalOpen}
         colorModalOpen={colorModalOpen}
