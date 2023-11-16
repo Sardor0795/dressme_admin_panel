@@ -650,7 +650,7 @@ const MobileSearchIcon = () => {
   );
 };
 
-const ExitIcon = ({color}) => {
+const ExitIcon = ({ color }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -661,11 +661,26 @@ const ExitIcon = ({color}) => {
     >
       <path
         d="M12 12L19 12M19 12L16 15M19 12L16 9M19 6V5C19 4.46957 18.7893 3.96086 18.4142 3.58579C18.0391 3.21071 17.5304 3 17 3L7 3C6.46957 3 5.96086 3.21071 5.58579 3.58579C5.21071 3.96086 5 4.46957 5 5L5 19C5 19.5304 5.21071 20.0391 5.58579 20.4142C5.96086 20.7893 6.46957 21 7 21H17C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19V18"
-        stroke={color === 'red' ? "#FF4343" : '#fff' }
+        stroke={color === "red" ? "#FF4343" : "#fff"}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+};
+
+const EditedIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      style={{ fill: "currentColor", transform: "", msfilter: "" }}
+    >
+      <path d="M12 2C6.486 2 2 5.589 2 10c0 2.908 1.898 5.515 5 6.934V22l5.34-4.005C17.697 17.852 22 14.32 22 10c0-4.411-4.486-8-10-8zm0 14h-.333L9 18v-2.417l-.641-.247C5.67 14.301 4 12.256 4 10c0-3.309 3.589-6 8-6s8 2.691 8 6-3.589 6-8 6z" />
+      <path d="M8.503 11.589v1.398h1.398l3.87-3.864-1.399-1.398zm5.927-3.125-1.398-1.398 1.067-1.067 1.398 1.398z" />
     </svg>
   );
 };
@@ -693,4 +708,5 @@ export {
   CalendarIcon,
   MobileSearchIcon,
   ExitIcon,
+  EditedIcon,
 };

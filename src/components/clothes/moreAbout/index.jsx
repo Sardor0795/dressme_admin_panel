@@ -92,6 +92,11 @@ export const ClothMoreAbout = () => {
             Отказанные товары
           </div>
         ) : null}
+        {showProducts === "status_update" ? (
+          <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+            Обновленные товары
+          </div>
+        ) : null}
       </div>
 
       <div className="flex items-center md:hidden">
@@ -139,6 +144,17 @@ export const ClothMoreAbout = () => {
             </div>
           ) : null}
           {showProducts === "declined" ? (
+            <div className="flex items-center ml-auto">
+              <button
+                onClick={() => approveFunc()}
+                type="button"
+                className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+              >
+                Одобрить
+              </button>
+            </div>
+          ) : null}
+          {showProducts === "status_update" ? (
             <div className="flex items-center ml-auto">
               <button
                 onClick={() => approveFunc()}

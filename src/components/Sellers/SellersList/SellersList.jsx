@@ -31,7 +31,6 @@ export default function SellersList() {
   }, [newData]);
 
   const filterFunc = (e) => {
-    console.log(e.target.value.toLowerCase());
     const filteredData = data.filter((v) =>
       v?.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
@@ -123,7 +122,7 @@ export default function SellersList() {
     <div>
       <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
-          <PhoneNavbar />
+          <PhoneNavbar filterFuncSellers={filterFunc} />
         </div>
 
         {showSellers === "pending" ? (

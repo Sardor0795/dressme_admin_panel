@@ -12,6 +12,7 @@ export default function ClothesItem({
   setModalOpen,
   index,
   toast,
+  showProducts,
 }) {
   const url = "https://api.dressme.uz";
   let token = localStorage.getItem("token");
@@ -89,30 +90,45 @@ export default function ClothesItem({
         <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.cost?.price ? data?.cost?.price + " сум" : "-"}
         </div>
-        <div className="w-[20%] px-4 flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          <button
-            onClick={() => approveFunc()}
-            className={`${
-              data?.status === "pending" || data?.status === "declined"
-                ? ""
-                : "hidden"
-            } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
-          >
-            Одобрить
-          </button>
-          <button
-            onClick={() => {
-              setId(data?.id);
-              setModalOpen(true);
-            }}
-            className={`${
-              data?.status === "pending" || data?.status === "approved"
-                ? ""
-                : "hidden"
-            } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
-          >
-            Отказать
-          </button>
+        <div className="w-[20%] px-4  text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+          {showProducts !== "status_update" ? (
+            <div className="flex items-center gap-x-2">
+              {" "}
+              <button
+                onClick={() => approveFunc()}
+                className={`${
+                  data?.status === "pending" || data?.status === "declined"
+                    ? ""
+                    : "hidden"
+                } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+              >
+                Одобрить
+              </button>
+              <button
+                onClick={() => {
+                  setId(data?.id);
+                  setModalOpen(true);
+                }}
+                className={`${
+                  data?.status === "pending" || data?.status === "approved"
+                    ? ""
+                    : "hidden"
+                } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
+              >
+                Отказать
+              </button>
+            </div>
+          ) : null}
+
+          {showProducts === "status_update" ? (
+            <button
+              onClick={() => approveFunc()}
+              className={` w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+            >
+              Одобрить
+            </button>
+          ) : null}
+
           {/* <button
             className={`${
               data?.status === "declined" ? "" : "hidden"
@@ -168,11 +184,9 @@ export default function ClothesItem({
             Подробнее
           </Link>
         </div>
-
         <div className="h-[148px] w-full rounded-lg overflow-hidden mb-[12px]">
           <img src={SoonImg} alt="img" className="w-full h-full object-cover" />
         </div>
-
         <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
           <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[45%]">
             Название
@@ -184,7 +198,6 @@ export default function ClothesItem({
             Тип
           </div>
         </div>
-
         <div className="py-[5px] px-[15px] flex mb-[10px]">
           <div className="w-[45%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.name_ru}
@@ -196,7 +209,6 @@ export default function ClothesItem({
             {data?.type?.name_ru}
           </div>
         </div>
-
         <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
           <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[45%]">
             Дата
@@ -205,7 +217,6 @@ export default function ClothesItem({
             Цена
           </div>
         </div>
-
         <div className="py-[5px] px-[15px] flex mb-[24px]">
           <div className="w-[45%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.created_at}
@@ -215,38 +226,43 @@ export default function ClothesItem({
           </div>
         </div>
 
-        <div className="w-full flex gap-[30px]">
-          <button
-            onClick={() => {
-              setId(data?.id);
-              setModalOpen(true);
-            }}
-            className={`${
-              data?.status === "pending" || data?.status === "approved"
-                ? ""
-                : "hidden"
-            } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
-          >
-            Отказать
-          </button>
-          <button
-            onClick={() => approveFunc()}
-            className={`${
-              data?.status === "pending" || data?.status === "declined"
-                ? ""
-                : "hidden"
-            } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
-          >
-            Одобрить
-          </button>
-          {/* <button
-            className={`${
-              data?.status === "declined" ? "" : "hidden"
-            } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
-          >
-            Удалить
-          </button> */}
-        </div>
+        {showProducts !== "status_update" ? (
+          <div className="w-full flex gap-[30px]">
+            <button
+              onClick={() => {
+                setId(data?.id);
+                setModalOpen(true);
+              }}
+              className={`${
+                data?.status === "pending" || data?.status === "approved"
+                  ? ""
+                  : "hidden"
+              } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
+            >
+              Отказать
+            </button>
+            <button
+              onClick={() => approveFunc()}
+              className={`${
+                data?.status === "pending" || data?.status === "declined"
+                  ? ""
+                  : "hidden"
+              } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+            >
+              Одобрить
+            </button>
+          </div>
+        ) : null}
+        {showProducts === "status_update" ? (
+          <div className="w-full flex gap-[30px]">
+            <button
+              onClick={() => approveFunc()}
+              className={` rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+            >
+              Одобрить
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

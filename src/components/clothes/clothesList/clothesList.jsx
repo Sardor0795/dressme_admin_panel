@@ -10,6 +10,7 @@ import {
   AllowedIcon,
   BackIcon,
   CheckIcon,
+  EditedIcon,
   NotAllowedIcon,
   SearchIcon,
   WaitingForAllowIcon,
@@ -22,8 +23,6 @@ export default function ClothesList() {
 
   const [data, setData] = useContext(ClothesDataContext);
 
-  console.log(data);
-
   let newData = data;
 
   const [filteredData, setFilteredData] = useState([]);
@@ -33,7 +32,6 @@ export default function ClothesList() {
   }, [newData]);
 
   const filterFunc = (e) => {
-    console.log(e.target.value.toLowerCase());
     const filteredData = data.filter((v) =>
       v?.name_ru.toLowerCase().includes(e.target.value.toLowerCase())
     );
@@ -45,6 +43,7 @@ export default function ClothesList() {
   let waitingCount = 0;
   let allowedCount = 0;
   let notAllowedCount = 0;
+  let updatedCount = 0;
 
   filteredData.forEach((v) => {
     if (v?.status === "pending") {
@@ -53,6 +52,12 @@ export default function ClothesList() {
       ++allowedCount;
     } else {
       ++notAllowedCount;
+    }
+  });
+
+  filteredData.forEach((v) => {
+    if (v?.status_update === "1") {
+      ++updatedCount;
     }
   });
 
@@ -125,7 +130,7 @@ export default function ClothesList() {
     <div>
       <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
-          <PhoneNavbar />
+          <PhoneNavbar filterFuncCloThes={filterFunc} />
         </div>
 
         {showProducts === "pending" ? (
@@ -141,6 +146,11 @@ export default function ClothesList() {
         {showProducts === "declined" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Отказанные товары
+          </div>
+        ) : null}
+        {showProducts === "status_update" ? (
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Обновленные товары
           </div>
         ) : null}
 
@@ -160,13 +170,76 @@ export default function ClothesList() {
       </div>
 
       <div className="w-full mt-4">
-        <div className="flex items-center gap-x-1 mb-[25px] md:mb-[0]">
-          <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
-            Общее количество:
-          </span>
-          <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
-            {data?.length}
-          </span>
+        <div className="flex items-center justify-between gap-x-1 mb-[25px] md:mb-[0]">
+          <div className="flex gap-x-1">
+            <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
+              Общее количество:
+            </span>
+            <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
+              {data?.length}
+            </span>
+          </div>
+
+          {/* Выбранные */}
+          <div className="hidden w-full md:w-fit md:flex items-center gap-x-[30px] border-b md:border-b-0 border-[#F2F2F2] pb-[25px] md:pb-0">
+            <span className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
+              Выбранные:
+            </span>
+            <div className="flex items-center">
+              {showProducts === "pending" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    onClick={() => approveFunc()}
+                    type="button"
+                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                  >
+                    Одобрить
+                  </button>
+                  <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    type="button"
+                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                  >
+                    Отказать
+                  </button>
+                </div>
+              ) : null}
+              {showProducts === "approved" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    type="button"
+                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                  >
+                    Отказать
+                  </button>
+                </div>
+              ) : null}
+              {showProducts === "declined" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    onClick={() => approveFunc()}
+                    type="button"
+                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                  >
+                    Одобрить
+                  </button>
+                </div>
+              ) : null}
+              {showProducts === "status_update" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    onClick={() => approveFunc()}
+                    type="button"
+                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                  >
+                    Одобрить
+                  </button>
+                </div>
+              ) : null}
+            </div>
+          </div>
         </div>
 
         <div className="flex mb-[24px] md:hidden">
@@ -176,31 +249,39 @@ export default function ClothesList() {
               showProducts === "pending"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] font-AeonikProRegular`}
           >
             Ожидающие товары ({waitingCount})
           </button>
-          <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
           <button
             onClick={() => setShowProducts("approved")}
             className={`${
               showProducts === "approved"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] font-AeonikProRegular`}
           >
             Одобренные товары ({allowedCount})
           </button>
-          <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
           <button
             onClick={() => setShowProducts("declined")}
             className={`${
               showProducts === "declined"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] font-AeonikProRegular`}
           >
             Отказанные товары ({notAllowedCount})
+          </button>
+          <button
+            onClick={() => setShowProducts("status_update")}
+            className={`${
+              showProducts === "status_update"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] font-AeonikProRegular`}
+          >
+            Обновленные товары ({updatedCount})
           </button>
         </div>
 
@@ -233,7 +314,7 @@ export default function ClothesList() {
 
         {/* Mobile selected */}
         <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
-          <div className=" font-AeonikProMedium text-[14px] ll:text-sm md:text-lg text-mobileTextColor">
+          <div className=" font-AeonikProMedium text-base ll:text-sm md:text-lg text-mobileTextColor">
             Выбранные:
           </div>
           <div className="flex items-center">
@@ -242,7 +323,7 @@ export default function ClothesList() {
                 <button
                   onClick={() => approveFunc()}
                   type="button"
-                  className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
                   Одобрить
                 </button>
@@ -250,7 +331,7 @@ export default function ClothesList() {
                 <button
                   onClick={() => setModalOpen(true)}
                   type="button"
-                  className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
                 >
                   Отказать
                 </button>
@@ -261,7 +342,7 @@ export default function ClothesList() {
                 <button
                   onClick={() => setModalOpen(true)}
                   type="button"
-                  className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
                 >
                   Отказать
                 </button>
@@ -272,7 +353,18 @@ export default function ClothesList() {
                 <button
                   onClick={() => approveFunc()}
                   type="button"
-                  className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
+                >
+                  Одобрить
+                </button>
+              </div>
+            ) : null}
+            {showProducts === "status_update" ? (
+              <div className="flex items-center ml-auto">
+                <button
+                  onClick={() => approveFunc()}
+                  type="button"
+                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
                   Одобрить
                 </button>
@@ -327,57 +419,22 @@ export default function ClothesList() {
               </span>
               <span>Отказанные товары ({notAllowedCount})</span>
             </button>
+            <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
+            <button
+              type="button"
+              onClick={() => setShowProducts("status_update")}
+              className={`${
+                showProducts === "status_update"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+            >
+              <span className="mr-[5px]">
+                <EditedIcon />
+              </span>
+              <span>Обновленные товары ({updatedCount})</span>
+            </button>
           </section>
-
-          {/* Выбранные */}
-          <div className="hidden w-full md:w-fit md:flex items-center gap-x-[30px] border-b md:border-b-0 border-[#F2F2F2] pb-[25px] md:pb-0">
-            <span className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
-              Выбранные:
-            </span>
-            <div className="flex items-center">
-              {showProducts === "pending" ? (
-                <div className="flex items-center ml-auto">
-                  <button
-                    onClick={() => approveFunc()}
-                    type="button"
-                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
-                  >
-                    Одобрить
-                  </button>
-                  <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-                  <button
-                    onClick={() => setModalOpen(true)}
-                    type="button"
-                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
-                  >
-                    Отказать
-                  </button>
-                </div>
-              ) : null}
-              {showProducts === "approved" ? (
-                <div className="flex items-center ml-auto">
-                  <button
-                    onClick={() => setModalOpen(true)}
-                    type="button"
-                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
-                  >
-                    Отказать
-                  </button>
-                </div>
-              ) : null}
-              {showProducts === "declined" ? (
-                <div className="flex items-center ml-auto">
-                  <button
-                    onClick={() => approveFunc()}
-                    type="button"
-                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
-                  >
-                    Одобрить
-                  </button>
-                </div>
-              ) : null}
-            </div>
-          </div>
         </div>
 
         <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
@@ -537,6 +594,27 @@ export default function ClothesList() {
                         click={onCheck}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                      />
+                    );
+                  }
+                })
+              : null}
+
+            {/* Status Updated */}
+
+            {showProducts === "status_update"
+              ? filteredData.map((data) => {
+                  if (data?.status_update === "1") {
+                    ++index;
+                    return (
+                      <ClothesItem
+                        data={data}
+                        key={data?.id}
+                        index={index}
+                        click={onCheck}
+                        setModalOpen={setModalOpen}
+                        toast={toast}
+                        showProducts={showProducts}
                       />
                     );
                   }
