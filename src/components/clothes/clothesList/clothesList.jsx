@@ -139,7 +139,7 @@ export default function ClothesList() {
           <button
             onClick={() => setShowProducts("pending")}
             className={`${
-              showProducts === "waiting"
+              showProducts === "pending"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
@@ -203,20 +203,47 @@ export default function ClothesList() {
             Выбранные:
           </div>
           <div className="flex items-center">
-            <button
-              type="button"
-              className="text-[#12C724] text-sm not-italic font-AeonikProMedium"
-            >
-              Одобрить
-            </button>
-            <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-            <button
-              onClick={() => setModalOpen(true)}
-              type="button"
-              className="text-[#E51515] text-sm not-italic font-AeonikProMedium"
-            >
-              Отказать
-            </button>
+            {showProducts === "pending" ? (
+              <div className="flex items-center ml-auto">
+                <button
+                  onClick={() => approveFunc()}
+                  type="button"
+                  className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                >
+                  Одобрить
+                </button>
+                <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
+                <button
+                  onClick={() => setModalOpen(true)}
+                  type="button"
+                  className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                >
+                  Отказать
+                </button>
+              </div>
+            ) : null}
+            {showProducts === "approved" ? (
+              <div className="flex items-center ml-auto">
+                <button
+                  onClick={() => setModalOpen(true)}
+                  type="button"
+                  className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                >
+                  Отказать
+                </button>
+              </div>
+            ) : null}
+            {showProducts === "declined" ? (
+              <div className="flex items-center ml-auto">
+                <button
+                  onClick={() => approveFunc()}
+                  type="button"
+                  className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                >
+                  Одобрить
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
 
@@ -274,20 +301,47 @@ export default function ClothesList() {
               Выбранные:
             </span>
             <div className="flex items-center">
-              <button
-                type="button"
-                className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
-              >
-                Одобрить
-              </button>
-              <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-              <button
-                onClick={() => setModalOpen(true)}
-                type="button"
-                className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
-              >
-                Отказать
-              </button>
+              {showProducts === "pending" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    onClick={() => approveFunc()}
+                    type="button"
+                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                  >
+                    Одобрить
+                  </button>
+                  <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    type="button"
+                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                  >
+                    Отказать
+                  </button>
+                </div>
+              ) : null}
+              {showProducts === "approved" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    type="button"
+                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                  >
+                    Отказать
+                  </button>
+                </div>
+              ) : null}
+              {showProducts === "declined" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    onClick={() => approveFunc()}
+                    type="button"
+                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                  >
+                    Одобрить
+                  </button>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
