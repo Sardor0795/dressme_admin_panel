@@ -9,7 +9,7 @@ export const sidebarData = [
   },
   {
     id: 2,
-    title: "Одежда",
+    title: "Товары",
     path: "/clothes",
     icon: <ClothesIcon />,
   },
