@@ -20,8 +20,7 @@ import { ClothesDataContext } from "../../../context/clothesDataContext";
 export default function ClothesList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData, , waitingCount, allowedCount, notAllowedCount] =
-    useContext(ClothesDataContext);
+  const [data, setData] = useContext(ClothesDataContext);
 
   console.log(data);
 
@@ -40,6 +39,22 @@ export default function ClothesList() {
     );
     setFilteredData(filteredData);
   };
+
+  // // Count items -----------
+
+  let waitingCount = 0;
+  let allowedCount = 0;
+  let notAllowedCount = 0;
+
+  filteredData.forEach((v) => {
+    if (v?.status === "pending") {
+      ++waitingCount;
+    } else if (v?.status === "approved") {
+      ++allowedCount;
+    } else {
+      ++notAllowedCount;
+    }
+  });
 
   // // -----------------
 

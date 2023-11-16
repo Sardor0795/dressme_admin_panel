@@ -20,8 +20,7 @@ import { SellersDataContext } from "../../../context/sellersDataContext";
 export default function SellersList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData, , waitingCount, allowedCount, notAllowedCount] =
-    useContext(SellersDataContext);
+  const [data, setData] = useContext(SellersDataContext);
 
   let newData = data;
 
@@ -38,6 +37,22 @@ export default function SellersList() {
     );
     setFilteredData(filteredData);
   };
+
+  // Count items -----------
+
+  let waitingCount = 0;
+  let allowedCount = 0;
+  let notAllowedCount = 0;
+
+  filteredData.forEach((v) => {
+    if (v?.status === "pending") {
+      ++waitingCount;
+    } else if (v?.status === "approved") {
+      ++allowedCount;
+    } else {
+      ++notAllowedCount;
+    }
+  });
 
   // -----------------
 
