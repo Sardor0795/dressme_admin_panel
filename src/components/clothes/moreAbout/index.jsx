@@ -279,7 +279,7 @@ export const ClothMoreAbout = () => {
             </div>
             <div className="flex w-full mb:block gap-[11px] md:gap-[0]">
               <div className="flex w-full md:flex-wrap xxxl:flex-nowrap justify-between mb-[25px] gap-[10px]">
-                <button className="h-[40px] whitespace-nowrap font-AeonikProMedium text-[16px] w-full xxxl:max-w-[160px] rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
+                <button className="h-[40px] whitespace-nowrap font-AeonikProMedium text-[16px] w-full xxxl:w-fit rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
                   {data?.category?.name_ru}
                 </button>
                 <button
