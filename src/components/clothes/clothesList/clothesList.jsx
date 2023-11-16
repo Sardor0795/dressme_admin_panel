@@ -243,46 +243,50 @@ export default function ClothesList() {
         </div>
 
         <div className="flex mb-[24px] md:hidden">
-          <button
+          <div
             onClick={() => setShowProducts("pending")}
             className={`${
               showProducts === "pending"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] font-AeonikProRegular`}
           >
-            Ожидающие товары ({waitingCount})
-          </button>
-          <button
+            <div className="mb-[3px]">Ожидающие товары</div>{" "}
+            <div>({waitingCount})</div>
+          </div>
+          <div
             onClick={() => setShowProducts("approved")}
             className={`${
               showProducts === "approved"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] font-AeonikProRegular`}
           >
-            Одобренные товары ({allowedCount})
-          </button>
-          <button
+            <div className="mb-[3px]">Одобренные товары</div>{" "}
+            <div>({allowedCount})</div>
+          </div>
+          <div
             onClick={() => setShowProducts("declined")}
             className={`${
               showProducts === "declined"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] font-AeonikProRegular`}
           >
-            Отказанные товары ({notAllowedCount})
-          </button>
-          <button
+            <div className="mb-[3px]">Отказанные товары</div>{" "}
+            <div>({notAllowedCount})</div>
+          </div>
+          <div
             onClick={() => setShowProducts("status_update")}
             className={`${
               showProducts === "status_update"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] font-AeonikProRegular`}
+            } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] font-AeonikProRegular`}
           >
-            Обновленные товары ({updatedCount})
-          </button>
+            <div className="mb-[3px]">Обновленные товары</div>{" "}
+            <div>({updatedCount})</div>
+          </div>
         </div>
 
         <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
