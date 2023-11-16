@@ -157,38 +157,41 @@ export default function SellersList() {
       </div>
 
       <div className="flex mb-[24px] md:hidden">
-        <button
+        <div
           onClick={() => setShowSellers("pending")}
           className={`${
             showSellers === "pending"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[14px] cursor-pointer font-AeonikProRegular`}
         >
-          Ожидающие продавцы ({waitingCount})
-        </button>
+          <div className="mb-[3pxs]">Ожидающие продавцы</div>{" "}
+          <div>({waitingCount})</div>
+        </div>
         <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
-        <button
+        <div
           onClick={() => setShowSellers("approved")}
           className={`${
             showSellers === "approved"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[14px] cursor-pointer font-AeonikProRegular`}
         >
-          Одобренные продавцы ({allowedCount})
-        </button>
+          <div className="mb-[3pxs]">Одобренные продавцы</div>{" "}
+          <div> ({allowedCount})</div>
+        </div>
         <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
-        <button
+        <div
           onClick={() => setShowSellers("declined")}
           className={`${
             showSellers === "declined"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-[14px] font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[14px] cursor-pointer font-AeonikProRegular`}
         >
-          Отказанные продавцы ({notAllowedCount})
-        </button>
+          <div className="mb-[3pxs]">Отказанные продавцы</div>{" "}
+          <div>({notAllowedCount})</div>
+        </div>
       </div>
 
       <div className="w-full mt-4">
