@@ -373,12 +373,25 @@ export const MoreAbout = () => {
 
         <div className="w-full flex gap-[30px]">
           <button
-            onClick={() => setModalOpen(true)}
-            className="rounded-[8px] py-[8px] w-[50%] bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]"
+            onClick={() => {
+              setModalOpen(true);
+            }}
+            className={`${
+              data?.status === "pending" || data?.status === "approved"
+                ? ""
+                : "hidden"
+            } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
           >
             Отказать
           </button>
-          <button className="rounded-[8px] py-[8px] w-[50%] bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]">
+          <button
+            onClick={() => approveFunc()}
+            className={`${
+              data?.status === "pending" || data?.status === "declined"
+                ? ""
+                : "hidden"
+            } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+          >
             Одобрить
           </button>
         </div>
