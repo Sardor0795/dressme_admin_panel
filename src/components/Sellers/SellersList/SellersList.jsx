@@ -96,6 +96,15 @@ export default function SellersList() {
   // ------- sellers context
   const [showSellers, setShowSellers] = useContext(SellersContext);
 
+  let dataCount = 0;
+  if (showSellers === "pending") {
+    dataCount = waitingCount;
+  } else if (showSellers === "approved") {
+    dataCount = allowedCount;
+  } else {
+    dataCount = notAllowedCount;
+  }
+
   let index = 0;
 
   // up btn
@@ -381,51 +390,57 @@ export default function SellersList() {
         </div>
 
         <div className="mx-auto font-AeonikProRegular text-[16px]">
-          <div className="md:mb-[10px] flex items-center text-tableTextTitle">
-            <div
-              onClick={() => {
-                onCheck(checkIndicator);
-                setAllChecked(!allChecked);
-              }}
-              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } hidden md:flex items-center justify-center rounded mr-[8px]`}
-            >
-              <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
+          {dataCount > 0 ? (
+            <div className="md:mb-[10px] flex items-center text-tableTextTitle">
+              <div
+                onClick={() => {
+                  onCheck(checkIndicator);
+                  setAllChecked(!allChecked);
+                }}
+                className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
+                  allChecked
+                    ? "bg-[#007DCA] border-[#007DCA]"
+                    : "bg-white border-checkboxBorder"
+                } hidden md:flex items-center justify-center rounded mr-[8px]`}
               >
-                <CheckIcon />
-              </span>
-            </div>
+                <span
+                  className={`${
+                    allChecked ? "flex items-center justify-center" : "hidden"
+                  }`}
+                >
+                  <CheckIcon />
+                </span>
+              </div>
 
-            <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-              <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                No:
-              </div>
-              <div className="w-[10%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Имя
-              </div>
-              <div className="w-[15%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Номер
-              </div>
-              <div className="w-[15%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Тип
-              </div>
-              <div className="w-[11%] px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Дата
-              </div>
-              <div className="w-[20%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Регион
-              </div>
-              <div className="w-[18%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Действие
+              <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  No:
+                </div>
+                <div className="w-[10%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Имя
+                </div>
+                <div className="w-[15%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Номер
+                </div>
+                <div className="w-[15%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Тип
+                </div>
+                <div className="w-[11%] px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Дата
+                </div>
+                <div className="w-[20%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Регион
+                </div>
+                <div className="w-[18%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Действие
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+              <div className="font-AeonikProMedium text-xl">Нет продавцов</div>
+            </div>
+          )}
 
           <div className="w-full flex flex-col gap-y-[10px]">
             {/* Status Waiting */}
