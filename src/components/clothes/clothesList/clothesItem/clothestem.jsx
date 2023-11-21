@@ -70,7 +70,7 @@ import { Checkbox, List } from "antd";
   const index = 1;
   return (
     <div className="flex flex-col items-center w-full my-5">
-      <div className="w-full border border-red-500">
+      <div className="w-full">
         <div className="w-full flex items-center gap-x-3">
           {" "}
           <Checkbox
@@ -141,7 +141,7 @@ import { Checkbox, List } from "antd";
                 {data?.products?.map((data) => {
                   return (
                     <List.Item className="w-full ">
-                      <div className="w-full flex items-center border border-black mt-5">
+                      <div className="w-full flex items-center border mt-5">
                         <div className="w-fit">
                           {" "}
                           <Checkbox value={data?.id} />

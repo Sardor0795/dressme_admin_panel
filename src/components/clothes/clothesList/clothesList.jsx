@@ -642,7 +642,7 @@ export default function ClothesList() {
                 <div className="w-full">
                   {item?.shops?.length !== 0 && (
                     <div className="w-full">
-                      <div className="w-full border border-green-500">
+                      <div className="w-full border">
                         <div className="w-full flex items-center justify-center mt-10">
                           <p className=" hidden md:block text-textBlueColor text-2xl not-italic font-AeonikProMedium">
                             {item?.name}
