@@ -16,7 +16,7 @@ export const ClothesDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((d) => {
-      setData(d?.data?.products);
+      setData(d?.data?.sellers_products);
     });
   }, []);
 
@@ -26,9 +26,11 @@ export const ClothesDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((d) => {
-      setData(d?.data?.products);
+      setData(d?.sellers_products);
     });
   };
+
+  console.log(data, "Context");
 
   return (
     <ClothesDataContext.Provider value={[data, setData, reFetch]}>

@@ -19,9 +19,21 @@ import { PhoneNavbar } from "../../phoneNavbar";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
 
 export default function ClothesList() {
+  const url = "https://api.dressme.uz";
+  let token = localStorage.getItem("token");
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const [data, setData] = useContext(ClothesDataContext);
+  // -----------------------------
+  const [getCheckList, setGetCheckList] = useState({});
+  function onHandleGetCheckList(childData) {
+    setGetCheckList({ childData });
+  }
+
+  // -----------------------------
+
+  console.log(getCheckList, "getCheckList");
 
   let newData = data;
 
@@ -104,6 +116,15 @@ export default function ClothesList() {
   // Products Context
   const [showProducts, setShowProducts] = useContext(ProductsContext);
 
+  let dataCount = 0;
+  if (showProducts === "pending") {
+    dataCount = waitingCount;
+  } else if (showProducts === "approved") {
+    dataCount = allowedCount;
+  } else {
+    dataCount = notAllowedCount;
+  }
+
   let index = 0;
 
   // up btn
@@ -125,7 +146,48 @@ export default function ClothesList() {
       }
     });
   }, []);
-
+  const handleSendAllDeclined = () => {
+    let form = new FormData();
+    form.append("status", "declined");
+    form.append("status_reason", "Qanaqadir sababga kora");
+    getCheckList?.childData?.map((e, index) => {
+      form.append("ids[]", getCheckList?.childData[index]);
+    });
+    return fetch(`${url}/api/admin/massive-decline-products`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: form,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res, "Success - ThisIsSeveralSelected");
+      })
+      .catch((err) => console.log(err, "Error ThisIsSeveralSelected"));
+  };
+  const handleSendAllApprove = () => {
+    let form = new FormData();
+    form.append("status", "approved");
+    getCheckList?.childData?.map((e, index) => {
+      form.append("ids[]", getCheckList?.childData[index]);
+    });
+    return fetch(`${url}/api/admin/massive-approve-products`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: form,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res, "Success - handleSendAllApprove");
+      })
+      .catch((err) => console.log(err, "Error ThisIsSeveralSelected"));
+  };
+// Одобрить
   return (
     <div>
       <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
@@ -189,7 +251,7 @@ export default function ClothesList() {
               {showProducts === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    onClick={handleSendAllApprove}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -197,7 +259,7 @@ export default function ClothesList() {
                   </button>
                   <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={handleSendAllDeclined}
                     type="button"
                     className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                   >
@@ -208,7 +270,7 @@ export default function ClothesList() {
               {showProducts === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={handleSendAllDeclined}
                     type="button"
                     className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                   >
@@ -219,7 +281,7 @@ export default function ClothesList() {
               {showProducts === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    onClick={handleSendAllApprove}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -230,7 +292,7 @@ export default function ClothesList() {
               {showProducts === "status_update" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    onClick={handleSendAllApprove}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -325,7 +387,7 @@ export default function ClothesList() {
             {showProducts === "pending" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  onClick={handleSendAllApprove}
                   type="button"
                   className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
@@ -333,7 +395,7 @@ export default function ClothesList() {
                 </button>
                 <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                 <button
-                  onClick={() => setModalOpen(true)}
+                  onClick={handleSendAllDeclined}
                   type="button"
                   className="text-[#E51515] text-base not-italic font-AeonikProMedium"
                 >
@@ -344,7 +406,7 @@ export default function ClothesList() {
             {showProducts === "approved" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => setModalOpen(true)}
+                  onClick={handleSendAllDeclined}
                   type="button"
                   className="text-[#E51515] text-base not-italic font-AeonikProMedium"
                 >
@@ -512,41 +574,47 @@ export default function ClothesList() {
         </div>
 
         <div className="mx-auto font-AeonikProRegular text-[16px]">
-          <div className="mb-[10px] flex items-center text-tableTextTitle">
-            <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+          {dataCount > 0 ? (
+            <div className="mb-[10px] flex items-center text-tableTextTitle">
+              <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
 
-            <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-              <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                No:
-              </div>
-              <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Фото
-              </div>
-              <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Название
-              </div>
-              <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Артикул
-              </div>
-              <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Тип
-              </div>
-              <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Дата
-              </div>
-              <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Цена
-              </div>
-              <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                Действие
+              <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  No:
+                </div>
+                <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Фото
+                </div>
+                <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Название
+                </div>
+                <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Артикул
+                </div>
+                <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Тип
+                </div>
+                <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Дата
+                </div>
+                <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Цена
+                </div>
+                <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                  Действие
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+              <div className="font-AeonikProMedium text-xl">Нет продавцов</div>
+            </div>
+          )}
 
           <div className="w-full flex flex-col gap-y-[10px]">
             {/* Status Waiting */}
 
-            {showProducts === "pending"
+            {/* {showProducts === "pending"
               ? filteredData.map((data) => {
                   if (data?.status === "pending") {
                     ++index;
@@ -562,11 +630,65 @@ export default function ClothesList() {
                     );
                   }
                 })
-              : null}
+              : null} */}
 
             {/* Status Allowed */}
 
-            {showProducts === "approved"
+            {/* {data.map((data) => {
+              ++index;
+              return ( */}
+            {data?.map((item, index) => {
+              return (
+                <div className="w-full">
+                  {item?.shops?.length !== 0 && (
+                    <div className="w-full">
+                      <div className="w-full border border-green-500">
+                        <div className="w-full flex items-center justify-center mt-10">
+                          <p className=" hidden md:block text-textBlueColor text-2xl not-italic font-AeonikProMedium">
+                            {item?.name}
+                          </p>
+                        </div>
+                      </div>
+                      {item?.shops?.map((resData) => {
+                        return (
+                          <div className="w-full">
+                            <div>
+                              <ClothesItem
+                                data={resData}
+                                // data={data}
+                                // key={data?.id}
+                                // index={index}
+                                onHandleGetCheckList={onHandleGetCheckList}
+                                click={onCheck}
+                                setModalOpen={setModalOpen}
+                                toast={toast}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+            {/* <div className="w-full flex flex-col border border-red-500">
+              <div className="w-full  border-red-500">
+                <p>{data?.name_ru}</p>
+              </div>
+              <ClothesItem
+                data={data}
+                // key={data?.id}
+                // index={index}
+                click={onCheck}
+                setModalOpen={setModalOpen}
+                toast={toast}
+              />
+            </div> */}
+            {/* );
+            })} */}
+
+            {/* {showProducts === "approved"
               ? filteredData.map((data) => {
                   if (data?.status === "approved") {
                     ++index;
@@ -582,11 +704,11 @@ export default function ClothesList() {
                     );
                   }
                 })
-              : null}
+              : null} */}
 
             {/* Status NotAllowed */}
 
-            {showProducts === "declined"
+            {/* {showProducts === "declined"
               ? filteredData.map((data) => {
                   if (data?.status === "declined") {
                     ++index;
@@ -602,11 +724,11 @@ export default function ClothesList() {
                     );
                   }
                 })
-              : null}
+              : null} */}
 
             {/* Status Updated */}
 
-            {showProducts === "status_update"
+            {/* {showProducts === "status_update"
               ? filteredData.map((data) => {
                   if (data?.status_update === "1") {
                     ++index;
@@ -623,7 +745,7 @@ export default function ClothesList() {
                     );
                   }
                 })
-              : null}
+              : null} */}
           </div>
         </div>
       </div>

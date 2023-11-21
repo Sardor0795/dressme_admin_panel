@@ -19,13 +19,19 @@ import { SellersDataContext } from "../../../context/sellersDataContext";
 
 export default function SellersList() {
   const [modalOpen, setModalOpen] = useState(false);
-
+  const url = "https://api.dressme.uz";
+  let token = localStorage.getItem("token");
   const [data, setData] = useContext(SellersDataContext);
 
   let newData = data;
 
   const [filteredData, setFilteredData] = useState([]);
-
+  const [getCheckList, setGetCheckList] = useState({});
+  function handleGetCheckList(childData) {
+    console.log(childData, "Parent Chilld");
+    setGetCheckList({ childData });
+  }
+  console.log(getCheckList, "getCheckList");
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
@@ -105,8 +111,6 @@ export default function SellersList() {
     dataCount = notAllowedCount;
   }
 
-  let index = 0;
-
   // up btn
 
   useEffect(() => {
@@ -126,6 +130,50 @@ export default function SellersList() {
       }
     });
   }, []);
+
+  const allListOfChangeToApprove = () => {
+    console.log("allListOfChangeToApprove");
+    let form = new FormData();
+    form.append("status", "approved");
+    getCheckList?.childData?.map((e, index) => {
+      form.append("ids[]", getCheckList?.childData[index]);
+    });
+    return fetch(`${url}/api/admin/massive-approve-sellers`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: form,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res, "Success - ThisIsSeveralSelected");
+      })
+      .catch((err) => console.log(err, "Error ThisIsSeveralSelected"));
+  };
+  const allListOfChangeToDecline = () => {
+    console.log("allListOfChangeToApprove");
+    let form = new FormData();
+    form.append("status", "declined");
+    form.append("status_reason", "notings");
+    getCheckList?.childData?.map((e, index) => {
+      form.append("ids[]", getCheckList?.childData[index]);
+    });
+    return fetch(`${url}/api/admin/massive-approve-sellers`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: form,
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res, "Success - ThisIsSeveralSelected");
+      })
+      .catch((err) => console.log(err, "Error ThisIsSeveralSelected"));
+  };
 
   return (
     <div>
@@ -213,7 +261,7 @@ export default function SellersList() {
             {showSellers === "pending" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  onClick={allListOfChangeToApprove}
                   type="button"
                   className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                 >
@@ -243,7 +291,7 @@ export default function SellersList() {
             {showSellers === "declined" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  onClick={allListOfChangeToApprove}
                   type="button"
                   className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                 >
@@ -347,7 +395,7 @@ export default function SellersList() {
               {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    onClick={allListOfChangeToApprove}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -355,7 +403,7 @@ export default function SellersList() {
                   </button>
                   <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={allListOfChangeToDecline}
                     type="button"
                     className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                   >
@@ -377,7 +425,7 @@ export default function SellersList() {
               {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    onClick={allListOfChangeToApprove}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -390,7 +438,7 @@ export default function SellersList() {
         </div>
 
         <div className="mx-auto font-AeonikProRegular text-[16px]">
-          {dataCount > 0 ? (
+          {/* {dataCount > 0 ? (
             <div className="md:mb-[10px] flex items-center text-tableTextTitle">
               <div
                 onClick={() => {
@@ -440,30 +488,22 @@ export default function SellersList() {
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               <div className="font-AeonikProMedium text-xl">Нет продавцов</div>
             </div>
-          )}
+          )} */}
 
           <div className="w-full flex flex-col gap-y-[10px]">
             {/* Status Waiting */}
 
-            {showSellers === "pending"
-              ? filteredData.map((data) => {
-                  if (data?.status === "pending") {
-                    ++index;
-                    return (
-                      <SellerItems
-                        data={data}
-                        key={data?.id}
-                        index={index}
-                        click={onCheck}
-                        setModalOpen={setModalOpen}
-                        toast={toast}
-                      />
-                    );
-                  }
-                })
-              : null}
+            <SellerItems
+              handleGetCheckList={handleGetCheckList}
+              data={filteredData}
+              // key={data?.id}
+              click={onCheck}
+              setModalOpen={setModalOpen}
+              toast={toast}
+            />
+
             {/* Status Allowed */}
-            {showSellers === "approved"
+            {/* {showSellers === "approved"
               ? filteredData.map((data) => {
                   if (data?.status === "approved") {
                     ++index;
@@ -479,9 +519,9 @@ export default function SellersList() {
                     );
                   }
                 })
-              : null}
+              : null} */}
             {/* Status NotAllowed */}
-            {showSellers === "declined"
+            {/* {showSellers === "declined"
               ? filteredData.map((data) => {
                   if (data?.status === "declined") {
                     ++index;
@@ -497,7 +537,7 @@ export default function SellersList() {
                     );
                   }
                 })
-              : null}
+              : null} */}
           </div>
         </div>
       </div>

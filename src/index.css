@@ -56,3 +56,19 @@ html {
   background: rgba(225, 220, 220, 0.845);
   border-radius: 8px;
 }
+.idCheck .ant-checkbox .ant-checkbox-inner {
+  width: 25px;
+  height: 25px;
+  border: none;
+  /* background-color: red; */
+}
+
+.ant-checkbox .ant-checkbox-inner {
+  width: 25px;
+  height: 25px;
+  /* background-color: red; */
+}
+
+.ant-list-split .ant-list-item {
+  border: none;
+}
