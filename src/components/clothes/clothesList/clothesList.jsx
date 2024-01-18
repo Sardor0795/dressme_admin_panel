@@ -32,7 +32,7 @@ export default function ClothesList() {
   }, [newData]);
 
   const filterFunc = (e) => {
-    const filteredData = data.filter((v) =>
+    const filteredData = data?.filter((v) =>
       v?.name_ru.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredData(filteredData);
@@ -45,7 +45,7 @@ export default function ClothesList() {
   let notAllowedCount = 0;
   let updatedCount = 0;
 
-  filteredData.forEach((v) => {
+  filteredData?.forEach((v) => {
     if (v?.status === "pending") {
       ++waitingCount;
     } else if (v?.status === "approved") {
@@ -55,7 +55,7 @@ export default function ClothesList() {
     }
   });
 
-  filteredData.forEach((v) => {
+  filteredData?.forEach((v) => {
     if (v?.status_update === "1") {
       ++updatedCount;
     }
@@ -75,17 +75,17 @@ export default function ClothesList() {
 
   const onCheck = (id) => {
     if (id === "allCheck") {
-      let newArr = data.map((item) => {
+      let newArr = data?.map((item) => {
         return { ...item, isCheck: true };
       });
       setData(newArr);
     } else if (id === "allNotCheck") {
-      let newArr = data.map((item) => {
+      let newArr = data?.map((item) => {
         return { ...item, isCheck: false };
       });
       setData(newArr);
     } else {
-      let newArr = data.map((item) => {
+      let newArr = data?.map((item) => {
         return item.id === id ? { ...item, isCheck: !item.isCheck } : item;
       });
       setData(newArr);
@@ -93,8 +93,8 @@ export default function ClothesList() {
   };
 
   useEffect(() => {
-    let newData = data.filter((item) => item.isCheck === true);
-    if (newData.length) {
+    let newData = data?.filter((item) => item.isCheck === true);
+    if (newData?.length) {
       setSomeChecked(true);
     } else {
       setSomeChecked(false);
@@ -547,7 +547,7 @@ export default function ClothesList() {
             {/* Status Waiting */}
 
             {showProducts === "pending"
-              ? filteredData.map((data) => {
+              ? filteredData?.map((data) => {
                   if (data?.status === "pending") {
                     ++index;
                     return (
@@ -567,7 +567,7 @@ export default function ClothesList() {
             {/* Status Allowed */}
 
             {showProducts === "approved"
-              ? filteredData.map((data) => {
+              ? filteredData?.map((data) => {
                   if (data?.status === "approved") {
                     ++index;
                     return (
@@ -587,7 +587,7 @@ export default function ClothesList() {
             {/* Status NotAllowed */}
 
             {showProducts === "declined"
-              ? filteredData.map((data) => {
+              ? filteredData?.map((data) => {
                   if (data?.status === "declined") {
                     ++index;
                     return (
@@ -607,7 +607,7 @@ export default function ClothesList() {
             {/* Status Updated */}
 
             {showProducts === "status_update"
-              ? filteredData.map((data) => {
+              ? filteredData?.map((data) => {
                   if (data?.status_update === "1") {
                     ++index;
                     return (
