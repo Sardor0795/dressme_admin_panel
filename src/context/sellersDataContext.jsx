@@ -16,7 +16,7 @@ export const SellersDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((d) => {
-      setData(d.data.sellers.data);
+      setData(d?.data?.sellers);
     });
   }, []);
 
@@ -26,7 +26,7 @@ export const SellersDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((d) => {
-      setData(d.data.sellers.data);
+      setData(d?.data?.sellers);
     });
   };
 
