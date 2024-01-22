@@ -31,7 +31,7 @@ export default function SellersList() {
   }, [newData]);
 
   const filterFunc = (e) => {
-    const filteredData = data.filter((v) =>
+    const filteredData = data?.filter((v) =>
       v?.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredData(filteredData);
@@ -43,7 +43,7 @@ export default function SellersList() {
   let allowedCount = 0;
   let notAllowedCount = 0;
 
-  filteredData.forEach((v) => {
+  filteredData?.forEach((v) => {
     if (v?.status === "pending") {
       ++waitingCount;
     } else if (v?.status === "approved") {
@@ -85,8 +85,8 @@ export default function SellersList() {
   };
 
   useEffect(() => {
-    let newData = data.filter((item) => item.isCheck === true);
-    if (newData.length) {
+    let newData = data?.filter((item) => item.isCheck === true);
+    if (newData?.length) {
       setSomeChecked(true);
     } else {
       setSomeChecked(false);
@@ -446,7 +446,7 @@ export default function SellersList() {
             {/* Status Waiting */}
 
             {showSellers === "pending"
-              ? filteredData.map((data) => {
+              ? filteredData?.map((data) => {
                   if (data?.status === "pending") {
                     ++index;
                     return (
@@ -464,7 +464,7 @@ export default function SellersList() {
               : null}
             {/* Status Allowed */}
             {showSellers === "approved"
-              ? filteredData.map((data) => {
+              ? filteredData?.map((data) => {
                   if (data?.status === "approved") {
                     ++index;
                     return (
@@ -482,7 +482,7 @@ export default function SellersList() {
               : null}
             {/* Status NotAllowed */}
             {showSellers === "declined"
-              ? filteredData.map((data) => {
+              ? filteredData?.map((data) => {
                   if (data?.status === "declined") {
                     ++index;
                     return (
