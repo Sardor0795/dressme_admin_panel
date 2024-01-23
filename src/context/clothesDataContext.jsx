@@ -24,12 +24,14 @@ export const ClothesDataContextProvider = ({ children }) => {
           ++allowedCount;
         } else if (product?.status === "declined") {
           ++notAllowedCount;
+        } else if (product?.status === "updated") {
+          ++updatedCount;
         }
       });
     });
   });
 
-  let allCount = waitingCount + allowedCount + notAllowedCount;
+  let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
 
   // filteredData?.forEach((v) => {
   //   if (v?.status_update === "1") {
@@ -66,6 +68,7 @@ export const ClothesDataContextProvider = ({ children }) => {
         waitingCount,
         allowedCount,
         notAllowedCount,
+        updatedCount,
         allCount,
       ]}
     >

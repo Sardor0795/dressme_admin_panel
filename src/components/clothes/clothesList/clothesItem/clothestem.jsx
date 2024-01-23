@@ -47,7 +47,7 @@ export default function ClothesItem({
   const [, setId] = useContext(IdsContext);
 
   return (
-    <div className="flex items-center w-full">
+    <div className="flex items-center w-full mb-8">
       <div
         onClick={() => {
           click(data?.id);
@@ -99,7 +99,7 @@ export default function ClothesItem({
           {data?.cost?.price ? data?.cost?.price + " сум" : "-"}
         </div>
         <div className="w-[20%] px-4  text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {showProducts !== "status_update" ? (
+          {showProducts !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}
               <button
@@ -128,10 +128,10 @@ export default function ClothesItem({
             </div>
           ) : null}
 
-          {showProducts === "status_update" ? (
+          {showProducts === "updated" ? (
             <button
               onClick={() => approveFunc()}
-              className={` w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+              className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
             >
               Одобрить
             </button>
@@ -234,7 +234,7 @@ export default function ClothesItem({
           </div>
         </div>
 
-        {showProducts !== "status_update" ? (
+        {showProducts !== "updated" ? (
           <div className="w-full flex gap-[30px]">
             <button
               onClick={() => {
@@ -261,7 +261,7 @@ export default function ClothesItem({
             </button>
           </div>
         ) : null}
-        {showProducts === "status_update" ? (
+        {showProducts === "updated" ? (
           <div className="w-full flex gap-[30px]">
             <button
               onClick={() => approveFunc()}
