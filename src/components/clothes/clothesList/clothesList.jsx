@@ -21,7 +21,8 @@ import { ClothesDataContext } from "../../../context/clothesDataContext";
 export default function ClothesList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData] = useContext(ClothesDataContext);
+  const [data, setData, , waitingCount, allowedCount, notAllowedCount] =
+    useContext(ClothesDataContext);
 
   let newData = data;
 
@@ -40,9 +41,9 @@ export default function ClothesList() {
 
   // // Count items -----------
 
-  let waitingCount = 0;
-  let allowedCount = 0;
-  let notAllowedCount = 0;
+  // let waitingCount = 0;
+  // let allowedCount = 0;
+  // let notAllowedCount = 0;
   let updatedCount = 0;
 
   // filteredData?.forEach((v) => {
@@ -123,37 +124,6 @@ export default function ClothesList() {
       }
     });
   }, []);
-
-  // select all element ----
-
-  {
-    /* <div
-                  onClick={() => {
-                    onCheck(checkIndicator);
-                    setAllChecked(!allChecked);
-                  }}
-                  className="hidden md:flex items-center cursor-pointer select-none"
-                >
-                  Выбрать все
-                  <div
-                    className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
-                      allChecked
-                        ? "bg-[#007DCA] border-[#007DCA]"
-                        : "bg-white border-checkboxBorder"
-                    } hidden md:flex items-center justify-center rounded ml-[10px]`}
-                  >
-                    <span
-                      className={`${
-                        allChecked
-                          ? "flex items-center justify-center"
-                          : "hidden"
-                      }`}
-                    >
-                      <CheckIcon />
-                    </span>
-                  </div>
-                </div> */
-  }
 
   return (
     <div>
@@ -468,6 +438,31 @@ export default function ClothesList() {
               <span>Обновленные товары ({updatedCount})</span>
             </button>
           </section>
+
+          <div
+            onClick={() => {
+              onCheck(checkIndicator);
+              setAllChecked(!allChecked);
+            }}
+            className="hidden md:flex items-center cursor-pointer select-none font-AeonikProMedium"
+          >
+            Выбрать все
+            <div
+              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
+                allChecked
+                  ? "bg-[#007DCA] border-[#007DCA]"
+                  : "bg-white border-checkboxBorder"
+              } hidden md:flex items-center justify-center rounded ml-[10px]`}
+            >
+              <span
+                className={`${
+                  allChecked ? "flex items-center justify-center" : "hidden"
+                }`}
+              >
+                <CheckIcon />
+              </span>
+            </div>
+          </div>
         </div>
 
         {data?.map((item) => {
@@ -475,7 +470,7 @@ export default function ClothesList() {
             <div className="w-full" key={item?.id}>
               <div className="mx-auto font-AeonikProRegular text-[16px]">
                 <div className="w-full ">
-                  {/* Status Waiting -------------------------------------------- */}
+                  {/* Status Waiting */}
 
                   {showProducts === "pending" && item?.status === "pending"
                     ? item?.shops?.map((item_2) => {

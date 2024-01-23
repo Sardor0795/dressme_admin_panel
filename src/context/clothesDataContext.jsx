@@ -10,6 +10,33 @@ export const ClothesDataContextProvider = ({ children }) => {
 
   let token = localStorage.getItem("token");
 
+  let waitingCount = 0;
+  let allowedCount = 0;
+  let notAllowedCount = 0;
+  let updatedCount = 0;
+
+  data?.forEach((seller) => {
+    seller?.shops?.forEach((shop) => {
+      shop?.products?.forEach((product) => {
+        if (product?.status === "pending") {
+          ++waitingCount;
+        } else if (product?.status === "approved") {
+          ++allowedCount;
+        } else {
+          ++notAllowedCount;
+        }
+      });
+    });
+  });
+
+  let allCount = waitingCount + allowedCount + notAllowedCount;
+
+  // filteredData?.forEach((v) => {
+  //   if (v?.status_update === "1") {
+  //     ++updatedCount;
+  //   }
+  // });
+
   useEffect(() => {
     axios(`${url}/api/admin/products`, {
       headers: {
@@ -31,7 +58,16 @@ export const ClothesDataContextProvider = ({ children }) => {
   };
 
   return (
-    <ClothesDataContext.Provider value={[data, setData, reFetch]}>
+    <ClothesDataContext.Provider
+      value={[
+        data,
+        setData,
+        reFetch,
+        waitingCount,
+        allowedCount,
+        notAllowedCount,
+      ]}
+    >
       {children}
     </ClothesDataContext.Provider>
   );
