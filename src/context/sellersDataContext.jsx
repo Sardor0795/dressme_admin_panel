@@ -12,6 +12,8 @@ export const SellersDataContextProvider = ({ children }) => {
 
   let token = localStorage.getItem("token");
 
+  console.log(token);
+
   useEffect(() => {
     if (token) {
       axios(`${url}/api/admin/sellers`, {

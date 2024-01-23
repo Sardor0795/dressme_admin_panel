@@ -31,6 +31,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
           localStorage.removeItem("email");
           localStorage.removeItem("password");
           navigate("/signin");
+          location.reload();
         }
       })
       .catch((er) => {
