@@ -36,7 +36,9 @@ export const SellersDataContextProvider = ({ children }) => {
   };
 
   return (
-    <SellersDataContext.Provider value={[data, setData, reFetch, loader]}>
+    <SellersDataContext.Provider
+      value={[data, setData, reFetch, loader, setLoader]}
+    >
       {children}
     </SellersDataContext.Provider>
   );

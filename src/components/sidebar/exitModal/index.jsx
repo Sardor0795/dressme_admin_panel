@@ -8,7 +8,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
   let token = sessionStorage.getItem("token");
 
-  const [, setData] = useContext(SellersDataContext);
+  const [, setData, , , setLoader] = useContext(SellersDataContext);
 
   const navigate = useNavigate();
 
@@ -33,8 +33,8 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
         if (d?.status === 200) {
           sessionStorage.clear();
           navigate("/signin");
-          // setData(null);
-          location.reload();
+          setData(null);
+          setLoader(false);
         }
       })
       .catch((er) => {
