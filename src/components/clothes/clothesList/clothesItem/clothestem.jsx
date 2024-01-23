@@ -90,7 +90,7 @@ export default function ClothesItem({
           {data?.sku}
         </div>
         <div className="w-[10%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.type?.name_ru} - {data?.status}
+          {data?.type?.name_ru}
         </div>
         <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.created_at}
