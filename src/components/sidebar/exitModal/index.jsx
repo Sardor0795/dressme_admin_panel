@@ -33,8 +33,8 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
         if (d?.status === 200) {
           sessionStorage.clear();
           navigate("/signin");
-          setData([]);
-          // location.reload();
+          // setData(null);
+          location.reload();
         }
       })
       .catch((er) => {
