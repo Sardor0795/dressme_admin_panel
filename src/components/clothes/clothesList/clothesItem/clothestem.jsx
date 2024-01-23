@@ -71,8 +71,16 @@ export default function ClothesItem({
           {index}
         </div>
         <div className="w-[8%]">
-          <div className="bg-[#FCFCFC] border border-[#F2F2F2] w-[60px] h-[60px] flex items-center justify-center rounded-[12px]">
-            <NoImgIcon />
+          <div
+            style={{
+              backgroundImage: `url(${data?.photos[0]?.url_photo})`,
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+            className="bg-[#FCFCFC] border border-[#F2F2F2] w-[60px] h-[60px] flex items-center justify-center rounded-[12px]"
+          >
+            {data?.photos[0]?.url_photo ? null : <NoImgIcon />}
           </div>
         </div>
         <div className="w-[16%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
@@ -82,7 +90,7 @@ export default function ClothesItem({
           {data?.sku}
         </div>
         <div className="w-[10%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.type?.name_ru}
+          {data?.type?.name_ru} - {data?.status}
         </div>
         <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.created_at}

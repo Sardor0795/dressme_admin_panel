@@ -16,7 +16,6 @@ export const ClothesDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${token}`,
       },
     }).then((d) => {
-      console.log(d);
       setData(d?.data?.sellers_products?.data);
     });
   }, []);
