@@ -21,8 +21,15 @@ import { ClothesDataContext } from "../../../context/clothesDataContext";
 export default function ClothesList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData, , waitingCount, allowedCount, notAllowedCount] =
-    useContext(ClothesDataContext);
+  const [
+    data,
+    setData,
+    ,
+    waitingCount,
+    allowedCount,
+    notAllowedCount,
+    allCount,
+  ] = useContext(ClothesDataContext);
 
   let newData = data;
 
@@ -175,7 +182,7 @@ export default function ClothesList() {
               Общее количество:
             </span>
             <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
-              {data?.length}
+              {allCount}
             </span>
           </div>
 

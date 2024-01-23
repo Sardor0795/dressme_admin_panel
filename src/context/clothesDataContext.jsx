@@ -22,7 +22,7 @@ export const ClothesDataContextProvider = ({ children }) => {
           ++waitingCount;
         } else if (product?.status === "approved") {
           ++allowedCount;
-        } else {
+        } else if (product?.status === "declined") {
           ++notAllowedCount;
         }
       });
@@ -66,6 +66,7 @@ export const ClothesDataContextProvider = ({ children }) => {
         waitingCount,
         allowedCount,
         notAllowedCount,
+        allCount,
       ]}
     >
       {children}
