@@ -8,7 +8,7 @@ import { ClothesDataContext } from "../../../../context/clothesDataContext";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
-  let token = localStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
 
   const [id] = useContext(IdsContext);
   const ref = useRef();

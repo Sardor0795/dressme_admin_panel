@@ -37,9 +37,9 @@ export const SignInComponent = () => {
       const data = await axios.post(`${url}/api/admin/login`, reqObj);
 
       if (data.status === 200) {
-        localStorage.setItem("token", data.data.access_token);
-        localStorage.setItem("email", reqObj.email);
-        localStorage.setItem("password", reqObj.password);
+        sessionStorage.setItem("token", data.data.access_token);
+        sessionStorage.setItem("email", reqObj.email);
+        sessionStorage.setItem("password", reqObj.password);
         navigate("/sellers");
         location.reload();
       }

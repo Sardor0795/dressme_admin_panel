@@ -15,7 +15,7 @@ export default function ClothesItem({
   showProducts,
 }) {
   const url = "https://api.dressme.uz";
-  let token = localStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
 
   const [, , reFetch] = useContext(ClothesDataContext);
 

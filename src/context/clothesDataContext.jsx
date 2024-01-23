@@ -1458,7 +1458,7 @@ export const ClothesDataContextProvider = ({ children }) => {
 
   const url = "https://api.dressme.uz";
 
-  let token = localStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
 
   let waitingCount = 0;
   let allowedCount = 0;

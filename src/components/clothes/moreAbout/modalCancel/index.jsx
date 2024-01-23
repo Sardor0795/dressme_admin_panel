@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CancelModal({ setModalOpen, modalOpen, id }) {
   const url = "https://api.dressme.uz";
-  let token = localStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
 
   const ref = useRef();
   const navigate = useNavigate();

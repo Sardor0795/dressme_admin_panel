@@ -1,16 +1,20 @@
 import axios from "axios";
+import { useContext } from "react";
 import { ExitIcon, XIcon } from "../../../assets/icon";
 import { useNavigate } from "react-router-dom";
+import { SellersDataContext } from "../../../context/sellersDataContext";
 
 export default function ExitModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
-  let token = localStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
+
+  const [, setData] = useContext(SellersDataContext);
 
   const navigate = useNavigate();
 
   const logOut = () => {
-    let email = localStorage.getItem("email");
-    let password = localStorage.getItem("password");
+    let email = sessionStorage.getItem("email");
+    let password = sessionStorage.getItem("password");
     axios
       .post(
         `${url}/api/admin/logout`,
@@ -27,11 +31,10 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
       )
       .then((d) => {
         if (d?.status === 200) {
-          localStorage.removeItem("token");
-          localStorage.removeItem("email");
-          localStorage.removeItem("password");
+          sessionStorage.clear();
           navigate("/signin");
-          location.reload();
+          setData([]);
+          // location.reload();
         }
       })
       .catch((er) => {

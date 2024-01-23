@@ -10,7 +10,7 @@ export const SellersDataContextProvider = ({ children }) => {
 
   const url = "https://api.dressme.uz";
 
-  let token = localStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
 
   console.log(token);
 

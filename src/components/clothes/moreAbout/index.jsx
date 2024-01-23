@@ -24,7 +24,7 @@ export const ClothMoreAbout = () => {
   const subSections = data?.sub_sections ? data?.sub_sections : [];
 
   const params = useParams();
-  let token = localStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
 
   const navigate = useNavigate();
 

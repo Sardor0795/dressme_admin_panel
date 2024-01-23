@@ -17,7 +17,7 @@ export const MoreAbout = () => {
 
   const navigate = useNavigate();
   const params = useParams();
-  let token = localStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
 
   useEffect(() => {
     axios(`${url}/api/admin/sellers/${params?.id}`, {

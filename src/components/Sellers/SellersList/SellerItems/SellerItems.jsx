@@ -15,7 +15,7 @@ export default function SellerItems({
   const [, , reFetch] = useContext(SellersDataContext);
 
   const url = "https://api.dressme.uz";
-  let token = localStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
 
   const approveFunc = () => {
     axios
