@@ -41,6 +41,7 @@ export const SignInComponent = () => {
         localStorage.setItem("email", reqObj.email);
         localStorage.setItem("password", reqObj.password);
         navigate("/sellers");
+        location.reload();
       }
     } catch (error) {
       setErrorMsg({ visibility: true, msg: error?.response?.data?.message });
@@ -61,7 +62,7 @@ export const SignInComponent = () => {
           Вход для Администраторов
         </h1>
 
-        <div className="border py-[25px] px-[15px] md:p-[30px] rounded-xl w-full">
+        <form className="border py-[25px] px-[15px] md:p-[30px] rounded-xl w-full">
           <label className="w-full h-fit mb-[20px] block">
             <div className=" flex items-center justify-between w-full">
               <div className="not-italic font-AeonikProRegular text-sm md:text-lg text-black  tracking-[0,16px] ">
@@ -76,6 +77,7 @@ export const SignInComponent = () => {
                 required
                 name="email"
                 inputMode="email"
+                autoComplete="username"
                 ref={emailRef}
               />
               <span>
@@ -95,6 +97,7 @@ export const SignInComponent = () => {
                 placeholder="Parolingizni kiriting"
                 required
                 name="password"
+                autoComplete="current-password"
                 ref={passwordRef}
               />
               <span
@@ -123,7 +126,7 @@ export const SignInComponent = () => {
               <CircleNextIcon />
             </span>
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );
