@@ -115,9 +115,9 @@ export const SignInComponent = () => {
             </div>
           ) : null}
 
-          <button
+          <div
             onClick={signIn}
-            className="w-full active:scale-95  active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
+            className="w-full active:scale-95 cursor-pointer select-none active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
           >
             <span className="text-center text-base md:text-lg text-white not-italic font-AeonikProMedium">
               Войти в систему
@@ -125,7 +125,7 @@ export const SignInComponent = () => {
             <span>
               <CircleNextIcon />
             </span>
-          </button>
+          </div>
         </form>
       </div>
     </div>

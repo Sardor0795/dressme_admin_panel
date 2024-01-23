@@ -6,18 +6,23 @@ export const SellersDataContext = createContext();
 export const SellersDataContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
 
+  const [loader, setLoader] = useState(false);
+
   const url = "https://api.dressme.uz";
 
   let token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios(`${url}/api/admin/sellers`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((d) => {
-      setData(d?.data?.sellers);
-    });
+    if (token) {
+      axios(`${url}/api/admin/sellers`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((d) => {
+        setData(d?.data?.sellers);
+        setLoader(true);
+      });
+    }
   }, []);
 
   const reFetch = () => {
@@ -31,7 +36,7 @@ export const SellersDataContextProvider = ({ children }) => {
   };
 
   return (
-    <SellersDataContext.Provider value={[data, setData, reFetch]}>
+    <SellersDataContext.Provider value={[data, setData, reFetch, loader]}>
       {children}
     </SellersDataContext.Provider>
   );

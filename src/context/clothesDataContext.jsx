@@ -1489,15 +1489,17 @@ export const ClothesDataContextProvider = ({ children }) => {
   //   }
   // });
 
-  // useEffect(() => {
-  //   axios(`${url}/api/admin/products`, {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then((d) => {
-  //     setData(d?.data?.sellers_products?.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    if (token) {
+      axios(`${url}/api/admin/products`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((d) => {
+        setData(d?.data?.sellers_products?.data);
+      });
+    }
+  }, []);
 
   const reFetch = () => {
     axios(`${url}/api/admin/products`, {

@@ -6,6 +6,8 @@ import { SellersContext } from "../../../context/sellersContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import WiFiLoader from "../../../assets/loader/wifi_loader.gif";
+
 import {
   AllowedIcon,
   BackIcon,
@@ -20,7 +22,7 @@ import { SellersDataContext } from "../../../context/sellersDataContext";
 export default function SellersList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData] = useContext(SellersDataContext);
+  const [data, setData, , loader] = useContext(SellersDataContext);
 
   let newData = data;
 
@@ -438,7 +440,21 @@ export default function SellersList() {
             </div>
           ) : (
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-              <div className="font-AeonikProMedium text-xl">Нет продавцов</div>
+              {loader ? (
+                <div className="font-AeonikProMedium text-xl">
+                  Нет продавцов
+                </div>
+              ) : (
+                <div
+                  style={{
+                    backgroundImage: `url('${WiFiLoader}')`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center center",
+                  }}
+                  className="w-[100px] h-[100px]"
+                ></div>
+              )}
             </div>
           )}
 
