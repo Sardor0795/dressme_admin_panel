@@ -501,6 +501,12 @@ export default function ClothesList() {
                     {showProducts === "pending"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
+                          let productLength = 0;
+                          item_2?.products?.forEach((v) => {
+                            if (v?.status === "pending") {
+                              ++productLength;
+                            }
+                          });
                           return (
                             <div key={item_2?.id}>
                               {item_2?.products?.length ? (
@@ -569,8 +575,7 @@ export default function ClothesList() {
                                                         {item?.name}
                                                       </button>
                                                       - {item_2?.name} (
-                                                      {item_2?.products?.length}
-                                                      )
+                                                      {productLength})
                                                     </div>
                                                   </div>
 
@@ -633,6 +638,12 @@ export default function ClothesList() {
                     {showProducts === "approved"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
+                          let productLength = 0;
+                          item_2?.products?.forEach((v) => {
+                            if (v?.status === "approved") {
+                              ++productLength;
+                            }
+                          });
                           return (
                             <div key={item_2?.id}>
                               {item_2?.products?.length ? (
@@ -701,8 +712,7 @@ export default function ClothesList() {
                                                         {item?.name}
                                                       </button>
                                                       - {item_2?.name} (
-                                                      {item_2?.products?.length}
-                                                      )
+                                                      {productLength})
                                                     </div>
                                                   </div>
 
@@ -765,6 +775,12 @@ export default function ClothesList() {
                     {showProducts === "declined"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
+                          let productLength = 0;
+                          item_2?.products?.forEach((v) => {
+                            if (v?.status === "declined") {
+                              ++productLength;
+                            }
+                          });
                           return (
                             <div key={item_2?.id}>
                               {item_2?.products?.length ? (
@@ -833,8 +849,7 @@ export default function ClothesList() {
                                                         {item?.name}
                                                       </button>
                                                       - {item_2?.name} (
-                                                      {item_2?.products?.length}
-                                                      )
+                                                      {productLength})
                                                     </div>
                                                   </div>
 
@@ -897,6 +912,12 @@ export default function ClothesList() {
                     {showProducts === "updated"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
+                          let productLength = 0;
+                          item_2?.products?.forEach((v) => {
+                            if (v?.status === "updated") {
+                              ++productLength;
+                            }
+                          });
                           return (
                             <div key={item_2?.id}>
                               {item_2?.products?.length ? (
@@ -965,8 +986,7 @@ export default function ClothesList() {
                                                         {item?.name}
                                                       </button>
                                                       - {item_2?.name} (
-                                                      {item_2?.products?.length}
-                                                      )
+                                                      {productLength})
                                                     </div>
                                                   </div>
 
