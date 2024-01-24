@@ -13,4 +13,10 @@ export const sidebarData = [
     path: "/clothes",
     icon: <ClothesIcon />,
   },
+  {
+    id: 3,
+    title: "Shops",
+    path: "/shops",
+    icon: <ClothesIcon />,
+  },
 ];

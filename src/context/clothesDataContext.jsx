@@ -1338,35 +1338,6 @@ export const ClothesDataContextProvider = ({ children }) => {
 
   let token = sessionStorage.getItem("token");
 
-  let waitingCount = 0;
-  let allowedCount = 0;
-  let notAllowedCount = 0;
-  let updatedCount = 0;
-
-  data?.forEach((seller) => {
-    seller?.shops?.forEach((shop) => {
-      shop?.products?.forEach((product) => {
-        if (product?.status === "pending") {
-          ++waitingCount;
-        } else if (product?.status === "approved") {
-          ++allowedCount;
-        } else if (product?.status === "declined") {
-          ++notAllowedCount;
-        } else if (product?.status === "updated") {
-          ++updatedCount;
-        }
-      });
-    });
-  });
-
-  let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
-
-  // filteredData?.forEach((v) => {
-  //   if (v?.status_update === "1") {
-  //     ++updatedCount;
-  //   }
-  // });
-
   // setTimeout(() => {
   //   setLoader(false);
   // }, 5000);
@@ -1396,18 +1367,7 @@ export const ClothesDataContextProvider = ({ children }) => {
 
   return (
     <ClothesDataContext.Provider
-      value={[
-        data,
-        setData,
-        reFetch,
-        waitingCount,
-        allowedCount,
-        notAllowedCount,
-        updatedCount,
-        allCount,
-        loader,
-        setLoader,
-      ]}
+      value={[data, setData, reFetch, loader, setLoader]}
     >
       {children}
     </ClothesDataContext.Provider>

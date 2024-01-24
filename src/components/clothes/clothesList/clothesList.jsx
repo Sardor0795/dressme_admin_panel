@@ -23,56 +23,47 @@ import { ClothesDataContext } from "../../../context/clothesDataContext";
 export default function ClothesList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [
-    data,
-    setData,
-    ,
-    waitingCount,
-    allowedCount,
-    notAllowedCount,
-    updatedCount,
-    allCount,
-    loader,
-    setLoader,
-  ] = useContext(ClothesDataContext);
+  const [data, setData, , loader] = useContext(ClothesDataContext);
 
-  // let newData = data;
+  let newData = data;
 
-  // const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  // useEffect(() => {
-  //   setFilteredData(newData);
-  // }, [newData]);
+  useEffect(() => {
+    setFilteredData(newData);
+  }, [newData]);
 
   const filterFunc = (e) => {
-    // const filteredData = data?.filter((v) =>
-    //   v?.name_ru.toLowerCase().includes(e.target.value.toLowerCase())
-    // );
-    // setFilteredData(filteredData);
+    const filteredData = data?.filter((v) =>
+      v?.name_ru.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredData(filteredData);
   };
 
   // // Count items -----------
 
-  // let waitingCount = 0;
-  // let allowedCount = 0;
-  // let notAllowedCount = 0;
-  // let updatedCount = 0;
+  let waitingCount = 0;
+  let allowedCount = 0;
+  let notAllowedCount = 0;
+  let updatedCount = 0;
 
-  // filteredData?.forEach((v) => {
-  //   if (v?.status === "pending") {
-  //     ++waitingCount;
-  //   } else if (v?.status === "approved") {
-  //     ++allowedCount;
-  //   } else {
-  //     ++notAllowedCount;
-  //   }
-  // });
+  data?.forEach((seller) => {
+    seller?.shops?.forEach((shop) => {
+      shop?.products?.forEach((product) => {
+        if (product?.status === "pending") {
+          ++waitingCount;
+        } else if (product?.status === "approved") {
+          ++allowedCount;
+        } else if (product?.status === "declined") {
+          ++notAllowedCount;
+        } else if (product?.status === "updated") {
+          ++updatedCount;
+        }
+      });
+    });
+  });
 
-  // filteredData?.forEach((v) => {
-  //   if (v?.status_update === "1") {
-  //     ++updatedCount;
-  //   }
-  // });
+  let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
 
   // // -----------------
 
