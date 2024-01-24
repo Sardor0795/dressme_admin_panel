@@ -251,7 +251,7 @@ export default function ClothesList() {
                   </button>
                 </div>
               ) : null}
-              {showProducts === "status_update" ? (
+              {showProducts === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     onClick={() => approveFunc()}
@@ -301,9 +301,9 @@ export default function ClothesList() {
             <div>({notAllowedCount})</div>
           </div>
           <div
-            onClick={() => setShowProducts("status_update")}
+            onClick={() => setShowProducts("updated")}
             className={`${
-              showProducts === "status_update"
+              showProducts === "updated"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
