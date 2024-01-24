@@ -27,24 +27,19 @@ export default function ClothesList() {
 
   let newData = data;
 
-  const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
 
-  const filterDataByName = () => {
-    const filtered = data.map((seller) => {
-      const filteredShops = seller.shops.map((shop) => {
-        const filteredProducts = (shop.products || []).filter((product) => {
-          const productNameUz = product.name_uz || "";
-          const productNameRu = product.name_ru || "";
-
-          return (
-            productNameUz.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            productNameRu.toLowerCase().includes(searchTerm.toLowerCase())
-          );
+  const filterFunc = (e) => {
+    const filtered = data?.map((seller) => {
+      const filteredShops = seller?.shops?.map((shop) => {
+        const filteredProducts = shop?.products.filter((product) => {
+          return product?.name_ru
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase());
         });
 
         return { ...shop, products: filteredProducts };
@@ -56,23 +51,6 @@ export default function ClothesList() {
     setFilteredData(filtered);
   };
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const filterFunc = (e) => {
-    // const filteredData = data?.forEach((seller) => {
-    //   seller?.shops?.forEach((shop) => {
-    //     shop?.products?.filter((product) =>
-    //       product?.name_ru.toLowerCase().includes(e.target.value.toLowerCase())
-    //     );
-    //   });
-    // });
-    // setFilteredData(filteredData);
-  };
-
-  console.log(filteredData);
-
   // // Count items -----------
 
   let waitingCount = 0;
@@ -80,7 +58,7 @@ export default function ClothesList() {
   let notAllowedCount = 0;
   let updatedCount = 0;
 
-  data?.forEach((seller) => {
+  filteredData?.forEach((seller) => {
     seller?.shops?.forEach((shop) => {
       shop?.products?.forEach((product) => {
         if (product?.status === "pending") {
@@ -513,7 +491,7 @@ export default function ClothesList() {
         </div>
 
         {dataCount ? (
-          data?.map((item) => {
+          filteredData?.map((item) => {
             return (
               <div className="w-full" key={item?.id}>
                 <div className="mx-auto font-AeonikProRegular text-[16px]">
@@ -523,6 +501,12 @@ export default function ClothesList() {
                     {showProducts === "pending"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
+                          let productLength = 0;
+                          item_2?.products?.forEach((v) => {
+                            if (v?.status === "pending") {
+                              ++productLength;
+                            }
+                          });
                           return (
                             <div key={item_2?.id}>
                               {item_2?.products?.length ? (
@@ -591,8 +575,7 @@ export default function ClothesList() {
                                                         {item?.name}
                                                       </button>
                                                       - {item_2?.name} (
-                                                      {item_2?.products?.length}
-                                                      )
+                                                      {productLength})
                                                     </div>
                                                   </div>
 
@@ -655,6 +638,12 @@ export default function ClothesList() {
                     {showProducts === "approved"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
+                          let productLength = 0;
+                          item_2?.products?.forEach((v) => {
+                            if (v?.status === "approved") {
+                              ++productLength;
+                            }
+                          });
                           return (
                             <div key={item_2?.id}>
                               {item_2?.products?.length ? (
@@ -723,8 +712,7 @@ export default function ClothesList() {
                                                         {item?.name}
                                                       </button>
                                                       - {item_2?.name} (
-                                                      {item_2?.products?.length}
-                                                      )
+                                                      {productLength})
                                                     </div>
                                                   </div>
 
@@ -787,6 +775,12 @@ export default function ClothesList() {
                     {showProducts === "declined"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
+                          let productLength = 0;
+                          item_2?.products?.forEach((v) => {
+                            if (v?.status === "declined") {
+                              ++productLength;
+                            }
+                          });
                           return (
                             <div key={item_2?.id}>
                               {item_2?.products?.length ? (
@@ -855,8 +849,7 @@ export default function ClothesList() {
                                                         {item?.name}
                                                       </button>
                                                       - {item_2?.name} (
-                                                      {item_2?.products?.length}
-                                                      )
+                                                      {productLength})
                                                     </div>
                                                   </div>
 
@@ -919,6 +912,12 @@ export default function ClothesList() {
                     {showProducts === "updated"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
+                          let productLength = 0;
+                          item_2?.products?.forEach((v) => {
+                            if (v?.status === "updated") {
+                              ++productLength;
+                            }
+                          });
                           return (
                             <div key={item_2?.id}>
                               {item_2?.products?.length ? (
@@ -987,8 +986,7 @@ export default function ClothesList() {
                                                         {item?.name}
                                                       </button>
                                                       - {item_2?.name} (
-                                                      {item_2?.products?.length}
-                                                      )
+                                                      {productLength})
                                                     </div>
                                                   </div>
 
@@ -1063,7 +1061,7 @@ export default function ClothesList() {
                 className="w-[100px] h-[100px]"
               ></div>
             ) : (
-              <div className="font-AeonikProMedium text-xl">Нет продавцов</div>
+              <div className="font-AeonikProMedium text-xl">Нет товары</div>
             )}
           </div>
         )}

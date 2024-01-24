@@ -18,5 +18,5 @@ export const sidebarData = [
     title: "Товары",
     path: "/clothes",
     icon: <ClothesIcon />,
-  },
+  }
 ];
