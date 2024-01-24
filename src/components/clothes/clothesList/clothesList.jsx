@@ -1061,7 +1061,7 @@ export default function ClothesList() {
                 className="w-[100px] h-[100px]"
               ></div>
             ) : (
-              <div className="font-AeonikProMedium text-xl">Нет продавцов</div>
+              <div className="font-AeonikProMedium text-xl">Нет товары</div>
             )}
           </div>
         )}
