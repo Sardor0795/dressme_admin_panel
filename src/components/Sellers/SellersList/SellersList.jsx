@@ -441,10 +441,6 @@ export default function SellersList() {
           ) : (
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
-                <div className="font-AeonikProMedium text-xl">
-                  Нет продавцов
-                </div>
-              ) : (
                 <div
                   style={{
                     backgroundImage: `url('${WiFiLoader}')`,
@@ -454,6 +450,10 @@ export default function SellersList() {
                   }}
                   className="w-[100px] h-[100px]"
                 ></div>
+              ) : (
+                <div className="font-AeonikProMedium text-xl">
+                  Нет продавцов
+                </div>
               )}
             </div>
           )}

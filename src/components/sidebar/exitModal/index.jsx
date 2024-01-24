@@ -34,7 +34,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
           sessionStorage.clear();
           navigate("/signin");
           setData(null);
-          setLoader(false);
+          setLoader(true);
         }
       })
       .catch((er) => {

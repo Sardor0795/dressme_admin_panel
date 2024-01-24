@@ -4,7 +4,7 @@ import { createContext, useEffect, useState } from "react";
 export const SellersDataContext = createContext();
 
 export const SellersDataContextProvider = ({ children }) => {
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   const [data, setData] = useState([]);
 
@@ -20,7 +20,7 @@ export const SellersDataContextProvider = ({ children }) => {
         },
       }).then((d) => {
         setData(d?.data?.sellers);
-        setLoader(true);
+        setLoader(false);
       });
     }
   }, []);
