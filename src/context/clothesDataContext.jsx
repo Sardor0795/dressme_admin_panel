@@ -1277,7 +1277,7 @@ export const ClothesDataContextProvider = ({ children }) => {
   //           {
   //             id: 10,
   //             name_uz: "product_name_10",
-  //             name_ru: "product_name_10",
+  //             name_ru: "Sardor",
   //             gender_id: "2",
   //             min_age_category: "12",
   //             max_age_category: "48",
@@ -1340,7 +1340,7 @@ export const ClothesDataContextProvider = ({ children }) => {
 
   // setTimeout(() => {
   //   setLoader(false);
-  // }, 5000);
+  // }, 2000);
 
   useEffect(() => {
     if (token) {
