@@ -1,4 +1,9 @@
-import { ClothesIcon, SidebarShopIcon, UsersProfileIcon } from "../assets/icon";
+import {
+  ClothesIcon,
+  SidebarLocationsIcon,
+  SidebarShopIcon,
+  UsersProfileIcon,
+} from "../assets/icon";
 
 export const sidebarData = [
   {
@@ -18,5 +23,11 @@ export const sidebarData = [
     title: "Товары",
     path: "/clothes",
     icon: <ClothesIcon />,
-  }
+  },
+  {
+    id: 4,
+    title: "Локации",
+    path: "/locations",
+    icon: <SidebarLocationsIcon />,
+  },
 ];
