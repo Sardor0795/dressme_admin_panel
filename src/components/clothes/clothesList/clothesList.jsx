@@ -27,18 +27,51 @@ export default function ClothesList() {
 
   let newData = data;
 
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
 
-  const filterFunc = (e) => {
-    const filteredData = data?.filter((v) =>
-      v?.name_ru.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    setFilteredData(filteredData);
+  const filterDataByName = () => {
+    const filtered = data.map((seller) => {
+      const filteredShops = seller.shops.map((shop) => {
+        const filteredProducts = (shop.products || []).filter((product) => {
+          const productNameUz = product.name_uz || "";
+          const productNameRu = product.name_ru || "";
+
+          return (
+            productNameUz.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            productNameRu.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+        });
+
+        return { ...shop, products: filteredProducts };
+      });
+
+      return { ...seller, shops: filteredShops };
+    });
+
+    setFilteredData(filtered);
   };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filterFunc = (e) => {
+    // const filteredData = data?.forEach((seller) => {
+    //   seller?.shops?.forEach((shop) => {
+    //     shop?.products?.filter((product) =>
+    //       product?.name_ru.toLowerCase().includes(e.target.value.toLowerCase())
+    //     );
+    //   });
+    // });
+    // setFilteredData(filteredData);
+  };
+
+  console.log(filteredData);
 
   // // Count items -----------
 
