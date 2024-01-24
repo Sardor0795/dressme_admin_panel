@@ -4,9 +4,9 @@ import { createContext, useEffect, useState } from "react";
 export const SellersDataContext = createContext();
 
 export const SellersDataContextProvider = ({ children }) => {
-  const [data, setData] = useState([]);
-
   const [loader, setLoader] = useState(false);
+
+  const [data, setData] = useState([]);
 
   const url = "https://api.dressme.uz";
 

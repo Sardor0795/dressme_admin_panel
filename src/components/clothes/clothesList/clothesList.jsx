@@ -6,6 +6,8 @@ import { ProductsContext } from "../../../context/productsContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import WiFiLoader from "../../../assets/loader/wifi_loader.gif";
+
 import {
   AllowedIcon,
   BackIcon,
@@ -30,6 +32,8 @@ export default function ClothesList() {
     notAllowedCount,
     updatedCount,
     allCount,
+    loader,
+    setLoader,
   ] = useContext(ClothesDataContext);
 
   // let newData = data;
@@ -112,6 +116,17 @@ export default function ClothesList() {
 
   // Products Context
   const [showProducts, setShowProducts] = useContext(ProductsContext);
+
+  let dataCount = 0;
+  if (showProducts === "pending") {
+    dataCount = waitingCount;
+  } else if (showProducts === "approved") {
+    dataCount = allowedCount;
+  } else if (showProducts === "declined") {
+    dataCount = notAllowedCount;
+  } else if (showProducts === "updated") {
+    dataCount = updatedCount;
+  }
 
   // up btn
 
@@ -473,523 +488,561 @@ export default function ClothesList() {
           </div>
         </div>
 
-        {data?.map((item) => {
-          return (
-            <div className="w-full" key={item?.id}>
-              <div className="mx-auto font-AeonikProRegular text-[16px]">
-                <div className="w-full ">
-                  {/* Status Waiting */}
+        {dataCount ? (
+          data?.map((item) => {
+            return (
+              <div className="w-full" key={item?.id}>
+                <div className="mx-auto font-AeonikProRegular text-[16px]">
+                  <div className="w-full ">
+                    {/* Status Waiting */}
 
-                  {showProducts === "pending"
-                    ? item?.shops?.map((item_2) => {
-                        let index = 0;
-                        return (
-                          <div key={item_2?.id}>
-                            {item_2?.products?.length ? (
-                              <div className="w-full">
-                                <div className="">
-                                  {item_2?.products?.map((item_3) => {
-                                    if (item_3?.status === "pending") {
-                                      ++index;
-                                    }
+                    {showProducts === "pending"
+                      ? item?.shops?.map((item_2) => {
+                          let index = 0;
+                          return (
+                            <div key={item_2?.id}>
+                              {item_2?.products?.length ? (
+                                <div className="w-full">
+                                  <div className="">
+                                    {item_2?.products?.map((item_3) => {
+                                      if (item_3?.status === "pending") {
+                                        ++index;
+                                      }
 
-                                    return (
-                                      <div key={item_3?.id}>
-                                        {item_3?.status === "pending" ? (
-                                          <div className="mb-8">
-                                            {index === 1 ? (
-                                              <div className="w-ful">
-                                                <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                  <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                                                    <div
-                                                      onClick={() => {
-                                                        onCheck(checkIndicator);
-                                                        setAllChecked(
-                                                          !allChecked
-                                                        );
-                                                      }}
-                                                      className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                        allChecked
-                                                          ? "bg-[#007DCA] border-[#007DCA]"
-                                                          : "bg-white border-checkboxBorder"
-                                                      } flex items-center justify-center rounded mr-[8px]`}
-                                                    >
-                                                      <span
-                                                        className={`${
+                                      return (
+                                        <div key={item_3?.id}>
+                                          {item_3?.status === "pending" ? (
+                                            <div className="mb-8">
+                                              {index === 1 ? (
+                                                <div className="w-ful">
+                                                  <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                      <div
+                                                        onClick={() => {
+                                                          onCheck(
+                                                            checkIndicator
+                                                          );
+                                                          setAllChecked(
+                                                            !allChecked
+                                                          );
+                                                        }}
+                                                        className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                                                           allChecked
-                                                            ? "hidden md:flex items-center justify-center"
-                                                            : "hidden"
-                                                        }`}
+                                                            ? "bg-[#007DCA] border-[#007DCA]"
+                                                            : "bg-white border-checkboxBorder"
+                                                        } flex items-center justify-center rounded mr-[8px]`}
                                                       >
-                                                        <CheckIcon />
-                                                      </span>
-                                                      <span
-                                                        className={`${
-                                                          allChecked
-                                                            ? "flex md:hidden items-center justify-center"
-                                                            : "hidden"
-                                                        }`}
+                                                        <span
+                                                          className={`${
+                                                            allChecked
+                                                              ? "hidden md:flex items-center justify-center"
+                                                              : "hidden"
+                                                          }`}
+                                                        >
+                                                          <CheckIcon />
+                                                        </span>
+                                                        <span
+                                                          className={`${
+                                                            allChecked
+                                                              ? "flex md:hidden items-center justify-center"
+                                                              : "hidden"
+                                                          }`}
+                                                        >
+                                                          <CheckIcon
+                                                            size={"small"}
+                                                          />
+                                                        </span>
+                                                      </div>
+                                                      <button
+                                                        onClick={() => {
+                                                          onCheck(
+                                                            checkIndicator
+                                                          );
+                                                          setAllChecked(
+                                                            !allChecked
+                                                          );
+                                                        }}
+                                                        className="text-[#007DCA] mr-[7px]"
                                                       >
-                                                        <CheckIcon
-                                                          size={"small"}
-                                                        />
-                                                      </span>
-                                                    </div>
-                                                    <button
-                                                      onClick={() => {
-                                                        onCheck(checkIndicator);
-                                                        setAllChecked(
-                                                          !allChecked
-                                                        );
-                                                      }}
-                                                      className="text-[#007DCA] mr-[7px]"
-                                                    >
-                                                      {item?.name}
-                                                    </button>
-                                                    - {item_2?.name} (
-                                                    {item_2?.products?.length})
-                                                  </div>
-                                                </div>
-
-                                                <div className="mb-[10px] flex items-center text-tableTextTitle">
-                                                  <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                  <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                    <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      No:
-                                                    </div>
-                                                    <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Фото
-                                                    </div>
-                                                    <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Название
-                                                    </div>
-                                                    <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Артикул
-                                                    </div>
-                                                    <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Тип
-                                                    </div>
-                                                    <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Дата
-                                                    </div>
-                                                    <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Цена
-                                                    </div>
-                                                    <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Действие
+                                                        {item?.name}
+                                                      </button>
+                                                      - {item_2?.name} (
+                                                      {item_2?.products?.length}
+                                                      )
                                                     </div>
                                                   </div>
-                                                </div>
-                                              </div>
-                                            ) : null}
 
-                                            <ClothesItem
-                                              data={item_3}
-                                              key={item_3?.id}
-                                              index={index}
-                                              click={onCheck}
-                                              setModalOpen={setModalOpen}
-                                              toast={toast}
-                                              showProducts={showProducts}
-                                            />
-                                          </div>
-                                        ) : null}
-                                      </div>
-                                    );
-                                  })}
+                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                                    <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                                      <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        No:
+                                                      </div>
+                                                      <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Фото
+                                                      </div>
+                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Название
+                                                      </div>
+                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Артикул
+                                                      </div>
+                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Тип
+                                                      </div>
+                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Дата
+                                                      </div>
+                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Цена
+                                                      </div>
+                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Действие
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              ) : null}
+
+                                              <ClothesItem
+                                                data={item_3}
+                                                key={item_3?.id}
+                                                index={index}
+                                                click={onCheck}
+                                                setModalOpen={setModalOpen}
+                                                toast={toast}
+                                                showProducts={showProducts}
+                                              />
+                                            </div>
+                                          ) : null}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
                                 </div>
-                              </div>
-                            ) : null}
-                          </div>
-                        );
-                      })
-                    : null}
+                              ) : null}
+                            </div>
+                          );
+                        })
+                      : null}
 
-                  {/* Status Allowed */}
+                    {/* Status Allowed */}
 
-                  {showProducts === "approved"
-                    ? item?.shops?.map((item_2) => {
-                        let index = 0;
-                        return (
-                          <div key={item_2?.id}>
-                            {item_2?.products?.length ? (
-                              <div className="w-full">
-                                <div className="">
-                                  {item_2?.products?.map((item_3) => {
-                                    if (item_3?.status === "approved") {
-                                      ++index;
-                                    }
+                    {showProducts === "approved"
+                      ? item?.shops?.map((item_2) => {
+                          let index = 0;
+                          return (
+                            <div key={item_2?.id}>
+                              {item_2?.products?.length ? (
+                                <div className="w-full">
+                                  <div className="">
+                                    {item_2?.products?.map((item_3) => {
+                                      if (item_3?.status === "approved") {
+                                        ++index;
+                                      }
 
-                                    return (
-                                      <div key={item_3?.id}>
-                                        {item_3?.status === "approved" ? (
-                                          <div className="mb-8">
-                                            {index === 1 ? (
-                                              <div className="w-ful">
-                                                <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                  <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                                                    <div
-                                                      onClick={() => {
-                                                        onCheck(checkIndicator);
-                                                        setAllChecked(
-                                                          !allChecked
-                                                        );
-                                                      }}
-                                                      className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                        allChecked
-                                                          ? "bg-[#007DCA] border-[#007DCA]"
-                                                          : "bg-white border-checkboxBorder"
-                                                      } flex items-center justify-center rounded mr-[8px]`}
-                                                    >
-                                                      <span
-                                                        className={`${
+                                      return (
+                                        <div key={item_3?.id}>
+                                          {item_3?.status === "approved" ? (
+                                            <div className="mb-8">
+                                              {index === 1 ? (
+                                                <div className="w-ful">
+                                                  <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                      <div
+                                                        onClick={() => {
+                                                          onCheck(
+                                                            checkIndicator
+                                                          );
+                                                          setAllChecked(
+                                                            !allChecked
+                                                          );
+                                                        }}
+                                                        className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                                                           allChecked
-                                                            ? "hidden md:flex items-center justify-center"
-                                                            : "hidden"
-                                                        }`}
+                                                            ? "bg-[#007DCA] border-[#007DCA]"
+                                                            : "bg-white border-checkboxBorder"
+                                                        } flex items-center justify-center rounded mr-[8px]`}
                                                       >
-                                                        <CheckIcon />
-                                                      </span>
-                                                      <span
-                                                        className={`${
-                                                          allChecked
-                                                            ? "flex md:hidden items-center justify-center"
-                                                            : "hidden"
-                                                        }`}
+                                                        <span
+                                                          className={`${
+                                                            allChecked
+                                                              ? "hidden md:flex items-center justify-center"
+                                                              : "hidden"
+                                                          }`}
+                                                        >
+                                                          <CheckIcon />
+                                                        </span>
+                                                        <span
+                                                          className={`${
+                                                            allChecked
+                                                              ? "flex md:hidden items-center justify-center"
+                                                              : "hidden"
+                                                          }`}
+                                                        >
+                                                          <CheckIcon
+                                                            size={"small"}
+                                                          />
+                                                        </span>
+                                                      </div>
+                                                      <button
+                                                        onClick={() => {
+                                                          onCheck(
+                                                            checkIndicator
+                                                          );
+                                                          setAllChecked(
+                                                            !allChecked
+                                                          );
+                                                        }}
+                                                        className="text-[#007DCA] mr-[7px]"
                                                       >
-                                                        <CheckIcon
-                                                          size={"small"}
-                                                        />
-                                                      </span>
-                                                    </div>
-                                                    <button
-                                                      onClick={() => {
-                                                        onCheck(checkIndicator);
-                                                        setAllChecked(
-                                                          !allChecked
-                                                        );
-                                                      }}
-                                                      className="text-[#007DCA] mr-[7px]"
-                                                    >
-                                                      {item?.name}
-                                                    </button>
-                                                    - {item_2?.name} (
-                                                    {item_2?.products?.length})
-                                                  </div>
-                                                </div>
-
-                                                <div className="mb-[10px] flex items-center text-tableTextTitle">
-                                                  <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                  <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                    <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      No:
-                                                    </div>
-                                                    <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Фото
-                                                    </div>
-                                                    <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Название
-                                                    </div>
-                                                    <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Артикул
-                                                    </div>
-                                                    <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Тип
-                                                    </div>
-                                                    <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Дата
-                                                    </div>
-                                                    <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Цена
-                                                    </div>
-                                                    <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Действие
+                                                        {item?.name}
+                                                      </button>
+                                                      - {item_2?.name} (
+                                                      {item_2?.products?.length}
+                                                      )
                                                     </div>
                                                   </div>
-                                                </div>
-                                              </div>
-                                            ) : null}
 
-                                            <ClothesItem
-                                              data={item_3}
-                                              key={item_3?.id}
-                                              index={index}
-                                              click={onCheck}
-                                              setModalOpen={setModalOpen}
-                                              toast={toast}
-                                              showProducts={showProducts}
-                                            />
-                                          </div>
-                                        ) : null}
-                                      </div>
-                                    );
-                                  })}
+                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                                    <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                                      <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        No:
+                                                      </div>
+                                                      <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Фото
+                                                      </div>
+                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Название
+                                                      </div>
+                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Артикул
+                                                      </div>
+                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Тип
+                                                      </div>
+                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Дата
+                                                      </div>
+                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Цена
+                                                      </div>
+                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Действие
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              ) : null}
+
+                                              <ClothesItem
+                                                data={item_3}
+                                                key={item_3?.id}
+                                                index={index}
+                                                click={onCheck}
+                                                setModalOpen={setModalOpen}
+                                                toast={toast}
+                                                showProducts={showProducts}
+                                              />
+                                            </div>
+                                          ) : null}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
                                 </div>
-                              </div>
-                            ) : null}
-                          </div>
-                        );
-                      })
-                    : null}
+                              ) : null}
+                            </div>
+                          );
+                        })
+                      : null}
 
-                  {/* Status NotAllowed */}
+                    {/* Status NotAllowed */}
 
-                  {showProducts === "declined"
-                    ? item?.shops?.map((item_2) => {
-                        let index = 0;
-                        return (
-                          <div key={item_2?.id}>
-                            {item_2?.products?.length ? (
-                              <div className="w-full">
-                                <div className="">
-                                  {item_2?.products?.map((item_3) => {
-                                    if (item_3?.status === "declined") {
-                                      ++index;
-                                    }
+                    {showProducts === "declined"
+                      ? item?.shops?.map((item_2) => {
+                          let index = 0;
+                          return (
+                            <div key={item_2?.id}>
+                              {item_2?.products?.length ? (
+                                <div className="w-full">
+                                  <div className="">
+                                    {item_2?.products?.map((item_3) => {
+                                      if (item_3?.status === "declined") {
+                                        ++index;
+                                      }
 
-                                    return (
-                                      <div key={item_3?.id}>
-                                        {item_3?.status === "declined" ? (
-                                          <div className="mb-8">
-                                            {index === 1 ? (
-                                              <div className="w-ful">
-                                                <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                  <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                                                    <div
-                                                      onClick={() => {
-                                                        onCheck(checkIndicator);
-                                                        setAllChecked(
-                                                          !allChecked
-                                                        );
-                                                      }}
-                                                      className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                        allChecked
-                                                          ? "bg-[#007DCA] border-[#007DCA]"
-                                                          : "bg-white border-checkboxBorder"
-                                                      } flex items-center justify-center rounded mr-[8px]`}
-                                                    >
-                                                      <span
-                                                        className={`${
+                                      return (
+                                        <div key={item_3?.id}>
+                                          {item_3?.status === "declined" ? (
+                                            <div className="mb-8">
+                                              {index === 1 ? (
+                                                <div className="w-ful">
+                                                  <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                      <div
+                                                        onClick={() => {
+                                                          onCheck(
+                                                            checkIndicator
+                                                          );
+                                                          setAllChecked(
+                                                            !allChecked
+                                                          );
+                                                        }}
+                                                        className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                                                           allChecked
-                                                            ? "hidden md:flex items-center justify-center"
-                                                            : "hidden"
-                                                        }`}
+                                                            ? "bg-[#007DCA] border-[#007DCA]"
+                                                            : "bg-white border-checkboxBorder"
+                                                        } flex items-center justify-center rounded mr-[8px]`}
                                                       >
-                                                        <CheckIcon />
-                                                      </span>
-                                                      <span
-                                                        className={`${
-                                                          allChecked
-                                                            ? "flex md:hidden items-center justify-center"
-                                                            : "hidden"
-                                                        }`}
+                                                        <span
+                                                          className={`${
+                                                            allChecked
+                                                              ? "hidden md:flex items-center justify-center"
+                                                              : "hidden"
+                                                          }`}
+                                                        >
+                                                          <CheckIcon />
+                                                        </span>
+                                                        <span
+                                                          className={`${
+                                                            allChecked
+                                                              ? "flex md:hidden items-center justify-center"
+                                                              : "hidden"
+                                                          }`}
+                                                        >
+                                                          <CheckIcon
+                                                            size={"small"}
+                                                          />
+                                                        </span>
+                                                      </div>
+                                                      <button
+                                                        onClick={() => {
+                                                          onCheck(
+                                                            checkIndicator
+                                                          );
+                                                          setAllChecked(
+                                                            !allChecked
+                                                          );
+                                                        }}
+                                                        className="text-[#007DCA] mr-[7px]"
                                                       >
-                                                        <CheckIcon
-                                                          size={"small"}
-                                                        />
-                                                      </span>
-                                                    </div>
-                                                    <button
-                                                      onClick={() => {
-                                                        onCheck(checkIndicator);
-                                                        setAllChecked(
-                                                          !allChecked
-                                                        );
-                                                      }}
-                                                      className="text-[#007DCA] mr-[7px]"
-                                                    >
-                                                      {item?.name}
-                                                    </button>
-                                                    - {item_2?.name} (
-                                                    {item_2?.products?.length})
-                                                  </div>
-                                                </div>
-
-                                                <div className="mb-[10px] flex items-center text-tableTextTitle">
-                                                  <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                  <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                    <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      No:
-                                                    </div>
-                                                    <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Фото
-                                                    </div>
-                                                    <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Название
-                                                    </div>
-                                                    <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Артикул
-                                                    </div>
-                                                    <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Тип
-                                                    </div>
-                                                    <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Дата
-                                                    </div>
-                                                    <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Цена
-                                                    </div>
-                                                    <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Действие
+                                                        {item?.name}
+                                                      </button>
+                                                      - {item_2?.name} (
+                                                      {item_2?.products?.length}
+                                                      )
                                                     </div>
                                                   </div>
-                                                </div>
-                                              </div>
-                                            ) : null}
 
-                                            <ClothesItem
-                                              data={item_3}
-                                              key={item_3?.id}
-                                              index={index}
-                                              click={onCheck}
-                                              setModalOpen={setModalOpen}
-                                              toast={toast}
-                                              showProducts={showProducts}
-                                            />
-                                          </div>
-                                        ) : null}
-                                      </div>
-                                    );
-                                  })}
+                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                                    <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                                      <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        No:
+                                                      </div>
+                                                      <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Фото
+                                                      </div>
+                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Название
+                                                      </div>
+                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Артикул
+                                                      </div>
+                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Тип
+                                                      </div>
+                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Дата
+                                                      </div>
+                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Цена
+                                                      </div>
+                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Действие
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              ) : null}
+
+                                              <ClothesItem
+                                                data={item_3}
+                                                key={item_3?.id}
+                                                index={index}
+                                                click={onCheck}
+                                                setModalOpen={setModalOpen}
+                                                toast={toast}
+                                                showProducts={showProducts}
+                                              />
+                                            </div>
+                                          ) : null}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
                                 </div>
-                              </div>
-                            ) : null}
-                          </div>
-                        );
-                      })
-                    : null}
+                              ) : null}
+                            </div>
+                          );
+                        })
+                      : null}
 
-                  {/* Status Updated */}
+                    {/* Status Updated */}
 
-                  {showProducts === "updated"
-                    ? item?.shops?.map((item_2) => {
-                        let index = 0;
-                        return (
-                          <div key={item_2?.id}>
-                            {item_2?.products?.length ? (
-                              <div className="w-full">
-                                <div className="">
-                                  {item_2?.products?.map((item_3) => {
-                                    if (item_3?.status === "updated") {
-                                      ++index;
-                                    }
+                    {showProducts === "updated"
+                      ? item?.shops?.map((item_2) => {
+                          let index = 0;
+                          return (
+                            <div key={item_2?.id}>
+                              {item_2?.products?.length ? (
+                                <div className="w-full">
+                                  <div className="">
+                                    {item_2?.products?.map((item_3) => {
+                                      if (item_3?.status === "updated") {
+                                        ++index;
+                                      }
 
-                                    return (
-                                      <div key={item_3?.id}>
-                                        {item_3?.status === "updated" ? (
-                                          <div className="mb-8">
-                                            {index === 1 ? (
-                                              <div className="w-ful">
-                                                <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                  <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                                                    <div
-                                                      onClick={() => {
-                                                        onCheck(checkIndicator);
-                                                        setAllChecked(
-                                                          !allChecked
-                                                        );
-                                                      }}
-                                                      className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                        allChecked
-                                                          ? "bg-[#007DCA] border-[#007DCA]"
-                                                          : "bg-white border-checkboxBorder"
-                                                      } flex items-center justify-center rounded mr-[8px]`}
-                                                    >
-                                                      <span
-                                                        className={`${
+                                      return (
+                                        <div key={item_3?.id}>
+                                          {item_3?.status === "updated" ? (
+                                            <div className="mb-8">
+                                              {index === 1 ? (
+                                                <div className="w-ful">
+                                                  <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                      <div
+                                                        onClick={() => {
+                                                          onCheck(
+                                                            checkIndicator
+                                                          );
+                                                          setAllChecked(
+                                                            !allChecked
+                                                          );
+                                                        }}
+                                                        className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                                                           allChecked
-                                                            ? "hidden md:flex items-center justify-center"
-                                                            : "hidden"
-                                                        }`}
+                                                            ? "bg-[#007DCA] border-[#007DCA]"
+                                                            : "bg-white border-checkboxBorder"
+                                                        } flex items-center justify-center rounded mr-[8px]`}
                                                       >
-                                                        <CheckIcon />
-                                                      </span>
-                                                      <span
-                                                        className={`${
-                                                          allChecked
-                                                            ? "flex md:hidden items-center justify-center"
-                                                            : "hidden"
-                                                        }`}
+                                                        <span
+                                                          className={`${
+                                                            allChecked
+                                                              ? "hidden md:flex items-center justify-center"
+                                                              : "hidden"
+                                                          }`}
+                                                        >
+                                                          <CheckIcon />
+                                                        </span>
+                                                        <span
+                                                          className={`${
+                                                            allChecked
+                                                              ? "flex md:hidden items-center justify-center"
+                                                              : "hidden"
+                                                          }`}
+                                                        >
+                                                          <CheckIcon
+                                                            size={"small"}
+                                                          />
+                                                        </span>
+                                                      </div>
+                                                      <button
+                                                        onClick={() => {
+                                                          onCheck(
+                                                            checkIndicator
+                                                          );
+                                                          setAllChecked(
+                                                            !allChecked
+                                                          );
+                                                        }}
+                                                        className="text-[#007DCA] mr-[7px]"
                                                       >
-                                                        <CheckIcon
-                                                          size={"small"}
-                                                        />
-                                                      </span>
-                                                    </div>
-                                                    <button
-                                                      onClick={() => {
-                                                        onCheck(checkIndicator);
-                                                        setAllChecked(
-                                                          !allChecked
-                                                        );
-                                                      }}
-                                                      className="text-[#007DCA] mr-[7px]"
-                                                    >
-                                                      {item?.name}
-                                                    </button>
-                                                    - {item_2?.name} (
-                                                    {item_2?.products?.length})
-                                                  </div>
-                                                </div>
-
-                                                <div className="mb-[10px] flex items-center text-tableTextTitle">
-                                                  <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                  <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                    <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      No:
-                                                    </div>
-                                                    <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Фото
-                                                    </div>
-                                                    <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Название
-                                                    </div>
-                                                    <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Артикул
-                                                    </div>
-                                                    <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Тип
-                                                    </div>
-                                                    <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Дата
-                                                    </div>
-                                                    <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Цена
-                                                    </div>
-                                                    <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                      Действие
+                                                        {item?.name}
+                                                      </button>
+                                                      - {item_2?.name} (
+                                                      {item_2?.products?.length}
+                                                      )
                                                     </div>
                                                   </div>
-                                                </div>
-                                              </div>
-                                            ) : null}
 
-                                            <ClothesItem
-                                              data={item_3}
-                                              key={item_3?.id}
-                                              index={index}
-                                              click={onCheck}
-                                              setModalOpen={setModalOpen}
-                                              toast={toast}
-                                              showProducts={showProducts}
-                                            />
-                                          </div>
-                                        ) : null}
-                                      </div>
-                                    );
-                                  })}
+                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                                    <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                                      <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        No:
+                                                      </div>
+                                                      <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Фото
+                                                      </div>
+                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Название
+                                                      </div>
+                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Артикул
+                                                      </div>
+                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Тип
+                                                      </div>
+                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Дата
+                                                      </div>
+                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Цена
+                                                      </div>
+                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                        Действие
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              ) : null}
+
+                                              <ClothesItem
+                                                data={item_3}
+                                                key={item_3?.id}
+                                                index={index}
+                                                click={onCheck}
+                                                setModalOpen={setModalOpen}
+                                                toast={toast}
+                                                showProducts={showProducts}
+                                              />
+                                            </div>
+                                          ) : null}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
                                 </div>
-                              </div>
-                            ) : null}
-                          </div>
-                        );
-                      })
-                    : null}
+                              ) : null}
+                            </div>
+                          );
+                        })
+                      : null}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+            {loader ? (
+              <div
+                style={{
+                  backgroundImage: `url('${WiFiLoader}')`,
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center center",
+                }}
+                className="w-[100px] h-[100px]"
+              ></div>
+            ) : (
+              <div className="font-AeonikProMedium text-xl">Нет продавцов</div>
+            )}
+          </div>
+        )}
       </div>
 
       <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
