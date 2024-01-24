@@ -20,14 +20,14 @@ export const sidebarData = [
   },
   {
     id: 3,
-    title: "Товары",
-    path: "/clothes",
-    icon: <ClothesIcon />,
-  },
-  {
-    id: 4,
     title: "Локации",
     path: "/locations",
     icon: <SidebarLocationsIcon />,
+  },
+  {
+    id: 4,
+    title: "Товары",
+    path: "/clothes",
+    icon: <ClothesIcon />,
   },
 ];
