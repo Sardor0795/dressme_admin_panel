@@ -17,8 +17,6 @@ export default function LocationsItem({
   const url = "https://api.dressme.uz";
   let token = sessionStorage.getItem("token");
 
-  console.log(data);
-
   const [, , reFetch] = useContext(ClothesDataContext);
 
   const approveFunc = () => {
@@ -105,15 +103,6 @@ export default function LocationsItem({
                   {data?.work_time_to || "endTime"}
                 </span>
               </li>
-              <li className="md:w-[15%] h-full flex items-center justify-center text-center">
-                {/* <button
-                  onClick={() => goMapWear(data?.shop_id)}
-                  className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
-                >
-                  data?.wearLink
-                  Одежда
-                </button> */}
-              </li>
               <li className="md:w-[22%] h-full flex items-center justify-center text-center">
                 <button
                   // onClick={() => goMapCity(data?.id)}
@@ -122,6 +111,47 @@ export default function LocationsItem({
                   {/* {data?.showMore} */}
                   Подробнее
                 </button>
+              </li>
+              <li className="md:w-[15%] h-full flex items-center justify-center text-center">
+                {showProducts !== "updated" ? (
+                  <div className="flex items-center gap-x-2">
+                    {" "}
+                    <button
+                      onClick={() => approveFunc()}
+                      className={`${
+                        data?.status === "pending" ||
+                        data?.status === "declined"
+                          ? ""
+                          : "hidden"
+                      } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+                    >
+                      Одобрить
+                    </button>
+                    <button
+                      onClick={() => {
+                        setId(data?.id);
+                        setModalOpen(true);
+                      }}
+                      className={`${
+                        data?.status === "pending" ||
+                        data?.status === "approved"
+                          ? ""
+                          : "hidden"
+                      } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
+                    >
+                      Отказать
+                    </button>
+                  </div>
+                ) : null}
+
+                {showProducts === "updated" ? (
+                  <button
+                    onClick={() => approveFunc()}
+                    className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+                  >
+                    Одобрить
+                  </button>
+                ) : null}
               </li>
             </ul>
           </li>
