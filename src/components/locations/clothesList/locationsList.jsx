@@ -39,12 +39,17 @@ export default function LocationsList() {
     const filtered = data?.map((seller) => {
       const filteredShops = seller?.shops?.map((shop) => {
         const filteredProducts = shop?.shop_locations.filter((product) => {
-          return product?.name_ru
-            .toLowerCase()
-            .includes(e.target.value.toLowerCase());
+          let addres = product?.address;
+          let region = product?.region?.name_ru;
+          let sub_region = product?.sub_region?.name_ru;
+          return (
+            addres.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            region.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            sub_region.toLowerCase().includes(e.target.value.toLowerCase())
+          );
         });
 
-        return { ...shop, products: filteredProducts };
+        return { ...shop, shop_locations: filteredProducts };
       });
 
       return { ...seller, shops: filteredShops };
