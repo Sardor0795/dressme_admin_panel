@@ -2,56 +2,109 @@ import { useContext, useEffect, useState } from "react";
 import { AllowedIcon, BackIcon, CheckIcon, EditedIcon, NotAllowedIcon, SearchIcon, StarIcon, WaitingForAllowIcon } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
 import { ProductsContext } from "../../../context/productsContext";
-import { ClothesDataContext } from "../../../context/clothesDataContext";
-import ClothesItem from "../../clothes/clothesList/clothesItem/clothestem";
-import { ToastContainer, toast } from "react-toastify";
+import { ShopsDataContext } from "../../../context/shopsDataContext";
+import { ToastContainer} from "react-toastify";
 
 import WiFiLoader from "../../../assets/loader/wifi_loader.gif";
 import CancelModal from "../../clothes/clothesList/ModalCancel";
+import ShopsItem from "./shopsItem/shopsItem";
 
 export default function ShopsList() {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [allChecked, setAllChecked] = useState(false);
+  const [dataShops, setDataShops, , loader] = useContext(ShopsDataContext);
 
- // Products Context
-  const [showProducts, setShowProducts] = useContext(ProductsContext);
+  // console.log(dataShops,'dataShops');
 
-  const [data, setData, , loader] = useContext(ClothesDataContext);
+  let newData = dataShops;
 
-   let newData = data;
+  // console.log(newData,'newData');
 
   const [filteredData, setFilteredData] = useState([]);
 
-    useEffect(() => {
+  console.log(filteredData,'filteredData-shops');
+  
+  useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
 
   const filterFunc = (e) => {
-    const filtered = data?.map((seller) => {
-      const filteredShops = seller?.shops?.map((shop) => {
-        const filteredProducts = shop?.products.filter((product) => {
-          return product?.name_ru
-            .toLowerCase()
-            .includes(e.target.value.toLowerCase());
-        });
-
-        return { ...shop, products: filteredProducts };
+    const filtered = dataShops?.map((seller) => {
+      console.log(seller,'seller');
+      const filteredShops = seller?.shops?.filter((shop) => {
+        return shop?.name_ru
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase());
       });
-
+ 
       return { ...seller, shops: filteredShops };
     });
-
+ 
     setFilteredData(filtered);
   };
+
+   // // Count items -----------
 
   let waitingCount = 0;
   let allowedCount = 0;
   let notAllowedCount = 0;
   let updatedCount = 0;
 
+  filteredData?.forEach((seller) => {
+    // console.log(seller,'seller-shop');
+    seller?.shops?.forEach((shop) => {
+        if (shop?.status === "pending") {
+          ++waitingCount;
+        } else if (shop?.status === "approved") {
+          ++allowedCount;
+        } else if (shop?.status === "declined") {
+          ++notAllowedCount;
+        } else if (shop?.status === "updated") {
+          ++updatedCount;
+        }
+    });
+  });
+    
   let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
+  
+  const [someChecked, setSomeChecked] = useState(false);
+  const [allChecked, setAllChecked] = useState(false);
+
+   let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
+
+   const onCheck = (id) => {
+    if (id === "allCheck") {
+      let newArr = dataShops?.map((item) => {
+        return { ...item, isCheck: true };
+      });
+      setDataShops(newArr);
+    } else if (id === "allNotCheck") {
+      let newArr = dataShops?.map((item) => {
+        return { ...item, isCheck: false };
+      });
+      setDataShops(newArr);
+    } else {
+      let newArr = dataShops?.map((item) => {
+        return item.id === id ? { ...item, isCheck: !item.isCheck } : item;
+      });
+      setDataShops(newArr);
+    }
+  };
+
+    useEffect(() => {
+    let newData = dataShops?.filter((item) => item.isCheck === true);
+    if (newData?.length) {
+      setSomeChecked(true);
+    } else {
+      setSomeChecked(false);
+    }
+  }, [dataShops]);
+  
+  // Products Context
+  const [showProducts, setShowProducts] = useContext(ProductsContext);
+
+  console.log(showProducts,'showProducts-shop');
 
   let dataCount = 0;
   if (showProducts === "pending") {
@@ -66,36 +119,40 @@ export default function ShopsList() {
 
   function approveFunc () {  }
 
-  let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
+    // up btn
 
-   const onCheck = (id) => {
-    if (id === "allCheck") {
-      let newArr = data?.map((item) => {
-        return { ...item, isCheck: true };
-      });
-      setData(newArr);
-    } else if (id === "allNotCheck") {
-      let newArr = data?.map((item) => {
-        return { ...item, isCheck: false };
-      });
-      setData(newArr);
-    } else {
-      let newArr = data?.map((item) => {
-        return item.id === id ? { ...item, isCheck: !item.isCheck } : item;
-      });
-      setData(newArr);
-    }
-  };
+  useEffect(() => {
+    let upBtn = document.querySelector("#upBtn");
 
-  const [deliverList, setDeliverList] = useState();
+    upBtn.addEventListener("click", () => {
+      window.scrollTo(0, 0);
+    });
 
+    window.addEventListener("scroll", () => {
+      let scrollTop = window.scrollY;
+
+      if (scrollTop > 80) {
+        upBtn.style.display = "flex";
+      } else {
+        upBtn.style.display = "none";
+      }
+    });
+  }, []);
+
+   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
+  console.log(dataCount,'dataCount-shop');
 
 
 return(
 <div>
     <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
-            <PhoneNavbar />
+            <PhoneNavbar filterFuncCloThes={filterFunc} />
         </div>
 
         {showProducts === "pending" ? (
@@ -429,89 +486,470 @@ return(
         </div>
       </div>
 
-       <div className="w-full h-fit md:h-[100px] border border-borderColor md:pr-10  p-[10px] md:p-0 rounded-lg flex md:flex-row flex-col justify-between items-center" >
-          <div className="w-full md:w-fit flex flex-col md:flex-row items-center md:justify-start  md:border-0 border-b border-borderColor">
-            <div className="w-full md:w-fit flex items-center justify-between  md:pr-7 md:pl-5 text-xl font-AeonikProRegular ">
-              <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
-              <span className="text-checkboxBorder md:text-black flex items-center">
-                <span className="md:hidden flex">0</span>
-                {/* {index + 1} */} 01
-              </span>
-              <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
-            </div>
-            <div className="w-full md:w-fit flex items-center my-[15px] md:my-0 ">
-              <figure className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] overflow-hidden md:left-[40px] rounded-full border border-searchBgColor flex items-center justify-center bg-white">
-                <img
-                  // src={data?.url_logo_photo}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </figure>
-              <div className="w-fit flex flex-col ml-5 md:ml-8">
-                <p className="w-fit text-[13px] md:w-[350px] ls:text-[14px] xs:text-xl xs:font-AeonikProMedium font-AeonikProRegular  mb-3">
-                  {/* {data?.name || null} */}
-                </p>
-                <div className="w-full flex items-center">
-                  <div className="w-fit flex items-center">
-                    <div className="not-italic font-AeonikProRegular  text-[10px] ls:text-xs leading-4 text-right text-gray-500 md:ml-1 flex items-center text-sm">
-                      <p className="font-AeonikProRegular text-[12px] md:text-[14px] ls:font-AeonikProMedium text-black mr-1">
-                        5.0
-                      </p>
-                      <p className="text-setTexOpacity font-AeonikProRegular text-[10px] ls:text-[12px] md:text-[14px] ">
-                        (859 votes){" "}
-                        <span className="ml-[5px] ll:ml-[10px]">|</span>{" "}
-                      </p>
-                      <p className="font-AeonikProRegular ml-[5px] ll:ml-[10px]  text-[10px] ls:text-[12px] md:text-[14px]  text-setTexOpacity">
-                        4937 orders
-                      </p>
-                    </div>
+      {dataCount ? (
+          filteredData?.map((item) => {
+            console.log(item,'dataCount-shops')
+            return (
+              <div className="w-full" key={item?.id}>
+                <div className="mx-auto font-AeonikProRegular text-[16px]">
+                  <div className="w-full ">
+                    
+                    {/* Status Waiting */}
+                    {showProducts === "pending"
+                      ? item?.shops?.map((item_2,index) => {
+                        console.log(item_2,'item_2-shops');         
+                          return (
+                            <div key={item_2?.id}>
+                              {item_2?.status === "pending" ? (
+                                <div className="mb-8">
+                                  {index === 0 ? (
+                                    <div className="w-full">
+                                      <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                        <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                          <div
+                                            onClick={() => {
+                                              onCheck(
+                                                checkIndicator
+                                              );
+                                              setAllChecked(
+                                                !allChecked
+                                              );
+                                            }}
+                                            className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                              allChecked
+                                                ? "bg-[#007DCA] border-[#007DCA]"
+                                                : "bg-white border-checkboxBorder"
+                                            } flex items-center justify-center rounded mr-[8px]`}
+                                          >
+                                            <span
+                                              className={`${
+                                                allChecked
+                                                  ? "hidden md:flex items-center justify-center"
+                                                  : "hidden"
+                                              }`}
+                                            >
+                                              <CheckIcon />
+                                            </span>
+                                            <span
+                                              className={`${
+                                                allChecked
+                                                  ? "flex md:hidden items-center justify-center"
+                                                  : "hidden"
+                                              }`}
+                                            >
+                                              <CheckIcon
+                                                size={"small"}
+                                              />
+                                            </span>
+                                          </div>
+                                          <button
+                                            onClick={() => {
+                                              onCheck(
+                                                checkIndicator
+                                              );
+                                              setAllChecked(
+                                                !allChecked
+                                              );
+                                            }}
+                                            className="text-[#007DCA] mr-[7px]"
+                                          >
+                                            {item?.name}
+                                          </button>
+                                          ({item?.shops?.length || 0})
+                                        </div>
+                                      </div>
+
+                                      <div className="mb-[18px] flex items-center text-tableTextTitle">
+                                        <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                        <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                          <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            No:
+                                          </div>
+                                          <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Фото
+                                          </div>
+                                          <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Название
+                                          </div>
+                                          <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Артикул
+                                          </div>
+                                          <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Тип
+                                          </div>
+                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Дата
+                                          </div>
+                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Цена
+                                          </div>
+                                          <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Действие
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ) : null}
+
+                                  <ShopsItem
+                                    data={item_2}
+                                    index={index}
+                                    onCheck={onCheck}
+                                  />
+                                </div>
+                              ) : null}
+                            </div>
+                          );
+                        })                          
+                      : null}
+
+                    {/* Status Allowed */}
+                    {showProducts === "approved"
+                      ? item?.shops?.map((item_2, index) => {
+                        console.log(item_2,'item_2-shops');
+                          return (
+                            <div key={item_2?.id}>
+                              {item_2?.status === "approved" ? (
+                                <div className="mb-8">
+                                  {index === 0 ? (
+                                    <div className="w-full">
+                                      <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                        <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                          <div
+                                            onClick={() => {
+                                              onCheck(
+                                                checkIndicator
+                                              );
+                                              setAllChecked(
+                                                !allChecked
+                                              );
+                                            }}
+                                            className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                              allChecked
+                                                ? "bg-[#007DCA] border-[#007DCA]"
+                                                : "bg-white border-checkboxBorder"
+                                            } flex items-center justify-center rounded mr-[8px]`}
+                                          >
+                                            <span
+                                              className={`${
+                                                allChecked
+                                                  ? "hidden md:flex items-center justify-center"
+                                                  : "hidden"
+                                              }`}
+                                            >
+                                              <CheckIcon />
+                                            </span>
+                                            <span
+                                              className={`${
+                                                allChecked
+                                                  ? "flex md:hidden items-center justify-center"
+                                                  : "hidden"
+                                              }`}
+                                            >
+                                              <CheckIcon
+                                                size={"small"}
+                                              />
+                                            </span>
+                                          </div>
+                                          <button
+                                            onClick={() => {
+                                              onCheck(
+                                                checkIndicator
+                                              );
+                                              setAllChecked(
+                                                !allChecked
+                                              );
+                                            }}
+                                            className="text-[#007DCA] mr-[7px]"
+                                          >
+                                            {item?.name}
+                                          </button>
+                                          ({item?.shops?.length || 0})
+                                        </div>
+                                      </div>
+
+                                      <div className="mb-[20px] flex items-center text-tableTextTitle">
+                                        <div className=" min-w-[24px]  min-h-[24px] hidden md:flex mr-[8px]"></div>
+                                        <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                          <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            No:
+                                          </div>
+                                          <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Фото
+                                          </div>
+                                          <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Название
+                                          </div>
+                                          <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Артикул
+                                          </div>
+                                          <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Тип
+                                          </div>
+                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Дата
+                                          </div>
+                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Цена
+                                          </div>
+                                          <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Действие
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ) : null}
+
+                                  <ShopsItem
+                                    data={item_2}
+                                    index={index}
+                                    onCheck={onCheck}
+                                  />
+                                </div>
+                              ) : null}
+                            </div>
+                          );
+                        })
+                      : null}
+
+                    {/* Status NotAllowed */}
+                    {showProducts === "declined"
+                      ? item?.shops?.map((item_2,index) => {
+                          return (
+                            <div key={item_2?.id}>
+                              {item_2?.status === "declined" ? (
+                                <div className="mb-8">
+                                  {index === 0 ? (
+                                    <div className="w-full">
+                                      <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                        <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                          <div
+                                            onClick={() => {
+                                              onCheck(
+                                                checkIndicator
+                                              );
+                                              setAllChecked(
+                                                !allChecked
+                                              );
+                                            }}
+                                            className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                              allChecked
+                                                ? "bg-[#007DCA] border-[#007DCA]"
+                                                : "bg-white border-checkboxBorder"
+                                            } flex items-center justify-center rounded mr-[8px]`}
+                                          >
+                                            <span
+                                              className={`${
+                                                allChecked
+                                                  ? "hidden md:flex items-center justify-center"
+                                                  : "hidden"
+                                              }`}
+                                            >
+                                              <CheckIcon />
+                                            </span>
+                                            <span
+                                              className={`${
+                                                allChecked
+                                                  ? "flex md:hidden items-center justify-center"
+                                                  : "hidden"
+                                              }`}
+                                            >
+                                              <CheckIcon
+                                                size={"small"}
+                                              />
+                                            </span>
+                                          </div>
+                                          <button
+                                            onClick={() => {
+                                              onCheck(
+                                                checkIndicator
+                                              );
+                                              setAllChecked(
+                                                !allChecked
+                                              );
+                                            }}
+                                            className="text-[#007DCA] mr-[7px]"
+                                          >
+                                            {item?.name}
+                                          </button>
+                                          ({item?.shops?.length || 0})
+                                        </div>
+                                      </div>
+
+                                      <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                        <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                        <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                          <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            No:
+                                          </div>
+                                          <div className="w-[8%] text-[#5c753f] text-lg not-italic font-AeonikProMedium">
+                                            Фото
+                                          </div>
+                                          <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Название
+                                          </div>
+                                          <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Артикул
+                                          </div>
+                                          <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Тип
+                                          </div>
+                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Дата
+                                          </div>
+                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Цена
+                                          </div>
+                                          <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Действие
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ) : null}
+
+                                  <ShopsItem
+                                    data={item_2}
+                                    index={index}
+                                    onCheck={onCheck}
+                                  />
+                                </div>
+                              ) : null}
+                            </div>
+                          );
+                        })
+                      : null}
+
+                    {/* Status Updated */}
+                    {showProducts === "updated"
+                      ? item?.shops?.map((item_2,index) => {
+                          return (
+                            <div key={item_2?.id}>
+                              {item_2?.status === "updated" ? (
+                                <div className="mb-8">
+                                  {index === 1 ? (
+                                    <div className="w-full">
+                                      <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                        <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                          <div
+                                            onClick={() => {
+                                              onCheck(
+                                                checkIndicator
+                                              );
+                                              setAllChecked(
+                                                !allChecked
+                                              );
+                                            }}
+                                            className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                              allChecked
+                                                ? "bg-[#007DCA] border-[#007DCA]"
+                                                : "bg-white border-checkboxBorder"
+                                            } flex items-center justify-center rounded mr-[8px]`}
+                                          >
+                                            <span
+                                              className={`${
+                                                allChecked
+                                                  ? "hidden md:flex items-center justify-center"
+                                                  : "hidden"
+                                              }`}
+                                            >
+                                              <CheckIcon />
+                                            </span>
+                                            <span
+                                              className={`${
+                                                allChecked
+                                                  ? "flex md:hidden items-center justify-center"
+                                                  : "hidden"
+                                              }`}
+                                            >
+                                              <CheckIcon
+                                                size={"small"}
+                                              />
+                                            </span>
+                                          </div>
+                                          <button
+                                            onClick={() => {
+                                              onCheck(
+                                                checkIndicator
+                                              );
+                                              setAllChecked(
+                                                !allChecked
+                                              );
+                                            }}
+                                            className="text-[#007DCA] mr-[7px]"
+                                          >
+                                            {item?.name}
+                                          </button>
+                                          ({item?.shops?.name})
+                                        </div>
+                                      </div>
+
+                                      <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                        <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                        <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                          <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            No:
+                                          </div>
+                                          <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Фото
+                                          </div>
+                                          <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Название
+                                          </div>
+                                          <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Артикул
+                                          </div>
+                                          <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Тип
+                                          </div>
+                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Дата
+                                          </div>
+                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Цена
+                                          </div>
+                                          <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Действие
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ) : null}
+
+                                  <ShopsItem
+                                    data={item_2}
+                                    index={index}
+                                    onCheck={onCheck}
+                                  />
+                                </div>
+                              ) : null}
+                            </div>
+                          );
+                        })
+                      : null}
+
                   </div>
                 </div>
               </div>
-            </div>
+            );
+          })
+        ) : (
+          <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+            {loader ? (
+              <div
+                style={{
+                  backgroundImage: `url('${WiFiLoader}')`,
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center center",
+                }}
+                className="w-[100px] h-[100px]"
+              ></div>
+            ) : (
+              <div className="font-AeonikProMedium text-xl">Нет товаров</div>
+            )}
           </div>
-          <div className="w-full md:w-fit flex items-center justify-between sm:gap-x-[130px] mt-3 md:mt-0">
-            <div className="flex items-center gap-x-1 ">
-              {/* {(Number(data?.gender_id) === 3 || Number(data?.gender_id) == 1) && <div className="ll:w-12 w-[36px] h-[36px] ll:h-12 rounded-lg border border-borderColor flex items-center justify-center">
-                <img src={man} alt="" />
-              </div>}
-              {(Number(data?.gender_id) === 3 || Number(data?.gender_id) == 2) && <div className="ll:w-12 w-[36px] h-[36px] ll:h-12 rounded-lg border border-borderColor flex items-center justify-center">
-                <img src={woman} alt="" />
-              </div>} */}
-            </div>
-            <div className="h-[36px] ll:h-12 px-1 ls:px-[10px] md:w-[260px] ll:px-5 active:opacity-70 border border-borderColor rounded-lg flex items-center justify-center gap-x-1 ll:gap-x-3 ">
-              {/* {deliverList
-                ?.filter((e) => e.id == data?.delivery_id)
-                ?.map((item) => {
-                  return (
-                    <span
-                      key={item?.id}
-                      className="text-tableTextTitle2 text-[11px] ls:text-[12px] ll:text-[14px] xs:text-base not-italic font-AeonikProRegular ll:font-AeonikProMedium"
-                    >
-                      {item?.name_ru}
-                    </span>
-                  );
-                })} */}
-            </div>
-          </div>
-          <div className="w-full md:w-fit flex items-center justify-between gap-x-4 sm:gap-x-[50px]  mt-4 ll:mt-6 md:mt-0">
-            <button
-              type="button"
-              // onClick={() => navigate(`/store/locations/shop/:${data?.id}`)}
-              className="md:text-textBlueColor cursor-pointer w-[50%] flex items-center justify-center md:w-fit  md:text-base text-[13px] not-italic md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
-            >
-              Локации
-            </button>
-            <button
-              type="button"
-              // onClick={() => goDetail(data?.id)}
-              className="text-textBlueColor cursor-pointer w-[50%] flex items-center justify-center md:w-fit  md:text-base text-[13px] not-italic md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0  px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-Editbg"
-            >
-              Подробнее
-            </button>
-          </div>
-        </div>
-
+        )}
 
     </div>
 
