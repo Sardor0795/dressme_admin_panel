@@ -1079,7 +1079,7 @@ export default function LocationsList() {
                 className="w-[100px] h-[100px]"
               ></div>
             ) : (
-              <div className="font-AeonikProMedium text-xl">Нет Локации</div>
+              <div className="font-AeonikProMedium text-xl">Нет локаций</div>
             )}
           </div>
         )}
