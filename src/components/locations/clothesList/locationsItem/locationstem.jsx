@@ -66,211 +66,186 @@ export default function LocationsItem({
           <CheckIcon />
         </span>
       </div>
-      <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[10px] md:flex items-center w-full">
-        <div className="w-[4%] text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {index}
-        </div>
-        <div className="w-[8%]">
-          <div
-            style={{
-              backgroundImage: `url(${data?.photos[0]?.url_photo})`,
-              backgroundPosition: "center center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-            }}
-            className="bg-[#FCFCFC] border border-[#F2F2F2] w-[60px] h-[60px] flex items-center justify-center rounded-[12px]"
-          >
-            {data?.photos[0]?.url_photo ? null : <NoImgIcon />}
-          </div>
-        </div>
-        <div className="w-[16%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.name_ru}
-        </div>
-        <div className="w-[12%] px-4 break-all flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.sku}
-        </div>
-        <div className="w-[10%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.type?.name_ru}
-        </div>
-        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.created_at}
-        </div>
-        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.cost?.price ? data?.cost?.price + " сум" : "-"}
-        </div>
-        <div className="w-[20%] px-4  text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {showProducts !== "updated" ? (
-            <div className="flex items-center gap-x-2">
-              {" "}
-              <button
-                onClick={() => approveFunc()}
-                className={`${
-                  data?.status === "pending" || data?.status === "declined"
-                    ? ""
-                    : "hidden"
-                } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
-              >
-                Одобрить
-              </button>
-              <button
-                onClick={() => {
-                  setId(data?.id);
-                  setModalOpen(true);
-                }}
-                className={`${
-                  data?.status === "pending" || data?.status === "approved"
-                    ? ""
-                    : "hidden"
-                } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
-              >
-                Отказать
-              </button>
-            </div>
-          ) : null}
-
-          {showProducts === "updated" ? (
-            <button
-              onClick={() => approveFunc()}
-              className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
-            >
-              Одобрить
-            </button>
-          ) : null}
-
-          {/* <button
-            className={`${
-              data?.status === "declined" ? "" : "hidden"
-            } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
-          >
-            Удалить
-          </button> */}
-        </div>
-        <Link
-          to={`cloth/${data?.id}`}
-          className="w-[8%] cursor-pointer flex items-center justify-center text-center hover:underline text-weatherWinterColor text-[16px] not-italic font-AeonikProMedium"
+      <div
+        key={data?.id}
+        className="w-full h-full flex flex-col md:rounded-[12px] overflow-auto rounded-xl border  bg-lightBgColor"
+      >
+        <ul
+          key={data?.id}
+          className="w-full last:border-b-0 md:px-0 md:py-3  overflow-hidden hidden md:flex items-center justify-between mb-[6px] md:mb-0 gap-x-5 md:gap-x-0 "
         >
-          Подробнее
-        </Link>
-      </div>
-
-      {/* Mobile */}
-
-      <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px] last:mb-[0]">
-        <div className="flex items-center w-full justify-between mb-[8px]">
-          <div
-            onClick={() => {
-              click(data?.id);
-            }}
-            className={`cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-              data?.isCheck
-                ? "bg-[#007DCA] border-[#007DCA]"
-                : "bg-white border-checkboxBorder"
-            } md:hidden flex items-center justify-center rounded mr-[8px]`}
-          >
-            <span
-              className={`${
-                data?.isCheck ? "flex items-center justify-center" : "hidden"
-              }`}
-            >
-              <CheckIcon size={"small"} />
-            </span>
-          </div>
-
-          <div className="flex items-center">
-            <div className="border-b min-w-[10px]"></div>
-            <div className="mx-[5px] text-[16px] font-AeonikProRegular text-[#D2D2D2]">
-              {index < 10 ? "0" : ""}
-              {index}
+          <li className="w-[70px]  pl-4 flex items-center text-tableTextTitle2 text-lg not-italic font-AeonikProRegular">
+            {index}
+          </li>
+          <li className="w-[200px] h-[100px] flex items-center justify-center mr-[60px] rounded-lg overflow-hidden border overflow-hidden">
+            <img
+              className="w-[100%] h-[100%] object-contain rounded-lg"
+              src={data?.url_image_path_one}
+              alt=""
+            />
+          </li>
+          <li className="w-[calc(100%-230px)] flex items-center justify-between">
+            <ul className="flex items-center w-full">
+              <li className="md:w-[24%] h-full pr-10">
+                <span className="text-textLightColor md:text-tableTextTitle2 text-[11px] md:text-base not-italic font-AeonikProMedium">
+                  {data?.region?.name_ru || "city"},{" "}
+                  {data?.sub_region?.name_ru || "sub_region"}
+                </span>
+              </li>
+              <li className="md:w-[30%] h-full pr-10">
+                <span className="text-textLightColor md:text-tableTextTitle2 text-[11px] md:text-base not-italic font-AeonikProMedium ">
+                  {data?.address || "address"}
+                </span>{" "}
+              </li>
+              <li className="md:w-[13%] h-full">
+                <span className="text-textLightColor md:text-tableTextTitle2 text-[11px] md:text-base not-italic font-AeonikProMedium ">
+                  {data?.work_time_from || "startTime"} -{" "}
+                  {data?.work_time_to || "endTime"}
+                </span>
+              </li>
+              <li className="md:w-[15%] h-full flex items-center justify-center text-center">
+                {/* <button
+                  onClick={() => goMapWear(data?.shop_id)}
+                  className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
+                >
+                  data?.wearLink
+                  Одежда
+                </button> */}
+              </li>
+              <li className="md:w-[22%] h-full flex items-center justify-center text-center">
+                <button
+                  // onClick={() => goMapCity(data?.id)}
+                  className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
+                >
+                  {/* {data?.showMore} */}
+                  Подробнее
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        {/* Mobile */}
+        <div className="border rounded-xl border-[##F2F2F2] p-[10px] mb-3 md:hidden w-full">
+          {/* <div className="mb-2">
+            <div className="w-full md:w-fit flex items-center justify-between text-xl font-AeonikProRegular ">
+              <div className="w-[40%] border-b border-borderColor h-[2px]"></div>
+              <span className="text-checkboxBorder">0{value?.id}</span>
+              <div className="w-[40%] border-b border-borderColor h-[2px]"></div>
             </div>
-            <div className="border-b min-w-[10px]"></div>
-          </div>
+          </div> */}
 
-          <Link
-            to={`cloth/${data?.id}`}
-            className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer"
-          >
-            Подробнее
-          </Link>
-        </div>
-        <div className="h-[148px] w-full rounded-lg overflow-hidden mb-[12px]">
-          <img src={SoonImg} alt="img" className="w-full h-full object-cover" />
-        </div>
-        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[45%]">
-            Название
-          </div>
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
-            Артикул
-          </div>
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[15%]">
-            Тип
-          </div>
-        </div>
-        <div className="py-[5px] px-[15px] flex mb-[10px]">
-          <div className="w-[45%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.name_ru}
-          </div>
-          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.sku}
-          </div>
-          <div className="w-[15%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.type?.name_ru}
-          </div>
-        </div>
-        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[45%]">
-            Дата
-          </div>
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
-            Цена
-          </div>
-        </div>
-        <div className="py-[5px] px-[15px] flex mb-[24px]">
-          <div className="w-[45%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.created_at}
-          </div>
-          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.cost?.price ? data?.cost?.price + " сум" : "-"}
-          </div>
-        </div>
+          {/* <div className="mb-3 h-[148px]">
+            <figure className="w-full h-full rounded-lg overflow-hidden">
+              <img
+                className="w-[100%] h-[100%]  object-cover"
+                src={value?.url_image_path_one}
+                alt=""
+              />
+            </figure>
+          </div> */}
 
-        {showProducts !== "updated" ? (
-          <div className="w-full flex gap-[30px]">
+          {/* <div className="mb-[25px]">
+            <div className="border rounded-lg border-[#F2F2F2] bg-[#FCFCFC] px-1 ll:px-[10px] py-[5px] flex text-[#3F6175] font-AeonikProMedium text-[13px] items-center mb-[8px]">
+              <div className="text-[#3F6175] text-[12px] not-italic font-AeonikProMedium pr-[10px] w-[24%]">
+                Регион
+              </div>
+              <div className="text-[#3F6175] text-[12px] not-italic font-AeonikProMedium pr-[10px] w-[46%]">
+                Адрес
+              </div>
+              <div className="text-[#3F6175] text-[12px] text-center not-italic font-AeonikProMedium w-[30%]">
+                Рабочее время
+              </div>
+            </div>
+
+            <div className="px-1 ll:px-[10px] py-[5px] flex text-[#2C2C2C] font-AeonikProMedium text-[13px]">
+              <div className="pr-[5px] ll:pr-[10px] w-[24%] break-words  text-gray-700 text-[11px] not-italic font-AeonikProMedium">
+                {value?.region?.name_ru}
+              </div>
+              <div className="relative pr-[5px] ll:pr-[10px] h-[60px] overflow-hidden  w-[46%]  text-justify	text-[11px] not-italic font-AeonikProMedium">
+                <div className="absolute ToogleOff left-0 w-full h-full z-[10] top-0"></div>
+
+                {value?.address}
+              </div>
+              <div className="w-[30%] flex  justify-center text-[11px] not-italic font-AeonikProMedium">
+                {value?.work_time_from || "startTime"} -{" "}
+                {value?.work_time_to || "endTime"}
+              </div>
+            </div>
+          </div> */}
+          {/* {value?.region?.name_ru || "city"}, {value?.sub_region?.name_ru || "sub_region"} */}
+
+          {/* <div className="flex items-center justify-between gap-x-[15px]">
             <button
-              onClick={() => {
-                setId(data?.id);
-                setModalOpen(true);
-              }}
-              className={`${
-                data?.status === "pending" || data?.status === "approved"
-                  ? ""
-                  : "hidden"
-              } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
+              onClick={() => goMapWear(value?.shop_id)}
+              className="text-[#ED7925] bg-[#FDF1E8] text-center w-[50%] py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
             >
-              Отказать
+              <span className="mr-[5px]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <g clipPath="url(#clip0_1350_8602)">
+                    <path
+                      d="M12.3335 5.66683V12.3335M12.3335 12.3335V14.6668H3.66683V12.3335M12.3335 12.3335H14.6668V5.66683C14.6668 4.66683 14.0002 3.50016 13.0002 2.66683C12.0002 1.8335 10.0002 1.3335 10.0002 1.3335H6.00016C6.00016 1.3335 4.00016 1.8335 3.00016 2.66683C2.00016 3.50016 1.3335 4.66683 1.3335 5.66683V12.3335H3.66683M3.66683 12.3335V5.66683"
+                      stroke="#ED7925"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M10 1.3335C10 1.86393 9.78929 2.37264 9.41421 2.74771C9.03914 3.12278 8.53043 3.3335 8 3.3335C7.46957 3.3335 6.96086 3.12278 6.58579 2.74771C6.21071 2.37264 6 1.86393 6 1.3335"
+                      stroke="#ED7925"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1350_8602">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              {value?.wearLink}
             </button>
             <button
-              onClick={() => approveFunc()}
-              className={`${
-                data?.status === "pending" || data?.status === "declined"
-                  ? ""
-                  : "hidden"
-              } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+              onClick={() => goMapCity(value?.id)}
+              className="text-[#007DCA] bg-[#E8F5FD] text-center w-[50%] py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
             >
-              Одобрить
+              {value?.showMore}
+              <span className="ml-[5px]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="8"
+                  viewBox="0 0 16 8"
+                  fill="none"
+                >
+                  <g clipPath="url(#clip0_1350_8461)">
+                    <path
+                      d="M5.80625 4.7502H1.25C1.0375 4.7502 0.859253 4.6782 0.715253 4.5342C0.571253 4.3902 0.499503 4.2122 0.500003 4.0002C0.500003 3.7877 0.572003 3.60945 0.716003 3.46545C0.860003 3.32145 1.038 3.2497 1.25 3.2502H5.80625L4.0625 1.4877C3.925 1.3502 3.853 1.1782 3.8465 0.971695C3.84 0.765195 3.912 0.587195 4.0625 0.437695C4.2 0.300195 4.375 0.231445 4.5875 0.231445C4.8 0.231445 4.975 0.300195 5.1125 0.437695L8.15 3.4752C8.3 3.6252 8.375 3.8002 8.375 4.0002C8.375 4.2002 8.3 4.3752 8.15 4.5252L5.1125 7.5627C4.975 7.70019 4.803 7.7722 4.5965 7.7787C4.39 7.78519 4.212 7.71319 4.0625 7.5627C3.925 7.4252 3.85625 7.25019 3.85625 7.03769C3.85625 6.82519 3.925 6.6502 4.0625 6.5127L5.80625 4.7502ZM9.5 7.7502C9.2875 7.7502 9.1095 7.67819 8.966 7.53419C8.8225 7.39019 8.7505 7.21219 8.75 7.0002C8.75 6.78769 8.822 6.60945 8.966 6.46545C9.11 6.32145 9.288 6.24969 9.5 6.2502H14.75C14.9625 6.2502 15.1408 6.3222 15.2848 6.4662C15.4288 6.6102 15.5005 6.7882 15.5 7.0002C15.5 7.2127 15.428 7.39094 15.284 7.53494C15.14 7.67894 14.962 7.7507 14.75 7.7502H9.5ZM9.5 1.7502C9.2875 1.7502 9.1095 1.6782 8.966 1.5342C8.8225 1.3902 8.7505 1.2122 8.75 1.0002C8.75 0.787695 8.822 0.609446 8.966 0.465446C9.11 0.321446 9.288 0.249695 9.5 0.250195H14.75C14.9625 0.250195 15.1408 0.322195 15.2848 0.466195C15.4288 0.610195 15.5005 0.788195 15.5 1.0002C15.5 1.2127 15.428 1.39095 15.284 1.53495C15.14 1.67895 14.962 1.7507 14.75 1.7502H9.5ZM11.75 4.7502C11.5375 4.7502 11.3593 4.6782 11.2153 4.5342C11.0713 4.3902 10.9995 4.2122 11 4.0002C11 3.7877 11.072 3.60945 11.216 3.46545C11.36 3.32145 11.538 3.2497 11.75 3.2502H14.75C14.9625 3.2502 15.1408 3.3222 15.2848 3.4662C15.4288 3.6102 15.5005 3.7882 15.5 4.0002C15.5 4.2127 15.428 4.39095 15.284 4.53495C15.14 4.67895 14.962 4.7507 14.75 4.7502H11.75Z"
+                      fill="#007DCA"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1350_8461">
+                      <rect
+                        width="15"
+                        height="7.54765"
+                        fill="white"
+                        transform="translate(0.5 0.231445)"
+                      />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
             </button>
-          </div>
-        ) : null}
-        {showProducts === "updated" ? (
-          <div className="w-full flex gap-[30px]">
-            <button
-              onClick={() => approveFunc()}
-              className={` rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
-            >
-              Одобрить
-            </button>
-          </div>
-        ) : null}
+          </div> */}
+        </div>
       </div>
     </div>
   );

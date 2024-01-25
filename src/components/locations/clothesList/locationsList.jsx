@@ -19,6 +19,7 @@ import {
 } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
+import LocationsItem from "./locationsItem/locationstem";
 
 export default function LocationsList() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -579,34 +580,52 @@ export default function LocationsList() {
                                                     </div>
                                                   </div>
 
-                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
-                                                    <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                      <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        No:
-                                                      </div>
-                                                      <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Фото
-                                                      </div>
-                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Название
-                                                      </div>
-                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Артикул
-                                                      </div>
-                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Тип
-                                                      </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Дата
-                                                      </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Цена
-                                                      </div>
-                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Действие
-                                                      </div>
-                                                    </div>
+                                                  <div className="w-full hidden md:block mt-6">
+                                                    <ul className="w-full h-full flex items-center justify-between bg-lightBgColor border md:rounded-xl">
+                                                      <li className="w-[70px] pl-4">
+                                                        <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle2">
+                                                          No:
+                                                        </span>
+                                                      </li>
+                                                      <li className="w-[200px] pl-4 mr-[60px]">
+                                                        <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle2">
+                                                          Фото
+                                                        </span>
+                                                      </li>
+                                                      <li className="w-[calc(100%-230px)]  flex items-center justify-between">
+                                                        <ul className="flex items-center w-full">
+                                                          <li className="w-[23%]">
+                                                            <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
+                                                              Регион{" "}
+                                                            </span>
+                                                          </li>
+                                                          <li className="w-[29%]">
+                                                            <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
+                                                              Адрес
+                                                            </span>
+                                                          </li>
+                                                          <li className="w-[16%]">
+                                                            <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
+                                                              Рабочее время
+                                                            </span>
+                                                          </li>
+                                                          <li className="w-[32%] flex items-center justify-end ">
+                                                            <button
+                                                              onClick={() =>
+                                                                setOpenSelect(
+                                                                  true
+                                                                )
+                                                              }
+                                                              className="px-[30px] py-3 flex items-center rounded-lg active:scale-95  active:opacity-70 justify-center bg-weatherWinterColor"
+                                                            >
+                                                              <span className="text-sm  text-white not-italic font-AeonikProMedium">
+                                                                Добавить локацию
+                                                              </span>
+                                                            </button>
+                                                          </li>
+                                                        </ul>
+                                                      </li>
+                                                    </ul>
                                                   </div>
                                                 </div>
                                               ) : null}
@@ -715,40 +734,44 @@ export default function LocationsList() {
                                                       {productLength})
                                                     </div>
                                                   </div>
-
-                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                                  <div className="w-full hidden md:flex mb-[10px]">
                                                     <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                      <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        No:
-                                                      </div>
-                                                      <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Фото
-                                                      </div>
-                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Название
-                                                      </div>
-                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Артикул
-                                                      </div>
-                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Тип
-                                                      </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Дата
-                                                      </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Цена
-                                                      </div>
-                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Действие
-                                                      </div>
-                                                    </div>
+                                                    <ul className="w-full h-full flex items-center justify-between bg-lightBgColor border md:rounded-xl">
+                                                      <li className="w-[70px] pl-4 py-3">
+                                                        <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle2">
+                                                          No:
+                                                        </span>
+                                                      </li>
+                                                      <li className="w-[200px] pl-4 mr-[60px]">
+                                                        <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle2">
+                                                          Фото
+                                                        </span>
+                                                      </li>
+                                                      <li className="w-[calc(100%-230px)]  flex items-center justify-between">
+                                                        <ul className="flex items-center w-full">
+                                                          <li className="w-[23%]">
+                                                            <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
+                                                              Регион{" "}
+                                                            </span>
+                                                          </li>
+                                                          <li className="w-[29%]">
+                                                            <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
+                                                              Адрес
+                                                            </span>
+                                                          </li>
+                                                          <li className="w-[16%]">
+                                                            <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
+                                                              Рабочее время
+                                                            </span>
+                                                          </li>
+                                                        </ul>
+                                                      </li>
+                                                    </ul>
                                                   </div>
                                                 </div>
                                               ) : null}
 
-                                              <ClothesItem
+                                              <LocationsItem
                                                 data={item_3}
                                                 key={item_3?.id}
                                                 index={index}
