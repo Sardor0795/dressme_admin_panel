@@ -161,22 +161,22 @@ export default function LocationsList() {
 
         {showProducts === "pending" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Ожидающие Локации
+            Ожидающие локации
           </div>
         ) : null}
         {showProducts === "approved" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Одобренные Локации
+            Одобренные локации
           </div>
         ) : null}
         {showProducts === "declined" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Отказанные Локации
+            Отказанные локации
           </div>
         ) : null}
         {showProducts === "updated" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Обновленные Локации
+            Обновленные локации
           </div>
         ) : null}
 
@@ -277,7 +277,7 @@ export default function LocationsList() {
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
-            <div className="mb-[3px]">Ожидающие Локации</div>{" "}
+            <div className="mb-[3px]">Ожидающие локации</div>{" "}
             <div>({waitingCount})</div>
           </div>
           <div
@@ -288,7 +288,7 @@ export default function LocationsList() {
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
-            <div className="mb-[3px]">Одобренные Локации</div>{" "}
+            <div className="mb-[3px]">Одобренные локации</div>{" "}
             <div>({allowedCount})</div>
           </div>
           <div
@@ -299,7 +299,7 @@ export default function LocationsList() {
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
-            <div className="mb-[3px]">Отказанные Локации</div>{" "}
+            <div className="mb-[3px]">Отказанные локации</div>{" "}
             <div>({notAllowedCount})</div>
           </div>
           <div
@@ -310,7 +310,7 @@ export default function LocationsList() {
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
-            <div className="mb-[3px]">Обновленные Локации</div>{" "}
+            <div className="mb-[3px]">Обновленные локации</div>{" "}
             <div>({updatedCount})</div>
           </div>
         </div>
@@ -417,7 +417,7 @@ export default function LocationsList() {
               <span className="mr-[5px]">
                 <WaitingForAllowIcon />
               </span>
-              <span>Ожидающие Локации ({waitingCount})</span>
+              <span>Ожидающие локации ({waitingCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -432,7 +432,7 @@ export default function LocationsList() {
               <span className="mr-[5px]">
                 <AllowedIcon />
               </span>
-              <span>Одобренные Локации ({allowedCount})</span>
+              <span>Одобренные локации ({allowedCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -447,7 +447,7 @@ export default function LocationsList() {
               <span className="mr-[5px]">
                 <NotAllowedIcon />
               </span>
-              <span>Отказанные Локации ({notAllowedCount})</span>
+              <span>Отказанные локации ({notAllowedCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -462,7 +462,7 @@ export default function LocationsList() {
               <span className="mr-[5px]">
                 <EditedIcon />
               </span>
-              <span>Обновленные Локации ({updatedCount})</span>
+              <span>Обновленные локации ({updatedCount})</span>
             </button>
           </section>
 
