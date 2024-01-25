@@ -600,7 +600,7 @@ export default function LocationsList() {
                                                       </li>
                                                       <li className="w-[calc(100%-230px)]  flex items-center justify-between">
                                                         <ul className="flex items-center w-full">
-                                                          <li className="w-[23%]">
+                                                          <li className="w-[19%]">
                                                             <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
                                                               Регион{" "}
                                                             </span>
@@ -741,7 +741,7 @@ export default function LocationsList() {
                                                       </li>
                                                       <li className="w-[calc(100%-230px)]  flex items-center justify-between">
                                                         <ul className="flex items-center w-full">
-                                                          <li className="w-[23%]">
+                                                          <li className="w-[19%]">
                                                             <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
                                                               Регион{" "}
                                                             </span>
@@ -882,7 +882,7 @@ export default function LocationsList() {
                                                       </li>
                                                       <li className="w-[calc(100%-230px)]  flex items-center justify-between">
                                                         <ul className="flex items-center w-full">
-                                                          <li className="w-[23%]">
+                                                          <li className="w-[19%]">
                                                             <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
                                                               Регион{" "}
                                                             </span>
@@ -1023,7 +1023,7 @@ export default function LocationsList() {
                                                       </li>
                                                       <li className="w-[calc(100%-230px)]  flex items-center justify-between">
                                                         <ul className="flex items-center w-full">
-                                                          <li className="w-[23%]">
+                                                          <li className="w-[19%]">
                                                             <span className="text-lg not-italic font-AeonikProMedium text-tableTextTitle">
                                                               Регион{" "}
                                                             </span>

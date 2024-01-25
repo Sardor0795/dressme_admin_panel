@@ -86,16 +86,11 @@ export default function LocationsItem({
             }}
             className="w-[200px] h-[100px] flex items-center justify-center mr-[60px] rounded-lg overflow-hidden border"
           >
-            {/* <img
-              className="w-[100%] h-[100%] object-contain rounded-lg"
-              src={data?.url_image_path_one}
-              alt=""
-            /> */}
             {data?.url_image_path_one ? null : <NoImgIcon />}
           </li>
           <li className="w-[calc(100%-230px)] flex items-center justify-between">
             <ul className="flex items-center w-full">
-              <li className="md:w-[24%] h-full pr-10">
+              <li className="md:w-[20%] h-full pr-10">
                 <span className="text-textLightColor md:text-tableTextTitle2 text-[11px] md:text-base not-italic font-AeonikProMedium">
                   {data?.region?.name_ru || "city"},{" "}
                   {data?.sub_region?.name_ru || "sub_region"}
@@ -112,7 +107,7 @@ export default function LocationsItem({
                   {data?.work_time_to || "endTime"}
                 </span>
               </li>
-              <li className="md:w-[22%] h-full flex items-center justify-center text-center">
+              <li className="md:w-[12%] h-full flex items-center justify-center text-center">
                 <Link
                   to={`location/${data?.id}`}
                   className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
@@ -120,7 +115,7 @@ export default function LocationsItem({
                   Подробнее
                 </Link>
               </li>
-              <li className="md:w-[15%] h-full flex items-center justify-center text-center">
+              <li className="md:w-[29%] h-full flex items-center justify-center text-center">
                 {showProducts !== "updated" ? (
                   <div className="flex items-center gap-x-2">
                     {" "}
