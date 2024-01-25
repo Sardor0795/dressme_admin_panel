@@ -47,7 +47,7 @@ export default function ClothesItem({
   const [, setId] = useContext(IdsContext);
 
   return (
-    <div className="flex items-center w-full mb-8">
+    <div className="flex items-center w-full mb-14 pt-[40px]">
       <div
         onClick={() => {
           click(data?.id);
@@ -66,7 +66,7 @@ export default function ClothesItem({
           <CheckIcon />
         </span>
       </div>
-      <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[10px] md:flex items-center w-full">
+      <div className="relative h-[100px] hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[10px] md:flex items-center w-full">
         <div className="w-[3%] text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {index}
         </div>
@@ -78,7 +78,7 @@ export default function ClothesItem({
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
             }}
-            className="bg-[#FCFCFC] border border-[#F2F2F2] w-[110px] h-[150px] flex items-center justify-center rounded-[12px]"
+            className="absolute top-[-25px] bg-[#FCFCFC] border border-[#F2F2F2] w-[110px] h-[150px] flex items-center justify-center rounded-[12px]"
           >
             {data?.photos[0]?.url_photo ? null : <NoImgIcon />}
           </div>
