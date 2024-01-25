@@ -77,12 +77,21 @@ export default function LocationsItem({
           <li className="w-[70px]  pl-4 flex items-center text-tableTextTitle2 text-lg not-italic font-AeonikProRegular">
             {index}
           </li>
-          <li className="w-[200px] h-[100px] flex items-center justify-center mr-[60px] rounded-lg overflow-hidden border">
-            <img
+          <li
+            style={{
+              backgroundImage: `url(${data?.url_image_path_one})`,
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+            className="w-[200px] h-[100px] flex items-center justify-center mr-[60px] rounded-lg overflow-hidden border"
+          >
+            {/* <img
               className="w-[100%] h-[100%] object-contain rounded-lg"
               src={data?.url_image_path_one}
               alt=""
-            />
+            /> */}
+            {data?.url_image_path_one ? null : <NoImgIcon />}
           </li>
           <li className="w-[calc(100%-230px)] flex items-center justify-between">
             <ul className="flex items-center w-full">
