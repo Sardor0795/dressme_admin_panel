@@ -10,7 +10,7 @@ import { ClothMoreAbout } from "../components/clothes/moreAbout";
 import { ShopsPage } from "../pages/shops";
 import ShopsList from "../components/shops/shopsList/shopsList";
 import { LocationsPage } from "../pages/locations";
-import { LocationsList } from "../components/locations/locationsList";
+import LocationsList from "../components/locations/clothesList/locationsList";
 
 export const Root = () => {
   return (
