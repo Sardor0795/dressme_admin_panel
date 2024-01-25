@@ -17,6 +17,8 @@ export default function LocationsItem({
   const url = "https://api.dressme.uz";
   let token = sessionStorage.getItem("token");
 
+  console.log(data);
+
   const [, , reFetch] = useContext(ClothesDataContext);
 
   const approveFunc = () => {
