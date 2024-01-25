@@ -104,13 +104,12 @@ export default function LocationsItem({
                 </span>
               </li>
               <li className="md:w-[22%] h-full flex items-center justify-center text-center">
-                <button
-                  // onClick={() => goMapCity(data?.id)}
+                <Link
+                  to={`location/${data?.id}`}
                   className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
                 >
-                  {/* {data?.showMore} */}
                   Подробнее
-                </button>
+                </Link>
               </li>
               <li className="md:w-[15%] h-full flex items-center justify-center text-center">
                 {showProducts !== "updated" ? (

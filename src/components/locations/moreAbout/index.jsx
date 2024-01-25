@@ -10,7 +10,7 @@ import { ProductsContext } from "../../../context/productsContext";
 import { toast } from "react-toastify";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
 
-export const ClothMoreAbout = () => {
+export const LocationsMoreAbout = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [colorModalOpen, setColorModalOpen] = useState(false);
   const [allPhotosModalOpen, setAllPhotosModalOpen] = useState(false);
@@ -72,7 +72,7 @@ export const ClothMoreAbout = () => {
     <div className="flex flex-col w-full">
       <div className="md:border-b py-[18px] flex items-center mb-[6px]">
         <Link
-          to="/clothes"
+          to="/locations"
           className="rounded-md border border-[#D5D5D5] mr-[30px]"
         >
           <BackIcon />
