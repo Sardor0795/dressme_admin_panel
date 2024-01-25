@@ -20,11 +20,14 @@ import {
 import { PhoneNavbar } from "../../phoneNavbar";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
 import LocationsItem from "./locationsItem/locationstem";
+import { LocationsDataContext } from "../../../context/locationsDataContext";
 
 export default function LocationsList() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [data, setData, , loader] = useContext(ClothesDataContext);
+  const [data, setData, , loader] = useContext(LocationsDataContext);
+
+  console.log(data);
 
   let newData = data;
 
@@ -37,7 +40,7 @@ export default function LocationsList() {
   const filterFunc = (e) => {
     const filtered = data?.map((seller) => {
       const filteredShops = seller?.shops?.map((shop) => {
-        const filteredProducts = shop?.products.filter((product) => {
+        const filteredProducts = shop?.shop_locations.filter((product) => {
           return product?.name_ru
             .toLowerCase()
             .includes(e.target.value.toLowerCase());
@@ -61,7 +64,7 @@ export default function LocationsList() {
 
   filteredData?.forEach((seller) => {
     seller?.shops?.forEach((shop) => {
-      shop?.products?.forEach((product) => {
+      shop?.shop_locations?.forEach((product) => {
         if (product?.status === "pending") {
           ++waitingCount;
         } else if (product?.status === "approved") {
@@ -658,17 +661,17 @@ export default function LocationsList() {
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
                           let productLength = 0;
-                          item_2?.products?.forEach((v) => {
+                          item_2?.shop_locations?.forEach((v) => {
                             if (v?.status === "approved") {
                               ++productLength;
                             }
                           });
                           return (
                             <div key={item_2?.id}>
-                              {item_2?.products?.length ? (
+                              {item_2?.shop_locations?.length ? (
                                 <div className="w-full">
                                   <div className="">
-                                    {item_2?.products?.map((item_3) => {
+                                    {item_2?.shop_locations?.map((item_3) => {
                                       if (item_3?.status === "approved") {
                                         ++index;
                                       }

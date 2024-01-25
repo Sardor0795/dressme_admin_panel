@@ -8,6 +8,7 @@ import { ProductsContextProvider } from "./context/productsContext";
 import { IdContextProvider } from "./context/idContext";
 import { SellersDataContextProvider } from "./context/sellersDataContext";
 import { ClothesDataContextProvider } from "./context/clothesDataContext";
+import { LocationsDataContextProvider } from "./context/locationsDataContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,7 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <IdContextProvider>
             <SellersDataContextProvider>
               <ClothesDataContextProvider>
-                <Root />
+                <LocationsDataContextProvider>
+                  <Root />
+                </LocationsDataContextProvider>
               </ClothesDataContextProvider>
             </SellersDataContextProvider>
           </IdContextProvider>
