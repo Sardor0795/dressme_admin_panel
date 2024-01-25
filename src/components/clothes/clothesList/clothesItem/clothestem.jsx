@@ -67,10 +67,10 @@ export default function ClothesItem({
         </span>
       </div>
       <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[10px] md:flex items-center w-full">
-        <div className="w-[4%] text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[3%] text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {index}
         </div>
-        <div className="w-[8%]">
+        <div className="w-[9%]">
           <div
             style={{
               backgroundImage: `url(${data?.photos[0]?.url_photo})`,
@@ -78,7 +78,7 @@ export default function ClothesItem({
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
             }}
-            className="bg-[#FCFCFC] border border-[#F2F2F2] w-[60px] h-[60px] flex items-center justify-center rounded-[12px]"
+            className="bg-[#FCFCFC] border border-[#F2F2F2] w-[110px] h-[150px] flex items-center justify-center rounded-[12px]"
           >
             {data?.photos[0]?.url_photo ? null : <NoImgIcon />}
           </div>
