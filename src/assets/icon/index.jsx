@@ -357,6 +357,73 @@ return(
 )
 }
 
+const MenuCloseIcons = ({ colors }) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M18.3596 18.36L5.63965 5.64001"
+        stroke={colors}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="bevel"
+      />
+      <path
+        d="M18.3596 5.64001L5.63965 18.36"
+        stroke={colors}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="bevel"
+      />
+    </svg>
+  );
+};
+
+const LocationIcon = ({ colors }) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11.9999 13.4299C13.723 13.4299 15.1199 12.0331 15.1199 10.3099C15.1199 8.58681 13.723 7.18994 11.9999 7.18994C10.2768 7.18994 8.87988 8.58681 8.87988 10.3099C8.87988 12.0331 10.2768 13.4299 11.9999 13.4299Z"
+        stroke={colors}
+        strokeWidth="2"
+      />
+      <path
+        d="M3.61971 8.49C5.58971 -0.169998 18.4197 -0.159997 20.3797 8.5C21.5297 13.58 18.3697 17.88 15.5997 20.54C13.5897 22.48 10.4097 22.48 8.38971 20.54C5.62971 17.88 2.46971 13.57 3.61971 8.49Z"
+        stroke={colors}
+        strokeWidth="2"
+      />
+    </svg>
+  );
+};
+
+const DeleteIcon = ({ width }) => {
+  return (
+    <svg
+      width={width}
+      height={width}
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5.83331 17.5C5.37498 17.5 4.98248 17.3367 4.65581 17.01C4.32915 16.6833 4.16609 16.2911 4.16665 15.8333V5H3.33331V3.33333H7.49998V2.5H12.5V3.33333H16.6666V5H15.8333V15.8333C15.8333 16.2917 15.67 16.6842 15.3433 17.0108C15.0166 17.3375 14.6244 17.5006 14.1666 17.5H5.83331ZM7.49998 14.1667H9.16665V6.66667H7.49998V14.1667ZM10.8333 14.1667H12.5V6.66667H10.8333V14.1667Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+};
+
 export {
 CircleNextIcon,
 OpendEyeIcon,
@@ -384,4 +451,8 @@ EditedIcon,
 SidebarShopIcon,
 SidebarLocationsIcon,
 StarRatengIcon,
+
+MenuCloseIcons,
+LocationIcon,
+DeleteIcon,
 };

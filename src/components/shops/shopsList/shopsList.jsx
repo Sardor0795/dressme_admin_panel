@@ -63,8 +63,8 @@ export default function ShopsList() {
   });
     
   let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
-  
-  const [someChecked, setSomeChecked] = useState(false);
+  // someChecked
+  const [, setSomeChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
 
    let checkIndicator = allChecked ? "allNotCheck" : "allCheck";

@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import { NavLink } from "react-router-dom";
 import { CheckIcon, StarRatengIcon} from "../../../../assets/icon";
 import { deliveryIcon, manGenderIcon, womanGenderIcon } from "../../../../assets/shopIcons/icon";
@@ -93,13 +92,13 @@ export default function ShopsItem({
         </div>
         <div className="w-full md:w-[36%] flex items-center justify-end gap-x-4 sm:gap-x-10 mt-4 ll:mt-6 md:mt-0">
           <NavLink
-            // to={`cloth/${data?.id}`}
+            to={`locations/${data?.id}`}
             className="w-[50%] md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
           >
             Локации
           </NavLink>
           <NavLink
-            // to={`cloth/${data?.id}`}
+            to={`shop/${data?.id}`}
             className="w-[50%] md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-Editbg"
           >
             Подробнее
