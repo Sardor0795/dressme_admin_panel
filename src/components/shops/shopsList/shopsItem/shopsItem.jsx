@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import { NavLink } from "react-router-dom";
 import { CheckIcon, StarRatengIcon} from "../../../../assets/icon";
 import { deliveryIcon, manGenderIcon, womanGenderIcon } from "../../../../assets/shopIcons/icon";
 export default function ShopsItem({
@@ -30,14 +31,12 @@ export default function ShopsItem({
             <CheckIcon />
           </span>
         </div>
-
       </div>
 
       <div
         key={data?.id}
         className="w-full h-fit md:h-[100px] border border-borderColor md:pr-10 p-[10px] rounded-lg flex md:flex-row flex-col items-center"
       >
-        
         <div className="w-full md:w-[34%] flex flex-col md:flex-row items-center md:justify-start  md:border-0 border-b border-borderColor">
           <div className="w-full md:w-fit flex items-center justify-start md:pr-7 md:pl-5 text-xl font-AeonikProRegular ">
             <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
@@ -93,20 +92,18 @@ export default function ShopsItem({
           </div>
         </div>
         <div className="w-full md:w-[36%] flex items-center justify-end gap-x-4 sm:gap-x-10 mt-4 ll:mt-6 md:mt-0">
-          <button
-            type="button"
-            // onClick={() => navigate(`/store/locations/shop/:${data?.id}`)}
+          <NavLink
+            // to={`cloth/${data?.id}`}
             className="w-[50%] md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
           >
             Локации
-          </button>
-          <button
-            type="button"
-            // onClick={() => goDetail(data?.id)}
+          </NavLink>
+          <NavLink
+            // to={`cloth/${data?.id}`}
             className="w-[50%] md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-Editbg"
           >
             Подробнее
-          </button>
+          </NavLink>
 
            {showProducts !== "updated" ? (
             <div className="flex items-center gap-x-2">
@@ -117,7 +114,7 @@ export default function ShopsItem({
                   data?.status === "pending" || data?.status === "declined"
                     ? ""
                     : "hidden"
-                } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+                } w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]`}
               >
                 Одобрить
               </button>
@@ -130,7 +127,7 @@ export default function ShopsItem({
                   data?.status === "pending" || data?.status === "approved"
                     ? ""
                     : "hidden"
-                } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
+                } w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
               >
                 Отказать
               </button>

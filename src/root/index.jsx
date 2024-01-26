@@ -37,6 +37,7 @@ export const Root = () => {
           <Route path="/shops" element={<ShopsPage />}>
             <Route index element={<ShopsList />} />
             {/* <Route path="/shops/shop/:id" element={<ShopsMoreAbout />} /> */}
+            {/* <Route path="/shops/locations/:id" element={<ShopsLocations />} /> */}
           </Route>
         </Route>
         <Route path="/signin" element={<SignInPage />} />

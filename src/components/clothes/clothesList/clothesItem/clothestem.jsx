@@ -98,7 +98,13 @@ export default function ClothesItem({
         <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.cost?.price ? data?.cost?.price + " сум" : "-"}
         </div>
-        <div className="w-[20%] px-4  text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <Link
+          to={`cloth/${data?.id}`}
+          className="w-[8%] cursor-pointer flex items-center justify-center text-center hover:underline text-weatherWinterColor text-[16px] not-italic font-AeonikProMedium"
+        >
+          Подробнее
+        </Link>
+        <div className="w-[20%] px-4 flex items-center justify-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium md:mr-10">
           {showProducts !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}
@@ -108,7 +114,7 @@ export default function ClothesItem({
                   data?.status === "pending" || data?.status === "declined"
                     ? ""
                     : "hidden"
-                } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+                } w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]`}
               >
                 Одобрить
               </button>
@@ -121,7 +127,7 @@ export default function ClothesItem({
                   data?.status === "pending" || data?.status === "approved"
                     ? ""
                     : "hidden"
-                } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
+                } w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
               >
                 Отказать
               </button>
@@ -145,12 +151,6 @@ export default function ClothesItem({
             Удалить
           </button> */}
         </div>
-        <Link
-          to={`cloth/${data?.id}`}
-          className="w-[8%] cursor-pointer flex items-center justify-center text-center hover:underline text-weatherWinterColor text-[16px] not-italic font-AeonikProMedium"
-        >
-          Подробнее
-        </Link>
       </div>
 
       {/* Mobile */}

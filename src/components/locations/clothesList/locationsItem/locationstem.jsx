@@ -140,7 +140,7 @@ export default function LocationsItem({
                         data?.status === "approved"
                           ? ""
                           : "hidden"
-                      } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
+                      } w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
                     >
                       Отказать
                     </button>
@@ -150,7 +150,7 @@ export default function LocationsItem({
                 {showProducts === "updated" ? (
                   <button
                     onClick={() => approveFunc()}
-                    className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+                    className={`w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]`}
                   >
                     Одобрить
                   </button>

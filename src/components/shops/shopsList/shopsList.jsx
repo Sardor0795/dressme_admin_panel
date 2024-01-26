@@ -563,11 +563,8 @@ return(
                                           <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Пол
                                           </div>
-                                          <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[55%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Доставка
-                                          </div>
-                                          <div className="w-[38%] flex items-center justify-end text-[#3F6175] text-lg not-italic font-AeonikProMedium md:pr-10">
-                                            Действие
                                           </div>
                                         </div>
                                       </div>
@@ -666,11 +663,8 @@ return(
                                           <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Пол
                                           </div>
-                                          <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[55%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Доставка
-                                          </div>
-                                          <div className="w-[38%] flex items-center justify-end text-[#3F6175] text-lg not-italic font-AeonikProMedium md:pr-10">
-                                            Действие
                                           </div>
                                         </div>
                                       </div>
@@ -769,11 +763,8 @@ return(
                                           <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Пол
                                           </div>
-                                          <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[55%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Доставка
-                                          </div>
-                                          <div className="w-[38%] flex items-center justify-end text-[#3F6175] text-lg not-italic font-AeonikProMedium md:pr-10">
-                                            Действие
                                           </div>
                                         </div>
                                       </div>
@@ -872,11 +863,8 @@ return(
                                           <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Пол
                                           </div>
-                                          <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[55%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Доставка
-                                          </div>
-                                          <div className="w-[38%] flex items-center justify-end text-[#3F6175] text-lg not-italic font-AeonikProMedium md:pr-10">
-                                            Действие
                                           </div>
                                         </div>
                                       </div>

@@ -430,11 +430,8 @@ export default function SellersList() {
                 <div className="w-[11%] px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                   Дата
                 </div>
-                <div className="w-[20%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                <div className="w-[38%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                   Регион
-                </div>
-                <div className="w-[18%] px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                  Действие
                 </div>
               </div>
             </div>
