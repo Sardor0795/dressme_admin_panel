@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { AllowedIcon, BackIcon, CheckIcon, EditedIcon, NotAllowedIcon, SearchIcon, StarIcon, WaitingForAllowIcon } from "../../../assets/icon";
+import { AllowedIcon, BackIcon, CheckIcon, EditedIcon, NotAllowedIcon, SearchIcon, WaitingForAllowIcon } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
 import { ProductsContext } from "../../../context/productsContext";
 import { ShopsDataContext } from "../../../context/shopsDataContext";
@@ -23,7 +23,7 @@ export default function ShopsList() {
 
   const [filteredData, setFilteredData] = useState([]);
 
-  console.log(filteredData,'filteredData-shops');
+  // console.log(filteredData,'filteredData-shops');
   
   useEffect(() => {
     setFilteredData(newData);
@@ -31,11 +31,8 @@ export default function ShopsList() {
 
   const filterFunc = (e) => {
     const filtered = dataShops?.map((seller) => {
-      console.log(seller,'seller');
       const filteredShops = seller?.shops?.filter((shop) => {
-        return shop?.name_ru
-          .toLowerCase()
-          .includes(e.target.value.toLowerCase());
+        return shop?.name.toLowerCase().includes(e.target.value.toLowerCase());
       });
  
       return { ...seller, shops: filteredShops };
@@ -43,7 +40,7 @@ export default function ShopsList() {
  
     setFilteredData(filtered);
   };
-
+  
    // // Count items -----------
 
   let waitingCount = 0;
@@ -52,17 +49,16 @@ export default function ShopsList() {
   let updatedCount = 0;
 
   filteredData?.forEach((seller) => {
-    // console.log(seller,'seller-shop');
     seller?.shops?.forEach((shop) => {
-        if (shop?.status === "pending") {
-          ++waitingCount;
-        } else if (shop?.status === "approved") {
-          ++allowedCount;
-        } else if (shop?.status === "declined") {
-          ++notAllowedCount;
-        } else if (shop?.status === "updated") {
-          ++updatedCount;
-        }
+      if (shop?.status === "pending") {
+        ++waitingCount;
+      } else if (shop?.status === "approved") {
+        ++allowedCount;
+      } else if (shop?.status === "declined") {
+        ++notAllowedCount;
+      } else if (shop?.status === "updated") {
+        ++updatedCount;
+      }
     });
   });
     
@@ -104,8 +100,6 @@ export default function ShopsList() {
   // Products Context
   const [showProducts, setShowProducts] = useContext(ProductsContext);
 
-  console.log(showProducts,'showProducts-shop');
-
   let dataCount = 0;
   if (showProducts === "pending") {
     dataCount = waitingCount;
@@ -144,9 +138,6 @@ export default function ShopsList() {
       top: 0,
     });
   }, []);
-
-  console.log(dataCount,'dataCount-shop');
-
 
 return(
 <div>
@@ -247,7 +238,7 @@ return(
                 </button>
             </div>
             ) : null}
-            {showProducts === "status_update" ? (
+            {showProducts === "updated" ? (
             <div className="flex items-center ml-auto">
                 <button
                 // onClick={() => approveFunc()}
@@ -488,7 +479,6 @@ return(
 
       {dataCount ? (
           filteredData?.map((item) => {
-            console.log(item,'dataCount-shops')
             return (
               <div className="w-full" key={item?.id}>
                 <div className="mx-auto font-AeonikProRegular text-[16px]">
@@ -496,8 +486,7 @@ return(
                     
                     {/* Status Waiting */}
                     {showProducts === "pending"
-                      ? item?.shops?.map((item_2,index) => {
-                        console.log(item_2,'item_2-shops');         
+                      ? item?.shops?.map((item_2,index) => {    
                           return (
                             <div key={item_2?.id}>
                               {item_2?.status === "pending" ? (
@@ -565,25 +554,19 @@ return(
                                           <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             No:
                                           </div>
-                                          <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Фото
                                           </div>
-                                          <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Название
                                           </div>
-                                          <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Артикул
+                                          <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Пол
                                           </div>
-                                          <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Тип
+                                          <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Доставка
                                           </div>
-                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Дата
-                                          </div>
-                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Цена
-                                          </div>
-                                          <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[38%] flex items-center justify-end text-[#3F6175] text-lg not-italic font-AeonikProMedium md:pr-10">
                                             Действие
                                           </div>
                                         </div>
@@ -595,6 +578,7 @@ return(
                                     data={item_2}
                                     index={index}
                                     onCheck={onCheck}
+                                    showProducts={showProducts}
                                   />
                                 </div>
                               ) : null}
@@ -606,7 +590,6 @@ return(
                     {/* Status Allowed */}
                     {showProducts === "approved"
                       ? item?.shops?.map((item_2, index) => {
-                        console.log(item_2,'item_2-shops');
                           return (
                             <div key={item_2?.id}>
                               {item_2?.status === "approved" ? (
@@ -668,31 +651,25 @@ return(
                                         </div>
                                       </div>
 
-                                      <div className="mb-[20px] flex items-center text-tableTextTitle">
+                                      <div className="mb-[18px] flex items-center text-tableTextTitle">
                                         <div className=" min-w-[24px]  min-h-[24px] hidden md:flex mr-[8px]"></div>
-                                        <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                       <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
                                           <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             No:
                                           </div>
-                                          <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Фото
                                           </div>
-                                          <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Название
                                           </div>
-                                          <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Артикул
+                                          <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Пол
                                           </div>
-                                          <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Тип
+                                          <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Доставка
                                           </div>
-                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Дата
-                                          </div>
-                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Цена
-                                          </div>
-                                          <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[38%] flex items-center justify-end text-[#3F6175] text-lg not-italic font-AeonikProMedium md:pr-10">
                                             Действие
                                           </div>
                                         </div>
@@ -704,6 +681,7 @@ return(
                                     data={item_2}
                                     index={index}
                                     onCheck={onCheck}
+                                    showProducts={showProducts}
                                   />
                                 </div>
                               ) : null}
@@ -776,31 +754,25 @@ return(
                                         </div>
                                       </div>
 
-                                      <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                      <div className="mb-[18px] flex items-center text-tableTextTitle">
                                         <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
                                         <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
                                           <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             No:
                                           </div>
-                                          <div className="w-[8%] text-[#5c753f] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Фото
                                           </div>
-                                          <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Название
                                           </div>
-                                          <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Артикул
+                                          <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Пол
                                           </div>
-                                          <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Тип
+                                          <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Доставка
                                           </div>
-                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Дата
-                                          </div>
-                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Цена
-                                          </div>
-                                          <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[38%] flex items-center justify-end text-[#3F6175] text-lg not-italic font-AeonikProMedium md:pr-10">
                                             Действие
                                           </div>
                                         </div>
@@ -812,6 +784,7 @@ return(
                                     data={item_2}
                                     index={index}
                                     onCheck={onCheck}
+                                    showProducts={showProducts}
                                   />
                                 </div>
                               ) : null}
@@ -887,28 +860,22 @@ return(
                                       <div className="mb-[10px] flex items-center text-tableTextTitle">
                                         <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
                                         <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                          <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[4%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             No:
                                           </div>
-                                          <div className="w-[8%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Фото
                                           </div>
-                                          <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                             Название
                                           </div>
-                                          <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Артикул
+                                          <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Пол
                                           </div>
-                                          <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Тип
+                                          <div className="w-[17%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                            Доставка
                                           </div>
-                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Дата
-                                          </div>
-                                          <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                            Цена
-                                          </div>
-                                          <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                          <div className="w-[38%] flex items-center justify-end text-[#3F6175] text-lg not-italic font-AeonikProMedium md:pr-10">
                                             Действие
                                           </div>
                                         </div>
@@ -920,6 +887,7 @@ return(
                                     data={item_2}
                                     index={index}
                                     onCheck={onCheck}
+                                    showProducts={showProducts}
                                   />
                                 </div>
                               ) : null}
