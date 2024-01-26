@@ -14,7 +14,7 @@ export const sidebarData = [
   },
   {
     id: 2,
-    title: "Shops",
+    title: "Магазины",
     path: "/shops",
     icon: <SidebarShopIcon />,
   },

@@ -6,9 +6,8 @@ export default function ShopsItem({
   data,
   index,
   onCheck,
+  showProducts
 }) {
-
-  console.log(data, 'dataaaaaaaaaaaaaaaa');
 
   return (
     <div className="w-full flex flex-row">
@@ -36,11 +35,11 @@ export default function ShopsItem({
 
       <div
         key={data?.id}
-        className="w-full h-fit md:h-[100px] border border-borderColor md:pr-10 p-[10px] md:p-0 rounded-lg flex md:flex-row flex-col justify-between items-center"
+        className="w-full h-fit md:h-[100px] border border-borderColor md:pr-10 p-[10px] rounded-lg flex md:flex-row flex-col items-center"
       >
         
-        <div className="w-full md:w-fit flex flex-col md:flex-row items-center md:justify-start  md:border-0 border-b border-borderColor">
-          <div className="w-full md:w-fit flex items-center justify-between  md:pr-7 md:pl-5 text-xl font-AeonikProRegular ">
+        <div className="w-full md:w-[34%] flex flex-col md:flex-row items-center md:justify-start  md:border-0 border-b border-borderColor">
+          <div className="w-full md:w-fit flex items-center justify-start md:pr-7 md:pl-5 text-xl font-AeonikProRegular ">
             <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
             <span className="text-checkboxBorder md:text-black flex items-center">
               <span className="md:hidden flex">0</span>
@@ -48,8 +47,9 @@ export default function ShopsItem({
             </span>
             <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
           </div>
-          <div className="w-full md:w-fit flex items-center my-[15px] md:my-0 ">
-            <figure className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] overflow-hidden md:left-[40px] rounded-full border border-searchBgColor flex items-center justify-center bg-white">
+          
+          <div className="w-full flex items-center my-[15px] md:my-0 ">
+            <figure className="w-[80px] h-[80px] md:min-w-[120px] md:min-h-[120px] overflow-hidden md:left-[40px] rounded-full border border-searchBgColor flex items-center justify-center bg-white">
               <img
                 src={data?.url_logo_photo}
                 alt=""
@@ -57,7 +57,7 @@ export default function ShopsItem({
               />
             </figure>
             <div className="w-fit flex flex-col ml-5 md:ml-8">
-              <p className="w-fit text-[13px] md:w-[350px] ls:text-[14px] xs:text-xl xs:font-AeonikProMedium font-AeonikProRegular  mb-3">
+              <p className="w-fit text-[13px] md:w-full ls:text-[14px] xs:text-xl xs:font-AeonikProMedium font-AeonikProRegular  mb-3">
                 {data?.name || null}
               </p>
               <div className="w-full flex items-center">
@@ -78,8 +78,8 @@ export default function ShopsItem({
             </div>
           </div>
         </div>
-        <div className="w-full md:w-fit flex items-center justify-between sm:gap-x-[130px] mt-3 md:mt-0">
-          <div className="flex items-center gap-x-1 ">
+        <div className="w-full md:w-[29%] flex items-center gap-x-[44px] mt-3 md:mt-0">
+          <div className="md:w-[30%] flex items-center gap-x-1 ">
             {(Number(data?.gender?.id) === 3 || Number(data?.gender?.id) == 1) && <div className="ll:w-12 w-[36px] h-[36px] ll:h-12 rounded-lg border border-borderColor flex items-center justify-center">
               <img src={manGenderIcon} alt="" />
             </div>}
@@ -87,24 +87,64 @@ export default function ShopsItem({
               <img src={womanGenderIcon} alt="" />
             </div>}
           </div>
-          <div className="h-[36px] ll:h-12 px-1 ls:px-[10px] md:w-[260px] ll:px-5 active:opacity-70 border border-borderColor rounded-lg flex items-center justify-center gap-x-1 ll:gap-x-3 ">
+          <div className="md:min-w-[260px] md:w-[260px] h-[36px] ll:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
             <img src={deliveryIcon} alt="" />
             <span className="font-AeonikProMedium">{data?.delivery?.name_ru}</span>
           </div>
         </div>
-        <div className="w-full md:w-fit flex items-center justify-between gap-x-4 sm:gap-x-[50px] mt-4 ll:mt-6 md:mt-0">
+        <div className="w-full md:w-[36%] flex items-center justify-end gap-x-4 sm:gap-x-10 mt-4 ll:mt-6 md:mt-0">
           <button
+            type="button"
             // onClick={() => navigate(`/store/locations/shop/:${data?.id}`)}
-            className="md:text-textBlueColor cursor-pointer w-[50%] flex items-center justify-center md:w-fit  md:text-base text-[13px] not-italic md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
+            className="w-[50%] md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
           >
             Локации
           </button>
-          <p
+          <button
+            type="button"
             // onClick={() => goDetail(data?.id)}
-            className="text-textBlueColor cursor-pointer w-[50%] flex items-center justify-center md:w-fit  md:text-base text-[13px] not-italic md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0  px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-Editbg"
+            className="w-[50%] md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-Editbg"
           >
             Подробнее
-          </p>
+          </button>
+
+           {showProducts !== "updated" ? (
+            <div className="flex items-center gap-x-2">
+              {" "}
+              <button
+                // onClick={() => approveFunc()}
+                className={`${
+                  data?.status === "pending" || data?.status === "declined"
+                    ? ""
+                    : "hidden"
+                } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+              >
+                Одобрить
+              </button>
+              <button
+                onClick={() => {
+                  // setId(data?.id);
+                  // setModalOpen(true);
+                }}
+                className={`${
+                  data?.status === "pending" || data?.status === "approved"
+                    ? ""
+                    : "hidden"
+                } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
+              >
+                Отказать
+              </button>
+            </div>
+          ) : null}
+
+          {showProducts === "updated" ? (
+            <button
+              // onClick={() => approveFunc()}
+              className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+            >
+              Одобрить
+            </button>
+          ) : null}
         </div>
       </div>
 
