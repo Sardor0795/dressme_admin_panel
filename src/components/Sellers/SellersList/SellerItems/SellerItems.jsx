@@ -83,7 +83,15 @@ export default function SellerItems({
         <div className="w-[20%] px-2 pr-3 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.region?.name_ru}, {data?.sub_region?.name_ru}
         </div>
-        <div className="w-[18%] px-2 flex items-center gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[8%]">
+          <Link
+            to={`seller/${data?.id}`}
+            className="cursor-pointer flex items-center justify-center text-center hover:underline text-weatherWinterColor text-[16px] not-italic font-AeonikProMedium"
+          >
+            Подробнее
+          </Link>
+        </div>
+        <div className="w-[18%] px-2 flex items-center justify-end gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           <button
             onClick={() => {
               approveFunc();
@@ -116,15 +124,7 @@ export default function SellerItems({
           >
             Удалить
           </button> */}
-        </div>
-        <div className="w-[8%]">
-          <Link
-            to={`seller/${data?.id}`}
-            className="cursor-pointer flex items-center justify-center text-center hover:underline text-weatherWinterColor text-[16px] not-italic font-AeonikProMedium"
-          >
-            Подробнее
-          </Link>
-        </div>
+        </div>     
       </div>
 
       {/* Mobile */}

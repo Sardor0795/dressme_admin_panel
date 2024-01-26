@@ -600,11 +600,8 @@ export default function ClothesList() {
                                                       <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                                         Дата
                                                       </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                      <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                                         Цена
-                                                      </div>
-                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Действие
                                                       </div>
                                                     </div>
                                                   </div>
@@ -737,11 +734,8 @@ export default function ClothesList() {
                                                       <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                                         Дата
                                                       </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                      <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                                         Цена
-                                                      </div>
-                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Действие
                                                       </div>
                                                     </div>
                                                   </div>
@@ -874,11 +868,8 @@ export default function ClothesList() {
                                                       <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                                         Дата
                                                       </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                      <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                                         Цена
-                                                      </div>
-                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Действие
                                                       </div>
                                                     </div>
                                                   </div>
@@ -1011,11 +1002,8 @@ export default function ClothesList() {
                                                       <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                                         Дата
                                                       </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                      <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                                                         Цена
-                                                      </div>
-                                                      <div className="w-[20%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Действие
                                                       </div>
                                                     </div>
                                                   </div>
