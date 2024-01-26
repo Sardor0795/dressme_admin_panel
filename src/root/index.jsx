@@ -12,6 +12,8 @@ import ShopsList from "../components/shops/shopsList/shopsList";
 import { LocationsPage } from "../pages/locations";
 import LocationsList from "../components/locations/clothesList/locationsList";
 import { LocationsMoreAbout } from "../components/locations/moreAbout";
+import ShopsMoreAbout from "../components/shops/shopsList/shopsItem/shopsMoreAbout/shopsMoreAbout.jsx";
+import { ShopLoactions } from "../components/shops/shopsList/shopsItem/shopLocations/shopLocations";
 
 export const Root = () => {
   return (
@@ -36,8 +38,8 @@ export const Root = () => {
           </Route>
           <Route path="/shops" element={<ShopsPage />}>
             <Route index element={<ShopsList />} />
-            {/* <Route path="/shops/shop/:id" element={<ShopsMoreAbout />} /> */}
-            {/* <Route path="/shops/locations/:id" element={<ShopsLocations />} /> */}
+            <Route path="/shops/shop/:id" element={<ShopsMoreAbout />} />
+            <Route path="/shops/locations/:id" element={<ShopLoactions />} />
           </Route>
         </Route>
         <Route path="/signin" element={<SignInPage />} />
