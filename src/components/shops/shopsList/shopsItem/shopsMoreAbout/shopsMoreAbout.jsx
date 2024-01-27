@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import { , GoBackIcons, LocationIcon, MenuCloseIcons } from "../../../assets/icons";
 // import { AiOutlineLeft } from "react-icons/ai";
 // import { useMutation, useQuery } from "@tanstack/react-query";
@@ -17,6 +17,7 @@ import { StarIcon, DeleteIcon, MenuCloseIcons, BackIcon, LocationIcon } from "..
 
 const ShopsMoreAbout = () => {
   // const { request } = useHttp();
+  // eslint-disable-next-line no-unused-vars
   const [state, setState] = useState({
     marketName: "",
     marketDeliverId: "",
@@ -41,16 +42,16 @@ const ShopsMoreAbout = () => {
   // const [loader, setLoader] = useState(false);
   const [openStoreList, setOpenStoreList] = useState(false);
   const [backImgUploadModal, setBackImgUploadModal] = useState(false);
-  const [backImgOrder, setBackImgOrder] = useState();
+  // const [backImgOrder, setBackImgOrder] = useState();
 
 
-  const handleLocationImageOne = (e) => {
-    setState({
-      ...state,
-      pictureBgFile1: e.target.files[0],
-      pictureBgView1: URL.createObjectURL(e.target.files[0]),
-    });
-  };
+  // const handleLocationImageOne = (e) => {
+  //   setState({
+  //     ...state,
+  //     pictureBgFile1: e.target.files[0],
+  //     pictureBgView1: URL.createObjectURL(e.target.files[0]),
+  //   });
+  // };
   // const clearBgImg = () => {
   //   setState({
   //     ...state,
@@ -66,7 +67,7 @@ const ShopsMoreAbout = () => {
   //   });
   // };
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // const pathname = window.location.pathname;
   // let id = pathname.replace("/store/market-list/:", "");
   // const url = "https://api.dressme.uz/api/seller";
@@ -243,14 +244,14 @@ const ShopsMoreAbout = () => {
   //       }
   //     })
 
-  //   if (!state?.pictureBgViewTest) {
-  //     setBackImgUploadModal(false)
-  //     setState({
-  //       ...state,
-  //       pictureBgFile1: '',
-  //       pictureBgView1: '',
-  //     });
-  //   }
+    // if (!state?.pictureBgViewTest) {
+    //   setBackImgUploadModal(false)
+    //   setState({
+    //     ...state,
+    //     pictureBgFile1: '',
+    //     pictureBgView1: '',
+    //   });
+    // }
   // }
 
   // ---------Handle Edit---------
@@ -306,11 +307,10 @@ const ShopsMoreAbout = () => {
       top: 0,
     });
   }, []);
-  // console.log(image, "state----image,");
-  // console.log(cropData, "state----cropData,");
+
   return (
-    <div className="w-full  h-full ">
-      <div className="w-full   h-full mx-auto md:max-w-[1120px]  md:mt-12   md:px-0 px-4">
+    <div className="w-full h-full ">
+      <div className="w-full h-full mx-auto md:max-w-[1120px]  md:mt-12   md:px-0 px-4">
         <section
           onClick={() => {
             setDeleteModal(false)
@@ -337,38 +337,19 @@ const ShopsMoreAbout = () => {
               className="w-full h-full"
               colors={"#a1a1a1"} />
           </button>
-          {/* {hideDeleteIcons ?
-            <div className="w-full flex items-center justify-center">
-              {loader && hideDeleteIcons ?
-                <PuffLoader
-                  // className={styles.loader1}
-                  color={"#007DCA"}
-                  size={80}
-                  loading={true}
-                />
-                :
-                <div className="w-full flex gap-y-2 flex-col items-center justify-center ">
-                  <span className="border-2 border-[#009B17] rounded-full flex items-center justify-center p-2">
-                    <FaCheck size={30} color="#009B17" />
-                  </span>
-                  <span className="text-base not-italic font-AeonikProMedium">{SuccessMessage}</span>
-                </div>
-              }
-            </div>
-            :
-            <div className="flex flex-col justify-center items-center gap-y-2 ll:gap-y-4">
-              <span className="w-10 h-10 rounded-full border border-[#a2a2a2] flex items-center justify-center">
-                <span className="cursor-pointer active:scale-95  active:opacity-70 text-[#a2a2a2] transition-colors duration-[0.2s] ease-linear">
-                  <DeleteIcon width={30} />
-                </span>
+            
+          <div className="flex flex-col justify-center items-center gap-y-2 ll:gap-y-4">
+            <span className="w-10 h-10 rounded-full border border-[#a2a2a2] flex items-center justify-center">
+              <span className="cursor-pointer active:scale-95  active:opacity-70 text-[#a2a2a2] transition-colors duration-[0.2s] ease-linear">
+                <DeleteIcon width={30} />
               </span>
-              <span className=" text-black text-lg xs:text-xl not-italic font-AeonikProMedium text-center">
-                Вы уверены?
-              </span>
-            </div>
-          } */}
+            </span>
+            <span className=" text-black text-lg xs:text-xl not-italic font-AeonikProMedium text-center">
+              Вы уверены?
+            </span>
+          </div>
+   
           <div className="w-full flex items-center justify-between mt-5 xs:mt-10 gap-x-2">
-
             <button
               onClick={() => setDeleteModal(false)}
               type="button"
@@ -381,187 +362,15 @@ const ShopsMoreAbout = () => {
               className="w-1/2 xs:w-[45%] active:scale-95  active:opacity-70 flex items-center justify-center rounded-[12px] border border-textRedColor text-white bg-[#FF4747]  h-[42px] px-4  text-center text-base not-italic font-AeonikProMedium">
               Удалить </button>
           </div>
-
         </section>
-        {/* Background Img Edit */}
-        {backImgUploadModal && (
-          <div className="max-w-[650px] h-fit w-full fixed z-[223]  left-1/2 right-1/2 top-[50%] translate-x-[-50%] translate-y-[-50%]  flex items-center  justify-center mx-auto ">
-            {/* </div> */}
-            {backImgOrder === 1 && <div className="relative z-[224]  top-0 w-full h-fit p-4 mx-auto bg-white rounded-md shadow-lg">
-              <div
-                className={`flex items-center justify-between  pb-3`}
-              >
-                <div className="w-fit flex items-center">
-                  <span className="text-black text-lg not-italic font-AeonikProRegular leading-5">
-                    Выберите фото
-                  </span>
-                </div>
-                <button
-                  className="py-2"
-                  type="button"
-                  onClick={() => setBackImgUploadModal(false)}
-                >
-                  <MenuCloseIcons colors={"#000"} />
-                </button>
-              </div>
-              <div className="w-full h-[50vh] flex items-center justify-center border border-searchBgColor rounded-lg overflow-hidden">
-                {/* {hideDeleteIcons ?
-                  <div className="w-full flex items-center justify-center">
-                    {loader && hideDeleteIcons ?
-                      <PuffLoader
-                        color={"#007DCA"}
-                        size={80}
-                        loading={true}
-                      />
-                      :
-                      <div className="w-full flex gap-y-2 flex-col items-center justify-center ">
-                        <span className="border-2 border-[#009B17] rounded-full flex items-center justify-center p-2">
-                          <FaCheck size={30} color="#009B17" />
-                        </span>
-                        <span className="text-base not-italic font-AeonikProMedium">{SuccessMessage}</span>
-                      </div>
-                    }
-                  </div>
-                  :
-                  state?.pictureBgView1 ?
-                    <img
-                      src={state?.pictureBgView1}
-                      alt="backImg"
-                      className="w-full h-full object-contain rounded-lg"
-                    />
-                    :
-                    <span className="leading-none text-lg md:text-sm font-AeonikProRegular md:font-AeonikProMedium text-textBlueColor">
-                      Фоновое фото
-                    </span>
-                } */}
-              </div>
-              <div className="flex items-center justify-between  pt-2">
-                <label
-                  htmlFor={"imageThree1"}
-                  className="w-fit   flex items-center justify-center cursor-pointer  active:scale-95   text-textBlueColor   md:text-lg font-AeonikProMedium"
-                >
-                  <input
-                    className="hidden"
-                    id={"imageThree1"}
-                    type="file"
-                    onChange={handleLocationImageOne}
-                    accept=" image/*"
-                  />
-                  {state?.pictureBgView1 ?
-                    "Изменить фото" :
-                    "Загрузить фото"
-                  }
-
-                </label>
-
-
-                {state?.pictureBgView1 ?
-                  <button
-                    // onClick={() => onUserDeleteBackgroundImg()}
-                    className="w-fit h-fit flex items-end justify-end select-none active:scale-95  active:opacity-70 text-lg text-textRedColor px-3 py-2 font-AeonikProMedium pr-1"                    >
-                    Удалить
-                  </button>
-                  :
-                  <button
-                    onClick={() => setBackImgUploadModal(false)}
-                    className="w-fit h-fit flex items-end justify-end select-none active:scale-95  active:opacity-70 text-lg text-textRedColor px-3 py-2 font-AeonikProMedium pr-1"                    >
-                    Oтмена
-                  </button>
-                }
-              </div>
-            </div>}
-            {backImgOrder === 2 &&
-              <div className="relative z-[224]  top-0 w-full h-fit p-4 mx-auto bg-white rounded-md shadow-lg">
-                <div
-                  className={`flex items-center justify-between  pb-3`}
-                >
-                  <div className="w-fit flex items-center">
-                    <span className="text-black text-lg not-italic font-AeonikProRegular leading-5">
-                      Выберите логотип
-                    </span>
-                  </div>
-                  <button
-                    className="py-2"
-                    type="button"
-                    onClick={() => setBackImgUploadModal(false)}
-                  >
-                    <MenuCloseIcons colors={"#000"} />
-                  </button>
-                </div>
-                <div className="w-full h-[50vh] flex items-center justify-center border border-searchBgColor rounded-lg overflow-hidden">
-
-                  {/* {image ? (
-                    <Cropper
-                      ref={cropperRef}
-                      style={{ height: 400, width: "100%" }}
-                      zoomTo={0.5}
-                      preview=".img-preview"
-                      src={image}
-                      viewMode={1}
-                      minCropBoxHeight={10}
-                      minCropBoxWidth={10}
-                      background={false}
-                      responsive={true}
-                      autoCropArea={1}
-                      checkOrientation={false} // https://github.com/fengyuanchen/cropperjs/issues/671
-                      guides={true}
-                      dragMode="move"
-                      aspectRatio={1}
-                    />
-                  ) : */}
-                    <span className="leading-none text-base md:text-sm font-AeonikProRegular md:font-AeonikProMedium text-textBlueColor">
-                      Выберите логотип                </span>
-                  {/* } */}
-                </div>
-                <div className="flex items-center justify-between  pt-2">
-                  <label
-                    htmlFor={"logoBrand"}
-                    className="w-fit   flex items-center justify-center cursor-pointer  active:scale-95   text-textBlueColor   md:text-lg font-AeonikProMedium"
-                  >
-                    <input
-                      className="hidden"
-                      id={"logoBrand"}
-                      type="file"
-                      // onChange={onChange}
-                      accept=" image/*"
-                    />
-                    {/* {image ?
-                      "Изменить фото" :
-                      "Загрузить фото"
-                    } */}
-                  </label>
-
-                  {/* {image && <button
-                    className="w-fit   flex items-center justify-center cursor-pointer  active:scale-95   text-textBlueColor   md:text-lg font-AeonikProMedium"
-                    onClick={getCropData}>
-                    Обрезать
-                  </button>} */}
-
-                  {/* {image ?
-                    <button
-                      onClick={() => ClearBrandImg()}
-                      className="w-fit h-fit flex items-end justify-end select-none active:scale-95  active:opacity-70 text-lg text-textRedColor px-3 py-2 font-AeonikProMedium pr-1"                    >
-                      Удалить
-                    </button>
-                    : */}
-                  <button
-                    onClick={() => setBackImgUploadModal(false)}
-                    className="w-fit h-fit flex items-end justify-end select-none active:scale-95  active:opacity-70 text-lg text-textRedColor px-3 py-2 font-AeonikProMedium pr-1"                    >
-                    Oтмена
-                  </button>
-                  {/* } */}
-                </div>
-              </div>
-            }
-          </div>
-        )}
+     
         <div className="text-center mb-6 text-5 md:text-[35px] font-AeonikProMedium">
           <div className="mt-6 flex items-center justify-center  ">
             <button
               onClick={() => {
-                // navigate(-1);
+                navigate(-1);
               }}
-              className="  md:hidden absolute left-2 flex items-center cursor-pointer justify-center "
+              className=" md:hidden absolute left-2 flex items-center cursor-pointer justify-center "
             >
               <BackIcon />
             </button>
@@ -573,14 +382,15 @@ const ShopsMoreAbout = () => {
             </div>
           </div>
         </div>
+
         <div className="w-full flex items-center justify-end md:justify-between mb-2 md:mb-3 md:pb-0 pb-2 md:border-0 border-borderColor">
           <button
             onClick={() => {
-              // navigate(-1);
+              navigate(-1);
             }}
             className="md:w-8 md:h-8 w-6 h-6 hidden md:flex items-center cursor-pointer justify-center border border-borderColor rounded-lg"
           >
-            {/* <AiOutlineLeft /> */}
+            <BackIcon />
           </button>
           <div className="flex items-center gap-x-[8px] xs:gap-x-[15px]">
             <button
@@ -594,18 +404,17 @@ const ShopsMoreAbout = () => {
         <div className="relative w-full md:h-[360px] h-[200px] flex items-center  border border-[#f2f2f2]  justify-center rounded-lg ">
           <button
             type="button"
-            onClick={() => {
-              setBackImgOrder(1)
-              setBackImgUploadModal(true)
-            }}
+            // onClick={() => {
+            //   setBackImgOrder(1)
+            //   setBackImgUploadModal(true)
+            // }}
             className="h-full w-full  rounded-lg overflow-hidden flex items-center justify-center ">
 
             {!state?.pictureBgView1 ?
               <div className="w-fit h-fit flex items-center">
                 <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium text-textBlueColor">
-                  {/* Фоновое фото */}
+                  Фоновое фото
                 </span>
-
               </div>
               :
               <img
@@ -618,11 +427,11 @@ const ShopsMoreAbout = () => {
           <div className="absolute bottom-[-30px] ll:-bottom-11 overflow-hidden border border-searchBgColor md:bottom-[-60px] z-[20] bg-white left-[15px] ll:left-[30px] md:left-10 w-[60px] h-[60px] ll:w-[80px] ll:h-[80px] md:w-[120px] md:h-[120px] flex items-center justify-center text-center rounded-full ">
             <button
               type="button"
-              onClick={() => {
-                setBackImgOrder(2)
-                setBackImgUploadModal(true)
-              }
-              }
+              // onClick={() => {
+              //   setBackImgOrder(2)
+              //   setBackImgUploadModal(true)
+              // }
+              // }
               className="h-full w-full  rounded-full flex items-center justify-center ">
               {/* {cropData ? (
                 <img
@@ -641,7 +450,6 @@ const ShopsMoreAbout = () => {
                       </span>
                     </div>
                   </span>
-
                 </div>
               {/* } */}
             </button>
@@ -663,10 +471,13 @@ const ShopsMoreAbout = () => {
             </button>
           </div>
         </div>
+
+
         {/* Form */}
         <form className="w-full flex flex-col items-center justify-between  ">
           <div className="w-full flex flex-col md:flex-row items-center justify-center mb-10 md:mb-[60px] gap-x-10 ">
             <div className="w-full md:w-3/5 mb-[24px] md:mb-0 md:mt-7 ">
+              {/* INPUT SHOP NAME */}
               <div className="w-full flex items-center justify-between gap-x-2 md:gap-x-[30px] mb-5">
                 <label
                   htmlFor="shopName"
@@ -681,14 +492,13 @@ const ShopsMoreAbout = () => {
                   type="text"
                   name="shopName"
                   id="shopName"
-                  value={state?.marketName}
-                  onChange={(e) =>
-                    setState({ ...state, marketName: e.target.value })
-                  }
+                  value={'Dressme'}
+                  disabled
                   placeholder="Введите название магазина"
                   className="w-[65%] md:w-[70%] h-[32px] md:h-[42px] border border-borderColor2 outline-none px-3 rounded-lg text-[10px] ls:text-[12px] md:text-base font-AeonikProRegular"
                 />
               </div>
+              {/* GENDER BUTTONS */}
               <div className="w-full flex items-center justify-between gap-x-2 md:gap-x-[30px] mb-5">
                 <label
                   htmlFor="shopName"
@@ -700,30 +510,24 @@ const ShopsMoreAbout = () => {
                   </span>
                 </label>
                 <div className="w-[69%] md:w-[72%] radio-toolbar md:border md:border-borderColor2 outline-none text-base flex items-center justify-between rounded-lg gap-x-1 md:gap-x-0">
-                  {state?.genderList?.map((data) => {
-                    return (
-                      <>
-                        <input
-                          type="radio"
-                          id={data?.id}
-                          value={data?.id}
-                          name="checkGender"
-                          checked={data?.id === Number(state?.checkGender)}
-                          onChange={() =>
-                            setState({ ...state, checkGender: data?.id })
-                          }
-                        />
-                        <label
-                          htmlFor={data?.id}
-                          className={`w-1/3 h-[32px] md:h-[42px] cursor-pointer md:w-full flex items-center justify-center border md:border-0 text-[10px] ls:text-[12px] md:text-base font-AeonikProRegular rounded-lg`}
-                        >
-                          <span>{data?.name_ru}</span>
-                        </label>
-                      </>
-                    );
-                  })}
+                  <label
+                    className={`w-1/3 h-[32px] md:h-[42px] cursor-pointer md:w-full flex items-center justify-center border md:border-0 text-[10px] ls:text-[12px] md:text-base font-AeonikProRegular rounded-lg`}
+                  >
+                    <span>Мужской</span>
+                  </label>
+                  <label
+                    className={`w-1/3 h-[32px] md:h-[42px] cursor-pointer md:w-full flex items-center justify-center border md:border-0 text-[10px] ls:text-[12px] md:text-base font-AeonikProRegular rounded-lg`}
+                  >
+                    <span>Женский</span>
+                  </label>
+                  <label
+                    className={`w-1/3 h-[32px] md:h-[42px] cursor-pointer md:w-full flex items-center justify-center border md:border-0 text-[10px] ls:text-[12px] md:text-base font-AeonikProRegular rounded-lg`}
+                  >
+                    <span>Унисекс</span>
+                  </label>
                 </div>
               </div>
+              {/* DELIVERY BUTTONS */}
               <div className="w-full flex items-center justify-between gap-x-2 md:gap-x-[30px] ">
                 <label
                   htmlFor="shopName"
@@ -735,28 +539,18 @@ const ShopsMoreAbout = () => {
                   </span>
                 </label>
                 <div className="w-[65%] md:w-[70%] radio-toolbar  flex items-center justify-between outline-none rounded-lg gap-x-1 md:gap-x-[14px]">
-                  {state?.deliverList?.map((data) => {
-                    return (
-                      <>
-                        <input
-                          type="radio"
-                          id={data?.name_uz}
-                          value={data?.id}
-                          name="checkDeliver"
-                          checked={data?.id === Number(state?.deliverCheck)}
-                          onChange={() =>
-                            setState({ ...state, deliverCheck: data?.id })
-                          }
-                        />
-                        <label
-                          htmlFor={data?.name_uz}
-                          className={`w-1/2 h-[32px] md:h-[42px] flex items-center justify-center text-center cursor-pointer md:px-3 border border-searchBgColor text-[10px] ls:text-[12px] md:text-base font-AeonikProRegular rounded-lg`}
-                        >
-                          <span className="leading-normal">{data?.name_ru}</span>
-                        </label>
-                      </>
-                    );
-                  })}
+  
+                  <label
+                    className={`w-1/2 h-[32px] md:h-[42px] flex items-center justify-center text-center cursor-pointer md:px-3 border border-searchBgColor text-[10px] ls:text-[12px] md:text-base font-AeonikProRegular rounded-lg`}
+                  >
+                    <span className="leading-normal">Магазин</span>
+                  </label>
+                  <label
+                    className={`w-1/2 h-[32px] md:h-[42px] flex items-center justify-center text-center cursor-pointer md:px-3 border border-searchBgColor text-[10px] ls:text-[12px] md:text-base font-AeonikProRegular rounded-lg`}
+                  >
+                    <span className="leading-normal">Такси</span>
+                  </label>
+                    
                 </div>
               </div>
             </div>
