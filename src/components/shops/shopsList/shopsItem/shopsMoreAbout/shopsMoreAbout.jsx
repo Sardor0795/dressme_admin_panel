@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { StarIcon, BackIcon, LocationIcon } from "../../../../../assets/icon";
 import axios from "axios";
 import { ProductsContext } from "../../../../../context/productsContext";
@@ -96,7 +96,8 @@ const ShopsMoreAbout = () => {
         </div>
         <div className="w-full flex items-center justify-end mb-[24px] md:mb-20 mt-4">
           <div className="flex items-center">
-            <button
+            <NavLink
+            to={`/shops/locations/${params?.id}`}
               className="flex items-end gap-x-2"
             >
               <span>
@@ -105,7 +106,7 @@ const ShopsMoreAbout = () => {
               <span className="w-fit text-weatherWinterColor hover:underline cursor-pointer text-[12px] ll:text-sm not-italic font-AeonikProMedium">
                 Все локации
               </span>
-            </button>
+            </NavLink>
           </div>
         </div>
 
