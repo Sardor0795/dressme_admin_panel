@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { BackIcon } from "../../../../../assets/icon";
 import axios from "axios";
 
@@ -7,7 +7,7 @@ export default function ShopLocations() {
 
   const [shopLocationsData, setShopLoationsData] = useState()
 
-  console.log(shopLocationsData,'shopLocationsData');
+  // console.log(shopLocationsData,'shopLocationsData');
   
   const url = "https://api.dressme.uz";
 
@@ -20,7 +20,7 @@ export default function ShopLocations() {
         Authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      console.log(res?.data?.locations,'res');
+      // console.log(res?.data?.locations,'res');
       setShopLoationsData(res?.data?.locations);
     });
   }, []);
@@ -108,6 +108,7 @@ export default function ShopLocations() {
 
         <div className="w-full h-full flex flex-col  md:rounded-xl overflow-auto rounded-xl ">
           {shopLocationsData?.map((data, index) => {
+            // console.log(data,'data');
             return (
               <div key={index}>
                 <ul
@@ -143,12 +144,13 @@ export default function ShopLocations() {
                       </span>
                     </li>
                     <li className="md:w-[25%] h-full flex items-center justify-center text-center">
-                      <button
+                      <NavLink
+                        to={`/shops/locations/more/${data?.id}`}
                         // onClick={() => goMapCity(data?.id)}
                         className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
                       >
                         Подробнее
-                      </button>
+                      </NavLink>
                     </li>
                   </div>
                 </ul>

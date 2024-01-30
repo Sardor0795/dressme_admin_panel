@@ -424,6 +424,31 @@ const DeleteIcon = ({ width }) => {
   );
 };
 
+const MapLocationIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="40"
+      viewBox="0 0 30 40"
+      fill="none"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M15 40C15.795 40 30 24.2156 30 15.6C30 6.98434 23.2842 0 15 0C6.71572 0 0 6.98434 0 15.6C0 24.2156 14.205 40 15 40ZM15 23.4026C19.2001 23.4026 22.6051 19.8614 22.6051 15.4933C22.6051 11.1252 19.2001 7.5841 15 7.5841C10.7999 7.5841 7.39502 11.1252 7.39502 15.4933C7.39502 19.8614 10.7999 23.4026 15 23.4026Z"
+        fill="#1DAEEF"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0 15.6C0 24.2156 14.205 40 15 40L15 23.4026C10.7999 23.4026 7.39502 19.8614 7.39502 15.4933C7.39502 11.1252 10.7999 7.5841 15 7.5841L15 0C6.71572 0 0 6.98434 0 15.6Z"
+        fill="#3EC3FF"
+      />
+    </svg>
+  );
+};
+
 export {
 CircleNextIcon,
 OpendEyeIcon,
@@ -455,4 +480,5 @@ StarRatengIcon,
 MenuCloseIcons,
 LocationIcon,
 DeleteIcon,
+MapLocationIcon,
 };
