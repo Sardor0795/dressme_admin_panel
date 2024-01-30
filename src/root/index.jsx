@@ -14,6 +14,8 @@ import LocationsList from "../components/locations/clothesList/locationsList";
 import { LocationsMoreAbout } from "../components/locations/moreAbout";
 import ShopsMoreAbout from "../components/shops/shopsList/shopsItem/shopsMoreAbout/shopsMoreAbout.jsx";
 import ShopLocations from "../components/shops/shopsList/shopsItem/shopLocations/shopLocations.jsx";
+import LocationMoreAbout from "../components/shops/shopsList/shopsItem/shopLocations/LocationMoraAbout/LocationMoraAbout.jsx";
+// import LocationMoreAbout from "../components/shops/shopsList/shopsItem/shopLocations/LocationMoraAbout/LocationMoraAbout.jsx";
 
 export const Root = () => {
   return (
@@ -40,6 +42,7 @@ export const Root = () => {
             <Route index element={<ShopsList />} />
             <Route path="/shops/shop/:id" element={<ShopsMoreAbout />} />
             <Route path="/shops/locations/:id" element={<ShopLocations />} />
+            <Route path="/shops/locations/more/:id" element={<LocationMoreAbout />} />
           </Route>
         </Route>
         <Route path="/signin" element={<SignInPage />} />
