@@ -2,12 +2,53 @@
 import { NavLink } from "react-router-dom";
 import { CheckIcon, StarRatengIcon} from "../../../../assets/icon";
 import { deliveryIcon, manGenderIcon, womanGenderIcon } from "../../../../assets/shopIcons/icon";
+import { useContext } from "react";
+import { ShopsDataContext } from "../../../../context/shopsDataContext";
+import axios from "axios";
+import { IdsContext } from "../../../../context/idContext";
 export default function ShopsItem({
   data,
   index,
   onCheck,
-  showProducts
+  showProducts,
+  toast,
+  setModalOpen
 }) {
+
+  const url = "https://api.dressme.uz";
+  let token = sessionStorage.getItem("token");
+
+  const [, , reFetch] = useContext(ShopsDataContext);
+
+  const approveFunc = () => {
+    axios
+      .post(
+        `${url}/api/admin/change-shop-status/${data?.id}`,
+        {
+          status: "approved",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((d) => {
+        if (d.status === 200) {
+          console.log(d, 'DATA-SHOPS');
+          toast.success(d?.data?.message);
+          reFetch();
+        }
+      })
+      .catch((v) => {
+        console.log(v);
+      });
+  };
+
+   const [, setId] = useContext(IdsContext);
+
+  console.log(data,'data');
 
   return (
     <div className="w-full flex flex-row">
@@ -108,7 +149,7 @@ export default function ShopsItem({
             <div className="flex items-center gap-x-2">
               {" "}
               <button
-                // onClick={() => approveFunc()}
+                onClick={() => approveFunc()}
                 className={`${
                   data?.status === "pending" || data?.status === "declined"
                     ? ""
@@ -119,8 +160,8 @@ export default function ShopsItem({
               </button>
               <button
                 onClick={() => {
-                  // setId(data?.id);
-                  // setModalOpen(true);
+                  setId(data?.id);
+                  setModalOpen(true);
                 }}
                 className={`${
                   data?.status === "pending" || data?.status === "approved"
@@ -135,7 +176,7 @@ export default function ShopsItem({
 
           {showProducts === "updated" ? (
             <button
-              // onClick={() => approveFunc()}
+              onClick={() => approveFunc()}
               className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
             >
               Одобрить
