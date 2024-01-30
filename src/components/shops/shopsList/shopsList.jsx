@@ -3,11 +3,12 @@ import { AllowedIcon, BackIcon, CheckIcon, EditedIcon, NotAllowedIcon, SearchIco
 import { PhoneNavbar } from "../../phoneNavbar";
 import { ProductsContext } from "../../../context/productsContext";
 import { ShopsDataContext } from "../../../context/shopsDataContext";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import WiFiLoader from "../../../assets/loader/wifi_loader.gif";
-import CancelModal from "../../clothes/clothesList/ModalCancel";
 import ShopsItem from "./shopsItem/shopsItem";
+import CancelShopsModal from "./ModalCancel";
 
 export default function ShopsList() {
 
@@ -15,15 +16,9 @@ export default function ShopsList() {
 
   const [dataShops, setDataShops, , loader] = useContext(ShopsDataContext);
 
-  // console.log(dataShops,'dataShops');
-
   let newData = dataShops;
 
-  // console.log(newData,'newData');
-
   const [filteredData, setFilteredData] = useState([]);
-
-  // console.log(filteredData,'filteredData-shops');
   
   useEffect(() => {
     setFilteredData(newData);
@@ -111,8 +106,6 @@ export default function ShopsList() {
     dataCount = updatedCount;
   }
 
-  function approveFunc () {  }
-
     // up btn
 
   useEffect(() => {
@@ -145,7 +138,6 @@ return(
         <div className="block md:hidden w-full">
             <PhoneNavbar filterFuncCloThes={filterFunc} />
         </div>
-
         {showProducts === "pending" ? (
         <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Все магазины
@@ -200,7 +192,7 @@ return(
             {showProducts === "pending" ? (
             <div className="flex items-center ml-auto">
                 <button
-                onClick={() => approveFunc()}
+                // onClick={() => approveFunc()}
                 type="button"
                 className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                 >
@@ -336,7 +328,7 @@ return(
           {showProducts === "pending" ? (
             <div className="flex items-center ml-auto">
               <button
-                onClick={() => approveFunc()}
+                // onClick={() => approveFunc()}
                 type="button"
                 className="text-[#12C724] text-base not-italic font-AeonikProMedium"
               >
@@ -366,7 +358,7 @@ return(
           {showProducts === "declined" ? (
             <div className="flex items-center ml-auto">
               <button
-                onClick={() => approveFunc()}
+                // onClick={() => approveFunc()}
                 type="button"
                 className="text-[#12C724] text-base not-italic font-AeonikProMedium"
               >
@@ -377,7 +369,7 @@ return(
           {showProducts === "updated" ? (
             <div className="flex items-center ml-auto">
               <button
-                onClick={() => approveFunc()}
+                // onClick={() => approveFunc()}
                 type="button"
                 className="text-[#12C724] text-base not-italic font-AeonikProMedium"
               >
@@ -486,7 +478,8 @@ return(
                     
                     {/* Status Waiting */}
                     {showProducts === "pending"
-                      ? item?.shops?.map((item_2,index) => {    
+                      ? item?.shops?.map((item_2,index) => {   
+                        // console.log(item_2,'item_2'); 
                           return (
                             <div key={item_2?.id}>
                               {item_2?.status === "pending" ? (
@@ -576,6 +569,8 @@ return(
                                     index={index}
                                     onCheck={onCheck}
                                     showProducts={showProducts}
+                                    toast={toast}
+                                    setModalOpen={setModalOpen}
                                   />
                                 </div>
                               ) : null}
@@ -587,6 +582,7 @@ return(
                     {/* Status Allowed */}
                     {showProducts === "approved"
                       ? item?.shops?.map((item_2, index) => {
+                        // console.log(item_2,'item_2');
                           return (
                             <div key={item_2?.id}>
                               {item_2?.status === "approved" ? (
@@ -676,6 +672,8 @@ return(
                                     index={index}
                                     onCheck={onCheck}
                                     showProducts={showProducts}
+                                    toast={toast}
+                                    setModalOpen={setModalOpen}
                                   />
                                 </div>
                               ) : null}
@@ -687,6 +685,7 @@ return(
                     {/* Status NotAllowed */}
                     {showProducts === "declined"
                       ? item?.shops?.map((item_2,index) => {
+                        // console.log(item_2,'item_2');
                           return (
                             <div key={item_2?.id}>
                               {item_2?.status === "declined" ? (
@@ -776,6 +775,8 @@ return(
                                     index={index}
                                     onCheck={onCheck}
                                     showProducts={showProducts}
+                                    toast={toast}
+                                    setModalOpen={setModalOpen}
                                   />
                                 </div>
                               ) : null}
@@ -787,6 +788,7 @@ return(
                     {/* Status Updated */}
                     {showProducts === "updated"
                       ? item?.shops?.map((item_2,index) => {
+                        // console.log(item_2,'item_2');
                           return (
                             <div key={item_2?.id}>
                               {item_2?.status === "updated" ? (
@@ -876,6 +878,8 @@ return(
                                     index={index}
                                     onCheck={onCheck}
                                     showProducts={showProducts}
+                                    toast={toast}
+                                    setModalOpen={setModalOpen}
                                   />
                                 </div>
                               ) : null}
@@ -909,7 +913,7 @@ return(
 
     </div>
 
-    <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
+    <CancelShopsModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
 
     <button
         id="upBtn"

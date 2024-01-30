@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";

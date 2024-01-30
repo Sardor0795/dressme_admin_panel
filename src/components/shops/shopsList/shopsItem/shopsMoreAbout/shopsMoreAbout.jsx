@@ -26,7 +26,6 @@ const ShopsMoreAbout = () => {
     });
   }, []);
   
-  
   const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo({
