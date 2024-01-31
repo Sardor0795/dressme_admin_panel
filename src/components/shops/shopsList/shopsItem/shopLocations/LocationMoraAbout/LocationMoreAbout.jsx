@@ -1,11 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { BackIcon, MapLocationIcon, SearchIcon, StarIcon } from "../../../../../../assets/icon";
-import { useContext, useEffect, useRef, useState } from "react";
+import { BackIcon, MapLocationIcon, StarIcon } from "../../../../../../assets/icon";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Map, YMaps } from "react-yandex-maps";
-import { ProductsContext } from "../../../../../../context/productsContext";
 import CancelShopsModal from "../../../ModalCancel";
-// import { ShopsDataContext } from "../../../../../../context/shopsDataContext";
 
 export default function LocationMoreAbout() {
 
@@ -24,10 +22,10 @@ export default function LocationMoreAbout() {
     // };
 
     // reset state & search
-    const handleReset = () => {
-        setForMaps({ ...forMaps, title: "" });
-        searchRef.current.value = "";
-    };
+    // const handleReset = () => {
+    //     setForMaps({ ...forMaps, title: "" });
+    //     searchRef.current.value = "";
+    // };
 
   // change title
   const handleBoundsChange = () => {};
@@ -60,17 +58,9 @@ export default function LocationMoreAbout() {
 
    const mapOptions = {
     scrollzoom:"false"
-    
   };
 
   const navigate = useNavigate();
-
-    // Products Context
-  // const [showProducts] = useContext(ProductsContext);
-
-  // const defaultState = {
-  //   behaviors: ["disable"],
-  // };
 
   const handleMouseDown = (e) => {
     // Sichqoncha bosilganda ishlatilmaydigan qilish
@@ -139,27 +129,9 @@ export default function LocationMoreAbout() {
                           disabled
                           className={`w-full outline-none text-sm font-AeonikProMedium mr-3 h-10 rounded-lg`}
                         />
-                        {forMaps?.title?.length ? (
-                          <button
-                            onClick={handleReset}
-                            disabled
-                            className="cursor-pointer flex items-center h-10 justify-center "
-                          >
-                            {/* <GrClose className="pointer-events-none" /> */}
-                          </button>
-                        ) : (
-                          <button
-                          disabled
-                            type="submit"
-                            className="cursor-pointer flex items-center h-10 justify-center "
-                          >
-                            <SearchIcon />
-                          </button>
-                        )}
                       </label>
                       
                     </div>
-
                     <span className={"placemark"}>
                       <MapLocationIcon color="primary" />
                     </span>
@@ -337,7 +309,7 @@ export default function LocationMoreAbout() {
             {shopLocationsData?.status === "pending" ? (
               <div className="flex items-center gap-x-3">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
@@ -366,7 +338,7 @@ export default function LocationMoreAbout() {
             {shopLocationsData?.status === "declined" ? (
               <div className="flex items-cente">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
@@ -377,7 +349,7 @@ export default function LocationMoreAbout() {
             {shopLocationsData?.status === "updated" ? (
               <div className="flex items-center">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >

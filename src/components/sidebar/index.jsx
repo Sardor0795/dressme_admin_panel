@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { ExitIcon, UserIcon } from "../../assets/icon";
 import { sidebarData } from "../../utils/sidebarData";
 import { useState } from "react";
