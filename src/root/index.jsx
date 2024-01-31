@@ -14,7 +14,7 @@ import LocationsList from "../components/locations/clothesList/locationsList";
 import { LocationsMoreAbout } from "../components/locations/moreAbout";
 import ShopsMoreAbout from "../components/shops/shopsList/shopsItem/shopsMoreAbout/shopsMoreAbout.jsx";
 import ShopLocations from "../components/shops/shopsList/shopsItem/shopLocations/shopLocations.jsx";
-import LocationMoreAbout from "../components/shops/shopsList/shopsItem/shopLocations/LocationMoraAbout/LocationMoraAbout.jsx";
+import LocationMoreAbout from "../components/shops/shopsList/shopsItem/shopLocations/LocationMoraAbout/LocationMoreAbout.jsx";
 // import LocationMoreAbout from "../components/shops/shopsList/shopsItem/shopLocations/LocationMoraAbout/LocationMoraAbout.jsx";
 
 export const Root = () => {
