@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
-import SoonImg from "../../../../assets/img/coming_soon.jpg";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
@@ -109,7 +109,7 @@ export default function LocationsItem({
               </li>
               <li className="md:w-[12%] h-full flex items-center justify-center text-center">
                 <Link
-                  to={`location/${data?.id}`}
+                  to={`/shops/locations/location/${data?.id}`}
                   className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
                 >
                   Подробнее

@@ -1,15 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { BackIcon, MapLocationIcon, SearchIcon, StarIcon } from "../../../../../../assets/icon";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Map, YMaps } from "react-yandex-maps";
+import { ProductsContext } from "../../../../../../context/productsContext";
+import { ShopsDataContext } from "../../../../../../context/shopsDataContext";
 
 export default function LocationMoreAbout() {
 
   const [, setMapConstructor] = useState(null);
-    const mapRef = useRef(null);
     const searchRef = useRef(null);
-    // const [isSendedLocation, setIsSendedLocation] = useState(true);
 
     const [forMaps, setForMaps] = useState({
         title: "",
@@ -56,7 +56,69 @@ export default function LocationMoreAbout() {
     });
   }, []);
 
+   const mapOptions = {
+    suppressMapOpenBlock: true,
+    suppressObsoleteBrowserNotifier: true,
+    scrollzoom: false,
+  };
+
+  //   const [dataShops, setDataShops, , loader] = useContext(ShopsDataContext);
+
+  // let newData = dataShops;
+
+  // useEffect(() => {
+  //   setFilteredData(newData);
+  // }, [newData]);
+
+  // const filterFunc = (e) => {
+  //   const filtered = dataShops?.map((seller) => {
+  //     const filteredShops = seller?.shops?.filter((shop) => {
+  //       return shop?.name.toLowerCase().includes(e.target.value.toLowerCase());
+  //     });
+ 
+  //     return { ...seller, shops: filteredShops };
+  //   });
+ 
+  //   setFilteredData(filtered);
+  // };
+
   const navigate = useNavigate();
+  const [filteredData, setFilteredData] = useState([]);
+
+     // // Count items -----------
+
+  let waitingCount = 0;
+  let allowedCount = 0;
+  let notAllowedCount = 0;
+  let updatedCount = 0;
+
+  filteredData?.forEach((seller) => {
+  seller?.shops?.forEach((shop) => {
+    if (shop?.status === "pending") {
+      ++waitingCount;
+    } else if (shop?.status === "approved") {
+      ++allowedCount;
+    } else if (shop?.status === "declined") {
+      ++notAllowedCount;
+    } else if (shop?.status === "updated") {
+      ++updatedCount;
+    }
+  });
+});
+
+    // Products Context
+  const [showProducts] = useContext(ProductsContext);
+
+  let dataCount = 0;
+  if (showProducts === "pending") {
+    dataCount = waitingCount;
+  } else if (showProducts === "approved") {
+    dataCount = allowedCount;
+  } else if (showProducts === "declined") {
+    dataCount = notAllowedCount;
+  } else if (showProducts === "updated") {
+    dataCount = updatedCount;
+  }
   
   return (
     <div className="w-full md:px-10 ">
@@ -89,15 +151,11 @@ export default function LocationMoreAbout() {
           <div className="h-[400px]">
             <div className={`w-full `}>
               <div className={"relative h-[400px] bg-white z-[9999]"}>
-                  <YMaps
-                  // query={{
-                  //   apikey: "8b56a857-f05f-4dc6-a91b-bc58f302ff21",
-                  //   lang: "uz",
-                  // }}
-                >
+                  <YMaps>
                   <Map
                     className={` overflow-hidden w-full h-full`}
-                    // {...mapOptions}
+                    {...mapOptions}
+                    instanceRef={ref => { ref && ref.behaviors.disable('scrollZoom'); }}
                     state={{
                       center: forMaps?.center,
                       zoom: forMaps?.zoom,
@@ -106,7 +164,7 @@ export default function LocationMoreAbout() {
                     defaultState={forMaps}
                     onLoad={setMapConstructor}
                     onBoundsChange={handleBoundsChange}
-                    instanceRef={mapRef}
+                    // instanceRef={mapRef}
                   >
                     <div className="h-fit p-1 md:p-[10px] absolute top-2 z-40 gap-x-5 mx-1 md:mx-2 backdrop-blur-sm bg-yandexNavbar left-0 right-0 flex items-center justify-between border px-1 md:px-3 rounded-lg">
                       <label
@@ -146,20 +204,6 @@ export default function LocationMoreAbout() {
                     <span className={"placemark"}>
                       <MapLocationIcon color="primary" />
                     </span>
-                    {/* <ZoomControl
-                      options={{
-                        float: "right",
-                        position: { bottom: 200, right: 10, size: "small" },
-                        size: "small",
-                      }}
-                    />{" "} */}
-                    {/* <GeolocationControl
-                      options={{
-                        float: "right",
-                        position: { bottom: 60, right: 10 },
-                        size: "small",
-                      }}
-                    /> */}
                   </Map>
                 </YMaps>
               </div>
@@ -329,14 +373,61 @@ export default function LocationMoreAbout() {
               </div>
             </div>
           </div>
-          {/* <div className="flex justify-center mt-[50px]  px-4 md:px-0 ">
-            <button
-            //   onClick={() => handleEditLocation()}
-              className="w-full md:w-fit h-[42px] flex items-center justify-center md:px-[100px]  bg-textBlueColor text-white rounded md:rounded-lg active:scale-95"
-            >
-              Cохранит
-            </button>
-          </div> */}
+          <div className="flex items-center justify-center mb-10 md:pb-10 mt-10 cursor-pointer">
+          <div className="flex items-center ">
+            {showProducts === "pending" ? (
+              <div className="flex items-center gap-x-3">
+                <button
+                  // onClick={() => approveFunc()}
+                  type="button"
+                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                >
+                  Одобрить
+                </button>
+                <button
+                  // onClick={() => setModalOpen(true)}
+                  type="button"
+                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
+                >
+                  Отказать
+                </button>
+              </div>
+            ) : null}
+            {showProducts === "approved" ? (
+              <div className="flex items-center">
+                <button
+                  // onClick={() => setModalOpen(true)}
+                  type="button"
+                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
+                >
+                  Отказать
+                </button>
+              </div>
+            ) : null}
+            {showProducts === "declined" ? (
+              <div className="flex items-cente">
+                <button
+                  // onClick={() => approveFunc()}
+                  type="button"
+                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                >
+                  Одобрить
+                </button>
+              </div>
+            ) : null}
+            {showProducts === "updated" ? (
+              <div className="flex items-center">
+                <button
+                  // onClick={() => approveFunc()}
+                  type="button"
+                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                >
+                  Одобрить
+                </button>
+              </div>
+            ) : null}
+          </div>
+        </div>
         </div>
 
       </div >
