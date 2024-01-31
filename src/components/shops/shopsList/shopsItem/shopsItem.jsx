@@ -48,8 +48,6 @@ export default function ShopsItem({
 
    const [, setId] = useContext(IdsContext);
 
-  console.log(data,'data');
-
   return (
     <div className="w-full flex flex-row">
       <div className="w-fullh-full flex items-center justify-center">
