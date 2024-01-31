@@ -68,9 +68,15 @@ export default function LocationMoreAbout() {
     // Products Context
   // const [showProducts] = useContext(ProductsContext);
 
-  const defaultState = {
-    behaviors: ["disable"],
+  // const defaultState = {
+  //   behaviors: ["disable"],
+  // };
+
+  const handleMouseDown = (e) => {
+    // Sichqoncha bosilganda ishlatilmaydigan qilish
+    e.preventDefault();
   };
+  
   
   return (
     <div className="w-full md:px-10">
@@ -117,7 +123,7 @@ export default function LocationMoreAbout() {
                     defaultState={forMaps}
                     onLoad={setMapConstructor}
                     onBoundsChange={handleBoundsChange}
-                    defaultState={defaultState}
+                    onMouseDown={handleMouseDown}
                   >
                     <div className="h-fit p-1 md:p-[10px] absolute top-2 z-40 gap-x-5 mx-1 md:mx-2 backdrop-blur-sm bg-yandexNavbar left-0 right-0 flex items-center justify-between border px-1 md:px-3 rounded-lg">
                       <label
