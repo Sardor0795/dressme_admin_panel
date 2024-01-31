@@ -109,7 +109,7 @@ export default function LocationsItem({
               </li>
               <li className="md:w-[12%] h-full flex items-center justify-center text-center">
                 <Link
-                  to={`/shops/locations/location/${data?.id}`}
+                  to={`location/${data?.id}`}
                   className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
                 >
                   Подробнее
