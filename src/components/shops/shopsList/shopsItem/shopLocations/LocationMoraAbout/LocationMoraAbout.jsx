@@ -4,7 +4,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Map, YMaps } from "react-yandex-maps";
 import { ProductsContext } from "../../../../../../context/productsContext";
-import { ShopsDataContext } from "../../../../../../context/shopsDataContext";
+import CancelShopsModal from "../../../ModalCancel";
+// import { ShopsDataContext } from "../../../../../../context/shopsDataContext";
 
 export default function LocationMoreAbout() {
 
@@ -34,6 +35,7 @@ export default function LocationMoreAbout() {
   const [shopLocationsData, setShopLoationData] = useState()
 
   console.log(shopLocationsData,'shopLocationsData');
+  const [modalOpen, setModalOpen] = useState(false);
 
   const url = "https://api.dressme.uz";
 
@@ -57,71 +59,21 @@ export default function LocationMoreAbout() {
   }, []);
 
    const mapOptions = {
-    suppressMapOpenBlock: true,
-    suppressObsoleteBrowserNotifier: true,
-    scrollzoom: false,
+    scrollzoom:"false"
+    
   };
 
-  //   const [dataShops, setDataShops, , loader] = useContext(ShopsDataContext);
-
-  // let newData = dataShops;
-
-  // useEffect(() => {
-  //   setFilteredData(newData);
-  // }, [newData]);
-
-  // const filterFunc = (e) => {
-  //   const filtered = dataShops?.map((seller) => {
-  //     const filteredShops = seller?.shops?.filter((shop) => {
-  //       return shop?.name.toLowerCase().includes(e.target.value.toLowerCase());
-  //     });
- 
-  //     return { ...seller, shops: filteredShops };
-  //   });
- 
-  //   setFilteredData(filtered);
-  // };
-
   const navigate = useNavigate();
-  const [filteredData, setFilteredData] = useState([]);
-
-     // // Count items -----------
-
-  let waitingCount = 0;
-  let allowedCount = 0;
-  let notAllowedCount = 0;
-  let updatedCount = 0;
-
-  filteredData?.forEach((seller) => {
-  seller?.shops?.forEach((shop) => {
-    if (shop?.status === "pending") {
-      ++waitingCount;
-    } else if (shop?.status === "approved") {
-      ++allowedCount;
-    } else if (shop?.status === "declined") {
-      ++notAllowedCount;
-    } else if (shop?.status === "updated") {
-      ++updatedCount;
-    }
-  });
-});
 
     // Products Context
-  const [showProducts] = useContext(ProductsContext);
+  // const [showProducts] = useContext(ProductsContext);
 
-  let dataCount = 0;
-  if (showProducts === "pending") {
-    dataCount = waitingCount;
-  } else if (showProducts === "approved") {
-    dataCount = allowedCount;
-  } else if (showProducts === "declined") {
-    dataCount = notAllowedCount;
-  } else if (showProducts === "updated") {
-    dataCount = updatedCount;
-  }
+  const defaultState = {
+    behaviors: ["disable"],
+  };
   
   return (
-    <div className="w-full md:px-10 ">
+    <div className="w-full md:px-10">
       <div className="w-full max-w-[920px] mx-auto mt-6 md:mt-12 mb-[30px]">
         <div className="my-4">
           <div className="flex items-center justify-center mb-6">
@@ -150,9 +102,10 @@ export default function LocationMoreAbout() {
           {/* Location of Maps */}
           <div className="h-[400px]">
             <div className={`w-full `}>
-              <div className={"relative h-[400px] bg-white z-[9999]"}>
-                  <YMaps>
+              <div className={"relative h-[400px] bg-white"}>
+                  <YMaps disabled>
                   <Map
+                  disabled
                     className={` overflow-hidden w-full h-full`}
                     {...mapOptions}
                     instanceRef={ref => { ref && ref.behaviors.disable('scrollZoom'); }}
@@ -164,7 +117,7 @@ export default function LocationMoreAbout() {
                     defaultState={forMaps}
                     onLoad={setMapConstructor}
                     onBoundsChange={handleBoundsChange}
-                    // instanceRef={mapRef}
+                    defaultState={defaultState}
                   >
                     <div className="h-fit p-1 md:p-[10px] absolute top-2 z-40 gap-x-5 mx-1 md:mx-2 backdrop-blur-sm bg-yandexNavbar left-0 right-0 flex items-center justify-between border px-1 md:px-3 rounded-lg">
                       <label
@@ -373,54 +326,54 @@ export default function LocationMoreAbout() {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-center mb-10 md:pb-10 mt-10 cursor-pointer">
+          <div className="flex items-center justify-center mb-10 md:pb-10 mt-10">
           <div className="flex items-center ">
-            {showProducts === "pending" ? (
+            {shopLocationsData?.status === "pending" ? (
               <div className="flex items-center gap-x-3">
                 <button
-                  // onClick={() => approveFunc()}
+                  onClick={() => approveFunc()}
                   type="button"
                   className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
                   Одобрить
                 </button>
                 <button
-                  // onClick={() => setModalOpen(true)}
+                  onClick={() => setModalOpen(true)}
                   type="button"
-                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
+                  className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                 >
                   Отказать
                 </button>
               </div>
             ) : null}
-            {showProducts === "approved" ? (
+            {shopLocationsData?.status === "approved" ? (
               <div className="flex items-center">
                 <button
-                  // onClick={() => setModalOpen(true)}
+                  onClick={() => setModalOpen(true)}
                   type="button"
-                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
+                  className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                 >
                   Отказать
                 </button>
               </div>
             ) : null}
-            {showProducts === "declined" ? (
+            {shopLocationsData?.status === "declined" ? (
               <div className="flex items-cente">
                 <button
-                  // onClick={() => approveFunc()}
+                  onClick={() => approveFunc()}
                   type="button"
-                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                  className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
                   Одобрить
                 </button>
               </div>
             ) : null}
-            {showProducts === "updated" ? (
+            {shopLocationsData?.status === "updated" ? (
               <div className="flex items-center">
                 <button
-                  // onClick={() => approveFunc()}
+                  onClick={() => approveFunc()}
                   type="button"
-                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                  className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
                   Одобрить
                 </button>
@@ -431,6 +384,8 @@ export default function LocationMoreAbout() {
         </div>
 
       </div >
+
+      <CancelShopsModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
     </div >
   );
 }
