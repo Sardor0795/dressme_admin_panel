@@ -145,8 +145,7 @@ export default function ShopLocations() {
                     </li>
                     <li className="md:w-[25%] h-full flex items-center justify-center text-center">
                       <NavLink
-                        to={`/shops/locations/more/${data?.id}`}
-                        // onClick={() => goMapCity(data?.id)}
+                        to={`/shops/locations/location/${data?.id}`}
                         className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
                       >
                         Подробнее
