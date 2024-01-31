@@ -139,24 +139,24 @@ return(
             <PhoneNavbar filterFuncCloThes={filterFunc} />
         </div>
         {showProducts === "pending" ? (
-        <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Все магазины
-        </div>
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Ожидающие локации
+          </div>
         ) : null}
         {showProducts === "approved" ? (
-        <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Все магазины
-        </div>
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Одобренные локации
+          </div>
         ) : null}
         {showProducts === "declined" ? (
-        <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Все магазины
-        </div>
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Отказанные локации
+          </div>
         ) : null}
         {showProducts === "updated" ? (
-        <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Все магазины
-        </div>
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Обновленные локации
+          </div>
         ) : null}
 
         <label

@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { BackIcon, MapLocationIcon, StarIcon } from "../../../assets/icon";
+import { BackIcon, MapLocationIcon, StarIcon } from "../../../../../../assets/icon";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Map, YMaps } from "react-yandex-maps";
-import CancelShopsModal from "../../shops/shopsList/ModalCancel";
+import CancelShopsModal from "../../../ModalCancel";
 
+export default function LocationMoreAbout() {
 
-export const LocationsMoreAbout = () => {
   const [, setMapConstructor] = useState(null);
     const searchRef = useRef(null);
 
@@ -16,18 +16,6 @@ export const LocationsMoreAbout = () => {
         zoom: 12,
     });
 
-    // const mapOptions = {
-    //     modules: ["geocode", "SuggestView"],
-    //     defaultOptions: { suppressMapOpenBlock: true },
-    // };
-
-    // reset state & search
-    // const handleReset = () => {
-    //     setForMaps({ ...forMaps, title: "" });
-    //     searchRef.current.value = "";
-    // };
-
-  // change title
   const handleBoundsChange = () => {};
 
   const [shopLocationsData, setShopLoationData] = useState()
@@ -66,7 +54,8 @@ export const LocationsMoreAbout = () => {
     // Sichqoncha bosilganda ishlatilmaydigan qilish
     e.preventDefault();
   };
-
+  
+  
   return (
     <div className="w-full md:px-10">
       <div className="w-full max-w-[920px] mx-auto mt-6 md:mt-12 mb-[30px]">
@@ -365,4 +354,4 @@ export const LocationsMoreAbout = () => {
       <CancelShopsModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
     </div >
   );
-};
+}

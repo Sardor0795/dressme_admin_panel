@@ -449,6 +449,16 @@ const MapLocationIcon = () => {
   );
 };
 
+const NoImg = () => {
+  return(
+    <svg width="98" height="98" viewBox="0 0 98 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M36.7501 89.8334H61.2501C81.6668 89.8334 89.8334 81.6668 89.8334 61.2501V36.7501C89.8334 16.3334 81.6668 8.16675 61.2501 8.16675H36.7501C16.3334 8.16675 8.16675 16.3334 8.16675 36.7501V61.2501C8.16675 81.6668 16.3334 89.8334 36.7501 89.8334Z" stroke="#E8E8E8" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M36.7499 40.8333C41.2602 40.8333 44.9166 37.177 44.9166 32.6667C44.9166 28.1563 41.2602 24.5 36.7499 24.5C32.2396 24.5 28.5833 28.1563 28.5833 32.6667C28.5833 37.177 32.2396 40.8333 36.7499 40.8333Z" stroke="#E8E8E8" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M10.9026 77.3791L31.0334 63.8633C34.2593 61.6991 38.9143 61.9441 41.8134 64.435L43.1609 65.6191C46.3459 68.355 51.4909 68.355 54.6759 65.6191L71.6626 51.0416C74.8476 48.3058 79.9926 48.3058 83.1776 51.0416L89.8334 56.7583" stroke="#E8E8E8" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
 export {
 CircleNextIcon,
 OpendEyeIcon,
@@ -481,4 +491,5 @@ MenuCloseIcons,
 LocationIcon,
 DeleteIcon,
 MapLocationIcon,
+NoImg,
 };
