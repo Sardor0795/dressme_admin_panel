@@ -10,12 +10,12 @@ import { ClothMoreAbout } from "../components/clothes/moreAbout";
 import { ShopsPage } from "../pages/shops";
 import ShopsList from "../components/shops/shopsList/shopsList";
 import { LocationsPage } from "../pages/locations";
-import LocationsList from "../components/locations/clothesList/locationsList";
-import { LocationsMoreAbout } from "../components/locations/moreAbout";
+import LocationsList from "../components/locations/clothesList/locationsList.jsx";
+import { LocationsMoreAbout } from "../components/locations/moreAbout/locationsMoreAbout.jsx";
 import ShopsMoreAbout from "../components/shops/shopsList/shopsItem/shopsMoreAbout/shopsMoreAbout.jsx";
 import ShopLocations from "../components/shops/shopsList/shopsItem/shopLocations/shopLocations.jsx";
-import LocationMoreAbout from "../components/shops/shopsList/shopsItem/shopLocations/LocationMoraAbout/LocationMoreAbout.jsx";
-// import LocationMoreAbout from "../components/shops/shopsList/shopsItem/shopLocations/LocationMoraAbout/LocationMoraAbout.jsx";
+import LocationMoreAbout from "../components/shops/shopsList/shopsItem/shopLocations/LocationMoraAbout/shopLocationMoreAbout.jsx";
+
 
 export const Root = () => {
   return (

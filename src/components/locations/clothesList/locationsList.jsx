@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import CancelModal from "./ModalCancel";
-import ClothesItem from "./locationsItem/locationstem";
 import { ProductsContext } from "../../../context/productsContext";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -18,8 +17,7 @@ import {
   WaitingForAllowIcon,
 } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
-import { ClothesDataContext } from "../../../context/clothesDataContext";
-import LocationsItem from "./locationsItem/locationstem";
+import LocationsItem from "./locationsItem/locationsItem";
 import { LocationsDataContext } from "../../../context/locationsDataContext";
 
 export default function LocationsList() {
@@ -90,7 +88,7 @@ export default function LocationsList() {
       top: 0,
     });
   }, []);
-  const [someChecked, setSomeChecked] = useState(false);
+  const [, setSomeChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
 
   let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
@@ -220,7 +218,7 @@ export default function LocationsList() {
               {showProducts === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    // onClick={() => approveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -250,7 +248,7 @@ export default function LocationsList() {
               {showProducts === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    // onClick={() => approveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -261,7 +259,7 @@ export default function LocationsList() {
               {showProducts === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    // onClick={() => approveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -356,7 +354,7 @@ export default function LocationsList() {
             {showProducts === "pending" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
@@ -386,7 +384,7 @@ export default function LocationsList() {
             {showProducts === "declined" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
@@ -397,7 +395,7 @@ export default function LocationsList() {
             {showProducts === "updated" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
