@@ -8,6 +8,8 @@ const ShopsMoreAbout = () => {
 
   const [shopData, setShopData] = useState([]);
 
+  console.log(shopData,'shopData');
+
   // Products Context
   const [showProducts] = useContext(ProductsContext);
 
