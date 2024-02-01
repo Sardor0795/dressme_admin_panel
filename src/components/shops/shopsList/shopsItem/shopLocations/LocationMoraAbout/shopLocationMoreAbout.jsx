@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { BackIcon, MapLocationIcon, StarIcon } from "../../../../../../assets/icon";
+import { BackIcon, MapLocationIcon, MenuCloseIcons, StarIcon } from "../../../../../../assets/icon";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Map, YMaps } from "react-yandex-maps";
@@ -21,6 +21,7 @@ export default function LocationMoreAbout() {
   const [shopLocationsData, setShopLoationData] = useState()
 
   console.log(shopLocationsData,'shopLocationsData');
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const url = "https://api.dressme.uz";
@@ -54,10 +55,90 @@ export default function LocationMoreAbout() {
     // Sichqoncha bosilganda ishlatilmaydigan qilish
     e.preventDefault();
   };
-  
-  
+
+  const [modalOfCarsouel, setModalOfCarsouel] = useState(false)
+
+   function handleClickCarosuel() {
+    setModalOfCarsouel(true)
+  }
+
   return (
     <div className="w-full md:px-10">
+
+       <section
+        onClick={() => {
+          setModalOfCarsouel(false)
+        }}
+        className={`fixed inset-0 z-[200] duration-200 w-full h-[100vh] bg-black opacity-60 
+        ${modalOfCarsouel ? "" : "hidden"
+          }`}
+      ></section>
+
+      <section
+          className={`fixed z-[201] rounded-lg bg-white  w-fit h-fit m-auto cursor-pointer flex flex-col items-center justify-center inset-0  ${modalOfCarsouel ? "" : "hidden"
+            }`}
+        >
+          <button
+            onClick={() => setModalOfCarsouel(false)}
+            className="absolute top-0  z-[116] right-[-80px]  flex items-center justify-center w-[50px] h-[50px] rounded-full bg-[#808080]">
+            <MenuCloseIcons colors="#fff" />
+          </button>
+          <div>
+            <div
+              className="w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 "
+            >
+              <div className="w-full  flex flex-col items-center justify-start ">
+                {shopLocationsData?.url_image_path_one !== null &&
+                  <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
+                    <div className="w-full h-[80vh] flex items-center">
+                      <div className="w-full h-full flex flex-col items-center justify-center"> 
+                        {shopLocationsData?.url_image_path_one !== null && 
+                          <img
+                            src={shopLocationsData?.url_image_path_one}
+                            alt="backImg"
+                            className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
+                          /> 
+                        }
+                      </div>
+                    </div>
+                  </div>
+                }
+                {shopLocationsData?.url_image_path_two !== null &&
+                 <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
+                    <div className="w-full h-[80vh] flex items-center">
+                        <div className="w-full h-full flex flex-col items-center justify-center"> 
+                          {shopLocationsData?.url_image_path_two !== null &&
+                            <img
+                              src={shopLocationsData?.url_image_path_two}
+                              alt="backImg"
+                              className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
+                            />
+                            
+                          }
+                        </div>
+                    </div>
+                  </div>
+                }
+                {shopLocationsData?.url_image_path_three !== null &&
+                  <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
+                    <div className="w-full h-[80vh] flex items-center">
+                        <div className="w-full h-full flex flex-col items-center justify-center"> 
+                          {shopLocationsData?.url_image_path_three !== null &&
+                            <img
+                              src={shopLocationsData?.url_image_path_three}
+                              alt="backImg"
+                              className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
+                            /> 
+                          }
+                        </div>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+      </section>
+      
       <div className="w-full max-w-[920px] mx-auto mt-6 md:mt-12 mb-[30px]">
         <div className="my-4">
           <div className="flex items-center justify-center mb-6">
@@ -128,9 +209,17 @@ export default function LocationMoreAbout() {
               </div>
             </div>
           </div>
+          
+          
           <div className=" px-4 md:px-0 flex mt-[10px] justify-between items-centers gap-x-[5px] ls:gap-x-[10px] md:gap-[25px] mb-[25px] ">
             <div className=" w-full md:w-[31%]  h-[75px] md:h-[130px] flex items-center justify-center rounded-lg">
-              <div className="h-full w-full border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
+              <div 
+                onClick={() => { 
+                  if(shopLocationsData?.url_image_path_one !== null) {
+                    handleClickCarosuel() 
+                  }}
+                }
+                className="h-full w-full cursor-pointer border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
                     {shopLocationsData?.url_image_path_one ? (
                         <img src={shopLocationsData?.url_image_path_one} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
                     ) : (
@@ -141,7 +230,14 @@ export default function LocationMoreAbout() {
               </div>
             </div>
             <div className=" w-full md:w-[31%] h-[75px] md:h-[130px] flex items-center justify-center rounded-lg">
-              <div className="h-full w-full border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
+              <div 
+                onClick={() => { 
+                  if(shopLocationsData?.url_image_path_two !== null) {
+                    handleClickCarosuel() 
+                  }
+                } 
+                }
+                className="h-full w-full cursor-pointer border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
                     {shopLocationsData?.url_image_path_two ? (
                         <img src={shopLocationsData?.url_image_path_two} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
                     ) : (
@@ -152,7 +248,15 @@ export default function LocationMoreAbout() {
               </div>
             </div>
             <div className=" w-full md:w-[31%] h-[75px] md:h-[130px] flex items-center justify-center rounded-lg">
-              <div className="h-full w-full border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
+              <div 
+                onClick={() => { 
+                  if(shopLocationsData?.url_image_path_three !== null) {
+                    handleClickCarosuel() 
+                    // setModalImg(shopLocationsData?.url_image_path_three)
+                  }
+                } 
+                }
+                className="h-full w-full cursor-pointer border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
                 {shopLocationsData?.url_image_path_three ? (
                     <img src={shopLocationsData?.url_image_path_three} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
                 ) : (
@@ -163,6 +267,9 @@ export default function LocationMoreAbout() {
               </div>
             </div>
           </div>
+
+
+
           <div className="w-full  px-4 md:px-0  ">
             <div className="flex flex-wrap items-center justify-between gap-3 md:gap-4 ">
               <div className="w-full md:w-[31%] xs:w-[48%]   ">

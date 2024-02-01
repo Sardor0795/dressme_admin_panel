@@ -102,16 +102,16 @@ export default function Carousel({ data, height }) {
     color_pivot_product_id4: null
   })
 
-  console.log(data,'data');
-  console.log(imageOne, 'imageOne');
-  console.log(imageTwo, 'imageTwo');
-  console.log(imageThree, 'imageThree');
-  console.log(imageFour, 'imageFour');
+  // console.log(data,'data');
+  // console.log(imageOne, 'imageOne');
+  // console.log(imageTwo, 'imageTwo');
+  // console.log(imageThree, 'imageThree');
+  // console.log(imageFour, 'imageFour');
 
-  console.log(colorOne, 'colorOne');
-  console.log(colorTwo, 'colorTwo');
-  console.log(colorThree, 'colorThree');
-  console.log(colorFour, 'colorFour');
+  // console.log(colorOne, 'colorOne');
+  // console.log(colorTwo, 'colorTwo');
+  // console.log(colorThree, 'colorThree');
+  // console.log(colorFour, 'colorFour');
 
 
   useEffect(() => {
@@ -200,12 +200,6 @@ export default function Carousel({ data, height }) {
 
   const [modalId, setModalId] = useState(null);
   const [modalOfCarsouel, setModalOfCarsouel] = useState(false)
-    // const [freeModalUploadImg, setFreeModalUploadImg] = useState(false)
-
-  // function handleFreeModalUploadImg(id) {
-  //   setFreeModalUploadImg(true)
-  //   setModalId(id)
-  // }
 
   function handleClickCarosuel() {
     setModalOfCarsouel(true)
@@ -311,7 +305,7 @@ export default function Carousel({ data, height }) {
               </div>
             </div>
           </div>
-        </section>
+      </section>
 
       <div className="w-full h-full flex flex-col">
           <div className="w-full h-[404px]  flex items-center">
@@ -398,10 +392,10 @@ export default function Carousel({ data, height }) {
               </button>
               <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
                 <div className="w-fit h-fit flex items-center">
-                  {imageOne?.product_color_id2 === colorOne?.color_pivot_id2 ? (
+                  {imageTwo?.product_color_id2 === colorTwo?.color_pivot_id2 ? (
                       <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
                         <div className="w-fit h-fit flex items-center gap-x-3">
-                          <span style={{background: colorOne?.color_hex2}} className={`w-[22px] h-[22px] rounded-full`}></span>   
+                          <span style={{background: colorTwo?.color_hex2}} className={`w-[22px] h-[22px] rounded-full`}></span>   
                         </div>
                       </div>
                     ) : null
@@ -460,10 +454,10 @@ export default function Carousel({ data, height }) {
               </button>
               <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
                 <div className="w-fit h-fit flex items-center">
-                   {imageOne?.product_color_id3 === colorOne?.color_pivot_id3 ? (
+                   {imageThree?.product_color_id3 === colorThree?.color_pivot_id3 ? (
                       <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
                         <div className="w-fit h-fit flex items-center gap-x-3">
-                          <span style={{background: colorOne?.color_hex3}} className={`w-[22px] h-[22px] rounded-full`}></span>   
+                          <span style={{background: colorThree?.color_hex3}} className={`w-[22px] h-[22px] rounded-full`}></span>   
                         </div>
                       </div>
                     ) : null
@@ -522,10 +516,10 @@ export default function Carousel({ data, height }) {
               </button>
               <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
                 <div className="w-fit h-fit flex items-center">
-                   {imageOne?.product_color_id4 === colorOne?.color_pivot_id4 ? (
+                   {imageFour?.product_color_id4 === colorFour?.color_pivot_id4 ? (
                       <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
                         <div className="w-fit h-fit flex items-center gap-x-3">
-                          <span style={{background: colorOne?.color_hex4}} className={`w-[22px] h-[22px] rounded-full`}></span>   
+                          <span style={{background: colorFour?.color_hex4}} className={`w-[22px] h-[22px] rounded-full`}></span>   
                         </div>
                       </div>
                     ) : null
