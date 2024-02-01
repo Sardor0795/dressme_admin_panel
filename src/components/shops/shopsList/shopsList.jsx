@@ -140,22 +140,22 @@ return(
         </div>
         {showProducts === "pending" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Ожидающие локации
+            Ожидающие магазины
           </div>
         ) : null}
         {showProducts === "approved" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Одобренные локации
+            Одобренные магазины
           </div>
         ) : null}
         {showProducts === "declined" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Отказанные локации
+            Отказанные магазины
           </div>
         ) : null}
         {showProducts === "updated" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Обновленные локации
+            Обновленные магазины
           </div>
         ) : null}
 
@@ -254,7 +254,7 @@ return(
               : "text-[#303030] border-[#F2F2F2]"
           } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
         >
-          <div className="mb-[3px]">Ожидающие товары</div>{" "}
+          <div className="mb-[3px]">Ожидающие магазины</div>{" "}
           <div>({waitingCount})</div>
         </div>
         <div
@@ -265,7 +265,7 @@ return(
               : "text-[#303030] border-[#F2F2F2]"
           } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
         >
-          <div className="mb-[3px]">Одобренные товары</div>{" "}
+          <div className="mb-[3px]">Одобренные магазины</div>{" "}
           <div>({allowedCount})</div>
         </div>
         <div
@@ -276,7 +276,7 @@ return(
               : "text-[#303030] border-[#F2F2F2]"
           } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
         >
-          <div className="mb-[3px]">Отказанные товары</div>{" "}
+          <div className="mb-[3px]">Отказанные магазины</div>{" "}
           <div>({notAllowedCount})</div>
         </div>
         <div
@@ -287,7 +287,7 @@ return(
               : "text-[#303030] border-[#F2F2F2]"
           } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
         >
-          <div className="mb-[3px]">Обновленные товары</div>{" "}
+          <div className="mb-[3px]">Обновленные магазины</div>{" "}
           <div>({updatedCount})</div>
         </div>
       </div>
@@ -394,7 +394,7 @@ return(
             <span className="mr-[5px]">
               <WaitingForAllowIcon />
             </span>
-            <span>Ожидающие товары ({waitingCount})</span>
+            <span>Ожидающие магазины ({waitingCount})</span>
           </button>
           <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
           <button
@@ -409,7 +409,7 @@ return(
             <span className="mr-[5px]">
               <AllowedIcon />
             </span>
-            <span>Одобренные товары ({allowedCount})</span>
+            <span>Одобренные магазины ({allowedCount})</span>
           </button>
           <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
           <button
@@ -424,7 +424,7 @@ return(
             <span className="mr-[5px]">
               <NotAllowedIcon />
             </span>
-            <span>Отказанные товары ({notAllowedCount})</span>
+            <span>Отказанные магазины ({notAllowedCount})</span>
           </button>
           <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
           <button
@@ -439,7 +439,7 @@ return(
             <span className="mr-[5px]">
               <EditedIcon />
             </span>
-            <span>Обновленные товары ({updatedCount})</span>
+            <span>Обновленные магазины ({updatedCount})</span>
           </button>
         </section>
 

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
-import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
+import { useEffect, useState } from "react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -63,11 +62,56 @@ export default function Carousel({ data, height }) {
 
   });
 
-  console.log(data?.photos,'data');
+  const [colorOne, setColorOne] = useState({
+    id1: 1,
+    color_hex1: null,
+    color_name_uz1: null,
+    color_name_ru1: null,
+    color_pivot_id1: null,
+    color_pivot_color_id1: null,
+    color_pivot_product_id1: null
+  })
+  const [colorTwo, setColorTwo] = useState({
+    id2: 2,
+    color_hex2: null,
+    color_id2: null,
+    color_name_uz2: null,
+    color_name_ru2: null,
+    color_pivot_id2: null,
+    color_pivot_color_id2: null,
+    color_pivot_product_id2: null
+  })
+  const [colorThree, setColorThree] = useState({
+    id3: 3,
+    color_hex3: null,
+    color_id3: null,
+    color_name_uz3: null,
+    color_name_ru3: null,
+    color_pivot_id3: null,
+    color_pivot_color_id3: null,
+    color_pivot_product_id3: null
+  })
+  const [colorFour, setColorFour] = useState({
+    id4: 4,
+    color_hex4: null,
+    color_name_uz4: null,
+    color_name_ru4: null,
+    product_color_id4: null,
+    color_pivot_id4: null,
+    color_pivot_color_id4: null,
+    color_pivot_product_id4: null
+  })
+
+  console.log(data,'data');
   console.log(imageOne, 'imageOne');
   console.log(imageTwo, 'imageTwo');
   console.log(imageThree, 'imageThree');
   console.log(imageFour, 'imageFour');
+
+  console.log(colorOne, 'colorOne');
+  console.log(colorTwo, 'colorTwo');
+  console.log(colorThree, 'colorThree');
+  console.log(colorFour, 'colorFour');
 
 
   useEffect(() => {
@@ -109,6 +153,50 @@ export default function Carousel({ data, height }) {
       })
     }
   }, [data?.photos])
+
+  useEffect(()=> {
+    if (data?.colors) {
+      setColorOne({
+        id1: data.colors[0]?.id && data.colors[0]?.id || 1,
+        color_hex1: data.colors[0]?.hex && data.colors[0]?.hex || null,
+        color_name_uz1: data.colors[0]?.name_uz && data.colors[0]?.name_uz || null,
+        color_name_ru1: data.colors[0]?.name_ru && data.colors[0]?.name_ru || null,
+        color_pivot_id1: data.colors[0]?.pivot?.id && data.colors[0]?.pivot?.id || null,
+        color_pivot_color_id1: data.colors[0]?.pivot?.color_id && data.colors[0]?.pivot?.color_id || null,
+        color_pivot_product_id1: data.colors[0]?.pivot?.product_id && data.colors[0]?.pivot?.product_id || null,
+      })
+
+      setColorTwo({
+        id2: data?.colors[1]?.id && data?.colors[1]?.id || 2,
+        color_hex2: data?.colors[1]?.product_color_id && data?.colors[1]?.product_color_id || null,
+        color_name_uz2: data?.colors[1]?.name_uz && data?.colors[1]?.name_uz || null,
+        color_name_ru2: data?.colors[1]?.name_ru && data?.colors[1]?.name_ru || null,
+        color_pivot_id2: data?.colors[1]?.pivot?.id && data?.colors[1]?.pivot?.id || null,
+        color_pivot_color_id2: data?.colors[1]?.pivot?.color_id && data?.colors[1]?.pivot?.color_id || null,
+        color_pivot_product_id2: data?.colors[1]?.pivot?.product_id && data?.colors[1]?.pivot?.product_id || null,
+      })
+
+      setColorThree({
+        id3: data?.colors[2]?.id && data?.colors[2]?.id || 3,
+        color_hex3: data?.colors[2]?.product_color_id && data?.colors[2]?.product_color_id || null,
+        color_name_uz3: data?.colors[2]?.name_uz && data?.colors[2]?.name_uz || null,
+        color_name_ru3: data?.colors[2]?.name_ru && data?.colors[2]?.name_ru || null,
+        color_pivot_id3: data?.colors[2]?.pivot?.id && data?.colors[2]?.pivot?.id || null,
+        color_pivot_color_id3: data?.colors[2]?.pivot?.color_id && data?.colors[2]?.pivot?.color_id || null,
+        color_pivot_product_id3: data?.colors[2]?.pivot?.product_id && data?.colors[2]?.pivot?.product_id || null,
+      })
+
+      setColorFour({
+        id4: data?.colors[3]?.id && data?.colors[3]?.id || 4,
+        color_hex4: data?.colors[1]?.product_color_id && data?.colors[3]?.product_color_id || null,
+        color_name_uz4: data?.colors[3]?.name_uz && data?.colors[3]?.name_uz || null,
+        color_name_ru4: data?.colors[3]?.name_ru && data?.colors[3]?.name_ru || null,
+        color_pivot_id4: data?.colors[3]?.pivot?.id && data?.colors[3]?.pivot?.id || null,
+        color_pivot_color_id4: data?.colors[3]?.pivot?.color_id && data?.colors[3]?.pivot?.color_id || null,
+        color_pivot_product_id4: data?.colors[3]?.pivot?.product_id && data?.colors[3]?.pivot?.product_id || null,
+      })
+    }
+  },[data?.colors])
 
   const [modalId, setModalId] = useState(null);
   const [modalOfCarsouel, setModalOfCarsouel] = useState(false)
@@ -236,25 +324,14 @@ export default function Carousel({ data, height }) {
                       } 
                   }
                   className="w-full flex flex-col h-full ">
-                    {/* {imageOne?.status1 &&
-                    <div className="w-fit flex h-[22px] items-center mb-[6px]  border rounded-[12px]">
-                      <div className="w-fit h-fit flex items-center gap-x-3">
-                        <button
-                          type="button"
-                          className={`w-[22px] h-[22px] rounded-full border `}
-                        ></button>
-
-                        {imageOne?.status1 === "approved" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#4FB459] bg-bgApproved font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                          {imageOne?.status1 || "status"}
-                        </td>}
-                        {imageOne?.status1 === "declined" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#FF4A4A] bg-bgDecline font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                          {imageOne?.status1 || "status"}
-                        </td>}
-                        {imageOne?.status1 === "pending" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#F1B416] bg-bgPending font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                          {imageOne?.status1 || "status"}
-                        </td>}
+                    {imageOne?.product_color_id1 === colorOne?.color_pivot_id1 ? (
+                      <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
+                        <div className="w-fit h-fit flex items-center gap-x-3">
+                          <span style={{background: colorOne?.color_hex1}} className={`w-[22px] h-[22px] rounded-full`}></span>   
+                        </div>
                       </div>
-                    </div>} */}
+                    ) : null
+                    }
                   <div
                     style={{
                       backgroundImage: ` url("${imageOne?.url_photo1}")`,
@@ -285,10 +362,6 @@ export default function Carousel({ data, height }) {
               >
                 {!imageTwo?.url_photo2 ?
                   <div
-                    // htmlFor={"imageTwo"}
-                    // onClick={ () => 
-                    //   handleFreeModalUploadImg(imageTwo?.id2)
-                    // }
                     onClick={() => { 
                       handleClickCarosuel() 
                       setModalId(imageTwo?.id2)
@@ -323,23 +396,18 @@ export default function Carousel({ data, height }) {
                   </div>
                 }
               </button>
-              {/* <div className="w-full flex h-[22px] items-center justify-between mt-[3px] border rounded-[12px]">
+              <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
                 <div className="w-fit h-fit flex items-center">
-                  <button
-                    type="button"
-                    className={`w-[22px] h-[22px] rounded-full border `}
-                  ></button>
-                  {imageTwo?.status2 === "approved" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#4FB459] bg-bgApproved font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                    {imageTwo?.status2 || "status"}
-                  </td>}
-                  {imageTwo?.status2 === "declined" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#FF4A4A] bg-bgDecline font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                    {imageTwo?.status2 || "status"}
-                  </td>}
-                  {imageTwo?.status2 === "pending" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#F1B416] bg-bgPending font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                    {imageTwo?.status2 || "status"}
-                  </td>}
+                  {imageOne?.product_color_id2 === colorOne?.color_pivot_id2 ? (
+                      <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
+                        <div className="w-fit h-fit flex items-center gap-x-3">
+                          <span style={{background: colorOne?.color_hex2}} className={`w-[22px] h-[22px] rounded-full`}></span>   
+                        </div>
+                      </div>
+                    ) : null
+                    }
                 </div>
-              </div> */}
+              </div>
             </div>
 
             {/* IMG THREE */}
@@ -350,10 +418,6 @@ export default function Carousel({ data, height }) {
               >
                 {!imageThree?.url_photo3 ?
                   <div
-                    // onClick={
-                    //     () => 
-                    //     handleFreeModalUploadImg(imageThree?.id3)
-                    //   }
                      onClick={() => { 
                       handleClickCarosuel() 
                       setModalId(imageThree?.id3)
@@ -394,23 +458,18 @@ export default function Carousel({ data, height }) {
                   </div>
                 }
               </button>
-              {/* <div className="w-full flex h-[22px] items-center justify-between mt-[3px] border rounded-[12px]">
+              <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
                 <div className="w-fit h-fit flex items-center">
-                  <button
-                    type="button"
-                    className={`w-[22px] h-[22px] rounded-full border `}
-                  ></button>
-                  {imageThree?.status3 === "approved" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#4FB459] bg-bgApproved font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                    {imageThree?.status3 || "status"}
-                  </td>}
-                  {imageThree?.status3 === "declined" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#FF4A4A] bg-bgDecline font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                    {imageThree?.status3 || "status"}
-                  </td>}
-                  {imageThree?.status3 === "pending" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#F1B416] bg-bgPending font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                    {imageThree?.status3 || "status"}
-                  </td>}
+                   {imageOne?.product_color_id3 === colorOne?.color_pivot_id3 ? (
+                      <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
+                        <div className="w-fit h-fit flex items-center gap-x-3">
+                          <span style={{background: colorOne?.color_hex3}} className={`w-[22px] h-[22px] rounded-full`}></span>   
+                        </div>
+                      </div>
+                    ) : null
+                    }
                 </div>
-              </div> */}
+              </div>
             </div>
 
             {/* IMG FOUR */}
@@ -421,8 +480,6 @@ export default function Carousel({ data, height }) {
               >
                 {!imageFour?.url_photo4 ?
                   <div
-                    // onClick={
-                    //     () => handleFreeModalUploadImg(imageFour?.id4)}
                      onClick={() => { 
                       handleClickCarosuel() 
                       setModalId(imageTwo?.id2)
@@ -463,23 +520,18 @@ export default function Carousel({ data, height }) {
                   </div>
                 }
               </button>
-              {/* <div className="w-full flex h-[22px] items-center justify-between mt-[3px] border rounded-[12px]">
+              <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
                 <div className="w-fit h-fit flex items-center">
-                  <button
-                    type="button"
-                    className={`w-[22px] h-[22px] rounded-full border `}
-                  ></button>
-                  {imageFour?.status4 === "approved" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#4FB459] bg-bgApproved font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                    {imageFour?.status4 || "status"}
-                  </td>}
-                  {imageFour?.status4 === "declined" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#FF4A4A] bg-bgDecline font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                    {imageFour?.status4 || "status"}
-                  </td>}
-                  {imageFour?.status4 === "pending" && <td className=" h-fit  flex items-center justify-center text-[12px] text-center text-[#F1B416] bg-bgPending font-AeonikProRegular py-[2px] px-[5px] rounded-[10px] ">
-                    {imageFour?.status4 || "status"}
-                  </td>}
+                   {imageOne?.product_color_id4 === colorOne?.color_pivot_id4 ? (
+                      <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
+                        <div className="w-fit h-fit flex items-center gap-x-3">
+                          <span style={{background: colorOne?.color_hex4}} className={`w-[22px] h-[22px] rounded-full`}></span>   
+                        </div>
+                      </div>
+                    ) : null
+                    }
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div >

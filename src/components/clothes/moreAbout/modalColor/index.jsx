@@ -10,6 +10,8 @@ export default function ColorModal({
   category,
   data,
 }) {
+
+  console.log(data?.sizes, 'data-sizes');
   return (
     <div className={`w-full px-4  md:px-10`}>
       <div
@@ -31,10 +33,11 @@ export default function ColorModal({
 
           {category === "1"
             ? data?.sizes?.map((item) => {
+              console.log(item, 'item');
                 return (
                   <div
                     key={item?.id}
-                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
+                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] pb-3 rounded-lg"
                   >
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="w-full md:w-fit mb-[34px]">
@@ -82,7 +85,7 @@ export default function ColorModal({
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-wrap md:flex-nowrap justify-between">
+                    <div className={`flex flex-wrap md:flex-nowrap justify-between ${item?.product_color_id === data?.colors[0]?.pivot?.id ? ' md:mb-3' : ''}`}>
                       <div className="w-full md:w-fit mb-[34px] md:mb-0">
                         <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                           Возраст
@@ -136,6 +139,14 @@ export default function ColorModal({
                         </div>
                       </div>
                     </div>
+                    {item?.product_color_id === data?.colors[0]?.pivot?.id ? (
+                      <div className="w-full flex items-center justify-start ">
+                          <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProRegular">Цвет:</span>
+                          <span style={{background:data?.colors[0]?.hex }} className="border border-black text-white rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] ll:text-md  not-italic font-AeonikProRegular px-[15px] py-1">
+                            {data?.colors[0]?.name_ru }
+                          </span>
+                      </div>
+                    ) : null}
                   </div>
                 );
               })
