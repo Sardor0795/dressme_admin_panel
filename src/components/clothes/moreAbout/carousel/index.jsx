@@ -110,143 +110,21 @@ export default function Carousel({ data, height }) {
     }
   }, [data?.photos])
 
-    const handleLocationImage1 = (e) => {
-    setImageOne({
-      ...imageOne,
-      url_File1: e.target.files[0],
-      url_photo1: URL.createObjectURL(e.target.files[0]),
-      changed1: true
-    })
-
-  };
-  const handleLocationImage2 = (e) => {
-    setImageTwo({
-      ...imageTwo,
-      url_File2: e.target.files[0],
-      url_photo2: URL.createObjectURL(e.target.files[0]),
-      changed2: true
-    })
-
-  };
-  const handleLocationImage3 = (e) => {
-    setImageThree({
-      ...imageThree,
-      url_File3: e.target.files[0],
-      url_photo3: URL.createObjectURL(e.target.files[0]),
-      changed3: true
-    })
-
-  };
-  const handleLocationImage4 = (e) => {
-    setImageFour({
-      ...imageFour,
-      url_File4: e.target.files[0],
-      url_photo4: URL.createObjectURL(e.target.files[0]),
-      changed4: true,
-    })
-
-  };
-
   const [modalId, setModalId] = useState(null);
   const [modalOfCarsouel, setModalOfCarsouel] = useState(false)
-    const [freeModalUploadImg, setFreeModalUploadImg] = useState(false)
+    // const [freeModalUploadImg, setFreeModalUploadImg] = useState(false)
 
-  function handleFreeModalUploadImg(id) {
-    setFreeModalUploadImg(true)
-    setModalId(id)
-  }
+  // function handleFreeModalUploadImg(id) {
+  //   setFreeModalUploadImg(true)
+  //   setModalId(id)
+  // }
 
   function handleClickCarosuel() {
     setModalOfCarsouel(true)
   }
 
-
-
-
-
-
   return (
     <div>
-      {/* <div className={`w-full ${height} rounded-lg overflow-hidden cursor-pointer`} >
-       {data?.photos && data.photos.length ?
-       (
-        <div 
-          style={{
-            backgroundImage: `url("${data?.photos[0]?.url_photo}")`,
-            backgroundColor: "rgba(0,0,0,0.6)",
-            backgroundPosition: "center center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundBlendMode: "darken",
-          }}
-          className="w-full h-full">
-            <div className="flex items-center justify-center w-[350px] h-[377px]  backdrop-blur-md">
-              <img
-                className="
-                h-full
-                w-full
-                mx-auto 
-                align-middle object-contain cursor-pointer "
-                src={data?.photos[0]?.url_photo}
-                alt=""
-              />
-            </div>
-        </div>
-        ):(
-        <span className="w-full h-full flex items-center justify-center">
-          <NoImg/>
-        </span>
-       )
-       }
-      </div> 
-      <div className="w-full flex items-center h-fit md:mt-3">
-        { data?.photos?.length > 1 ? (
-          data?.photos?.map( item => {
-            return(
-              <button 
-                type="button"
-                onClick={()=> {
-                  handleClickCarosuel()
-                  setModalId(item?.id)
-                }}
-                className="w-[110px] h-fit border border-red rounded-lg overflow-hidden">
-                <img
-                  key={item?.id}
-                  className="object-cover rounded-lg"
-                  src={item?.url_photo}
-                  alt=""
-                />
-              </button>
-            )
-          })
-        ) : (
-        <div className="w-full flex items-center justify-between gap-x-2">
-          <button 
-            type="button"
-            className="w-[110px] h-[124px] flex items-center justify-between border border-red rounded-lg overflow-hidden">
-            <span className="w-full h-fit flex items-center justify-center">
-              <NoImg />
-            </span>
-          </button>
-          <button 
-            type="button"
-            className="w-[110px] h-[124px] flex items-center justify-between border border-red rounded-lg overflow-hidden">
-            <span className="w-full h-fit flex items-center justify-center">
-              <NoImg />
-            </span>
-          </button>
-          <button 
-            type="button"
-            className="w-[110px] h-[124px] flex items-center justify-between border border-red rounded-lg overflow-hidden">
-            <span className="w-full h-fit flex items-center justify-center">
-              <NoImg width="" height=""/>
-            </span>
-          </button>
-        </div>
-        )
-        }
-      </div>  */}
-
       <section
         onClick={() => {
           setModalOfCarsouel(false)
@@ -286,14 +164,6 @@ export default function Carousel({ data, height }) {
                         }
                       </div>
                     </div>
-                    <div className={`w-full justify-between flex items-center px-3 h-[50px]`}>
-                      <button className="text-green-500 active:scale-95	active:opacity-70  text-lg not-italic font-AeonikProMedium">
-                          Одобрить
-                      </button>
-                      <button className="text-[#D50000] active:scale-95	active:opacity-70  text-lg not-italic font-AeonikProMedium">
-                          Отказать
-                      </button>
-                    </div>
                   </div>
                 }
                 {modalId == imageTwo?.id2 &&
@@ -311,14 +181,6 @@ export default function Carousel({ data, height }) {
                             )
                           }
                         </div>
-                    </div>
-                    <div className={`w-full justify-between flex items-center px-3 h-[50px]`}>
-                      <button className="text-green-500 active:scale-95	active:opacity-70  text-lg not-italic font-AeonikProMedium">
-                          Одобрить
-                      </button>
-                      <button className="text-[#D50000] active:scale-95	active:opacity-70  text-lg not-italic font-AeonikProMedium">
-                          Отказать
-                      </button>
                     </div>
                   </div>
                 }
@@ -338,14 +200,6 @@ export default function Carousel({ data, height }) {
                           }
                         </div>
                     </div>
-                    <div className={`w-full justify-between flex items-center px-3 h-[50px]`}>
-                      <button className="text-green-500 active:scale-95	active:opacity-70  text-lg not-italic font-AeonikProMedium">
-                          Одобрить
-                      </button>
-                      <button className="text-[#D50000] active:scale-95	active:opacity-70  text-lg not-italic font-AeonikProMedium">
-                          Отказать
-                      </button>
-                    </div>
                   </div>
                 }
                 {modalId == imageFour?.id4 &&
@@ -363,14 +217,6 @@ export default function Carousel({ data, height }) {
                             )
                           }
                         </div>
-                    </div>
-                    <div className={`w-full justify-between flex items-center px-3 h-[50px]`}>
-                      <button className="text-green-500 active:scale-95	active:opacity-70  text-lg not-italic font-AeonikProMedium">
-                          Одобрить
-                      </button>
-                      <button className="text-[#D50000] active:scale-95	active:opacity-70  text-lg not-italic font-AeonikProMedium">
-                          Отказать
-                      </button>
                     </div>
                   </div>
                 }
