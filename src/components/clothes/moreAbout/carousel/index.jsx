@@ -273,14 +273,18 @@ export default function Carousel({ data, height }) {
                 {modalId == imageOne?.id1 &&
                   <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
-                        <div className="w-full h-full flex flex-col items-center justify-center"> 
+                      <div className="w-full h-full flex flex-col items-center justify-center"> 
+                        {imageOne?.url_photo1 !== null ? (
                           <img
                             src={imageOne?.url_photo1}
                             alt="backImg"
                             className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
                           />
-                          
-                        </div>
+                          ) : (
+                            <span><NoImg /></span>
+                          )
+                        }
+                      </div>
                     </div>
                     <div className={`w-full justify-between flex items-center px-3 h-[50px]`}>
                       <button className="text-green-500 active:scale-95	active:opacity-70  text-lg not-italic font-AeonikProMedium">
@@ -296,15 +300,16 @@ export default function Carousel({ data, height }) {
                  <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
                         <div className="w-full h-full flex flex-col items-center justify-center"> 
-                        {imageOne?.url_photo2 ? (
-                          <img
-                            src={imageOne?.url_photo2}
-                            alt="backImg"
-                            className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
-                          />
-                        ) : (
-                          <span><NoImg /></span>
-                        )}
+                          {imageTwo?.url_photo2 !== null ? (
+                            <img
+                              src={imageTwo?.url_photo2}
+                              alt="backImg"
+                              className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
+                            />
+                            ) : (
+                              <span><NoImg /></span>
+                            )
+                          }
                         </div>
                     </div>
                     <div className={`w-full justify-between flex items-center px-3 h-[50px]`}>
@@ -321,15 +326,16 @@ export default function Carousel({ data, height }) {
                   <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
                         <div className="w-full h-full flex flex-col items-center justify-center"> 
-                        {imageOne?.url_photo3 ? (
-                          <img
-                            src={imageOne?.url_photo3}
-                            alt="backImg"
-                            className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
-                          />
-                        ) : (
-                          <span><NoImg /></span>
-                        )}
+                          {imageThree?.url_photo3 !== null ? (
+                            <img
+                              src={imageThree?.url_photo3}
+                              alt="backImg"
+                              className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
+                            />
+                            ) : (
+                              <span><NoImg /></span>
+                            )
+                          }
                         </div>
                     </div>
                     <div className={`w-full justify-between flex items-center px-3 h-[50px]`}>
@@ -346,15 +352,16 @@ export default function Carousel({ data, height }) {
                  <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
                         <div className="w-full h-full flex flex-col items-center justify-center"> 
-                        {imageOne?.url_photo4 ? (
-                          <img
-                            src={imageOne?.url_photo4}
-                            alt="backImg"
-                            className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
-                          />
-                        ) : (
-                          <span><NoImg /></span>
-                        )}
+                          {imageFour?.url_photo4 !== null ? (
+                            <img
+                              src={imageFour?.url_photo4}
+                              alt="backImg"
+                              className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
+                            />
+                            ) : (
+                              <span><NoImg /></span>
+                            )
+                          }
                         </div>
                     </div>
                     <div className={`w-full justify-between flex items-center px-3 h-[50px]`}>
@@ -438,7 +445,7 @@ export default function Carousel({ data, height }) {
                     // }
                     onClick={() => { 
                       handleClickCarosuel() 
-                      setModalId(imageOne?.id2)
+                      setModalId(imageTwo?.id2)
                       } }
                     className="h-full w-full cursor-pointer text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor "
                   >
@@ -503,7 +510,7 @@ export default function Carousel({ data, height }) {
                     //   }
                      onClick={() => { 
                       handleClickCarosuel() 
-                      setModalId(imageOne?.id3)
+                      setModalId(imageThree?.id3)
                       } }
                     className="h-full w-full cursor-pointer  text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor "
                   >
@@ -572,7 +579,7 @@ export default function Carousel({ data, height }) {
                     //     () => handleFreeModalUploadImg(imageFour?.id4)}
                      onClick={() => { 
                       handleClickCarosuel() 
-                      setModalId(imageOne?.id2)
+                      setModalId(imageTwo?.id2)
                       } }
                     className="h-full w-full cursor-pointer  text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor "
                   >
