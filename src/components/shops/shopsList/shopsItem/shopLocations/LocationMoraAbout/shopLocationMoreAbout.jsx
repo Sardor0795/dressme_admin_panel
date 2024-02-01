@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { BackIcon, MapLocationIcon, MenuCloseIcons, StarIcon } from "../../../../../../assets/icon";
+import { BackIcon, MapLocationIcon, MenuCloseIcons, NoImg, StarIcon } from "../../../../../../assets/icon";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Map, YMaps } from "react-yandex-maps";
@@ -241,8 +241,8 @@ export default function LocationMoreAbout() {
                     {shopLocationsData?.url_image_path_two ? (
                         <img src={shopLocationsData?.url_image_path_two} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
                     ) : (
-                    <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium border-b border-textBlueColor text-textBlueColor">
-                        Фото локации
+                    <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                        <NoImg/>
                     </span>
                     )} 
               </div>
@@ -260,8 +260,8 @@ export default function LocationMoreAbout() {
                 {shopLocationsData?.url_image_path_three ? (
                     <img src={shopLocationsData?.url_image_path_three} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
                 ) : (
-                  <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium border-b border-textBlueColor text-textBlueColor">
-                    Фото локации
+                  <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                   <NoImg/>
                   </span>
                 )} 
               </div>
