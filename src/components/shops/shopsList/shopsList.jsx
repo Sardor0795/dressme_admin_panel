@@ -906,7 +906,7 @@ return(
                 className="w-[100px] h-[100px]"
               ></div>
             ) : (
-              <div className="font-AeonikProMedium text-xl">Нет товаров</div>
+              <div className="font-AeonikProMedium text-xl">Нет магазинов</div>
             )}
           </div>
         )}

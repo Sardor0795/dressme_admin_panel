@@ -44,14 +44,17 @@ export default function SellersList() {
   let waitingCount = 0;
   let allowedCount = 0;
   let notAllowedCount = 0;
+  let updatedCount = 0;
 
   filteredData?.forEach((v) => {
     if (v?.status === "pending") {
       ++waitingCount;
     } else if (v?.status === "approved") {
       ++allowedCount;
-    } else {
+    } else if (v?.status === "declined") {
       ++notAllowedCount;
+    } else if (v?.status === "updated") {
+      ++updatedCount;
     }
   }); 
 
@@ -62,6 +65,7 @@ export default function SellersList() {
       top: 0,
     });
   }, []);
+
   const [someChecked, setSomeChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
 
@@ -103,8 +107,10 @@ export default function SellersList() {
     dataCount = waitingCount;
   } else if (showSellers === "approved") {
     dataCount = allowedCount;
-  } else {
+  }else if (showSellers === "declined") {
     dataCount = notAllowedCount;
+  } else if (showSellers === "updated") {
+    dataCount = updatedCount;
   }
 
   let index = 0;
@@ -149,6 +155,11 @@ export default function SellersList() {
         {showSellers === "declined" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Отказанные продавцы
+          </div>
+        ) : null}
+        {showSellers === "updated" ? (
+          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+            Обновленные продавцы
           </div>
         ) : null}
 
@@ -203,6 +214,18 @@ export default function SellersList() {
           <div className="mb-[3pxs]">Отказанные продавцы</div>{" "}
           <div>({notAllowedCount})</div>
         </div>
+        <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
+        <div
+          onClick={() => setShowSellers("updated")}
+          className={`${
+            showSellers === "declined"
+              ? "text-[#007DCA] border-[#007DCA]"
+              : "text-[#303030] border-[#F2F2F2]"
+          } border-b pb-[12px] text-center text-[14px] cursor-pointer font-AeonikProRegular`}
+        >
+          <div className="mb-[3pxs]"> Обновленные продавцы</div>{" "}
+          <div>({updatedCount})</div>
+        </div>
       </div>
 
       <div className="w-full mt-4">
@@ -215,7 +238,7 @@ export default function SellersList() {
             {showSellers === "pending" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                 >
@@ -245,7 +268,7 @@ export default function SellersList() {
             {showSellers === "declined" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                 >
@@ -338,6 +361,21 @@ export default function SellersList() {
               </span>
               <span>Отказанные продавцы ({notAllowedCount})</span>
             </button>
+            <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
+            <button
+              type="button"
+              onClick={() => setShowSellers("updated")}
+              className={`${
+                showSellers === "updated"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+            >
+              <span className="mr-[5px]">
+                <NotAllowedIcon />
+              </span>
+              <span>Обновленные продавцы ({updatedCount})</span>
+            </button>
           </section>
 
           {/* Выбранные */}
@@ -349,7 +387,7 @@ export default function SellersList() {
               {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    // onClick={() => approveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -379,7 +417,7 @@ export default function SellersList() {
               {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    // onClick={() => approveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -497,6 +535,24 @@ export default function SellersList() {
             {showSellers === "declined"
               ? filteredData?.map((data) => {
                   if (data?.status === "declined") {
+                    ++index;
+                    return (
+                      <SellerItems
+                        data={data}
+                        key={data?.id}
+                        click={onCheck}
+                        index={index}
+                        setModalOpen={setModalOpen}
+                        toast={toast}
+                      />
+                    );
+                  }
+                })
+              : null}
+              {/* Status NotAllowed */}
+            {showSellers === "updated"
+              ? filteredData?.map((data) => {
+                  if (data?.status === "updated") {
                     ++index;
                     return (
                       <SellerItems

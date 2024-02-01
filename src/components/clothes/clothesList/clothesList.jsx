@@ -213,7 +213,7 @@ export default function ClothesList() {
               {showProducts === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    // onClick={() => approveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -243,7 +243,7 @@ export default function ClothesList() {
               {showProducts === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    // onClick={() => approveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -254,7 +254,7 @@ export default function ClothesList() {
               {showProducts === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => approveFunc()}
+                    // onClick={() => approveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -349,7 +349,7 @@ export default function ClothesList() {
             {showProducts === "pending" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
@@ -379,7 +379,7 @@ export default function ClothesList() {
             {showProducts === "declined" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
@@ -390,7 +390,7 @@ export default function ClothesList() {
             {showProducts === "updated" ? (
               <div className="flex items-center ml-auto">
                 <button
-                  onClick={() => approveFunc()}
+                  // onClick={() => approveFunc()}
                   type="button"
                   className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
