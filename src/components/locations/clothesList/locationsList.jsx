@@ -516,18 +516,17 @@ export default function LocationsList() {
                             <div key={item_2?.id}>
                               {item_2?.shop_locations?.length ? (
                                 <div className="w-full">
-                                  <div className="">
+                                  <div className="w-full">
                                     {item_2?.shop_locations?.map((item_3) => {
                                       if (item_3?.status === "pending") {
                                         ++index;
                                       }
-
                                       return (
                                         <div key={item_3?.id}>
                                           {item_3?.status === "pending" ? (
                                             <div className="mb-8">
                                               {index === 1 ? (
-                                                <div className="w-ful">
+                                                <div className="w-full">
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
@@ -809,7 +808,7 @@ export default function LocationsList() {
                                           {item_3?.status === "declined" ? (
                                             <div className="mb-8">
                                               {index === 1 ? (
-                                                <div className="w-ful">
+                                                <div className="w-full">
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
