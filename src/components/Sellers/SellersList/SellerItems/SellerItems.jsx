@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
@@ -11,6 +12,7 @@ export default function SellerItems({
   setModalOpen,
   index,
   toast,
+  showSellers,
 }) {
   const [, , reFetch] = useContext(SellersDataContext);
 
@@ -92,38 +94,43 @@ export default function SellerItems({
           </Link>
         </div>
         <div className="w-[18%] px-2 flex items-center justify-end gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          <button
-            onClick={() => {
-              approveFunc();
-            }}
-            className={`${
-              data?.status === "pending" || data?.status === "declined"
-                ? ""
-                : "hidden"
-            } w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
-          >
-            Одобрить
-          </button>
-          <button
-            onClick={() => {
-              setModalOpen(true);
-              setId(data?.id);
-            }}
-            className={`${
-              data?.status === "pending" || data?.status === "approved"
-                ? ""
-                : "hidden"
-            } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
-          >
-            Отказать
-          </button>
-          {/* <button
-            className={`${
-              data?.status === "declined" ? "" : "hidden"
-            } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
-          >
-            Удалить
-          </button> */}
+          {showSellers !== "updated" ? (
+            <div className="flex items-center gap-x-2">
+              {" "}
+              <button
+                onClick={() => approveFunc()}
+                className={`${
+                  data?.status === "pending" || data?.status === "declined"
+                    ? ""
+                    : "hidden"
+                } w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]`}
+              >
+                Одобрить
+              </button>
+              <button
+                onClick={() => {
+                  setId(data?.id);
+                  setModalOpen(true);
+                }}
+                className={`${
+                  data?.status === "pending" || data?.status === "approved"
+                    ? ""
+                    : "hidden"
+                } w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
+              >
+                Отказать
+              </button>
+            </div>
+          ) : null}
+
+          {showSellers === "updated" ? (
+            <button
+              onClick={() => approveFunc()}
+              className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+            >
+              Одобрить
+            </button>
+          ) : null}
         </div>     
       </div>
 
@@ -209,38 +216,43 @@ export default function SellerItems({
           </div>
         </div>
 
-        <div className="w-full flex gap-[30px]">
-          <button
-            onClick={() => {
-              setId(data?.id);
-              setModalOpen(true);
-            }}
-            className={`${
-              data?.status === "pending" || data?.status === "approved"
-                ? ""
-                : "hidden"
-            } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
-          >
-            Отказать
-          </button>
-          <button
-            onClick={() => approveFunc()}
-            className={`${
-              data?.status === "pending" || data?.status === "declined"
-                ? ""
-                : "hidden"
-            } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
-          >
-            Одобрить
-          </button>
-          {/* <button
-            className={`${
-              data?.status === "declined" ? "" : "hidden"
-            } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
-          >
-            Удалить
-          </button> */}
-        </div>
+        {showSellers !== "updated" ? (
+          <div className="w-full flex gap-[30px]">
+            <button
+              onClick={() => {
+                setId(data?.id);
+                setModalOpen(true);
+              }}
+              className={`${
+                data?.status === "pending" || data?.status === "approved"
+                  ? ""
+                  : "hidden"
+              } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
+            >
+              Отказать
+            </button>
+            <button
+              onClick={() => approveFunc()}
+              className={`${
+                data?.status === "pending" || data?.status === "declined"
+                  ? ""
+                  : "hidden"
+              } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+            >
+              Одобрить
+            </button>
+          </div>
+        ) : null}
+        {showSellers === "updated" ? (
+          <div className="w-full flex gap-[30px]">
+            <button
+              onClick={() => approveFunc()}
+              className={` rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+            >
+              Одобрить
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
