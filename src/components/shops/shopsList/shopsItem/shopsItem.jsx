@@ -50,7 +50,7 @@ export default function ShopsItem({
 
   return (
     <div className="w-full flex flex-row">
-      <div className="w-fullh-full flex items-center justify-center">
+      <div className="w-fit flex items-center justify-start">
         <div
           onClick={() => {
             onCheck(data?.id);
@@ -75,8 +75,8 @@ export default function ShopsItem({
         key={data?.id}
         className="w-full h-fit md:h-[100px] border border-borderColor md:pr-10 p-[10px] rounded-lg flex md:flex-row flex-col items-center"
       >
-        <div className="w-full md:w-[34%] flex flex-col md:flex-row items-center md:justify-start  md:border-0 border-b border-borderColor">
-          <div className="w-full md:w-fit flex items-center justify-start md:pr-7 md:pl-5 text-xl font-AeonikProRegular ">
+        <div className="w-full md:w-[34%] flex flex-col md:flex-row items-center md:justify-start md:border-0 border-b border-borderColor">
+          <div className="w-full md:w-fit flex items-center justify-between md:justify-start md:pr-7 md:pl-5 text-xl font-AeonikProRegular ">
             <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
             <span className="text-checkboxBorder md:text-black flex items-center">
               <span className="md:hidden flex">0</span>
