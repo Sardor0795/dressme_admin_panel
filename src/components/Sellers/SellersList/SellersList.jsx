@@ -177,6 +177,7 @@ export default function SellersList() {
           </button>
         </label>
       </div>
+      
       <div className="flex mb-[24px] md:hidden">
         <div
           onClick={() => setShowSellers("pending")}
@@ -189,7 +190,6 @@ export default function SellersList() {
           <div className="mb-[3pxs]">Ожидающие продавцы</div>{" "}
           <div>({waitingCount})</div>
         </div>
-        <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
         <div
           onClick={() => setShowSellers("approved")}
           className={`${
@@ -201,7 +201,6 @@ export default function SellersList() {
           <div className="mb-[3pxs]">Одобренные продавцы</div>{" "}
           <div> ({allowedCount})</div>
         </div>
-        <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
         <div
           onClick={() => setShowSellers("declined")}
           className={`${
@@ -213,11 +212,10 @@ export default function SellersList() {
           <div className="mb-[3pxs]">Отказанные продавцы</div>{" "}
           <div>({notAllowedCount})</div>
         </div>
-        <div className="min-w-[5%] ll:min-w-[10%] border-b border-[#F2F2F2]"></div>
         <div
           onClick={() => setShowSellers("updated")}
           className={`${
-            showSellers === "declined"
+            showSellers === "updated"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
           } border-b pb-[12px] text-center text-[14px] cursor-pointer font-AeonikProRegular`}
@@ -279,8 +277,8 @@ export default function SellersList() {
         </div>
 
         <div className="w-full flex items-center justify-between gap-x-1">
-          <div className="w-full flex items-center justify-between gap-x-1 mb-[25px] md:mb-[0]">
-            <div className="flex gap-x-1">
+          <div className="w-fit md:w-full flex items-center justify-between gap-x-1 md:mb-[0]">
+            <div className="w-fit flex gap-x-1">
               <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
                 Общее количество:
               </span>
@@ -348,7 +346,7 @@ export default function SellersList() {
                 ) : null}
               </div>
             </div>
-        </div>
+          </div>
 
           <div
             onClick={() => {
@@ -598,6 +596,7 @@ export default function SellersList() {
                         index={index}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                        showSellers={showSellers}
                       />
                     );
                   }

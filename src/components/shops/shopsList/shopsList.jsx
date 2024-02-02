@@ -134,43 +134,43 @@ export default function ShopsList() {
 
 return(
 <div>
-    <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
-        <div className="block md:hidden w-full">
-            <PhoneNavbar filterFuncCloThes={filterFunc} />
+  <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
+      <div className="block md:hidden w-full">
+          <PhoneNavbar filterFuncCloThes={filterFunc} />
+      </div>
+      {showProducts === "pending" ? (
+        <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+          Ожидающие магазины
         </div>
-        {showProducts === "pending" ? (
-          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Ожидающие магазины
-          </div>
-        ) : null}
-        {showProducts === "approved" ? (
-          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Одобренные магазины
-          </div>
-        ) : null}
-        {showProducts === "declined" ? (
-          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Отказанные магазины
-          </div>
-        ) : null}
-        {showProducts === "updated" ? (
-          <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
-            Обновленные магазины
-          </div>
-        ) : null}
+      ) : null}
+      {showProducts === "approved" ? (
+        <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+          Одобренные магазины
+        </div>
+      ) : null}
+      {showProducts === "declined" ? (
+        <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+          Отказанные магазины
+        </div>
+      ) : null}
+      {showProducts === "updated" ? (
+        <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
+          Обновленные магазины
+        </div>
+      ) : null}
 
-        <label
-            className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
-            <input
-                className="text-[13px] md:text-base outline-none	 w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
-                type="email" placeholder="Поиск" required inputMode="search" onChange={(e)=> filterFunc(e)}
-            />
-            <button
-                className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
-                <SearchIcon />
-            </button>
-        </label>
-    </div>
+      <label
+          className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
+          <input
+              className="text-[13px] md:text-base outline-none	 w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
+              type="email" placeholder="Поиск" required inputMode="search" onChange={(e)=> filterFunc(e)}
+          />
+          <button
+              className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
+              <SearchIcon />
+          </button>
+      </label>
+  </div>
 
     <div className="w-full mt-4 pb-2">
       <div className="flex items-center justify-between gap-x-1 mb-[25px] md:mb-[0]">
