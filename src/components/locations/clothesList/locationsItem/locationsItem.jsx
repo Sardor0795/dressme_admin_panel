@@ -161,25 +161,25 @@ export default function LocationsItem({
         </ul>
         {/* Mobile */}
         <div className="border rounded-xl border-[##F2F2F2] p-[10px] mb-3 md:hidden w-full">
-          {/* <div className="mb-2">
+          <div className="mb-2">
             <div className="w-full md:w-fit flex items-center justify-between text-xl font-AeonikProRegular ">
               <div className="w-[40%] border-b border-borderColor h-[2px]"></div>
-              <span className="text-checkboxBorder">0{value?.id}</span>
+              <span className="text-checkboxBorder">0{index}</span>
               <div className="w-[40%] border-b border-borderColor h-[2px]"></div>
             </div>
-          </div> */}
+          </div>
 
-          {/* <div className="mb-3 h-[148px]">
+          <div className="mb-3 h-[148px]">
             <figure className="w-full h-full rounded-lg overflow-hidden">
               <img
                 className="w-[100%] h-[100%]  object-cover"
-                src={value?.url_image_path_one}
+                src={data?.url_image_path_one}
                 alt=""
               />
             </figure>
-          </div> */}
+          </div>
 
-          {/* <div className="mb-[25px]">
+         <div className="mb-2">
             <div className="border rounded-lg border-[#F2F2F2] bg-[#FCFCFC] px-1 ll:px-[10px] py-[5px] flex text-[#3F6175] font-AeonikProMedium text-[13px] items-center mb-[8px]">
               <div className="text-[#3F6175] text-[12px] not-italic font-AeonikProMedium pr-[10px] w-[24%]">
                 Регион
@@ -194,25 +194,25 @@ export default function LocationsItem({
 
             <div className="px-1 ll:px-[10px] py-[5px] flex text-[#2C2C2C] font-AeonikProMedium text-[13px]">
               <div className="pr-[5px] ll:pr-[10px] w-[24%] break-words  text-gray-700 text-[11px] not-italic font-AeonikProMedium">
-                {value?.region?.name_ru}
+                {data?.region?.name_ru}
               </div>
               <div className="relative pr-[5px] ll:pr-[10px] h-[60px] overflow-hidden  w-[46%]  text-justify	text-[11px] not-italic font-AeonikProMedium">
                 <div className="absolute ToogleOff left-0 w-full h-full z-[10] top-0"></div>
 
-                {value?.address}
+                {data?.address}
               </div>
-              <div className="w-[30%] flex  justify-center text-[11px] not-italic font-AeonikProMedium">
-                {value?.work_time_from || "startTime"} -{" "}
-                {value?.work_time_to || "endTime"}
+              <div className="w-[30%] flex justify-center text-[11px] not-italic font-AeonikProMedium">
+                {data?.work_time_from || "startTime"} -{" "}
+                {data?.work_time_to || "endTime"}
               </div>
             </div>
-          </div> */}
-          {/* {value?.region?.name_ru || "city"}, {value?.sub_region?.name_ru || "sub_region"} */}
+          </div> 
+          <div className="w-full font-AeonikProRegular mb-2">{data?.region?.name_ru || "city"}, {data?.sub_region?.name_ru || "sub_region"}</div>
 
-          {/* <div className="flex items-center justify-between gap-x-[15px]">
+          <div className="flex items-center justify-between gap-x-[15px]">
             <button
-              onClick={() => goMapWear(value?.shop_id)}
-              className="text-[#ED7925] bg-[#FDF1E8] text-center w-[50%] py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
+              // onClick={() => goMapWear(data?.shop_id)}
+              className="text-[#ED7925] bg-[#FDF1E8] text-center w-[50%] h-8 py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
             >
               <span className="mr-[5px]">
                 <svg
@@ -245,13 +245,13 @@ export default function LocationsItem({
                   </defs>
                 </svg>
               </span>
-              {value?.wearLink}
+              {data?.wearLink}
             </button>
             <button
-              onClick={() => goMapCity(value?.id)}
-              className="text-[#007DCA] bg-[#E8F5FD] text-center w-[50%] py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
+              // onClick={() => goMapCity(data?.id)}
+              className="text-[#007DCA] bg-[#E8F5FD] text-center w-[50%] h-8 py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
             >
-              {value?.showMore}
+              {data?.showMore}
               <span className="ml-[5px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -279,7 +279,7 @@ export default function LocationsItem({
                 </svg>
               </span>
             </button>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

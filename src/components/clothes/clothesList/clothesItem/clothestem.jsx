@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 import SoonImg from "../../../../assets/img/coming_soon.jpg";
 import axios from "axios";
@@ -48,7 +48,7 @@ export default function ClothesItem({
   const [, setId] = useContext(IdsContext);
 
   return (
-    <div className="flex items-center w-full mb-14 pt-[40px]">
+    <div className="flex items-center w-full mb-14 md:pt-[40px]">
       <div
         onClick={() => {
           click(data?.id);
@@ -143,14 +143,6 @@ export default function ClothesItem({
               Одобрить
             </button>
           ) : null}
-
-          {/* <button
-            className={`${
-              data?.status === "declined" ? "" : "hidden"
-            } w-fit px-2 py-1 rounded-[20px] border border-[#E85353] text-[#E85353]`}
-          >
-            Удалить
-          </button> */}
         </div>
       </div>
 
