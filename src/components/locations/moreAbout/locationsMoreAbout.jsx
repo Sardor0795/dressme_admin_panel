@@ -140,7 +140,7 @@ export const LocationsMoreAbout = () => {
       </section>
       
       <div className="w-full max-w-[920px] mx-auto mt-6 md:mt-12 mb-[30px]">
-        <div className="my-4">
+        <div className="my-4 pb-1 md:pb-0">
           <div className="flex items-center justify-center mb-6">
             <button
               onClick={() => {
@@ -209,8 +209,7 @@ export const LocationsMoreAbout = () => {
               </div>
             </div>
           </div>
-          
-          
+                
           <div className=" px-4 md:px-0 flex mt-[10px] justify-between items-centers gap-x-[5px] ls:gap-x-[10px] md:gap-[25px] mb-[25px] ">
             <div className=" w-full md:w-[31%]  h-[75px] md:h-[130px] flex items-center justify-center rounded-lg">
               <div 
@@ -268,9 +267,7 @@ export const LocationsMoreAbout = () => {
             </div>
           </div>
 
-
-
-          <div className="w-full  px-4 md:px-0  ">
+          <div className="w-full px-4 md:px-0  ">
             <div className="flex flex-wrap items-center justify-between gap-3 md:gap-4 ">
               <div className="w-full md:w-[31%] xs:w-[48%]   ">
                 <div className="w-full text-[12px] md:text-base flex items-center mb-[10px]">
@@ -279,7 +276,7 @@ export const LocationsMoreAbout = () => {
                     <StarIcon />
                   </span>
                 </div>
-                <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded md:rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
+                <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
                   <input
                     type="text"
                     name="fname"
@@ -294,7 +291,7 @@ export const LocationsMoreAbout = () => {
                 <div className="w-full text-[12px] md:text-base flex items-center mb-[10px]">
                   Имя второго администратора{" "}
                 </div>
-                <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded md:rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
+                <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
                   <input
                     type="text"
                     name="fsecond_name"
@@ -316,7 +313,7 @@ export const LocationsMoreAbout = () => {
                   <span className="w-fit text-[12px] md:text-base flex items-center">
                     от
                   </span>
-                  <div className="without_ampm mr-5 ml-[5px] outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded md:rounded-lg md:w-[80px] text-[12px] md:text-[14px] font-AeonikProRegular " >
+                  <div className="without_ampm mr-5 ml-[5px] outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[12px] md:text-[14px] font-AeonikProRegular " >
                     {shopLocationsData?.work_time_from}
                   </div>
                   <span className="w-fit text-[12px] md:text-base flex items-center ">
@@ -332,7 +329,7 @@ export const LocationsMoreAbout = () => {
                   Номер администратора
                   <span className="ml-[5px]"><StarIcon /></span>
                 </div>
-                <div className="mt-[6px] h-8 md:h-11 flex items-center justify-center overflow-hidden border border-searchBgColor rounded md:rounded-lg">
+                <div className="mt-[6px] h-8 md:h-11 flex items-center justify-center overflow-hidden border border-searchBgColor rounded-lg">
                   <div className="ss:w-[35%] md:w-[30%] h-8 md:h-11 flex items-center justify-center  cursor-pointer border-r border-searchBgColor overflow-hidden">
                     <div
                       className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular text-xs md:text-base leading-4 text-black"
@@ -360,7 +357,7 @@ export const LocationsMoreAbout = () => {
                   Номер второго администратора{" "}
                 </div>
 
-                <div className="mt-[6px] flex items-center justify-center overflow-hidden border border-searchBgColor rounded md:rounded-lg h-8 md:h-11">
+                <div className="mt-[6px] flex items-center justify-center overflow-hidden border border-searchBgColor rounded-lg h-8 md:h-11">
                   <div className="w-[35%] md:w-[30%] flex items-center justify-center cursor-pointer border-r border-searchBgColor overflow-hidden">
                     <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular leading-4 text-black text-xs md:text-base" > 
                     {/* {state?.idSecondAssistantPhoneCode ? "+" + state?.idSecondAssistantPhoneCode : "+998"} */} +998
@@ -387,7 +384,7 @@ export const LocationsMoreAbout = () => {
                       <div className="flex items-center text-[#303030] text-xs md:text-base not-italic font-AeonikProRegular leading-4 tracking-[0,16px] ">
                         Выберите регион
                       </div>
-                      <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded md:rounded-lg border border-searchBgColor">
+                      <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
                         <div className="flex items-center text-[#000] text-xs md:text-base">
                             <span className="ml-1">{shopLocationsData?.region?.name_ru}, {shopLocationsData?.sub_region?.name_ru}</span>
                         </div>
@@ -399,21 +396,21 @@ export const LocationsMoreAbout = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-center mb-10 md:pb-10 mt-10">
+          <div className="flex items-center justify-center my-6 md:pb-10 md:my-10">
           <div className="flex items-center ">
             {shopLocationsData?.status === "pending" ? (
               <div className="flex items-center gap-x-3">
                 <button
                   // onClick={() => approveFunc()}
                   type="button"
-                  className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                  className="w-fit px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
                   Одобрить
                 </button>
                 <button
                   onClick={() => setModalOpen(true)}
                   type="button"
-                  className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
+                  className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                 >
                   Отказать
                 </button>
@@ -424,7 +421,7 @@ export const LocationsMoreAbout = () => {
                 <button
                   onClick={() => setModalOpen(true)}
                   type="button"
-                  className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
+                  className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                 >
                   Отказать
                 </button>
@@ -435,7 +432,7 @@ export const LocationsMoreAbout = () => {
                 <button
                   // onClick={() => approveFunc()}
                   type="button"
-                  className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                  className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
                   Одобрить
                 </button>
@@ -446,7 +443,7 @@ export const LocationsMoreAbout = () => {
                 <button
                   // onClick={() => approveFunc()}
                   type="button"
-                  className="w-fit cursor-pointer px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                  className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
                   Одобрить
                 </button>

@@ -18,6 +18,8 @@ export default function ClothesItem({
   const url = "https://api.dressme.uz";
   let token = sessionStorage.getItem("token");
 
+  console.log(data,'data');
+
   const [, , reFetch] = useContext(ClothesDataContext);
 
   const approveFunc = () => {
@@ -185,8 +187,8 @@ export default function ClothesItem({
             Подробнее
           </Link>
         </div>
-        <div className="h-[148px] w-full rounded-lg overflow-hidden mb-[12px]">
-          <img src={SoonImg} alt="img" className="w-full h-full object-cover" />
+        <div className="h-[148px] w-full rounded-lg overflow-hidden mb-[12px] border border-[#f2f2f2]">
+          <img  src={data?.photos[0]?.url_photo} alt="img" className="w-full h-full object-contain" />
         </div>
         <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
           <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[45%]">
