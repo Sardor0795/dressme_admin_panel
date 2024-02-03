@@ -104,7 +104,13 @@ export default function ColorModal({
                         <div className="w-full md:w-fit flex items-center">
                           <div className="w-full md:w-fit flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                             <div className="mr-[15px]">
-                              {item?.price ? item?.price : "-"}
+                              {item?.price 
+                              ? parseInt(item?.price)
+                                ?.toLocaleString()
+                                ?.split(",")
+                                .join(" ")
+                              : "-"}
+                              
                             </div>{" "}
                             <div className="text-[#8C8C8C]">сум</div>
                           </div>
