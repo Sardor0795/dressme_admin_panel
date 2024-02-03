@@ -2,7 +2,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
-import SoonImg from "../../../../assets/img/coming_soon.jpg";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
@@ -50,7 +49,7 @@ export default function ClothesItem({
   const [, setId] = useContext(IdsContext);
 
   return (
-    <div className="flex items-center w-full mb-14 md:pt-[40px]">
+    <div className="flex items-center w-full mb-8 md:mb-14 md:pt-[40px]">
       <div
         onClick={() => {
           click(data?.id);
