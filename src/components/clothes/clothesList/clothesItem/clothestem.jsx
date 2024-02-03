@@ -98,7 +98,10 @@ export default function ClothesItem({
           {data?.created_at}
         </div>
         <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.cost?.price ? data?.cost?.price + " сум" : "-"}
+          {data?.cost?.price 
+            ? parseInt(data?.cost?.price)?.toLocaleString() ?.split(",")?.join(" ") + " сум" 
+            : "-"
+          }
         </div>
         <Link
           to={`cloth/${data?.id}`}
@@ -224,7 +227,10 @@ export default function ClothesItem({
             {data?.created_at}
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.cost?.price ? data?.cost?.price + " сум" : "-"}
+           {data?.cost?.price 
+            ? parseInt(data?.cost?.price)?.toLocaleString() ?.split(",")?.join(" ") + " сум" 
+            : "-"
+          }
           </div>
         </div>
 
