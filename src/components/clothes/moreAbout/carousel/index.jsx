@@ -105,19 +105,19 @@ export default function Carousel({ data, height }) {
   console.log(data,'data');
   console.log(imageOne, 'imageOne');
   console.log(imageTwo, 'imageTwo');
-  // console.log(imageThree, 'imageThree');
-  // console.log(imageFour, 'imageFour');
+  console.log(imageThree, 'imageThree');
+  console.log(imageFour, 'imageFour');
 
-  // console.log(colorOne, 'colorOne');
-  // console.log(colorTwo, 'colorTwo');
-  // console.log(colorThree, 'colorThree');
-  // console.log(colorFour, 'colorFour');
+  console.log(colorOne, 'colorOne');
+  console.log(colorTwo, 'colorTwo');
+  console.log(colorThree, 'colorThree');
+  console.log(colorFour, 'colorFour');
 
 
   useEffect(() => {
     if (data?.photos) {
       setImageOne({
-        id1: data.photos[0]?.id && data.photos[0]?.id || 1,
+        id1: data.photos[0]?.id && data.photos[0]?.id || null,
         product_color_id1: data.photos[0]?.product_color_id && data.photos[0]?.product_color_id || null,
         product_id1: data.photos[0]?.product_id && data.photos[0]?.product_id || null,
         status1: data.photos[0]?.status && data.photos[0]?.status || null,
@@ -126,7 +126,7 @@ export default function Carousel({ data, height }) {
       })
 
       setImageTwo({
-        id2: data?.photos[1]?.id && data?.photos[1]?.id || 2,
+        id2: data?.photos[1]?.id && data?.photos[1]?.id || null,
         product_color_id2: data?.photos[1]?.product_color_id && data?.photos[1]?.product_color_id || null,
         product_id2: data?.photos[1]?.product_id && data?.photos[1]?.product_id || null,
         status2: data?.photos[1]?.status && data?.photos[1]?.status || null,
@@ -135,7 +135,7 @@ export default function Carousel({ data, height }) {
       })
 
       setImageThree({
-        id3: data?.photos[2]?.id && data?.photos[2]?.id || 3,
+        id3: data?.photos[2]?.id && data?.photos[2]?.id || null,
         product_color_id3: data?.photos[2]?.product_color_id && data?.photos[2]?.product_color_id || null,
         product_id3: data?.photos[2]?.product_id && data?.photos[2]?.product_id || null,
         status3: data?.photos[2]?.status && data?.photos[2]?.status || null,
@@ -144,7 +144,7 @@ export default function Carousel({ data, height }) {
       })
 
       setImageFour({
-        id4: data.photos[3]?.id && data.photos[3]?.id || 4,
+        id4: data.photos[3]?.id && data.photos[3]?.id || null,
         product_color_id4: data.photos[3]?.product_color_id && data.photos[3]?.product_color_id || null,
         product_id4: data.photos[3]?.product_id && data.photos[3]?.product_id || null,
         status4: data.photos[3]?.status && data.photos[3]?.status || null,
@@ -157,7 +157,7 @@ export default function Carousel({ data, height }) {
   useEffect(()=> {
     if (data?.colors) {
       setColorOne({
-        id1: data.colors[0]?.id && data.colors[0]?.id || 1,
+        id1: data.colors[0]?.id && data.colors[0]?.id || null,
         color_hex1: data.colors[0]?.hex && data.colors[0]?.hex || null,
         color_name_uz1: data.colors[0]?.name_uz && data.colors[0]?.name_uz || null,
         color_name_ru1: data.colors[0]?.name_ru && data.colors[0]?.name_ru || null,
@@ -167,7 +167,7 @@ export default function Carousel({ data, height }) {
       })
 
       setColorTwo({
-        id2: data?.colors[1]?.id && data?.colors[1]?.id || 2,
+        id2: data?.colors[1]?.id && data?.colors[1]?.id || null,
         color_hex2: data?.colors[1]?.product_color_id && data?.colors[1]?.product_color_id || null,
         color_name_uz2: data?.colors[1]?.name_uz && data?.colors[1]?.name_uz || null,
         color_name_ru2: data?.colors[1]?.name_ru && data?.colors[1]?.name_ru || null,
@@ -177,7 +177,7 @@ export default function Carousel({ data, height }) {
       })
 
       setColorThree({
-        id3: data?.colors[2]?.id && data?.colors[2]?.id || 3,
+        id3: data?.colors[2]?.id && data?.colors[2]?.id || null,
         color_hex3: data?.colors[2]?.product_color_id && data?.colors[2]?.product_color_id || null,
         color_name_uz3: data?.colors[2]?.name_uz && data?.colors[2]?.name_uz || null,
         color_name_ru3: data?.colors[2]?.name_ru && data?.colors[2]?.name_ru || null,
@@ -187,7 +187,7 @@ export default function Carousel({ data, height }) {
       })
 
       setColorFour({
-        id4: data?.colors[3]?.id && data?.colors[3]?.id || 4,
+        id4: data?.colors[3]?.id && data?.colors[3]?.id || null,
         color_hex4: data?.colors[1]?.product_color_id && data?.colors[3]?.product_color_id || null,
         color_name_uz4: data?.colors[3]?.name_uz && data?.colors[3]?.name_uz || null,
         color_name_ru4: data?.colors[3]?.name_ru && data?.colors[3]?.name_ru || null,
@@ -207,6 +207,12 @@ export default function Carousel({ data, height }) {
     setModalOfCarsouel(true)
   }
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
   return (
     <div>
       <section
@@ -219,16 +225,16 @@ export default function Carousel({ data, height }) {
       ></section>
 
       <section
-          className={`fixed z-[201] rounded-lg bg-white  w-fit h-fit m-auto cursor-pointer flex flex-col items-center justify-center inset-0  ${modalOfCarsouel ? "" : "hidden"
+          className={`fixed z-[201] rounded-lg bg-white  w-fit h-fit mx-4 my-auto md:m-auto cursor-pointer flex flex-col items-center justify-center inset-0  ${modalOfCarsouel ? "" : "hidden"
             }`}
         >
           <button
             onClick={() => setModalOfCarsouel(false)}
-            className="absolute top-0  z-[116] right-[-80px]  flex items-center justify-center w-[50px] h-[50px] rounded-full bg-[#808080]">
+            className="absolute top-[-60px] md:top-0  z-[116] right-0 md:right-[-80px] flex items-center justify-center w-[50px] h-[50px] rounded-full bg-[#808080]">
             <MenuCloseIcons colors="#fff" />
           </button>
           <div>
-            <div className="w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 ">
+            <div className="w-full md:w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 ">
               <div className="w-full flex flex-col items-center justify-start ">
                 {modalId === imageOne?.id1 &&
                   <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
@@ -316,13 +322,12 @@ export default function Carousel({ data, height }) {
                       }} 
                     }
                     className="w-full flex flex-col h-full ">
-                      {imageOne?.product_color_id1 === colorOne?.color_pivot_id1 ? (
+                      {imageOne?.product_color_id1 === colorOne?.color_pivot_id1 &&
                         <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
                           <div className="w-fit h-fit flex items-center gap-x-3">
                             <span style={{background: colorOne?.color_hex1}} className={`w-[22px] h-[22px] rounded-full`}></span>   
                           </div>
                         </div>
-                      ) : null
                       }
                     <div
                       style={{

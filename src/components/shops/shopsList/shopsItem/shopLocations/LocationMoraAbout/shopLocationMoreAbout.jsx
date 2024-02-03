@@ -8,13 +8,13 @@ import CancelShopsModal from "../../../ModalCancel";
 export default function LocationMoreAbout() {
 
  const [, setMapConstructor] = useState(null);
-    const searchRef = useRef(null);
+  const searchRef = useRef(null);
 
-    const [forMaps, setForMaps] = useState({
-        title: "",
-        center: [],
-        zoom: 12,
-    });
+  const [forMaps, setForMaps] = useState({
+      title: "",
+      center: [],
+      zoom: 12,
+  });
 
   const handleBoundsChange = () => {};
 
@@ -63,6 +63,12 @@ export default function LocationMoreAbout() {
     setModalOfCarsouel(true)
   }
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
   return (
     <div className="w-full md:px-10">
 
@@ -76,20 +82,18 @@ export default function LocationMoreAbout() {
       ></section>
 
       <section
-          className={`fixed z-[201] rounded-lg bg-white  w-fit h-fit m-auto cursor-pointer flex flex-col items-center justify-center inset-0  ${modalOfCarsouel ? "" : "hidden"
+          className={`fixed z-[201] rounded-lg bg-white w-fit h-fit mx-4 my-auto md:m-auto cursor-pointer flex flex-col items-center justify-center inset-0  ${modalOfCarsouel ? "" : "hidden"
             }`}
         >
           <button
             onClick={() => setModalOfCarsouel(false)}
-            className="absolute top-0  z-[116] right-[-80px]  flex items-center justify-center w-[50px] h-[50px] rounded-full bg-[#808080]">
+            className="absolute top-[-60px] md:top-0 z-[116] right-0 md:right-[-80px]  flex items-center justify-center w-[50px] h-[50px] rounded-full bg-[#808080]">
             <MenuCloseIcons colors="#fff" />
           </button>
           <div>
-            <div
-              className="w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 "
-            >
+            <div className="w-full md:w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 ">
               <div className="w-full flex flex-col items-center justify-start ">
-                {modalId == shopLocationsData?.url_image_path_one &&
+                {modalId === shopLocationsData?.url_image_path_one &&
                   <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
                       <div className="w-full h-full flex flex-col items-center justify-center"> 
@@ -104,7 +108,7 @@ export default function LocationMoreAbout() {
                     </div>
                   </div>
                 }
-                {modalId == shopLocationsData?.url_image_path_two &&
+                {modalId === shopLocationsData?.url_image_path_two &&
                  <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
                         <div className="w-full h-full flex flex-col items-center justify-center"> 
@@ -119,7 +123,7 @@ export default function LocationMoreAbout() {
                     </div>
                   </div>
                 }
-                {modalId == shopLocationsData?.url_image_path_three &&
+                {modalId === shopLocationsData?.url_image_path_three &&
                   <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
                         <div className="w-full h-full flex flex-col items-center justify-center"> 
@@ -168,7 +172,7 @@ export default function LocationMoreAbout() {
           <div className="h-[400px]">
             <div className={`w-full `}>
               <div className={"relative h-[400px] bg-white"}>
-                  <YMaps disabled>
+                <YMaps disabled>
                   <Map
                   disabled
                     className={` overflow-hidden w-full h-full`}
@@ -220,13 +224,17 @@ export default function LocationMoreAbout() {
                   }}
                 }
                 className="h-full w-full cursor-pointer border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
-                    {shopLocationsData?.url_image_path_one ? (
-                        <img src={shopLocationsData?.url_image_path_one} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
-                    ) : (
-                    <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
-                        <NoImg />
-                    </span>
-                    )} 
+                  {shopLocationsData?.url_image_path_one ? (
+                    <img 
+                      src={shopLocationsData?.url_image_path_one} 
+                      alt="backImg" 
+                      className="w-full h-full object-contain rounded-lg" 
+                    /> 
+                  ) : (
+                  <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                      <NoImg className="w-full h-full object-contain"/>
+                  </span>
+                  )} 
               </div>
             </div>
             <div className=" w-full md:w-[31%] h-[75px] md:h-[130px] flex items-center justify-center rounded-lg">
@@ -240,10 +248,14 @@ export default function LocationMoreAbout() {
                 }
                 className="h-full w-full cursor-pointer border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
                     {shopLocationsData?.url_image_path_two ? (
-                        <img src={shopLocationsData?.url_image_path_two} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
+                      <img 
+                        src={shopLocationsData?.url_image_path_two} 
+                        alt="backImg" 
+                        className="w-full h-full object-contain rounded-lg" 
+                        /> 
                     ) : (
-                    <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
-                        <NoImg />
+                    <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                        <NoImg className="w-full h-full object-contain"/>
                     </span>
                     )} 
               </div>
@@ -261,8 +273,8 @@ export default function LocationMoreAbout() {
                 {shopLocationsData?.url_image_path_three ? (
                     <img src={shopLocationsData?.url_image_path_three} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
                 ) : (
-                  <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
-                    <NoImg />
+                  <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center  leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                    <NoImg className="w-full h-full object-contain"/>
                   </span>
                 )} 
               </div>
@@ -394,7 +406,6 @@ export default function LocationMoreAbout() {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
