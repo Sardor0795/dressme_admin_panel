@@ -11,7 +11,7 @@ export default function ColorModal({
   data,
 }) {
 
-  console.log(data?.sizes, 'data-sizes');
+  console.log(data?.colors, 'data-colors');
   return (
     <div className={`w-full px-4  md:px-10`}>
       <div
@@ -32,8 +32,9 @@ export default function ColorModal({
           {/* Category 1 */}
 
           {category === "1"
-            ? data?.sizes?.map((item) => {
+            ? data?.sizes?.map((item, index) => {
               console.log(item, 'item');
+              console.log(index, 'index');
                 return (
                   <div
                     key={item?.id}
@@ -85,7 +86,7 @@ export default function ColorModal({
                         </div>
                       </div>
                     </div>
-                    <div className={`flex flex-wrap md:flex-nowrap justify-between ${item?.product_color_id === data?.colors[0]?.pivot?.id ? ' md:mb-3' : ''}`}>
+                    <div className={`flex flex-wrap md:flex-nowrap justify-between ${item?.product_color_id === data?.colors[index]?.pivot?.id ? ' md:mb-3' : ''}`}>
                       <div className="w-full md:w-fit mb-[34px] md:mb-0">
                         <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                           Возраст
@@ -139,11 +140,11 @@ export default function ColorModal({
                         </div>
                       </div>
                     </div>
-                    {item?.product_color_id === data?.colors[0]?.pivot?.id ? (
+                    {item?.product_color_id === data?.colors[index]?.pivot?.id ? (
                       <div className="w-full flex items-center justify-start ">
                           <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProRegular">Цвет:</span>
-                          <span style={{background:data?.colors[0]?.hex }} className="border border-black text-white rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] ll:text-md  not-italic font-AeonikProRegular px-[15px] py-1">
-                            {data?.colors[0]?.name_ru }
+                          <span style={{background:data?.colors[index]?.hex }} className="border text-white rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] ll:text-md  not-italic font-AeonikProRegular px-[15px] py-1">
+                            {data?.colors[index]?.name_ru }
                           </span>
                       </div>
                     ) : null}
