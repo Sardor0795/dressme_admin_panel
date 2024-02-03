@@ -3,7 +3,6 @@ import { BackIcon, StarIcon } from "../../../assets/icon";
 import CancelModal from "./modalCancel";
 import ColorModal from "./modalColor";
 import Carousel from "./carousel";
-import ModalAllPhotos from "./modalAllPhotos";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { ProductsContext } from "../../../context/productsContext";

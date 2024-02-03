@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { BackIcon, MapLocationIcon, MenuCloseIcons, StarIcon } from "../../../assets/icon";
+import { BackIcon, MapLocationIcon, MenuCloseIcons, NoImg, StarIcon } from "../../../assets/icon";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Map, YMaps } from "react-yandex-maps";
@@ -56,6 +56,7 @@ export const LocationsMoreAbout = () => {
     e.preventDefault();
   };
 
+  const [modalId, setModalId] = useState(null);
   const [modalOfCarsouel, setModalOfCarsouel] = useState(false)
 
    function handleClickCarosuel() {
@@ -84,11 +85,9 @@ export const LocationsMoreAbout = () => {
             <MenuCloseIcons colors="#fff" />
           </button>
           <div>
-            <div
-              className="w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 "
-            >
-              <div className="w-full  flex flex-col items-center justify-start ">
-                {shopLocationsData?.url_image_path_one !== null &&
+            <div className="w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 ">
+              <div className="w-full flex flex-col items-center justify-start ">
+                {modalId === shopLocationsData?.url_image_path_one &&
                   <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
                       <div className="w-full h-full flex flex-col items-center justify-center"> 
@@ -103,7 +102,7 @@ export const LocationsMoreAbout = () => {
                     </div>
                   </div>
                 }
-                {shopLocationsData?.url_image_path_two !== null &&
+                {modalId === shopLocationsData?.url_image_path_two &&
                  <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
                         <div className="w-full h-full flex flex-col items-center justify-center"> 
@@ -112,14 +111,13 @@ export const LocationsMoreAbout = () => {
                               src={shopLocationsData?.url_image_path_two}
                               alt="backImg"
                               className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
-                            />
-                            
+                            /> 
                           }
                         </div>
                     </div>
                   </div>
                 }
-                {shopLocationsData?.url_image_path_three !== null &&
+                {modalId === shopLocationsData?.url_image_path_three &&
                   <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                     <div className="w-full h-[80vh] flex items-center">
                         <div className="w-full h-full flex flex-col items-center justify-center"> 
@@ -214,34 +212,44 @@ export const LocationsMoreAbout = () => {
             <div className=" w-full md:w-[31%]  h-[75px] md:h-[130px] flex items-center justify-center rounded-lg">
               <div 
                 onClick={() => { 
-                  if(shopLocationsData?.url_image_path_one !== null) {
+                  if(shopLocationsData?.url_image_path_one) {
                     handleClickCarosuel() 
+                    setModalId(shopLocationsData?.url_image_path_one)
                   }}
                 }
                 className="h-full w-full cursor-pointer border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
-                    {shopLocationsData?.url_image_path_one ? (
-                        <img src={shopLocationsData?.url_image_path_one} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
-                    ) : (
-                    <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium border-b border-textBlueColor text-textBlueColor">
-                        Фото локации
-                    </span>
-                    )} 
+                  {shopLocationsData?.url_image_path_one ? (
+                    <img 
+                      src={shopLocationsData?.url_image_path_one} 
+                      alt="backImg" 
+                      className="w-full h-full object-contain rounded-lg" 
+                    /> 
+                  ) : (
+                  <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                      <NoImg />
+                  </span>
+                  )} 
               </div>
             </div>
             <div className=" w-full md:w-[31%] h-[75px] md:h-[130px] flex items-center justify-center rounded-lg">
               <div 
                 onClick={() => { 
-                  if(shopLocationsData?.url_image_path_two !== null) {
+                  if(shopLocationsData?.url_image_path_two) {
                     handleClickCarosuel() 
+                    setModalId(shopLocationsData?.url_image_path_two)
                   }
                 } 
                 }
                 className="h-full w-full cursor-pointer border border-searchBgColor rounded-lg overflow-hidden flex items-center justify-center ">
                     {shopLocationsData?.url_image_path_two ? (
-                        <img src={shopLocationsData?.url_image_path_two} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
+                      <img 
+                        src={shopLocationsData?.url_image_path_two} 
+                        alt="backImg" 
+                        className="w-full h-full object-contain rounded-lg" 
+                        /> 
                     ) : (
-                    <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium border-b border-textBlueColor text-textBlueColor">
-                        Фото локации
+                    <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                        <NoImg />
                     </span>
                     )} 
               </div>
@@ -249,9 +257,9 @@ export const LocationsMoreAbout = () => {
             <div className=" w-full md:w-[31%] h-[75px] md:h-[130px] flex items-center justify-center rounded-lg">
               <div 
                 onClick={() => { 
-                  if(shopLocationsData?.url_image_path_three !== null) {
+                  if(shopLocationsData?.url_image_path_three) {
                     handleClickCarosuel() 
-                    // setModalImg(shopLocationsData?.url_image_path_three)
+                    setModalId(shopLocationsData?.url_image_path_three)
                   }
                 } 
                 }
@@ -259,8 +267,8 @@ export const LocationsMoreAbout = () => {
                 {shopLocationsData?.url_image_path_three ? (
                     <img src={shopLocationsData?.url_image_path_three} alt="backImg" className="w-full h-full object-contain rounded-lg" /> 
                 ) : (
-                  <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium border-b border-textBlueColor text-textBlueColor">
-                    Фото локации
+                  <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                    <NoImg />
                   </span>
                 )} 
               </div>
@@ -397,60 +405,60 @@ export const LocationsMoreAbout = () => {
             </div>
           </div>
           <div className="flex items-center justify-center my-6 md:pb-10 md:my-10">
-          <div className="flex items-center ">
-            {shopLocationsData?.status === "pending" ? (
-              <div className="flex items-center gap-x-3">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="w-fit px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
-                >
-                  Одобрить
-                </button>
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#E85353] text-[#E85353]"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {shopLocationsData?.status === "approved" ? (
-              <div className="flex items-center">
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#E85353] text-[#E85353]"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {shopLocationsData?.status === "declined" ? (
-              <div className="flex items-cente">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-            {shopLocationsData?.status === "updated" ? (
-              <div className="flex items-center">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
+            <div className="flex items-center ">
+              {shopLocationsData?.status === "pending" ? (
+                <div className="flex items-center gap-x-3">
+                  <button
+                    // onClick={() => approveFunc()}
+                    type="button"
+                    className="w-fit px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                  >
+                    Одобрить
+                  </button>
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    type="button"
+                    className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#E85353] text-[#E85353]"
+                  >
+                    Отказать
+                  </button>
+                </div>
+              ) : null}
+              {shopLocationsData?.status === "approved" ? (
+                <div className="flex items-center">
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    type="button"
+                    className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#E85353] text-[#E85353]"
+                  >
+                    Отказать
+                  </button>
+                </div>
+              ) : null}
+              {shopLocationsData?.status === "declined" ? (
+                <div className="flex items-cente">
+                  <button
+                    // onClick={() => approveFunc()}
+                    type="button"
+                    className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                  >
+                    Одобрить
+                  </button>
+                </div>
+              ) : null}
+              {shopLocationsData?.status === "updated" ? (
+                <div className="flex items-center">
+                  <button
+                    // onClick={() => approveFunc()}
+                    type="button"
+                    className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
+                  >
+                    Одобрить
+                  </button>
+                </div>
+              ) : null}
+            </div>
           </div>
-        </div>
         </div>
 
       </div >

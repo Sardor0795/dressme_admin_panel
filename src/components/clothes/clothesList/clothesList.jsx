@@ -523,7 +523,7 @@ export default function ClothesList() {
                                             <div className="mb-8">
                                               {index === 1 ? (
                                                 <div className="w-full">
-                                                  <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                  <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
                                                         onClick={() => {
@@ -657,7 +657,7 @@ export default function ClothesList() {
                                             <div className="mb-8">
                                               {index === 1 ? (
                                                 <div className="w-ful">
-                                                  <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                  <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
                                                         onClick={() => {
@@ -791,7 +791,7 @@ export default function ClothesList() {
                                             <div className="mb-8">
                                               {index === 1 ? (
                                                 <div className="w-ful">
-                                                  <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                  <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
                                                         onClick={() => {
@@ -925,7 +925,7 @@ export default function ClothesList() {
                                             <div className="mb-8">
                                               {index === 1 ? (
                                                 <div className="w-ful">
-                                                  <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                  <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
                                                         onClick={() => {
