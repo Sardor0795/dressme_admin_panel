@@ -154,6 +154,8 @@ export default function Carousel({ data, height }) {
     }
   }, [data?.photos])
 
+  console.log(data?.colors,'data?.colors');
+
   useEffect(()=> {
     if (data?.colors) {
       setColorOne({
@@ -168,7 +170,7 @@ export default function Carousel({ data, height }) {
 
       setColorTwo({
         id2: data?.colors[1]?.id && data?.colors[1]?.id || null,
-        color_hex2: data?.colors[1]?.product_color_id && data?.colors[1]?.product_color_id || null,
+        color_hex2: data?.colors[1]?.hex&& data?.colors[1]?.hex || null,
         color_name_uz2: data?.colors[1]?.name_uz && data?.colors[1]?.name_uz || null,
         color_name_ru2: data?.colors[1]?.name_ru && data?.colors[1]?.name_ru || null,
         color_pivot_id2: data?.colors[1]?.pivot?.id && data?.colors[1]?.pivot?.id || null,
@@ -178,7 +180,7 @@ export default function Carousel({ data, height }) {
 
       setColorThree({
         id3: data?.colors[2]?.id && data?.colors[2]?.id || null,
-        color_hex3: data?.colors[2]?.product_color_id && data?.colors[2]?.product_color_id || null,
+        color_hex3: data?.colors[2]?.hex && data?.colors[2]?.hex || null,
         color_name_uz3: data?.colors[2]?.name_uz && data?.colors[2]?.name_uz || null,
         color_name_ru3: data?.colors[2]?.name_ru && data?.colors[2]?.name_ru || null,
         color_pivot_id3: data?.colors[2]?.pivot?.id && data?.colors[2]?.pivot?.id || null,
@@ -188,7 +190,7 @@ export default function Carousel({ data, height }) {
 
       setColorFour({
         id4: data?.colors[3]?.id && data?.colors[3]?.id || null,
-        color_hex4: data?.colors[1]?.product_color_id && data?.colors[3]?.product_color_id || null,
+        color_hex4: data?.colors[1]?.hex && data?.colors[3]?.hex || null,
         color_name_uz4: data?.colors[3]?.name_uz && data?.colors[3]?.name_uz || null,
         color_name_ru4: data?.colors[3]?.name_ru && data?.colors[3]?.name_ru || null,
         color_pivot_id4: data?.colors[3]?.pivot?.id && data?.colors[3]?.pivot?.id || null,
@@ -306,14 +308,6 @@ export default function Carousel({ data, height }) {
           <div className="w-full h-[404px]  flex items-center">
             <div className="w-full h-full rounded-[12px] border overflow-hidden" >
               <div className={`h-full`}>
-                {/* {imageOne?.url_photo1 === null ? (
-                  <div className="h-full w-full text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor "
-                >
-                    <div className="w-full h-full overflow-hidden bg-photoBg  flex flex-col items-center  justify-center">
-                      <span><NoImg /></span>
-                    </div>
-                  </div>
-                ):( */}
                   <div
                     onClick={() => { 
                       if(imageOne?.url_photo1){
@@ -395,13 +389,13 @@ export default function Carousel({ data, height }) {
               </button>
               <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
                 <div className="w-fit h-fit flex items-center">
-                  {imageTwo?.product_color_id2 === colorTwo?.color_pivot_id2 ? (
+                    {imageTwo?.product_color_id2 === colorTwo?.color_pivot_id2 && (
                       <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
                         <div className="w-fit h-fit flex items-center gap-x-3">
                           <span style={{background: colorTwo?.color_hex2}} className={`w-[22px] h-[22px] rounded-full`}></span>   
                         </div>
                       </div>
-                    ) : null
+                     )
                     }
                 </div>
               </div>
@@ -449,13 +443,13 @@ export default function Carousel({ data, height }) {
               </button>
               <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
                 <div className="w-fit h-fit flex items-center">
-                   {imageThree?.product_color_id3 === colorThree?.color_pivot_id3 ? (
+                   {imageThree?.product_color_id3 === colorThree?.color_pivot_id3 && (
                       <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
                         <div className="w-fit h-fit flex items-center gap-x-3">
                           <span style={{background: colorThree?.color_hex3}} className={`w-[22px] h-[22px] rounded-full`}></span>   
                         </div>
                       </div>
-                    ) : null
+                    ) 
                     }
                 </div>
               </div>
@@ -503,13 +497,13 @@ export default function Carousel({ data, height }) {
               </button>
               <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
                 <div className="w-fit h-fit flex items-center">
-                   {imageFour?.product_color_id4 === colorFour?.color_pivot_id4 ? (
+                   {imageFour?.product_color_id4 === colorFour?.color_pivot_id4 && (
                       <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
                         <div className="w-fit h-fit flex items-center gap-x-3">
                           <span style={{background: colorFour?.color_hex4}} className={`w-[22px] h-[22px] rounded-full`}></span>   
                         </div>
                       </div>
-                    ) : null
+                    )
                     }
                 </div>
               </div>
