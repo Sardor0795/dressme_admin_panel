@@ -103,15 +103,15 @@ export default function Carousel({ data, height }) {
   })
 
   console.log(data,'data');
-  console.log(imageOne, 'imageOne');
-  console.log(imageTwo, 'imageTwo');
-  console.log(imageThree, 'imageThree');
-  console.log(imageFour, 'imageFour');
+  // console.log(imageOne, 'imageOne');
+  // console.log(imageTwo, 'imageTwo');
+  // console.log(imageThree, 'imageThree');
+  // console.log(imageFour, 'imageFour');
 
-  console.log(colorOne, 'colorOne');
-  console.log(colorTwo, 'colorTwo');
-  console.log(colorThree, 'colorThree');
-  console.log(colorFour, 'colorFour');
+  // console.log(colorOne, 'colorOne');
+  // console.log(colorTwo, 'colorTwo');
+  // console.log(colorThree, 'colorThree');
+  // console.log(colorFour, 'colorFour');
 
 
   useEffect(() => {
