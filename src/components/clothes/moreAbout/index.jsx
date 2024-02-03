@@ -457,16 +457,16 @@ export const ClothMoreAbout = () => {
             {data?.name_uz}
           </div>
           <div className="flex items-center mb-[5px]">
-            <span className="mr-[5px]">Описание на русском</span> <StarIcon />
+            <span className="mr-[5px]">Описание на русском</span>
           </div>
           <div className="h-[40px] flex items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
-            {data?.description_ru}
+            {data?.description_ru ? data?.description_ru : '-'}
           </div>
           <div className="flex items-center mb-[5px]">
-            <span className="mr-[5px]">Описание на узбекском</span> <StarIcon />
+            <span className="mr-[5px]">Описание на узбекском</span>
           </div>
           <div className="h-[40px] flex items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
-            {data?.description_uz}
+            {data?.description_uz ? data?.description_uz : '-'}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Бренд</span>
