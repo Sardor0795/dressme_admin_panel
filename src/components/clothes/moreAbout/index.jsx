@@ -284,9 +284,9 @@ export const ClothMoreAbout = () => {
             </div>
             <div className="flex w-full mb:block gap-[11px] md:gap-[0]">
               <div className="flex w-full md:flex-wrap xxxl:flex-nowrap justify-between mb-[25px] gap-[10px]">
-                <button className="h-[40px] whitespace-nowrap font-AeonikProMedium text-[16px] w-full xxxl:w-full rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
+                <div className="h-[40px] w-full text-center whitespace-nowrap font-AeonikProMedium text-[16px] xxxl:w-full rounded-lg bg-[#007DCA] py-[12px] px-[15px] text-white">
                   {data?.category?.name_ru}
-                </button>
+                </div>
                 <button
                   onClick={() => setColorModalOpen(true)}
                   className="whitespace-nowrap font-AeonikProMedium text-[16px] w-full xxxl:max-w-[160px] border-[1.5px] border-[#007DCA] rounded-lg text-[#007DCA] py-[12px] px-[15px] bg-white"
@@ -427,7 +427,7 @@ export const ClothMoreAbout = () => {
                 {data?.locations
                     ? data?.locations?.map(item =>{
                         return(
-                          <div className="border p-1 bg-sky-200 rounded-lg mb-[2px]" key={item?.id}>{item?.address}</div>
+                          <div className="border border-[#E5E5E5] p-[6px] rounded-lg mb-[2px]" key={item?.id}>{item?.address}</div>
                         )
                       })
                     : '-'
@@ -497,7 +497,7 @@ export const ClothMoreAbout = () => {
                 {data?.locations
                     ? data?.locations?.map(item =>{
                         return(
-                          <div className="border p-1 bg-sky-200 rounded-lg mb-[2px]" key={item?.id}>{item?.address}</div>
+                          <div className="border border-[#E5E5E5] p-[6px] rounded-lg mb-[2px]" key={item?.id}>{item?.address}</div>
                         )
                       })
                     : '-'
