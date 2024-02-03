@@ -178,21 +178,11 @@ export const ClothMoreAbout = () => {
           <Carousel data={data} height={"h-[377px]"} />
         </div>
 
-        <div className="md:pr-[30px] pt-[20px] md:pt-0 md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[30px] w-full md:w-[50%]">
+        <div className="md:pr-[30px] pt-[20px] md:pt-0 md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[25px] w-full md:w-[50%]">
           {/* 1 */}
           <div className="font-AeonikProRegular text-[16px] w-full md:w-[50%]">
             <div className="flex flex-wrap gap-[11px] md:gap-[0]">
-              <div className="w-full">
-                <div className="flex items-center mb-[5px]">
-                  <span className="mr-[5px]">Магазин</span> <StarIcon />
-                </div>
-                <div className="border whitespace-nowrap overflow-x-auto text-[16px] text-black min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-                  {data?.shop?.name
-                    ? data?.shop?.name
-                    : '-'
-                  }
-                </div>
-              </div>
+              
               <div className="w-full">
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Раздел одежды</span> <StarIcon />
@@ -208,17 +198,14 @@ export const ClothMoreAbout = () => {
               <div className="w-full md:hidden">
                 <div className="whitespace-nowrap overflow-x-auto h-fit md:hidden flex items-center mb-[5px]">
                   <span
-                    className={`${
-                      subSections?.length ? "" : "text-[#b5b5b5]"
-                    } mr-[5px]`}
+                    className={`mr-[5px]`}
                   >
                     Подраздел одежды
                   </span>
                   {subSections?.length ? <StarIcon /> : null}
                 </div>
                 <div
-                  className={`${
-                    subSections?.length ? "" : "bg-[#EAEAEA] "
+                  className={`
                   } md:hidden flex items-center whitespace-nowrap overflow-x-auto h-fit text-[16px] text-black border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]`}
                 >
                   {subSections?.length > 1
@@ -335,31 +322,21 @@ export const ClothMoreAbout = () => {
                 "-"
               )}
             </div>
+            <div className="w-full hidden md:block">
+              <div className="flex items-center mb-[5px]">
+                <span className="mr-[5px]">Магазин</span> <StarIcon />
+              </div>
+              <div className="border whitespace-nowrap overflow-x-auto text-[16px] text-black min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                {data?.shop?.name
+                  ? data?.shop?.name
+                  : '-'
+                }
+              </div>
+            </div>
           </div>
 
           {/* 2 */}
           <div className="w-full md:w-[50%]">
-            <div className="w-full flex flex-col">
-              <div className="hidden md:flex items-center mb-[5px]">
-                <span
-                  className={`mr-[5px]`}
-                >
-                  Локация
-                </span> <StarIcon />
-              </div>
-              <div className={`hidden md:block h-fit border border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]`}>
-                {data?.locations
-                    ? data?.locations?.map(item =>{
-                        return(
-                          <div className="border p-1 bg-sky-200 rounded-lg mb-[2px]" key={item?.id}>{item?.address}</div>
-                        )
-                      })
-                    : '-'
-                  }
-              </div>
-            </div>
-
-
             <div className="hidden md:flex items-center mb-[5px]">
               <span
                 className={`mr-[5px]`}
@@ -425,6 +402,7 @@ export const ClothMoreAbout = () => {
                 </div>
               </div>
             </div>
+            
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Состав на узбекском</span>
             </div>
@@ -436,6 +414,25 @@ export const ClothMoreAbout = () => {
               ) : (
                 "-"
               )}
+            </div>
+            <div className="w-full flex flex-col">
+              <div className="hidden md:flex items-center mb-[5px]">
+                <span
+                  className={`mr-[5px]`}
+                >
+                  Локация
+                </span> <StarIcon />
+              </div>
+              <div className={`hidden md:block h-fit border border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]`}>
+                {data?.locations
+                    ? data?.locations?.map(item =>{
+                        return(
+                          <div className="border p-1 bg-sky-200 rounded-lg mb-[2px]" key={item?.id}>{item?.address}</div>
+                        )
+                      })
+                    : '-'
+                  }
+              </div>
             </div>
           </div>
         </div>
@@ -477,6 +474,37 @@ export const ClothMoreAbout = () => {
           <div className="h-[40px] flex items-center border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
             {data?.brand?.name ? data?.brand?.name : "-"}
           </div>
+          <div className="w-full block md:hidden">
+              <div className="flex items-center mb-[5px]">
+                <span className="mr-[5px]">Магазин</span> <StarIcon />
+              </div>
+              <div className="border whitespace-nowrap overflow-x-auto text-[16px] text-black min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                {data?.shop?.name
+                  ? data?.shop?.name
+                  : '-'
+                }
+              </div>
+            </div>
+          <div className="w-full flex md:hidden flex-col">
+              <div className="flex items-center mb-[5px]">
+                <span
+                  className={`mr-[5px]`}
+                >
+                  Локация
+                </span> <StarIcon />
+              </div>
+              <div className={`block h-fit border border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]`}>
+                {data?.locations
+                    ? data?.locations?.map(item =>{
+                        return(
+                          <div className="border p-1 bg-sky-200 rounded-lg mb-[2px]" key={item?.id}>{item?.address}</div>
+                        )
+                      })
+                    : '-'
+                  }
+              </div>
+          </div>
+
         </div>
 
         <div className="flex md:hidden w-full gap-[12px] mb-[20px]">
