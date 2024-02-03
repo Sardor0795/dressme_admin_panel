@@ -141,7 +141,7 @@ export default function ColorModal({
                       </div>
                     </div>
                     {item?.product_color_id === data?.colors[index]?.pivot?.id ? (
-                      <div className="w-full flex items-center justify-start ">
+                      <div className="w-full flex items-center justify-start mt-3 md:mt-0">
                           <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProRegular">Цвет:</span>
                           <span style={{background:data?.colors[index]?.hex }} className="border text-white rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] ll:text-md  not-italic font-AeonikProRegular px-[15px] py-1">
                             {data?.colors[index]?.name_ru }
