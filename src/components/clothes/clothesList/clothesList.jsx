@@ -83,7 +83,7 @@ export default function ClothesList() {
       top: 0,
     });
   }, []);
-  const [someChecked, setSomeChecked] = useState(false);
+  const [, setSomeChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
 
   let checkIndicator = allChecked ? "allNotCheck" : "allCheck";

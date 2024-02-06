@@ -66,7 +66,7 @@ export default function SellersList() {
     });
   }, []);
 
-  const [someChecked, setSomeChecked] = useState(false);
+  const [, setSomeChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
 
   let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
@@ -178,7 +178,7 @@ export default function SellersList() {
         </label>
       </div>
       
-      <div className="flex mb-[24px] md:hidden">
+      <div className="flex mb-[24px] mt-[80px] md:hidden">
         <div
           onClick={() => setShowSellers("pending")}
           className={`${
@@ -268,6 +268,17 @@ export default function SellersList() {
                   // onClick={() => approveFunc()}
                   type="button"
                   className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                >
+                  Одобрить
+                </button>
+              </div>
+            ) : null}
+            {showSellers === "updated" ? (
+              <div className="flex items-center ml-auto">
+                <button
+                  // onClick={() => approveFunc()}
+                  type="button"
+                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                 >
                   Одобрить
                 </button>
