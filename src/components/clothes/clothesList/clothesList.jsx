@@ -152,7 +152,7 @@ export default function ClothesList() {
 
   return (
     <div>
-      <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
+      <div className="fixed md:static bg-white w-full top-0 px-4 md:mb-[15px] left-0 right-0 md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
           <PhoneNavbar filterFuncCloThes={filterFunc} />
         </div>
@@ -193,7 +193,7 @@ export default function ClothesList() {
         </label>
       </div>
 
-      <div className="w-full mt-4 pb-2">
+      <div className="w-full mt-[72px] md:mt-4 pb-2">
         <div className="flex items-center justify-between gap-x-1 mb-[25px] md:mb-[0]">
           <div className="flex gap-x-1">
             <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
@@ -312,8 +312,9 @@ export default function ClothesList() {
             <div>({updatedCount})</div>
           </div>
         </div>
-
-        <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
+          
+        {/* ${allCount?.length ? 'flex' : 'hidden'} */}
+        <div className={`flex md:hidden mb-[18px] items-center justify-between gap-x-1`}>
           <div
             onClick={() => {
               onCheck(checkIndicator);
@@ -341,7 +342,8 @@ export default function ClothesList() {
         </div>
 
         {/* Mobile selected */}
-        <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
+        {/* ${waitingCount?.length > 0 || allowedCount?.length > 0 || notAllowedCount?.length > 0 || updatedCount?.legth > 0 ? 'flex' : 'hidden'} */}
+        <div className={` flex w-full md:hidden items-center justify-between pb-[24px]`}>
           <div className=" font-AeonikProMedium text-base ll:text-sm md:text-lg text-mobileTextColor">
             Выбранные:
           </div>

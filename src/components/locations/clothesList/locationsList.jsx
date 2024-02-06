@@ -157,7 +157,7 @@ export default function LocationsList() {
 
   return (
     <div>
-      <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
+      <div className="fixed md:static bg-white w-full z-10 top-0 px-4 md:mb-[15px] left-0 right-0 md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
           <PhoneNavbar filterFuncCloThes={filterFunc} />
         </div>
@@ -198,7 +198,7 @@ export default function LocationsList() {
         </label>
       </div>
 
-      <div className="w-full mt-4 pb-2">
+      <div className="w-full mt-[72px] md:mt-4 pb-2">
         <div className="flex items-center justify-between gap-x-1 mb-[25px] md:mb-[0]">
           <div className="flex gap-x-1">
             <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">

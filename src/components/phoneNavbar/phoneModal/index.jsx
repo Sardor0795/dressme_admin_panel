@@ -16,11 +16,11 @@ export default function PhoneModal({ setPhoneModalOpen, phoneModalOpen }) {
         onClick={() => setPhoneModalOpen(false)}
       ></div>
       <section
-        className={`max-w-[90%] md:max-w-[550px] z-[201] mx-auto w-full flex-col h-fit bg-white fixed py-[30px] md:py-[35px] px-[20px] md:px-[50px] rounded-t-lg rounded-b-lg md:top-[50%] duration-300 overflow-hidden left-1/2 right-1/2 translate-x-[-50%] translate-y-[-50%] ${
+        className={`max-w-[90%] md:max-w-[550px] z-[201] mx-auto w-full flex-col h-fit bg-white fixed py-[30px] md:py-[35px] px-[20px] md:px-[50px] rounded-t-lg rounded-b-lg md:top-[50%] duration-300 overflow-hidden left-0 right-0 top-0 bottom-0 my-auto ${
           phoneModalOpen ? "bottom-0 flex" : "hidden z-[-10]"
         }`}
       >
-        <div className="w-full py-10">
+        <div className="w-full py-8">
           {sidebarData.map((item) => {
             return (
               <NavLink

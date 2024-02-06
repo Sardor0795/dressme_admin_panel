@@ -159,6 +159,7 @@ export default function LocationsItem({
             </ul>
           </li>
         </ul>
+
         {/* Mobile */}
         <div className=" rounded-xl p-[10px] mb-1 md:hidden w-full">
           <div className="mb-2">
@@ -194,10 +195,10 @@ export default function LocationsItem({
 
             <div className="px-1 ll:px-[10px] py-[5px] flex text-[#2C2C2C] font-AeonikProMedium text-[13px]">
               <div className="pr-[5px] ll:pr-[10px] w-[24%] break-words  text-gray-700 text-[11px] not-italic font-AeonikProMedium">
-                {data?.region?.name_ru}
+                {data?.region?.name_ru}, {data?.sub_region?.name_ru }
               </div>
-              <div className="relative pr-[5px] ll:pr-[10px] h-[60px] overflow-hidden  w-[46%]  text-justify	text-[11px] not-italic font-AeonikProMedium">
-                <div className="absolute ToogleOff left-0 w-full h-full z-[10] top-0"></div>
+              <div className="relative pr-[5px] ll:pr-[10px] h-[60px] overflow-hidden w-[46%] leading-4	text-[11px] not-italic font-AeonikProMedium">
+                <div className="absolute ToogleOff left-0 w-full h-full top-0"></div>
 
                 {data?.address}
               </div>
@@ -207,7 +208,7 @@ export default function LocationsItem({
               </div>
             </div>
           </div> 
-          <div className="w-full font-AeonikProRegular mb-2">{data?.region?.name_ru || "city"}, {data?.sub_region?.name_ru || "sub_region"}</div>
+          {/* <div className="w-full font-AeonikProRegular mb-2">{data?.region?.name_ru || "city"}, {data?.sub_region?.name_ru || "sub_region"}</div> */}
 
           <div className="flex items-center justify-between gap-x-[15px]">
             <Link
