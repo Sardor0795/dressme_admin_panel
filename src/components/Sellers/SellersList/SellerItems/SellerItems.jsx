@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
 import axios from "axios";
@@ -74,7 +74,7 @@ export default function SellerItems({
           {data?.name}
         </div>
         <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          {data?.phone}
+          <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>  
         </div>
         <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.seller_type?.type_ru}
@@ -191,7 +191,7 @@ export default function SellerItems({
             {data?.name}
           </div>
           <div className="w-[40%] px-3 text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.phone}
+            <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
           </div>
           <div className="w-[35%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.seller_type?.type_ru}

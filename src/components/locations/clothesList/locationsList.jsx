@@ -25,6 +25,8 @@ export default function LocationsList() {
 
   const [data, setData, , loader] = useContext(LocationsDataContext);
 
+  console.log(data, 'location-data');
+
   let newData = data;
 
   const [filteredData, setFilteredData] = useState([]);

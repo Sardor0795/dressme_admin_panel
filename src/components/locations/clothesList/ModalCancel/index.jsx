@@ -1,6 +1,6 @@
 import axios from "axios";
 import { XIcon } from "../../../../assets/icon";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { IdsContext } from "../../../../context/idContext";
 
 import { toast } from "react-toastify";
@@ -41,6 +41,15 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         console.log(v);
       });
   };
+
+  // DISABLE BACKGROUND SCROLL WHEN MODAI IS OPENED
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [modalOpen]);
 
   return (
     <div className={`w-full px-4 md:px-10`}>

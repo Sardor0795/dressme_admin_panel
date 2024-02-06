@@ -62,6 +62,12 @@ export const LocationsMoreAbout = () => {
    function handleClickCarosuel() {
     setModalOfCarsouel(true)
   }
+  
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   return (
     <div className="w-full md:px-10">
