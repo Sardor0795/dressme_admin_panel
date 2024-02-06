@@ -137,7 +137,7 @@ export default function SellersList() {
 
   return (
     <div>
-      <div className="md:mb-[15px] md:border-b py-[18px] flex items-center justify-between">
+      <div className="fixed md:static bg-white w-full top-0 px-4 md:mb-[15px] left-0 right-0 md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
           <PhoneNavbar filterFuncSellers={filterFunc} />
         </div>
