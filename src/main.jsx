@@ -10,12 +10,14 @@ import { SellersDataContextProvider } from "./context/sellersDataContext";
 import { ClothesDataContextProvider } from "./context/clothesDataContext";
 import { LocationsDataContextProvider } from "./context/locationsDataContext";
 import { ShopsDataContextProvider } from "./context/shopsDataContext";
+import { ShopContextProvider } from "./context/shopsContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
       <SellerContextProvider>
-        <ProductsContextProvider>
+        <ShopContextProvider>
+          <ProductsContextProvider>
           <IdContextProvider>
             <SellersDataContextProvider>
               <ClothesDataContextProvider>
@@ -28,6 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             </SellersDataContextProvider>
           </IdContextProvider>
         </ProductsContextProvider>
+      </ShopContextProvider>
       </SellerContextProvider>
     </Router>
   </React.StrictMode>
