@@ -35,7 +35,6 @@ export default function SellerItems({
       )
       .then((d) => {
         if (d.status === 200) {
-          console.log(d, 'DATA-SELLERS');
           toast.success(d?.data?.message);
           reFetch();
         }
@@ -46,6 +45,9 @@ export default function SellerItems({
   };
 
   const [, setId] = useContext(IdsContext);
+
+  // console.log(showSellers, 'showSellers');
+  // console.log(data, 'data-items-seller');
 
   return (
     <div className="flex items-center w-full">
@@ -94,7 +96,9 @@ export default function SellerItems({
             Подробнее
           </Link>
         </div>
+        
         <div className="w-[18%] px-2 flex items-center justify-end gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+          
           {showSellers !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}
@@ -132,8 +136,10 @@ export default function SellerItems({
               Одобрить
             </button>
           ) : null}
+
         </div>     
       </div>
+
 
       {/* Mobile */}
 

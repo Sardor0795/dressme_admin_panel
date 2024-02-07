@@ -32,7 +32,7 @@ export default function SellersList() {
     setFilteredData(newData);
   }, [newData]);
 
-  console.log(data,'data-sellers');
+  // console.log(data,'data-sellers');
 
   const filterFunc = (e) => {
     const filteredData = data?.filter((v) =>
@@ -57,8 +57,10 @@ export default function SellersList() {
       ++notAllowedCount;
     } else if (v?.status === "updated") {
       ++updatedCount;
-    }
+    }  
   }); 
+
+  console.log(filteredData,'filteredData');
 
   // -----------------
 
@@ -555,6 +557,7 @@ export default function SellersList() {
                         click={onCheck}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                        showSellers={showSellers}
                       />
                     );
                   }
@@ -573,6 +576,7 @@ export default function SellersList() {
                         click={onCheck}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                        showSellers={showSellers}
                       />
                     );
                   }
@@ -591,6 +595,7 @@ export default function SellersList() {
                         index={index}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                        showSellers={showSellers}
                       />
                     );
                   }

@@ -14,11 +14,10 @@ export default function ShopsItem({
   toast,
   setModalOpen
 }) {
+  const [, , reFetch] = useContext(ShopsDataContext);
 
   const url = "https://api.dressme.uz";
   let token = sessionStorage.getItem("token");
-
-  const [, , reFetch] = useContext(ShopsDataContext);
 
   const approveFunc = () => {
     axios
@@ -36,7 +35,6 @@ export default function ShopsItem({
       )
       .then((d) => {
         if (d.status === 200) {
-          console.log(d, 'DATA-SHOPS');
           toast.success(d?.data?.message);
           reFetch();
         }
@@ -47,6 +45,9 @@ export default function ShopsItem({
   };
 
    const [, setId] = useContext(IdsContext);
+
+  //  console.log(showShops, 'showShops');
+  //  console.log(data, 'data-items-shop');
 
   return (
     <div className="w-full flex flex-row">

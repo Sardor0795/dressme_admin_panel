@@ -20,7 +20,7 @@ export default function ShopsList() {
 
   const [filteredData, setFilteredData] = useState([]);
 
-  console.log(dataShops, 'data-Shops');
+  // console.log(dataShops, 'data-Shops');
   
   useEffect(() => {
     setFilteredData(newData);
@@ -45,8 +45,9 @@ export default function ShopsList() {
   let notAllowedCount = 0;
   let updatedCount = 0;
 
-  filteredData?.forEach((seller) => {
-    seller?.shops?.forEach((shop) => {
+  filteredData?.forEach((sellers_shops) => {
+    // console.log(sellers_shops, 'sellers_shops');
+    sellers_shops?.shops?.forEach((shop) => {
       if (shop?.status === "pending") {
         ++waitingCount;
       } else if (shop?.status === "approved") {
@@ -58,6 +59,8 @@ export default function ShopsList() {
       }
     });
   });
+
+  // console.log(filteredData,'filteredData');
     
   let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
   // someChecked
@@ -96,6 +99,8 @@ export default function ShopsList() {
   
   // Products Context
   const [showShops, setShowShops] = useContext(ShopsContext);
+
+  // console.log(showShops,'showShops');
 
   let dataCount = 0;
   if (showShops === "pending") {
@@ -300,368 +305,94 @@ return(
       </div>
 
       {/* Mobile select all */}
-      {/* 1 */}
-      {waitingCount > 0 ? (
-        <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
+      <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
+        <div
+          onClick={() => {
+            onCheck(checkIndicator);
+            setAllChecked(!allChecked);
+          }}
+          className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
+        >
+          Выбрать все
           <div
-            onClick={() => {
-              onCheck(checkIndicator);
-              setAllChecked(!allChecked);
-            }}
-            className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
+            className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
+              allChecked
+                ? "bg-[#007DCA] border-[#007DCA]"
+                : "bg-white border-checkboxBorder"
+            } flex items-center justify-center rounded`}
           >
-            Выбрать все
-            <div
-              className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } flex items-center justify-center rounded`}
+            <span
+              className={`${
+                allChecked ? "flex items-center justify-center" : "hidden"
+              }`}
             >
-              <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
-              >
-                <CheckIcon size={"small"} />
-              </span>
-            </div>
+              <CheckIcon size={"small"} />
+            </span>
           </div>
         </div>
-      ) : null}
-      {/* 2 */}
-      {allowedCount > 0 ? (
-        <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
-          <div
-            onClick={() => {
-              onCheck(checkIndicator);
-              setAllChecked(!allChecked);
-            }}
-            className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
-          >
-            Выбрать все
-            <div
-              className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } flex items-center justify-center rounded`}
-            >
-              <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
-              >
-                <CheckIcon size={"small"} />
-              </span>
-            </div>
-          </div>
-        </div>
-      ) : null}
-      {/* 3 */}
-      {notAllowedCount > 0 ? (
-        <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
-          <div
-            onClick={() => {
-              onCheck(checkIndicator);
-              setAllChecked(!allChecked);
-            }}
-            className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
-          >
-            Выбрать все
-            <div
-              className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } flex items-center justify-center rounded`}
-            >
-              <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
-              >
-                <CheckIcon size={"small"} />
-              </span>
-            </div>
-          </div>
-        </div>
-      ) : null}
-      {/* 4 */}
-      {updatedCount > 0 ? (
-        <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
-          <div
-            onClick={() => {
-              onCheck(checkIndicator);
-              setAllChecked(!allChecked);
-            }}
-            className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
-          >
-            Выбрать все
-            <div
-              className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } flex items-center justify-center rounded`}
-            >
-              <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
-              >
-                <CheckIcon size={"small"} />
-              </span>
-            </div>
-          </div>
-        </div>
-      ) : null}
+      </div>
 
       {/* Mobile selected */}
-      {waitingCount > 0 ? (
-        <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
-          <div className=" font-AeonikProMedium text-base ll:text-sm md:text-lg text-mobileTextColor">
-            Выбранные:
-          </div>
-          <div className="flex items-center">
-            {showShops === "pending" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-                <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showShops === "approved" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showShops === "declined" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-            {showShops === "updated" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-          </div>
+      <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
+        <div className=" font-AeonikProMedium text-base ll:text-sm md:text-lg text-mobileTextColor">
+          Выбранные:
         </div>
-      ) : null}
-      {allowedCount > 0 ? (
-        <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
-          <div className=" font-AeonikProMedium text-base ll:text-sm md:text-lg text-mobileTextColor">
-            Выбранные:
-          </div>
-          <div className="flex items-center">
-            {showShops === "pending" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-                <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showShops === "approved" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showShops === "declined" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-            {showShops === "updated" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-          </div>
+        <div className="flex items-center">
+          {showShops === "pending" ? (
+            <div className="flex items-center ml-auto">
+              <button
+                // onClick={() => approveFunc()}
+                type="button"
+                className="text-[#12C724] text-base not-italic font-AeonikProMedium"
+              >
+                Одобрить
+              </button>
+              <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
+              <button
+                onClick={() => setModalOpen(true)}
+                type="button"
+                className="text-[#E51515] text-base not-italic font-AeonikProMedium"
+              >
+                Отказать
+              </button>
+            </div>
+          ) : null}
+          {showShops === "approved" ? (
+            <div className="flex items-center ml-auto">
+              <button
+                onClick={() => setModalOpen(true)}
+                type="button"
+                className="text-[#E51515] text-base not-italic font-AeonikProMedium"
+              >
+                Отказать
+              </button>
+            </div>
+          ) : null}
+          {showShops === "declined" ? (
+            <div className="flex items-center ml-auto">
+              <button
+                // onClick={() => approveFunc()}
+                type="button"
+                className="text-[#12C724] text-base not-italic font-AeonikProMedium"
+              >
+                Одобрить
+              </button>
+            </div>
+          ) : null}
+          {showShops === "updated" ? (
+            <div className="flex items-center ml-auto">
+              <button
+                // onClick={() => approveFunc()}
+                type="button"
+                className="text-[#12C724] text-base not-italic font-AeonikProMedium"
+              >
+                Одобрить
+              </button>
+            </div>
+          ) : null}
         </div>
-      ) : null}
-      {notAllowedCount > 0 ? (
-        <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
-          <div className=" font-AeonikProMedium text-base ll:text-sm md:text-lg text-mobileTextColor">
-            Выбранные:
-          </div>
-          <div className="flex items-center">
-            {showShops === "pending" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-                <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showShops === "approved" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showShops === "declined" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-            {showShops === "updated" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      ) : null}
-      {updatedCount > 0 ? (
-        <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
-          <div className=" font-AeonikProMedium text-base ll:text-sm md:text-lg text-mobileTextColor">
-            Выбранные:
-          </div>
-          <div className="flex items-center">
-            {showShops === "pending" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-                <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showShops === "approved" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showShops === "declined" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-            {showShops === "updated" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      ) : null}
+      </div>
+
       
 
       <div className="mt-4 hidden md:flex justify-end items-center md:justify-between mx-auto pb-6">
@@ -762,11 +493,10 @@ return(
                     
                     {/* Status Waiting */}
                     {showShops === "pending"
-                      ? item?.shops?.map((item_2,index) => {   
-                        // console.log(item_2,'item_2'); 
+                      ? item?.shops?.map((data,index) => { 
                           return (
-                            <div key={item_2?.id}>
-                              {item_2?.status === "pending" ? (
+                            <div key={data?.id}>
+                              {data?.status === "pending" ? (
                                 <div className="mb-8">
                                   {/* {index === 0 ? ( */}
                                     <div className="w-full">
@@ -849,7 +579,7 @@ return(
                                   {/* ) : null} */}
 
                                   <ShopsItem
-                                    data={item_2}
+                                    data={data}
                                     index={index}
                                     onCheck={onCheck}
                                     showShops={showShops}
@@ -865,11 +595,11 @@ return(
 
                     {/* Status Allowed */}
                     {showShops === "approved"
-                      ? item?.shops?.map((item_2, index) => {
+                      ? item?.shops?.map((data, index) => {
                         // console.log(item_2,'item_2');
                           return (
-                            <div key={item_2?.id}>
-                              {item_2?.status === "approved" ? (
+                            <div key={data?.id}>
+                              {data?.status === "approved" ? (
                                 <div className="mb-8">
                                   {/* {index === 0 ? ( */}
                                     <div className="w-full">
@@ -952,7 +682,7 @@ return(
                                   {/* ) : null} */}
 
                                   <ShopsItem
-                                    data={item_2}
+                                    data={data}
                                     index={index}
                                     onCheck={onCheck}
                                     showShops={showShops}
@@ -968,11 +698,11 @@ return(
 
                     {/* Status NotAllowed */}
                     {showShops === "declined"
-                      ? item?.shops?.map((item_2,index) => {
+                      ? item?.shops?.map((data,index) => {
                         // console.log(item_2,'item_2');
                           return (
-                            <div key={item_2?.id}>
-                              {item_2?.status === "declined" ? (
+                            <div key={data?.id}>
+                              {data?.status === "declined" ? (
                                 <div className="mb-8">
                                   {/* {index === 0 ? ( */}
                                     <div className="w-full">
@@ -1055,7 +785,7 @@ return(
                                   {/* ) : null} */}
 
                                   <ShopsItem
-                                    data={item_2}
+                                    data={data}
                                     index={index}
                                     onCheck={onCheck}
                                     showShops={showShops}
@@ -1071,11 +801,11 @@ return(
 
                     {/* Status Updated */}
                     {showShops === "updated"
-                      ? item?.shops?.map((item_2,index) => {
+                      ? item?.shops?.map((data,index) => {
                         // console.log(item_2,'item_2');
                           return (
-                            <div key={item_2?.id}>
-                              {item_2?.status === "updated" ? (
+                            <div key={data?.id}>
+                              {data?.status === "updated" ? (
                                 <div className="mb-8">
                                   {/* {index === 1 ? ( */}
                                     <div className="w-full">
@@ -1158,7 +888,7 @@ return(
                                   {/* ) : null} */}
 
                                   <ShopsItem
-                                    data={item_2}
+                                    data={data}
                                     index={index}
                                     onCheck={onCheck}
                                     showShops={showShops}
@@ -1194,7 +924,6 @@ return(
             )}
           </div>
         )}
-
     </div>
 
     <CancelShopsModal setModalOpen={setModalOpen} modalOpen={modalOpen} />

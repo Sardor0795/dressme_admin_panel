@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
@@ -23,7 +24,6 @@ export const ShopsDataContextProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       }).then((d) => {
-        console.log(d);
         setDataShops(d?.data?.sellers_shops);
         setLoader(false);
       });
