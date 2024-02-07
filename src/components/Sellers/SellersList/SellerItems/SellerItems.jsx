@@ -35,6 +35,7 @@ export default function SellerItems({
       )
       .then((d) => {
         if (d.status === 200) {
+          console.log(d, 'DATA-SELLERS');
           toast.success(d?.data?.message);
           reFetch();
         }

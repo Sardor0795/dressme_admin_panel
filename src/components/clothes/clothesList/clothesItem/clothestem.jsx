@@ -109,6 +109,7 @@ export default function ClothesItem({
         >
           Подробнее
         </Link>
+        
         <div className="w-[20%] px-4 flex items-center justify-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium md:mr-10">
           {showProducts !== "updated" ? (
             <div className="flex items-center gap-x-2">

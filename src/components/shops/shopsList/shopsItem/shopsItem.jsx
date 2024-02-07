@@ -10,7 +10,7 @@ export default function ShopsItem({
   data,
   index,
   onCheck,
-  showProducts,
+  showShops,
   toast,
   setModalOpen
 }) {
@@ -143,7 +143,7 @@ export default function ShopsItem({
             Подробнее
           </NavLink>
 
-           {showProducts !== "updated" ? (
+           {showShops !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}
               <button
@@ -172,7 +172,7 @@ export default function ShopsItem({
             </div>
           ) : null}
 
-          {showProducts === "updated" ? (
+          {showShops === "updated" ? (
             <button
               onClick={() => approveFunc()}
               className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
