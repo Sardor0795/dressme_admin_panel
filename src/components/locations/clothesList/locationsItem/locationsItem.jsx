@@ -22,7 +22,7 @@ export default function LocationsItem({
   const approveFunc = () => {
     axios
       .post(
-        `${url}/api/admin/change-product-status/${data?.id}`,
+        `${url}/api/admin/change-location-status/${data?.id}`,
         {
           status: "approved",
         },

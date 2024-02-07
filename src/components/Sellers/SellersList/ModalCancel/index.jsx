@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext, useEffect, useRef } from "react";
 import { XIcon } from "../../../../assets/icon";
 import { IdsContext } from "../../../../context/idContext";

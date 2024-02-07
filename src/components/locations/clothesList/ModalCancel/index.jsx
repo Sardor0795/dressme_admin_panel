@@ -4,7 +4,7 @@ import { useContext, useEffect, useRef } from "react";
 import { IdsContext } from "../../../../context/idContext";
 
 import { toast } from "react-toastify";
-import { ClothesDataContext } from "../../../../context/clothesDataContext";
+import { LocationsDataContext } from "../../../../context/locationsDataContext";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
@@ -13,12 +13,12 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
   const [id] = useContext(IdsContext);
   const ref = useRef();
 
-  const [, , reFetch] = useContext(ClothesDataContext);
+  const [, , reFetch] = useContext(LocationsDataContext);
 
   const declineFunc = () => {
     axios
       .post(
-        `${url}/api/admin/decline-product/${id}`,
+        `${url}/api/admin/decline-location/${id}`,
         {
           status: "declined",
           status_reason: ref.current.value,
