@@ -154,7 +154,7 @@ export const LocationsMoreAbout = () => {
             >
               <BackIcon />
             </button>
-            <div className="text-center text-xl md:text-[35px] font-AeonikProMedium md:px-0">
+            <div className="flex items-center justify-center text-center text-lg md:text-[35px] font-AeonikProMedium md:px-0">
               Редактировать местоположения
             </div>
           </div>

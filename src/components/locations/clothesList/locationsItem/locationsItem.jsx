@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
-import { ClothesDataContext } from "../../../../context/clothesDataContext";
+import { LocationsDataContext } from "../../../../context/locationsDataContext";
 
 export default function LocationsItem({
   data,
@@ -17,7 +17,7 @@ export default function LocationsItem({
   const url = "https://api.dressme.uz";
   let token = sessionStorage.getItem("token");
 
-  const [, , reFetch] = useContext(ClothesDataContext);
+  const [, , reFetch] = useContext(LocationsDataContext);
 
   const approveFunc = () => {
     axios

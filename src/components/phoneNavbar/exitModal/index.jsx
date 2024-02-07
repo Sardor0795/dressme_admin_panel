@@ -45,7 +45,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
         onClick={() => setModalOpen(false)}
       ></div>
       <section
-        className={`max-w-[90%] md:max-w-[550px] z-[201] mx-auto w-full flex-col bg-white fixed py-[30px] md:py-[35px] px-[20px] md:px-[50px] rounded-t-lg rounded-b-lg md:top-[50%] duration-300  left-1/2 right-1/2 translate-x-[-50%] translate-y-[-50%] ${
+        className={`max-w-[90%] md:max-w-[550px] z-[201] mx-auto w-full h-fit flex-col bg-white fixed py-[30px] md:py-[35px] px-[20px] md:px-[50px] rounded-t-lg rounded-b-lg md:top-[50%] duration-300 top-0 bottom-0 left-0 right-0 my-auto ${
           modalOpen ? "bottom-0 flex" : "hidden z-[-10]"
         }`}
       >
