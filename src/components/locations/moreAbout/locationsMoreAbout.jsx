@@ -80,23 +80,23 @@ export const LocationsMoreAbout = () => {
         onClick={() => {
           setModalOfCarsouel(false);
         }}
-        className={`fixed inset-0 z-[200] duration-200 w-full h-[100vh] bg-black opacity-60
+        className={`fixed inset-0 z-[200] duration-200 w-full px-4 h-[100vh] bg-black opacity-60
         ${modalOfCarsouel ? "" : "hidden"}`}
       ></section>
 
       <section
-        className={`fixed z-[201] rounded-lg bg-white  w-fit h-fit m-auto cursor-pointer flex flex-col items-center justify-center inset-0  ${
+        className={`fixed z-[201] rounded-lg bg-white mx-4 my-auto w-fit h-fit md:m-auto cursor-pointer flex flex-col items-center justify-center inset-0  ${
           modalOfCarsouel ? "" : "hidden"
         }`}
       >
         <button
           onClick={() => setModalOfCarsouel(false)}
-          className="absolute top-0  z-[116] right-[-80px]  flex items-center justify-center w-[50px] h-[50px] rounded-full bg-[#808080]"
+          className="absolute top-[-60px] md:top-0 z-[116] right-0 md:right-[-80px]  flex items-center justify-center w-[50px] h-[50px] rounded-full bg-[#808080]"
         >
           <MenuCloseIcons colors="#fff" />
         </button>
         <div>
-          <div className="w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 ">
+          <div className="w-full md:w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 ">
             <div className="w-full flex flex-col items-center justify-start ">
               {modalId === shopLocationsData?.url_image_path_one && (
                 <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
