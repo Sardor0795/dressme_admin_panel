@@ -3,8 +3,12 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { BackIcon } from "../../../../../assets/icon";
 import axios from "axios";
 
+import WiFiLoader from "../../../../../assets/loader/wifi_loader.gif";
+
 export default function ShopLocations() {
   const [shopLocationsData, setShopLoationsData] = useState();
+
+  const [loader, setLoader] = useState(true);
 
   const url = "https://api.dressme.uz";
 
@@ -16,10 +20,15 @@ export default function ShopLocations() {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }).then((res) => {
-      // console.log(res?.data?.locations,'res');
-      setShopLoationsData(res?.data?.locations);
-    });
+    })
+      .then((res) => {
+        setShopLoationsData(res?.data?.locations);
+        setLoader(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoader(false);
+      });
   }, []);
 
   const navigate = useNavigate();
@@ -268,8 +277,22 @@ export default function ShopLocations() {
           </div>
         </div>
       ) : (
-        <div className="w-full h-[80vh] flex items-center justify-center font-AeonikProMedium text-2xl">
-          Нет локатции
+        <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+          {loader ? (
+            <div
+              style={{
+                backgroundImage: `url('${WiFiLoader}')`,
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center center",
+              }}
+              className="w-[100px] h-[100px]"
+            ></div>
+          ) : (
+            <div className="w-full h-[80vh] flex items-center justify-center font-AeonikProMedium text-2xl">
+              Нет локаций
+            </div>
+          )}
         </div>
       )}
     </div>
