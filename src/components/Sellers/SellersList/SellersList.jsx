@@ -57,10 +57,10 @@ export default function SellersList() {
       ++notAllowedCount;
     } else if (v?.status === "updated") {
       ++updatedCount;
-    }  
-  }); 
+    }
+  });
 
-  console.log(filteredData,'filteredData');
+  console.log(filteredData, "filteredData");
 
   // -----------------
 
@@ -111,7 +111,7 @@ export default function SellersList() {
     dataCount = waitingCount;
   } else if (showSellers === "approved") {
     dataCount = allowedCount;
-  }else if (showSellers === "declined") {
+  } else if (showSellers === "declined") {
     dataCount = notAllowedCount;
   } else if (showSellers === "updated") {
     dataCount = updatedCount;
@@ -181,52 +181,63 @@ export default function SellersList() {
           </button>
         </label>
       </div>
-      
-      <div className="flex mb-[24px] mt-[80px] md:hidden">
-        <div
-          onClick={() => setShowSellers("pending")}
-          className={`${
-            showSellers === "pending"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
-        >
-          <div className="mb-[3pxs]">Ожидающие продавцы</div>{" "}
-          <div>({waitingCount})</div>
-        </div>
-        <div
-          onClick={() => setShowSellers("approved")}
-          className={`${
-            showSellers === "approved"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
-        >
-          <div className="mb-[3pxs]">Одобренные продавцы</div>{" "}
-          <div> ({allowedCount})</div>
-        </div>
-        <div
-          onClick={() => setShowSellers("declined")}
-          className={`${
-            showSellers === "declined"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
-        >
-          <div className="mb-[3pxs]">Отказанные продавцы</div>{" "}
-          <div>({notAllowedCount})</div>
-        </div>
-        <div
-          onClick={() => setShowSellers("updated")}
-          className={`${
-            showSellers === "updated"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
-        >
-          <div className="mb-[3pxs]"> Обновленные продавцы</div>{" "}
-          <div>({updatedCount})</div>
-        </div>
+
+      <div className="flex justify-evenly mb-[24px] mt-[80px] md:hidden">
+        {waitingCount > 0 ? (
+          <div
+            onClick={() => setShowSellers("pending")}
+            className={`${
+              showSellers === "pending"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
+          >
+            <div className="mb-[3pxs]">Ожидающие продавцы</div>{" "}
+            <div>({waitingCount})</div>
+          </div>
+        ) : null}
+
+        {allowedCount > 0 ? (
+          <div
+            onClick={() => setShowSellers("approved")}
+            className={`${
+              showSellers === "approved"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
+          >
+            <div className="mb-[3pxs]">Одобренные продавцы</div>{" "}
+            <div> ({allowedCount})</div>
+          </div>
+        ) : null}
+
+        {notAllowedCount > 0 ? (
+          <div
+            onClick={() => setShowSellers("declined")}
+            className={`${
+              showSellers === "declined"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
+          >
+            <div className="mb-[3pxs]">Отказанные продавцы</div>{" "}
+            <div>({notAllowedCount})</div>
+          </div>
+        ) : null}
+
+        {updatedCount > 0 ? (
+          <div
+            onClick={() => setShowSellers("updated")}
+            className={`${
+              showSellers === "updated"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
+          >
+            <div className="mb-[3pxs]"> Обновленные продавцы</div>{" "}
+            <div>({updatedCount})</div>
+          </div>
+        ) : null}
       </div>
 
       <div className="w-full mt-4">
@@ -601,7 +612,7 @@ export default function SellersList() {
                   }
                 })
               : null}
-              {/* Status NotAllowed */}
+            {/* Status NotAllowed */}
             {showSellers === "updated"
               ? filteredData?.map((data) => {
                   if (data?.status === "updated") {
