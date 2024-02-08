@@ -5,6 +5,7 @@ import { IdsContext } from "../../../../context/idContext";
 
 import { toast } from "react-toastify";
 import { LocationsDataContext } from "../../../../context/locationsDataContext";
+import { ClothesDataContext } from "../../../../context/clothesDataContext";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
@@ -14,6 +15,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
   const ref = useRef();
 
   const [, , reFetch] = useContext(LocationsDataContext);
+  const [, , clothesReFetch] = useContext(ClothesDataContext);
 
   const declineFunc = () => {
     axios
@@ -34,6 +36,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         if (d.status === 200) {
           toast.success(d?.data?.message);
           reFetch();
+          clothesReFetch();
           ref.current.value = "";
         }
       })

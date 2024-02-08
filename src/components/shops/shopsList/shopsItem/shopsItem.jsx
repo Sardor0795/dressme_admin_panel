@@ -1,20 +1,28 @@
 /* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
-import { CheckIcon, StarRatengIcon} from "../../../../assets/icon";
-import { deliveryIcon, manGenderIcon, womanGenderIcon } from "../../../../assets/shopIcons/icon";
+import { CheckIcon, StarRatengIcon } from "../../../../assets/icon";
+import {
+  deliveryIcon,
+  manGenderIcon,
+  womanGenderIcon,
+} from "../../../../assets/shopIcons/icon";
 import { useContext } from "react";
 import { ShopsDataContext } from "../../../../context/shopsDataContext";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
+import { LocationsDataContext } from "../../../../context/locationsDataContext";
+import { ClothesDataContext } from "../../../../context/clothesDataContext";
 export default function ShopsItem({
   data,
   index,
   onCheck,
   showShops,
   toast,
-  setModalOpen
+  setModalOpen,
 }) {
   const [, , reFetch] = useContext(ShopsDataContext);
+  const [, , locationsReFetch] = useContext(LocationsDataContext);
+  const [, , clothesReFetch] = useContext(ClothesDataContext);
 
   const url = "https://api.dressme.uz";
   let token = sessionStorage.getItem("token");
@@ -37,6 +45,8 @@ export default function ShopsItem({
         if (d.status === 200) {
           toast.success(d?.data?.message);
           reFetch();
+          locationsReFetch();
+          clothesReFetch();
         }
       })
       .catch((v) => {
@@ -44,7 +54,7 @@ export default function ShopsItem({
       });
   };
 
-   const [, setId] = useContext(IdsContext);
+  const [, setId] = useContext(IdsContext);
 
   //  console.log(showShops, 'showShops');
   //  console.log(data, 'data-items-shop');
@@ -81,11 +91,11 @@ export default function ShopsItem({
             <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
             <span className="text-checkboxBorder md:text-black flex items-center">
               <span className="md:hidden flex">0</span>
-              {index + 1} 
+              {index + 1}
             </span>
             <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
           </div>
-          
+
           <div className="w-full flex items-center my-[15px] md:my-0 ">
             <figure className="w-[80px] h-[80px] md:min-w-[120px] md:min-h-[120px] overflow-hidden md:left-[40px] rounded-full border border-searchBgColor flex items-center justify-center bg-white">
               <img
@@ -101,7 +111,7 @@ export default function ShopsItem({
               <div className="w-full flex items-center">
                 <div className="w-fit flex items-center ">
                   <div className="w-fit flex items-center mr-[6px]">
-                    <StarRatengIcon/>
+                    <StarRatengIcon />
                   </div>
                   <div className="not-italic font-AeonikProRegular  text-[10px] ls:text-xs leading-4 text-right text-gray-500 md:ml-1 flex items-center text-sm">
                     <p className="font-AeonikProRegular text-[12px] md:text-[14px] ls:font-AeonikProMedium text-black mr-1">
@@ -118,16 +128,24 @@ export default function ShopsItem({
         </div>
         <div className="w-full md:w-[29%] flex items-center gap-x-[44px] mt-3 md:mt-0">
           <div className="md:w-[30%] flex items-center gap-x-1 ">
-            {(Number(data?.gender?.id) === 3 || Number(data?.gender?.id) == 1) && <div className="ll:w-12 w-[36px] h-[36px] ll:h-12 rounded-lg border border-borderColor flex items-center justify-center">
-              <img src={manGenderIcon} alt="" />
-            </div>}
-            {(Number(data?.gender?.id) === 3 || Number(data?.gender?.id) == 2) && <div className="ll:w-12 w-[36px] h-[36px] ll:h-12 rounded-lg border border-borderColor flex items-center justify-center">
-              <img src={womanGenderIcon} alt="" />
-            </div>}
+            {(Number(data?.gender?.id) === 3 ||
+              Number(data?.gender?.id) == 1) && (
+              <div className="ll:w-12 w-[36px] h-[36px] ll:h-12 rounded-lg border border-borderColor flex items-center justify-center">
+                <img src={manGenderIcon} alt="" />
+              </div>
+            )}
+            {(Number(data?.gender?.id) === 3 ||
+              Number(data?.gender?.id) == 2) && (
+              <div className="ll:w-12 w-[36px] h-[36px] ll:h-12 rounded-lg border border-borderColor flex items-center justify-center">
+                <img src={womanGenderIcon} alt="" />
+              </div>
+            )}
           </div>
           <div className="md:min-w-[260px] md:w-[260px] h-[36px] ll:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
             <img src={deliveryIcon} alt="" />
-            <span className="font-AeonikProMedium">{data?.delivery?.name_ru}</span>
+            <span className="font-AeonikProMedium">
+              {data?.delivery?.name_ru}
+            </span>
           </div>
         </div>
         <div className="w-full md:w-[36%] flex items-center justify-end gap-x-4 sm:gap-x-10 mt-4 ll:mt-6 md:mt-0">
@@ -144,7 +162,7 @@ export default function ShopsItem({
             Подробнее
           </NavLink>
 
-           {showShops !== "updated" ? (
+          {showShops !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}
               <button
@@ -183,7 +201,6 @@ export default function ShopsItem({
           ) : null}
         </div>
       </div>
-
     </div>
   );
 }

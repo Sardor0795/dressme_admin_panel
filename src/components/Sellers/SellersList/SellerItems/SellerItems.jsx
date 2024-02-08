@@ -5,6 +5,9 @@ import { CheckIcon } from "../../../../assets/icon";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
 import { SellersDataContext } from "../../../../context/sellersDataContext";
+import { ShopsDataContext } from "../../../../context/shopsDataContext";
+import { LocationsDataContext } from "../../../../context/locationsDataContext";
+import { ClothesDataContext } from "../../../../context/clothesDataContext";
 
 export default function SellerItems({
   data,
@@ -15,6 +18,9 @@ export default function SellerItems({
   showSellers,
 }) {
   const [, , reFetch] = useContext(SellersDataContext);
+  const [, , shopsReFetch] = useContext(ShopsDataContext);
+  const [, , locationsReFetch] = useContext(LocationsDataContext);
+  const [, , clothesReFetch] = useContext(ClothesDataContext);
 
   const url = "https://api.dressme.uz";
   let token = sessionStorage.getItem("token");
@@ -37,6 +43,9 @@ export default function SellerItems({
         if (d.status === 200) {
           toast.success(d?.data?.message);
           reFetch();
+          shopsReFetch();
+          locationsReFetch();
+          clothesReFetch();
         }
       })
       .catch((v) => {
@@ -77,7 +86,7 @@ export default function SellerItems({
           {data?.name}
         </div>
         <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>  
+          <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
         </div>
         <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
           {data?.seller_type?.type_ru}
@@ -96,9 +105,8 @@ export default function SellerItems({
             Подробнее
           </Link>
         </div>
-        
+
         <div className="w-[18%] px-2 flex items-center justify-end gap-x-2 text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
-          
           {showSellers !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}
@@ -136,10 +144,8 @@ export default function SellerItems({
               Одобрить
             </button>
           ) : null}
-
-        </div>     
+        </div>
       </div>
-
 
       {/* Mobile */}
 

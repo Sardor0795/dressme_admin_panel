@@ -7,6 +7,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SellersDataContext } from "../../../../context/sellersDataContext";
+import { ShopsDataContext } from "../../../../context/shopsDataContext";
+import { LocationsDataContext } from "../../../../context/locationsDataContext";
+import { ClothesDataContext } from "../../../../context/clothesDataContext";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
@@ -16,6 +19,9 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
   const ref = useRef();
 
   const [, , reFetch] = useContext(SellersDataContext);
+  const [, , shopsReFetch] = useContext(ShopsDataContext);
+  const [, , locationsReFetch] = useContext(LocationsDataContext);
+  const [, , clothesReFetch] = useContext(ClothesDataContext);
 
   const declineFunc = () => {
     axios
@@ -36,6 +42,9 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         if (d.status === 200) {
           toast.success(d?.data?.message);
           reFetch();
+          shopsReFetch();
+          locationsReFetch();
+          clothesReFetch();
           ref.current.value = "";
         }
       })
@@ -52,7 +61,6 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
       document.body.style.overflow = "auto";
     }
   }, [modalOpen]);
-
 
   return (
     <div className={`w-full px-4 md:px-10`}>
