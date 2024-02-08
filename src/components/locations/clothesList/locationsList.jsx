@@ -25,7 +25,7 @@ export default function LocationsList() {
 
   const [data, setData, , loader] = useContext(LocationsDataContext);
 
-  console.log(data, 'location-data');
+  console.log(data, "location-data");
 
   let newData = data;
 
@@ -320,93 +320,98 @@ export default function LocationsList() {
           </div>
         </div>
 
-        <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
-          <div
-            onClick={() => {
-              onCheck(checkIndicator);
-              setAllChecked(!allChecked);
-            }}
-            className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
-          >
-            Выбрать все
+        {dataCount > 0 ? (
+          <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
             <div
-              className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } flex items-center justify-center rounded`}
+              onClick={() => {
+                onCheck(checkIndicator);
+                setAllChecked(!allChecked);
+              }}
+              className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
             >
-              <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
+              Выбрать все
+              <div
+                className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
+                  allChecked
+                    ? "bg-[#007DCA] border-[#007DCA]"
+                    : "bg-white border-checkboxBorder"
+                } flex items-center justify-center rounded`}
               >
-                <CheckIcon size={"small"} />
-              </span>
+                <span
+                  className={`${
+                    allChecked ? "flex items-center justify-center" : "hidden"
+                  }`}
+                >
+                  <CheckIcon size={"small"} />
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        ) : null}
 
         {/* Mobile selected */}
-        <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
-          <div className=" font-AeonikProMedium text-base ll:text-sm md:text-lg text-mobileTextColor">
-            Выбранные:
+
+        {dataCount > 0 ? (
+          <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
+            <div className=" font-AeonikProMedium text-base ll:text-sm md:text-lg text-mobileTextColor">
+              Выбранные:
+            </div>
+            <div className="flex items-center">
+              {showProducts === "pending" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    // onClick={() => approveFunc()}
+                    type="button"
+                    className="text-[#12C724] text-base not-italic font-AeonikProMedium"
+                  >
+                    Одобрить
+                  </button>
+                  <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    type="button"
+                    className="text-[#E51515] text-base not-italic font-AeonikProMedium"
+                  >
+                    Отказать
+                  </button>
+                </div>
+              ) : null}
+              {showProducts === "approved" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    type="button"
+                    className="text-[#E51515] text-base not-italic font-AeonikProMedium"
+                  >
+                    Отказать
+                  </button>
+                </div>
+              ) : null}
+              {showProducts === "declined" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    // onClick={() => approveFunc()}
+                    type="button"
+                    className="text-[#12C724] text-base not-italic font-AeonikProMedium"
+                  >
+                    Одобрить
+                  </button>
+                </div>
+              ) : null}
+              {showProducts === "updated" ? (
+                <div className="flex items-center ml-auto">
+                  <button
+                    // onClick={() => approveFunc()}
+                    type="button"
+                    className="text-[#12C724] text-base not-italic font-AeonikProMedium"
+                  >
+                    Одобрить
+                  </button>
+                </div>
+              ) : null}
+            </div>
           </div>
-          <div className="flex items-center">
-            {showProducts === "pending" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-                <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showProducts === "approved" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  onClick={() => setModalOpen(true)}
-                  type="button"
-                  className="text-[#E51515] text-base not-italic font-AeonikProMedium"
-                >
-                  Отказать
-                </button>
-              </div>
-            ) : null}
-            {showProducts === "declined" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-            {showProducts === "updated" ? (
-              <div className="flex items-center ml-auto">
-                <button
-                  // onClick={() => approveFunc()}
-                  type="button"
-                  className="text-[#12C724] text-base not-italic font-AeonikProMedium"
-                >
-                  Одобрить
-                </button>
-              </div>
-            ) : null}
-          </div>
-        </div>
+        ) : null}
 
         <div className="mt-4 hidden md:flex justify-end items-center md:justify-between mx-auto pb-6">
           <section className="flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
