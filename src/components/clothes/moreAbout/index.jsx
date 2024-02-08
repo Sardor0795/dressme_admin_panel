@@ -5,9 +5,9 @@ import ColorModal from "./modalColor";
 import Carousel from "./carousel";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { ProductsContext } from "../../../context/productsContext";
 import { toast } from "react-toastify";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
+import { SellersContext } from "../../../context/sellersContext";
 
 export const ClothMoreAbout = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -38,7 +38,7 @@ export const ClothMoreAbout = () => {
   }, []);
 
   // Products Context
-  const [showProducts] = useContext(ProductsContext);
+  const [showSellers] = useContext(SellersContext);
   const [, , reFetch] = useContext(ClothesDataContext);
 
   const approveFunc = () => {
@@ -76,22 +76,22 @@ export const ClothMoreAbout = () => {
         >
           <BackIcon />
         </Link>
-        {showProducts === "pending" ? (
+        {showSellers === "pending" ? (
           <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
             Ожидающие товары
           </div>
         ) : null}
-        {showProducts === "approved" ? (
+        {showSellers === "approved" ? (
           <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
             Одобренные товары
           </div>
         ) : null}
-        {showProducts === "declined" ? (
+        {showSellers === "declined" ? (
           <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
             Отказанные товары
           </div>
         ) : null}
-        {showProducts === "status_update" ? (
+        {showSellers === "status_update" ? (
           <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
             Обновленные товары
           </div>
@@ -112,7 +112,7 @@ export const ClothMoreAbout = () => {
         </div>
 
         <div className="hidden md:flex items-center ml-auto">
-          {showProducts === "pending" ? (
+          {showSellers === "pending" ? (
             <div className="flex items-center ml-auto">
               <button
                 onClick={() => approveFunc()}
@@ -131,7 +131,7 @@ export const ClothMoreAbout = () => {
               </button>
             </div>
           ) : null}
-          {showProducts === "approved" ? (
+          {showSellers === "approved" ? (
             <div className="flex items-center ml-auto">
               <button
                 onClick={() => setModalOpen(true)}
@@ -142,7 +142,7 @@ export const ClothMoreAbout = () => {
               </button>
             </div>
           ) : null}
-          {showProducts === "declined" ? (
+          {showSellers === "declined" ? (
             <div className="flex items-center ml-auto">
               <button
                 onClick={() => approveFunc()}
@@ -153,7 +153,7 @@ export const ClothMoreAbout = () => {
               </button>
             </div>
           ) : null}
-          {showProducts === "status_update" ? (
+          {showSellers === "status_update" ? (
             <div className="flex items-center ml-auto">
               <button
                 onClick={() => approveFunc()}
@@ -182,7 +182,6 @@ export const ClothMoreAbout = () => {
           {/* 1 */}
           <div className="font-AeonikProRegular text-[16px] w-full md:w-[50%]">
             <div className="flex flex-wrap gap-[11px] md:gap-[0]">
-              
               <div className="w-full">
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Раздел одежды</span> <StarIcon />
@@ -197,11 +196,7 @@ export const ClothMoreAbout = () => {
               </div>
               <div className="w-full md:hidden">
                 <div className="whitespace-nowrap overflow-x-auto h-fit md:hidden flex items-center mb-[5px]">
-                  <span
-                    className={`mr-[5px]`}
-                  >
-                    Подраздел одежды
-                  </span>
+                  <span className={`mr-[5px]`}>Подраздел одежды</span>
                   {subSections?.length ? <StarIcon /> : null}
                 </div>
                 <div
@@ -327,10 +322,7 @@ export const ClothMoreAbout = () => {
                 <span className="mr-[5px]">Магазин</span> <StarIcon />
               </div>
               <div className="border whitespace-nowrap overflow-x-auto text-[16px] text-black min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-                {data?.shop?.name
-                  ? data?.shop?.name
-                  : '-'
-                }
+                {data?.shop?.name ? data?.shop?.name : "-"}
               </div>
             </div>
           </div>
@@ -338,11 +330,7 @@ export const ClothMoreAbout = () => {
           {/* 2 */}
           <div className="w-full md:w-[50%]">
             <div className="hidden md:flex items-center mb-[5px]">
-              <span
-                className={`mr-[5px]`}
-              >
-                Подраздел одежды
-              </span>{" "}
+              <span className={`mr-[5px]`}>Подраздел одежды</span>{" "}
               {subSections?.length ? <StarIcon /> : null}
             </div>
             <div
@@ -402,7 +390,7 @@ export const ClothMoreAbout = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Состав на узбекском</span>
             </div>
@@ -417,21 +405,23 @@ export const ClothMoreAbout = () => {
             </div>
             <div className="w-full flex flex-col">
               <div className="hidden md:flex items-center mb-[5px]">
-                <span
-                  className={`mr-[5px]`}
-                >
-                  Локация
-                </span> <StarIcon />
+                <span className={`mr-[5px]`}>Локация</span> <StarIcon />
               </div>
-              <div className={`hidden md:block h-fit border border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]`}>
+              <div
+                className={`hidden md:block h-fit border border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]`}
+              >
                 {data?.locations
-                    ? data?.locations?.map(item =>{
-                        return(
-                          <div className="border border-[#E5E5E5] p-[6px] rounded-lg mb-[2px]" key={item?.id}>{item?.address}</div>
-                        )
-                      })
-                    : '-'
-                  }
+                  ? data?.locations?.map((item) => {
+                      return (
+                        <div
+                          className="border border-[#E5E5E5] p-[6px] rounded-lg mb-[2px]"
+                          key={item?.id}
+                        >
+                          {item?.address}
+                        </div>
+                      );
+                    })
+                  : "-"}
               </div>
             </div>
           </div>
@@ -460,13 +450,13 @@ export const ClothMoreAbout = () => {
             <span className="mr-[5px]">Описание на русском</span>
           </div>
           <div className="h-[40px] flex items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
-            {data?.description_ru ? data?.description_ru : '-'}
+            {data?.description_ru ? data?.description_ru : "-"}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Описание на узбекском</span>
           </div>
           <div className="h-[40px] flex items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
-            {data?.description_uz ? data?.description_uz : '-'}
+            {data?.description_uz ? data?.description_uz : "-"}
           </div>
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Бренд</span>
@@ -475,36 +465,34 @@ export const ClothMoreAbout = () => {
             {data?.brand?.name ? data?.brand?.name : "-"}
           </div>
           <div className="w-full block md:hidden">
-              <div className="flex items-center mb-[5px]">
-                <span className="mr-[5px]">Магазин</span> <StarIcon />
-              </div>
-              <div className="border whitespace-nowrap overflow-x-auto text-[16px] text-black min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
-                {data?.shop?.name
-                  ? data?.shop?.name
-                  : '-'
-                }
-              </div>
+            <div className="flex items-center mb-[5px]">
+              <span className="mr-[5px]">Магазин</span> <StarIcon />
             </div>
-          <div className="w-full flex md:hidden flex-col">
-              <div className="flex items-center mb-[5px]">
-                <span
-                  className={`mr-[5px]`}
-                >
-                  Локация
-                </span> <StarIcon />
-              </div>
-              <div className={`block h-fit border border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]`}>
-                {data?.locations
-                    ? data?.locations?.map(item =>{
-                        return(
-                          <div className="border border-[#E5E5E5] p-[6px] rounded-lg mb-[2px]" key={item?.id}>{item?.address}</div>
-                        )
-                      })
-                    : '-'
-                  }
-              </div>
+            <div className="border whitespace-nowrap overflow-x-auto text-[16px] text-black min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+              {data?.shop?.name ? data?.shop?.name : "-"}
+            </div>
           </div>
-
+          <div className="w-full flex md:hidden flex-col">
+            <div className="flex items-center mb-[5px]">
+              <span className={`mr-[5px]`}>Локация</span> <StarIcon />
+            </div>
+            <div
+              className={`block h-fit border border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]`}
+            >
+              {data?.locations
+                ? data?.locations?.map((item) => {
+                    return (
+                      <div
+                        className="border border-[#E5E5E5] p-[6px] rounded-lg mb-[2px]"
+                        key={item?.id}
+                      >
+                        {item?.address}
+                      </div>
+                    );
+                  })
+                : "-"}
+            </div>
+          </div>
         </div>
 
         <div className="flex md:hidden w-full gap-[12px] mb-[20px]">

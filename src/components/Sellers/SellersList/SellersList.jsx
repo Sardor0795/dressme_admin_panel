@@ -60,8 +60,6 @@ export default function SellersList() {
     }
   });
 
-  console.log(filteredData, "filteredData");
-
   // -----------------
 
   useEffect(() => {

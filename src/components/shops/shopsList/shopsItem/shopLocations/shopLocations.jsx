@@ -4,16 +4,13 @@ import { BackIcon } from "../../../../../assets/icon";
 import axios from "axios";
 
 export default function ShopLocations() {
+  const [shopLocationsData, setShopLoationsData] = useState();
 
-  const [shopLocationsData, setShopLoationsData] = useState()
-
-  console.log(shopLocationsData,'shopLocationsData');
-  
   const url = "https://api.dressme.uz";
 
   const params = useParams();
   let token = sessionStorage.getItem("token");
-  
+
   useEffect(() => {
     axios(`${url}/api/admin/shop/${params?.id}`, {
       headers: {
@@ -29,7 +26,6 @@ export default function ShopLocations() {
 
   return (
     <div className="w-full h-full px-4 md:px-0 ">
-      
       <div className=" md:hidden pt-6 pb-3 border-b border-[#F2F2F2] mb-3 flex items-center justify-between">
         <button
           onClick={() => {
@@ -44,7 +40,7 @@ export default function ShopLocations() {
         </p>
         <div className="w-[30px]"></div>
       </div>
-      
+
       <div className="w-full pt-6 pb-4 md:py-4 md:border-b border-lightBorderColor hidden md:block">
         <div className="flex justify-end items-center md:justify-between">
           <section className="hidden md:flex items-center">
@@ -62,7 +58,7 @@ export default function ShopLocations() {
           </section>
         </div>
       </div>
-      
+
       {/* Table */}
       {shopLocationsData?.length > 0 ? (
         <div className="w-full h-full">
@@ -277,7 +273,5 @@ export default function ShopLocations() {
         </div>
       )}
     </div>
-  )
+  );
 }
-
-

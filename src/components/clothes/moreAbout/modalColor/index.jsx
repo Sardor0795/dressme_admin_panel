@@ -1,8 +1,5 @@
 import { useState } from "react";
-import {
-  StarIcon,
-  XIcon,
-} from "../../../../assets/icon";
+import { StarIcon, XIcon } from "../../../../assets/icon";
 
 export default function ColorModal({
   setColorModalOpen,
@@ -10,8 +7,6 @@ export default function ColorModal({
   category,
   data,
 }) {
-
-  console.log(data?.colors, 'data-colors');
   return (
     <div className={`w-full px-4  md:px-10`}>
       <div
@@ -33,8 +28,6 @@ export default function ColorModal({
 
           {category === "1"
             ? data?.sizes?.map((item, index) => {
-              console.log(item, 'item');
-              console.log(index, 'index');
                 return (
                   <div
                     key={item?.id}
@@ -86,7 +79,14 @@ export default function ColorModal({
                         </div>
                       </div>
                     </div>
-                    <div className={`flex flex-wrap md:flex-nowrap justify-between ${item?.product_color_id === data?.colors[index]?.pivot?.id ? ' md:mb-3' : ''}`}>
+                    <div
+                      className={`flex flex-wrap md:flex-nowrap justify-between ${
+                        item?.product_color_id ===
+                        data?.colors[index]?.pivot?.id
+                          ? " md:mb-3"
+                          : ""
+                      }`}
+                    >
                       <div className="w-full md:w-fit mb-[34px] md:mb-0">
                         <div className="font-AeonikProMedium text-[16px] mb-[10px]">
                           Возраст
@@ -104,13 +104,12 @@ export default function ColorModal({
                         <div className="w-full md:w-fit flex items-center">
                           <div className="w-full md:w-fit flex items-center py-[10px] px-[20px] font-AeonikProMedium text-[16px] border border-[#E5E5E5] rounded-lg">
                             <div className="mr-[15px]">
-                              {item?.price 
-                              ? parseInt(item?.price)
-                                ?.toLocaleString()
-                                ?.split(",")
-                                .join(" ")
-                              : "-"}
-                              
+                              {item?.price
+                                ? parseInt(item?.price)
+                                    ?.toLocaleString()
+                                    ?.split(",")
+                                    .join(" ")
+                                : "-"}
                             </div>{" "}
                             <div className="text-[#8C8C8C]">сум</div>
                           </div>
@@ -146,12 +145,18 @@ export default function ColorModal({
                         </div>
                       </div>
                     </div>
-                    {item?.product_color_id === data?.colors[index]?.pivot?.id ? (
+                    {item?.product_color_id ===
+                    data?.colors[index]?.pivot?.id ? (
                       <div className="w-full flex items-center justify-start mt-3 md:mt-0">
-                          <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProRegular">Цвет:</span>
-                          <span style={{background:data?.colors[index]?.hex }} className="border text-white rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] ll:text-md  not-italic font-AeonikProRegular px-[15px] py-1">
-                            {data?.colors[index]?.name_ru }
-                          </span>
+                        <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProRegular">
+                          Цвет:
+                        </span>
+                        <span
+                          style={{ background: data?.colors[index]?.hex }}
+                          className="border text-white rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] ll:text-md  not-italic font-AeonikProRegular px-[15px] py-1"
+                        >
+                          {data?.colors[index]?.name_ru}
+                        </span>
                       </div>
                     ) : null}
                   </div>
