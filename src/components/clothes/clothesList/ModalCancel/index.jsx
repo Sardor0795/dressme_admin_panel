@@ -1,6 +1,6 @@
 import axios from "axios";
 import { XIcon } from "../../../../assets/icon";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IdsContext } from "../../../../context/idContext";
 
 import { toast } from "react-toastify";
@@ -10,8 +10,9 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
   let token = sessionStorage.getItem("token");
 
+  const [reasonText, setReasonText] = useState("");
+
   const [id] = useContext(IdsContext);
-  const ref = useRef();
 
   const [, , reFetch] = useContext(ClothesDataContext);
 
@@ -21,7 +22,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         `${url}/api/admin/decline-product/${id}`,
         {
           status: "declined",
-          status_reason: ref.current.value,
+          status_reason: reasonText,
         },
         {
           headers: {
@@ -34,7 +35,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         if (d.status === 200) {
           toast.success(d?.data?.message);
           reFetch();
-          ref.current.value = "";
+          setReasonText("");
         }
       })
       .catch((v) => {
@@ -42,13 +43,13 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
       });
   };
 
-    // DISABLE BACKGROUND SCROLL WHEN MODAI IS OPENED
-    useEffect(() => {
-      if (modalOpen) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
+  // DISABLE BACKGROUND SCROLL WHEN MODAI IS OPENED
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   }, [modalOpen]);
 
   return (
@@ -70,16 +71,25 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
           </p>
         </div>
         <textarea
-          ref={ref}
+          value={reasonText}
+          onInput={(e) => {
+            setReasonText(e.target.value);
+          }}
           className="border text-sm md:text-base p-3 h-32 mb-10 outline-none font-AeonikProRegular resize-none border-borderColor2 rounded-[6px]"
           placeholder="Опишите проблему"
         ></textarea>
         <button
           onClick={() => {
-            declineFunc();
-            setModalOpen(false);
+            if (reasonText.length > 1) {
+              declineFunc();
+              setModalOpen(false);
+            }
           }}
-          className="w-full active:scale-95  active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
+          className={`${
+            reasonText.length < 1
+              ? "cursor-not-allowed opacity-50"
+              : "cursor-pointer active:scale-95  active:opacity-70"
+          } w-full  h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor`}
         >
           <span className="text-center text-sm md:text-lg text-white not-italic font-AeonikProMedium">
             Отправить

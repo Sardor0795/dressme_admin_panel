@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useState } from "react";
 import { XIcon } from "../../../../assets/icon";
 import { IdsContext } from "../../../../context/idContext";
 import axios from "axios";
@@ -14,7 +14,7 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
   let token = sessionStorage.getItem("token");
 
   const [id] = useContext(IdsContext);
-  const ref = useRef();
+  const [reasonText, setReasonText] = useState("");
 
   const [, , reFetch] = useContext(ShopsDataContext);
   const [, , locationsReFetch] = useContext(LocationsDataContext);
@@ -26,7 +26,7 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
         `${url}/api/admin/decline-shop/${id}`,
         {
           status: "declined",
-          status_reason: ref.current.value,
+          status_reason: reasonText,
         },
         {
           headers: {
@@ -41,7 +41,7 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
           reFetch();
           locationsReFetch();
           clothesReFetch();
-          ref.current.value = "";
+          setReasonText("");
         }
       })
       .catch((v) => {
@@ -77,16 +77,25 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
           </p>
         </div>
         <textarea
-          ref={ref}
+          value={reasonText}
+          onInput={(e) => {
+            setReasonText(e.target.value);
+          }}
           className="border text-sm md:text-base p-3 h-32 mb-10 outline-none font-AeonikProRegular resize-none border-borderColor2 rounded-[6px]"
           placeholder="Опишите проблему"
         ></textarea>
         <button
           onClick={() => {
-            declineFunc();
-            setModalOpen(false);
+            if (reasonText.length > 1) {
+              declineFunc();
+              setModalOpen(false);
+            }
           }}
-          className="w-full active:scale-95  active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
+          className={`${
+            reasonText.length < 1
+              ? "cursor-not-allowed opacity-50"
+              : "cursor-pointer active:scale-95  active:opacity-70"
+          } w-full  h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor`}
         >
           <span className="text-center text-sm md:text-lg text-white not-italic font-AeonikProMedium">
             Отправить
