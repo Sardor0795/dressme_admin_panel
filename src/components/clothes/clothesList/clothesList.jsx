@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import CancelModal from "./ModalCancel";
 import ClothesItem from "./clothesItem/clothestem";
-import { ProductsContext } from "../../../context/productsContext";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +18,7 @@ import {
 } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
+import { SellersContext } from "../../../context/sellersContext";
 
 export default function ClothesList() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -117,16 +117,16 @@ export default function ClothesList() {
   }, [data]);
 
   // Products Context
-  const [showProducts, setShowProducts] = useContext(ProductsContext);
+  const [showSellers, setShowSellers] = useContext(SellersContext);
 
   let dataCount = 0;
-  if (showProducts === "pending") {
+  if (showSellers === "pending") {
     dataCount = waitingCount;
-  } else if (showProducts === "approved") {
+  } else if (showSellers === "approved") {
     dataCount = allowedCount;
-  } else if (showProducts === "declined") {
+  } else if (showSellers === "declined") {
     dataCount = notAllowedCount;
-  } else if (showProducts === "updated") {
+  } else if (showSellers === "updated") {
     dataCount = updatedCount;
   }
 
@@ -157,22 +157,22 @@ export default function ClothesList() {
           <PhoneNavbar filterFuncCloThes={filterFunc} />
         </div>
 
-        {showProducts === "pending" ? (
+        {showSellers === "pending" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Ожидающие товары
           </div>
         ) : null}
-        {showProducts === "approved" ? (
+        {showSellers === "approved" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Одобренные товары
           </div>
         ) : null}
-        {showProducts === "declined" ? (
+        {showSellers === "declined" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Отказанные товары
           </div>
         ) : null}
-        {showProducts === "updated" ? (
+        {showSellers === "updated" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Обновленные товары
           </div>
@@ -210,7 +210,7 @@ export default function ClothesList() {
               Выбранные:
             </span>
             <div className="flex items-center">
-              {showProducts === "pending" ? (
+              {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -229,7 +229,7 @@ export default function ClothesList() {
                   </button>
                 </div>
               ) : null}
-              {showProducts === "approved" ? (
+              {showSellers === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     onClick={() => setModalOpen(true)}
@@ -240,7 +240,7 @@ export default function ClothesList() {
                   </button>
                 </div>
               ) : null}
-              {showProducts === "declined" ? (
+              {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -251,7 +251,7 @@ export default function ClothesList() {
                   </button>
                 </div>
               ) : null}
-              {showProducts === "updated" ? (
+              {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -268,9 +268,9 @@ export default function ClothesList() {
 
         <div className="flex mb-[24px] md:hidden">
           <div
-            onClick={() => setShowProducts("pending")}
+            onClick={() => setShowSellers("pending")}
             className={`${
-              showProducts === "pending"
+              showSellers === "pending"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
@@ -279,9 +279,9 @@ export default function ClothesList() {
             <div>({waitingCount})</div>
           </div>
           <div
-            onClick={() => setShowProducts("approved")}
+            onClick={() => setShowSellers("approved")}
             className={`${
-              showProducts === "approved"
+              showSellers === "approved"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
@@ -290,9 +290,9 @@ export default function ClothesList() {
             <div>({allowedCount})</div>
           </div>
           <div
-            onClick={() => setShowProducts("declined")}
+            onClick={() => setShowSellers("declined")}
             className={`${
-              showProducts === "declined"
+              showSellers === "declined"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
@@ -301,9 +301,9 @@ export default function ClothesList() {
             <div>({notAllowedCount})</div>
           </div>
           <div
-            onClick={() => setShowProducts("updated")}
+            onClick={() => setShowSellers("updated")}
             className={`${
-              showProducts === "updated"
+              showSellers === "updated"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
@@ -352,7 +352,7 @@ export default function ClothesList() {
               Выбранные:
             </div>
             <div className="flex items-center">
-              {showProducts === "pending" ? (
+              {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -371,7 +371,7 @@ export default function ClothesList() {
                   </button>
                 </div>
               ) : null}
-              {showProducts === "approved" ? (
+              {showSellers === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     onClick={() => setModalOpen(true)}
@@ -382,7 +382,7 @@ export default function ClothesList() {
                   </button>
                 </div>
               ) : null}
-              {showProducts === "declined" ? (
+              {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -393,7 +393,7 @@ export default function ClothesList() {
                   </button>
                 </div>
               ) : null}
-              {showProducts === "updated" ? (
+              {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -412,9 +412,9 @@ export default function ClothesList() {
           <section className="flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
-              onClick={() => setShowProducts("pending")}
+              onClick={() => setShowSellers("pending")}
               className={`${
-                showProducts === "pending"
+                showSellers === "pending"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -427,9 +427,9 @@ export default function ClothesList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowProducts("approved")}
+              onClick={() => setShowSellers("approved")}
               className={`${
-                showProducts === "approved"
+                showSellers === "approved"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -442,9 +442,9 @@ export default function ClothesList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowProducts("declined")}
+              onClick={() => setShowSellers("declined")}
               className={`${
-                showProducts === "declined"
+                showSellers === "declined"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -457,9 +457,9 @@ export default function ClothesList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowProducts("updated")}
+              onClick={() => setShowSellers("updated")}
               className={`${
-                showProducts === "updated"
+                showSellers === "updated"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -505,7 +505,7 @@ export default function ClothesList() {
                   <div className="w-full ">
                     {/* Status Waiting */}
 
-                    {showProducts === "pending"
+                    {showSellers === "pending"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
                           let productLength = 0;
@@ -622,7 +622,7 @@ export default function ClothesList() {
                                                 click={onCheck}
                                                 setModalOpen={setModalOpen}
                                                 toast={toast}
-                                                showProducts={showProducts}
+                                                showSellers={showSellers}
                                               />
                                             </div>
                                           ) : null}
@@ -639,7 +639,7 @@ export default function ClothesList() {
 
                     {/* Status Allowed */}
 
-                    {showProducts === "approved"
+                    {showSellers === "approved"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
                           let productLength = 0;
@@ -756,7 +756,7 @@ export default function ClothesList() {
                                                 click={onCheck}
                                                 setModalOpen={setModalOpen}
                                                 toast={toast}
-                                                showProducts={showProducts}
+                                                showSellers={showSellers}
                                               />
                                             </div>
                                           ) : null}
@@ -773,7 +773,7 @@ export default function ClothesList() {
 
                     {/* Status NotAllowed */}
 
-                    {showProducts === "declined"
+                    {showSellers === "declined"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
                           let productLength = 0;
@@ -890,7 +890,7 @@ export default function ClothesList() {
                                                 click={onCheck}
                                                 setModalOpen={setModalOpen}
                                                 toast={toast}
-                                                showProducts={showProducts}
+                                                showSellers={showSellers}
                                               />
                                             </div>
                                           ) : null}
@@ -907,7 +907,7 @@ export default function ClothesList() {
 
                     {/* Status Updated */}
 
-                    {showProducts === "updated"
+                    {showSellers === "updated"
                       ? item?.shops?.map((item_2) => {
                           let index = 0;
                           let productLength = 0;
@@ -1024,7 +1024,7 @@ export default function ClothesList() {
                                                 click={onCheck}
                                                 setModalOpen={setModalOpen}
                                                 toast={toast}
-                                                showProducts={showProducts}
+                                                showSellers={showSellers}
                                               />
                                             </div>
                                           ) : null}

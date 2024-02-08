@@ -16,7 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import WiFiLoader from "../../../assets/loader/wifi_loader.gif";
 import ShopsItem from "./shopsItem/shopsItem";
 import CancelShopsModal from "./ModalCancel";
-import { ShopsContext } from "../../../context/shopsContext";
+import { SellersContext } from "../../../context/sellersContext";
 
 export default function ShopsList() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -105,18 +105,18 @@ export default function ShopsList() {
   }, [dataShops]);
 
   // Products Context
-  const [showShops, setShowShops] = useContext(ShopsContext);
+  const [showSellers, setShowSellers] = useContext(SellersContext);
 
-  // console.log(showShops,'showShops');
+  // console.log(showSellers,'showSellers');
 
   let dataCount = 0;
-  if (showShops === "pending") {
+  if (showSellers === "pending") {
     dataCount = waitingCount;
-  } else if (showShops === "approved") {
+  } else if (showSellers === "approved") {
     dataCount = allowedCount;
-  } else if (showShops === "declined") {
+  } else if (showSellers === "declined") {
     dataCount = notAllowedCount;
-  } else if (showShops === "updated") {
+  } else if (showSellers === "updated") {
     dataCount = updatedCount;
   }
 
@@ -157,22 +157,22 @@ export default function ShopsList() {
         <div className="block md:hidden w-full">
           <PhoneNavbar filterFuncCloThes={filterFunc} />
         </div>
-        {showShops === "pending" ? (
+        {showSellers === "pending" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Ожидающие магазины
           </div>
         ) : null}
-        {showShops === "approved" ? (
+        {showSellers === "approved" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Одобренные магазины
           </div>
         ) : null}
-        {showShops === "declined" ? (
+        {showSellers === "declined" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Отказанные магазины
           </div>
         ) : null}
-        {showShops === "updated" ? (
+        {showSellers === "updated" ? (
           <div className="font-AeonikProMedium text-[24px] text-black hidden md:block">
             Обновленные магазины
           </div>
@@ -210,7 +210,7 @@ export default function ShopsList() {
               Выбранные:
             </span>
             <div className="flex items-center">
-              {showShops === "pending" ? (
+              {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -229,7 +229,7 @@ export default function ShopsList() {
                   </button>
                 </div>
               ) : null}
-              {showShops === "approved" ? (
+              {showSellers === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     onClick={() => setModalOpen(true)}
@@ -240,7 +240,7 @@ export default function ShopsList() {
                   </button>
                 </div>
               ) : null}
-              {showShops === "declined" ? (
+              {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -251,7 +251,7 @@ export default function ShopsList() {
                   </button>
                 </div>
               ) : null}
-              {showShops === "updated" ? (
+              {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -268,9 +268,9 @@ export default function ShopsList() {
 
         <div className="flex mb-[24px] md:hidden">
           <div
-            onClick={() => setShowShops("pending")}
+            onClick={() => setShowSellers("pending")}
             className={`${
-              showShops === "pending"
+              showSellers === "pending"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
@@ -279,9 +279,9 @@ export default function ShopsList() {
             <div>({waitingCount})</div>
           </div>
           <div
-            onClick={() => setShowShops("approved")}
+            onClick={() => setShowSellers("approved")}
             className={`${
-              showShops === "approved"
+              showSellers === "approved"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
@@ -290,9 +290,9 @@ export default function ShopsList() {
             <div>({allowedCount})</div>
           </div>
           <div
-            onClick={() => setShowShops("declined")}
+            onClick={() => setShowSellers("declined")}
             className={`${
-              showShops === "declined"
+              showSellers === "declined"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
@@ -301,9 +301,9 @@ export default function ShopsList() {
             <div>({notAllowedCount})</div>
           </div>
           <div
-            onClick={() => setShowShops("updated")}
+            onClick={() => setShowSellers("updated")}
             className={`${
-              showShops === "updated"
+              showSellers === "updated"
                 ? "text-[#007DCA] border-[#007DCA]"
                 : "text-[#303030] border-[#F2F2F2]"
             } border-b pb-[12px] text-center text-[11px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
@@ -351,7 +351,7 @@ export default function ShopsList() {
               Выбранные:
             </div>
             <div className="flex items-center">
-              {showShops === "pending" ? (
+              {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -370,7 +370,7 @@ export default function ShopsList() {
                   </button>
                 </div>
               ) : null}
-              {showShops === "approved" ? (
+              {showSellers === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     onClick={() => setModalOpen(true)}
@@ -381,7 +381,7 @@ export default function ShopsList() {
                   </button>
                 </div>
               ) : null}
-              {showShops === "declined" ? (
+              {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -392,7 +392,7 @@ export default function ShopsList() {
                   </button>
                 </div>
               ) : null}
-              {showShops === "updated" ? (
+              {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
                     // onClick={() => approveFunc()}
@@ -411,9 +411,9 @@ export default function ShopsList() {
           <section className="flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
-              onClick={() => setShowShops("pending")}
+              onClick={() => setShowSellers("pending")}
               className={`${
-                showShops === "pending"
+                showSellers === "pending"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -426,9 +426,9 @@ export default function ShopsList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowShops("approved")}
+              onClick={() => setShowSellers("approved")}
               className={`${
-                showShops === "approved"
+                showSellers === "approved"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -441,9 +441,9 @@ export default function ShopsList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowShops("declined")}
+              onClick={() => setShowSellers("declined")}
               className={`${
-                showShops === "declined"
+                showSellers === "declined"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -456,9 +456,9 @@ export default function ShopsList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowShops("updated")}
+              onClick={() => setShowSellers("updated")}
               className={`${
-                showShops === "updated"
+                showSellers === "updated"
                   ? "text-weatherWinterColor border-[1.5px]"
                   : "text[#303030]"
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
@@ -503,7 +503,7 @@ export default function ShopsList() {
                 <div className="mx-auto font-AeonikProRegular text-[16px]">
                   <div className="w-full ">
                     {/* Status Waiting */}
-                    {showShops === "pending"
+                    {showSellers === "pending"
                       ? item?.shops?.map((data, index) => {
                           return (
                             <div key={data?.id}>
@@ -583,7 +583,7 @@ export default function ShopsList() {
                                     data={data}
                                     index={index}
                                     onCheck={onCheck}
-                                    showShops={showShops}
+                                    showSellers={showSellers}
                                     toast={toast}
                                     setModalOpen={setModalOpen}
                                   />
@@ -595,7 +595,7 @@ export default function ShopsList() {
                       : null}
 
                     {/* Status Allowed */}
-                    {showShops === "approved"
+                    {showSellers === "approved"
                       ? item?.shops?.map((data, index) => {
                           // console.log(item_2,'item_2');
                           return (
@@ -676,7 +676,7 @@ export default function ShopsList() {
                                     data={data}
                                     index={index}
                                     onCheck={onCheck}
-                                    showShops={showShops}
+                                    showSellers={showSellers}
                                     toast={toast}
                                     setModalOpen={setModalOpen}
                                   />
@@ -688,7 +688,7 @@ export default function ShopsList() {
                       : null}
 
                     {/* Status NotAllowed */}
-                    {showShops === "declined"
+                    {showSellers === "declined"
                       ? item?.shops?.map((data, index) => {
                           // console.log(item_2,'item_2');
                           return (
@@ -769,7 +769,7 @@ export default function ShopsList() {
                                     data={data}
                                     index={index}
                                     onCheck={onCheck}
-                                    showShops={showShops}
+                                    showSellers={showSellers}
                                     toast={toast}
                                     setModalOpen={setModalOpen}
                                   />
@@ -781,7 +781,7 @@ export default function ShopsList() {
                       : null}
 
                     {/* Status Updated */}
-                    {showShops === "updated"
+                    {showSellers === "updated"
                       ? item?.shops?.map((data, index) => {
                           // console.log(item_2,'item_2');
                           return (
@@ -862,7 +862,7 @@ export default function ShopsList() {
                                     data={data}
                                     index={index}
                                     onCheck={onCheck}
-                                    showShops={showShops}
+                                    showSellers={showSellers}
                                     toast={toast}
                                     setModalOpen={setModalOpen}
                                   />
