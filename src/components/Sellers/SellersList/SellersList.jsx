@@ -18,13 +18,26 @@ import {
 } from "../../../assets/icon";
 import { PhoneNavbar } from "../../phoneNavbar";
 import { SellersDataContext } from "../../../context/sellersDataContext";
+import { ShopsDataContext } from "../../../context/shopsDataContext";
+import { LocationsDataContext } from "../../../context/locationsDataContext";
+import { ClothesDataContext } from "../../../context/clothesDataContext";
+import { ReFreshTokenContext } from "../../../context/reFreshToken";
+import axios from "axios";
 
 export default function SellersList() {
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [, , reFetch] = useContext(SellersDataContext);
+  const [, , shopsReFetch] = useContext(ShopsDataContext);
+  const [, , locationsReFetch] = useContext(LocationsDataContext);
+  const [, , clothesReFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
+
   const [data, setData, , loader] = useContext(SellersDataContext);
 
   let newData = data;
+
+  const url = "https://api.dressme.uz";
 
   const [filteredData, setFilteredData] = useState([]);
 
@@ -68,39 +81,6 @@ export default function SellersList() {
     });
   }, []);
 
-  const [, setSomeChecked] = useState(false);
-  const [allChecked, setAllChecked] = useState(false);
-
-  let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
-
-  const onCheck = (id) => {
-    if (id === "allCheck") {
-      let newArr = data.map((item) => {
-        return { ...item, isCheck: true };
-      });
-      setData(newArr);
-    } else if (id === "allNotCheck") {
-      let newArr = data.map((item) => {
-        return { ...item, isCheck: false };
-      });
-      setData(newArr);
-    } else {
-      let newArr = data.map((item) => {
-        return item.id === id ? { ...item, isCheck: !item.isCheck } : item;
-      });
-      setData(newArr);
-    }
-  };
-
-  useEffect(() => {
-    let newData = data?.filter((item) => item.isCheck === true);
-    if (newData?.length) {
-      setSomeChecked(true);
-    } else {
-      setSomeChecked(false);
-    }
-  }, [data]);
-
   // ------- sellers context
   const [showSellers, setShowSellers] = useContext(SellersContext);
 
@@ -136,6 +116,57 @@ export default function SellersList() {
       }
     });
   }, []);
+
+  // Select all -----------------
+
+  const [massiveCheckeds, setMassiveCheckeds] = useState([]);
+
+  console.log(massiveCheckeds, "massiveCheckeds");
+
+  const [, setSomeChecked] = useState(false);
+  const [allChecked, setAllChecked] = useState(false);
+
+  const allApproveFunc = () => {
+    let formData = new FormData();
+    formData.append("status", "approved");
+    // if (massiveCheckeds) {
+    //   massiveCheckeds.forEach((id) => {
+    //     form.append("ids[]", id);
+    //   });
+    // }
+
+    console.log(formData);
+    console.log(massiveCheckeds);
+
+    // axios
+    //   .post(
+    //     `${url}/api/admin/massive-approve-sellers`,
+    //     {
+    //       form,
+    //     },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    //       },
+    //     }
+    //   )
+    //   .then((d) => {
+    //     if (d.status === 200) {
+    //       toast.success(d?.data?.message);
+    //       reFetch();
+    //       shopsReFetch();
+    //       locationsReFetch();
+    //       clothesReFetch();
+    //     }
+    //   })
+    //   .catch((v) => {
+    //     if (v?.response?.status === 401) {
+    //       reFreshTokenFunc();
+    //       allApproveFunc();
+    //     }
+    //   });
+  };
 
   return (
     <div>
@@ -310,7 +341,7 @@ export default function SellersList() {
                 {showSellers === "pending" ? (
                   <div className="flex items-center ml-auto">
                     <button
-                      // onClick={() => approveFunc()}
+                      onClick={allApproveFunc}
                       type="button"
                       className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                     >
@@ -340,7 +371,7 @@ export default function SellersList() {
                 {showSellers === "declined" ? (
                   <div className="flex items-center ml-auto">
                     <button
-                      // onClick={() => approveFunc()}
+                      onClick={allApproveFunc}
                       type="button"
                       className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                     >
@@ -351,7 +382,7 @@ export default function SellersList() {
                 {showSellers === "updated" ? (
                   <div className="flex items-center ml-auto">
                     <button
-                      // onClick={() => approveFunc()}
+                      onClick={allApproveFunc}
                       type="button"
                       className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                     >
@@ -364,10 +395,7 @@ export default function SellersList() {
           </div>
 
           <div
-            onClick={() => {
-              onCheck(checkIndicator);
-              setAllChecked(!allChecked);
-            }}
+            onClick={() => {}}
             className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
           >
             Выбрать все
@@ -463,10 +491,7 @@ export default function SellersList() {
             </div>
 
             <div
-              onClick={() => {
-                onCheck(checkIndicator);
-                setAllChecked(!allChecked);
-              }}
+              onClick={() => {}}
               className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
             >
               Выбрать все
@@ -493,7 +518,10 @@ export default function SellersList() {
           <section className="hidden md:flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
-              onClick={() => setShowSellers("pending")}
+              onClick={() => {
+                setShowSellers("pending");
+                setAllChecked(false);
+              }}
               className={`${
                 showSellers === "pending"
                   ? "text-weatherWinterColor border-[1.5px]"
@@ -508,7 +536,10 @@ export default function SellersList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("approved")}
+              onClick={() => {
+                setShowSellers("approved");
+                setAllChecked(false);
+              }}
               className={`${
                 showSellers === "approved"
                   ? "text-weatherWinterColor border-[1.5px]"
@@ -523,7 +554,10 @@ export default function SellersList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("declined")}
+              onClick={() => {
+                setShowSellers("declined");
+                setAllChecked(false);
+              }}
               className={`${
                 showSellers === "declined"
                   ? "text-weatherWinterColor border-[1.5px]"
@@ -538,7 +572,10 @@ export default function SellersList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("updated")}
+              onClick={() => {
+                setShowSellers("updated");
+                setAllChecked(false);
+              }}
               className={`${
                 showSellers === "updated"
                   ? "text-weatherWinterColor border-[1.5px]"
@@ -554,7 +591,6 @@ export default function SellersList() {
 
           <div
             onClick={() => {
-              onCheck(checkIndicator);
               setAllChecked(!allChecked);
             }}
             className="select-none cursor-pointer hidden md:flex items-center text-base font-AeonikProMedium text-[#303030]"
@@ -582,10 +618,7 @@ export default function SellersList() {
           {dataCount > 0 ? (
             <div className="md:mb-[10px] flex items-center text-tableTextTitle">
               <div
-                onClick={() => {
-                  onCheck(checkIndicator);
-                  setAllChecked(!allChecked);
-                }}
+                onClick={() => {}}
                 className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
                   allChecked
                     ? "bg-[#007DCA] border-[#007DCA]"
@@ -654,10 +687,12 @@ export default function SellersList() {
                         data={data}
                         key={data?.id}
                         index={index}
-                        click={onCheck}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                        setMassiveCheckeds={setMassiveCheckeds}
+                        massiveCheckeds={massiveCheckeds}
                         showSellers={showSellers}
+                        allChecked={allChecked}
                       />
                     );
                   }
@@ -673,10 +708,12 @@ export default function SellersList() {
                         data={data}
                         key={data?.id}
                         index={index}
-                        click={onCheck}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                        setMassiveCheckeds={setMassiveCheckeds}
+                        massiveCheckeds={massiveCheckeds}
                         showSellers={showSellers}
+                        allChecked={allChecked}
                       />
                     );
                   }
@@ -691,11 +728,13 @@ export default function SellersList() {
                       <SellerItems
                         data={data}
                         key={data?.id}
-                        click={onCheck}
                         index={index}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                        setMassiveCheckeds={setMassiveCheckeds}
+                        massiveCheckeds={massiveCheckeds}
                         showSellers={showSellers}
+                        allChecked={allChecked}
                       />
                     );
                   }
@@ -710,11 +749,13 @@ export default function SellersList() {
                       <SellerItems
                         data={data}
                         key={data?.id}
-                        click={onCheck}
                         index={index}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                        setMassiveCheckeds={setMassiveCheckeds}
+                        massiveCheckeds={massiveCheckeds}
                         showSellers={showSellers}
+                        allChecked={allChecked}
                       />
                     );
                   }

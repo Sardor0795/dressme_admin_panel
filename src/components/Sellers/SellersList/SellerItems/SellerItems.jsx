@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CheckIcon } from "../../../../assets/icon";
 import axios from "axios";
@@ -12,11 +12,13 @@ import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 
 export default function SellerItems({
   data,
-  click,
   setModalOpen,
   index,
   toast,
   showSellers,
+  setMassiveCheckeds,
+  massiveCheckeds,
+  allChecked,
 }) {
   const [, , reFetch] = useContext(SellersDataContext);
   const [, , shopsReFetch] = useContext(ShopsDataContext);
@@ -59,22 +61,47 @@ export default function SellerItems({
 
   const [, setId] = useContext(IdsContext);
 
+  const [ckeck, setCheck] = useState(false);
+
+  useEffect(() => {
+    if (massiveCheckeds?.includes(data?.id)) {
+      setCheck(true);
+    } else {
+      setCheck(false);
+    }
+  }, [massiveCheckeds]);
+
+  useEffect(() => {
+    if (allChecked) {
+      // setMassiveCheckeds([...massiveCheckeds, data?.id]);
+      setMassiveCheckeds((prev) => [...prev, data?.id]);
+    } else {
+      setMassiveCheckeds((prevState) =>
+        prevState.filter((id) => id !== data?.id)
+      );
+    }
+  }, [allChecked]);
+
   return (
     <div className="flex items-center w-full">
       <div
         onClick={() => {
-          click(data?.id);
+          if (massiveCheckeds?.includes(data?.id)) {
+            setMassiveCheckeds((prevState) =>
+              prevState.filter((id) => id !== data?.id)
+            );
+          } else {
+            setMassiveCheckeds([...massiveCheckeds, data?.id]);
+          }
         }}
         className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
-          data?.isCheck
+          ckeck
             ? "bg-[#007DCA] border-[#007DCA]"
             : "bg-white border-checkboxBorder"
         } hidden md:flex items-center justify-center rounded mr-[8px]`}
       >
         <span
-          className={`${
-            data?.isCheck ? "flex items-center justify-center" : "hidden"
-          }`}
+          className={`${ckeck ? "flex items-center justify-center" : "hidden"}`}
         >
           <CheckIcon />
         </span>
