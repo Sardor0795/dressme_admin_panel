@@ -37,6 +37,7 @@ export const SignInComponent = () => {
       const data = await axios.post(`${url}/api/admin/login`, reqObj);
 
       if (data.status === 200) {
+        sessionStorage.setItem("reFreshToken", data?.data?.refresh_token);
         sessionStorage.setItem("token", data.data.access_token);
         sessionStorage.setItem("email", reqObj.email);
         sessionStorage.setItem("password", reqObj.password);
@@ -49,10 +50,6 @@ export const SignInComponent = () => {
         setErrorMsg({ ...errorMsg, visibility: false });
       }, 5000);
     }
-
-    // if (data.status !== 200) {
-    //   setErrorMsg(data.response.data.message);
-    // }
   };
 
   return (
@@ -96,6 +93,7 @@ export const SignInComponent = () => {
                 type={state?.eyeShow ? "password" : "text"}
                 placeholder="Parolingizni kiriting"
                 required
+                value={"secret00"}
                 name="password"
                 autoComplete="current-password"
                 ref={passwordRef}
