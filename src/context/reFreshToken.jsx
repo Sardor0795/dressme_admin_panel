@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ReFreshTokenContext = createContext();
@@ -18,10 +18,13 @@ export const ReFreshTokenContextProvider = ({ children }) => {
 
         if (data?.status === 200) {
           sessionStorage.setItem("token", data?.data?.access_token);
+          setMainToken(true);
         }
       } catch (error) {
         if (error?.response?.status === 401) {
+          sessionStorage.removeItem("token");
           navigate("/signin");
+          window.location.reload();
         }
       }
     }
@@ -29,7 +32,9 @@ export const ReFreshTokenContextProvider = ({ children }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      reFreshTokenFunc();
+      if (mainToken) {
+        reFreshTokenFunc();
+      }
     }, 2 * 59 * 60 * 1000);
     // Cleanup function to clear the interval when the component is unmounted
     return () => {
