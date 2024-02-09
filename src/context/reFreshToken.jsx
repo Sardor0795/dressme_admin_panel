@@ -18,7 +18,6 @@ export const ReFreshTokenContextProvider = ({ children }) => {
 
         if (data?.status === 200) {
           sessionStorage.setItem("token", data?.data?.access_token);
-          setMainToken(true);
         }
       } catch (error) {
         if (error?.response?.status === 401) {
