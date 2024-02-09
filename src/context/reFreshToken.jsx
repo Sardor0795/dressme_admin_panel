@@ -33,7 +33,6 @@ export const ReFreshTokenContextProvider = ({ children }) => {
     const intervalId = setInterval(() => {
       reFreshTokenFunc();
     }, 2 * 59 * 60 * 1000);
-    // Cleanup function to clear the interval when the component is unmounted
     return () => {
       clearInterval(intervalId);
     };
