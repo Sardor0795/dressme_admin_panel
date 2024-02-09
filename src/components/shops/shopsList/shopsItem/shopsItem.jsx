@@ -12,6 +12,7 @@ import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
 import { LocationsDataContext } from "../../../../context/locationsDataContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
+import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 export default function ShopsItem({
   data,
   index,
@@ -23,9 +24,9 @@ export default function ShopsItem({
   const [, , reFetch] = useContext(ShopsDataContext);
   const [, , locationsReFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const approveFunc = () => {
     axios
@@ -37,7 +38,7 @@ export default function ShopsItem({
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -50,7 +51,10 @@ export default function ShopsItem({
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          approveFunc();
+        }
       });
   };
 

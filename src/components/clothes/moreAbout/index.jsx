@@ -8,6 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
 import { SellersContext } from "../../../context/sellersContext";
+import { ReFreshTokenContext } from "../../../context/reFreshToken";
 
 export const ClothMoreAbout = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -23,14 +24,13 @@ export const ClothMoreAbout = () => {
   const subSections = data?.sub_sections ? data?.sub_sections : [];
 
   const params = useParams();
-  let token = sessionStorage.getItem("token");
 
   const navigate = useNavigate();
 
   useEffect(() => {
     axios(`${url}/api/admin/products/${params?.id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
       setData(d?.data?.product);
@@ -40,6 +40,7 @@ export const ClothMoreAbout = () => {
   // Products Context
   const [showSellers] = useContext(SellersContext);
   const [, , reFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const approveFunc = () => {
     axios
@@ -51,7 +52,7 @@ export const ClothMoreAbout = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -63,7 +64,10 @@ export const ClothMoreAbout = () => {
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          approveFunc();
+        }
       });
   };
 

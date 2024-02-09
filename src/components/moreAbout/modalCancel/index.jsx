@@ -4,13 +4,14 @@ import { toast } from "react-toastify";
 import { useContext, useState } from "react";
 import { SellersDataContext } from "../../../context/sellersDataContext";
 import { useNavigate } from "react-router-dom";
+import { ReFreshTokenContext } from "../../../context/reFreshToken";
 
 export default function CancelModal({ setModalOpen, modalOpen, id }) {
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const [, , reFetch] = useContext(SellersDataContext);
   const [reasonText, setReasonText] = useState("");
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ export default function CancelModal({ setModalOpen, modalOpen, id }) {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -38,7 +39,10 @@ export default function CancelModal({ setModalOpen, modalOpen, id }) {
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          declineFunc();
+        }
       });
   };
 

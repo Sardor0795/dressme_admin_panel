@@ -8,10 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { ShopsDataContext } from "../../../../context/shopsDataContext";
 import { LocationsDataContext } from "../../../../context/locationsDataContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
+import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 
 export default function CancelShopsModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const [id] = useContext(IdsContext);
   const [reasonText, setReasonText] = useState("");
@@ -19,6 +19,8 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
   const [, , reFetch] = useContext(ShopsDataContext);
   const [, , locationsReFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
+
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const declineFunc = () => {
     axios
@@ -31,7 +33,7 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -45,7 +47,10 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          declineFunc();
+        }
       });
   };
 

@@ -5,14 +5,15 @@ import { ClothesDataContext } from "../../../../context/clothesDataContext";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 
 export default function CancelModal({ setModalOpen, modalOpen, id }) {
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const navigate = useNavigate();
   const [, , reFetch] = useContext(ClothesDataContext);
   const [reasonText, setReasonText] = useState("");
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const declineFunc = () => {
     axios
@@ -25,7 +26,7 @@ export default function CancelModal({ setModalOpen, modalOpen, id }) {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -38,7 +39,10 @@ export default function CancelModal({ setModalOpen, modalOpen, id }) {
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          declineFunc();
+        }
       });
   };
 

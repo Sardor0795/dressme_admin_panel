@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { ReFreshTokenContext } from "./reFreshToken";
 
 export const ShopsDataContext = createContext();
 
@@ -9,31 +10,49 @@ export const ShopsDataContextProvider = ({ children }) => {
 
   const [dataShops, setDataShops] = useState([]);
 
-  const url = "https://api.dressme.uz";
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
-  let token = sessionStorage.getItem("token");
+  const url = "https://api.dressme.uz";
 
   setTimeout(() => {
     setLoader(false);
   }, 2000);
 
+  const getData = () => {
+    axios(`${url}/api/admin/shops`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      },
+    }).then((d) => {
+      setDataShops(d?.data?.sellers_shops);
+      setLoader(false);
+    });
+  };
+
   useEffect(() => {
-    if (token) {
+    if (sessionStorage.getItem("token")) {
       axios(`${url}/api/admin/shops`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
-      }).then((d) => {
-        setDataShops(d?.data?.sellers_shops);
-        setLoader(false);
-      });
+      })
+        .then((d) => {
+          setDataShops(d?.data?.sellers_shops);
+          setLoader(false);
+        })
+        .catch((v) => {
+          if (v?.response?.status === 401) {
+            reFreshTokenFunc();
+            getData();
+          }
+        });
     }
   }, []);
 
   const reFetch = () => {
     axios(`${url}/api/admin/shops`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
       setDataShops(d?.data?.sellers_shops);

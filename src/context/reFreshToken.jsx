@@ -1,25 +1,28 @@
 import axios from "axios";
 import { createContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ReFreshTokenContext = createContext();
 
 export const ReFreshTokenContextProvider = ({ children }) => {
   const url = "https://api.dressme.uz";
 
-  const reFreshToken = sessionStorage.getItem("reFreshToken");
+  const navigate = useNavigate();
 
   const reFreshTokenFunc = async () => {
-    if (reFreshToken) {
+    if (sessionStorage.getItem("reFreshToken")) {
       try {
         const data = await axios.post(`${url}/api/admin/refresh-token`, {
-          refresh_token: reFreshToken,
+          refresh_token: sessionStorage.getItem("reFreshToken"),
         });
 
-        if (data.status === 200) {
+        if (data?.status === 200) {
           sessionStorage.setItem("token", data?.data?.access_token);
         }
       } catch (error) {
-        console.log(error);
+        if (error?.response?.status === 401) {
+          navigate("/signin");
+        }
       }
     }
   };

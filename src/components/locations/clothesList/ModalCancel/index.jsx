@@ -6,16 +6,17 @@ import { IdsContext } from "../../../../context/idContext";
 import { toast } from "react-toastify";
 import { LocationsDataContext } from "../../../../context/locationsDataContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
+import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const [id] = useContext(IdsContext);
   const [reasonText, setReasonText] = useState("");
 
   const [, , reFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const declineFunc = () => {
     axios
@@ -28,7 +29,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -41,7 +42,10 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          declineFunc();
+        }
       });
   };
 

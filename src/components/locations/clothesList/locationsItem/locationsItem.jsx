@@ -6,6 +6,7 @@ import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
 import { LocationsDataContext } from "../../../../context/locationsDataContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
+import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 
 export default function LocationsItem({
   data,
@@ -16,10 +17,10 @@ export default function LocationsItem({
   showProducts,
 }) {
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const [, , reFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const approveFunc = () => {
     axios
@@ -31,7 +32,7 @@ export default function LocationsItem({
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -43,7 +44,10 @@ export default function LocationsItem({
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          approveFunc();
+        }
       });
   };
 

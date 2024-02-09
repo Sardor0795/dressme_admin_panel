@@ -5,6 +5,7 @@ import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 import axios from "axios";
 import { IdsContext } from "../../../../context/idContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
+import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 
 export default function ClothesItem({
   data,
@@ -15,9 +16,9 @@ export default function ClothesItem({
   showProducts,
 }) {
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const [, , reFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const approveFunc = () => {
     axios
@@ -29,7 +30,7 @@ export default function ClothesItem({
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -40,7 +41,10 @@ export default function ClothesItem({
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          approveFunc();
+        }
       });
   };
 

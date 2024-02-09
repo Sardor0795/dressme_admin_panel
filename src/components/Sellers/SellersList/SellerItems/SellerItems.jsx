@@ -8,6 +8,7 @@ import { SellersDataContext } from "../../../../context/sellersDataContext";
 import { ShopsDataContext } from "../../../../context/shopsDataContext";
 import { LocationsDataContext } from "../../../../context/locationsDataContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
+import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 
 export default function SellerItems({
   data,
@@ -21,9 +22,9 @@ export default function SellerItems({
   const [, , shopsReFetch] = useContext(ShopsDataContext);
   const [, , locationsReFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const approveFunc = () => {
     axios
@@ -35,7 +36,7 @@ export default function SellerItems({
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -49,14 +50,14 @@ export default function SellerItems({
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          approveFunc();
+        }
       });
   };
 
   const [, setId] = useContext(IdsContext);
-
-  // console.log(showSellers, 'showSellers');
-  // console.log(data, 'data-items-seller');
 
   return (
     <div className="flex items-center w-full">

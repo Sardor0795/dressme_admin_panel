@@ -6,23 +6,24 @@ import axios from "axios";
 import { SellersContext } from "../../context/sellersContext";
 import { SellersDataContext } from "../../context/sellersDataContext";
 import { toast } from "react-toastify";
+import { ReFreshTokenContext } from "../../context/reFreshToken";
 
 export const MoreAbout = () => {
   const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
   const [data, setData] = useState([]);
   const [, , reFetch] = useContext(SellersDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const dataTypeIsPersonal = data?.seller_type?.type_ru === "Физическое лицо";
 
   const navigate = useNavigate();
   const params = useParams();
-  let token = sessionStorage.getItem("token");
 
   useEffect(() => {
     axios(`${url}/api/admin/sellers/${params?.id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
       setData(d?.data?.seller);
@@ -39,7 +40,7 @@ export const MoreAbout = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
@@ -51,7 +52,10 @@ export const MoreAbout = () => {
         }
       })
       .catch((v) => {
-        console.log(v);
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          approveFunc();
+        }
       });
   };
 
