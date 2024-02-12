@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { XIcon } from "../../../../assets/icon";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
 import { toast } from "react-toastify";

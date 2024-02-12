@@ -123,49 +123,50 @@ export default function SellersList() {
 
   console.log(massiveCheckeds, "massiveCheckeds");
 
-  const [, setSomeChecked] = useState(false);
+  const [someChecked, setSomeChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
 
   const allApproveFunc = () => {
-    let formData = new FormData();
-    formData.append("status", "approved");
+    // let formData = new FormData();
+    // formData.append("status", "approved");
     // if (massiveCheckeds) {
     //   massiveCheckeds.forEach((id) => {
-    //     form.append("ids[]", id);
+    //     formData.append("ids[]", id);
     //   });
     // }
 
-    console.log(formData);
-    console.log(massiveCheckeds);
+    // console.log(formData);
+    // console.log(massiveCheckeds);
 
-    // axios
-    //   .post(
-    //     `${url}/api/admin/massive-approve-sellers`,
-    //     {
-    //       form,
-    //     },
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-    //       },
-    //     }
-    //   )
-    //   .then((d) => {
-    //     if (d.status === 200) {
-    //       toast.success(d?.data?.message);
-    //       reFetch();
-    //       shopsReFetch();
-    //       locationsReFetch();
-    //       clothesReFetch();
-    //     }
-    //   })
-    //   .catch((v) => {
-    //     if (v?.response?.status === 401) {
-    //       reFreshTokenFunc();
-    //       allApproveFunc();
-    //     }
-    //   });
+    axios
+      .post(
+        `${url}/api/admin/massive-approve-sellers`,
+        {
+          status: "approved",
+          "ids[]": "1",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((d) => {
+        if (d.status === 200) {
+          toast.success(d?.data?.message);
+          reFetch();
+          shopsReFetch();
+          locationsReFetch();
+          clothesReFetch();
+        }
+      })
+      .catch((v) => {
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          allApproveFunc();
+        }
+      });
   };
 
   return (
@@ -618,7 +619,9 @@ export default function SellersList() {
           {dataCount > 0 ? (
             <div className="md:mb-[10px] flex items-center text-tableTextTitle">
               <div
-                onClick={() => {}}
+                onClick={() => {
+                  setAllChecked(!allChecked);
+                }}
                 className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
                   allChecked
                     ? "bg-[#007DCA] border-[#007DCA]"
@@ -693,6 +696,7 @@ export default function SellersList() {
                         massiveCheckeds={massiveCheckeds}
                         showSellers={showSellers}
                         allChecked={allChecked}
+                        setSomeChecked={setSomeChecked}
                       />
                     );
                   }
@@ -714,6 +718,7 @@ export default function SellersList() {
                         massiveCheckeds={massiveCheckeds}
                         showSellers={showSellers}
                         allChecked={allChecked}
+                        setSomeChecked={setSomeChecked}
                       />
                     );
                   }
@@ -735,6 +740,7 @@ export default function SellersList() {
                         massiveCheckeds={massiveCheckeds}
                         showSellers={showSellers}
                         allChecked={allChecked}
+                        setSomeChecked={setSomeChecked}
                       />
                     );
                   }
@@ -756,6 +762,7 @@ export default function SellersList() {
                         massiveCheckeds={massiveCheckeds}
                         showSellers={showSellers}
                         allChecked={allChecked}
+                        setSomeChecked={setSomeChecked}
                       />
                     );
                   }

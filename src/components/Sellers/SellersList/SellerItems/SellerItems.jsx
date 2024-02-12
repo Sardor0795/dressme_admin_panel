@@ -19,6 +19,7 @@ export default function SellerItems({
   setMassiveCheckeds,
   massiveCheckeds,
   allChecked,
+  setSomeChecked,
 }) {
   const [, , reFetch] = useContext(SellersDataContext);
   const [, , shopsReFetch] = useContext(ShopsDataContext);
@@ -86,6 +87,7 @@ export default function SellerItems({
     <div className="flex items-center w-full">
       <div
         onClick={() => {
+          setSomeChecked(true);
           if (massiveCheckeds?.includes(data?.id)) {
             setMassiveCheckeds((prevState) =>
               prevState.filter((id) => id !== data?.id)
