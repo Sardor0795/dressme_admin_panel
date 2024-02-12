@@ -22,10 +22,10 @@ export default function SellerItems({
   setSomeChecked,
 }) {
   const [, , reFetch] = useContext(SellersDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
   const [, , shopsReFetch] = useContext(ShopsDataContext);
   const [, , locationsReFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
-  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const url = "https://api.dressme.uz";
 

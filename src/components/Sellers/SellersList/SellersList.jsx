@@ -270,17 +270,33 @@ export default function SellersList() {
               {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        allApproveFunc();
+                      }
+                    }}
+                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
                     Одобрить
                   </button>
                   <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setModalOpen(true);
+                      }
+                    }}
+                    className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                   >
                     Отказать
                   </button>
@@ -289,9 +305,17 @@ export default function SellersList() {
               {showSellers === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setModalOpen(true);
+                      }
+                    }}
+                    className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                   >
                     Отказать
                   </button>
@@ -300,9 +324,17 @@ export default function SellersList() {
               {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        allApproveFunc();
+                      }
+                    }}
+                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
                     Одобрить
                   </button>
@@ -311,9 +343,17 @@ export default function SellersList() {
               {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        allApproveFunc();
+                      }
+                    }}
+                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >
                     Одобрить
                   </button>
@@ -342,17 +382,33 @@ export default function SellersList() {
                 {showSellers === "pending" ? (
                   <div className="flex items-center ml-auto">
                     <button
-                      onClick={allApproveFunc}
+                      onClick={() => {
+                        if (massiveCheckeds?.length > 0) {
+                          allApproveFunc();
+                        }
+                      }}
+                      className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                        massiveCheckeds?.length > 0
+                          ? ""
+                          : "opacity-50 cursor-not-allowed"
+                      }`}
                       type="button"
-                      className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                     >
                       Одобрить
                     </button>
                     <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                     <button
-                      onClick={() => setModalOpen(true)}
+                      onClick={() => {
+                        if (massiveCheckeds?.length > 0) {
+                          setModalOpen(true);
+                        }
+                      }}
+                      className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                        massiveCheckeds?.length > 0
+                          ? ""
+                          : "opacity-50 cursor-not-allowed"
+                      }`}
                       type="button"
-                      className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                     >
                       Отказать
                     </button>
@@ -361,9 +417,17 @@ export default function SellersList() {
                 {showSellers === "approved" ? (
                   <div className="flex items-center ml-auto">
                     <button
-                      onClick={() => setModalOpen(true)}
+                      onClick={() => {
+                        if (massiveCheckeds?.length > 0) {
+                          setModalOpen(true);
+                        }
+                      }}
+                      className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                        massiveCheckeds?.length > 0
+                          ? ""
+                          : "opacity-50 cursor-not-allowed"
+                      }`}
                       type="button"
-                      className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                     >
                       Отказать
                     </button>
@@ -372,9 +436,17 @@ export default function SellersList() {
                 {showSellers === "declined" ? (
                   <div className="flex items-center ml-auto">
                     <button
-                      onClick={allApproveFunc}
+                      onClick={() => {
+                        if (massiveCheckeds?.length > 0) {
+                          allApproveFunc();
+                        }
+                      }}
                       type="button"
-                      className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                      className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                        massiveCheckeds?.length > 0
+                          ? ""
+                          : "opacity-50 cursor-not-allowed"
+                      }`}
                     >
                       Одобрить
                     </button>
@@ -383,9 +455,17 @@ export default function SellersList() {
                 {showSellers === "updated" ? (
                   <div className="flex items-center ml-auto">
                     <button
-                      onClick={allApproveFunc}
+                      onClick={() => {
+                        if (massiveCheckeds?.length > 0) {
+                          allApproveFunc();
+                        }
+                      }}
                       type="button"
-                      className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+                      className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                        massiveCheckeds?.length > 0
+                          ? ""
+                          : "opacity-50 cursor-not-allowed"
+                      }`}
                     >
                       Одобрить
                     </button>
@@ -443,9 +523,17 @@ export default function SellersList() {
                   {showSellers === "pending" ? (
                     <div className="flex items-center ml-auto">
                       <button
-                        // onClick={() => approveFunc()}
+                        onClick={() => {
+                          if (massiveCheckeds?.length > 0) {
+                            allApproveFunc();
+                          }
+                        }}
+                        className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                          massiveCheckeds?.length > 0
+                            ? ""
+                            : "opacity-50 cursor-not-allowed"
+                        }`}
                         type="button"
-                        className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                       >
                         Одобрить
                       </button>
@@ -462,9 +550,17 @@ export default function SellersList() {
                   {showSellers === "approved" ? (
                     <div className="flex items-center ml-auto">
                       <button
-                        onClick={() => setModalOpen(true)}
+                        onClick={() => {
+                          if (massiveCheckeds?.length > 0) {
+                            setModalOpen(true);
+                          }
+                        }}
+                        className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                          massiveCheckeds?.length > 0
+                            ? ""
+                            : "opacity-50 cursor-not-allowed"
+                        }`}
                         type="button"
-                        className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                       >
                         Отказать
                       </button>
@@ -473,9 +569,17 @@ export default function SellersList() {
                   {showSellers === "declined" ? (
                     <div className="flex items-center ml-auto">
                       <button
-                        // onClick={() => approveFunc()}
+                        onClick={() => {
+                          if (massiveCheckeds?.length > 0) {
+                            allApproveFunc();
+                          }
+                        }}
+                        className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                          massiveCheckeds?.length > 0
+                            ? ""
+                            : "opacity-50 cursor-not-allowed"
+                        }`}
                         type="button"
-                        className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                       >
                         Одобрить
                       </button>
@@ -484,9 +588,17 @@ export default function SellersList() {
                   {showSellers === "updated" ? (
                     <div className="flex items-center ml-auto">
                       <button
-                        // onClick={() => approveFunc()}
+                        onClick={() => {
+                          if (massiveCheckeds?.length > 0) {
+                            allApproveFunc();
+                          }
+                        }}
+                        className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                          massiveCheckeds?.length > 0
+                            ? ""
+                            : "opacity-50 cursor-not-allowed"
+                        }`}
                         type="button"
-                        className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                       >
                         Одобрить
                       </button>
@@ -708,9 +820,9 @@ export default function SellersList() {
                         index={index}
                         setModalOpen={setModalOpen}
                         toast={toast}
+                        showSellers={showSellers}
                         setMassiveCheckeds={setMassiveCheckeds}
                         massiveCheckeds={massiveCheckeds}
-                        showSellers={showSellers}
                         allChecked={allChecked}
                         setSomeChecked={setSomeChecked}
                       />
