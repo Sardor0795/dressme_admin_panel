@@ -183,17 +183,24 @@ export default function SellerItems({
         <div className="flex items-center w-full justify-between mb-[8px]">
           <div
             onClick={() => {
-              click(data?.id);
+              setSomeChecked(true);
+              if (massiveCheckeds?.includes(data?.id)) {
+                setMassiveCheckeds((prevState) =>
+                  prevState.filter((id) => id !== data?.id)
+                );
+              } else {
+                setMassiveCheckeds([...massiveCheckeds, data?.id]);
+              }
             }}
             className={`cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-              data?.isCheck
+              ckeck
                 ? "bg-[#007DCA] border-[#007DCA]"
                 : "bg-white border-checkboxBorder"
             } md:hidden flex items-center justify-center rounded mr-[8px]`}
           >
             <span
               className={`${
-                data?.isCheck ? "flex items-center justify-center" : "hidden"
+                ckeck ? "flex items-center justify-center" : "hidden"
               }`}
             >
               <CheckIcon size={"small"} />

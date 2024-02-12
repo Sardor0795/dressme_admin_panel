@@ -121,7 +121,7 @@ export default function SellersList() {
 
   const [massiveCheckeds, setMassiveCheckeds] = useState([]);
 
-  console.log(massiveCheckeds, "massiveCheckeds");
+  // console.log(massiveCheckeds, "massiveCheckeds");
 
   const [someChecked, setSomeChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
@@ -396,20 +396,25 @@ export default function SellersList() {
           </div>
 
           <div
-            onClick={() => {}}
+            onClick={() => {
+              setAllChecked(!allChecked);
+              setSomeChecked(false);
+            }}
             className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
           >
             Выбрать все
             <div
               className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-                allChecked
+                allChecked && someChecked === false
                   ? "bg-[#007DCA] border-[#007DCA]"
                   : "bg-white border-checkboxBorder"
               } flex items-center justify-center rounded`}
             >
               <span
                 className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
+                  allChecked && someChecked === false
+                    ? "flex items-center justify-center"
+                    : "hidden"
                 }`}
               >
                 <CheckIcon size={"small"} />
@@ -492,20 +497,25 @@ export default function SellersList() {
             </div>
 
             <div
-              onClick={() => {}}
+              onClick={() => {
+                setAllChecked(!allChecked);
+                setSomeChecked(false);
+              }}
               className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
             >
               Выбрать все
               <div
                 className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-                  allChecked
+                  allChecked && someChecked === false
                     ? "bg-[#007DCA] border-[#007DCA]"
                     : "bg-white border-checkboxBorder"
                 } flex items-center justify-center rounded`}
               >
                 <span
                   className={`${
-                    allChecked ? "flex items-center justify-center" : "hidden"
+                    allChecked && someChecked === false
+                      ? "flex items-center justify-center"
+                      : "hidden"
                   }`}
                 >
                   <CheckIcon size={"small"} />
@@ -593,20 +603,23 @@ export default function SellersList() {
           <div
             onClick={() => {
               setAllChecked(!allChecked);
+              setSomeChecked(false);
             }}
             className="select-none cursor-pointer hidden md:flex items-center text-base font-AeonikProMedium text-[#303030]"
           >
             Выбрать все
             <div
               className={`ml-[10px] cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
-                allChecked
+                allChecked && someChecked === false
                   ? "bg-[#007DCA] border-[#007DCA]"
                   : "bg-white border-checkboxBorder"
               } flex items-center justify-center rounded`}
             >
               <span
                 className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
+                  allChecked && someChecked === false
+                    ? "flex items-center justify-center"
+                    : "hidden"
                 }`}
               >
                 <CheckIcon size={"small"} />
@@ -621,16 +634,19 @@ export default function SellersList() {
               <div
                 onClick={() => {
                   setAllChecked(!allChecked);
+                  setSomeChecked(false);
                 }}
                 className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
-                  allChecked
+                  allChecked && someChecked === false
                     ? "bg-[#007DCA] border-[#007DCA]"
                     : "bg-white border-checkboxBorder"
                 } hidden md:flex items-center justify-center rounded mr-[8px]`}
               >
                 <span
                   className={`${
-                    allChecked ? "flex items-center justify-center" : "hidden"
+                    allChecked && someChecked === false
+                      ? "flex items-center justify-center"
+                      : "hidden"
                   }`}
                 >
                   <CheckIcon />
