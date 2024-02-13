@@ -29,6 +29,8 @@ export default function LocationsList() {
 
   const [filteredData, setFilteredData] = useState([]);
 
+  console.log(filteredData);
+
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
@@ -88,38 +90,10 @@ export default function LocationsList() {
       top: 0,
     });
   }, []);
-  const [, setSomeChecked] = useState(false);
-  const [allChecked, setAllChecked] = useState(false);
 
-  let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
+  // let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
 
-  const onCheck = (id) => {
-    if (id === "allCheck") {
-      let newArr = data?.map((item) => {
-        return { ...item, isCheck: true };
-      });
-      setData(newArr);
-    } else if (id === "allNotCheck") {
-      let newArr = data?.map((item) => {
-        return { ...item, isCheck: false };
-      });
-      setData(newArr);
-    } else {
-      let newArr = data?.map((item) => {
-        return item.id === id ? { ...item, isCheck: !item.isCheck } : item;
-      });
-      setData(newArr);
-    }
-  };
-
-  useEffect(() => {
-    let newData = data?.filter((item) => item.isCheck === true);
-    if (newData?.length) {
-      setSomeChecked(true);
-    } else {
-      setSomeChecked(false);
-    }
-  }, [data]);
+  const onCheck = (id) => {};
 
   // Products Context
   const [showSellers, setShowSellers] = useContext(SellersContext);
@@ -154,6 +128,106 @@ export default function LocationsList() {
       }
     });
   }, []);
+
+  // Select all -----------------
+
+  const [someChecked, setSomeChecked] = useState(false);
+  const [allChecked, setAllChecked] = useState(false);
+
+  const [massiveCheckeds, setMassiveCheckeds] = useState([]);
+  const [checkedShops, setCheckedShops] = useState([]);
+
+  console.log(massiveCheckeds);
+  console.log(checkedShops);
+
+  const shopIdCheck = (id) => {
+    const idString = id.toString();
+
+    const productIDs = filteredData
+      ?.flatMap((seller) => {
+        return seller?.shops?.flatMap((shop) => {
+          // Filter products by shop_id
+          const filteredProducts = shop?.shop_locations?.filter((product) => {
+            // Convert shop_id to string for comparison
+            return product?.shop_id === idString;
+          });
+
+          // Extract product IDs if shop_id matches
+          const matchingProductIDs = filteredProducts?.map((product) => {
+            // Convert product ID to number
+            return parseInt(product?.id);
+          });
+
+          return matchingProductIDs;
+        });
+      })
+      .flat(); // Flatten the array of arrays
+
+    // Set the array of product IDs
+    setMassiveCheckeds([...massiveCheckeds, ...productIDs]);
+  };
+
+  const delCheck = (id) => {
+    const idString = id.toString();
+
+    const productIDs = filteredData
+      ?.flatMap((seller) => {
+        return seller?.shops?.flatMap((shop) => {
+          // Filter products by shop_id
+          const filteredProducts = shop?.shop_locations?.filter((product) => {
+            // Convert shop_id to string for comparison
+            return product?.shop_id === idString;
+          });
+
+          // Extract product IDs if shop_id matches
+          const matchingProductIDs = filteredProducts?.map((product) => {
+            // Convert product ID to number
+            return parseInt(product?.id);
+          });
+
+          return matchingProductIDs;
+        });
+      })
+      .flat(); // Flatten the array of arrays
+
+    // Set the array of product IDs
+
+    const filteredArray = massiveCheckeds.filter(
+      (num) => !productIDs.includes(num)
+    );
+
+    setMassiveCheckeds([...filteredArray]);
+  };
+
+  const selectAllIds = () => {
+    const result = filteredData?.reduce(
+      (acc, seller) => {
+        seller?.shops?.forEach((shop) => {
+          acc?.productIDs?.push(
+            ...shop?.shop_locations
+              .filter((product) => product?.status === showSellers)
+              .map((product) => parseInt(product?.id))
+          );
+          acc?.shopIDs?.push(parseInt(shop?.id));
+        });
+        return acc;
+      },
+      { productIDs: [], shopIDs: [] }
+    );
+
+    // Set the arrays
+    setMassiveCheckeds([...result.productIDs]);
+    setCheckedShops([...result.shopIDs]);
+  };
+
+  useEffect(() => {
+    if (allChecked) {
+      selectAllIds();
+    } else {
+      setCheckedShops([]);
+      setMassiveCheckeds([]);
+    }
+  }, [allChecked]);
 
   return (
     <div>
@@ -273,7 +347,10 @@ export default function LocationsList() {
 
         <div className="flex mb-[24px] md:hidden">
           <div
-            onClick={() => setShowSellers("pending")}
+            onClick={() => {
+              setAllChecked(false);
+              setShowSellers("pending");
+            }}
             className={`${
               showSellers === "pending"
                 ? "text-[#007DCA] border-[#007DCA]"
@@ -284,7 +361,10 @@ export default function LocationsList() {
             <div>({waitingCount})</div>
           </div>
           <div
-            onClick={() => setShowSellers("approved")}
+            onClick={() => {
+              setAllChecked(false);
+              setShowSellers("approved");
+            }}
             className={`${
               showSellers === "approved"
                 ? "text-[#007DCA] border-[#007DCA]"
@@ -295,7 +375,10 @@ export default function LocationsList() {
             <div>({allowedCount})</div>
           </div>
           <div
-            onClick={() => setShowSellers("declined")}
+            onClick={() => {
+              setAllChecked(false);
+              setShowSellers("declined");
+            }}
             className={`${
               showSellers === "declined"
                 ? "text-[#007DCA] border-[#007DCA]"
@@ -306,7 +389,10 @@ export default function LocationsList() {
             <div>({notAllowedCount})</div>
           </div>
           <div
-            onClick={() => setShowSellers("updated")}
+            onClick={() => {
+              setAllChecked(false);
+              setShowSellers("updated");
+            }}
             className={`${
               showSellers === "updated"
                 ? "text-[#007DCA] border-[#007DCA]"
@@ -322,7 +408,7 @@ export default function LocationsList() {
           <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
             <div
               onClick={() => {
-                onCheck(checkIndicator);
+                // onCheck(checkIndicator);
                 setAllChecked(!allChecked);
               }}
               className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
@@ -415,7 +501,10 @@ export default function LocationsList() {
           <section className="flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
-              onClick={() => setShowSellers("pending")}
+              onClick={() => {
+                setAllChecked(false);
+                setShowSellers("pending");
+              }}
               className={`${
                 showSellers === "pending"
                   ? "text-weatherWinterColor border-[1.5px]"
@@ -430,7 +519,10 @@ export default function LocationsList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("approved")}
+              onClick={() => {
+                setAllChecked(false);
+                setShowSellers("approved");
+              }}
               className={`${
                 showSellers === "approved"
                   ? "text-weatherWinterColor border-[1.5px]"
@@ -445,7 +537,10 @@ export default function LocationsList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("declined")}
+              onClick={() => {
+                setAllChecked(false);
+                setShowSellers("declined");
+              }}
               className={`${
                 showSellers === "declined"
                   ? "text-weatherWinterColor border-[1.5px]"
@@ -460,7 +555,10 @@ export default function LocationsList() {
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
               type="button"
-              onClick={() => setShowSellers("updated")}
+              onClick={() => {
+                setAllChecked(false);
+                setShowSellers("updated");
+              }}
               className={`${
                 showSellers === "updated"
                   ? "text-weatherWinterColor border-[1.5px]"
@@ -476,7 +574,6 @@ export default function LocationsList() {
 
           <div
             onClick={() => {
-              onCheck(checkIndicator);
               setAllChecked(!allChecked);
             }}
             className="hidden md:flex items-center cursor-pointer select-none font-AeonikProMedium"
@@ -521,37 +618,62 @@ export default function LocationsList() {
                             <div key={item_2?.id}>
                               {item_2?.shop_locations?.length ? (
                                 <div className="w-full">
-                                  <div className="w-full">
+                                  <div className="">
                                     {item_2?.shop_locations?.map((item_3) => {
                                       if (item_3?.status === "pending") {
                                         ++index;
                                       }
+
                                       return (
                                         <div key={item_3?.id}>
                                           {item_3?.status === "pending" ? (
                                             <div className="mb-8">
                                               {index === 1 ? (
-                                                <div className="w-full">
+                                                <div className="w-ful">
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
                                                         onClick={() => {
-                                                          onCheck(
-                                                            checkIndicator
-                                                          );
-                                                          setAllChecked(
-                                                            !allChecked
-                                                          );
+                                                          if (
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
+                                                          ) {
+                                                            setCheckedShops(
+                                                              (prevState) =>
+                                                                prevState.filter(
+                                                                  (id) =>
+                                                                    id !==
+                                                                    item_2?.id
+                                                                )
+                                                            );
+                                                            delCheck(
+                                                              item_2?.id
+                                                            );
+                                                          } else {
+                                                            setCheckedShops([
+                                                              ...checkedShops,
+                                                              item_2?.id,
+                                                            ]);
+
+                                                            shopIdCheck(
+                                                              item_2?.id
+                                                            );
+                                                          }
                                                         }}
                                                         className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                          allChecked
+                                                          checkedShops?.includes(
+                                                            item_2?.id
+                                                          )
                                                             ? "bg-[#007DCA] border-[#007DCA]"
                                                             : "bg-white border-checkboxBorder"
                                                         } flex items-center justify-center rounded mr-[8px]`}
                                                       >
                                                         <span
                                                           className={`${
-                                                            allChecked
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
                                                               ? "hidden md:flex items-center justify-center"
                                                               : "hidden"
                                                           }`}
@@ -560,7 +682,9 @@ export default function LocationsList() {
                                                         </span>
                                                         <span
                                                           className={`${
-                                                            allChecked
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
                                                               ? "flex md:hidden items-center justify-center"
                                                               : "hidden"
                                                           }`}
@@ -571,14 +695,14 @@ export default function LocationsList() {
                                                         </span>
                                                       </div>
                                                       <button
-                                                        onClick={() => {
-                                                          onCheck(
-                                                            checkIndicator
-                                                          );
-                                                          setAllChecked(
-                                                            !allChecked
-                                                          );
-                                                        }}
+                                                        // onClick={() => {
+                                                        //   onCheck(
+                                                        //     checkIndicator
+                                                        //   );
+                                                        //   setAllChecked(
+                                                        //     !allChecked
+                                                        //   );
+                                                        // }}
                                                         className="text-[#007DCA] mr-[7px]"
                                                       >
                                                         {item?.name}
@@ -628,10 +752,18 @@ export default function LocationsList() {
                                                 data={item_3}
                                                 key={item_3?.id}
                                                 index={index}
-                                                click={onCheck}
                                                 setModalOpen={setModalOpen}
                                                 toast={toast}
                                                 showSellers={showSellers}
+                                                setMassiveCheckeds={
+                                                  setMassiveCheckeds
+                                                }
+                                                massiveCheckeds={
+                                                  massiveCheckeds
+                                                }
+                                                allChecked={allChecked}
+                                                setSomeChecked={setSomeChecked}
+                                                checkedShops={checkedShops}
                                               />
                                             </div>
                                           ) : null}
@@ -677,22 +809,46 @@ export default function LocationsList() {
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
                                                         onClick={() => {
-                                                          onCheck(
-                                                            checkIndicator
-                                                          );
-                                                          setAllChecked(
-                                                            !allChecked
-                                                          );
+                                                          if (
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
+                                                          ) {
+                                                            setCheckedShops(
+                                                              (prevState) =>
+                                                                prevState.filter(
+                                                                  (id) =>
+                                                                    id !==
+                                                                    item_2?.id
+                                                                )
+                                                            );
+                                                            delCheck(
+                                                              item_2?.id
+                                                            );
+                                                          } else {
+                                                            setCheckedShops([
+                                                              ...checkedShops,
+                                                              item_2?.id,
+                                                            ]);
+
+                                                            shopIdCheck(
+                                                              item_2?.id
+                                                            );
+                                                          }
                                                         }}
                                                         className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                          allChecked
+                                                          checkedShops?.includes(
+                                                            item_2?.id
+                                                          )
                                                             ? "bg-[#007DCA] border-[#007DCA]"
                                                             : "bg-white border-checkboxBorder"
                                                         } flex items-center justify-center rounded mr-[8px]`}
                                                       >
                                                         <span
                                                           className={`${
-                                                            allChecked
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
                                                               ? "hidden md:flex items-center justify-center"
                                                               : "hidden"
                                                           }`}
@@ -701,7 +857,9 @@ export default function LocationsList() {
                                                         </span>
                                                         <span
                                                           className={`${
-                                                            allChecked
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
                                                               ? "flex md:hidden items-center justify-center"
                                                               : "hidden"
                                                           }`}
@@ -712,14 +870,14 @@ export default function LocationsList() {
                                                         </span>
                                                       </div>
                                                       <button
-                                                        onClick={() => {
-                                                          onCheck(
-                                                            checkIndicator
-                                                          );
-                                                          setAllChecked(
-                                                            !allChecked
-                                                          );
-                                                        }}
+                                                        // onClick={() => {
+                                                        //   onCheck(
+                                                        //     checkIndicator
+                                                        //   );
+                                                        //   setAllChecked(
+                                                        //     !allChecked
+                                                        //   );
+                                                        // }}
                                                         className="text-[#007DCA] mr-[7px]"
                                                       >
                                                         {item?.name}
@@ -769,10 +927,18 @@ export default function LocationsList() {
                                                 data={item_3}
                                                 key={item_3?.id}
                                                 index={index}
-                                                click={onCheck}
                                                 setModalOpen={setModalOpen}
                                                 toast={toast}
                                                 showSellers={showSellers}
+                                                setMassiveCheckeds={
+                                                  setMassiveCheckeds
+                                                }
+                                                massiveCheckeds={
+                                                  massiveCheckeds
+                                                }
+                                                allChecked={allChecked}
+                                                setSomeChecked={setSomeChecked}
+                                                checkedShops={checkedShops}
                                               />
                                             </div>
                                           ) : null}
@@ -813,27 +979,51 @@ export default function LocationsList() {
                                           {item_3?.status === "declined" ? (
                                             <div className="mb-8">
                                               {index === 1 ? (
-                                                <div className="w-full">
+                                                <div className="w-ful">
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
                                                         onClick={() => {
-                                                          onCheck(
-                                                            checkIndicator
-                                                          );
-                                                          setAllChecked(
-                                                            !allChecked
-                                                          );
+                                                          if (
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
+                                                          ) {
+                                                            setCheckedShops(
+                                                              (prevState) =>
+                                                                prevState.filter(
+                                                                  (id) =>
+                                                                    id !==
+                                                                    item_2?.id
+                                                                )
+                                                            );
+                                                            delCheck(
+                                                              item_2?.id
+                                                            );
+                                                          } else {
+                                                            setCheckedShops([
+                                                              ...checkedShops,
+                                                              item_2?.id,
+                                                            ]);
+
+                                                            shopIdCheck(
+                                                              item_2?.id
+                                                            );
+                                                          }
                                                         }}
                                                         className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                          allChecked
+                                                          checkedShops?.includes(
+                                                            item_2?.id
+                                                          )
                                                             ? "bg-[#007DCA] border-[#007DCA]"
                                                             : "bg-white border-checkboxBorder"
                                                         } flex items-center justify-center rounded mr-[8px]`}
                                                       >
                                                         <span
                                                           className={`${
-                                                            allChecked
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
                                                               ? "hidden md:flex items-center justify-center"
                                                               : "hidden"
                                                           }`}
@@ -842,7 +1032,9 @@ export default function LocationsList() {
                                                         </span>
                                                         <span
                                                           className={`${
-                                                            allChecked
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
                                                               ? "flex md:hidden items-center justify-center"
                                                               : "hidden"
                                                           }`}
@@ -853,14 +1045,14 @@ export default function LocationsList() {
                                                         </span>
                                                       </div>
                                                       <button
-                                                        onClick={() => {
-                                                          onCheck(
-                                                            checkIndicator
-                                                          );
-                                                          setAllChecked(
-                                                            !allChecked
-                                                          );
-                                                        }}
+                                                        // onClick={() => {
+                                                        //   onCheck(
+                                                        //     checkIndicator
+                                                        //   );
+                                                        //   setAllChecked(
+                                                        //     !allChecked
+                                                        //   );
+                                                        // }}
                                                         className="text-[#007DCA] mr-[7px]"
                                                       >
                                                         {item?.name}
@@ -910,10 +1102,18 @@ export default function LocationsList() {
                                                 data={item_3}
                                                 key={item_3?.id}
                                                 index={index}
-                                                click={onCheck}
                                                 setModalOpen={setModalOpen}
                                                 toast={toast}
                                                 showSellers={showSellers}
+                                                setMassiveCheckeds={
+                                                  setMassiveCheckeds
+                                                }
+                                                massiveCheckeds={
+                                                  massiveCheckeds
+                                                }
+                                                allChecked={allChecked}
+                                                setSomeChecked={setSomeChecked}
+                                                checkedShops={checkedShops}
                                               />
                                             </div>
                                           ) : null}
@@ -959,22 +1159,46 @@ export default function LocationsList() {
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
                                                         onClick={() => {
-                                                          onCheck(
-                                                            checkIndicator
-                                                          );
-                                                          setAllChecked(
-                                                            !allChecked
-                                                          );
+                                                          if (
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
+                                                          ) {
+                                                            setCheckedShops(
+                                                              (prevState) =>
+                                                                prevState.filter(
+                                                                  (id) =>
+                                                                    id !==
+                                                                    item_2?.id
+                                                                )
+                                                            );
+                                                            delCheck(
+                                                              item_2?.id
+                                                            );
+                                                          } else {
+                                                            setCheckedShops([
+                                                              ...checkedShops,
+                                                              item_2?.id,
+                                                            ]);
+
+                                                            shopIdCheck(
+                                                              item_2?.id
+                                                            );
+                                                          }
                                                         }}
                                                         className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                          allChecked
+                                                          checkedShops?.includes(
+                                                            item_2?.id
+                                                          )
                                                             ? "bg-[#007DCA] border-[#007DCA]"
                                                             : "bg-white border-checkboxBorder"
                                                         } flex items-center justify-center rounded mr-[8px]`}
                                                       >
                                                         <span
                                                           className={`${
-                                                            allChecked
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
                                                               ? "hidden md:flex items-center justify-center"
                                                               : "hidden"
                                                           }`}
@@ -983,7 +1207,9 @@ export default function LocationsList() {
                                                         </span>
                                                         <span
                                                           className={`${
-                                                            allChecked
+                                                            checkedShops?.includes(
+                                                              item_2?.id
+                                                            )
                                                               ? "flex md:hidden items-center justify-center"
                                                               : "hidden"
                                                           }`}
@@ -994,14 +1220,14 @@ export default function LocationsList() {
                                                         </span>
                                                       </div>
                                                       <button
-                                                        onClick={() => {
-                                                          onCheck(
-                                                            checkIndicator
-                                                          );
-                                                          setAllChecked(
-                                                            !allChecked
-                                                          );
-                                                        }}
+                                                        // onClick={() => {
+                                                        //   onCheck(
+                                                        //     checkIndicator
+                                                        //   );
+                                                        //   setAllChecked(
+                                                        //     !allChecked
+                                                        //   );
+                                                        // }}
                                                         className="text-[#007DCA] mr-[7px]"
                                                       >
                                                         {item?.name}
@@ -1051,10 +1277,18 @@ export default function LocationsList() {
                                                 data={item_3}
                                                 key={item_3?.id}
                                                 index={index}
-                                                click={onCheck}
                                                 setModalOpen={setModalOpen}
                                                 toast={toast}
                                                 showSellers={showSellers}
+                                                setMassiveCheckeds={
+                                                  setMassiveCheckeds
+                                                }
+                                                massiveCheckeds={
+                                                  massiveCheckeds
+                                                }
+                                                allChecked={allChecked}
+                                                setSomeChecked={setSomeChecked}
+                                                checkedShops={checkedShops}
                                               />
                                             </div>
                                           ) : null}

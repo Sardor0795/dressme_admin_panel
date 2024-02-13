@@ -38,7 +38,7 @@ export default function ClothesList() {
   const filterFunc = (e) => {
     const filtered = data?.map((seller) => {
       const filteredShops = seller?.shops?.map((shop) => {
-        const filteredProducts = shop?.products.filter((product) => {
+        const filteredProducts = shop?.products?.filter((product) => {
           return product?.name_ru
             .toLowerCase()
             .includes(e.target.value.toLowerCase());
@@ -141,9 +141,9 @@ export default function ClothesList() {
           });
 
           // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts.map((product) => {
+          const matchingProductIDs = filteredProducts?.map((product) => {
             // Convert product ID to number
-            return parseInt(product.id);
+            return parseInt(product?.id);
           });
 
           return matchingProductIDs;
@@ -162,15 +162,15 @@ export default function ClothesList() {
       ?.flatMap((seller) => {
         return seller?.shops?.flatMap((shop) => {
           // Filter products by shop_id
-          const filteredProducts = shop?.products.filter((product) => {
+          const filteredProducts = shop?.products?.filter((product) => {
             // Convert shop_id to string for comparison
             return product?.shop_id === idString;
           });
 
           // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts.map((product) => {
+          const matchingProductIDs = filteredProducts?.map((product) => {
             // Convert product ID to number
-            return parseInt(product.id);
+            return parseInt(product?.id);
           });
 
           return matchingProductIDs;
@@ -191,12 +191,12 @@ export default function ClothesList() {
     const result = filteredData?.reduce(
       (acc, seller) => {
         seller?.shops?.forEach((shop) => {
-          acc.productIDs.push(
-            ...shop.products
-              .filter((product) => product.status === showSellers)
-              .map((product) => parseInt(product.id))
+          acc?.productIDs?.push(
+            ...shop?.products
+              .filter((product) => product?.status === showSellers)
+              .map((product) => parseInt(product?.id))
           );
-          acc.shopIDs.push(parseInt(shop.id));
+          acc?.shopIDs?.push(parseInt(shop?.id));
         });
         return acc;
       },
@@ -204,8 +204,8 @@ export default function ClothesList() {
     );
 
     // Set the arrays
-    setMassiveCheckeds([...result.productIDs]);
-    setCheckedShops([...result.shopIDs]);
+    setMassiveCheckeds([...result?.productIDs]);
+    setCheckedShops([...result?.shopIDs]);
   };
 
   useEffect(() => {
@@ -335,7 +335,10 @@ export default function ClothesList() {
 
         <div className="flex mb-[24px] md:hidden">
           <div
-            onClick={() => setShowSellers("pending")}
+            onClick={() => {
+              setAllChecked(false);
+              setShowSellers("pending");
+            }}
             className={`${
               showSellers === "pending"
                 ? "text-[#007DCA] border-[#007DCA]"
@@ -346,7 +349,10 @@ export default function ClothesList() {
             <div>({waitingCount})</div>
           </div>
           <div
-            onClick={() => setShowSellers("approved")}
+            onClick={() => {
+              setAllChecked(false);
+              setShowSellers("approved");
+            }}
             className={`${
               showSellers === "approved"
                 ? "text-[#007DCA] border-[#007DCA]"
@@ -357,7 +363,10 @@ export default function ClothesList() {
             <div>({allowedCount})</div>
           </div>
           <div
-            onClick={() => setShowSellers("declined")}
+            onClick={() => {
+              setAllChecked(false);
+              setShowSellers("declined");
+            }}
             className={`${
               showSellers === "declined"
                 ? "text-[#007DCA] border-[#007DCA]"
@@ -368,7 +377,10 @@ export default function ClothesList() {
             <div>({notAllowedCount})</div>
           </div>
           <div
-            onClick={() => setShowSellers("updated")}
+            onClick={() => {
+              setAllChecked(false);
+              setShowSellers("updated");
+            }}
             className={`${
               showSellers === "updated"
                 ? "text-[#007DCA] border-[#007DCA]"
@@ -386,7 +398,7 @@ export default function ClothesList() {
           >
             <div
               onClick={() => {
-                onCheck(checkIndicator);
+                // onCheck(checkIndicator);
                 setAllChecked(!allChecked);
               }}
               className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"

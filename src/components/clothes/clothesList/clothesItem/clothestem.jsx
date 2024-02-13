@@ -188,16 +188,25 @@ export default function ClothesItem({
       <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px] last:mb-[0]">
         <div className="flex items-center w-full justify-between mb-[8px]">
           <div
-            onClick={() => {}}
+            onClick={() => {
+              setSomeChecked(true);
+              if (massiveCheckeds?.includes(data?.id)) {
+                setMassiveCheckeds((prevState) =>
+                  prevState.filter((id) => id !== data?.id)
+                );
+              } else {
+                setMassiveCheckeds([...massiveCheckeds, data?.id]);
+              }
+            }}
             className={`cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-              data?.isCheck
+              ckeck
                 ? "bg-[#007DCA] border-[#007DCA]"
                 : "bg-white border-checkboxBorder"
             } md:hidden flex items-center justify-center rounded mr-[8px]`}
           >
             <span
               className={`${
-                data?.isCheck ? "flex items-center justify-center" : "hidden"
+                ckeck ? "flex items-center justify-center" : "hidden"
               }`}
             >
               <CheckIcon size={"small"} />

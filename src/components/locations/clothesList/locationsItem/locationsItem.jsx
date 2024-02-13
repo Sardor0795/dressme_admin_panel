@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CheckIcon, NoImgIcon } from "../../../../assets/icon";
 import axios from "axios";
@@ -10,11 +10,14 @@ import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 
 export default function LocationsItem({
   data,
-  click,
   setModalOpen,
   index,
   toast,
   showProducts,
+  setMassiveCheckeds,
+  massiveCheckeds,
+  allChecked,
+  setSomeChecked,
 }) {
   const url = "https://api.dressme.uz";
 
@@ -53,22 +56,47 @@ export default function LocationsItem({
 
   const [, setId] = useContext(IdsContext);
 
+  const [ckeck, setCheck] = useState(false);
+
+  useEffect(() => {
+    if (massiveCheckeds?.includes(data?.id)) {
+      setCheck(true);
+    } else {
+      setCheck(false);
+    }
+  }, [massiveCheckeds]);
+
+  useEffect(() => {
+    if (allChecked) {
+      setMassiveCheckeds((prev) => [...prev, data?.id]);
+    } else {
+      setMassiveCheckeds((prevState) =>
+        prevState.filter((id) => id !== data?.id)
+      );
+    }
+  }, [allChecked]);
+
   return (
     <div className="flex items-center w-full mb-8">
       <div
         onClick={() => {
-          click(data?.id);
+          setSomeChecked(true);
+          if (massiveCheckeds?.includes(data?.id)) {
+            setMassiveCheckeds((prevState) =>
+              prevState.filter((id) => id !== data?.id)
+            );
+          } else {
+            setMassiveCheckeds([...massiveCheckeds, data?.id]);
+          }
         }}
         className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
-          data?.isCheck
+          ckeck
             ? "bg-[#007DCA] border-[#007DCA]"
             : "bg-white border-checkboxBorder"
         } hidden md:flex items-center justify-center rounded mr-[8px]`}
       >
         <span
-          className={`${
-            data?.isCheck ? "flex items-center justify-center" : "hidden"
-          }`}
+          className={`${ckeck ? "flex items-center justify-center" : "hidden"}`}
         >
           <CheckIcon />
         </span>
@@ -169,7 +197,32 @@ export default function LocationsItem({
 
         {/* Mobile */}
         <div className=" rounded-xl p-[10px] mb-1 md:hidden w-full">
-          <div className="mb-2">
+          <div className="mb-2 flex items-center">
+            <div
+              onClick={() => {
+                setSomeChecked(true);
+                if (massiveCheckeds?.includes(data?.id)) {
+                  setMassiveCheckeds((prevState) =>
+                    prevState.filter((id) => id !== data?.id)
+                  );
+                } else {
+                  setMassiveCheckeds([...massiveCheckeds, data?.id]);
+                }
+              }}
+              className={`cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
+                ckeck
+                  ? "bg-[#007DCA] border-[#007DCA]"
+                  : "bg-white border-checkboxBorder"
+              } md:hidden flex items-center justify-center rounded mr-[8px]`}
+            >
+              <span
+                className={`${
+                  ckeck ? "flex items-center justify-center" : "hidden"
+                }`}
+              >
+                <CheckIcon size={"small"} />
+              </span>
+            </div>
             <div className="w-full md:w-fit flex items-center justify-between text-xl font-AeonikProRegular ">
               <div className="w-[40%] border-b border-borderColor h-[2px]"></div>
               <span className="text-checkboxBorder">0{index}</span>
