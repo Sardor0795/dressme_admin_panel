@@ -25,7 +25,7 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
   const declineFunc = () => {
     axios
       .post(
-        `${url}/api/admin/decline-shop/${id}`,
+        `${url}/api/admin/decline-shop/${id?.id}`,
         {
           status: "declined",
           status_reason: reasonText,

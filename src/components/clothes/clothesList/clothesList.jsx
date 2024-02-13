@@ -336,7 +336,11 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                    className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -352,7 +356,11 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                    className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -500,7 +508,11 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className="text-[#E51515] text-base not-italic font-AeonikProMedium"
+                    className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -516,7 +528,11 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className="text-[#E51515] text-base not-italic font-AeonikProMedium"
+                    className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
