@@ -127,31 +127,21 @@ export default function SellersList() {
   const [allChecked, setAllChecked] = useState(false);
 
   const allApproveFunc = () => {
-    // let formData = new FormData();
-    // formData.append("status", "approved");
-    // if (massiveCheckeds) {
-    //   massiveCheckeds.forEach((id) => {
-    //     formData.append("ids[]", id);
-    //   });
-    // }
-
-    // console.log(formData);
-    // console.log(massiveCheckeds);
+    let formData = new FormData();
+    formData.append("status", "approved");
+    if (massiveCheckeds) {
+      massiveCheckeds.forEach((id) => {
+        formData.append("ids[]", id);
+      });
+    }
 
     axios
-      .post(
-        `${url}/api/admin/massive-approve-sellers`,
-        {
-          status: "approved",
-          "ids[]": "1",
+      .post(`${url}/api/admin/massive-approve-sellers`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-          },
-        }
-      )
+      })
       .then((d) => {
         if (d.status === 200) {
           toast.success(d?.data?.message);
