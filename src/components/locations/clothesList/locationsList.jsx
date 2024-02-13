@@ -104,8 +104,6 @@ export default function LocationsList() {
 
   // let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
 
-  const onCheck = (id) => {};
-
   // Products Context
   const [showSellers, setShowSellers] = useContext(SellersContext);
 
@@ -339,7 +337,7 @@ export default function LocationsList() {
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -357,7 +355,7 @@ export default function LocationsList() {
                     className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#85444485] cursor-not-allowed"
                     }`}
                   >
                     Отказать
@@ -377,7 +375,7 @@ export default function LocationsList() {
                     className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#85444485] cursor-not-allowed"
                     }`}
                   >
                     Отказать
@@ -395,7 +393,7 @@ export default function LocationsList() {
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -414,7 +412,7 @@ export default function LocationsList() {
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -533,7 +531,7 @@ export default function LocationsList() {
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -551,7 +549,7 @@ export default function LocationsList() {
                     className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#85444485] cursor-not-allowed"
                     }`}
                   >
                     Отказать
@@ -571,7 +569,7 @@ export default function LocationsList() {
                     className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#85444485] cursor-not-allowed"
                     }`}
                   >
                     Отказать
@@ -589,7 +587,7 @@ export default function LocationsList() {
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -608,7 +606,7 @@ export default function LocationsList() {
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
                   >

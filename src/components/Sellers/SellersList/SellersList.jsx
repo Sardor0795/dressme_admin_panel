@@ -270,7 +270,7 @@ export default function SellersList() {
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -287,7 +287,7 @@ export default function SellersList() {
                     className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#85444485] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -307,7 +307,7 @@ export default function SellersList() {
                     className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#85444485] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -326,7 +326,7 @@ export default function SellersList() {
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -345,7 +345,7 @@ export default function SellersList() {
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
-                        : "opacity-50 cursor-not-allowed"
+                        : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
                   >
@@ -384,7 +384,7 @@ export default function SellersList() {
                       className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? ""
-                          : "opacity-50 cursor-not-allowed"
+                          : "text-[#12c7245e] cursor-not-allowed"
                       }`}
                       type="button"
                     >
@@ -401,7 +401,7 @@ export default function SellersList() {
                       className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? ""
-                          : "opacity-50 cursor-not-allowed"
+                          : "text-[#85444485] cursor-not-allowed"
                       }`}
                       type="button"
                     >
@@ -421,7 +421,7 @@ export default function SellersList() {
                       className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? ""
-                          : "opacity-50 cursor-not-allowed"
+                          : "text-[#85444485] cursor-not-allowed"
                       }`}
                       type="button"
                     >
@@ -441,7 +441,7 @@ export default function SellersList() {
                       className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? ""
-                          : "opacity-50 cursor-not-allowed"
+                          : "text-[#12c7245e] cursor-not-allowed"
                       }`}
                     >
                       Одобрить
@@ -460,7 +460,7 @@ export default function SellersList() {
                       className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? ""
-                          : "opacity-50 cursor-not-allowed"
+                          : "text-[#12c7245e] cursor-not-allowed"
                       }`}
                     >
                       Одобрить
@@ -527,7 +527,7 @@ export default function SellersList() {
                         className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
                             ? ""
-                            : "opacity-50 cursor-not-allowed"
+                            : "text-[#12c7245e] cursor-not-allowed"
                         }`}
                         type="button"
                       >
@@ -542,7 +542,11 @@ export default function SellersList() {
                           }
                         }}
                         type="button"
-                        className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
+                        className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                          massiveCheckeds?.length > 0
+                            ? ""
+                            : "text-[#85444485] cursor-not-allowed"
+                        }`}
                       >
                         Отказать
                       </button>
@@ -560,7 +564,7 @@ export default function SellersList() {
                         className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
                             ? ""
-                            : "opacity-50 cursor-not-allowed"
+                            : "text-[#85444485] cursor-not-allowed"
                         }`}
                         type="button"
                       >
@@ -579,7 +583,7 @@ export default function SellersList() {
                         className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
                             ? ""
-                            : "opacity-50 cursor-not-allowed"
+                            : "text-[#12c7245e] cursor-not-allowed"
                         }`}
                         type="button"
                       >
@@ -598,7 +602,7 @@ export default function SellersList() {
                         className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
                             ? ""
-                            : "opacity-50 cursor-not-allowed"
+                            : "text-[#12c7245e] cursor-not-allowed"
                         }`}
                         type="button"
                       >
