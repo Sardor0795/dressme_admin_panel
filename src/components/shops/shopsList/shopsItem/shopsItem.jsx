@@ -228,7 +228,7 @@ export default function ShopsItem({
           </NavLink>
 
           {showSellers !== "updated" ? (
-            <div className="w-[60%] flex items-center gap-x-2">
+            <div className="w-[50%] flex items-center gap-x-2">
               {" "}
               <button
                 onClick={() => approveFunc()}
