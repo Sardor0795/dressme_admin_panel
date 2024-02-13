@@ -29,7 +29,7 @@ export default function LocationsList() {
 
   const [filteredData, setFilteredData] = useState([]);
 
-  console.log(filteredData);
+  // console.log(filteredData);
 
   useEffect(() => {
     setFilteredData(newData);
@@ -137,8 +137,8 @@ export default function LocationsList() {
   const [massiveCheckeds, setMassiveCheckeds] = useState([]);
   const [checkedShops, setCheckedShops] = useState([]);
 
-  console.log(massiveCheckeds);
-  console.log(checkedShops);
+  console.log(massiveCheckeds, "selected locations");
+  // console.log(checkedShops);
 
   const shopIdCheck = (id) => {
     const idString = id.toString();

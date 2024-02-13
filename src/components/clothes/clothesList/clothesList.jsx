@@ -128,6 +128,8 @@ export default function ClothesList() {
   const [massiveCheckeds, setMassiveCheckeds] = useState([]);
   const [checkedShops, setCheckedShops] = useState([]);
 
+  console.log(massiveCheckeds, "selected products");
+
   const shopIdCheck = (id) => {
     const idString = id.toString();
 
