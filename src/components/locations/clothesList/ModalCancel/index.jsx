@@ -49,6 +49,39 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
       });
   };
 
+  const massiveDeclineFunc = () => {
+    let formData = new FormData();
+    formData.append("status", "declined");
+    formData.append("status_reason", reasonText);
+    if (id?.id?.length) {
+      id?.id?.forEach((id) => {
+        formData.append("ids[]", id);
+      });
+    }
+
+    axios
+      .post(`${url}/api/admin/massive-decline-locations`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      })
+      .then((d) => {
+        if (d.status === 200) {
+          toast.success(d?.data?.message);
+          reFetch();
+          clothesReFetch();
+          setReasonText("");
+        }
+      })
+      .catch((v) => {
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          declineFunc();
+        }
+      });
+  };
+
   // DISABLE BACKGROUND SCROLL WHEN MODAI IS OPENED
   useEffect(() => {
     if (modalOpen) {
@@ -87,8 +120,13 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         <button
           onClick={() => {
             if (reasonText.length > 1) {
-              declineFunc();
-              setModalOpen(false);
+              if (id?.type === "massive") {
+                massiveDeclineFunc();
+                setModalOpen(false);
+              } else {
+                declineFunc();
+                setModalOpen(false);
+              }
             }
           }}
           className={`${

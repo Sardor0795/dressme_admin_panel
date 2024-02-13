@@ -19,11 +19,20 @@ import {
 import { PhoneNavbar } from "../../phoneNavbar";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
 import { SellersContext } from "../../../context/sellersContext";
+import { ReFreshTokenContext } from "../../../context/reFreshToken";
+import { IdsContext } from "../../../context/idContext";
+import axios from "axios";
 
 export default function ClothesList() {
+  const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
 
   const [data, setData, , loader] = useContext(ClothesDataContext);
+
+  const [, , reFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
+
+  const [, setId] = useContext(IdsContext);
 
   let newData = data;
 
@@ -219,6 +228,36 @@ export default function ClothesList() {
     }
   }, [allChecked]);
 
+  const allApproveFunc = () => {
+    let formData = new FormData();
+    formData.append("status", "approved");
+    if (massiveCheckeds) {
+      massiveCheckeds.forEach((id) => {
+        formData.append("ids[]", id);
+      });
+    }
+
+    axios
+      .post(`${url}/api/admin/massive-approve-products`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      })
+      .then((d) => {
+        if (d.status === 200) {
+          toast.success(d?.data?.message);
+          reFetch();
+        }
+      })
+      .catch((v) => {
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          allApproveFunc();
+        }
+      });
+  };
+
   return (
     <div>
       <div className="fixed md:static bg-white w-full top-0 px-4 md:mb-[15px] left-0 right-0 md:border-b py-[18px] flex items-center justify-between">
@@ -282,7 +321,7 @@ export default function ClothesList() {
               {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -290,7 +329,12 @@ export default function ClothesList() {
                   </button>
                   <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
+                        setModalOpen(true);
+                      }
+                    }}
                     type="button"
                     className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                   >
@@ -301,7 +345,12 @@ export default function ClothesList() {
               {showSellers === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
+                        setModalOpen(true);
+                      }
+                    }}
                     type="button"
                     className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                   >
@@ -312,7 +361,7 @@ export default function ClothesList() {
               {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -323,7 +372,7 @@ export default function ClothesList() {
               {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -436,7 +485,7 @@ export default function ClothesList() {
               {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >
@@ -444,7 +493,12 @@ export default function ClothesList() {
                   </button>
                   <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
+                        setModalOpen(true);
+                      }
+                    }}
                     type="button"
                     className="text-[#E51515] text-base not-italic font-AeonikProMedium"
                   >
@@ -455,7 +509,12 @@ export default function ClothesList() {
               {showSellers === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
+                        setModalOpen(true);
+                      }
+                    }}
                     type="button"
                     className="text-[#E51515] text-base not-italic font-AeonikProMedium"
                   >
@@ -466,7 +525,7 @@ export default function ClothesList() {
               {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >
@@ -477,7 +536,7 @@ export default function ClothesList() {
               {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >

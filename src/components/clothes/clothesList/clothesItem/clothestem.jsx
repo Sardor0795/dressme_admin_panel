@@ -158,7 +158,7 @@ export default function ClothesItem({
               </button>
               <button
                 onClick={() => {
-                  setId(data?.id);
+                  setId({ type: "single", id: data?.id });
                   setModalOpen(true);
                 }}
                 className={`${
@@ -284,7 +284,7 @@ export default function ClothesItem({
           <div className="w-full flex gap-[30px]">
             <button
               onClick={() => {
-                setId(data?.id);
+                setId({ type: "single", id: data?.id });
                 setModalOpen(true);
               }}
               className={`${

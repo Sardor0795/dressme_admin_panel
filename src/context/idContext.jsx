@@ -5,7 +5,7 @@ export const IdsContext = createContext();
 export const IdContextProvider = ({ children }) => {
   const [IdContext, setIdContext] = useState({ type: "single", id: null });
 
-  console.log(IdContext);
+  console.log(IdContext, 'idContext');
 
   return (
     <IdsContext.Provider value={[IdContext, setIdContext]}>
