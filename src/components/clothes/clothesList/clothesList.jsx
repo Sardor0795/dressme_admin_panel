@@ -137,8 +137,6 @@ export default function ClothesList() {
   const [massiveCheckeds, setMassiveCheckeds] = useState([]);
   const [checkedShops, setCheckedShops] = useState([]);
 
-  console.log(massiveCheckeds, "selected products");
-
   const shopIdCheck = (id) => {
     const idString = id.toString();
 
@@ -321,9 +319,17 @@ export default function ClothesList() {
               {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => allApproveFunc()}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        allApproveFunc();
+                      }
+                    }}
+                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
                     Одобрить
                   </button>
@@ -369,9 +375,17 @@ export default function ClothesList() {
               {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => allApproveFunc()}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        allApproveFunc();
+                      }
+                    }}
+                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
                     Одобрить
                   </button>
@@ -380,9 +394,17 @@ export default function ClothesList() {
               {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => allApproveFunc()}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        allApproveFunc();
+                      }
+                    }}
+                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
                     Одобрить
                   </button>
@@ -493,9 +515,17 @@ export default function ClothesList() {
               {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => allApproveFunc()}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        allApproveFunc();
+                      }
+                    }}
+                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >
                     Одобрить
                   </button>
@@ -541,9 +571,17 @@ export default function ClothesList() {
               {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => allApproveFunc()}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        allApproveFunc();
+                      }
+                    }}
+                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >
                     Одобрить
                   </button>
@@ -552,9 +590,17 @@ export default function ClothesList() {
               {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => allApproveFunc()}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        allApproveFunc();
+                      }
+                    }}
+                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? ""
+                        : "opacity-50 cursor-not-allowed"
+                    }`}
                     type="button"
-                    className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >
                     Одобрить
                   </button>
