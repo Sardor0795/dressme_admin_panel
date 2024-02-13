@@ -16,8 +16,7 @@ import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 export default function ShopsItem({
   data,
   index,
-  onCheck,
-  showShops,
+  showSellers,
   toast,
   setModalOpen,
   setMassiveCheckeds,
@@ -64,7 +63,7 @@ export default function ShopsItem({
 
   const [, setId] = useContext(IdsContext);
 
-  //  console.log(showShops, 'showShops');
+  //  console.log(showSellers, 'showSellers');
   //  console.log(data, 'data-items-shop');
 
   const [ckeck, setCheck] = useState(false);
@@ -222,7 +221,7 @@ export default function ShopsItem({
             Подробнее
           </NavLink>
 
-          {showShops !== "updated" ? (
+          {showSellers !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}
               <button
@@ -251,7 +250,7 @@ export default function ShopsItem({
             </div>
           ) : null}
 
-          {showShops === "updated" ? (
+          {showSellers === "updated" ? (
             <button
               onClick={() => approveFunc()}
               className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}

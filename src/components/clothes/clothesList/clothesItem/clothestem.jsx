@@ -12,7 +12,7 @@ export default function ClothesItem({
   setModalOpen,
   index,
   toast,
-  showProducts,
+  showSellers,
   setMassiveCheckeds,
   massiveCheckeds,
   allChecked,
@@ -143,7 +143,7 @@ export default function ClothesItem({
         </Link>
 
         <div className="w-[20%] px-4 flex items-center justify-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium md:mr-10">
-          {showProducts !== "updated" ? (
+          {showSellers !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}
               <button
@@ -172,7 +172,7 @@ export default function ClothesItem({
             </div>
           ) : null}
 
-          {showProducts === "updated" ? (
+          {showSellers === "updated" ? (
             <button
               onClick={() => approveFunc()}
               className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
@@ -280,7 +280,7 @@ export default function ClothesItem({
           </div>
         </div>
 
-        {showProducts !== "updated" ? (
+        {showSellers !== "updated" ? (
           <div className="w-full flex gap-[30px]">
             <button
               onClick={() => {
@@ -307,7 +307,7 @@ export default function ClothesItem({
             </button>
           </div>
         ) : null}
-        {showProducts === "updated" ? (
+        {showSellers === "updated" ? (
           <div className="w-full flex gap-[30px]">
             <button
               onClick={() => approveFunc()}

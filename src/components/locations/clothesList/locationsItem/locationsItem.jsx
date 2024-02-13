@@ -13,7 +13,7 @@ export default function LocationsItem({
   setModalOpen,
   index,
   toast,
-  showProducts,
+  showSellers,
   setMassiveCheckeds,
   massiveCheckeds,
   allChecked,
@@ -151,7 +151,7 @@ export default function LocationsItem({
                 </Link>
               </li>
               <li className="md:w-[29%] h-full flex items-center justify-center text-center">
-                {showProducts !== "updated" ? (
+                {showSellers !== "updated" ? (
                   <div className="flex items-center gap-x-2">
                     {" "}
                     <button
@@ -182,7 +182,7 @@ export default function LocationsItem({
                   </div>
                 ) : null}
 
-                {showProducts === "updated" ? (
+                {showSellers === "updated" ? (
                   <button
                     onClick={() => approveFunc()}
                     className={`w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]`}
