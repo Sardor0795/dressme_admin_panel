@@ -152,7 +152,7 @@ export default function SellerItems({
               </button>
               <button
                 onClick={() => {
-                  setId(data?.id);
+                  setId({ type: "single", id: data?.id });
                   setModalOpen(true);
                 }}
                 className={`${
@@ -270,7 +270,7 @@ export default function SellerItems({
           <div className="w-full flex gap-[30px]">
             <button
               onClick={() => {
-                setId(data?.id);
+                setId({ type: "single", id: data?.id });
                 setModalOpen(true);
               }}
               className={`${

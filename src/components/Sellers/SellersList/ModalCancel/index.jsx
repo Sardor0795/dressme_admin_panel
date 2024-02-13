@@ -16,6 +16,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
 
   const [id] = useContext(IdsContext);
+
   const [reasonText, setReasonText] = useState("");
 
   const [, , reFetch] = useContext(SellersDataContext);
@@ -28,7 +29,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
   const declineFunc = () => {
     axios
       .post(
-        `${url}/api/admin/decline-seller/${id}`,
+        `${url}/api/admin/decline-seller/${id?.id}`,
         {
           status: "declined",
           status_reason: reasonText,
@@ -40,6 +41,41 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
           },
         }
       )
+      .then((d) => {
+        if (d.status === 200) {
+          toast.success(d?.data?.message);
+          reFetch();
+          shopsReFetch();
+          locationsReFetch();
+          clothesReFetch();
+          setReasonText("");
+        }
+      })
+      .catch((v) => {
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          declineFunc();
+        }
+      });
+  };
+
+  const massiveDeclineFunc = () => {
+    let formData = new FormData();
+    formData.append("status", "declined");
+    formData.append("status_reason", reasonText);
+    if (id?.id?.length) {
+      id?.id?.forEach((id) => {
+        formData.append("ids[]", id);
+      });
+    }
+
+    axios
+      .post(`${url}/api/admin/massive-decline-sellers`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      })
       .then((d) => {
         if (d.status === 200) {
           toast.success(d?.data?.message);
@@ -96,8 +132,13 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         <button
           onClick={() => {
             if (reasonText.length > 1) {
-              declineFunc();
-              setModalOpen(false);
+              if (id?.type === "massive") {
+                massiveDeclineFunc();
+                setModalOpen(false);
+              } else {
+                declineFunc();
+                setModalOpen(false);
+              }
             }
           }}
           className={`${

@@ -23,6 +23,7 @@ import { LocationsDataContext } from "../../../context/locationsDataContext";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
 import { ReFreshTokenContext } from "../../../context/reFreshToken";
 import axios from "axios";
+import { IdsContext } from "../../../context/idContext";
 
 export default function SellersList() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -34,6 +35,7 @@ export default function SellersList() {
   const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const [data, setData, , loader] = useContext(SellersDataContext);
+  const [, setId] = useContext(IdsContext);
 
   let newData = data;
 
@@ -278,6 +280,7 @@ export default function SellersList() {
                   <button
                     onClick={() => {
                       if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
                         setModalOpen(true);
                       }
                     }}
@@ -297,6 +300,7 @@ export default function SellersList() {
                   <button
                     onClick={() => {
                       if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
                         setModalOpen(true);
                       }
                     }}
@@ -390,6 +394,7 @@ export default function SellersList() {
                     <button
                       onClick={() => {
                         if (massiveCheckeds?.length > 0) {
+                          setId({ type: "massive", id: massiveCheckeds });
                           setModalOpen(true);
                         }
                       }}
@@ -409,6 +414,7 @@ export default function SellersList() {
                     <button
                       onClick={() => {
                         if (massiveCheckeds?.length > 0) {
+                          setId({ type: "massive", id: massiveCheckeds });
                           setModalOpen(true);
                         }
                       }}
