@@ -649,75 +649,77 @@ export default function ShopsList() {
             return item?.shops?.length ? (
               <div className="w-full" key={item?.id}>
                 <div className="mx-auto font-AeonikProRegular text-[16px]">
-                  <div className="w-full">
-                    <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                      <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                        <div
-                          onClick={() => {
-                            if (checkedShops?.includes(item?.id)) {
-                              setCheckedShops((prevState) =>
-                                prevState.filter((id) => id !== item?.id)
-                              );
-                              delCheck(item?.id);
-                            } else {
-                              setCheckedShops([...checkedShops, item?.id]);
+                  {item?.shops?.find((v) => v?.status === showSellers) ? (
+                    <div className="w-full">
+                      <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                        <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                          <div
+                            onClick={() => {
+                              if (checkedShops?.includes(item?.id)) {
+                                setCheckedShops((prevState) =>
+                                  prevState.filter((id) => id !== item?.id)
+                                );
+                                delCheck(item?.id);
+                              } else {
+                                setCheckedShops([...checkedShops, item?.id]);
 
-                              shopIdCheck(item?.id);
-                            }
-                          }}
-                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                            checkedShops?.includes(item?.id)
-                              ? "bg-[#007DCA] border-[#007DCA]"
-                              : "bg-white border-checkboxBorder"
-                          } flex items-center justify-center rounded mr-[8px]`}
-                        >
-                          <span
-                            className={`${
+                                shopIdCheck(item?.id);
+                              }
+                            }}
+                            className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                               checkedShops?.includes(item?.id)
-                                ? "hidden md:flex items-center justify-center"
-                                : "hidden"
-                            }`}
+                                ? "bg-[#007DCA] border-[#007DCA]"
+                                : "bg-white border-checkboxBorder"
+                            } flex items-center justify-center rounded mr-[8px]`}
                           >
-                            <CheckIcon />
-                          </span>
-                          <span
-                            className={`${
-                              checkedShops?.includes(item?.id)
-                                ? "flex md:hidden items-center justify-center"
-                                : "hidden"
-                            }`}
-                          >
-                            <CheckIcon size={"small"} />
-                          </span>
-                        </div>
-                        <button className="text-[#007DCA] mr-[7px]">
-                          {item?.name}
-                        </button>
-                        ({item?.shops?.length || 0})
-                      </div>
-                    </div>
-
-                    <div className="mb-[18px] flex items-center text-tableTextTitle">
-                      <div className=" min-w-[24px]  min-h-[24px] hidden md:flex mr-[8px]"></div>
-                      <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                        <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                          No:
-                        </div>
-                        <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                          Фото
-                        </div>
-                        <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                          Название
-                        </div>
-                        <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                          Пол
-                        </div>
-                        <div className="w-[55%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                          Доставка
+                            <span
+                              className={`${
+                                checkedShops?.includes(item?.id)
+                                  ? "hidden md:flex items-center justify-center"
+                                  : "hidden"
+                              }`}
+                            >
+                              <CheckIcon />
+                            </span>
+                            <span
+                              className={`${
+                                checkedShops?.includes(item?.id)
+                                  ? "flex md:hidden items-center justify-center"
+                                  : "hidden"
+                              }`}
+                            >
+                              <CheckIcon size={"small"} />
+                            </span>
+                          </div>
+                          <button className="text-[#007DCA] mr-[7px]">
+                            {item?.name}
+                          </button>
+                          ({item?.shops?.length || 0})
                         </div>
                       </div>
+
+                      <div className="mb-[18px] flex items-center text-tableTextTitle">
+                        <div className=" min-w-[24px]  min-h-[24px] hidden md:flex mr-[8px]"></div>
+                        <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                          <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                            No:
+                          </div>
+                          <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                            Фото
+                          </div>
+                          <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                            Название
+                          </div>
+                          <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                            Пол
+                          </div>
+                          <div className="w-[55%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                            Доставка
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  ) : null}
 
                   <div className="w-full ">
                     {/* Status Waiting */}
