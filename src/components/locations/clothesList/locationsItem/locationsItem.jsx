@@ -283,7 +283,7 @@ export default function LocationsItem({
 
           <div className="flex items-center justify-between gap-x-[15px]">
             {showSellers !== "updated" ? (
-              <div className="w-full flex gap-[30px]">
+              <div className="w-full flex gap-x-4 md:gap-x-[30px]">
                 <button
                   onClick={() => {
                     setId({ type: "single", id: data?.id });
