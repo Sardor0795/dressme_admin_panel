@@ -19,7 +19,6 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
   const [, , reFetch] = useContext(ShopsDataContext);
   const [, , locationsReFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
-
   const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const declineFunc = () => {
@@ -75,7 +74,6 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
         if (d.status === 200) {
           toast.success(d?.data?.message);
           reFetch();
-          shopsReFetch();
           locationsReFetch();
           clothesReFetch();
           setReasonText("");
@@ -84,7 +82,7 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
       .catch((v) => {
         if (v?.response?.status === 401) {
           reFreshTokenFunc();
-          declineFunc();
+          massiveDeclineFunc();
         }
       });
   };

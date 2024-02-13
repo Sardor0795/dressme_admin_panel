@@ -148,9 +148,6 @@ export default function LocationsList() {
   const [massiveCheckeds, setMassiveCheckeds] = useState([]);
   const [checkedShops, setCheckedShops] = useState([]);
 
-  console.log(massiveCheckeds, "selected locations");
-  // console.log(checkedShops);
-
   const shopIdCheck = (id) => {
     const idString = id.toString();
 

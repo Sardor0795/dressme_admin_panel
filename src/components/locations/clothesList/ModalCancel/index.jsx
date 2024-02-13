@@ -77,7 +77,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
       .catch((v) => {
         if (v?.response?.status === 401) {
           reFreshTokenFunc();
-          declineFunc();
+          massiveDeclineFunc();
         }
       });
   };

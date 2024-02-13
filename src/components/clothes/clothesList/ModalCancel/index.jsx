@@ -9,13 +9,13 @@ import { ReFreshTokenContext } from "../../../../context/reFreshToken";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
-  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const [reasonText, setReasonText] = useState("");
 
   const [id] = useContext(IdsContext);
 
   const [, , reFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const declineFunc = () => {
     axios
@@ -68,16 +68,13 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         if (d.status === 200) {
           toast.success(d?.data?.message);
           reFetch();
-          shopsReFetch();
-          locationsReFetch();
-          clothesReFetch();
           setReasonText("");
         }
       })
       .catch((v) => {
         if (v?.response?.status === 401) {
           reFreshTokenFunc();
-          declineFunc();
+          massiveDeclineFunc();
         }
       });
   };

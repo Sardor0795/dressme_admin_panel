@@ -145,9 +145,6 @@ export default function ShopsList() {
   const [massiveCheckeds, setMassiveCheckeds] = useState([]);
   const [checkedShops, setCheckedShops] = useState([]);
 
-  console.log(massiveCheckeds, "shops selected");
-  // console.log(checkedShops, "sellers selecteed");
-
   const shopIdCheck = (id) => {
     const seller = filteredData?.find((seller) => {
       return seller.id === id;
@@ -230,7 +227,6 @@ export default function ShopsList() {
         if (d.status === 200) {
           toast.success(d?.data?.message);
           reFetch();
-          shopsReFetch();
           locationsReFetch();
           clothesReFetch();
         }
