@@ -17,11 +17,24 @@ import WiFiLoader from "../../../assets/loader/wifi_loader.gif";
 import ShopsItem from "./shopsItem/shopsItem";
 import CancelShopsModal from "./ModalCancel";
 import { SellersContext } from "../../../context/sellersContext";
+import { IdsContext } from "../../../context/idContext";
+import axios from "axios";
+import { LocationsDataContext } from "../../../context/locationsDataContext";
+import { ClothesDataContext } from "../../../context/clothesDataContext";
+import { ReFreshTokenContext } from "../../../context/reFreshToken";
 
 export default function ShopsList() {
+  const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
 
   const [dataShops, setDataShops, , loader] = useContext(ShopsDataContext);
+
+  const [, setId] = useContext(IdsContext);
+
+  const [, , reFetch] = useContext(ShopsDataContext);
+  const [, , locationsReFetch] = useContext(LocationsDataContext);
+  const [, , clothesReFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   let newData = dataShops;
 
@@ -197,6 +210,39 @@ export default function ShopsList() {
     }
   }, [allChecked]);
 
+  const allApproveFunc = () => {
+    let formData = new FormData();
+    formData.append("status", "approved");
+    if (massiveCheckeds) {
+      massiveCheckeds.forEach((id) => {
+        formData.append("ids[]", id);
+      });
+    }
+
+    axios
+      .post(`${url}/api/admin/massive-approve-shops`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      })
+      .then((d) => {
+        if (d.status === 200) {
+          toast.success(d?.data?.message);
+          reFetch();
+          shopsReFetch();
+          locationsReFetch();
+          clothesReFetch();
+        }
+      })
+      .catch((v) => {
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          allApproveFunc();
+        }
+      });
+  };
+
   return (
     <div>
       <div className="fixed md:static bg-white w-full top-0 px-4 md:mb-[15px] left-0 right-0 md:border-b py-[18px] flex items-center justify-between">
@@ -259,7 +305,7 @@ export default function ShopsList() {
               {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -267,7 +313,12 @@ export default function ShopsList() {
                   </button>
                   <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
+                        setModalOpen(true);
+                      }
+                    }}
                     type="button"
                     className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                   >
@@ -278,7 +329,12 @@ export default function ShopsList() {
               {showSellers === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
+                        setModalOpen(true);
+                      }
+                    }}
                     type="button"
                     className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                   >
@@ -289,7 +345,7 @@ export default function ShopsList() {
               {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -300,7 +356,7 @@ export default function ShopsList() {
               {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
                   >
@@ -412,7 +468,7 @@ export default function ShopsList() {
               {showSellers === "pending" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >
@@ -420,7 +476,12 @@ export default function ShopsList() {
                   </button>
                   <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
+                        setModalOpen(true);
+                      }
+                    }}
                     type="button"
                     className="text-[#E51515] text-base not-italic font-AeonikProMedium"
                   >
@@ -431,7 +492,12 @@ export default function ShopsList() {
               {showSellers === "approved" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      if (massiveCheckeds?.length > 0) {
+                        setId({ type: "massive", id: massiveCheckeds });
+                        setModalOpen(true);
+                      }
+                    }}
                     type="button"
                     className="text-[#E51515] text-base not-italic font-AeonikProMedium"
                   >
@@ -442,7 +508,7 @@ export default function ShopsList() {
               {showSellers === "declined" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >
@@ -453,7 +519,7 @@ export default function ShopsList() {
               {showSellers === "updated" ? (
                 <div className="flex items-center ml-auto">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => allApproveFunc()}
                     type="button"
                     className="text-[#12C724] text-base not-italic font-AeonikProMedium"
                   >

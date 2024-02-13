@@ -535,7 +535,12 @@ export default function SellersList() {
                       </button>
                       <span className="w-[2px] h-4 bg-addLocBorderRight mx-[15px]"></span>
                       <button
-                        onClick={() => setModalOpen(true)}
+                        onClick={() => {
+                          if (massiveCheckeds?.length > 0) {
+                            setId({ type: "massive", id: massiveCheckeds });
+                            setModalOpen(true);
+                          }
+                        }}
                         type="button"
                         className="text-[#E51515] text-lg not-italic font-AeonikProMedium"
                       >
@@ -548,6 +553,7 @@ export default function SellersList() {
                       <button
                         onClick={() => {
                           if (massiveCheckeds?.length > 0) {
+                            setId({ type: "massive", id: massiveCheckeds });
                             setModalOpen(true);
                           }
                         }}

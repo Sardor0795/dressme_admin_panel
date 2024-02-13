@@ -237,7 +237,7 @@ export default function ShopsItem({
               </button>
               <button
                 onClick={() => {
-                  setId(data?.id);
+                  setId({ type: "single", id: data?.id });
                   setModalOpen(true);
                 }}
                 className={`${
