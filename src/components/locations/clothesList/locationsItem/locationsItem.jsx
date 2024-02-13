@@ -197,7 +197,7 @@ export default function LocationsItem({
 
         {/* Mobile */}
         <div className=" rounded-xl p-[10px] mb-1 md:hidden w-full">
-          <div className="mb-2 flex items-center">
+          <div className="mb-2 flex justify-between items-center">
             <div
               onClick={() => {
                 setSomeChecked(true);
@@ -223,11 +223,22 @@ export default function LocationsItem({
                 <CheckIcon size={"small"} />
               </span>
             </div>
-            <div className="w-full md:w-fit flex items-center justify-between text-xl font-AeonikProRegular ">
-              <div className="w-[40%] border-b border-borderColor h-[2px]"></div>
-              <span className="text-checkboxBorder">0{index}</span>
-              <div className="w-[40%] border-b border-borderColor h-[2px]"></div>
+
+            <div className="flex items-center">
+              <div className="border-b min-w-[10px]"></div>
+              <div className="mx-[5px] text-[16px] font-AeonikProRegular text-[#D2D2D2]">
+                {index < 10 ? "0" : ""}
+                {index}
+              </div>
+              <div className="border-b min-w-[10px]"></div>
             </div>
+
+            <Link
+              to={`location/${data?.id}`}
+              className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer"
+            >
+              Подробнее
+            </Link>
           </div>
 
           <div className="mb-3 h-[148px]">
@@ -257,7 +268,7 @@ export default function LocationsItem({
               <div className="pr-[5px] ll:pr-[10px] w-[24%] break-words  text-gray-700 text-[11px] not-italic font-AeonikProMedium">
                 {data?.region?.name_ru}, {data?.sub_region?.name_ru}
               </div>
-              <div className="relative pr-[5px] ll:pr-[10px] h-[60px] overflow-hidden w-[46%] leading-4	text-[11px] not-italic font-AeonikProMedium">
+              <div className="relative pr-[5px] ll:pr-[10px] h-fit overflow-hidden w-[46%] leading-4	text-[11px] not-italic font-AeonikProMedium">
                 <div className="absolute ToogleOff left-0 w-full h-full top-0"></div>
 
                 {data?.address}
@@ -271,13 +282,43 @@ export default function LocationsItem({
           {/* <div className="w-full font-AeonikProRegular mb-2">{data?.region?.name_ru || "city"}, {data?.sub_region?.name_ru || "sub_region"}</div> */}
 
           <div className="flex items-center justify-between gap-x-[15px]">
-            <Link
-              to={`location/${data?.id}`}
-              className="text-[#007DCA] bg-[#E8F5FD] text-center w-full h-8 py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 active:scale-95 transition-opacity duration-300"
-            >
-              {data?.showMore}
-              <span className="ml-[5px]">Подробнее</span>
-            </Link>
+            {showSellers !== "updated" ? (
+              <div className="w-full flex gap-[30px]">
+                <button
+                  onClick={() => {
+                    setId({ type: "single", id: data?.id });
+                    setModalOpen(true);
+                  }}
+                  className={`${
+                    data?.status === "pending" || data?.status === "approved"
+                      ? ""
+                      : "hidden"
+                  } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
+                >
+                  Отказать
+                </button>
+                <button
+                  onClick={() => approveFunc()}
+                  className={`${
+                    data?.status === "pending" || data?.status === "declined"
+                      ? ""
+                      : "hidden"
+                  } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+                >
+                  Одобрить
+                </button>
+              </div>
+            ) : null}
+            {showSellers === "updated" ? (
+              <div className="w-full flex gap-[30px]">
+                <button
+                  onClick={() => approveFunc()}
+                  className={` rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+                >
+                  Одобрить
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

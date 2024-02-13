@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CheckIcon, StarRatengIcon } from "../../../../assets/icon";
 import {
   deliveryIcon,
@@ -116,6 +116,8 @@ export default function ShopsItem({
         </div>
       </div>
 
+      {/* Mobile */}
+
       <div
         key={data?.id}
         className="w-full h-fit md:h-[100px] border border-borderColor md:pr-10 p-[10px] rounded-lg flex md:flex-row flex-col items-center"
@@ -147,15 +149,25 @@ export default function ShopsItem({
                 <CheckIcon size={"small"} />
               </span>
             </div>
-            <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
-            <span className="text-checkboxBorder md:text-black flex items-center">
-              <span className="md:hidden flex">0</span>
-              {index + 1}
-            </span>
-            <div className="w-[40%] border-b border-borderColor h-[2px] md:hidden"></div>
+
+            <div className="flex items-center">
+              <div className="border-b min-w-[10px]"></div>
+              <div className="mx-[5px] text-[16px] font-AeonikProRegular text-[#D2D2D2]">
+                {index < 10 ? "0" : ""}
+                {index + 1}
+              </div>
+              <div className="border-b min-w-[10px]"></div>
+            </div>
+
+            <Link
+              to={`shop/${data?.id}`}
+              className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer"
+            >
+              Подробнее
+            </Link>
           </div>
 
-          <div className="w-full flex items-center my-[15px] md:my-0 ">
+          <div className="w-full flex items-center mt-[5px] mb-[15px] md:mb-0 md:mt-0">
             <figure className="w-[80px] h-[80px] md:min-w-[120px] md:min-h-[120px] overflow-hidden md:left-[40px] rounded-full border border-searchBgColor flex items-center justify-center bg-white">
               <img
                 src={data?.url_logo_photo}
@@ -214,15 +226,9 @@ export default function ShopsItem({
           >
             Локации
           </NavLink>
-          <NavLink
-            to={`shop/${data?.id}`}
-            className="w-[50%] md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-Editbg"
-          >
-            Подробнее
-          </NavLink>
 
           {showSellers !== "updated" ? (
-            <div className="flex items-center gap-x-2">
+            <div className="w-[60%] flex items-center gap-x-2">
               {" "}
               <button
                 onClick={() => approveFunc()}
@@ -230,7 +236,7 @@ export default function ShopsItem({
                   data?.status === "pending" || data?.status === "declined"
                     ? ""
                     : "hidden"
-                } w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]`}
+                } w-full px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]`}
               >
                 Одобрить
               </button>
@@ -243,7 +249,7 @@ export default function ShopsItem({
                   data?.status === "pending" || data?.status === "approved"
                     ? ""
                     : "hidden"
-                } w-fit px-2 py-1 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
+                } w-full px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
               >
                 Отказать
               </button>
@@ -253,7 +259,7 @@ export default function ShopsItem({
           {showSellers === "updated" ? (
             <button
               onClick={() => approveFunc()}
-              className={`w-fit px-2 py-1 rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+              className={`w-[50%] px-2 py-[5px] font-AeonikProMedium rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
             >
               Одобрить
             </button>
