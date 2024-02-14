@@ -160,7 +160,7 @@ export default function LocationMoreAbout() {
               <BackIcon />
             </button>
             <div className="text-center text-xl md:text-[35px] font-AeonikProMedium md:px-0">
-              Редактировать местоположения
+              Местоположение
             </div>
           </div>
           <div className="w-full flex items-center justify-end md:justify-between px-4 md:px-0 mb-2 md:mb-3 md:pb-0 pb-[8px] md:border-none border-b border-borderColor">
@@ -415,7 +415,7 @@ export default function LocationMoreAbout() {
                   <div className={"w-full"}>
                     <div htmlFor="">
                       <div className="flex items-center text-[#303030] text-xs md:text-base not-italic font-AeonikProRegular leading-4 tracking-[0,16px] ">
-                        Выберите регион
+                        Регион
                       </div>
                       <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
                         <div className="flex items-center text-[#000] text-xs md:text-base">

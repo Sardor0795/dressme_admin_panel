@@ -89,27 +89,27 @@ export const ClothMoreAbout = () => {
           onClick={() => {
             navigate(`/clothes`);
           }}
-          className="w-8 h-8 md:hidden flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
+          className="w-8 h-8 flex mr-auto md:mr-[30px] items-center cursor-pointer justify-center border border-borderColor rounded-lg"
         >
           <BackIcon />
         </button>
         {showSellers === "pending" ? (
-          <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+          <div className="font-AeonikProMedium mr-auto md:mr-0 text-[18px] md:text-[24px] text-black">
             Ожидающие товары
           </div>
         ) : null}
         {showSellers === "approved" ? (
-          <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+          <div className="font-AeonikProMedium mr-auto md:mr-0 text-[18px] md:text-[24px] text-black">
             Одобренные товары
           </div>
         ) : null}
         {showSellers === "declined" ? (
-          <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+          <div className="font-AeonikProMedium mr-auto md:mr-0 text-[18px] md:text-[24px] text-black">
             Отказанные товары
           </div>
         ) : null}
         {showSellers === "status_update" ? (
-          <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+          <div className="font-AeonikProMedium mr-auto md:mr-0 text-[18px] md:text-[24px] text-black">
             Обновленные товары
           </div>
         ) : null}

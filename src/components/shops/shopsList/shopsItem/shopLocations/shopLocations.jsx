@@ -179,9 +179,8 @@ export default function ShopLocations() {
                         <div className="pr-[5px] ll:pr-[10px] w-[24%] break-words  text-gray-700 text-[11px] not-italic font-AeonikProMedium">
                           {data?.region?.name_ru}
                         </div>
-                        <div className="relative pr-[5px] ll:pr-[10px] h-fit overflow-hidden  w-[46%]  text-justify	text-[11px] not-italic font-AeonikProMedium">
+                        <div className="relative pr-[5px] ll:pr-[10px] h-fit overflow-hidden  w-[46%]	text-[11px] not-italic font-AeonikProMedium">
                           <div className="absolute ToogleOff left-0 w-full h-full z-[10] top-0"></div>
-
                           {data?.address}
                         </div>
                         <div className="w-[30%] flex  justify-center text-[11px] not-italic font-AeonikProMedium">

@@ -155,12 +155,12 @@ export const LocationsMoreAbout = () => {
               onClick={() => {
                 navigate(`/locations`);
               }}
-              className="w-8 h-8 md:hidden flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
+              className="w-8 h-8 md:hidden flex mr-auto items-center cursor-pointer justify-center border border-borderColor rounded-lg"
             >
               <BackIcon />
             </button>
-            <div className="flex items-center justify-center text-center text-lg md:text-[35px] font-AeonikProMedium md:px-0">
-              Редактировать местоположения
+            <div className="flex mr-auto md:mr-0 items-center justify-center text-center text-lg md:text-[35px] font-AeonikProMedium md:px-0">
+              Местоположение
             </div>
           </div>
           <div className="w-full flex items-center justify-end md:justify-between px-4 md:px-0 mb-2 md:mb-3 md:pb-0 pb-[8px] md:border-none border-b border-borderColor">
@@ -415,7 +415,7 @@ export const LocationsMoreAbout = () => {
                   <div className={"w-full"}>
                     <div htmlFor="">
                       <div className="flex items-center text-[#303030] text-xs md:text-base not-italic font-AeonikProRegular leading-4 tracking-[0,16px] ">
-                        Выберите регион
+                        Регион
                       </div>
                       <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
                         <div className="flex items-center text-[#000] text-xs md:text-base">
