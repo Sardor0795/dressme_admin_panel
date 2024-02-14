@@ -915,7 +915,7 @@ export default function ShopsList() {
         </div>
       </button>
 
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
     </div>
   );
 }

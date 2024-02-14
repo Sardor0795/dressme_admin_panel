@@ -1383,7 +1383,7 @@ export default function ClothesList() {
         </div>
       </button>
 
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
     </div>
   );
 }

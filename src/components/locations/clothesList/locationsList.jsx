@@ -1458,7 +1458,7 @@ export default function LocationsList() {
         </div>
       </button>
 
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
     </div>
   );
 }

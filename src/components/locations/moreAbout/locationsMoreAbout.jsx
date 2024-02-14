@@ -74,6 +74,15 @@ export const LocationsMoreAbout = () => {
     });
   }, []);
 
+  // DISABLE BACKGROUND SCROLL WHEN MODAI IS OPENED
+  useEffect(() => {
+    if (modalOfCarsouel) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [modalOfCarsouel]);
+
   return (
     <div className="w-full md:px-10">
       <section
@@ -302,14 +311,9 @@ export const LocationsMoreAbout = () => {
                   </span>
                 </div>
                 <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
-                  <input
-                    type="text"
-                    name="fname"
-                    disabled
-                    value={shopLocationsData?.assistant_name || ""}
-                    placeholder=" Имя администратора"
-                    className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2"
-                  />
+                  <div className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2">
+                    {shopLocationsData?.assistant_name || "-"}
+                  </div>
                 </div>
               </div>
               <div className="w-full md:w-[31%] xs:w-[48%]  ">
@@ -317,14 +321,9 @@ export const LocationsMoreAbout = () => {
                   Имя второго администратора{" "}
                 </div>
                 <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
-                  <input
-                    type="text"
-                    name="fsecond_name"
-                    disabled
-                    value={shopLocationsData?.second_assistant_name || ""}
-                    placeholder=" Имя администратора"
-                    className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2"
-                  />
+                  <div className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2">
+                    {shopLocationsData?.second_assistant_name || "-"}
+                  </div>
                 </div>
               </div>
               <div className="w-full md:w-[31%] xs:w-[48%]">
@@ -364,20 +363,17 @@ export const LocationsMoreAbout = () => {
                     </div>
                   </div>
                   <div className="w-[65%] md:w-[70%] h-[42px] overflow-hidden">
-                    <input
-                      mask="(99) 999-99-99"
-                      disabled
-                      name="phone"
-                      value={shopLocationsData?.assistant_phone || ""}
-                      className={`w-full px-4 outline-none font-AeonikProRegular h-full not-italic
+                    <div
+                      className={`w-full px-4 outline-none flex items-center font-AeonikProRegular h-full not-italic
                       ${
                         shopLocationsData?.assistant_phone
                           ? "font-AeonikProMedium"
                           : null
                       }
                         text-xs md:text-base leading-4 text-black`}
-                      placeholder={"(99) 999-99-99"}
-                    />
+                    >
+                      {shopLocationsData?.assistant_phone || "-"}
+                    </div>
                   </div>
                 </div>
               </label>
@@ -389,23 +385,19 @@ export const LocationsMoreAbout = () => {
                 <div className="mt-[6px] flex items-center justify-center overflow-hidden border border-searchBgColor rounded-lg h-8 md:h-11">
                   <div className="w-[35%] md:w-[30%] flex items-center justify-center cursor-pointer border-r border-searchBgColor overflow-hidden">
                     <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular leading-4 text-black text-xs md:text-base">
-                      {/* {state?.idSecondAssistantPhoneCode ? "+" + state?.idSecondAssistantPhoneCode : "+998"} */}{" "}
                       +998
                     </div>
                   </div>
                   <div className="w-[65%] md:w-[70%] h-8 md:h-11 overflow-hidden">
-                    <input
-                      mask="(99) 999-99-99"
-                      name="phone"
-                      disabled
-                      value={shopLocationsData?.second_assistant_phone || ""}
-                      className={`w-full px-4 outline-none font-AeonikProRegular h-full not-italic ${
+                    <div
+                      className={`w-full px-2 outline-none font-AeonikProRegular flex items-center h-full not-italic ${
                         shopLocationsData?.second_assistant_phone
                           ? "font-AeonikProMedium"
                           : null
                       } text-xs md:text-base leading-4 text-black`}
-                      placeholder={"(99) 999-99-99"}
-                    />
+                    >
+                      {shopLocationsData?.second_assistant_phone || "-"}
+                    </div>
                   </div>
                 </div>
               </label>
