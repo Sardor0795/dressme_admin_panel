@@ -155,11 +155,11 @@ export default function LocationMoreAbout() {
               onClick={() => {
                 navigate(`/shops/locations/${params?.id}`);
               }}
-              className="w-8 h-8 md:hidden flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
+              className="w-8 h-8 mr-auto md:hidden flex md:mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
             >
               <BackIcon />
             </button>
-            <div className="text-center text-xl md:text-[35px] font-AeonikProMedium md:px-0">
+            <div className="text-center mr-auto md:mr-0 text-xl md:text-[35px] font-AeonikProMedium md:px-0">
               Местоположение
             </div>
           </div>
@@ -302,14 +302,9 @@ export default function LocationMoreAbout() {
                   </span>
                 </div>
                 <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
-                  <input
-                    type="text"
-                    name="fname"
-                    disabled
-                    value={shopLocationsData?.assistant_name || ""}
-                    placeholder=" Имя администратора"
-                    className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2"
-                  />
+                  <div className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2">
+                    {shopLocationsData?.assistant_name || "-"}
+                  </div>
                 </div>
               </div>
               <div className="w-full md:w-[31%] xs:w-[48%]  ">
@@ -317,14 +312,9 @@ export default function LocationMoreAbout() {
                   Имя второго администратора{" "}
                 </div>
                 <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
-                  <input
-                    type="text"
-                    name="fsecond_name"
-                    disabled
-                    value={shopLocationsData?.second_assistant_name || ""}
-                    placeholder=" Имя администратора"
-                    className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2"
-                  />
+                  <div className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2">
+                    {shopLocationsData?.second_assistant_name || "-"}
+                  </div>
                 </div>
               </div>
               <div className="w-full md:w-[31%] xs:w-[48%]">
@@ -359,25 +349,21 @@ export default function LocationMoreAbout() {
                 <div className="mt-[6px] h-8 md:h-11 flex items-center justify-center overflow-hidden border border-searchBgColor rounded-lg">
                   <div className="ss:w-[35%] md:w-[30%] h-8 md:h-11 flex items-center justify-center  cursor-pointer border-r border-searchBgColor overflow-hidden">
                     <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular text-xs md:text-base leading-4 text-black">
-                      {/* {state?.idAssistantPhoneCode ? "+" + state?.idAssistantPhoneCode : "+998"} */}{" "}
                       +998
                     </div>
                   </div>
                   <div className="w-[65%] md:w-[70%] h-[42px] overflow-hidden">
-                    <input
-                      mask="(99) 999-99-99"
-                      disabled
-                      name="phone"
-                      value={shopLocationsData?.assistant_phone || ""}
-                      className={`w-full px-4 outline-none font-AeonikProRegular h-full not-italic
+                    <div
+                      className={`w-full flex items-center px-4 outline-none font-AeonikProRegular h-full not-italic
                       ${
                         shopLocationsData?.assistant_phone
                           ? "font-AeonikProMedium"
                           : null
                       }
                         text-xs md:text-base leading-4 text-black`}
-                      placeholder={"(99) 999-99-99"}
-                    />
+                    >
+                      {shopLocationsData?.assistant_phone || "-"}
+                    </div>
                   </div>
                 </div>
               </label>
@@ -389,23 +375,19 @@ export default function LocationMoreAbout() {
                 <div className="mt-[6px] flex items-center justify-center overflow-hidden border border-searchBgColor rounded-lg h-8 md:h-11">
                   <div className="w-[35%] md:w-[30%] flex items-center justify-center cursor-pointer border-r border-searchBgColor overflow-hidden">
                     <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular leading-4 text-black text-xs md:text-base">
-                      {/* {state?.idSecondAssistantPhoneCode ? "+" + state?.idSecondAssistantPhoneCode : "+998"} */}{" "}
                       +998
                     </div>
                   </div>
                   <div className="w-[65%] md:w-[70%] h-8 md:h-11 overflow-hidden">
-                    <input
-                      mask="(99) 999-99-99"
-                      name="phone"
-                      disabled
-                      value={shopLocationsData?.second_assistant_phone || ""}
-                      className={`w-full px-4 outline-none font-AeonikProRegular h-full not-italic ${
+                    <div
+                      className={`w-full px-2 flex items-center outline-none font-AeonikProRegular h-full not-italic ${
                         shopLocationsData?.second_assistant_phone
                           ? "font-AeonikProMedium"
                           : null
                       } text-xs md:text-base leading-4 text-black`}
-                      placeholder={"(99) 999-99-99"}
-                    />
+                    >
+                      {shopLocationsData?.second_assistant_phone || "-"}
+                    </div>
                   </div>
                 </div>
               </label>

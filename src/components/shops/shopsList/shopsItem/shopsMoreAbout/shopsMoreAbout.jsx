@@ -47,7 +47,7 @@ const ShopsMoreAbout = () => {
             </button>
             <div className="w-fit mr-auto md:mr-0">
               <span className="md:hidden block text-tableTextTitle2 text-xl not-italic font-AeonikProMedium">
-                Создать магазин
+                Магазин
               </span>
               <span className="md:block hidden">Магазины</span>
             </div>
