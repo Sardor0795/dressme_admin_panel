@@ -153,7 +153,7 @@ export const LocationsMoreAbout = () => {
           <div className="flex items-center justify-center mb-6">
             <button
               onClick={() => {
-                navigate(-1);
+                navigate("/locations");
               }}
               className="  md:hidden absolute left-2 flex items-center cursor-pointer justify-center "
             >
@@ -166,7 +166,7 @@ export const LocationsMoreAbout = () => {
           <div className="w-full flex items-center justify-end md:justify-between px-4 md:px-0 mb-2 md:mb-3 md:pb-0 pb-[8px] md:border-none border-b border-borderColor">
             <button
               onClick={() => {
-                navigate(-1);
+                navigate("/locations");
               }}
               className="md:w-8 md:h-8 w-6 h-6 hidden md:flex items-center cursor-pointer justify-center border border-borderColor rounded-lg"
             >

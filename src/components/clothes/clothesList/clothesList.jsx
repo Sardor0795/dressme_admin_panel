@@ -324,7 +324,7 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
@@ -342,7 +342,7 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#E51515]"
                         : "text-[#85444485] cursor-not-allowed"
@@ -362,7 +362,7 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#E51515]"
                         : "text-[#85444485] cursor-not-allowed"
@@ -380,7 +380,7 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
@@ -399,7 +399,7 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
@@ -520,7 +520,7 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
@@ -538,7 +538,7 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#E51515]"
                         : "text-[#85444485] cursor-not-allowed"
@@ -558,7 +558,7 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#E51515]"
                         : "text-[#85444485] cursor-not-allowed"
@@ -576,7 +576,7 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
@@ -595,7 +595,7 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-lg not-italic font-AeonikProMedium ${
+                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"

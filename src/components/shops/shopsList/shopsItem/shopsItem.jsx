@@ -149,8 +149,10 @@ export default function ShopsItem({
                 <CheckIcon size={"small"} />
               </span>
             </div>
-
-            <div className="flex items-center">
+            <div className="w-[3%] hidden md:block  text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+              {index + 1}
+            </div>
+            <div className="flex items-center md:hidden">
               <div className="border-b min-w-[10px]"></div>
               <div className="mx-[5px] text-[16px] font-AeonikProRegular text-[#D2D2D2]">
                 {index < 10 ? "0" : ""}
@@ -161,7 +163,7 @@ export default function ShopsItem({
 
             <Link
               to={`shop/${data?.id}`}
-              className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer"
+              className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer md:hidden block"
             >
               Подробнее
             </Link>
@@ -201,19 +203,19 @@ export default function ShopsItem({
           <div className="md:w-[30%] flex items-center gap-x-1 ">
             {(Number(data?.gender?.id) === 3 ||
               Number(data?.gender?.id) == 1) && (
-              <div className="ll:w-12 w-[36px] h-[36px] ll:h-12 rounded-lg border border-borderColor flex items-center justify-center">
+              <div className="ll:w-12 w-[36px] h-[36px] md:h-12 rounded-lg border border-borderColor flex items-center justify-center">
                 <img src={manGenderIcon} alt="" />
               </div>
             )}
             {(Number(data?.gender?.id) === 3 ||
               Number(data?.gender?.id) == 2) && (
-              <div className="ll:w-12 w-[36px] h-[36px] ll:h-12 rounded-lg border border-borderColor flex items-center justify-center">
+              <div className="ll:w-12 w-[36px] h-[36px] md:h-12 rounded-lg border border-borderColor flex items-center justify-center">
                 <img src={womanGenderIcon} alt="" />
               </div>
             )}
           </div>
 
-          <div className="w-full min-w-[120px] h-[36px] ll:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
+          <div className="md:w-fit text-sm md:text-base w-full min-w-[120px] md:min-w-[250px] h-[36px] md:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
             <img src={deliveryIcon} alt="" />
             <span className="font-AeonikProMedium">
               {data?.delivery?.name_ru}
@@ -222,14 +224,26 @@ export default function ShopsItem({
 
           <NavLink
             to={`locations/${data?.id}`}
-            className="w-full md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[10px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
+            className="md:w-fit w-full flex md:hidden items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[10px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 h-[36px] md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
           >
             Локации
           </NavLink>
         </div>
         <div className="w-full md:w-[36%] flex items-center justify-end gap-x-4 sm:gap-x-10 mt-4 ll:mt-6 md:mt-0">
+          <NavLink
+            to={`locations/${data?.id}`}
+            className="md:w-fit w-full md:flex hidden items-center justify-center md:text-textBlueColor md:text-base text-[13px] font-AeonikProMedium md:hover:underline md:px-0 px-[10px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
+          >
+            Локации
+          </NavLink>
+          <Link
+            to={`shop/${data?.id}`}
+            className="text-[#007DCA] md:hover:underline md:text-base font-AeonikProMedium cursor-pointer hidden md:block"
+          >
+            Подробнее
+          </Link>
           {showSellers !== "updated" ? (
-            <div className="w-full flex items-center gap-x-2">
+            <div className="md:w-fit w-full flex items-center gap-x-2">
               {" "}
               <button
                 onClick={() => approveFunc()}
@@ -237,7 +251,7 @@ export default function ShopsItem({
                   data?.status === "pending" || data?.status === "declined"
                     ? ""
                     : "hidden"
-                } w-full px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]`}
+                } md:w-fit w-full px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]`}
               >
                 Одобрить
               </button>
@@ -250,7 +264,7 @@ export default function ShopsItem({
                   data?.status === "pending" || data?.status === "approved"
                     ? ""
                     : "hidden"
-                } w-full px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
+                } md:w-fit w-full px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
               >
                 Отказать
               </button>
@@ -260,7 +274,7 @@ export default function ShopsItem({
           {showSellers === "updated" ? (
             <button
               onClick={() => approveFunc()}
-              className={`w-full px-2 py-[5px] font-AeonikProMedium rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+              className={`md:w-fit w-full px-2 py-[5px] font-AeonikProMedium rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
             >
               Одобрить
             </button>

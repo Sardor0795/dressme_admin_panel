@@ -23,7 +23,7 @@ export default function ColorModal({
             : "md:hidden bottom-[-800px] z-[-10]"
         }`}
       >
-        <div className="border p-[20px] rounded-lg w-full h-fit max-h-[70vh] md:max-h-[60vh] overflow-y-auto">
+        <div className="p-[20px] rounded-lg w-full h-fit max-h-[70vh] md:max-h-[60vh] overflow-y-auto">
           {/* Category 1 */}
 
           {category === "1"

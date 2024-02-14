@@ -39,7 +39,7 @@ const ShopsMoreAbout = () => {
           <div className="mt-6 flex items-center justify-center  ">
             <button
               onClick={() => {
-                navigate(-1);
+                navigate("/shops");
               }}
               className=" md:hidden absolute left-2 flex items-center cursor-pointer justify-center "
             >
@@ -57,7 +57,7 @@ const ShopsMoreAbout = () => {
         <div className="w-full flex items-center justify-end md:justify-between mb-2 md:mb-3 md:pb-0 pb-2 md:border-0 border-borderColor">
           <button
             onClick={() => {
-              navigate(-1);
+              navigate("/shops");
             }}
             className="md:w-8 md:h-8 w-6 h-6 hidden md:flex items-center cursor-pointer justify-center border border-borderColor rounded-lg"
           >

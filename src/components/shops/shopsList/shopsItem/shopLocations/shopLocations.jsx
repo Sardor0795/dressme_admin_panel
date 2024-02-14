@@ -38,7 +38,7 @@ export default function ShopLocations() {
       <div className=" md:hidden pt-6 pb-3 border-b border-[#F2F2F2] mb-3 flex items-center justify-between">
         <button
           onClick={() => {
-            navigate(-1);
+            navigate(`/shops`);
           }}
           className="flex items-center cursor-pointer justify-center "
         >
@@ -55,7 +55,7 @@ export default function ShopLocations() {
           <section className="hidden md:flex items-center">
             <button
               onClick={() => {
-                navigate(-1);
+                navigate(`/shops`);
               }}
               className="md:w-8 md:h-8 w-6 h-6 hidden md:flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
             >
@@ -289,7 +289,7 @@ export default function ShopLocations() {
               className="w-[100px] h-[100px]"
             ></div>
           ) : (
-            <div className="w-full h-[80vh] flex items-center justify-center font-AeonikProMedium text-2xl">
+            <div className="w-full mt-11 md:mt-20 h-[80vh] flex items-center justify-center font-AeonikProMedium text-2xl">
               Нет локаций
             </div>
           )}
