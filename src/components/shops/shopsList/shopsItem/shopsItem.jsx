@@ -197,7 +197,7 @@ export default function ShopsItem({
             </div>
           </div>
         </div>
-        <div className="w-full md:w-[29%] flex items-center gap-x-[44px] mt-3 md:mt-0">
+        <div className="w-full md:w-[29%] flex items-center gap-x-[10px] mt-3 md:mt-0">
           <div className="md:w-[30%] flex items-center gap-x-1 ">
             {(Number(data?.gender?.id) === 3 ||
               Number(data?.gender?.id) == 1) && (
@@ -212,23 +212,24 @@ export default function ShopsItem({
               </div>
             )}
           </div>
-          <div className="md:min-w-[260px] md:w-[260px] h-[36px] ll:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
+
+          <div className="w-full min-w-[120px] h-[36px] ll:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
             <img src={deliveryIcon} alt="" />
             <span className="font-AeonikProMedium">
               {data?.delivery?.name_ru}
             </span>
           </div>
-        </div>
-        <div className="w-full md:w-[36%] flex items-center justify-end gap-x-4 sm:gap-x-10 mt-4 ll:mt-6 md:mt-0">
+
           <NavLink
             to={`locations/${data?.id}`}
-            className="w-[50%] md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[20px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
+            className="w-full md:w-fit flex items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[10px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
           >
             Локации
           </NavLink>
-
+        </div>
+        <div className="w-full md:w-[36%] flex items-center justify-end gap-x-4 sm:gap-x-10 mt-4 ll:mt-6 md:mt-0">
           {showSellers !== "updated" ? (
-            <div className="w-[50%] flex items-center gap-x-2">
+            <div className="w-full flex items-center gap-x-2">
               {" "}
               <button
                 onClick={() => approveFunc()}
@@ -259,7 +260,7 @@ export default function ShopsItem({
           {showSellers === "updated" ? (
             <button
               onClick={() => approveFunc()}
-              className={`w-[50%] px-2 py-[5px] font-AeonikProMedium rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
+              className={`w-full px-2 py-[5px] font-AeonikProMedium rounded-[20px] border border-[#5EB267] text-[#5EB267]`}
             >
               Одобрить
             </button>
