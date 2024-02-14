@@ -43,7 +43,13 @@ export default function PhoneModal({ setPhoneModalOpen, phoneModalOpen }) {
                 })}
               >
                 <div className="flex w-[135px]">
-                  <span className="mr-4 flex w-[24px]">{item.icon}</span>
+                  <span
+                    className={`${
+                      item.id === 4 ? "ml-1 mr-3" : "mr-4"
+                    }  flex w-[24px]`}
+                  >
+                    {item.icon}
+                  </span>
                   {item.title}
                 </div>
               </NavLink>
