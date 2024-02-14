@@ -82,6 +82,26 @@ export const ClothMoreAbout = () => {
     }
   }, [modalOpen, colorModalOpen]);
 
+  // up btn
+
+  useEffect(() => {
+    let upBtn = document.querySelector("#upBtn");
+
+    upBtn.addEventListener("click", () => {
+      window.scrollTo(0, 0);
+    });
+
+    window.addEventListener("scroll", () => {
+      let scrollTop = window.scrollY;
+
+      if (scrollTop > 80) {
+        upBtn.style.display = "flex";
+      } else {
+        upBtn.style.display = "none";
+      }
+    });
+  }, []);
+
   return (
     <div className="flex flex-col w-full">
       <div className="md:border-b py-[18px] flex items-center mb-[6px]">
@@ -528,6 +548,15 @@ export const ClothMoreAbout = () => {
           </button>
         </div>
       </div>
+
+      <button
+        id="upBtn"
+        className="fixed bg-bgColor opacity-70 bottom-5 right-5 hidden items-center justify-center w-[48px] h-[48px] border border-[#c1c1c1] rounded-full shadow-[0_9px_25px_0_#8480b147] active:scale-90"
+      >
+        <div className="rotate-90">
+          <BackIcon width={24} height={24} />
+        </div>
+      </button>
 
       <CancelModal
         setModalOpen={setModalOpen}
