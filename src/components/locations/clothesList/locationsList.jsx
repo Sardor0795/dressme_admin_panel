@@ -603,6 +603,7 @@ export default function LocationsList() {
                         allApproveFunc();
                       }
                     }}
+                    
                     className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? ""
