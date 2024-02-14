@@ -172,8 +172,6 @@ export default function Carousel({ data, height }) {
     }
   }, [data?.photos]);
 
-  console.log(data?.colors, "data?.colors");
-
   useEffect(() => {
     if (data?.colors) {
       setColorOne({
@@ -257,8 +255,6 @@ export default function Carousel({ data, height }) {
   const [modalId, setModalId] = useState(null);
   const [modalOfCarsouel, setModalOfCarsouel] = useState(false);
 
-  console.log(modalId, "modalId");
-
   function handleClickCarosuel() {
     setModalOfCarsouel(true);
   }
@@ -268,6 +264,15 @@ export default function Carousel({ data, height }) {
       top: 0,
     });
   }, []);
+
+  // DISABLE BACKGROUND SCROLL WHEN MODAI IS OPENED
+  useEffect(() => {
+    if (modalOfCarsouel) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [modalOfCarsouel]);
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { BackIcon } from "../../../../../assets/icon";
 import axios from "axios";
 
@@ -153,13 +153,6 @@ export default function ShopLocations() {
 
                   {/* Mobile */}
                   <div className="border rounded-xl border-[##F2F2F2] p-[10px] mb-3 md:hidden w-full">
-                    <div className="mb-2">
-                      <div className="w-full md:w-fit flex items-center justify-between text-xl font-AeonikProRegular ">
-                        <div className="w-[40%] border-b border-borderColor h-[2px]"></div>
-                        <span className="text-checkboxBorder">0{data?.id}</span>
-                        <div className="w-[40%] border-b border-borderColor h-[2px]"></div>
-                      </div>
-                    </div>
                     <div className="mb-3 h-[148px]">
                       <figure className="w-full h-full rounded-lg overflow-hidden">
                         <img
@@ -186,7 +179,7 @@ export default function ShopLocations() {
                         <div className="pr-[5px] ll:pr-[10px] w-[24%] break-words  text-gray-700 text-[11px] not-italic font-AeonikProMedium">
                           {data?.region?.name_ru}
                         </div>
-                        <div className="relative pr-[5px] ll:pr-[10px] h-[60px] overflow-hidden  w-[46%]  text-justify	text-[11px] not-italic font-AeonikProMedium">
+                        <div className="relative pr-[5px] ll:pr-[10px] h-fit overflow-hidden  w-[46%]  text-justify	text-[11px] not-italic font-AeonikProMedium">
                           <div className="absolute ToogleOff left-0 w-full h-full z-[10] top-0"></div>
 
                           {data?.address}
@@ -200,49 +193,12 @@ export default function ShopLocations() {
                     {/* {data?.region?.name_ru || "city"}, {data?.sub_region?.name_ru || "sub_region"} */}
 
                     <div className="flex items-center justify-between gap-x-[15px]">
-                      <button
-                        // onClick={() => goMapWear(data?.shop_id)}
-                        className="text-[#ED7925] bg-[#FDF1E8] text-center w-[50%] h-[31px] py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
+                      <Link
+                        to={`/shops/locations/location/${data?.id}`}
+                        className="text-[#007DCA] bg-[#E8F5FD] text-center w-[100%] h-[31px] py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
                       >
-                        <span className="mr-[5px]">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                          >
-                            <g clipPath="url(#clip0_1350_8602)">
-                              <path
-                                d="M12.3335 5.66683V12.3335M12.3335 12.3335V14.6668H3.66683V12.3335M12.3335 12.3335H14.6668V5.66683C14.6668 4.66683 14.0002 3.50016 13.0002 2.66683C12.0002 1.8335 10.0002 1.3335 10.0002 1.3335H6.00016C6.00016 1.3335 4.00016 1.8335 3.00016 2.66683C2.00016 3.50016 1.3335 4.66683 1.3335 5.66683V12.3335H3.66683M3.66683 12.3335V5.66683"
-                                stroke="#ED7925"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                              <path
-                                d="M10 1.3335C10 1.86393 9.78929 2.37264 9.41421 2.74771C9.03914 3.12278 8.53043 3.3335 8 3.3335C7.46957 3.3335 6.96086 3.12278 6.58579 2.74771C6.21071 2.37264 6 1.86393 6 1.3335"
-                                stroke="#ED7925"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_1350_8602">
-                                <rect width="16" height="16" fill="white" />
-                              </clipPath>
-                            </defs>
-                          </svg>
-                        </span>
-                        {/* {data?.wearLink} */}
-                      </button>
-                      <button
-                        // onClick={() => goMapCity(data?.id)}
-                        className="text-[#007DCA] bg-[#E8F5FD] text-center w-[50%] h-[31px] py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
-                      >
-                        {/* {data?.showMore} */}
-                        <span className="ml-[5px]">
+                        Подробнее
+                        <span className="ml-[10px]">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -268,7 +224,7 @@ export default function ShopLocations() {
                             </defs>
                           </svg>
                         </span>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { BackIcon, StarIcon } from "../../../assets/icon";
 import CancelModal from "./modalCancel";
-import ColorModal from "./modalColor";
+import { ColorModal } from "./modalColor";
 import Carousel from "./carousel";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -71,6 +71,17 @@ export const ClothMoreAbout = () => {
       });
   };
 
+  // DISABLE BACKGROUND SCROLL WHEN MODAI IS OPENED
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+    } else if (colorModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [modalOpen, colorModalOpen]);
+
   return (
     <div className="flex flex-col w-full">
       <div className="md:border-b py-[18px] flex items-center mb-[6px]">
@@ -100,13 +111,6 @@ export const ClothMoreAbout = () => {
             Обновленные товары
           </div>
         ) : null}
-      </div>
-
-      <div className="flex items-center md:hidden">
-        <div className="mr-[10px] tex-[30px] text-[#B5B5B5] font-AeonikProRegular">
-          01
-        </div>
-        <div className="border-b border-[#D5D5D5] w-full"></div>
       </div>
 
       <div className="w-full flex items-center justify-between my-[12px] md:my-9">

@@ -1,12 +1,11 @@
-import { useState } from "react";
 import { StarIcon, XIcon } from "../../../../assets/icon";
 
-export default function ColorModal({
+export const ColorModal = ({
   setColorModalOpen,
   colorModalOpen,
   category,
   data,
-}) {
+}) => {
   return (
     <div className={`w-full px-4  md:px-10`}>
       <div
@@ -17,7 +16,7 @@ export default function ColorModal({
       ></div>
 
       <section
-        className={`max-w-[750px] pt-[70px] z-[201] w-full flex-col h-fit bg-white fixed px-5 py-10 rounded-t-lg md:rounded-b-lg left-0 right-0 md:top-[50%] duration-300 overflow-hidden md:left-1/2 md:right-1/2 md:translate-x-[-50%] md:translate-y-[-50%] ${
+        className={`max-w-[750px] pt-[60px] z-[201] w-full flex-col h-fit bg-white fixed rounded-t-lg md:rounded-b-lg left-0 right-0 md:top-[50%] duration-300 overflow-hidden md:left-1/2 md:right-1/2 md:translate-x-[-50%] md:translate-y-[-50%] ${
           colorModalOpen
             ? " bottom-0 md:flex"
             : "md:hidden bottom-[-800px] z-[-10]"
@@ -728,4 +727,4 @@ export default function ColorModal({
       </section>
     </div>
   );
-}
+};
