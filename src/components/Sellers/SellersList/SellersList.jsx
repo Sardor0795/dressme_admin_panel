@@ -267,9 +267,9 @@ export default function SellersList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                    className={`text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
-                        ? ""
+                        ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
@@ -284,9 +284,9 @@ export default function SellersList() {
                         setModalOpen(true);
                       }
                     }}
-                    className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                    className={`text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
-                        ? ""
+                        ? "text-[#E51515]"
                         : "text-[#85444485] cursor-not-allowed"
                     }`}
                     type="button"
@@ -304,9 +304,9 @@ export default function SellersList() {
                         setModalOpen(true);
                       }
                     }}
-                    className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                    className={`text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
-                        ? ""
+                        ? "text-[#E51515]"
                         : "text-[#85444485] cursor-not-allowed"
                     }`}
                     type="button"
@@ -323,9 +323,9 @@ export default function SellersList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                    className={`text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
-                        ? ""
+                        ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
@@ -342,9 +342,9 @@ export default function SellersList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                    className={`text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
-                        ? ""
+                        ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
                     }`}
                     type="button"
@@ -381,9 +381,9 @@ export default function SellersList() {
                           allApproveFunc();
                         }
                       }}
-                      className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      className={`text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
-                          ? ""
+                          ? "text-[#12C724]"
                           : "text-[#12c7245e] cursor-not-allowed"
                       }`}
                       type="button"
@@ -398,9 +398,9 @@ export default function SellersList() {
                           setModalOpen(true);
                         }
                       }}
-                      className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                      className={`text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
-                          ? ""
+                          ? "text-[#E51515]"
                           : "text-[#85444485] cursor-not-allowed"
                       }`}
                       type="button"
@@ -418,9 +418,9 @@ export default function SellersList() {
                           setModalOpen(true);
                         }
                       }}
-                      className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                      className={`text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
-                          ? ""
+                          ? "text-[#E51515]"
                           : "text-[#85444485] cursor-not-allowed"
                       }`}
                       type="button"
@@ -438,9 +438,9 @@ export default function SellersList() {
                         }
                       }}
                       type="button"
-                      className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      className={`text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
-                          ? ""
+                          ? "text-[#12C724]"
                           : "text-[#12c7245e] cursor-not-allowed"
                       }`}
                     >
@@ -457,9 +457,9 @@ export default function SellersList() {
                         }
                       }}
                       type="button"
-                      className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                      className={`text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
-                          ? ""
+                          ? "text-[#12C724]"
                           : "text-[#12c7245e] cursor-not-allowed"
                       }`}
                     >
@@ -524,9 +524,9 @@ export default function SellersList() {
                             allApproveFunc();
                           }
                         }}
-                        className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                        className={`text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
-                            ? ""
+                            ? "text-[#12C724]"
                             : "text-[#12c7245e] cursor-not-allowed"
                         }`}
                         type="button"
@@ -542,9 +542,9 @@ export default function SellersList() {
                           }
                         }}
                         type="button"
-                        className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                        className={`text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
-                            ? ""
+                            ? "text-[#E51515]"
                             : "text-[#85444485] cursor-not-allowed"
                         }`}
                       >
@@ -561,9 +561,9 @@ export default function SellersList() {
                             setModalOpen(true);
                           }
                         }}
-                        className={`text-[#E51515] text-lg not-italic font-AeonikProMedium ${
+                        className={`text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
-                            ? ""
+                            ? "text-[#E51515]"
                             : "text-[#85444485] cursor-not-allowed"
                         }`}
                         type="button"
@@ -580,9 +580,9 @@ export default function SellersList() {
                             allApproveFunc();
                           }
                         }}
-                        className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                        className={`text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
-                            ? ""
+                            ? "text-[#12C724]"
                             : "text-[#12c7245e] cursor-not-allowed"
                         }`}
                         type="button"
@@ -599,9 +599,9 @@ export default function SellersList() {
                             allApproveFunc();
                           }
                         }}
-                        className={`text-[#12C724] text-lg not-italic font-AeonikProMedium ${
+                        className={`text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
-                            ? ""
+                            ? "text-[#12C724]"
                             : "text-[#12c7245e] cursor-not-allowed"
                         }`}
                         type="button"
