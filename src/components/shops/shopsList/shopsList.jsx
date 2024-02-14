@@ -895,7 +895,7 @@ export default function ShopsList() {
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center center",
                 }}
-                className="w-[100px] h-[100px]"
+                className="w-[50px] h-[50px] md:w-[100px] md:h-[100px]"
               ></div>
             ) : (
               <div className="font-AeonikProMedium text-xl">Нет магазинов</div>
