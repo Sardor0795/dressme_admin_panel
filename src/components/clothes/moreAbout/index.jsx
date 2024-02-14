@@ -262,7 +262,7 @@ export const ClothMoreAbout = () => {
             </div>
 
             <div className="flex mb-[25px] gap-[11px] md:gap-[0]">
-              <div className="w-full md:w-fit md:mr-[15px]">
+              <div className="w-[45%] md:w-fit md:mr-[15px]">
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Пол</span> <StarIcon />
                 </div>
@@ -288,7 +288,7 @@ export const ClothMoreAbout = () => {
               <span className="mr-[5px]">Категория одежды</span> <StarIcon />
             </div>
             <div className="flex w-full mb:block gap-[11px] md:gap-[0]">
-              <div className="flex w-full md:flex-wrap xxxl:flex-nowrap justify-between mb-[25px] gap-[10px]">
+              <div className="flex w-full flex-wrap xxxl:flex-nowrap justify-between mb-[25px] gap-[10px]">
                 <div className="h-[40px] w-full  whitespace-nowrap font-AeonikProRegular text-[16px] xxxl:w-full rounded-lg border border-[#E5E5E5]  py-[12px] px-[15px] text-black">
                   {data?.category?.name_ru}
                 </div>
