@@ -255,19 +255,35 @@ export default function ShopsItem({
               >
                 Одобрить
               </button>
-              <button
-                onClick={() => {
-                  setId({ type: "single", id: data?.id });
-                  setModalOpen(true);
-                }}
-                className={`${
-                  data?.status === "pending" || data?.status === "approved"
-                    ? ""
-                    : "hidden"
-                } md:w-fit w-full px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
-              >
-                Отказать
-              </button>
+              {showSellers === "approved" ? (
+                <button
+                  onClick={() => {
+                    setId({ type: "single", id: data?.id });
+                    setModalOpen(true);
+                  }}
+                  className={`${
+                    data?.status === "pending" || data?.status === "approved"
+                      ? ""
+                      : "hidden"
+                  } rounded-[8px] py-[8px] md:w-fit w-full bg-[#FFE1E1] font-AeonikProMedium text-[#E51515]`}
+                >
+                  Отказать
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setId({ type: "single", id: data?.id });
+                    setModalOpen(true);
+                  }}
+                  className={`${
+                    data?.status === "pending" || data?.status === "approved"
+                      ? ""
+                      : "hidden"
+                  } md:w-fit w-full px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
+                >
+                  Отказать
+                </button>
+              )}
             </div>
           ) : null}
 
