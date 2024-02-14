@@ -206,7 +206,10 @@ export default function SellersList() {
 
       <div className="flex mb-[24px] mt-[80px] md:hidden">
         <div
-          onClick={() => setShowSellers("pending")}
+          onClick={() => {
+            setShowSellers("pending");
+            setAllChecked(false);
+          }}
           className={`${
             showSellers === "pending"
               ? "text-[#007DCA] border-[#007DCA]"
@@ -217,7 +220,10 @@ export default function SellersList() {
           <div>({waitingCount})</div>
         </div>
         <div
-          onClick={() => setShowSellers("approved")}
+          onClick={() => {
+            setShowSellers("approved");
+            setAllChecked(false);
+          }}
           className={`${
             showSellers === "approved"
               ? "text-[#007DCA] border-[#007DCA]"
@@ -228,7 +234,10 @@ export default function SellersList() {
           <div> ({allowedCount})</div>
         </div>
         <div
-          onClick={() => setShowSellers("declined")}
+          onClick={() => {
+            setShowSellers("declined");
+            setAllChecked(false);
+          }}
           className={`${
             showSellers === "declined"
               ? "text-[#007DCA] border-[#007DCA]"
@@ -239,7 +248,10 @@ export default function SellersList() {
           <div>({notAllowedCount})</div>
         </div>
         <div
-          onClick={() => setShowSellers("updated")}
+          onClick={() => {
+            setShowSellers("updated");
+            setAllChecked(false);
+          }}
           className={`${
             showSellers === "updated"
               ? "text-[#007DCA] border-[#007DCA]"
