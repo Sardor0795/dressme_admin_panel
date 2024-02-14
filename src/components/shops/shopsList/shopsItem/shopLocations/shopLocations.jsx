@@ -40,7 +40,7 @@ export default function ShopLocations() {
           onClick={() => {
             navigate(`/shops`);
           }}
-          className="flex items-center cursor-pointer justify-center "
+          className="w-8 h-8 md:hidden flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
         >
           <BackIcon />
         </button>

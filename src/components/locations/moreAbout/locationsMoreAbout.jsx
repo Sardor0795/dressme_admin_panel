@@ -153,9 +153,9 @@ export const LocationsMoreAbout = () => {
           <div className="flex items-center justify-center mb-6">
             <button
               onClick={() => {
-                navigate("/locations");
+                navigate(`/locations`);
               }}
-              className="  md:hidden absolute left-2 flex items-center cursor-pointer justify-center "
+              className="w-8 h-8 md:hidden flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
             >
               <BackIcon />
             </button>

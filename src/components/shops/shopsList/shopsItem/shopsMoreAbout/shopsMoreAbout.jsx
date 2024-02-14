@@ -39,13 +39,13 @@ const ShopsMoreAbout = () => {
           <div className="mt-6 flex items-center justify-center  ">
             <button
               onClick={() => {
-                navigate("/shops");
+                navigate(`/shops`);
               }}
-              className=" md:hidden absolute left-2 flex items-center cursor-pointer justify-center "
+              className="w-8 h-8 md:hidden flex mr-auto items-center cursor-pointer justify-center border border-borderColor rounded-lg"
             >
               <BackIcon />
             </button>
-            <div className="w-fit">
+            <div className="w-fit mr-auto md:mr-0">
               <span className="md:hidden block text-tableTextTitle2 text-xl not-italic font-AeonikProMedium">
                 Создать магазин
               </span>

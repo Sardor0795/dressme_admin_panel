@@ -155,7 +155,7 @@ export default function LocationMoreAbout() {
               onClick={() => {
                 navigate(`/shops/locations/${params?.id}`);
               }}
-              className="  md:hidden absolute left-2 flex items-center cursor-pointer justify-center "
+              className="w-8 h-8 md:hidden flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
             >
               <BackIcon />
             </button>

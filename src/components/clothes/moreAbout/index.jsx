@@ -85,12 +85,14 @@ export const ClothMoreAbout = () => {
   return (
     <div className="flex flex-col w-full">
       <div className="md:border-b py-[18px] flex items-center mb-[6px]">
-        <Link
-          to="/clothes"
-          className="rounded-md border border-[#D5D5D5] mr-[30px]"
+        <button
+          onClick={() => {
+            navigate(`/clothes`);
+          }}
+          className="w-8 h-8 md:hidden flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
         >
           <BackIcon />
-        </Link>
+        </button>
         {showSellers === "pending" ? (
           <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
             Ожидающие товары
