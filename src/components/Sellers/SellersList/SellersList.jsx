@@ -211,7 +211,7 @@ export default function SellersList() {
             showSellers === "pending"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[11px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Ожидающие продавцы</div>{" "}
           <div>({waitingCount})</div>
@@ -222,7 +222,7 @@ export default function SellersList() {
             showSellers === "approved"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[11px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Одобренные продавцы</div>{" "}
           <div> ({allowedCount})</div>
@@ -233,7 +233,7 @@ export default function SellersList() {
             showSellers === "declined"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[11px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Отказанные продавцы</div>{" "}
           <div>({notAllowedCount})</div>
@@ -244,7 +244,7 @@ export default function SellersList() {
             showSellers === "updated"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-sm md:text-[14px] cursor-pointer font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[11px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]"> Обновленные продавцы</div>{" "}
           <div>({updatedCount})</div>
