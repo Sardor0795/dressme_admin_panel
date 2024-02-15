@@ -413,7 +413,7 @@ export default function LocationMoreAbout() {
                   </div>
                   <div className="w-[65%] md:w-[70%] h-8 md:h-11 overflow-hidden">
                     <div
-                      className={`w-full px-2 flex items-center outline-none font-AeonikProRegular h-full not-italic ${
+                      className={`w-full px-4 flex items-center outline-none font-AeonikProRegular h-full not-italic ${
                         shopLocationsData?.second_assistant_phone
                           ? "font-AeonikProMedium"
                           : null

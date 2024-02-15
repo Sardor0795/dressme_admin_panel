@@ -430,7 +430,7 @@ export const LocationsMoreAbout = () => {
                   </div>
                   <div className="w-[65%] md:w-[70%] h-8 md:h-11 overflow-hidden">
                     <div
-                      className={`w-full px-2 outline-none font-AeonikProRegular flex items-center h-full not-italic ${
+                      className={`w-full px-4 outline-none font-AeonikProRegular flex items-center h-full not-italic ${
                         shopLocationsData?.second_assistant_phone
                           ? "font-AeonikProMedium"
                           : null
