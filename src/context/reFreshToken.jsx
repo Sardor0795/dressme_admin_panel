@@ -20,7 +20,10 @@ export const ReFreshTokenContextProvider = ({ children }) => {
           sessionStorage.setItem("token", data?.data?.access_token);
         }
       } catch (error) {
-        if (error?.response?.status === 401 || v?.response?.status === 403) {
+        if (
+          error?.response?.status === 401 ||
+          error?.response?.status === 403
+        ) {
           sessionStorage.removeItem("token");
           navigate("/signin");
           window.location.reload();
