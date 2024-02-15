@@ -89,6 +89,11 @@ export const MoreAbout = () => {
               Отказанные продавцы
             </div>
           ) : null}
+          {showSellers === "updated" ? (
+            <div className="font-AeonikProMedium text-[18px] md:text-[24px] text-black">
+              Обновленные продавцы
+            </div>
+          ) : null}
         </div>
         <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input
@@ -136,6 +141,17 @@ export const MoreAbout = () => {
           </div>
         ) : null}
         {showSellers === "declined" ? (
+          <div className="flex items-center ml-auto">
+            <button
+              onClick={() => approveFunc()}
+              type="button"
+              className="text-[#12C724] text-lg not-italic font-AeonikProMedium"
+            >
+              Одобрить
+            </button>
+          </div>
+        ) : null}
+        {showSellers === "updated" ? (
           <div className="flex items-center ml-auto">
             <button
               onClick={() => approveFunc()}

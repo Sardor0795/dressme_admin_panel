@@ -34,8 +34,8 @@ export default function ShopLocations() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full h-full px-4 md:px-0 ">
-      <div className=" md:hidden pt-6 pb-3 border-b border-[#F2F2F2] mb-3 flex items-center justify-between">
+    <div className="w-full h-full md:px-0 ">
+      <div className="md:hidden pt-6 pb-3 border-b border-[#F2F2F2] mb-3 flex items-center justify-between">
         <button
           onClick={() => {
             navigate(`/shops`);

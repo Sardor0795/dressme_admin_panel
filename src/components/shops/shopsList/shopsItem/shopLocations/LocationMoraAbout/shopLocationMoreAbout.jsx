@@ -220,7 +220,7 @@ export default function LocationMoreAbout() {
             </div>
           </div>
 
-          <div className=" px-4 md:px-0 flex mt-[10px] justify-between items-centers gap-x-[5px] ls:gap-x-[10px] md:gap-[25px] mb-[25px] ">
+          <div className="flex mt-[10px] justify-between items-centers gap-x-[5px] ls:gap-x-[10px] md:gap-[25px] mb-[25px] ">
             <div className=" w-full md:w-[31%]  h-[75px] md:h-[130px] flex items-center justify-center rounded-lg">
               <div
                 onClick={() => {
@@ -292,7 +292,7 @@ export default function LocationMoreAbout() {
             </div>
           </div>
 
-          <div className="w-full px-4 md:px-0  ">
+          <div className="w-full">
             <div className="flex flex-wrap items-center justify-between gap-3 md:gap-4 ">
               <div className="w-full md:w-[31%] xs:w-[48%]   ">
                 <div className="w-full text-[12px] md:text-base flex items-center mb-[10px]">

@@ -233,7 +233,7 @@ export default function LocationsList() {
       setCheckedShops([]);
       setMassiveCheckeds([]);
     }
-  }, [allChecked]);
+  }, [allChecked, showSellers]);
 
   const allApproveFunc = () => {
     let formData = new FormData();
@@ -754,6 +754,7 @@ export default function LocationsList() {
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
+                                                        className="flex items-center cursor-pointer"
                                                         onClick={() => {
                                                           if (
                                                             checkedShops?.includes(
@@ -782,52 +783,45 @@ export default function LocationsList() {
                                                             );
                                                           }
                                                         }}
-                                                        className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                          checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                        } flex items-center justify-center rounded mr-[8px]`}
                                                       >
-                                                        <span
-                                                          className={`${
+                                                        <div
+                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                                                             checkedShops?.includes(
                                                               item_2?.id
                                                             )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                          }`}
+                                                              ? "bg-[#007DCA] border-[#007DCA]"
+                                                              : "bg-white border-checkboxBorder"
+                                                          } flex items-center justify-center rounded mr-[8px]`}
                                                         >
-                                                          <CheckIcon />
-                                                        </span>
-                                                        <span
-                                                          className={`${
-                                                            checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                          }`}
-                                                        >
-                                                          <CheckIcon
-                                                            size={"small"}
-                                                          />
-                                                        </span>
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "hidden md:flex items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
+                                                          >
+                                                            <CheckIcon />
+                                                          </span>
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "flex md:hidden items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
+                                                          >
+                                                            <CheckIcon
+                                                              size={"small"}
+                                                            />
+                                                          </span>
+                                                        </div>
+                                                        <button className="text-[#007DCA] mr-[7px]">
+                                                          {item?.name}
+                                                        </button>
                                                       </div>
-                                                      <button
-                                                        // onClick={() => {
-                                                        //   onCheck(
-                                                        //     checkIndicator
-                                                        //   );
-                                                        //   setAllChecked(
-                                                        //     !allChecked
-                                                        //   );
-                                                        // }}
-                                                        className="text-[#007DCA] mr-[7px]"
-                                                      >
-                                                        {item?.name}
-                                                      </button>
                                                       - {item_2?.name} (
                                                       {productLength})
                                                     </div>
@@ -929,6 +923,7 @@ export default function LocationsList() {
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
+                                                        className="flex items-center cursor-pointer"
                                                         onClick={() => {
                                                           if (
                                                             checkedShops?.includes(
@@ -957,52 +952,45 @@ export default function LocationsList() {
                                                             );
                                                           }
                                                         }}
-                                                        className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                          checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                        } flex items-center justify-center rounded mr-[8px]`}
                                                       >
-                                                        <span
-                                                          className={`${
+                                                        <div
+                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                                                             checkedShops?.includes(
                                                               item_2?.id
                                                             )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                          }`}
+                                                              ? "bg-[#007DCA] border-[#007DCA]"
+                                                              : "bg-white border-checkboxBorder"
+                                                          } flex items-center justify-center rounded mr-[8px]`}
                                                         >
-                                                          <CheckIcon />
-                                                        </span>
-                                                        <span
-                                                          className={`${
-                                                            checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                          }`}
-                                                        >
-                                                          <CheckIcon
-                                                            size={"small"}
-                                                          />
-                                                        </span>
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "hidden md:flex items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
+                                                          >
+                                                            <CheckIcon />
+                                                          </span>
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "flex md:hidden items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
+                                                          >
+                                                            <CheckIcon
+                                                              size={"small"}
+                                                            />
+                                                          </span>
+                                                        </div>
+                                                        <button className="text-[#007DCA] mr-[7px]">
+                                                          {item?.name}
+                                                        </button>
                                                       </div>
-                                                      <button
-                                                        // onClick={() => {
-                                                        //   onCheck(
-                                                        //     checkIndicator
-                                                        //   );
-                                                        //   setAllChecked(
-                                                        //     !allChecked
-                                                        //   );
-                                                        // }}
-                                                        className="text-[#007DCA] mr-[7px]"
-                                                      >
-                                                        {item?.name}
-                                                      </button>
                                                       - {item_2?.name} (
                                                       {productLength})
                                                     </div>
@@ -1104,6 +1092,7 @@ export default function LocationsList() {
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
+                                                        className="flex items-center cursor-pointer"
                                                         onClick={() => {
                                                           if (
                                                             checkedShops?.includes(
@@ -1132,52 +1121,45 @@ export default function LocationsList() {
                                                             );
                                                           }
                                                         }}
-                                                        className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                          checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                        } flex items-center justify-center rounded mr-[8px]`}
                                                       >
-                                                        <span
-                                                          className={`${
+                                                        <div
+                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                                                             checkedShops?.includes(
                                                               item_2?.id
                                                             )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                          }`}
+                                                              ? "bg-[#007DCA] border-[#007DCA]"
+                                                              : "bg-white border-checkboxBorder"
+                                                          } flex items-center justify-center rounded mr-[8px]`}
                                                         >
-                                                          <CheckIcon />
-                                                        </span>
-                                                        <span
-                                                          className={`${
-                                                            checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                          }`}
-                                                        >
-                                                          <CheckIcon
-                                                            size={"small"}
-                                                          />
-                                                        </span>
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "hidden md:flex items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
+                                                          >
+                                                            <CheckIcon />
+                                                          </span>
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "flex md:hidden items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
+                                                          >
+                                                            <CheckIcon
+                                                              size={"small"}
+                                                            />
+                                                          </span>
+                                                        </div>
+                                                        <button className="text-[#007DCA] mr-[7px]">
+                                                          {item?.name}
+                                                        </button>
                                                       </div>
-                                                      <button
-                                                        // onClick={() => {
-                                                        //   onCheck(
-                                                        //     checkIndicator
-                                                        //   );
-                                                        //   setAllChecked(
-                                                        //     !allChecked
-                                                        //   );
-                                                        // }}
-                                                        className="text-[#007DCA] mr-[7px]"
-                                                      >
-                                                        {item?.name}
-                                                      </button>
                                                       - {item_2?.name} (
                                                       {productLength})
                                                     </div>
@@ -1279,6 +1261,7 @@ export default function LocationsList() {
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
                                                     <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                                                       <div
+                                                        className="flex items-center cursor-pointer"
                                                         onClick={() => {
                                                           if (
                                                             checkedShops?.includes(
@@ -1307,52 +1290,45 @@ export default function LocationsList() {
                                                             );
                                                           }
                                                         }}
-                                                        className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                                          checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                        } flex items-center justify-center rounded mr-[8px]`}
                                                       >
-                                                        <span
-                                                          className={`${
+                                                        <div
+                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                                                             checkedShops?.includes(
                                                               item_2?.id
                                                             )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                          }`}
+                                                              ? "bg-[#007DCA] border-[#007DCA]"
+                                                              : "bg-white border-checkboxBorder"
+                                                          } flex items-center justify-center rounded mr-[8px]`}
                                                         >
-                                                          <CheckIcon />
-                                                        </span>
-                                                        <span
-                                                          className={`${
-                                                            checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                          }`}
-                                                        >
-                                                          <CheckIcon
-                                                            size={"small"}
-                                                          />
-                                                        </span>
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "hidden md:flex items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
+                                                          >
+                                                            <CheckIcon />
+                                                          </span>
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "flex md:hidden items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
+                                                          >
+                                                            <CheckIcon
+                                                              size={"small"}
+                                                            />
+                                                          </span>
+                                                        </div>
+                                                        <button className="text-[#007DCA] mr-[7px]">
+                                                          {item?.name}
+                                                        </button>
                                                       </div>
-                                                      <button
-                                                        // onClick={() => {
-                                                        //   onCheck(
-                                                        //     checkIndicator
-                                                        //   );
-                                                        //   setAllChecked(
-                                                        //     !allChecked
-                                                        //   );
-                                                        // }}
-                                                        className="text-[#007DCA] mr-[7px]"
-                                                      >
-                                                        {item?.name}
-                                                      </button>
                                                       - {item_2?.name} (
                                                       {productLength})
                                                     </div>

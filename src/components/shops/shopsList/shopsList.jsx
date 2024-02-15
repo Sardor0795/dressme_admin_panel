@@ -40,10 +40,6 @@ export default function ShopsList() {
 
   const [filteredData, setFilteredData] = useState([]);
 
-  // console.log(filteredData, "lllllllllllllll");
-
-  // console.log(dataShops, 'data-Shops');
-
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
@@ -68,7 +64,6 @@ export default function ShopsList() {
   let updatedCount = 0;
 
   filteredData?.forEach((sellers_shops) => {
-    // console.log(sellers_shops, 'sellers_shops');
     sellers_shops?.shops?.forEach((shop) => {
       if (shop?.status === "pending") {
         ++waitingCount;
@@ -82,8 +77,6 @@ export default function ShopsList() {
     });
   });
 
-  // console.log(filteredData, "filteredData");
-
   let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
 
   // let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
@@ -92,8 +85,6 @@ export default function ShopsList() {
 
   // Products Context
   const [showSellers, setShowSellers] = useContext(SellersContext);
-
-  // console.log(showSellers,'showSellers');
 
   let dataCount = 0;
   if (showSellers === "pending") {
@@ -105,11 +96,6 @@ export default function ShopsList() {
   } else if (showSellers === "updated") {
     dataCount = updatedCount;
   }
-
-  // console.log(waitingCount,'waitingCount');
-  // console.log(allowedCount,'allowedCount');
-  // console.log(notAllowedCount,'notAllowedCount');
-  // console.log(updatedCount,'updatedCount');
 
   // up btn
 
@@ -205,7 +191,7 @@ export default function ShopsList() {
       setCheckedShops([]);
       setMassiveCheckeds([]);
     }
-  }, [allChecked]);
+  }, [allChecked, showSellers]);
 
   const allApproveFunc = () => {
     let formData = new FormData();
@@ -668,7 +654,6 @@ export default function ShopsList() {
 
           <div
             onClick={() => {
-              // onCheck(checkIndicator);
               setAllChecked(!allChecked);
             }}
             className="hidden md:flex items-center cursor-pointer select-none font-AeonikProMedium"
@@ -702,6 +687,7 @@ export default function ShopsList() {
                       <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
                         <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                           <div
+                            className="flex items-center cursor-pointer"
                             onClick={() => {
                               if (checkedShops?.includes(item?.id)) {
                                 setCheckedShops((prevState) =>
@@ -714,34 +700,37 @@ export default function ShopsList() {
                                 shopIdCheck(item?.id);
                               }
                             }}
-                            className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                              checkedShops?.includes(item?.id)
-                                ? "bg-[#007DCA] border-[#007DCA]"
-                                : "bg-white border-checkboxBorder"
-                            } flex items-center justify-center rounded mr-[8px]`}
                           >
-                            <span
-                              className={`${
+                            <div
+                              className={`min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
                                 checkedShops?.includes(item?.id)
-                                  ? "hidden md:flex items-center justify-center"
-                                  : "hidden"
-                              }`}
+                                  ? "bg-[#007DCA] border-[#007DCA]"
+                                  : "bg-white border-checkboxBorder"
+                              } flex items-center justify-center rounded mr-[8px]`}
                             >
-                              <CheckIcon />
-                            </span>
-                            <span
-                              className={`${
-                                checkedShops?.includes(item?.id)
-                                  ? "flex md:hidden items-center justify-center"
-                                  : "hidden"
-                              }`}
-                            >
-                              <CheckIcon size={"small"} />
-                            </span>
+                              <span
+                                className={`${
+                                  checkedShops?.includes(item?.id)
+                                    ? "hidden md:flex items-center justify-center"
+                                    : "hidden"
+                                }`}
+                              >
+                                <CheckIcon />
+                              </span>
+                              <span
+                                className={`${
+                                  checkedShops?.includes(item?.id)
+                                    ? "flex md:hidden items-center justify-center"
+                                    : "hidden"
+                                }`}
+                              >
+                                <CheckIcon size={"small"} />
+                              </span>
+                            </div>
+                            <button className="text-[#007DCA] mr-[7px]">
+                              {item?.name}
+                            </button>
                           </div>
-                          <button className="text-[#007DCA] mr-[7px]">
-                            {item?.name}
-                          </button>
                           ({item?.shops?.length || 0})
                         </div>
                       </div>

@@ -3,6 +3,7 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { StarIcon, BackIcon, LocationIcon } from "../../../../../assets/icon";
 import axios from "axios";
 import { SellersContext } from "../../../../../context/sellersContext";
+import CancelShopsModal from "../../ModalCancel";
 
 const ShopsMoreAbout = () => {
   const [shopData, setShopData] = useState([]);
@@ -25,6 +26,8 @@ const ShopsMoreAbout = () => {
     });
   }, []);
 
+  const [modalOpen, setModalOpen] = useState(false);
+
   const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo({
@@ -34,7 +37,7 @@ const ShopsMoreAbout = () => {
 
   return (
     <div className="w-full h-full ">
-      <div className="w-full h-full mx-auto md:max-w-[1120px]  md:mt-12   md:px-0 px-4">
+      <div className="w-full h-full mx-auto md:max-w-[1120px] md:mt-12">
         <div className="text-center mb-6 text-5 md:text-[35px] font-AeonikProMedium">
           <div className="mt-6 flex items-center justify-center  ">
             <button
@@ -214,7 +217,7 @@ const ShopsMoreAbout = () => {
                   Одобрить
                 </button>
                 <button
-                  // onClick={() => setModalOpen(true)}
+                  onClick={() => setModalOpen(true)}
                   type="button"
                   className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                 >
@@ -225,7 +228,7 @@ const ShopsMoreAbout = () => {
             {showSellers === "approved" ? (
               <div className="flex items-center">
                 <button
-                  // onClick={() => setModalOpen(true)}
+                  onClick={() => setModalOpen(true)}
                   type="button"
                   className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                 >
@@ -258,6 +261,8 @@ const ShopsMoreAbout = () => {
           </div>
         </div>
       </div>
+
+      <CancelShopsModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
     </div>
   );
 };
