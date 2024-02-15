@@ -47,7 +47,7 @@ export default function LocationsItem({
         }
       })
       .catch((v) => {
-        if (v?.response?.status === 401) {
+        if (v?.response?.status === 401 || v?.response?.status === 403) {
           reFreshTokenFunc();
           approveFunc();
         }

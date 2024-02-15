@@ -46,7 +46,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         }
       })
       .catch((v) => {
-        if (v?.response?.status === 401) {
+        if (v?.response?.status === 401 || v?.response?.status === 403) {
           reFreshTokenFunc();
           declineFunc();
         }
@@ -80,7 +80,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
         }
       })
       .catch((v) => {
-        if (v?.response?.status === 401) {
+        if (v?.response?.status === 401 || v?.response?.status === 403) {
           reFreshTokenFunc();
           massiveDeclineFunc();
         }
