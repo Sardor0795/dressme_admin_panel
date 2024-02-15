@@ -341,7 +341,7 @@ export const LocationsMoreAbout = () => {
             </div>
           </div>
 
-          <div className="w-full px-4 md:px-0  ">
+          <div className="w-full">
             <div className="flex flex-wrap items-center justify-between gap-3 md:gap-4 ">
               <div className="w-full md:w-[31%] xs:w-[48%]   ">
                 <div className="w-full text-[12px] md:text-base flex items-center mb-[10px]">
