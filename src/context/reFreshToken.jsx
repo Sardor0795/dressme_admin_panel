@@ -27,6 +27,9 @@ export const ReFreshTokenContextProvider = ({ children }) => {
           sessionStorage.removeItem("token");
           navigate("/signin");
           window.location.reload();
+        } else {
+          navigate("/signin");
+          window.location.reload();
         }
       }
     }
