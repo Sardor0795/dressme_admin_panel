@@ -131,7 +131,7 @@ export const ClothMoreAbout = () => {
             Отказанные товары
           </div>
         ) : null}
-        {showSellers === "status_update" ? (
+        {showSellers === "updated" ? (
           <div className="font-AeonikProMedium mr-auto md:mr-0 text-[18px] md:text-[24px] text-black">
             Обновленные товары
           </div>
