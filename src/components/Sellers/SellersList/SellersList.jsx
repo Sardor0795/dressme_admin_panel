@@ -12,6 +12,7 @@ import {
   AllowedIcon,
   BackIcon,
   CheckIcon,
+  EditedIcon,
   NotAllowedIcon,
   SearchIcon,
   WaitingForAllowIcon,
@@ -724,7 +725,7 @@ export default function SellersList() {
               }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
-                <NotAllowedIcon />
+                <EditedIcon />
               </span>
               <span>Обновленные продавцы ({updatedCount})</span>
             </button>
