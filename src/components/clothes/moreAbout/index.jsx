@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { ClothesDataContext } from "../../../context/clothesDataContext";
 import { SellersContext } from "../../../context/sellersContext";
 import { ReFreshTokenContext } from "../../../context/reFreshToken";
+import { IdsContext } from "../../../context/idContext";
 
 export const ClothMoreAbout = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -22,6 +23,8 @@ export const ClothMoreAbout = () => {
   const colors = data?.colors;
   const sections = data?.sections ? data?.sections : [];
   const subSections = data?.sub_sections ? data?.sub_sections : [];
+
+  const [, setId] = useContext(IdsContext);
 
   const params = useParams();
 
@@ -183,7 +186,7 @@ export const ClothMoreAbout = () => {
               </button>
             </div>
           ) : null}
-          {showSellers === "status_update" ? (
+          {showSellers === "updated" ? (
             <div className="flex items-center ml-auto">
               <button
                 onClick={() => approveFunc()}
@@ -527,7 +530,10 @@ export const ClothMoreAbout = () => {
 
         <div className="flex md:hidden w-full gap-[12px] mb-[20px]">
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => {
+              setId({ type: "single", id: params?.id });
+              setModalOpen(true);
+            }}
             className={`${
               data?.status === "pending" || data?.status === "approved"
                 ? ""
@@ -546,6 +552,14 @@ export const ClothMoreAbout = () => {
           >
             Одобрить
           </button>
+          {showSellers === "updated" ? (
+            <button
+              onClick={() => approveFunc()}
+              className={`w-full text-[16px] font-AeonikProMedium text-white p-[12px] rounded-lg bg-[#1BD22D]`}
+            >
+              Одобрить
+            </button>
+          ) : null}
         </div>
       </div>
 

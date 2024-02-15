@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { SellersContext } from "../../context/sellersContext";
 import { SellersDataContext } from "../../context/sellersDataContext";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { ReFreshTokenContext } from "../../context/reFreshToken";
 
 export const MoreAbout = () => {
@@ -46,9 +46,9 @@ export const MoreAbout = () => {
       )
       .then((d) => {
         if (d.status === 200) {
-          toast.success(d?.data?.message);
           reFetch();
           navigate("/sellers");
+          toast.success(d?.data?.message);
         }
       })
       .catch((v) => {
@@ -416,6 +416,8 @@ export const MoreAbout = () => {
           </button>
         </div>
       </div>
+
+      <ToastContainer autoClose={2000} />
 
       <CancelModal
         setModalOpen={setModalOpen}

@@ -4,9 +4,22 @@ import { StarIcon, BackIcon, LocationIcon } from "../../../../../assets/icon";
 import axios from "axios";
 import { SellersContext } from "../../../../../context/sellersContext";
 import CancelShopsModal from "../../ModalCancel";
+import { ShopsDataContext } from "../../../../../context/shopsDataContext";
+import { LocationsDataContext } from "../../../../../context/locationsDataContext";
+import { ClothesDataContext } from "../../../../../context/clothesDataContext";
+import { ReFreshTokenContext } from "../../../../../context/reFreshToken";
+import { toast } from "react-toastify";
+import { IdsContext } from "../../../../../context/idContext";
 
 const ShopsMoreAbout = () => {
   const [shopData, setShopData] = useState([]);
+
+  const [, setId] = useContext(IdsContext);
+
+  const [, , reFetch] = useContext(ShopsDataContext);
+  const [, , locationsReFetch] = useContext(LocationsDataContext);
+  const [, , clothesReFetch] = useContext(ClothesDataContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   // Products Context
   const [showSellers] = useContext(SellersContext);
@@ -14,12 +27,11 @@ const ShopsMoreAbout = () => {
   const url = "https://api.dressme.uz";
 
   const params = useParams();
-  let token = sessionStorage.getItem("token");
 
   useEffect(() => {
     axios(`${url}/api/admin/shops/${params?.id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((res) => {
       setShopData(res?.data?.shop);
@@ -34,6 +46,37 @@ const ShopsMoreAbout = () => {
       top: 0,
     });
   }, []);
+
+  const approveFunc = () => {
+    axios
+      .post(
+        `${url}/api/admin/change-shop-status/${params?.id}`,
+        {
+          status: "approved",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((d) => {
+        if (d.status === 200) {
+          toast.success(d?.data?.message);
+          navigate("/shops");
+          reFetch();
+          locationsReFetch();
+          clothesReFetch();
+        }
+      })
+      .catch((v) => {
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          approveFunc();
+        }
+      });
+  };
 
   return (
     <div className="w-full h-full ">
@@ -210,14 +253,17 @@ const ShopsMoreAbout = () => {
             {showSellers === "pending" ? (
               <div className="flex items-center gap-x-3">
                 <button
-                  // onClick={() => approveFunc()}
+                  onClick={() => approveFunc()}
                   type="button"
                   className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
                   Одобрить
                 </button>
                 <button
-                  onClick={() => setModalOpen(true)}
+                  onClick={() => {
+                    setId({ type: "single", id: params?.id });
+                    setModalOpen(true);
+                  }}
                   type="button"
                   className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                 >
@@ -228,7 +274,10 @@ const ShopsMoreAbout = () => {
             {showSellers === "approved" ? (
               <div className="flex items-center">
                 <button
-                  onClick={() => setModalOpen(true)}
+                  onClick={() => {
+                    setId({ type: "single", id: params?.id });
+                    setModalOpen(true);
+                  }}
                   type="button"
                   className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                 >
@@ -239,7 +288,7 @@ const ShopsMoreAbout = () => {
             {showSellers === "declined" ? (
               <div className="flex items-cente">
                 <button
-                  // onClick={() => approveFunc()}
+                  onClick={() => approveFunc()}
                   type="button"
                   className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >
@@ -250,7 +299,7 @@ const ShopsMoreAbout = () => {
             {showSellers === "updated" ? (
               <div className="flex items-center">
                 <button
-                  // onClick={() => approveFunc()}
+                  onClick={() => approveFunc()}
                   type="button"
                   className="w-fit px-4 py-3 rounded-[20px] font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                 >

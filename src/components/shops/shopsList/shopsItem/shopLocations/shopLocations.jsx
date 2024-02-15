@@ -13,12 +13,11 @@ export default function ShopLocations() {
   const url = "https://api.dressme.uz";
 
   const params = useParams();
-  let token = sessionStorage.getItem("token");
 
   useEffect(() => {
     axios(`${url}/api/admin/shop/${params?.id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     })
       .then((res) => {
@@ -38,7 +37,7 @@ export default function ShopLocations() {
       <div className="md:hidden pt-6 pb-3 border-b border-[#F2F2F2] mb-3 flex items-center justify-between">
         <button
           onClick={() => {
-            navigate(`/shops`);
+            navigate(`/shops/shop/${params?.id}`);
           }}
           className="w-8 h-8 md:hidden flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
         >
@@ -55,7 +54,7 @@ export default function ShopLocations() {
           <section className="hidden md:flex items-center">
             <button
               onClick={() => {
-                navigate(`/shops`);
+                navigate(`/shops/shop/${params?.id}`);
               }}
               className="md:w-8 md:h-8 w-6 h-6 hidden md:flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
             >
@@ -107,7 +106,7 @@ export default function ShopLocations() {
             {shopLocationsData?.map((data, index) => {
               // console.log(data,'data');
               return (
-                <div key={index}>
+                <div key={index} className="mb-2">
                   <ul
                     key={data?.id}
                     className="w-full rounded-xl md:px-0 md:py-3 md:bg-lightBgColor overflow-hidden hidden md:flex items-center justify-between mb-[6px] md:mb-0 gap-x-5 md:gap-x-0 border  bg-lightBgColor"

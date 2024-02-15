@@ -9,12 +9,15 @@ import { ShopsDataContext } from "../../../../context/shopsDataContext";
 import { LocationsDataContext } from "../../../../context/locationsDataContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
 import { ReFreshTokenContext } from "../../../../context/reFreshToken";
+import { useNavigate } from "react-router-dom";
 
 export default function CancelShopsModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
 
   const [id] = useContext(IdsContext);
   const [reasonText, setReasonText] = useState("");
+
+  const navigate = useNavigate();
 
   const [, , reFetch] = useContext(ShopsDataContext);
   const [, , locationsReFetch] = useContext(LocationsDataContext);
@@ -38,6 +41,7 @@ export default function CancelShopsModal({ setModalOpen, modalOpen }) {
       )
       .then((d) => {
         if (d.status === 200) {
+          navigate("/shops");
           toast.success(d?.data?.message);
           reFetch();
           locationsReFetch();

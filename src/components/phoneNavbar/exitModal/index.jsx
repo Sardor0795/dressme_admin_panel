@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function ExitModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const navigate = useNavigate();
 
@@ -21,7 +20,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )

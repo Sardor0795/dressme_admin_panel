@@ -6,10 +6,11 @@ import {
   NoImg,
   StarIcon,
 } from "../../../../../../assets/icon";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Map, YMaps } from "react-yandex-maps";
 import CancelShopsModal from "../../../ModalCancel";
+import { IdsContext } from "../../../../../../context/idContext";
 
 export default function LocationMoreAbout() {
   const [, setMapConstructor] = useState(null);
@@ -25,17 +26,18 @@ export default function LocationMoreAbout() {
 
   const [shopLocationsData, setShopLoationData] = useState();
 
+  const [, setId] = useContext(IdsContext);
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const url = "https://api.dressme.uz";
 
   const params = useParams();
-  let token = sessionStorage.getItem("token");
 
   useEffect(() => {
     axios(`${url}/api/admin/locations/${params?.id}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((res) => {
       setShopLoationData(res?.data?.location);
@@ -73,6 +75,37 @@ export default function LocationMoreAbout() {
       top: 0,
     });
   }, []);
+
+  const approveFunc = () => {
+    axios
+      .post(
+        `${url}/api/admin/change-shop-status/${params?.id}`,
+        {
+          status: "approved",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((d) => {
+        if (d.status === 200) {
+          navigate("/shops");
+          toast.success(d?.data?.message);
+          reFetch();
+          locationsReFetch();
+          clothesReFetch();
+        }
+      })
+      .catch((v) => {
+        if (v?.response?.status === 401) {
+          reFreshTokenFunc();
+          approveFunc();
+        }
+      });
+  };
 
   return (
     <div className="w-full md:px-10">
@@ -418,14 +451,17 @@ export default function LocationMoreAbout() {
               {shopLocationsData?.status === "pending" ? (
                 <div className="flex items-center gap-x-3">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => approveFunc()}
                     type="button"
                     className="w-fit px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                   >
                     Одобрить
                   </button>
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      setId({ type: "single", id: params?.id });
+                      setModalOpen(true);
+                    }}
                     type="button"
                     className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                   >
@@ -436,7 +472,10 @@ export default function LocationMoreAbout() {
               {shopLocationsData?.status === "approved" ? (
                 <div className="flex items-center">
                   <button
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => {
+                      setId({ type: "single", id: params?.id });
+                      setModalOpen(true);
+                    }}
                     type="button"
                     className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#E85353] text-[#E85353]"
                   >
@@ -447,7 +486,7 @@ export default function LocationMoreAbout() {
               {shopLocationsData?.status === "declined" ? (
                 <div className="flex items-cente">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => approveFunc()}
                     type="button"
                     className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                   >
@@ -458,7 +497,7 @@ export default function LocationMoreAbout() {
               {shopLocationsData?.status === "updated" ? (
                 <div className="flex items-center">
                   <button
-                    // onClick={() => approveFunc()}
+                    onClick={() => approveFunc()}
                     type="button"
                     className="w-fit cursor-pointer px-8 py-2 md:py-3 rounded-xl font-AeonikProMedium border border-[#5EB267] text-[#5EB267]"
                   >

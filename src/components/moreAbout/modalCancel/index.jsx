@@ -1,6 +1,6 @@
 import axios from "axios";
 import { XIcon } from "../../../assets/icon";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useContext, useState } from "react";
 import { SellersDataContext } from "../../../context/sellersDataContext";
 import { useNavigate } from "react-router-dom";
@@ -32,10 +32,10 @@ export default function CancelModal({ setModalOpen, modalOpen, id }) {
       )
       .then((d) => {
         if (d.status === 200) {
-          toast.success(d?.data?.message);
           reFetch();
           setReasonText("");
           navigate("/sellers");
+          toast.success(d?.data?.message);
         }
       })
       .catch((v) => {
@@ -99,6 +99,8 @@ export default function CancelModal({ setModalOpen, modalOpen, id }) {
           <XIcon />
         </button>
       </section>
+
+      <ToastContainer autoClose={2000} />
     </div>
   );
 }

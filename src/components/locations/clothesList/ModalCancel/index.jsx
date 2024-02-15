@@ -7,12 +7,15 @@ import { toast } from "react-toastify";
 import { LocationsDataContext } from "../../../../context/locationsDataContext";
 import { ClothesDataContext } from "../../../../context/clothesDataContext";
 import { ReFreshTokenContext } from "../../../../context/reFreshToken";
+import { useNavigate } from "react-router-dom";
 
 export default function CancelModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
 
   const [id] = useContext(IdsContext);
   const [reasonText, setReasonText] = useState("");
+
+  const navigate = useNavigate();
 
   const [, , reFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
@@ -35,6 +38,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
       )
       .then((d) => {
         if (d.status === 200) {
+          navigate("/locations");
           toast.success(d?.data?.message);
           reFetch();
           clothesReFetch();
@@ -68,6 +72,7 @@ export default function CancelModal({ setModalOpen, modalOpen }) {
       })
       .then((d) => {
         if (d.status === 200) {
+          navigate("/locations");
           toast.success(d?.data?.message);
           reFetch();
           clothesReFetch();

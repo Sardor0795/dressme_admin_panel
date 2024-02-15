@@ -6,7 +6,6 @@ import { SellersDataContext } from "../../../context/sellersDataContext";
 
 export default function ExitModal({ setModalOpen, modalOpen }) {
   const url = "https://api.dressme.uz";
-  let token = sessionStorage.getItem("token");
 
   const [, setData, , , setLoader] = useContext(SellersDataContext);
 
@@ -25,7 +24,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
         }
       )
