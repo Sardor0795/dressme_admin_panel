@@ -260,7 +260,7 @@ export const MoreAbout = () => {
               dataTypeIsPersonal ? "w-[14%]" : "w-[12%]"
             }  px-2 text-[#2C2C2C] text-base not-italic font-AeonikProMedium`}
           >
-            {data?.phone}
+            <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
           </div>
           <div
             className={`${
@@ -338,7 +338,7 @@ export const MoreAbout = () => {
 
         <div className="py-[5px] px-[15px] flex mb-[12px]">
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.phone}
+            <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
           </div>
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.email}
