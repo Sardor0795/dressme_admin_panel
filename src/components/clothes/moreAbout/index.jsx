@@ -202,12 +202,6 @@ export const ClothMoreAbout = () => {
 
       <div className="flex flex-wrap md:flex-nowrap w-full md:gap-[30px]">
         <div className="w-full md:w-[22%] md:max-w-[350px] md:h-[400px]">
-          <div className="flex items-center mb-[5px]">
-            <div className="font-AeonikProRegular text-[16px] mr-[5px] ml-[10px]">
-              Фото
-            </div>
-            <StarIcon />
-          </div>
           <Carousel data={data} height={"h-[377px]"} />
         </div>
 

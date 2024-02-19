@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { MenuCloseIcons, NoImg } from "../../../../assets/icon";
+import { MenuCloseIcons, NoImg, StarIcon } from "../../../../assets/icon";
 
 export default function Carousel({ data, height }) {
   // const [modalOfCarsouel, setModalOfCarsouel] = useState(false)
@@ -275,7 +275,23 @@ export default function Carousel({ data, height }) {
   }, [modalOfCarsouel]);
 
   return (
-    <div className="md:max-w-[300px]">
+    <div className="max-w-[300px] mx-auto md:mx-0">
+      <div className="flex items-center mb-[5px]">
+        <div className="font-AeonikProRegular text-[16px] mr-[5px] ml-[10px]">
+          Фото
+        </div>
+        <StarIcon />
+        {imageOne?.product_color_id1 === colorOne?.color_pivot_id1 && (
+          <div className="ml-auto w-fit flex h-[22px] items-center my-[6px]">
+            <div className="w-fit h-fit flex items-center gap-x-3">
+              <span
+                style={{ background: colorOne?.color_hex1 }}
+                className={`w-[22px] h-[22px] rounded-full`}
+              ></span>
+            </div>
+          </div>
+        )}
+      </div>
       <section
         onClick={() => {
           setModalOfCarsouel(false);
@@ -296,7 +312,7 @@ export default function Carousel({ data, height }) {
           <MenuCloseIcons colors="#fff" />
         </button>
         <div>
-          <div className="w-full md:w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 ">
+          <div className="md:w-[670px] h-fit bg-white rounded-lg mt-[-4px] p-0 m-0 ">
             <div className="w-full flex flex-col items-center justify-start ">
               {modalId === imageOne?.id1 && (
                 <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
@@ -363,9 +379,9 @@ export default function Carousel({ data, height }) {
         </div>
       </section>
 
-      <div className="w-full h-full flex flex-col">
+      <div className="h-full flex flex-col ">
         {/* IMG ONE */}
-        <div className="w-full h-[500px] md:h-[404px] flex items-center">
+        <div className="w-full h-[404px] flex items-center justify-center">
           <div className="w-full h-full rounded-[12px] border overflow-hidden">
             <div className={`h-full`}>
               <div
@@ -377,18 +393,8 @@ export default function Carousel({ data, height }) {
                 }}
                 className="w-full flex flex-col h-full "
               >
-                {imageOne?.product_color_id1 === colorOne?.color_pivot_id1 && (
-                  <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
-                    <div className="w-fit h-fit flex items-center gap-x-3">
-                      <span
-                        style={{ background: colorOne?.color_hex1 }}
-                        className={`w-[22px] h-[22px] rounded-full`}
-                      ></span>
-                    </div>
-                  </div>
-                )}
-                <div className="BackgImageBLur h-full flex items-center justify-center ">
-                  <div className="flex items-center justify-center w-[350px] h-[377px]">
+                <div className="h-full flex items-center justify-center ">
+                  <div className="flex items-center justify-center w-[350px] h-full">
                     <img
                       className="h-full w-full mx-auto align-middle object-fill cursor-pointer "
                       src={imageOne?.url_photo1}

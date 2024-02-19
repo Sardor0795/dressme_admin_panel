@@ -269,7 +269,7 @@ export const LocationsMoreAbout = () => {
             </div>
           </div>
 
-          <div className="flex mt-[10px] justify-between items-centers gap-x-[5px] ls:gap-x-[10px] md:gap-[25px] mb-[25px] ">
+          <div className="flex mt-[10px] justify-between items-centers gap-x-[5px] ls:gap-x-[10px] md:gap-[80px] mb-[25px] ">
             <div className=" w-full md:w-[31%]  h-[75px] md:h-[148px] flex items-center justify-center rounded-lg">
               <div
                 onClick={() => {
