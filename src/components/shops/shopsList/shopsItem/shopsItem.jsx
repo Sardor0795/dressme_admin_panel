@@ -186,7 +186,7 @@ export default function ShopsItem({
                   <div className="w-fit flex items-center mr-[6px]">
                     <StarRatengIcon />
                   </div>
-                  <div className="not-italic font-AeonikProRegular  text-[13px] ls:text-[13px] leading-4 text-right text-gray-500 md:ml-1 flex items-center text-[13px]">
+                  <div className="not-italic font-AeonikProRegular ls:text-[13px] leading-4 text-right text-gray-500 md:ml-1 flex items-center text-[13px]">
                     <p className="font-AeonikProRegular text-[13px] md:text-[16px] ls:font-AeonikProMedium text-black mr-1">
                       {data?.overall_rating || 0}
                     </p>
