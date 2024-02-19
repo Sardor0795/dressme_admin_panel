@@ -317,12 +317,12 @@ export default function Carousel({ data, height }) {
               {modalId === imageOne?.id1 && (
                 <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                   <div className="w-full h-[80vh] flex items-center">
-                    <div className="w-full h-full flex flex-col items-center justify-center">
+                    <div className="w-full h-full flex flex-col items-center justify-center border border-searchBgColor overflow-hidden">
                       {imageOne?.url_photo1 && (
                         <img
                           src={imageOne?.url_photo1}
                           alt="backImg"
-                          className="w-fit h-[80vh] border border-searchBgColor object-contain rounded-lg"
+                          className="w-fit h-[80vh] object-contain"
                         />
                       )}
                     </div>
@@ -416,7 +416,7 @@ export default function Carousel({ data, height }) {
             >
               {imageTwo?.url_photo2 === null ? (
                 <div className="h-full w-full text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor ">
-                  <div className="w-full h-full overflow-hidden bg-photoBg  flex flex-col items-center  justify-center">
+                  <div className="w-full h-full border overflow-hidden bg-photoBg  flex flex-col items-center  justify-center">
                     <span>
                       <NoImg />
                     </span>
@@ -442,20 +442,16 @@ export default function Carousel({ data, height }) {
                 </div>
               )}
             </button>
-            <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
-              <div className="w-fit h-fit flex items-center">
-                {imageTwo?.product_color_id2 === colorTwo?.color_pivot_id2 && (
-                  <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
-                    <div className="w-fit h-fit flex items-center gap-x-3">
-                      <span
-                        style={{ background: colorTwo?.color_hex2 }}
-                        className={`w-[22px] h-[22px] rounded-full`}
-                      ></span>
-                    </div>
-                  </div>
-                )}
+            {imageTwo?.product_color_id2 && (
+              <div className="">
+                <div className="w-fit h-fit flex items-center mt-2">
+                  <span
+                    style={{ background: colorOne?.color_hex1 }}
+                    className={`w-[22px] h-[22px] rounded-full border`}
+                  ></span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* IMG THREE */}
@@ -492,21 +488,16 @@ export default function Carousel({ data, height }) {
                 </div>
               )}
             </button>
-            <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
-              <div className="w-fit h-fit flex items-center">
-                {imageThree?.product_color_id3 ===
-                  colorThree?.color_pivot_id3 && (
-                  <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
-                    <div className="w-fit h-fit flex items-center gap-x-3">
-                      <span
-                        style={{ background: colorThree?.color_hex3 }}
-                        className={`w-[22px] h-[22px] rounded-full`}
-                      ></span>
-                    </div>
-                  </div>
-                )}
+            {imageThree?.product_color_id3 && (
+              <div className="">
+                <div className="w-fit h-fit flex items-center mt-2">
+                  <span
+                    style={{ background: colorOne?.color_hex1 }}
+                    className={`w-[22px] h-[22px] rounded-full border`}
+                  ></span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* IMG FOUR */}
@@ -543,21 +534,16 @@ export default function Carousel({ data, height }) {
                 </div>
               )}
             </button>
-            <div className="w-full flex h-[22px] items-center justify-between mt-[3px] rounded-[12px]">
-              <div className="w-fit h-fit flex items-center">
-                {imageFour?.product_color_id4 ===
-                  colorFour?.color_pivot_id4 && (
-                  <div className="w-fit flex h-[22px] items-center ml-[6px] my-[6px]">
-                    <div className="w-fit h-fit flex items-center gap-x-3">
-                      <span
-                        style={{ background: colorFour?.color_hex4 }}
-                        className={`w-[22px] h-[22px] rounded-full`}
-                      ></span>
-                    </div>
-                  </div>
-                )}
+            {imageFour?.product_color_id4 && (
+              <div className="">
+                <div className="w-fit h-fit flex items-center mt-2">
+                  <span
+                    style={{ background: colorOne?.color_hex1 }}
+                    className={`w-[22px] h-[22px] rounded-full border`}
+                  ></span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

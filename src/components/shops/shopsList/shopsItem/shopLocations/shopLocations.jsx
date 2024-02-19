@@ -116,7 +116,7 @@ export default function ShopLocations() {
                     </li>
                     <li className="w-[200px] h-[100px] flex items-center mr-[60px] rounded-lg overflow-hidden border">
                       <img
-                        className="w-[100%] h-[100%] object-contain rounded-lg object-top"
+                        className="w-[100%] h-[100%] object-cover"
                         src={data?.url_image_path_one}
                         alt=""
                       />
