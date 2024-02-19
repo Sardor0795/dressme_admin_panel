@@ -282,7 +282,7 @@ export default function Carousel({ data, height }) {
         </div>
         <StarIcon />
         {imageOne?.product_color_id1 === colorOne?.color_pivot_id1 && (
-          <div className="ml-auto w-fit flex h-[22px] items-center my-[6px]">
+          <div className="ml-auto w-fit flex h-[22px] items-center my-[6px] mr-[10px]">
             <div className="w-fit h-fit flex items-center gap-x-3">
               <span
                 style={{ background: colorOne?.color_hex1 }}
