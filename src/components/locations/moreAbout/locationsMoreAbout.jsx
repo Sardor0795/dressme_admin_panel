@@ -389,7 +389,7 @@ export const LocationsMoreAbout = () => {
                 </div>
               </div>
               <label className="w-full md:w-[31%] xs:w-[48%]">
-                <div className="text-xs md:text-base flex items-center mb-[10px]">
+                <div className="text-[13px] md:text-base flex items-center mb-[10px]">
                   Номер администратора
                   <span className="ml-[5px]">
                     <StarIcon />
@@ -397,7 +397,7 @@ export const LocationsMoreAbout = () => {
                 </div>
                 <div className="mt-[6px] h-8 md:h-11 flex items-center justify-center overflow-hidden border border-searchBgColor rounded-lg">
                   <div className="ss:w-[35%] md:w-[30%] h-8 md:h-11 flex items-center justify-center  cursor-pointer border-r border-searchBgColor overflow-hidden">
-                    <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular text-xs md:text-base leading-4 text-black">
+                    <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular text-[13px] md:text-base leading-4 text-black">
                       {/* {state?.idAssistantPhoneCode ? "+" + state?.idAssistantPhoneCode : "+998"} */}{" "}
                       +998
                     </div>
@@ -410,7 +410,7 @@ export const LocationsMoreAbout = () => {
                           ? "font-AeonikProMedium"
                           : null
                       }
-                        text-xs md:text-base leading-4 text-black`}
+                        text-[13px] md:text-base leading-4 text-black`}
                     >
                       {shopLocationsData?.assistant_phone || "-"}
                     </div>
@@ -424,7 +424,7 @@ export const LocationsMoreAbout = () => {
 
                 <div className="mt-[6px] flex items-center justify-center overflow-hidden border border-searchBgColor rounded-lg h-8 md:h-11">
                   <div className="w-[35%] md:w-[30%] flex items-center justify-center cursor-pointer border-r border-searchBgColor overflow-hidden">
-                    <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular leading-4 text-black text-xs md:text-base">
+                    <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular leading-4 text-black text-[13px] md:text-base">
                       +998
                     </div>
                   </div>
@@ -434,7 +434,7 @@ export const LocationsMoreAbout = () => {
                         shopLocationsData?.second_assistant_phone
                           ? "font-AeonikProMedium"
                           : null
-                      } text-xs md:text-base leading-4 text-black`}
+                      } text-[13px] md:text-base leading-4 text-black`}
                     >
                       {shopLocationsData?.second_assistant_phone || "-"}
                     </div>
@@ -446,11 +446,11 @@ export const LocationsMoreAbout = () => {
                   {/* Region Input  */}
                   <div className={"w-full"}>
                     <div htmlFor="">
-                      <div className="flex items-center text-[#303030] text-xs md:text-base not-italic font-AeonikProRegular leading-4 tracking-[0,16px] ">
+                      <div className="flex items-center text-[#303030] text-[13px] md:text-base not-italic font-AeonikProRegular leading-4 tracking-[0,16px] ">
                         Регион
                       </div>
                       <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
-                        <div className="flex items-center text-[#000] text-xs md:text-base">
+                        <div className="flex items-center text-[#000] text-[13px] md:text-base">
                           <span className="ml-1">
                             {shopLocationsData?.region?.name_ru},{" "}
                             {shopLocationsData?.sub_region?.name_ru}

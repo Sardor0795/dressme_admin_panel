@@ -57,7 +57,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
             onClick={() => setModalOpen(false)}
             className="w-full active:scale-95  active:opacity-70 h-8 xs:h-11 rounded-lg flex items-center gap-x-[10px] justify-center text-weatherWinterColor border border-weatherWinterColor"
           >
-            <span className="text-center text-sm not-italic font-AeonikProMedium">
+            <span className="text-center text-[13px] not-italic font-AeonikProMedium">
               Oтмена
             </span>
           </button>
@@ -72,7 +72,7 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
             <div>
               <ExitIcon />
             </div>
-            <span className="text-sm not-italic font-AeonikProMedium">
+            <span className="text-[13px] not-italic font-AeonikProMedium">
               Выйти
             </span>
           </button>

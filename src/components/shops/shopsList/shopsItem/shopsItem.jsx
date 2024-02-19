@@ -186,11 +186,11 @@ export default function ShopsItem({
                   <div className="w-fit flex items-center mr-[6px]">
                     <StarRatengIcon />
                   </div>
-                  <div className="not-italic font-AeonikProRegular  text-[10px] ls:text-xs leading-4 text-right text-gray-500 md:ml-1 flex items-center text-sm">
+                  <div className="not-italic font-AeonikProRegular  text-[13px] ls:text-[13px] leading-4 text-right text-gray-500 md:ml-1 flex items-center text-[13px]">
                     <p className="font-AeonikProRegular text-[13px] md:text-[16px] ls:font-AeonikProMedium text-black mr-1">
                       {data?.overall_rating || 0}
                     </p>
-                    <p className="text-setTexOpacity font-AeonikProRegular text-[10px] ls:text-[13px] md:text-[16px] ">
+                    <p className="text-setTexOpacity font-AeonikProRegular text-[13px] ls:text-[13px] md:text-[16px] ">
                       ({data?.rated_users_count || 0}){" "}
                     </p>
                   </div>
@@ -215,7 +215,7 @@ export default function ShopsItem({
             )}
           </div>
 
-          <div className="md:w-fit text-sm md:text-base w-full min-w-[120px] md:min-w-[250px] h-[36px] md:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
+          <div className="md:w-fit text-[13px] md:text-base w-full min-w-[120px] md:min-w-[250px] h-[36px] md:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
             <img src={deliveryIcon} alt="" />
             <span className="font-AeonikProMedium">
               {data?.delivery?.name_ru}

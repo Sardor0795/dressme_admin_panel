@@ -161,14 +161,14 @@ const ShopsMoreAbout = () => {
               <div className="w-full flex items-center justify-between gap-x-2 md:gap-x-[30px] mb-5">
                 <div
                   htmlFor="shopName"
-                  className="w-[35%] md:w-[30%] flex items-center text-[10px] ls:text-[13px] md:text-base text-mobileTextColor font-AeonikProRegular"
+                  className="w-[35%] md:w-[30%] flex items-center text-[13px] ls:text-[13px] md:text-base text-mobileTextColor font-AeonikProRegular"
                 >
                   Название магазина
                   <span className="ml-[5px] hidden md:block">
                     <StarIcon />{" "}
                   </span>
                 </div>
-                <div className="w-[65%] md:w-[70%] h-[32px] md:h-[42px] flex items-center border border-borderColor2 outline-none px-3 rounded-lg text-[10px] ls:text-[13px] md:text-base font-AeonikProRegular">
+                <div className="w-[65%] md:w-[70%] h-[32px] md:h-[42px] flex items-center border border-borderColor2 outline-none px-3 rounded-lg text-[13px] ls:text-[13px] md:text-base font-AeonikProRegular">
                   {shopData?.name}
                 </div>
               </div>
@@ -176,7 +176,7 @@ const ShopsMoreAbout = () => {
               <div className="w-full flex items-center justify-between gap-x-2 md:gap-x-[30px] mb-5">
                 <div
                   htmlFor="shopName"
-                  className="w-[35%] md:w-[30%] flex items-center text-[10px] ls:text-[13px] md:text-base text-mobileTextColor mr-[5px] font-AeonikProRegular"
+                  className="w-[35%] md:w-[30%] flex items-center text-[13px] ls:text-[13px] md:text-base text-mobileTextColor mr-[5px] font-AeonikProRegular"
                 >
                   Пол
                   <span className="ml-[5px] hidden md:block">
@@ -189,7 +189,7 @@ const ShopsMoreAbout = () => {
                       shopData?.gender?.id === 1
                         ? "bg-[#e6f2f9] text-weatherWinterColor"
                         : ""
-                    } w-1/3 h-[32px] md:h-[42px] md:w-full flex items-center justify-center border md:border-0 text-[10px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
+                    } w-1/3 h-[32px] md:h-[42px] md:w-full flex items-center justify-center border md:border-0 text-[13px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
                   >
                     <span>Мужской</span>
                   </div>
@@ -198,7 +198,7 @@ const ShopsMoreAbout = () => {
                       shopData?.gender?.id === 2
                         ? "bg-[#e6f2f9] text-weatherWinterColor"
                         : ""
-                    } w-1/3 h-[32px] md:h-[42px] md:w-full flex items-center justify-center border md:border-0 text-[10px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
+                    } w-1/3 h-[32px] md:h-[42px] md:w-full flex items-center justify-center border md:border-0 text-[13px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
                   >
                     <span>Женский</span>
                   </div>
@@ -207,7 +207,7 @@ const ShopsMoreAbout = () => {
                       shopData?.gender?.id === 3
                         ? "bg-[#e6f2f9] text-weatherWinterColor"
                         : ""
-                    } w-1/3 h-[32px] md:h-[42px] md:w-full flex items-center justify-center border md:border-0 text-[10px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
+                    } w-1/3 h-[32px] md:h-[42px] md:w-full flex items-center justify-center border md:border-0 text-[13px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
                   >
                     <span>Унисекс</span>
                   </div>
@@ -217,7 +217,7 @@ const ShopsMoreAbout = () => {
               <div className="w-full flex items-center justify-between gap-x-2 md:gap-x-[30px] ">
                 <div
                   htmlFor="shopName"
-                  className="w-[35%] md:w-[30%] flex items-center text-[10px] ls:text-[13px] md:text-base text-mobileTextColor font-AeonikProRegular"
+                  className="w-[35%] md:w-[30%] flex items-center text-[13px] ls:text-[13px] md:text-base text-mobileTextColor font-AeonikProRegular"
                 >
                   Метод доставки
                   <span className="ml-[5px] hidden md:block">
@@ -230,7 +230,7 @@ const ShopsMoreAbout = () => {
                       shopData?.delivery?.id === 1
                         ? "bg-[#e6f2f9] text-weatherWinterColor"
                         : ""
-                    } w-1/2 h-[32px] md:h-[42px] flex items-center justify-center text-center cursor-pointer md:px-3 border border-searchBgColor text-[10px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
+                    } w-1/2 h-[32px] md:h-[42px] flex items-center justify-center text-center cursor-pointer md:px-3 border border-searchBgColor text-[13px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
                   >
                     <span className="leading-normal">Магазин</span>
                   </div>
@@ -239,7 +239,7 @@ const ShopsMoreAbout = () => {
                       shopData?.delivery?.id === 2
                         ? "bg-[#e6f2f9] text-weatherWinterColor"
                         : ""
-                    } w-1/2 h-[32px] md:h-[42px] flex items-center justify-center text-center cursor-pointer md:px-3 border border-searchBgColor text-[10px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
+                    } w-1/2 h-[32px] md:h-[42px] flex items-center justify-center text-center cursor-pointer md:px-3 border border-searchBgColor text-[13px] ls:text-[13px] md:text-base font-AeonikProRegular rounded-lg`}
                   >
                     <span className="leading-normal">Такси</span>
                   </div>

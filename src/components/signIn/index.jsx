@@ -62,7 +62,7 @@ export const SignInComponent = () => {
         <form className="border py-[25px] px-[15px] md:p-[30px] rounded-xl w-full">
           <label className="w-full h-fit mb-[20px] block">
             <div className=" flex items-center justify-between w-full">
-              <div className="not-italic font-AeonikProRegular text-sm md:text-lg text-black  tracking-[0,16px] ">
+              <div className="not-italic font-AeonikProRegular text-[13px] md:text-lg text-black  tracking-[0,16px] ">
                 Электронная почта
               </div>
             </div>
@@ -84,7 +84,7 @@ export const SignInComponent = () => {
           </label>
 
           <div className="w-full  h-fit mb-[50px]">
-            <span className="not-italic font-AeonikProRegular text-sm md:text-lg leading-4 text-black  tracking-[0,16px] ">
+            <span className="not-italic font-AeonikProRegular text-[13px] md:text-lg leading-4 text-black  tracking-[0,16px] ">
               Парол
             </span>
             <label className="mt-[6px]  overflow-hidden px-[13px] w-full flex items-center border border-searchBgColor rounded-lg ">

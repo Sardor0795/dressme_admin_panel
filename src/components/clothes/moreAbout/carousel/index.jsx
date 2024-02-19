@@ -415,7 +415,7 @@ export default function Carousel({ data, height }) {
               className="h-[124px] w-full flex items-center justify-center overflow-hidden rounded-lg"
             >
               {imageTwo?.url_photo2 === null ? (
-                <div className="h-full w-full text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor ">
+                <div className="h-full w-full text-[13px] font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor ">
                   <div className="w-full h-full border overflow-hidden bg-photoBg  flex flex-col items-center  justify-center">
                     <span>
                       <NoImg />
@@ -463,7 +463,7 @@ export default function Carousel({ data, height }) {
               className="h-[124px] w-full flex items-center border rounded-lg overflow-hidden justify-center "
             >
               {imageThree?.url_photo3 === null ? (
-                <div className="h-full w-full bg-photoBg text-sm font-AeonikProMedium flex items-center justify-center text-textBlueColor ">
+                <div className="h-full w-full bg-photoBg text-[13px] font-AeonikProMedium flex items-center justify-center text-textBlueColor ">
                   <div className="w-full h-full bg-photoBg flex items-center justify-center">
                     <NoImg />
                   </div>
@@ -509,7 +509,7 @@ export default function Carousel({ data, height }) {
               className="h-[124px] w-full flex items-center border rounded-lg overflow-hidden justify-center "
             >
               {imageFour?.url_photo4 === null ? (
-                <div className="h-full w-full text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor">
+                <div className="h-full w-full text-[13px] font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor">
                   <div className="w-full h-full overflow-hidden  bg-photoBg  flex flex-col  items-center justify-center">
                     <NoImg />
                   </div>
