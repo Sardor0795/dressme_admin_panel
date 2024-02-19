@@ -163,7 +163,7 @@ export default function ShopsItem({
 
             <Link
               to={`shop/${data?.id}`}
-              className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer md:hidden block"
+              className="text-[#007DCA] text-[13px] font-AeonikProMedium cursor-pointer md:hidden block"
             >
               Подробнее
             </Link>
@@ -187,10 +187,10 @@ export default function ShopsItem({
                     <StarRatengIcon />
                   </div>
                   <div className="not-italic font-AeonikProRegular  text-[10px] ls:text-xs leading-4 text-right text-gray-500 md:ml-1 flex items-center text-sm">
-                    <p className="font-AeonikProRegular text-[12px] md:text-[14px] ls:font-AeonikProMedium text-black mr-1">
+                    <p className="font-AeonikProRegular text-[13px] md:text-[14px] ls:font-AeonikProMedium text-black mr-1">
                       {data?.overall_rating || 0}
                     </p>
-                    <p className="text-setTexOpacity font-AeonikProRegular text-[10px] ls:text-[12px] md:text-[14px] ">
+                    <p className="text-setTexOpacity font-AeonikProRegular text-[10px] ls:text-[13px] md:text-[14px] ">
                       ({data?.rated_users_count || 0}){" "}
                     </p>
                   </div>
