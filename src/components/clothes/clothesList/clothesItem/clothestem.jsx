@@ -248,10 +248,10 @@ export default function ClothesItem({
           </div>
         </div>
         <div className="py-[5px] px-[15px] flex mb-[10px]">
-          <div className="w-[45%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[45%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.name_ru}
           </div>
-          <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] break-all pr-2 text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.sku}
           </div>
           <div className="w-[15%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">

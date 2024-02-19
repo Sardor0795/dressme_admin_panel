@@ -394,13 +394,15 @@ export default function Carousel({ data, height }) {
                 className="w-full flex flex-col h-full "
               >
                 <div className="h-full flex items-center justify-center ">
-                  <div className="flex items-center justify-center w-[350px] h-full">
-                    <img
-                      className="h-full w-full mx-auto align-middle object-cover cursor-pointer "
-                      src={imageOne?.url_photo1}
-                      alt=""
-                    />
-                  </div>
+                  <div
+                    style={{
+                      backgroundImage: `url(${imageOne?.url_photo1})`,
+                      backgroundPosition: "center center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                    }}
+                    className="flex items-center justify-center w-[350px] h-full cursor-pointer"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -412,11 +414,11 @@ export default function Carousel({ data, height }) {
           <div className={`w-[30%] h-full flex-col items-center justify-start`}>
             <button
               type="button"
-              className="h-[124px] w-full flex items-center justify-center overflow-hidden rounded-lg"
+              className="h-[124px] w-full flex items-center justify-center "
             >
               {imageTwo?.url_photo2 === null ? (
                 <div className="h-full w-full text-[13px] font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor ">
-                  <div className="w-full h-full border overflow-hidden bg-photoBg  flex flex-col items-center  justify-center">
+                  <div className="w-full h-full rounded-lg border bg-photoBg  flex flex-col items-center  justify-center">
                     <span>
                       <NoImg />
                     </span>
@@ -430,14 +432,22 @@ export default function Carousel({ data, height }) {
                       setModalId(imageTwo?.id2);
                     }
                   }}
-                  className="overflow-hidden w-full h-full flex items-center justify-center"
+                  className="w-full h-full flex items-center justify-center"
                 >
-                  <div className="flex items-center border overflow-hidden rounded-lg justify-center w-full h-full">
-                    <img
+                  <div
+                    style={{
+                      backgroundImage: `url(${imageTwo?.url_photo2})`,
+                      backgroundPosition: "center center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                    }}
+                    className="flex items-center border overflow-hidden rounded-lg justify-center w-full h-full"
+                  >
+                    {/* <img
                       className="h-full w-full mx-auto object-cover cursor-pointer"
-                      src={imageTwo?.url_photo2}
+                      src={}
                       alt=""
-                    />
+                    /> */}
                   </div>
                 </div>
               )}
@@ -460,11 +470,11 @@ export default function Carousel({ data, height }) {
           >
             <button
               type="button"
-              className="h-[124px] w-full flex items-center border rounded-lg overflow-hidden justify-center "
+              className="h-[124px] w-full flex items-center  justify-center "
             >
               {imageThree?.url_photo3 === null ? (
                 <div className="h-full w-full bg-photoBg text-[13px] font-AeonikProMedium flex items-center justify-center text-textBlueColor ">
-                  <div className="w-full h-full bg-photoBg flex items-center justify-center">
+                  <div className="w-full h-full border rounded-lg overflow-hidden bg-photoBg flex items-center justify-center">
                     <NoImg />
                   </div>
                 </div>
@@ -476,14 +486,22 @@ export default function Carousel({ data, height }) {
                       setModalId(imageThree?.id3);
                     }
                   }}
-                  className="BackgImageBLur w-full h-full  flex items-center justify-center   "
+                  className="w-full h-full flex items-center justify-center   "
                 >
-                  <div className="flex items-center overflow-hidden rounded-lg justify-center w-full h-full  backdrop-blur-md">
-                    <img
+                  <div
+                    style={{
+                      backgroundImage: `url(${imageThree?.url_photo3})`,
+                      backgroundPosition: "center center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                    }}
+                    className="flex items-center border rounded-lg overflow-hidden justify-center w-full h-full"
+                  >
+                    {/* <img
                       className="h-full w-full mx-auto object-cover cursor-pointer "
-                      src={imageThree?.url_photo3}
+                      src={}
                       alt=""
-                    />
+                    /> */}
                   </div>
                 </div>
               )}
@@ -506,30 +524,38 @@ export default function Carousel({ data, height }) {
           >
             <button
               type="button"
-              className="h-[124px] w-full flex items-center border rounded-lg overflow-hidden justify-center "
+              className="h-[124px] w-full flex items-center  justify-center "
             >
               {imageFour?.url_photo4 === null ? (
                 <div className="h-full w-full text-[13px] font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor">
-                  <div className="w-full h-full overflow-hidden  bg-photoBg  flex flex-col  items-center justify-center">
+                  <div className="w-full h-full overflow-hidden border rounded-lg  bg-photoBg  flex flex-col  items-center justify-center">
                     <NoImg />
                   </div>
                 </div>
               ) : (
                 <div
                   onClick={() => {
-                    if (imageThree?.url_photo4) {
+                    if (imageFour?.url_photo4) {
                       handleClickCarosuel();
-                      setModalId(imageTwo?.id4);
+                      setModalId(imageFour?.id4);
                     }
                   }}
                   className="cursor-pointer w-full h-full flex items-center justify-center "
                 >
-                  <div className="flex items-center overflow-hidden rounded-lg justify-center w-full h-full">
-                    <img
+                  <div
+                    style={{
+                      backgroundImage: `url(${imageFour?.url_photo4})`,
+                      backgroundPosition: "center center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                    }}
+                    className="flex items-center border rounded-lg overflow-hidden justify-center w-full h-full"
+                  >
+                    {/* <img
                       className=" h-full w-full mx-auto object-cover cursor-pointer "
-                      src={imageFour?.url_photo4}
+                      src={}
                       alt=""
-                    />
+                    /> */}
                   </div>
                 </div>
               )}
