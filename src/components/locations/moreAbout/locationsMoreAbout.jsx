@@ -150,12 +150,12 @@ export const LocationsMoreAbout = () => {
               {modalId === shopLocationsData?.url_image_path_one && (
                 <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                   <div className="w-full h-[80vh] flex items-center">
-                    <div className="w-full h-full flex flex-col items-center justify-center">
+                    <div className="w-fit h-full flex flex-col items-center justify-center">
                       {shopLocationsData?.url_image_path_one !== null && (
                         <img
                           src={shopLocationsData?.url_image_path_one}
                           alt="backImg"
-                          className="w-[670px] h-[80vh]	 border border-searchBgColor object-fill rounded-lg"
+                          className="w-fit h-fit	 border border-searchBgColor rounded-lg"
                         />
                       )}
                     </div>
@@ -165,12 +165,12 @@ export const LocationsMoreAbout = () => {
               {modalId === shopLocationsData?.url_image_path_two && (
                 <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                   <div className="w-full h-[80vh] flex items-center">
-                    <div className="w-full h-full flex flex-col items-center justify-center">
+                    <div className="w-fit h-full flex flex-col items-center justify-center">
                       {shopLocationsData?.url_image_path_two !== null && (
                         <img
                           src={shopLocationsData?.url_image_path_two}
                           alt="backImg"
-                          className="w-[670px] h-[80vh]	 border border-searchBgColor object-fill rounded-lg"
+                          className="w-fit h-fit	 border border-searchBgColor rounded-lg"
                         />
                       )}
                     </div>
@@ -180,12 +180,12 @@ export const LocationsMoreAbout = () => {
               {modalId === shopLocationsData?.url_image_path_three && (
                 <div className="w-full flex flex-col items-center bg-white rounded-xl overflow-hidden">
                   <div className="w-full h-[80vh] flex items-center">
-                    <div className="w-full h-full flex flex-col items-center justify-center">
+                    <div className="w-fit h-full flex flex-col items-center justify-center">
                       {shopLocationsData?.url_image_path_three !== null && (
                         <img
                           src={shopLocationsData?.url_image_path_three}
                           alt="backImg"
-                          className="w-[670px] h-[80vh]	 border border-searchBgColor object-fill rounded-lg"
+                          className="w-fit h-fit	 border border-searchBgColor rounded-lg"
                         />
                       )}
                     </div>
@@ -284,7 +284,7 @@ export const LocationsMoreAbout = () => {
                   <img
                     src={shopLocationsData?.url_image_path_one}
                     alt="backImg"
-                    className="w-full h-full object-fill rounded-lg"
+                    className="w-full h-full object-cover rounded-lg"
                   />
                 ) : (
                   <span className="leading-none text-[13px] md:text-base font-AeonikProRegular md:font-AeonikProMedium">
@@ -307,7 +307,7 @@ export const LocationsMoreAbout = () => {
                   <img
                     src={shopLocationsData?.url_image_path_two}
                     alt="backImg"
-                    className="w-full h-full object-fill rounded-lg"
+                    className="w-full h-full object-cover rounded-lg"
                   />
                 ) : (
                   <span className="leading-none text-[13px] md:text-base font-AeonikProRegular md:font-AeonikProMedium">
@@ -330,7 +330,7 @@ export const LocationsMoreAbout = () => {
                   <img
                     src={shopLocationsData?.url_image_path_three}
                     alt="backImg"
-                    className="w-full h-full object-fill rounded-lg"
+                    className="w-full h-full object-cover rounded-lg"
                   />
                 ) : (
                   <span className="leading-none text-[13px] md:text-base font-AeonikProRegular md:font-AeonikProMedium">

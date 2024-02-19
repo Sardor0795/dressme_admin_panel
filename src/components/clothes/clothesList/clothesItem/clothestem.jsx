@@ -110,7 +110,7 @@ export default function ClothesItem({
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
             }}
-            className="absolute top-[-25px] bg-[#FCFCFC] border border-[#F2F2F2] w-[110px] h-[150px] flex items-center justify-center rounded-[12px]"
+            className="absolute top-[-21px] bg-[#FCFCFC] border border-[#F2F2F2] w-[108px] h-[138px] flex items-center justify-center rounded-[12px]"
           >
             {data?.photos[0]?.url_photo ? null : <NoImgIcon />}
           </div>
