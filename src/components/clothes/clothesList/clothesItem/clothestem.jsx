@@ -99,7 +99,7 @@ export default function ClothesItem({
         </span>
       </div>
       <div className="relative h-[100px] hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[10px] md:flex items-center w-full">
-        <div className="w-[3%] text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[3%] text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
           {index}
         </div>
         <div className="w-[9%]">
@@ -115,19 +115,19 @@ export default function ClothesItem({
             {data?.photos[0]?.url_photo ? null : <NoImgIcon />}
           </div>
         </div>
-        <div className="w-[16%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[16%] px-4 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
           {data?.name_ru}
         </div>
-        <div className="w-[12%] px-4 break-all flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[12%] px-4 break-all flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
           {data?.sku}
         </div>
-        <div className="w-[10%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[10%] px-4 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
           {data?.type?.name_ru}
         </div>
-        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
           {data?.created_at}
         </div>
-        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium">
+        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
           {data?.cost?.price
             ? parseInt(data?.cost?.price)
                 ?.toLocaleString()
@@ -142,7 +142,7 @@ export default function ClothesItem({
           Подробнее
         </Link>
 
-        <div className="w-[20%] px-4 flex items-center justify-center text-tableTextTitle2 text-base not-italic font-AeonikProMedium md:mr-10">
+        <div className="w-[20%] px-4 flex items-center justify-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium md:mr-10">
           {showSellers !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}
@@ -224,7 +224,7 @@ export default function ClothesItem({
 
           <Link
             to={`cloth/${data?.id}`}
-            className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer"
+            className="text-[#007DCA] text-[13px] font-AeonikProMedium cursor-pointer"
           >
             Подробнее
           </Link>
@@ -237,40 +237,40 @@ export default function ClothesItem({
           />
         </div>
         <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[45%]">
+          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[45%]">
             Название
           </div>
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
             Артикул
           </div>
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[15%]">
+          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[15%]">
             Тип
           </div>
         </div>
         <div className="py-[5px] px-[15px] flex mb-[10px]">
-          <div className="w-[45%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[45%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.name_ru}
           </div>
-          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.sku}
           </div>
-          <div className="w-[15%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[15%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.type?.name_ru}
           </div>
         </div>
         <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[45%]">
+          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[45%]">
             Дата
           </div>
-          <div className="text-[#3F6175] text-[12px] font-AeonikProMedium w-[40%]">
+          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
             Цена
           </div>
         </div>
         <div className="py-[5px] px-[15px] flex mb-[24px]">
-          <div className="w-[45%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[45%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.created_at}
           </div>
-          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.cost?.price
               ? parseInt(data?.cost?.price)
                   ?.toLocaleString()
@@ -291,7 +291,7 @@ export default function ClothesItem({
                 data?.status === "pending" || data?.status === "approved"
                   ? ""
                   : "hidden"
-              } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
+              } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[13px] font-AeonikProMedium text-[#E51515]`}
             >
               Отказать
             </button>
@@ -301,7 +301,7 @@ export default function ClothesItem({
                 data?.status === "pending" || data?.status === "declined"
                   ? ""
                   : "hidden"
-              } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+              } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[13px] font-AeonikProMedium text-[#12C724]`}
             >
               Одобрить
             </button>
@@ -311,7 +311,7 @@ export default function ClothesItem({
           <div className="w-full flex gap-[30px]">
             <button
               onClick={() => approveFunc()}
-              className={` rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+              className={` rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[13px] font-AeonikProMedium text-[#12C724]`}
             >
               Одобрить
             </button>

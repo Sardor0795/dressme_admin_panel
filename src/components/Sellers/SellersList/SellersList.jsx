@@ -192,7 +192,7 @@ export default function SellersList() {
 
         <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input
-            className="text-[13px] md:text-base outline-none w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
+            className="text-[13px] md:text-[13px] outline-none w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
             type="email"
             placeholder="Поиск"
             required
@@ -215,7 +215,7 @@ export default function SellersList() {
             showSellers === "pending"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-[11px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Ожидающие продавцы</div>{" "}
           <div>({waitingCount})</div>
@@ -229,7 +229,7 @@ export default function SellersList() {
             showSellers === "approved"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-[11px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Одобренные продавцы</div>{" "}
           <div> ({allowedCount})</div>
@@ -243,7 +243,7 @@ export default function SellersList() {
             showSellers === "declined"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-[11px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Отказанные продавцы</div>{" "}
           <div>({notAllowedCount})</div>
@@ -257,7 +257,7 @@ export default function SellersList() {
             showSellers === "updated"
               ? "text-[#007DCA] border-[#007DCA]"
               : "text-[#303030] border-[#F2F2F2]"
-          } border-b pb-[12px] text-center text-[11px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
+          } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]"> Обновленные продавцы</div>{" "}
           <div>({updatedCount})</div>
@@ -268,7 +268,7 @@ export default function SellersList() {
         {/* Mobile selected */}
         {dataCount > 0 ? (
           <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
-            <div className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
+            <div className=" font-AeonikProMedium text-[13px] ls:text-[13px] ll:text-[13px] md:text-lg text-mobileTextColor">
               Выбранные:
             </div>
             <div className="flex items-center">
@@ -280,7 +280,7 @@ export default function SellersList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
@@ -297,7 +297,7 @@ export default function SellersList() {
                         setModalOpen(true);
                       }
                     }}
-                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#E51515]"
                         : "text-[#85444485] cursor-not-allowed"
@@ -317,7 +317,7 @@ export default function SellersList() {
                         setModalOpen(true);
                       }
                     }}
-                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#E51515]"
                         : "text-[#85444485] cursor-not-allowed"
@@ -336,7 +336,7 @@ export default function SellersList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
@@ -355,7 +355,7 @@ export default function SellersList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                       massiveCheckeds?.length > 0
                         ? "text-[#12C724]"
                         : "text-[#12c7245e] cursor-not-allowed"
@@ -382,7 +382,7 @@ export default function SellersList() {
             </div>
             {/* Выбранные */}
             <div className="hidden w-full md:w-fit md:flex items-center gap-x-[30px] border-b md:border-b-0 border-[#F2F2F2] pb-[25px] md:pb-0">
-              <span className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
+              <span className=" font-AeonikProMedium text-[13px] ls:text-[13px] ll:text-[13px] md:text-lg text-mobileTextColor">
                 Выбранные:
               </span>
               <div className="flex items-center">
@@ -394,7 +394,7 @@ export default function SellersList() {
                           allApproveFunc();
                         }
                       }}
-                      className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                      className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? "text-[#12C724]"
                           : "text-[#12c7245e] cursor-not-allowed"
@@ -411,7 +411,7 @@ export default function SellersList() {
                           setModalOpen(true);
                         }
                       }}
-                      className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                      className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? "text-[#E51515]"
                           : "text-[#85444485] cursor-not-allowed"
@@ -431,7 +431,7 @@ export default function SellersList() {
                           setModalOpen(true);
                         }
                       }}
-                      className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                      className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? "text-[#E51515]"
                           : "text-[#85444485] cursor-not-allowed"
@@ -451,7 +451,7 @@ export default function SellersList() {
                         }
                       }}
                       type="button"
-                      className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                      className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? "text-[#12C724]"
                           : "text-[#12c7245e] cursor-not-allowed"
@@ -470,7 +470,7 @@ export default function SellersList() {
                         }
                       }}
                       type="button"
-                      className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                      className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                         massiveCheckeds?.length > 0
                           ? "text-[#12C724]"
                           : "text-[#12c7245e] cursor-not-allowed"
@@ -525,7 +525,7 @@ export default function SellersList() {
               </div>
               {/* Выбранные */}
               <div className="hidden w-full md:w-fit md:flex items-center gap-x-[30px] border-b md:border-b-0 border-[#F2F2F2] pb-[25px] md:pb-0">
-                <span className=" font-AeonikProMedium text-[11px] ls:text-[12px] ll:text-sm md:text-lg text-mobileTextColor">
+                <span className=" font-AeonikProMedium text-[13px] ls:text-[13px] ll:text-[13px] md:text-lg text-mobileTextColor">
                   Выбранные:
                 </span>
                 <div className="flex items-center">
@@ -537,7 +537,7 @@ export default function SellersList() {
                             allApproveFunc();
                           }
                         }}
-                        className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                        className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
                             ? "text-[#12C724]"
                             : "text-[#12c7245e] cursor-not-allowed"
@@ -555,7 +555,7 @@ export default function SellersList() {
                           }
                         }}
                         type="button"
-                        className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                        className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
                             ? "text-[#E51515]"
                             : "text-[#85444485] cursor-not-allowed"
@@ -574,7 +574,7 @@ export default function SellersList() {
                             setModalOpen(true);
                           }
                         }}
-                        className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                        className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
                             ? "text-[#E51515]"
                             : "text-[#85444485] cursor-not-allowed"
@@ -593,7 +593,7 @@ export default function SellersList() {
                             allApproveFunc();
                           }
                         }}
-                        className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                        className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
                             ? "text-[#12C724]"
                             : "text-[#12c7245e] cursor-not-allowed"
@@ -612,7 +612,7 @@ export default function SellersList() {
                             allApproveFunc();
                           }
                         }}
-                        className={`text-sm md:text-lg not-italic font-AeonikProMedium ${
+                        className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
                           massiveCheckeds?.length > 0
                             ? "text-[#12C724]"
                             : "text-[#12c7245e] cursor-not-allowed"
@@ -736,7 +736,7 @@ export default function SellersList() {
               setAllChecked(!allChecked);
               setSomeChecked(false);
             }}
-            className="select-none cursor-pointer hidden md:flex items-center text-base font-AeonikProMedium text-[#303030]"
+            className="select-none cursor-pointer hidden md:flex items-center text-[13px] font-AeonikProMedium text-[#303030]"
           >
             Выбрать все
             <div

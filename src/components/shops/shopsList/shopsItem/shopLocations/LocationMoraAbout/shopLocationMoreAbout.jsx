@@ -240,7 +240,7 @@ export default function LocationMoreAbout() {
                           value={forMaps?.title}
                           id="ForSearch"
                           disabled
-                          className={`w-full outline-none text-sm font-AeonikProMedium mr-3 h-10 rounded-lg`}
+                          className={`w-full outline-none text-[13px] font-AeonikProMedium mr-3 h-10 rounded-lg`}
                         />
                       </label>
                     </div>
@@ -271,7 +271,7 @@ export default function LocationMoreAbout() {
                     className="w-full h-full object-contain rounded-lg"
                   />
                 ) : (
-                  <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                  <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center leading-none text-[13px] md:text-[13px] font-AeonikProRegular md:font-AeonikProMedium">
                     <NoImg className="w-full h-full object-contain" />
                   </span>
                 )}
@@ -294,7 +294,7 @@ export default function LocationMoreAbout() {
                     className="w-full h-full object-contain rounded-lg"
                   />
                 ) : (
-                  <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                  <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center leading-none text-[13px] md:text-[13px] font-AeonikProRegular md:font-AeonikProMedium">
                     <NoImg className="w-full h-full object-contain" />
                   </span>
                 )}
@@ -317,7 +317,7 @@ export default function LocationMoreAbout() {
                     className="w-full h-full object-contain rounded-lg"
                   />
                 ) : (
-                  <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center  leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
+                  <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center  leading-none text-[13px] md:text-[13px] font-AeonikProRegular md:font-AeonikProMedium">
                     <NoImg className="w-full h-full object-contain" />
                   </span>
                 )}
@@ -328,52 +328,52 @@ export default function LocationMoreAbout() {
           <div className="w-full">
             <div className="flex flex-wrap items-center justify-between gap-3 md:gap-4 ">
               <div className="w-full md:w-[31%] xs:w-[48%]   ">
-                <div className="w-full text-[12px] md:text-base flex items-center mb-[10px]">
+                <div className="w-full text-[13px] md:text-[13px] flex items-center mb-[10px]">
                   Имя администратора{" "}
                   <span className="ml-[5px]">
                     <StarIcon />
                   </span>
                 </div>
-                <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
-                  <div className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2">
+                <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-[13px] font-AeonikProMedium">
+                  <div className="w-full outline-none text-[13px] md:text-[14px] font-AeonikProRegular px-2">
                     {shopLocationsData?.assistant_name || "-"}
                   </div>
                 </div>
               </div>
               <div className="w-full md:w-[31%] xs:w-[48%]  ">
-                <div className="w-full text-[12px] md:text-base flex items-center mb-[10px]">
+                <div className="w-full text-[13px] md:text-[13px] flex items-center mb-[10px]">
                   Имя второго администратора{" "}
                 </div>
-                <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-base font-AeonikProMedium">
-                  <div className="w-full outline-none text-[12px] md:text-[14px] font-AeonikProRegular px-2">
+                <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-[13px] font-AeonikProMedium">
+                  <div className="w-full outline-none text-[13px] md:text-[14px] font-AeonikProRegular px-2">
                     {shopLocationsData?.second_assistant_name || "-"}
                   </div>
                 </div>
               </div>
               <div className="w-full md:w-[31%] xs:w-[48%]">
-                <div className="text-[12px] md:text-base flex items-center mb-1 md:mb-[10px]">
+                <div className="text-[13px] md:text-[13px] flex items-center mb-1 md:mb-[10px]">
                   Рабочее время
                   <span className="ml-[5px]">
                     <StarIcon />
                   </span>
                 </div>
                 <div className="w-full flex  items-center">
-                  <span className="w-fit text-[12px] md:text-base flex items-center">
+                  <span className="w-fit text-[13px] md:text-[13px] flex items-center">
                     от
                   </span>
-                  <div className="without_ampm mr-5 ml-[5px] outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[12px] md:text-[14px] font-AeonikProRegular ">
+                  <div className="without_ampm mr-5 ml-[5px] outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[13px] md:text-[14px] font-AeonikProRegular ">
                     {shopLocationsData?.work_time_from}
                   </div>
-                  <span className="w-fit text-[12px] md:text-base flex items-center ">
+                  <span className="w-fit text-[13px] md:text-[13px] flex items-center ">
                     до
                   </span>
-                  <div className="without_ampm mr-5 ml-[5px]  outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[12px] md:text-[14px] font-AeonikProRegular ">
+                  <div className="without_ampm mr-5 ml-[5px]  outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[13px] md:text-[14px] font-AeonikProRegular ">
                     {shopLocationsData?.work_time_to}
                   </div>
                 </div>
               </div>
               <label className="w-full md:w-[31%] xs:w-[48%]">
-                <div className="text-xs md:text-base flex items-center mb-[10px]">
+                <div className="text-xs md:text-[13px] flex items-center mb-[10px]">
                   Номер администратора
                   <span className="ml-[5px]">
                     <StarIcon />
@@ -381,7 +381,7 @@ export default function LocationMoreAbout() {
                 </div>
                 <div className="mt-[6px] h-8 md:h-11 flex items-center justify-center overflow-hidden border border-searchBgColor rounded-lg">
                   <div className="ss:w-[35%] md:w-[30%] h-8 md:h-11 flex items-center justify-center  cursor-pointer border-r border-searchBgColor overflow-hidden">
-                    <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular text-xs md:text-base leading-4 text-black">
+                    <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular text-xs md:text-[13px] leading-4 text-black">
                       +998
                     </div>
                   </div>
@@ -393,7 +393,7 @@ export default function LocationMoreAbout() {
                           ? "font-AeonikProMedium"
                           : null
                       }
-                        text-xs md:text-base leading-4 text-black`}
+                        text-xs md:text-[13px] leading-4 text-black`}
                     >
                       {shopLocationsData?.assistant_phone || "-"}
                     </div>
@@ -401,13 +401,13 @@ export default function LocationMoreAbout() {
                 </div>
               </label>
               <label className="w-full md:w-[31%] xs:w-[48%]">
-                <div className="text-[12px] md:text-base flex items-center mb-[10px]">
+                <div className="text-[13px] md:text-[13px] flex items-center mb-[10px]">
                   Номер второго администратора{" "}
                 </div>
 
                 <div className="mt-[6px] flex items-center justify-center overflow-hidden border border-searchBgColor rounded-lg h-8 md:h-11">
                   <div className="w-[35%] md:w-[30%] flex items-center justify-center cursor-pointer border-r border-searchBgColor overflow-hidden">
-                    <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular leading-4 text-black text-xs md:text-base">
+                    <div className="w-[40px] flex items-center outline-none h-full select-none mx-2 not-italic font-AeonikProRegular leading-4 text-black text-xs md:text-[13px]">
                       +998
                     </div>
                   </div>
@@ -417,7 +417,7 @@ export default function LocationMoreAbout() {
                         shopLocationsData?.second_assistant_phone
                           ? "font-AeonikProMedium"
                           : null
-                      } text-xs md:text-base leading-4 text-black`}
+                      } text-xs md:text-[13px] leading-4 text-black`}
                     >
                       {shopLocationsData?.second_assistant_phone || "-"}
                     </div>
@@ -429,11 +429,11 @@ export default function LocationMoreAbout() {
                   {/* Region Input  */}
                   <div className={"w-full"}>
                     <div htmlFor="">
-                      <div className="flex items-center text-[#303030] text-xs md:text-base not-italic font-AeonikProRegular leading-4 tracking-[0,16px] ">
+                      <div className="flex items-center text-[#303030] text-xs md:text-[13px] not-italic font-AeonikProRegular leading-4 tracking-[0,16px] ">
                         Регион
                       </div>
                       <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
-                        <div className="flex items-center text-[#000] text-xs md:text-base">
+                        <div className="flex items-center text-[#000] text-xs md:text-[13px]">
                           <span className="ml-1">
                             {shopLocationsData?.region?.name_ru},{" "}
                             {shopLocationsData?.sub_region?.name_ru}

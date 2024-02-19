@@ -126,18 +126,18 @@ export default function LocationsItem({
           <li className="w-[calc(100%-230px)] flex items-center justify-between">
             <ul className="flex items-center w-full">
               <li className="md:w-[20%] h-full pr-10">
-                <span className="text-textLightColor md:text-tableTextTitle2 text-[11px] md:text-base not-italic font-AeonikProMedium">
+                <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-[13px] not-italic font-AeonikProMedium">
                   {data?.region?.name_ru || "city"},{" "}
                   {data?.sub_region?.name_ru || "sub_region"}
                 </span>
               </li>
               <li className="md:w-[30%] h-full pr-10">
-                <span className="text-textLightColor md:text-tableTextTitle2 text-[11px] md:text-base not-italic font-AeonikProMedium ">
+                <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-[13px] not-italic font-AeonikProMedium ">
                   {data?.address || "address"}
                 </span>{" "}
               </li>
               <li className="md:w-[13%] h-full">
-                <span className="text-textLightColor md:text-tableTextTitle2 text-[11px] md:text-base not-italic font-AeonikProMedium ">
+                <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-[13px] not-italic font-AeonikProMedium ">
                   {data?.work_time_from || "startTime"} -{" "}
                   {data?.work_time_to || "endTime"}
                 </span>
@@ -145,7 +145,7 @@ export default function LocationsItem({
               <li className="md:w-[12%] h-full flex items-center justify-center text-center">
                 <Link
                   to={`location/${data?.id}`}
-                  className="text-textBlueColor text-center hover:underline text-[11px] md:text-base not-italic font-AeonikProMedium"
+                  className="text-textBlueColor text-center hover:underline text-[13px] md:text-[13px] not-italic font-AeonikProMedium"
                 >
                   Подробнее
                 </Link>
@@ -235,7 +235,7 @@ export default function LocationsItem({
 
             <Link
               to={`location/${data?.id}`}
-              className="text-[#007DCA] text-[12px] font-AeonikProMedium cursor-pointer"
+              className="text-[#007DCA] text-[13px] font-AeonikProMedium cursor-pointer"
             >
               Подробнее
             </Link>
@@ -253,27 +253,27 @@ export default function LocationsItem({
 
           <div className="mb-2">
             <div className="border rounded-lg border-[#F2F2F2] bg-[#FCFCFC] px-1 ll:px-[10px] py-[5px] flex text-[#3F6175] font-AeonikProMedium text-[13px] items-center mb-[8px]">
-              <div className="text-[#3F6175] text-[12px] not-italic font-AeonikProMedium pr-[10px] w-[24%]">
+              <div className="text-[#3F6175] text-[13px] not-italic font-AeonikProMedium pr-[10px] w-[24%]">
                 Регион
               </div>
-              <div className="text-[#3F6175] text-[12px] not-italic font-AeonikProMedium pr-[10px] w-[46%]">
+              <div className="text-[#3F6175] text-[13px] not-italic font-AeonikProMedium pr-[10px] w-[46%]">
                 Адрес
               </div>
-              <div className="text-[#3F6175] text-[12px] text-center not-italic font-AeonikProMedium w-[30%]">
+              <div className="text-[#3F6175] text-[13px] text-center not-italic font-AeonikProMedium w-[30%]">
                 Рабочее время
               </div>
             </div>
 
             <div className="px-1 ll:px-[10px] py-[5px] flex text-[#2C2C2C] font-AeonikProMedium text-[13px]">
-              <div className="pr-[5px] ll:pr-[10px] w-[24%] break-words  text-gray-700 text-[11px] not-italic font-AeonikProMedium">
+              <div className="pr-[5px] ll:pr-[10px] w-[24%] break-words  text-gray-700 text-[13px] not-italic font-AeonikProMedium">
                 {data?.region?.name_ru}, {data?.sub_region?.name_ru}
               </div>
-              <div className="relative pr-[5px] ll:pr-[10px] h-fit overflow-hidden w-[46%] leading-4	text-[11px] not-italic font-AeonikProMedium">
+              <div className="relative pr-[5px] ll:pr-[10px] h-fit overflow-hidden w-[46%] leading-4	text-[13px] not-italic font-AeonikProMedium">
                 <div className="absolute ToogleOff left-0 w-full h-full top-0"></div>
 
                 {data?.address}
               </div>
-              <div className="w-[30%] flex justify-center text-[11px] not-italic font-AeonikProMedium">
+              <div className="w-[30%] flex justify-center text-[13px] not-italic font-AeonikProMedium">
                 {data?.work_time_from || "startTime"} -{" "}
                 {data?.work_time_to || "endTime"}
               </div>
@@ -293,7 +293,7 @@ export default function LocationsItem({
                     data?.status === "pending" || data?.status === "approved"
                       ? ""
                       : "hidden"
-                  } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[12px] font-AeonikProMedium text-[#E51515]`}
+                  } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[13px] font-AeonikProMedium text-[#E51515]`}
                 >
                   Отказать
                 </button>
@@ -303,7 +303,7 @@ export default function LocationsItem({
                     data?.status === "pending" || data?.status === "declined"
                       ? ""
                       : "hidden"
-                  } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+                  } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[13px] font-AeonikProMedium text-[#12C724]`}
                 >
                   Одобрить
                 </button>
@@ -313,7 +313,7 @@ export default function LocationsItem({
               <div className="w-full flex gap-[30px]">
                 <button
                   onClick={() => approveFunc()}
-                  className={` rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[12px] font-AeonikProMedium text-[#12C724]`}
+                  className={` rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[13px] font-AeonikProMedium text-[#12C724]`}
                 >
                   Одобрить
                 </button>
