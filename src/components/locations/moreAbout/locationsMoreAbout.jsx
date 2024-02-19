@@ -284,7 +284,7 @@ export const LocationsMoreAbout = () => {
                   <img
                     src={shopLocationsData?.url_image_path_one}
                     alt="backImg"
-                    className="w-full h-full object-contain rounded-lg"
+                    className="w-full h-full object-fill rounded-lg"
                   />
                 ) : (
                   <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
@@ -307,7 +307,7 @@ export const LocationsMoreAbout = () => {
                   <img
                     src={shopLocationsData?.url_image_path_two}
                     alt="backImg"
-                    className="w-full h-full object-contain rounded-lg"
+                    className="w-full h-full object-fill rounded-lg"
                   />
                 ) : (
                   <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
@@ -330,7 +330,7 @@ export const LocationsMoreAbout = () => {
                   <img
                     src={shopLocationsData?.url_image_path_three}
                     alt="backImg"
-                    className="w-full h-full object-contain rounded-lg"
+                    className="w-full h-full object-fill rounded-lg"
                   />
                 ) : (
                   <span className="leading-none text-[11px] md:text-sm font-AeonikProRegular md:font-AeonikProMedium">
