@@ -275,7 +275,7 @@ export default function Carousel({ data, height }) {
   }, [modalOfCarsouel]);
 
   return (
-    <div className="max-w-[300px] mx-auto md:mx-0">
+    <div className="max-w-[310px] md:max-w-[330px] mx-auto md:mx-0">
       <div className="flex items-center mb-[5px]">
         <div className="font-AeonikProRegular text-[16px] mr-[5px] ml-[10px]">
           Фото
@@ -381,7 +381,7 @@ export default function Carousel({ data, height }) {
 
       <div className="h-full flex flex-col ">
         {/* IMG ONE */}
-        <div className="w-full h-[404px] flex items-center justify-center">
+        <div className="w-full h-[400px] flex items-center justify-center">
           <div className="w-full h-full rounded-[12px] border overflow-hidden">
             <div className={`h-full`}>
               <div
@@ -407,12 +407,12 @@ export default function Carousel({ data, height }) {
           </div>
         </div>
 
-        <div className="w-full mt-[10px] h-[124px] flex justify-between gap-x-[6px]   rounded-lg">
+        <div className="w-full mt-[10px] h-[124px] flex justify-between gap-x-[6px] rounded-lg">
           {/* IMG TWO */}
           <div className={`w-[30%] h-full flex-col items-center justify-start`}>
             <button
               type="button"
-              className="h-full w-full flex items-center border justify-center overflow-hidden rounded-lg"
+              className="h-full w-full flex items-center justify-center overflow-hidden rounded-lg"
             >
               {imageTwo?.url_photo2 === null ? (
                 <div className="h-full w-full text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor ">
@@ -430,11 +430,11 @@ export default function Carousel({ data, height }) {
                       setModalId(imageTwo?.id2);
                     }
                   }}
-                  className="BackgImageBLur overflow-hidden  w-full h-full rounded-lg flex items-center justify-center  "
+                  className="overflow-hidden w-full h-full flex items-center justify-center"
                 >
-                  <div className="flex items-center justify-center w-full h-full">
+                  <div className="flex items-center border overflow-hidden rounded-lg justify-center w-full h-full">
                     <img
-                      className="h-full w-full mx-auto align-middle object-cover cursor-pointer"
+                      className="h-full w-full mx-auto object-cover cursor-pointer"
                       src={imageTwo?.url_photo2}
                       alt=""
                     />
@@ -467,8 +467,8 @@ export default function Carousel({ data, height }) {
               className="h-full w-full flex items-center border rounded-lg overflow-hidden justify-center "
             >
               {imageThree?.url_photo3 === null ? (
-                <div className="h-full w-ful text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor ">
-                  <div className="w-full h-full overflow-hidden  bg-photoBg  flex flex-col  items-center justify-center">
+                <div className="h-full w-full bg-photoBg text-sm font-AeonikProMedium flex items-center justify-center text-textBlueColor ">
+                  <div className="w-full h-full bg-photoBg flex items-center justify-center">
                     <NoImg />
                   </div>
                 </div>
@@ -480,11 +480,11 @@ export default function Carousel({ data, height }) {
                       setModalId(imageThree?.id3);
                     }
                   }}
-                  className="BackgImageBLur  overflow-hidden  w-full h-full rounded-lg flex items-center justify-center   "
+                  className="BackgImageBLur w-full h-full  flex items-center justify-center   "
                 >
-                  <div className="flex items-center justify-center w-full h-full  backdrop-blur-md">
+                  <div className="flex items-center overflow-hidden rounded-lg justify-center w-full h-full  backdrop-blur-md">
                     <img
-                      className="h-full w-full mx-auto  align-middle object-cover cursor-pointer "
+                      className="h-full w-full mx-auto object-cover cursor-pointer "
                       src={imageThree?.url_photo3}
                       alt=""
                     />
@@ -531,11 +531,11 @@ export default function Carousel({ data, height }) {
                       setModalId(imageTwo?.id4);
                     }
                   }}
-                  className="BackgImageBLur cursor-pointer overflow-hidden w-full h-full rounded-lg  flex items-center justify-center "
+                  className="cursor-pointer w-full h-full flex items-center justify-center "
                 >
-                  <div className="flex items-center justify-center w-full h-full  backdrop-blur-md ">
+                  <div className="flex items-center overflow-hidden rounded-lg justify-center w-full h-full">
                     <img
-                      className=" h-full w-full mx-auto  align-middle object-cover cursor-pointer "
+                      className=" h-full w-full mx-auto object-cover cursor-pointer "
                       src={imageFour?.url_photo4}
                       alt=""
                     />
