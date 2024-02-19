@@ -319,7 +319,7 @@ export const MoreAbout = () => {
           <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.name} {data?.surname}
           </div>
-          <div className="w-[40%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] text-[11px] pr-4 font-AeonikProMedium text-[#2C2C2C]">
             {data?.seller_type?.type_ru}
           </div>
           <div className="w-[20%] text-[11px] font-AeonikProMedium text-[#2C2C2C]">
