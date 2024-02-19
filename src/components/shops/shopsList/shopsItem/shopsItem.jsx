@@ -265,7 +265,7 @@ export default function ShopsItem({
                     data?.status === "pending" || data?.status === "approved"
                       ? ""
                       : "hidden"
-                  } rounded-[8px] py-[8px] md:py-[5px] md:rounded-[20px] md:border px-2 md:w-fit md:border-[#E85353] w-full bg-[#FFE1E1] md:bg-transparent font-AeonikProMedium text-[#E51515]`}
+                  } rounded-[8px] text-[13px] md:text-[16px] py-[8px] md:py-[5px] md:rounded-[20px] md:border px-2 md:w-fit md:border-[#E85353] w-full bg-[#FFE1E1] md:bg-transparent font-AeonikProMedium text-[#E51515]`}
                 >
                   Отказать
                 </button>
@@ -279,7 +279,7 @@ export default function ShopsItem({
                     data?.status === "pending" || data?.status === "approved"
                       ? ""
                       : "hidden"
-                  } md:w-fit w-full px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
+                  } md:w-fit w-full text-[13px] md:text-[16px] px-2 py-[5px] rounded-[20px] font-AeonikProMedium border border-[#E85353] text-[#E85353]`}
                 >
                   Отказать
                 </button>
