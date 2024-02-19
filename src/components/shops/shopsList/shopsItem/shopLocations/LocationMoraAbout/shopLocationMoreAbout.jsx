@@ -335,7 +335,7 @@ export default function LocationMoreAbout() {
                   </span>
                 </div>
                 <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-[13px] font-AeonikProMedium">
-                  <div className="w-full outline-none text-[13px] md:text-[14px] font-AeonikProRegular px-2">
+                  <div className="w-full outline-none text-[13px] md:text-[16px] font-AeonikProRegular px-2">
                     {shopLocationsData?.assistant_name || "-"}
                   </div>
                 </div>
@@ -345,7 +345,7 @@ export default function LocationMoreAbout() {
                   Имя второго администратора{" "}
                 </div>
                 <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-[13px] font-AeonikProMedium">
-                  <div className="w-full outline-none text-[13px] md:text-[14px] font-AeonikProRegular px-2">
+                  <div className="w-full outline-none text-[13px] md:text-[16px] font-AeonikProRegular px-2">
                     {shopLocationsData?.second_assistant_name || "-"}
                   </div>
                 </div>
@@ -361,13 +361,13 @@ export default function LocationMoreAbout() {
                   <span className="w-fit text-[13px] md:text-base flex items-center">
                     от
                   </span>
-                  <div className="without_ampm mr-5 ml-[5px] outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[13px] md:text-[14px] font-AeonikProRegular ">
+                  <div className="without_ampm mr-5 ml-[5px] outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[13px] md:text-[16px] font-AeonikProRegular ">
                     {shopLocationsData?.work_time_from}
                   </div>
                   <span className="w-fit text-[13px] md:text-base flex items-center ">
                     до
                   </span>
-                  <div className="without_ampm mr-5 ml-[5px]  outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[13px] md:text-[14px] font-AeonikProRegular ">
+                  <div className="without_ampm mr-5 ml-[5px]  outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[13px] md:text-[16px] font-AeonikProRegular ">
                     {shopLocationsData?.work_time_to}
                   </div>
                 </div>

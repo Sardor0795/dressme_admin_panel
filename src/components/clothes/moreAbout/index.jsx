@@ -138,12 +138,7 @@ export const ClothMoreAbout = () => {
         ) : null}
       </div>
 
-      <div className="w-full flex items-center justify-between my-[12px] md:my-9">
-        <div className="bg-[#E5F2FA] py-[5px] px-[10px] rounded-[4px] font-AeonikProMedium text-[13px] md:text-[18px]">
-          <span className="text-[#007DCA]">Обновлено: </span>
-          Фото/цвет, Информация
-        </div>
-
+      <div className="w-full flex items-center justify-between md:my-5">
         <div className="hidden md:flex items-center ml-auto">
           {showSellers === "pending" ? (
             <div className="flex items-center ml-auto">

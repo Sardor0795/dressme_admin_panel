@@ -407,12 +407,12 @@ export default function Carousel({ data, height }) {
           </div>
         </div>
 
-        <div className="w-full mt-[10px] h-[124px] flex justify-between gap-x-[6px] rounded-lg">
+        <div className="w-full mt-[10px] h-fit flex justify-between gap-x-[6px] rounded-lg">
           {/* IMG TWO */}
           <div className={`w-[30%] h-full flex-col items-center justify-start`}>
             <button
               type="button"
-              className="h-full w-full flex items-center justify-center overflow-hidden rounded-lg"
+              className="h-[124px] w-full flex items-center justify-center overflow-hidden rounded-lg"
             >
               {imageTwo?.url_photo2 === null ? (
                 <div className="h-full w-full text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor ">
@@ -443,7 +443,7 @@ export default function Carousel({ data, height }) {
               )}
             </button>
             {imageTwo?.product_color_id2 && (
-              <div className="">
+              <div className="mb-[5px]">
                 <div className="w-fit h-fit flex items-center mt-2">
                   <span
                     style={{ background: colorOne?.color_hex1 }}
@@ -460,7 +460,7 @@ export default function Carousel({ data, height }) {
           >
             <button
               type="button"
-              className="h-full w-full flex items-center border rounded-lg overflow-hidden justify-center "
+              className="h-[124px] w-full flex items-center border rounded-lg overflow-hidden justify-center "
             >
               {imageThree?.url_photo3 === null ? (
                 <div className="h-full w-full bg-photoBg text-sm font-AeonikProMedium flex items-center justify-center text-textBlueColor ">
@@ -489,7 +489,7 @@ export default function Carousel({ data, height }) {
               )}
             </button>
             {imageThree?.product_color_id3 && (
-              <div className="">
+              <div className="mb-[5px]">
                 <div className="w-fit h-fit flex items-center mt-2">
                   <span
                     style={{ background: colorOne?.color_hex1 }}
@@ -506,7 +506,7 @@ export default function Carousel({ data, height }) {
           >
             <button
               type="button"
-              className="h-full w-full flex items-center border rounded-lg overflow-hidden justify-center "
+              className="h-[124px] w-full flex items-center border rounded-lg overflow-hidden justify-center "
             >
               {imageFour?.url_photo4 === null ? (
                 <div className="h-full w-full text-sm font-AeonikProMedium flex items-center flex-col justify-center text-textBlueColor">
@@ -535,7 +535,7 @@ export default function Carousel({ data, height }) {
               )}
             </button>
             {imageFour?.product_color_id4 && (
-              <div className="">
+              <div className="mb-[5px]">
                 <div className="w-fit h-fit flex items-center mt-2">
                   <span
                     style={{ background: colorOne?.color_hex1 }}
