@@ -123,7 +123,7 @@ export default function ShopsItem({
         className="w-full h-fit md:h-[100px] border border-borderColor md:pr-10 p-[10px] rounded-lg flex md:flex-row flex-col items-center"
       >
         <div className="w-full md:w-[34%] flex flex-col md:flex-row items-center md:justify-start md:border-0 border-b border-borderColor">
-          <div className="w-full md:w-fit flex items-center justify-between md:justify-start md:pr-7 md:pl-5 text-xl font-AeonikProRegular ">
+          <div className="w-full md:w-fit flex items-center justify-between md:justify-start md:pr-7 md:pl-5 text-xl font-AeonikProMedium ">
             <div
               onClick={() => {
                 setSomeChecked(true);
@@ -154,7 +154,7 @@ export default function ShopsItem({
             </div>
             <div className="flex items-center md:hidden">
               <div className="border-b min-w-[10px]"></div>
-              <div className="mx-[5px] text-[16px] font-AeonikProRegular text-[#D2D2D2]">
+              <div className="mx-[5px] text-[16px] font-AeonikProMedium text-[#D2D2D2]">
                 {index < 10 ? "0" : ""}
                 {index + 1}
               </div>
@@ -178,7 +178,7 @@ export default function ShopsItem({
               />
             </figure>
             <div className="w-fit flex flex-col ml-5 md:ml-8">
-              <p className="w-fit text-[13px] md:w-full ls:text-[14px] xs:text-xl xs:font-AeonikProMedium font-AeonikProRegular  mb-3">
+              <p className="w-fit text-[13px] md:w-full ls:text-[14px] xs:text-xl font-AeonikProMedium mb-3">
                 {data?.name || null}
               </p>
               <div className="w-full flex items-center">
@@ -186,11 +186,11 @@ export default function ShopsItem({
                   <div className="w-fit flex items-center mr-[6px]">
                     <StarRatengIcon />
                   </div>
-                  <div className="not-italic font-AeonikProRegular ls:text-[13px] leading-4 text-right text-gray-500 md:ml-1 flex items-center text-[13px]">
-                    <p className="font-AeonikProRegular text-[13px] md:text-[16px] ls:font-AeonikProMedium text-black mr-1">
+                  <div className="not-italic font-AeonikProMedium ls:text-[13px] leading-4 text-right text-gray-500 md:ml-1 flex items-center text-[13px]">
+                    <p className="font-AeonikProMedium text-[13px] md:text-[16px] ls:font-AeonikProMedium text-black mr-1">
                       {data?.overall_rating || 0}
                     </p>
-                    <p className="text-setTexOpacity font-AeonikProRegular text-[13px] ls:text-[13px] md:text-[16px] ">
+                    <p className="text-setTexOpacity font-AeonikProMedium text-[13px] ls:text-[13px] md:text-[16px] ">
                       ({data?.rated_users_count || 0}){" "}
                     </p>
                   </div>
@@ -224,7 +224,7 @@ export default function ShopsItem({
 
           <NavLink
             to={`locations/${data?.id}`}
-            className="md:w-fit w-full flex md:hidden items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProRegular md:hover:underline md:px-0 px-[10px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 h-[36px] md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
+            className="md:w-fit w-full flex md:hidden items-center justify-center md:text-textBlueColor md:text-base text-[13px] md:font-AeonikProMedium font-AeonikProMedium md:hover:underline md:px-0 px-[10px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 h-[36px] md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"
           >
             Локации
           </NavLink>

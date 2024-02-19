@@ -344,7 +344,7 @@ export const LocationsMoreAbout = () => {
           <div className="w-full">
             <div className="flex flex-wrap items-center justify-between gap-3 md:gap-4 ">
               <div className="w-full md:w-[31%] xs:w-[48%]   ">
-                <div className="w-full text-[13px] md:text-base flex items-center mb-[10px]">
+                <div className="w-full text-[13px] font-AeonikProMedium md:text-base flex items-center mb-[10px]">
                   Имя администратора{" "}
                   <span className="ml-[5px]">
                     <StarIcon />
@@ -357,7 +357,7 @@ export const LocationsMoreAbout = () => {
                 </div>
               </div>
               <div className="w-full md:w-[31%] xs:w-[48%]  ">
-                <div className="w-full text-[13px] md:text-base flex items-center mb-[10px]">
+                <div className="w-full text-[13px] font-AeonikProMedium md:text-base flex items-center mb-[10px]">
                   Имя второго администратора{" "}
                 </div>
                 <div className="flex items-center border border-borderColor h-[32px] md:h-[45px] rounded-lg w-full md:max-w-[287px] text-[13px] font-AeonikProMedium">
@@ -367,20 +367,20 @@ export const LocationsMoreAbout = () => {
                 </div>
               </div>
               <div className="w-full md:w-[31%] xs:w-[48%]">
-                <div className="text-[13px] md:text-base flex items-center mb-1 md:mb-[10px]">
+                <div className="text-[13px] font-AeonikProMedium md:text-base flex items-center mb-1 md:mb-[10px]">
                   Рабочее время
                   <span className="ml-[5px]">
                     <StarIcon />
                   </span>
                 </div>
                 <div className="w-full flex  items-center">
-                  <span className="w-fit text-[13px] md:text-base flex items-center">
+                  <span className="w-fit text-[13px] md:text-base flex items-center font-AeonikProRegular">
                     от
                   </span>
                   <div className="without_ampm mr-5 ml-[5px] outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[13px] md:text-[16px] font-AeonikProRegular ">
                     {shopLocationsData?.work_time_from}
                   </div>
-                  <span className="w-fit text-[13px] md:text-base flex items-center ">
+                  <span className="w-fit text-[13px] md:text-base flex items-center font-AeonikProRegular">
                     до
                   </span>
                   <div className="without_ampm mr-5 ml-[5px]  outline-none w-[45%] xs:w-[40%] border border-borderColor text-center flex items-center justify-center h-8 md:h-11 rounded-lg md:w-[80px] text-[13px] md:text-[16px] font-AeonikProRegular ">
@@ -389,7 +389,7 @@ export const LocationsMoreAbout = () => {
                 </div>
               </div>
               <label className="w-full md:w-[31%] xs:w-[48%]">
-                <div className="text-[13px] md:text-base flex items-center mb-[10px]">
+                <div className="text-[13px] font-AeonikProMedium md:text-base flex items-center mb-[10px]">
                   Номер администратора
                   <span className="ml-[5px]">
                     <StarIcon />
@@ -410,7 +410,7 @@ export const LocationsMoreAbout = () => {
                           ? "font-AeonikProMedium"
                           : null
                       }
-                        text-[13px] md:text-base leading-4 text-black`}
+                        text-[13px] md:text-base leading-4 text-black font-AeonikProRegular`}
                     >
                       {shopLocationsData?.assistant_phone || "-"}
                     </div>
@@ -418,7 +418,7 @@ export const LocationsMoreAbout = () => {
                 </div>
               </label>
               <label className="w-full md:w-[31%] xs:w-[48%]">
-                <div className="text-[13px] md:text-base flex items-center mb-[10px]">
+                <div className="text-[13px] md:text-base font-AeonikProMedium flex items-center mb-[10px]">
                   Номер второго администратора{" "}
                 </div>
 
@@ -434,7 +434,7 @@ export const LocationsMoreAbout = () => {
                         shopLocationsData?.second_assistant_phone
                           ? "font-AeonikProMedium"
                           : null
-                      } text-[13px] md:text-base leading-4 text-black`}
+                      } text-[13px] md:text-base leading-4 text-black font-AeonikProRegular`}
                     >
                       {shopLocationsData?.second_assistant_phone || "-"}
                     </div>
@@ -446,12 +446,12 @@ export const LocationsMoreAbout = () => {
                   {/* Region Input  */}
                   <div className={"w-full"}>
                     <div htmlFor="">
-                      <div className="flex items-center text-[#303030] text-[13px] md:text-base not-italic font-AeonikProRegular leading-4 tracking-[0,16px] ">
+                      <div className="flex font-AeonikProMedium items-center text-[#303030] text-[13px] md:text-base not-italic leading-0 tracking-[0,16px] ">
                         Регион
                       </div>
                       <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
-                        <div className="flex items-center text-[#000] text-[13px] md:text-base">
-                          <span className="ml-1">
+                        <div className="flex items-center text-[#000]  ">
+                          <span className="ml-1 font-AeonikProRegular text-[13px] md:text-base">
                             {shopLocationsData?.region?.name_ru},{" "}
                             {shopLocationsData?.sub_region?.name_ru}
                           </span>
