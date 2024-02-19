@@ -123,18 +123,18 @@ export default function ShopLocations() {
                     </li>
                     <div className="w-[calc(100%-230px)] flex items-center justify-between">
                       <li className="md:w-[26%] h-full">
-                        <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-[13px] not-italic font-AeonikProMedium">
+                        <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
                           {data?.region?.name_ru || "city"},{" "}
                           {data?.sub_region?.name_ru || "sub_region"}
                         </span>
                       </li>
                       <li className="md:w-[28%] h-full md:pr-6">
-                        <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-[13px] not-italic font-AeonikProMedium ">
+                        <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium ">
                           {data?.address || "address"}
                         </span>{" "}
                       </li>
                       <li className="md:w-[28%] h-full">
-                        <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-[13px] not-italic font-AeonikProMedium ">
+                        <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium ">
                           {data?.work_time_from || "startTime"} -{" "}
                           {data?.work_time_to || "endTime"}
                         </span>
@@ -142,7 +142,7 @@ export default function ShopLocations() {
                       <li className="md:w-[25%] h-full flex items-center justify-center text-center">
                         <NavLink
                           to={`/shops/locations/location/${data?.id}`}
-                          className="text-textBlueColor text-center hover:underline text-[13px] md:text-[13px] not-italic font-AeonikProMedium"
+                          className="text-textBlueColor text-center hover:underline text-[13px] md:text-base not-italic font-AeonikProMedium"
                         >
                           Подробнее
                         </NavLink>
@@ -193,7 +193,7 @@ export default function ShopLocations() {
                     <div className="flex items-center justify-between gap-x-[15px]">
                       <Link
                         to={`/shops/locations/location/${data?.id}`}
-                        className="text-[#007DCA] bg-[#E8F5FD] text-center w-[100%] h-[31px] py-2 rounded-lg text-[13px] md:text-[13px] not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
+                        className="text-[#007DCA] bg-[#E8F5FD] text-center w-[100%] h-[31px] py-2 rounded-lg text-[13px] md:text-base not-italic font-AeonikProMedium flex items-center justify-center hover:opacity-80 active:opacity-60 transition-opacity duration-300"
                       >
                         Подробнее
                         <span className="ml-[10px]">

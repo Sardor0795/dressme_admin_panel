@@ -126,18 +126,18 @@ export default function LocationsItem({
           <li className="w-[calc(100%-230px)] flex items-center justify-between">
             <ul className="flex items-center w-full">
               <li className="md:w-[20%] h-full pr-10">
-                <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-[13px] not-italic font-AeonikProMedium">
+                <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
                   {data?.region?.name_ru || "city"},{" "}
                   {data?.sub_region?.name_ru || "sub_region"}
                 </span>
               </li>
               <li className="md:w-[30%] h-full pr-10">
-                <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-[13px] not-italic font-AeonikProMedium ">
+                <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium ">
                   {data?.address || "address"}
                 </span>{" "}
               </li>
               <li className="md:w-[13%] h-full">
-                <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-[13px] not-italic font-AeonikProMedium ">
+                <span className="text-textLightColor md:text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium ">
                   {data?.work_time_from || "startTime"} -{" "}
                   {data?.work_time_to || "endTime"}
                 </span>
@@ -145,7 +145,7 @@ export default function LocationsItem({
               <li className="md:w-[12%] h-full flex items-center justify-center text-center">
                 <Link
                   to={`location/${data?.id}`}
-                  className="text-textBlueColor text-center hover:underline text-[13px] md:text-[13px] not-italic font-AeonikProMedium"
+                  className="text-textBlueColor text-center hover:underline text-[13px] md:text-base not-italic font-AeonikProMedium"
                 >
                   Подробнее
                 </Link>

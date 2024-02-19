@@ -275,7 +275,7 @@ export default function Carousel({ data, height }) {
   }, [modalOfCarsouel]);
 
   return (
-    <div>
+    <div className="md:max-w-[300px]">
       <section
         onClick={() => {
           setModalOfCarsouel(false);
@@ -365,7 +365,7 @@ export default function Carousel({ data, height }) {
 
       <div className="w-full h-full flex flex-col">
         {/* IMG ONE */}
-        <div className="w-full h-[404px]  flex items-center">
+        <div className="w-full h-[500px] md:h-[404px] flex items-center">
           <div className="w-full h-full rounded-[12px] border overflow-hidden">
             <div className={`h-full`}>
               <div
@@ -387,20 +387,10 @@ export default function Carousel({ data, height }) {
                     </div>
                   </div>
                 )}
-                <div
-                  style={{
-                    backgroundImage: ` url("${imageOne?.url_photo1}")`,
-                    backgroundColor: "rgba(0,0,0,0.6)",
-                    backgroundPosition: "center center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundBlendMode: "darken",
-                  }}
-                  className="BackgImageBLur h-full flex items-center justify-center "
-                >
-                  <div className="flex items-center justify-center w-[350px] h-[377px]  backdrop-blur-md">
+                <div className="BackgImageBLur h-full flex items-center justify-center ">
+                  <div className="flex items-center justify-center w-[350px] h-[377px]">
                     <img
-                      className="h-full w-full mx-auto align-middle object-contain cursor-pointer "
+                      className="h-full w-full mx-auto align-middle object-fill cursor-pointer "
                       src={imageOne?.url_photo1}
                       alt=""
                     />

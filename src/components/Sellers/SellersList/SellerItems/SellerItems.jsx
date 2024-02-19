@@ -109,22 +109,22 @@ export default function SellerItems({
         </span>
       </div>
       <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 h-[58px] md:flex items-center w-full">
-        <div className="w-[3%]   text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[3%]   text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {index}
         </div>
-        <div className="w-[10%] px-2 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[10%] px-2 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.name}
         </div>
-        <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
         </div>
-        <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[15%] px-2 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.seller_type?.type_ru}
         </div>
-        <div className="w-[11%] px-2 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[11%] px-2 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.created_at}
         </div>
-        <div className="w-[20%] px-2 pr-3 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[20%] px-2 pr-3 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.region?.name_ru}, {data?.sub_region?.name_ru}
         </div>
         <div className="w-[8%]">
@@ -136,7 +136,7 @@ export default function SellerItems({
           </Link>
         </div>
 
-        <div className="w-[18%] px-2 flex items-center justify-end gap-x-2 text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[18%] px-2 flex items-center justify-end gap-x-2 text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {showSellers !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}

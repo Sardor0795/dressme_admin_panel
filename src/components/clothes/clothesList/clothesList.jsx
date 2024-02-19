@@ -286,7 +286,7 @@ export default function ClothesList() {
 
         <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input
-            className="text-[13px] md:text-[13px] outline-none	 w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
+            className="text-[13px] md:text-base outline-none	 w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
             type="email"
             placeholder="Поиск"
             required
@@ -690,7 +690,7 @@ export default function ClothesList() {
               // onCheck(checkIndicator);
               setAllChecked(!allChecked);
             }}
-            className="hidden md:flex items-center cursor-pointer select-none font-AeonikProMedium"
+            className="hidden md:flex items-center text-[18px] cursor-pointer select-none font-AeonikProMedium"
           >
             Выбрать все
             <div

@@ -99,7 +99,7 @@ export default function ClothesItem({
         </span>
       </div>
       <div className="relative h-[100px] hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[10px] md:flex items-center w-full">
-        <div className="w-[3%] text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[3%] text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {index}
         </div>
         <div className="w-[9%]">
@@ -115,19 +115,19 @@ export default function ClothesItem({
             {data?.photos[0]?.url_photo ? null : <NoImgIcon />}
           </div>
         </div>
-        <div className="w-[16%] px-4 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[16%] px-4 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.name_ru}
         </div>
-        <div className="w-[12%] px-4 break-all flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[12%] px-4 break-all flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.sku}
         </div>
-        <div className="w-[10%] px-4 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[10%] px-4 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.type?.name_ru}
         </div>
-        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.created_at}
         </div>
-        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium">
+        <div className="w-[11%] px-4 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.cost?.price
             ? parseInt(data?.cost?.price)
                 ?.toLocaleString()
@@ -142,7 +142,7 @@ export default function ClothesItem({
           Подробнее
         </Link>
 
-        <div className="w-[20%] px-4 flex items-center justify-center text-tableTextTitle2 text-[13px] not-italic font-AeonikProMedium md:mr-10">
+        <div className="w-[20%] px-4 flex items-center justify-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium md:mr-10">
           {showSellers !== "updated" ? (
             <div className="flex items-center gap-x-2">
               {" "}

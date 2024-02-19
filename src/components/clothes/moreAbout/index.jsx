@@ -201,7 +201,7 @@ export const ClothMoreAbout = () => {
       </div>
 
       <div className="flex flex-wrap md:flex-nowrap w-full md:gap-[30px]">
-        <div className="w-full md:w-[25%] md:max-w-[350px] md:h-[400px]">
+        <div className="w-full md:w-[22%] md:max-w-[350px] md:h-[400px]">
           <div className="flex items-center mb-[5px]">
             <div className="font-AeonikProRegular text-[16px] mr-[5px] ml-[10px]">
               Фото
@@ -211,7 +211,7 @@ export const ClothMoreAbout = () => {
           <Carousel data={data} height={"h-[377px]"} />
         </div>
 
-        <div className="md:pr-[30px] pt-[20px] md:pt-0 md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[25px] w-full md:w-[50%]">
+        <div className="md:pr-[30px] pt-[20px] md:pt-0 md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[25px] w-full md:w-[53%]">
           {/* 1 */}
           <div className="font-AeonikProRegular text-[16px] w-full md:w-[50%]">
             <div className="flex flex-wrap gap-[11px] md:gap-[0]">

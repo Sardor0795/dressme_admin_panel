@@ -97,7 +97,7 @@ export const MoreAbout = () => {
         </div>
         <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
           <input
-            className="text-[13px] md:text-[13px] outline-none w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
+            className="text-[13px] md:text-base outline-none w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
             type="email"
             placeholder="Поиск"
             required
@@ -237,20 +237,20 @@ export const MoreAbout = () => {
           <div
             className={`${
               dataTypeIsPersonal ? "w-[6%]" : "w-[6%]"
-            }   text-[#2C2C2C] text-[13px] not-italic font-AeonikProMedium`}
+            }   text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
           >
             {data?.name}
           </div>
           <div
             className={`${
               dataTypeIsPersonal ? "w-[9%]" : "w-[9%]"
-            }  px-2 text-[#2C2C2C] text-[13px] not-italic font-AeonikProMedium`}
+            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
           >
             {data?.surname}
           </div>
           {dataTypeIsPersonal ? null : (
             <div
-              className={`w-[14%] px-2 text-[#2C2C2C] text-[13px] not-italic font-AeonikProMedium`}
+              className={`w-[14%] px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
             >
               {data?.company ? data?.company?.name : "-"}
             </div>
@@ -258,42 +258,42 @@ export const MoreAbout = () => {
           <div
             className={`${
               dataTypeIsPersonal ? "w-[14%]" : "w-[12%]"
-            }  px-2 text-[#2C2C2C] text-[13px] not-italic font-AeonikProMedium`}
+            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
           >
             <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
           </div>
           <div
             className={`${
               dataTypeIsPersonal ? "w-[17%]" : "w-[15%]"
-            }  break-all px-2  text-[#2C2C2C] text-[13px] not-italic font-AeonikProMedium`}
+            }  break-all px-2  text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
           >
             {data?.email}
           </div>
           <div
             className={`${
               dataTypeIsPersonal ? "w-[13%]" : "w-[11%]"
-            }  px-2 text-[#2C2C2C] text-[13px] not-italic font-AeonikProMedium`}
+            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
           >
             {data?.seller_type?.type_ru}
           </div>
           <div
             className={`${
               dataTypeIsPersonal ? "w-[12%]" : "w-[11%]"
-            }  px-2 text-[#2C2C2C] text-[13px] not-italic font-AeonikProMedium`}
+            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
           >
             {data?.seller_type?.name_ru}
           </div>
           <div
             className={`${
               dataTypeIsPersonal ? "w-[12%]" : "w-[8%]"
-            }  px-2 text-[#2C2C2C] text-[13px] not-italic font-AeonikProMedium`}
+            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
           >
             {data?.created_at}
           </div>
           <div
             className={`${
               dataTypeIsPersonal ? "w-[16%]" : "w-[15%]"
-            } w-[15%] text-[#2C2C2C] text-[13px] not-italic font-AeonikProMedium`}
+            } w-[15%] text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
           >
             {data?.card_number}
           </div>
