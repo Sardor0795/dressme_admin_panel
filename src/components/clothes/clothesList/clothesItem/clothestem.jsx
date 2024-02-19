@@ -115,7 +115,7 @@ export default function ClothesItem({
             {data?.photos[0]?.url_photo ? null : <NoImgIcon />}
           </div>
         </div>
-        <div className="w-[16%] px-4 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
+        <div className="w-[16%] break-all px-4 flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
           {data?.name_ru}
         </div>
         <div className="w-[12%] px-4 break-all flex items-center text-tableTextTitle2 text-[13px] md:text-base not-italic font-AeonikProMedium">
