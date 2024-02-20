@@ -443,13 +443,13 @@ export default function ShopsList() {
 
         {/* Mobile select all */}
         {dataCount > 0 ? (
-          <div className="flex md:hidden mb-[18px] items-center justify-between gap-x-1">
+          <div className="flex md:hidden mb-[18px] items-center justify-end gap-x-1">
             <div
               onClick={() => {
                 // onCheck(checkIndicator);
                 setAllChecked(!allChecked);
               }}
-              className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
+              className="select-none cursor-pointer flex md:hidden items-center text-[13px] font-AeonikProMedium text-[#303030]"
             >
               Выбрать все
               <div

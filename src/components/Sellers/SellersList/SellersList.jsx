@@ -632,7 +632,7 @@ export default function SellersList() {
                 setAllChecked(!allChecked);
                 setSomeChecked(false);
               }}
-              className="select-none cursor-pointer flex md:hidden items-center text-[14px] font-AeonikProMedium text-[#303030]"
+              className="select-none cursor-pointer flex md:hidden items-center text-[13px] font-AeonikProMedium text-[#303030]"
             >
               Выбрать все
               <div
@@ -736,7 +736,7 @@ export default function SellersList() {
               setAllChecked(!allChecked);
               setSomeChecked(false);
             }}
-            className="select-none cursor-pointer hidden md:flex items-center text-[13px] font-AeonikProMedium text-[#303030]"
+            className="select-none cursor-pointer hidden md:flex items-center text-[16px] font-AeonikProMedium text-[#303030]"
           >
             Выбрать все
             <div

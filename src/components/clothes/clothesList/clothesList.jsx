@@ -475,7 +475,7 @@ export default function ClothesList() {
 
         {dataCount > 0 ? (
           <div
-            className={`flex md:hidden mb-[18px] items-center justify-between gap-x-1`}
+            className={`flex md:hidden mb-[18px] items-center justify-end gap-x-1`}
           >
             <div
               onClick={() => {
@@ -690,7 +690,7 @@ export default function ClothesList() {
               // onCheck(checkIndicator);
               setAllChecked(!allChecked);
             }}
-            className="hidden md:flex items-center text-[18px] cursor-pointer select-none font-AeonikProMedium"
+            className="hidden md:flex items-center text-[16px] cursor-pointer select-none font-AeonikProMedium"
           >
             Выбрать все
             <div
