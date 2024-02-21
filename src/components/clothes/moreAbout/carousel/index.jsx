@@ -263,7 +263,7 @@ export default function Carousel({ data, height }) {
   }, [modalOfCarsouel]);
 
   return (
-    <div className="max-w-[310px] md:max-w-[330px] mx-auto md:mx-0">
+    <div className="w-[290px] mx-auto md:mx-0">
       <div className="flex items-center mb-[5px]">
         <div className="font-AeonikProRegular text-[16px] mr-[5px] ml-[10px]">
           Фото
@@ -369,7 +369,7 @@ export default function Carousel({ data, height }) {
 
       <div className="h-full flex flex-col ">
         {/* IMG ONE */}
-        <div className="w-full h-[400px] flex items-center justify-center">
+        <div className="w-[290px] h-[380px] flex items-center justify-center">
           <div className="w-full h-full rounded-[12px] border overflow-hidden">
             <div className={`h-full`}>
               <div
@@ -389,7 +389,7 @@ export default function Carousel({ data, height }) {
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
                     }}
-                    className="flex items-center justify-center w-[350px] h-full cursor-pointer"
+                    className="flex items-center justify-center w-[290px] h-[380px] cursor-pointer"
                   ></div>
                 </div>
               </div>
