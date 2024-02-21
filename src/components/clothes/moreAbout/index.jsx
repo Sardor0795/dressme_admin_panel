@@ -256,19 +256,17 @@ export const ClothMoreAbout = () => {
                   <span className="mr-[5px]">Цвет</span> <StarIcon />
                 </div>
                 <div className="p-[8px] w-fit h-[40px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
-                  {colors?.length ? (
-                    <div className="flex items-center">
-                      <div
-                        style={{ backgroundColor: colors[0]?.hex }}
-                        className={`last:mr-0 w-[20px] h-[20px] border rounded-[50%]`}
-                      ></div>
-                      <div className={colors.length > 1 ? "ml-[10px]" : null}>
-                        {colors.length > 1 ? colors.length - 1 + "+" : null}
-                      </div>
-                    </div>
-                  ) : (
-                    "-"
-                  )}
+                  {colors?.length
+                    ? colors?.map((item) => {
+                        return (
+                          <div
+                            key={item?.id}
+                            style={{ backgroundColor: item?.hex }}
+                            className={`mr-[8px] border last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
+                          ></div>
+                        );
+                      })
+                    : "-"}
                 </div>
               </div>
             </div>
