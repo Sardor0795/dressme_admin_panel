@@ -313,13 +313,6 @@ export const ClothMoreAbout = () => {
               </div>
             </div>
 
-            <div className="flex items-center md:hidden mb-[12px]">
-              <div className="mr-[10px] tex-[30px] text-[#B5B5B5] font-AeonikProRegular">
-                02
-              </div>
-              <div className="border-b border-[#D5D5D5] w-full"></div>
-            </div>
-
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Качество на русском</span> <StarIcon />
             </div>
@@ -327,10 +320,18 @@ export const ClothMoreAbout = () => {
               {data?.quality_ru}
             </div>
 
+            <div className="flex md:hidden items-center mb-[5px]">
+              <span className="mr-[5px]">Качество на узбекском</span>{" "}
+              <StarIcon />
+            </div>
+            <div className="h-[40px] flex md:hidden items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
+              {data?.quality_uz}
+            </div>
+
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Состав на русском</span>
             </div>
-            <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 md:mb-[25px]">
+            <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.composition_ru ? (
                 <span className="font-AeonikProRegular text-[16px] text-black">
                   {data?.composition_ru}
@@ -339,6 +340,20 @@ export const ClothMoreAbout = () => {
                 "-"
               )}
             </div>
+
+            <div className="flex md:hidden items-center mb-[5px]">
+              <span className="mr-[5px]">Состав на узбекском</span>
+            </div>
+            <div className="h-[40px] flex md:hidden items-center border border-[#E5E5E5] rounded-[8px] p-3">
+              {data?.composition_uz ? (
+                <span className="flex items-center font-AeonikProRegular text-[16px] text-black">
+                  {data?.composition_uz}
+                </span>
+              ) : (
+                "-"
+              )}
+            </div>
+
             <div className="w-full hidden md:block">
               <div className="flex items-center mb-[5px]">
                 <span className="mr-[5px]">Магазин</span> <StarIcon />
@@ -413,10 +428,10 @@ export const ClothMoreAbout = () => {
               </div>
             </div>
 
-            <div className="flex items-center mb-[5px]">
+            <div className="md:flex hidden items-center mb-[5px]">
               <span className="mr-[5px]">Состав на узбекском</span>
             </div>
-            <div className="h-[40px] flex items-center border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+            <div className="h-[40px] md:flex hidden items-center border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
               {data?.composition_uz ? (
                 <span className="flex items-center font-AeonikProRegular text-[16px] text-black">
                   {data?.composition_uz}
@@ -425,6 +440,7 @@ export const ClothMoreAbout = () => {
                 "-"
               )}
             </div>
+
             <div className="w-full flex flex-col">
               <div className="hidden md:flex items-center mb-[5px]">
                 <span className={`mr-[5px]`}>Локация</span> <StarIcon />
@@ -450,10 +466,10 @@ export const ClothMoreAbout = () => {
         </div>
 
         <div className="w-full md:w-[25%]">
-          <div className="flex items-center mb-[5px]">
+          <div className="md:flex hidden items-center mb-[5px]">
             <span className="mr-[5px]">Качество на узбекском</span> <StarIcon />
           </div>
-          <div className="h-[40px] flex items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
+          <div className="h-[40px] md:flex hidden items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
             {data?.quality_uz}
           </div>
           <div className="flex items-center mb-[5px]">
