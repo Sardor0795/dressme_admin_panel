@@ -201,7 +201,7 @@ export default function SellersList() {
         </label>
       </div>
 
-      <div className="flex mb-[24px] mt-[80px] md:hidden">
+      <div className="flex mb-[24px] mt-[80px] md:hidden select-none">
         <div
           onClick={() => {
             setShowSellers("pending");
@@ -653,7 +653,7 @@ export default function SellersList() {
         ) : null}
 
         <div className="mt-4 flex justify-end items-center md:justify-between mx-auto md:pb-6">
-          <section className="hidden md:flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
+          <section className="select-none hidden md:flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
               onClick={() => {

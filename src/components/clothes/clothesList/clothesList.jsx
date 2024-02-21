@@ -412,7 +412,7 @@ export default function ClothesList() {
           </div>
         </div>
 
-        <div className="flex mb-[24px] md:hidden">
+        <div className="flex mb-[24px] md:hidden select-none">
           <div
             onClick={() => {
               setAllChecked(false);
@@ -608,7 +608,7 @@ export default function ClothesList() {
           </div>
         ) : null}
 
-        <div className="mt-4 hidden md:flex justify-end items-center md:justify-between mx-auto pb-6">
+        <div className="select-none mt-4 hidden md:flex justify-end items-center md:justify-between mx-auto pb-6">
           <section className="flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"

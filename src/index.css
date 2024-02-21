@@ -67,3 +67,6 @@ html {
   cursor: grab;
 }
 
+button {
+  user-select: none;
+}
