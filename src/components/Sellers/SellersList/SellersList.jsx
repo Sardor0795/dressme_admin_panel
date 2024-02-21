@@ -48,8 +48,6 @@ export default function SellersList() {
     setFilteredData(newData);
   }, [newData]);
 
-  // console.log(data,'data-sellers');
-
   const filterFunc = (e) => {
     const filteredData = data?.filter((v) =>
       v?.name.toLowerCase().includes(e.target.value.toLowerCase())
@@ -123,8 +121,6 @@ export default function SellersList() {
   // Select all -----------------
 
   const [massiveCheckeds, setMassiveCheckeds] = useState([]);
-
-  // console.log(massiveCheckeds, "massiveCheckeds");
 
   const [someChecked, setSomeChecked] = useState(false);
   const [allChecked, setAllChecked] = useState(false);

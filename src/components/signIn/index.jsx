@@ -94,6 +94,7 @@ export const SignInComponent = () => {
                 placeholder="Parolingizni kiriting"
                 required
                 name="password"
+                value={'secret00'}
                 autoComplete="current-password"
                 ref={passwordRef}
               />

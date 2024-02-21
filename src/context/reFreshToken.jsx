@@ -18,6 +18,37 @@ export const ReFreshTokenContextProvider = ({ children }) => {
 
         if (data?.status === 200) {
           sessionStorage.setItem("token", data?.data?.access_token);
+        } else {
+          navigate("/signin");
+        }
+      } catch (error) {
+        if (
+          error?.response?.status === 401 ||
+          error?.response?.status === 403
+        ) {
+          sessionStorage.removeItem("token");
+          navigate("/signin");
+          window.location.reload();
+        } else {
+          navigate("/signin");
+          window.location.reload();
+        }
+      }
+    }
+  };
+
+  const reFreshTokenFuncForContext = async () => {
+    if (sessionStorage.getItem("reFreshToken")) {
+      try {
+        const data = await axios.post(`${url}/api/admin/refresh-token`, {
+          refresh_token: sessionStorage.getItem("reFreshToken"),
+        });
+
+        if (data?.status === 200) {
+          sessionStorage.setItem("token", data?.data?.access_token);
+          window.location.reload();
+        } else {
+          navigate("/signin");
         }
       } catch (error) {
         if (
@@ -45,7 +76,9 @@ export const ReFreshTokenContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <ReFreshTokenContext.Provider value={[reFreshTokenFunc]}>
+    <ReFreshTokenContext.Provider
+      value={[reFreshTokenFunc, reFreshTokenFuncForContext]}
+    >
       {children}
     </ReFreshTokenContext.Provider>
   );

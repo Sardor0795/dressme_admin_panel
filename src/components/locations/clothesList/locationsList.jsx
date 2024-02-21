@@ -40,8 +40,6 @@ export default function LocationsList() {
 
   const [filteredData, setFilteredData] = useState([]);
 
-  // console.log(filteredData);
-
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
@@ -101,8 +99,6 @@ export default function LocationsList() {
       top: 0,
     });
   }, []);
-
-  // let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
 
   // Products Context
   const [showSellers, setShowSellers] = useContext(SellersContext);

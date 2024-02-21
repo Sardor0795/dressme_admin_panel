@@ -17,38 +17,18 @@ export const ClothesDataContextProvider = ({ children }) => {
     setLoader(false);
   }, 2000);
 
-  const getData = () => {
-    axios(`${url}/api/admin/products`, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    }).then((d) => {
-      if (d?.status === 200) {
-        setData(d?.data?.sellers_products?.data);
-        setLoader(false);
-      }
-    });
-  };
-
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
       axios(`${url}/api/admin/products`, {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
-      })
-        .then((d) => {
-          if (d?.status === 200) {
-            setData(d?.data?.sellers_products?.data);
-            setLoader(false);
-          }
-        })
-        .catch((v) => {
-          if (v?.response?.status === 401 || v?.response?.status === 403) {
-            reFreshTokenFunc();
-            getData();
-          }
-        });
+      }).then((d) => {
+        if (d?.status === 200) {
+          setData(d?.data?.sellers_products?.data);
+          setLoader(false);
+        }
+      });
     }
   }, []);
 

@@ -10,20 +10,10 @@ export const SellersDataContextProvider = ({ children }) => {
 
   const [data, setData] = useState([]);
 
-  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
+  const [reFreshTokenFunc, reFreshTokenFuncForContext] =
+    useContext(ReFreshTokenContext);
 
   const url = "https://api.dressme.uz";
-
-  const getData = () => {
-    axios(`${url}/api/admin/sellers`, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    }).then((d) => {
-      setData(d?.data?.sellers);
-      setLoader(false);
-    });
-  };
 
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
@@ -38,8 +28,7 @@ export const SellersDataContextProvider = ({ children }) => {
         })
         .catch((v) => {
           if (v?.response?.status === 401 || v?.response?.status === 403) {
-            reFreshTokenFunc();
-            getData();
+            reFreshTokenFuncForContext();
           }
         });
     }

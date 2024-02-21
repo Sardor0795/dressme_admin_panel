@@ -35,9 +35,6 @@ export default function ExitModal({ setModalOpen, modalOpen }) {
           setData(null);
           setLoader(true);
         }
-      })
-      .catch((er) => {
-        console.log(er);
       });
   };
 

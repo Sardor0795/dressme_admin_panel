@@ -25,7 +25,6 @@ export default function ShopLocations() {
         setLoader(false);
       })
       .catch((err) => {
-        console.log(err);
         setLoader(false);
       });
   }, []);
@@ -104,7 +103,6 @@ export default function ShopLocations() {
 
           <div className="w-full h-full flex flex-col  md:rounded-xl overflow-auto rounded-xl ">
             {shopLocationsData?.map((data, index) => {
-              // console.log(data,'data');
               return (
                 <div key={index} className="mb-2">
                   <ul

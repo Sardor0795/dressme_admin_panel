@@ -63,9 +63,6 @@ export default function ShopsItem({
 
   const [, setId] = useContext(IdsContext);
 
-  //  console.log(showSellers, 'showSellers');
-  //  console.log(data, 'data-items-shop');
-
   const [ckeck, setCheck] = useState(false);
 
   useEffect(() => {

@@ -38,8 +38,6 @@ export default function ClothesList() {
 
   const [filteredData, setFilteredData] = useState([]);
 
-  // console.log(filteredData);
-
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);

@@ -7,8 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { MenuCloseIcons, NoImg, StarIcon } from "../../../../assets/icon";
 
 export default function Carousel({ data, height }) {
-  // const [modalOfCarsouel, setModalOfCarsouel] = useState(false)
-
   const [imageOne, setImageOne] = useState({
     id1: null,
     product_color_id1: null,
@@ -97,16 +95,6 @@ export default function Carousel({ data, height }) {
     color_pivot_color_id4: null,
     color_pivot_product_id4: null,
   });
-
-  // console.log(imageOne, 'imageOne');
-  // console.log(imageTwo, 'imageTwo');
-  // console.log(imageThree, 'imageThree');
-  // console.log(imageFour, 'imageFour');
-
-  // console.log(colorOne, 'colorOne');
-  // console.log(colorTwo, 'colorTwo');
-  // console.log(colorThree, 'colorThree');
-  // console.log(colorFour, 'colorFour');
 
   useEffect(() => {
     if (data?.photos) {
