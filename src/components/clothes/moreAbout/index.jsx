@@ -475,7 +475,7 @@ export const ClothMoreAbout = () => {
           <div className="flex items-center mb-[5px]">
             <span className="mr-[5px]">Название на русском</span> <StarIcon />
           </div>
-          <div className="h-[40px] flex items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
+          <div className="h-[40px] break-all flex items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
             {data?.name_ru}
           </div>
           <div className="flex items-center mb-[5px]">

@@ -430,13 +430,7 @@ export default function Carousel({ data, height }) {
                       backgroundSize: "cover",
                     }}
                     className="flex items-center border overflow-hidden rounded-lg justify-center w-full h-full"
-                  >
-                    {/* <img
-                      className="h-full w-full mx-auto object-cover cursor-pointer"
-                      src={}
-                      alt=""
-                    /> */}
-                  </div>
+                  ></div>
                 </div>
               )}
             </button>
@@ -484,13 +478,7 @@ export default function Carousel({ data, height }) {
                       backgroundSize: "cover",
                     }}
                     className="flex items-center border rounded-lg overflow-hidden justify-center w-full h-full"
-                  >
-                    {/* <img
-                      className="h-full w-full mx-auto object-cover cursor-pointer "
-                      src={}
-                      alt=""
-                    /> */}
-                  </div>
+                  ></div>
                 </div>
               )}
             </button>
@@ -538,13 +526,7 @@ export default function Carousel({ data, height }) {
                       backgroundSize: "cover",
                     }}
                     className="flex items-center border rounded-lg overflow-hidden justify-center w-full h-full"
-                  >
-                    {/* <img
-                      className=" h-full w-full mx-auto object-cover cursor-pointer "
-                      src={}
-                      alt=""
-                    /> */}
-                  </div>
+                  ></div>
                 </div>
               )}
             </button>
