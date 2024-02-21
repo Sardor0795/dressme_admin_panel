@@ -119,7 +119,7 @@ export default function LocationsItem({
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
             }}
-            className="w-[200px] h-[100px] flex items-center justify-center mr-[60px] rounded-lg overflow-hidden border"
+            className="w-[200px] h-[110px] flex items-center justify-center mr-[60px] rounded-lg overflow-hidden border"
           >
             {data?.url_image_path_one ? null : <NoImgIcon />}
           </li>
