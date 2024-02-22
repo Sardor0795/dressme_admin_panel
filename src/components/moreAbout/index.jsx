@@ -316,10 +316,10 @@ export const MoreAbout = () => {
         </div>
 
         <div className="py-[5px] px-[15px] flex mb-[10px]">
-          <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
             {data?.name} {data?.surname}
           </div>
-          <div className="w-[40%] text-[13px] pr-4 font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
             {data?.seller_type?.type_ru}
           </div>
           <div className="w-[20%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
@@ -337,7 +337,7 @@ export const MoreAbout = () => {
         </div>
 
         <div className="py-[5px] px-[15px] flex mb-[12px]">
-          <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
             <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
           </div>
           <div className="w-[40%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
