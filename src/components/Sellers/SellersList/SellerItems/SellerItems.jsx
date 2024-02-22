@@ -240,7 +240,7 @@ export default function SellerItems({
           <div className="w-[25%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.name}
           </div>
-          <div className="w-[40%] px-3 text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] px-3 break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
           </div>
           <div className="w-[35%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
