@@ -2,6 +2,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { ReFreshTokenContext } from "./reFreshToken";
+import { useNavigate } from "react-router-dom";
 
 export const SellersDataContext = createContext();
 
@@ -10,8 +11,9 @@ export const SellersDataContextProvider = ({ children }) => {
 
   const [data, setData] = useState([]);
 
-  const [reFreshTokenFunc, reFreshTokenFuncForContext] =
-    useContext(ReFreshTokenContext);
+  const [, reFreshTokenFuncForContext] = useContext(ReFreshTokenContext);
+
+  const navigate = useNavigate();
 
   const url = "https://api.dressme.uz";
 
@@ -31,6 +33,8 @@ export const SellersDataContextProvider = ({ children }) => {
             reFreshTokenFuncForContext();
           }
         });
+    } else {
+      navigate("/signin");
     }
   }, []);
 
