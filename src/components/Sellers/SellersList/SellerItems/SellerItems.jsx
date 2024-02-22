@@ -237,7 +237,7 @@ export default function SellerItems({
         </div>
 
         <div className="py-[5px] px-[15px] flex mb-[10px]">
-          <div className="w-[25%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[25%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.name}
           </div>
           <div className="w-[40%] px-3 text-[13px] font-AeonikProMedium text-[#2C2C2C]">

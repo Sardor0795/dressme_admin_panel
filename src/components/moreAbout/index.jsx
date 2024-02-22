@@ -340,7 +340,7 @@ export const MoreAbout = () => {
           <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
           </div>
-          <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[40%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.email}
           </div>
         </div>

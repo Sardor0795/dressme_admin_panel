@@ -240,21 +240,21 @@ export default function ClothesItem({
           <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[45%]">
             Название
           </div>
-          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[35%]">
             Артикул
           </div>
-          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[15%]">
+          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[20%]">
             Тип
           </div>
         </div>
         <div className="py-[5px] px-[15px] flex mb-[10px]">
-          <div className="w-[45%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[45%] break-all pr-2 text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.name_ru}
           </div>
-          <div className="w-[40%] break-all pr-2 text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[35%] break-all pr-2 text-[13px] font-AeonikProMedium text-[#2C2C2C]">
             {data?.sku}
           </div>
-          <div className="w-[15%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+          <div className="w-[20%] text-[13px] break-all font-AeonikProMedium text-[#2C2C2C]">
             {data?.type?.name_ru}
           </div>
         </div>
