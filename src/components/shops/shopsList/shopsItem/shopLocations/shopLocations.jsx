@@ -238,7 +238,7 @@ export default function ShopLocations() {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center center",
               }}
-              className="w-[50px] h-[50px] md:w-[100px] md:h-[100px]"
+              className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
             ></div>
           ) : (
             <div className="w-full mt-11 md:mt-20 h-[80vh] flex items-center justify-center font-AeonikProMedium text-2xl">
