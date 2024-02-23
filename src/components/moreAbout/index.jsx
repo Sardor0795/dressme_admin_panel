@@ -21,13 +21,15 @@ export const MoreAbout = () => {
   const params = useParams();
 
   useEffect(() => {
-    axios(`${url}/api/admin/sellers/${params?.id}`, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    }).then((d) => {
-      setData(d?.data?.seller);
-    });
+    if (sessionStorage.getItem("token")) {
+      axios(`${url}/api/admin/sellers/${params?.id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      }).then((d) => {
+        setData(d?.data?.seller);
+      });
+    }
   }, []);
 
   const approveFunc = () => {

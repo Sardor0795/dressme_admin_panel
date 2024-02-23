@@ -35,21 +35,23 @@ export default function LocationMoreAbout() {
   const params = useParams();
 
   useEffect(() => {
-    axios(`${url}/api/admin/locations/${params?.id}`, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    }).then((res) => {
-      setShopLoationData(res?.data?.location);
-      setForMaps({
-        ...forMaps,
-        title: res?.data?.location?.address,
-        center: [
-          parseFloat(res?.data?.location?.latitude?.slice(0, 9)),
-          parseFloat(res?.data?.location?.longitude?.slice(0, 9)),
-        ],
+    if (sessionStorage.getItem("token")) {
+      axios(`${url}/api/admin/locations/${params?.id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      }).then((res) => {
+        setShopLoationData(res?.data?.location);
+        setForMaps({
+          ...forMaps,
+          title: res?.data?.location?.address,
+          center: [
+            parseFloat(res?.data?.location?.latitude?.slice(0, 9)),
+            parseFloat(res?.data?.location?.longitude?.slice(0, 9)),
+          ],
+        });
       });
-    });
+    }
   }, []);
 
   const mapOptions = {

@@ -31,13 +31,15 @@ export const ClothMoreAbout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios(`${url}/api/admin/products/${params?.id}`, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    }).then((d) => {
-      setData(d?.data?.product);
-    });
+    if (sessionStorage.getItem("token")) {
+      axios(`${url}/api/admin/products/${params?.id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      }).then((d) => {
+        setData(d?.data?.product);
+      });
+    }
   }, []);
 
   // Products Context

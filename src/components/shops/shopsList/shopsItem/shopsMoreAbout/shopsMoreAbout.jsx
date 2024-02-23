@@ -29,13 +29,15 @@ const ShopsMoreAbout = () => {
   const params = useParams();
 
   useEffect(() => {
-    axios(`${url}/api/admin/shops/${params?.id}`, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    }).then((res) => {
-      setShopData(res?.data?.shop);
-    });
+    if (sessionStorage.getItem("token")) {
+      axios(`${url}/api/admin/shops/${params?.id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      }).then((res) => {
+        setShopData(res?.data?.shop);
+      });
+    }
   }, []);
 
   const [modalOpen, setModalOpen] = useState(false);

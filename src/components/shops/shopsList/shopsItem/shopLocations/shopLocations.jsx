@@ -15,18 +15,20 @@ export default function ShopLocations() {
   const params = useParams();
 
   useEffect(() => {
-    axios(`${url}/api/admin/shop/${params?.id}`, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    })
-      .then((res) => {
-        setShopLoationsData(res?.data?.locations);
-        setLoader(false);
+    if (sessionStorage.getItem("token")) {
+      axios(`${url}/api/admin/shop/${params?.id}`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
       })
-      .catch((err) => {
-        setLoader(false);
-      });
+        .then((res) => {
+          setShopLoationsData(res?.data?.locations);
+          setLoader(false);
+        })
+        .catch((err) => {
+          setLoader(false);
+        });
+    }
   }, []);
 
   const navigate = useNavigate();
