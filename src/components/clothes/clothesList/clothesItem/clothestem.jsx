@@ -187,47 +187,53 @@ export default function ClothesItem({
 
       <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px] last:mb-[0]">
         <div className="flex items-center w-full justify-between mb-[8px]">
-          <div
-            onClick={() => {
-              setSomeChecked(true);
-              if (massiveCheckeds?.includes(data?.id)) {
-                setMassiveCheckeds((prevState) =>
-                  prevState.filter((id) => id !== data?.id)
-                );
-              } else {
-                setMassiveCheckeds([...massiveCheckeds, data?.id]);
-              }
-            }}
-            className={`cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-              ckeck
-                ? "bg-[#007DCA] border-[#007DCA]"
-                : "bg-white border-checkboxBorder"
-            } md:hidden flex items-center justify-center rounded mr-[8px]`}
-          >
-            <span
-              className={`${
-                ckeck ? "flex items-center justify-center" : "hidden"
-              }`}
+          <div className="w-[25%] flex">
+            <div
+              onClick={() => {
+                setSomeChecked(true);
+                if (massiveCheckeds?.includes(data?.id)) {
+                  setMassiveCheckeds((prevState) =>
+                    prevState.filter((id) => id !== data?.id)
+                  );
+                } else {
+                  setMassiveCheckeds([...massiveCheckeds, data?.id]);
+                }
+              }}
+              className={`cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
+                ckeck
+                  ? "bg-[#007DCA] border-[#007DCA]"
+                  : "bg-white border-checkboxBorder"
+              } md:hidden flex items-center justify-center rounded mr-[8px]`}
             >
-              <CheckIcon size={"small"} />
-            </span>
-          </div>
-
-          <div className="flex items-center">
-            <div className="border-b min-w-[10px]"></div>
-            <div className="mx-[5px] text-[16px] font-AeonikProRegular text-[#D2D2D2]">
-              {index < 10 ? "0" : ""}
-              {index}
+              <span
+                className={`${
+                  ckeck ? "flex items-center justify-center" : "hidden"
+                }`}
+              >
+                <CheckIcon size={"small"} />
+              </span>
             </div>
-            <div className="border-b min-w-[10px]"></div>
           </div>
 
-          <Link
-            to={`cloth/${data?.id}`}
-            className="text-[#007DCA] text-[13px] font-AeonikProMedium cursor-pointer"
-          >
-            Подробнее
-          </Link>
+          <div className="w-[50%] flex justify-center">
+            <div className="flex items-center">
+              <div className="border-b min-w-[10px]"></div>
+              <div className="mx-[5px] text-[16px] font-AeonikProRegular text-[#D2D2D2]">
+                {index < 10 ? "0" : ""}
+                {index}
+              </div>
+              <div className="border-b min-w-[10px]"></div>
+            </div>
+          </div>
+
+          <div className="w-[25%] flex justify-end">
+            <Link
+              to={`cloth/${data?.id}`}
+              className="text-[#007DCA] text-[13px] font-AeonikProMedium cursor-pointer"
+            >
+              Подробнее
+            </Link>
+          </div>
         </div>
         <div className="h-[138px] mx-auto w-[108px] flex justify-center rounded-lg overflow-hidden mb-[12px] border border-[#f2f2f2]">
           <img
