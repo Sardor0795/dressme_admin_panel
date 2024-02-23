@@ -35,6 +35,7 @@ export const SellersDataContextProvider = ({ children }) => {
         });
     } else {
       navigate("/signin");
+      sessionStorage.clear();
     }
   }, []);
 
