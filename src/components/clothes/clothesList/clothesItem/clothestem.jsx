@@ -229,7 +229,7 @@ export default function ClothesItem({
             Подробнее
           </Link>
         </div>
-        <div className="h-[150px] mx-auto w-[110px] flex justify-center rounded-lg overflow-hidden mb-[12px] border border-[#f2f2f2]">
+        <div className="h-[138px] mx-auto w-[108px] flex justify-center rounded-lg overflow-hidden mb-[12px] border border-[#f2f2f2]">
           <img
             src={data?.photos[0]?.url_photo}
             alt="img"
