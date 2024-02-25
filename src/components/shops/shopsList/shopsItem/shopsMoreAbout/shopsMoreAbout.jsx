@@ -124,7 +124,7 @@ const ShopsMoreAbout = () => {
               <img
                 src={shopData?.url_background_photo}
                 alt="backImg"
-                className="w-full h-full object-contain rounded-lg"
+                className="w-full h-full object-cover"
               />
             )}
           </div>
