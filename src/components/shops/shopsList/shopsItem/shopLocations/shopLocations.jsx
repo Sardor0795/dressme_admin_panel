@@ -243,7 +243,7 @@ export default function ShopLocations() {
               className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
             ></div>
           ) : (
-            <div className="w-full mt-20 h-[80vh] flex items-center justify-center font-AeonikProMedium text-2xl">
+            <div className="w-full flex items-center justify-center font-AeonikProMedium text-2xl">
               Нет локаций
             </div>
           )}
