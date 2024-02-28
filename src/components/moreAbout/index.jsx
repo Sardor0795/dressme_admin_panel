@@ -7,6 +7,7 @@ import { SellersContext } from "../../context/sellersContext";
 import { SellersDataContext } from "../../context/sellersDataContext";
 import { ToastContainer, toast } from "react-toastify";
 import { ReFreshTokenContext } from "../../context/reFreshToken";
+import WiFiLoader from "../../assets/loader/wifi_loader.gif";
 
 export const MoreAbout = () => {
   const url = "https://api.dressme.uz";
@@ -14,6 +15,8 @@ export const MoreAbout = () => {
   const [data, setData] = useState([]);
   const [, , reFetch] = useContext(SellersDataContext);
   const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
+
+  const [loader, setLoader] = useState(true);
 
   const dataTypeIsPersonal = data?.seller_type?.type_ru === "Физическое лицо";
 
@@ -26,9 +29,11 @@ export const MoreAbout = () => {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
-      }).then((d) => {
-        setData(d?.data?.seller);
-      });
+      })
+        .then((d) => {
+          setData(d?.data?.seller);
+        })
+        .finally(() => setLoader(false));
     }
   }, []);
 
@@ -234,190 +239,206 @@ export const MoreAbout = () => {
         </div>
       </div>
 
-      <div className="mb-[10px] flex items-center text-tableTextTitle">
-        <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[15px] md:flex items-center w-full">
+      {loader ? (
+        <div className="w-full flex justify-center items-center h-[600px]">
           <div
-            className={`${
-              dataTypeIsPersonal ? "w-[6%]" : "w-[6%]"
-            }   text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
-          >
-            {data?.name}
-          </div>
-          <div
-            className={`${
-              dataTypeIsPersonal ? "w-[9%]" : "w-[9%]"
-            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
-          >
-            {data?.surname}
-          </div>
-          {dataTypeIsPersonal ? null : (
-            <div
-              className={`w-[14%] px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
-            >
-              {data?.company ? data?.company?.name : "-"}
-            </div>
-          )}
-          <div
-            className={`${
-              dataTypeIsPersonal ? "w-[14%]" : "w-[12%]"
-            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
-          >
-            <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
-          </div>
-          <div
-            className={`${
-              dataTypeIsPersonal ? "w-[17%]" : "w-[15%]"
-            }  break-all px-2  text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
-          >
-            {data?.email}
-          </div>
-          <div
-            className={`${
-              dataTypeIsPersonal ? "w-[13%]" : "w-[11%]"
-            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
-          >
-            {data?.seller_type?.type_ru}
-          </div>
-          <div
-            className={`${
-              dataTypeIsPersonal ? "w-[12%]" : "w-[11%]"
-            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
-          >
-            {data?.seller_type?.name_ru}
-          </div>
-          <div
-            className={`${
-              dataTypeIsPersonal ? "w-[12%]" : "w-[8%]"
-            }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
-          >
-            {data?.created_at}
-          </div>
-          <div
-            className={`${
-              dataTypeIsPersonal ? "w-[16%]" : "w-[15%]"
-            } w-[15%] text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
-          >
-            {data?.card_number}
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile */}
-
-      <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px]">
-        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
-            Имя и Фамилия
-          </div>
-          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
-            Тип
-          </div>
-          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[20%]">
-            Дата
-          </div>
-        </div>
-
-        <div className="py-[5px] px-[15px] flex mb-[10px]">
-          <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
-            {data?.name} {data?.surname}
-          </div>
-          <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
-            {data?.seller_type?.type_ru}
-          </div>
-          <div className="w-[20%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.created_at}
-          </div>
-        </div>
-
-        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
-            Номер
-          </div>
-          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
-            Email
-          </div>
-        </div>
-
-        <div className="py-[5px] px-[15px] flex mb-[12px]">
-          <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
-            <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
-          </div>
-          <div className="w-[40%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
-            {data?.email}
-          </div>
-        </div>
-
-        <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-          <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
-            Раздел
-          </div>
-          {dataTypeIsPersonal ? (
-            <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
-              Номер карты
-            </div>
-          ) : (
-            <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
-              Имя организации
-            </div>
-          )}
-        </div>
-
-        <div className="py-[5px] px-[15px] flex mb-[12px]">
-          <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
-            {data?.seller_type?.type_ru}
-          </div>
-          {dataTypeIsPersonal ? (
-            <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
-              {data?.card_number}
-            </div>
-          ) : (
-            <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
-              {data?.company ? data?.company?.name : "-"}
-            </div>
-          )}
-        </div>
-
-        {dataTypeIsPersonal ? null : (
-          <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-            <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
-              Номер карты
-            </div>
-          </div>
-        )}
-
-        {dataTypeIsPersonal ? null : (
-          <div className="py-[5px] px-[15px] flex mb-[24px]">
-            <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
-              {data?.card_number}
-            </div>
-          </div>
-        )}
-
-        <div className="w-full flex gap-[30px]">
-          <button
-            onClick={() => {
-              setModalOpen(true);
+            style={{
+              backgroundImage: `url('${WiFiLoader}')`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center center",
             }}
-            className={`${
-              data?.status === "pending" || data?.status === "approved"
-                ? ""
-                : "hidden"
-            } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[13px] font-AeonikProMedium text-[#E51515]`}
-          >
-            Отказать
-          </button>
-          <button
-            onClick={() => approveFunc()}
-            className={`${
-              data?.status === "pending" || data?.status === "declined"
-                ? ""
-                : "hidden"
-            } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[13px] font-AeonikProMedium text-[#12C724]`}
-          >
-            Одобрить
-          </button>
+            className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
+          ></div>
         </div>
-      </div>
+      ) : (
+        <div className="w-full">
+          <div className="mb-[10px] flex items-center text-tableTextTitle">
+            <div className="hidden border-lightBorderColor border rounded-[12px] bg-white px-5 py-[15px] md:flex items-center w-full">
+              <div
+                className={`${
+                  dataTypeIsPersonal ? "w-[6%]" : "w-[6%]"
+                }   text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+              >
+                {data?.name}
+              </div>
+              <div
+                className={`${
+                  dataTypeIsPersonal ? "w-[9%]" : "w-[9%]"
+                }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+              >
+                {data?.surname}
+              </div>
+              {dataTypeIsPersonal ? null : (
+                <div
+                  className={`w-[14%] px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+                >
+                  {data?.company ? data?.company?.name : "-"}
+                </div>
+              )}
+              <div
+                className={`${
+                  dataTypeIsPersonal ? "w-[14%]" : "w-[12%]"
+                }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+              >
+                <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
+              </div>
+              <div
+                className={`${
+                  dataTypeIsPersonal ? "w-[17%]" : "w-[15%]"
+                }  break-all px-2  text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+              >
+                {data?.email}
+              </div>
+              <div
+                className={`${
+                  dataTypeIsPersonal ? "w-[13%]" : "w-[11%]"
+                }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+              >
+                {data?.seller_type?.type_ru}
+              </div>
+              <div
+                className={`${
+                  dataTypeIsPersonal ? "w-[12%]" : "w-[11%]"
+                }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+              >
+                {data?.seller_type?.name_ru}
+              </div>
+              <div
+                className={`${
+                  dataTypeIsPersonal ? "w-[12%]" : "w-[8%]"
+                }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+              >
+                {data?.created_at}
+              </div>
+              <div
+                className={`${
+                  dataTypeIsPersonal ? "w-[16%]" : "w-[15%]"
+                } w-[15%] text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+              >
+                {data?.card_number}
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile */}
+
+          <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px]">
+            <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                Имя и Фамилия
+              </div>
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                Тип
+              </div>
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[20%]">
+                Дата
+              </div>
+            </div>
+
+            <div className="py-[5px] px-[15px] flex mb-[10px]">
+              <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
+                {data?.name} {data?.surname}
+              </div>
+              <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
+                {data?.seller_type?.type_ru}
+              </div>
+              <div className="w-[20%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                {data?.created_at}
+              </div>
+            </div>
+
+            <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                Номер
+              </div>
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                Email
+              </div>
+            </div>
+
+            <div className="py-[5px] px-[15px] flex mb-[12px]">
+              <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
+                <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
+              </div>
+              <div className="w-[40%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                {data?.email}
+              </div>
+            </div>
+
+            <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                Раздел
+              </div>
+              {dataTypeIsPersonal ? (
+                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                  Номер карты
+                </div>
+              ) : (
+                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                  Имя организации
+                </div>
+              )}
+            </div>
+
+            <div className="py-[5px] px-[15px] flex mb-[12px]">
+              <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+                {data?.seller_type?.type_ru}
+              </div>
+              {dataTypeIsPersonal ? (
+                <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+                  {data?.card_number}
+                </div>
+              ) : (
+                <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                  {data?.company ? data?.company?.name : "-"}
+                </div>
+              )}
+            </div>
+
+            {dataTypeIsPersonal ? null : (
+              <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                  Номер карты
+                </div>
+              </div>
+            )}
+
+            {dataTypeIsPersonal ? null : (
+              <div className="py-[5px] px-[15px] flex mb-[24px]">
+                <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+                  {data?.card_number}
+                </div>
+              </div>
+            )}
+
+            <div className="w-full flex gap-[30px]">
+              <button
+                onClick={() => {
+                  setModalOpen(true);
+                }}
+                className={`${
+                  data?.status === "pending" || data?.status === "approved"
+                    ? ""
+                    : "hidden"
+                } rounded-[8px] py-[8px] w-full bg-[#FFE1E1] text-[13px] font-AeonikProMedium text-[#E51515]`}
+              >
+                Отказать
+              </button>
+              <button
+                onClick={() => approveFunc()}
+                className={`${
+                  data?.status === "pending" || data?.status === "declined"
+                    ? ""
+                    : "hidden"
+                } rounded-[8px] py-[8px] w-full bg-[#DEFCE1] text-[13px] font-AeonikProMedium text-[#12C724]`}
+              >
+                Одобрить
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <ToastContainer autoClose={2000} />
 

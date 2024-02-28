@@ -38,7 +38,7 @@ export default function ShopLocations() {
       <div className="md:hidden pt-6 pb-3 border-b border-[#F2F2F2] mb-3 flex items-center justify-between">
         <button
           onClick={() => {
-            navigate(`/shops/shop/${params?.id}`);
+            navigate(`/shops`);
           }}
           className="w-8 h-8 md:hidden flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
         >
@@ -55,7 +55,7 @@ export default function ShopLocations() {
           <section className="hidden md:flex items-center">
             <button
               onClick={() => {
-                navigate(`/shops/shop/${params?.id}`);
+                navigate(`/shops`);
               }}
               className="md:w-8 md:h-8 w-6 h-6 hidden md:flex mr-5 items-center cursor-pointer justify-center border border-borderColor rounded-lg"
             >
