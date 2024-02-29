@@ -102,18 +102,6 @@ export const MoreAbout = () => {
             </div>
           ) : null}
         </div>
-        <label className="overflow-hidden px-[13px] relative w-full max-w-[400px] hidden md:flex items-center border border-searchBgColor rounded-lg ">
-          <input
-            className="text-[13px] md:text-base outline-none w-full h-[40px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black"
-            type="email"
-            placeholder="Поиск"
-            required
-            inputMode="search"
-          />
-          <button className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
-            <SearchIcon />
-          </button>
-        </label>
       </div>
 
       <div className="w-full hidden md:flex items-center my-9">
@@ -210,6 +198,13 @@ export const MoreAbout = () => {
           </div>
           <div
             className={`${
+              dataTypeIsPersonal ? "w-[17%]" : "w-[15%]"
+            }  px-2  text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
+          >
+            Регион
+          </div>
+          <div
+            className={`${
               dataTypeIsPersonal ? "w-[13%]" : "w-[11%]"
             }  px-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium`}
           >
@@ -292,6 +287,13 @@ export const MoreAbout = () => {
               </div>
               <div
                 className={`${
+                  dataTypeIsPersonal ? "w-[17%]" : "w-[15%]"
+                }  break-all px-2  text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
+              >
+                {data?.region?.name_ru} - {data?.sub_region?.name_ru}
+              </div>
+              <div
+                className={`${
                   dataTypeIsPersonal ? "w-[13%]" : "w-[11%]"
                 }  px-2 text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
               >
@@ -324,6 +326,18 @@ export const MoreAbout = () => {
           {/* Mobile */}
 
           <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px]">
+            <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+              <div className="text-[#3F6175] text-[13px] text-center font-AeonikProMedium w-[100%]">
+                Регион
+              </div>
+            </div>
+
+            <div className="py-[5px] px-[15px] flex mb-[12px]">
+              <div className="w-[100%] text-center break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                {data?.region?.name_ru} - {data?.sub_region?.name_ru}
+              </div>
+            </div>
+
             <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
               <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
                 Имя и Фамилия
