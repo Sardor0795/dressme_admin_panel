@@ -327,72 +327,66 @@ export const MoreAbout = () => {
 
           <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px]">
             <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                 Имя и Фамилия
               </div>
-              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                 Тип
-              </div>
-              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[20%]">
-                Дата
               </div>
             </div>
 
             <div className="py-[5px] px-[15px] flex mb-[10px]">
-              <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
+              <div className="w-[50%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
                 {data?.name} {data?.surname}
               </div>
-              <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
+              <div className="w-[50%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
                 {data?.seller_type?.type_ru}
-              </div>
-              <div className="w-[20%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
-                {data?.created_at}
               </div>
             </div>
 
             <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                 Номер
               </div>
-              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                 Email
               </div>
             </div>
 
             <div className="py-[5px] px-[15px] flex mb-[12px]">
-              <div className="w-[40%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
+              <div className="w-[50%] text-[13px] pr-3 font-AeonikProMedium text-[#2C2C2C]">
                 <a href={`${"tel:" + data?.phone}`}>{data?.phone}</a>
               </div>
-              <div className="w-[40%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+              <div className="w-[50%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
                 {data?.email}
               </div>
             </div>
 
             <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+              <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                 Раздел
               </div>
               {dataTypeIsPersonal ? (
-                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                   Номер карты
                 </div>
               ) : (
-                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                   Имя организации
                 </div>
               )}
             </div>
 
             <div className="py-[5px] px-[15px] flex mb-[12px]">
-              <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+              <div className="w-[50%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
                 {data?.seller_type?.type_ru}
               </div>
               {dataTypeIsPersonal ? (
-                <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+                <div className="w-[50%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
                   {data?.card_number}
                 </div>
               ) : (
-                <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                <div className="w-[50%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
                   {data?.company ? data?.company?.name : "-"}
                 </div>
               )}
@@ -400,10 +394,10 @@ export const MoreAbout = () => {
 
             {dataTypeIsPersonal ? null : (
               <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                   Номер карты
                 </div>
-                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                   Регион
                 </div>
               </div>
@@ -411,10 +405,10 @@ export const MoreAbout = () => {
 
             {dataTypeIsPersonal ? null : (
               <div className="py-[5px] px-[15px] flex mb-[8px]">
-                <div className="w-[40%] text-[13px] break-all font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+                <div className="w-[50%] text-[13px] break-all font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
                   {data?.card_number}
                 </div>
-                <div className="w-[40%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                <div className="w-[50%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
                   {data?.region?.name_ru}, {data?.sub_region?.name_ru}
                 </div>
               </div>
@@ -423,18 +417,39 @@ export const MoreAbout = () => {
             {dataTypeIsPersonal ? (
               <div className="w-full">
                 <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-                  <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[400%]">
+                  <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
                     Регион
+                  </div>
+                  <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
+                    Дата
                   </div>
                 </div>
 
                 <div className="py-[5px] px-[15px] flex mb-[12px]">
-                  <div className="w-[40%] break-all pr-[12px] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                  <div className="w-[50%] break-all pr-[12px] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
                     {data?.region?.name_ru}, {data?.sub_region?.name_ru}
+                  </div>
+                  <div className="w-[50%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                    {data?.created_at}
                   </div>
                 </div>
               </div>
             ) : null}
+
+            {dataTypeIsPersonal ? null : (
+              <div className="w-full">
+                <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+                  <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[50%]">
+                    Дата
+                  </div>
+                </div>
+                <div className="py-[5px] px-[15px] flex mb-[12px]">
+                  <div className="w-[50%] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                    {data?.created_at}
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="w-full flex gap-[30px]">
               <button
