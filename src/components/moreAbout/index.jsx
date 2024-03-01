@@ -290,7 +290,7 @@ export const MoreAbout = () => {
                   dataTypeIsPersonal ? "w-[17%]" : "w-[15%]"
                 }  break-all px-2  text-[#2C2C2C] text-[13px] md:text-base not-italic font-AeonikProMedium`}
               >
-                {data?.region?.name_ru} - {data?.sub_region?.name_ru}
+                {data?.region?.name_ru}, {data?.sub_region?.name_ru}
               </div>
               <div
                 className={`${
@@ -326,18 +326,6 @@ export const MoreAbout = () => {
           {/* Mobile */}
 
           <div className="block md:hidden border rounded-[8px] border-[#F2F2F2] p-[10px] w-full mb-[12px]">
-            <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
-              <div className="text-[#3F6175] text-[13px] text-center font-AeonikProMedium w-[100%]">
-                Регион
-              </div>
-            </div>
-
-            <div className="py-[5px] px-[15px] flex mb-[12px]">
-              <div className="w-[100%] text-center break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
-                {data?.region?.name_ru} - {data?.sub_region?.name_ru}
-              </div>
-            </div>
-
             <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
               <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
                 Имя и Фамилия
@@ -415,16 +403,38 @@ export const MoreAbout = () => {
                 <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
                   Номер карты
                 </div>
+                <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[40%]">
+                  Регион
+                </div>
               </div>
             )}
 
             {dataTypeIsPersonal ? null : (
-              <div className="py-[5px] px-[15px] flex mb-[24px]">
-                <div className="w-[40%] text-[13px] font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
+              <div className="py-[5px] px-[15px] flex mb-[8px]">
+                <div className="w-[40%] text-[13px] break-all font-AeonikProMedium text-[#2C2C2C] pr-[15px]">
                   {data?.card_number}
+                </div>
+                <div className="w-[40%] break-all text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                  {data?.region?.name_ru}, {data?.sub_region?.name_ru}
                 </div>
               </div>
             )}
+
+            {dataTypeIsPersonal ? (
+              <div className="w-full">
+                <div className="bg-[#FCFCFC] border py-[5px] px-[15px] border-[#F2F2F2] rounded-[8px] flex mb-[8px]">
+                  <div className="text-[#3F6175] text-[13px] font-AeonikProMedium w-[400%]">
+                    Регион
+                  </div>
+                </div>
+
+                <div className="py-[5px] px-[15px] flex mb-[12px]">
+                  <div className="w-[40%] break-all pr-[12px] text-[13px] font-AeonikProMedium text-[#2C2C2C]">
+                    {data?.region?.name_ru}, {data?.sub_region?.name_ru}
+                  </div>
+                </div>
+              </div>
+            ) : null}
 
             <div className="w-full flex gap-[30px]">
               <button
