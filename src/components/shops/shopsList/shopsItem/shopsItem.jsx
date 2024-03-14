@@ -119,7 +119,7 @@ export default function ShopsItem({
         key={data?.id}
         className="w-full h-fit md:h-[100px] border border-borderColor md:pr-10 p-[10px] rounded-lg flex md:flex-row flex-col items-center"
       >
-        <div className="w-full md:w-[34%] flex flex-col md:flex-row items-center md:justify-start md:border-0 border-b border-borderColor">
+        <div className="w-full md:w-[40%] flex flex-col md:flex-row items-center md:justify-start md:border-0 border-b border-borderColor">
           <div className="w-full md:w-fit flex items-center justify-between md:justify-start md:pr-7 md:pl-5 text-xl font-AeonikProMedium ">
             <div
               onClick={() => {
@@ -167,7 +167,7 @@ export default function ShopsItem({
           </div>
 
           <div className="w-full flex items-center mt-[5px] mb-[15px] md:mb-0 md:mt-0">
-            <figure className="w-[80px] h-[80px] md:min-w-[120px] md:min-h-[120px] overflow-hidden md:left-[40px] rounded-full border border-searchBgColor flex items-center justify-center bg-white">
+            <figure className="max-w-[80px] max-h-[80px] md:max-w-[120px] md:max-h-[120px] min-w-[80px] min-h-[80px] md:min-w-[120px] md:min-h-[120px] overflow-hidden md:left-[40px] rounded-full border border-searchBgColor flex items-center justify-center bg-white">
               <img
                 src={data?.url_logo_photo}
                 alt=""
@@ -175,7 +175,7 @@ export default function ShopsItem({
               />
             </figure>
             <div className="w-fit flex flex-col ml-5 md:ml-8">
-              <p className="w-fit text-[13px] md:w-full ls:text-[14px] xs:text-xl font-AeonikProMedium mb-3">
+              <p className="w-fit break-all md:pr-4 text-[13px] md:w-full ls:text-[14px] xs:text-xl font-AeonikProMedium mb-3">
                 {data?.name || null}
               </p>
               <div className="w-full flex items-center">
@@ -226,7 +226,7 @@ export default function ShopsItem({
             Локации
           </NavLink>
         </div>
-        <div className="w-full md:w-[36%] flex items-center justify-end gap-x-4 sm:gap-x-10 mt-4 ll:mt-6 md:mt-0">
+        <div className="w-full md:w-[30%] flex items-center justify-end gap-x-4 sm:gap-x-10 mt-4 ll:mt-6 md:mt-0">
           <NavLink
             to={`locations/${data?.id}`}
             className="md:w-fit w-full md:flex hidden items-center justify-center md:text-textBlueColor md:text-base text-[13px] font-AeonikProMedium md:hover:underline md:px-0 px-[10px] ll:px-[25px] xs:px-[54px] md:py-0 py-2 md:rounded-0 rounded-lg md:bg-white bg-locationBg text-locationText"

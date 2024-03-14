@@ -818,8 +818,11 @@ export default function LocationsList() {
                                                           {item?.name}
                                                         </button>
                                                       </div>
-                                                      - {item_2?.name} (
-                                                      {productLength})
+                                                      -
+                                                      <div className="break-all px-2">
+                                                        {item_2?.name}
+                                                      </div>
+                                                      ({productLength})
                                                     </div>
                                                   </div>
                                                   <div className="w-full hidden md:flex mb-[10px]">
@@ -987,8 +990,11 @@ export default function LocationsList() {
                                                           {item?.name}
                                                         </button>
                                                       </div>
-                                                      - {item_2?.name} (
-                                                      {productLength})
+                                                      -
+                                                      <div className="break-all px-2">
+                                                        {item_2?.name}
+                                                      </div>
+                                                      ({productLength})
                                                     </div>
                                                   </div>
                                                   <div className="w-full hidden md:flex mb-[10px]">
@@ -1156,8 +1162,11 @@ export default function LocationsList() {
                                                           {item?.name}
                                                         </button>
                                                       </div>
-                                                      - {item_2?.name} (
-                                                      {productLength})
+                                                      -
+                                                      <div className="break-all px-2">
+                                                        {item_2?.name}
+                                                      </div>
+                                                      ({productLength})
                                                     </div>
                                                   </div>
                                                   <div className="w-full hidden md:flex mb-[10px]">
@@ -1325,8 +1334,11 @@ export default function LocationsList() {
                                                           {item?.name}
                                                         </button>
                                                       </div>
-                                                      - {item_2?.name} (
-                                                      {productLength})
+                                                      -
+                                                      <div className="break-all px-2">
+                                                        {item_2?.name}
+                                                      </div>
+                                                      ({productLength})
                                                     </div>
                                                   </div>
                                                   <div className="w-full hidden md:flex mb-[10px]">

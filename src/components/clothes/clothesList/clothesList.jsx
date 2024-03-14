@@ -813,8 +813,11 @@ export default function ClothesList() {
                                                           {item?.name}
                                                         </button>
                                                       </div>
-                                                      - {item_2?.name} (
-                                                      {productLength})
+                                                      -
+                                                      <div className="break-all px-2">
+                                                        {item_2?.name}
+                                                      </div>
+                                                      ({productLength})
                                                     </div>
                                                   </div>
 
@@ -975,8 +978,11 @@ export default function ClothesList() {
                                                           {item?.name}
                                                         </button>
                                                       </div>
-                                                      - {item_2?.name} (
-                                                      {productLength})
+                                                      -
+                                                      <div className="break-all px-2">
+                                                        {item_2?.name}
+                                                      </div>
+                                                      ({productLength})
                                                     </div>
                                                   </div>
 
@@ -1137,8 +1143,11 @@ export default function ClothesList() {
                                                           {item?.name}
                                                         </button>
                                                       </div>
-                                                      - {item_2?.name} (
-                                                      {productLength})
+                                                      -
+                                                      <div className="break-all px-2">
+                                                        {item_2?.name}
+                                                      </div>
+                                                      ({productLength})
                                                     </div>
                                                   </div>
 
@@ -1299,8 +1308,11 @@ export default function ClothesList() {
                                                           {item?.name}
                                                         </button>
                                                       </div>
-                                                      - {item_2?.name} (
-                                                      {productLength})
+                                                      -
+                                                      <div className="break-all px-2">
+                                                        {item_2?.name}
+                                                      </div>
+                                                      ({productLength})
                                                     </div>
                                                   </div>
 

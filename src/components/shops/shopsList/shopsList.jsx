@@ -744,13 +744,13 @@ export default function ShopsList() {
                           <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                             Фото
                           </div>
-                          <div className="w-[20%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                          <div className="w-[26%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                             Название
                           </div>
-                          <div className="w-[12%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                          <div className="w-[9%] pl-[2px] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                             Пол
                           </div>
-                          <div className="w-[55%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                          <div className="w-[45%] pl-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
                             Доставка
                           </div>
                         </div>
