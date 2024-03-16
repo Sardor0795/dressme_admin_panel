@@ -495,26 +495,26 @@ export const ClothMoreAbout = () => {
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Название на русском</span> <StarIcon />
             </div>
-            <div className="h-[40px] break-all flex items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
+            <div className="overflow-x-auto min-h-[42px] whitespace-nowrap h-fit break-all flex items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
               {data?.name_ru}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Название на узбекском</span>{" "}
               <StarIcon />
             </div>
-            <div className="h-[40px] flex items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
+            <div className="overflow-x-auto min-h-[42px] whitespace-nowrap h-fit flex items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
               {data?.name_uz}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Описание на русском</span>
             </div>
-            <div className="h-[40px] flex items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
+            <div className="overflow-x-auto min-h-[42px] h-fit flex whitespace-nowrap items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
               {data?.description_ru ? data?.description_ru : "-"}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Описание на узбекском</span>
             </div>
-            <div className="h-[40px] flex items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
+            <div className="overflow-x-auto min-h-[42px] h-fit whitespace-nowrap flex items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
               {data?.description_uz ? data?.description_uz : "-"}
             </div>
             <div className="flex items-center mb-[5px]">
