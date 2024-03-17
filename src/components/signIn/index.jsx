@@ -7,7 +7,7 @@ import {
   OpendEyeIcon,
 } from "../../assets/icon";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const url = "https://api.dressme.uz";
@@ -49,6 +49,12 @@ export const SignInComponent = () => {
       setTimeout(() => {
         setErrorMsg({ ...errorMsg, visibility: false });
       }, 5000);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      signIn();
     }
   };
 
@@ -96,6 +102,7 @@ export const SignInComponent = () => {
                 name="password"
                 autoComplete="current-password"
                 ref={passwordRef}
+                onKeyDown={handleKeyDown}
               />
               <span
                 className="cursor-pointer"
