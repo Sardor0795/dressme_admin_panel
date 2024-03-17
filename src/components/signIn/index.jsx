@@ -59,11 +59,7 @@ export const SignInComponent = () => {
   };
 
   useEffect(() => {
-    if (emailRef?.current?.value) {
-      emailRef?.current?.focus();
-    } else {
-      passwordRef?.current?.focus();
-    }
+    passwordRef?.current?.focus();
   }, []);
 
   return (
