@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   CircleNextIcon,
@@ -24,8 +24,8 @@ export const SignInComponent = () => {
 
   const navigate = useNavigate();
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const signIn = async () => {
     const reqObj = {
@@ -57,6 +57,14 @@ export const SignInComponent = () => {
       signIn();
     }
   };
+
+  useEffect(() => {
+    if (emailRef?.current?.value) {
+      emailRef?.current?.focus();
+    } else {
+      passwordRef?.current?.focus();
+    }
+  }, []);
 
   return (
     <div className="flex items-center justify-center h-[100vh] px-[35px]">
