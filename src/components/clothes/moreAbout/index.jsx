@@ -377,7 +377,7 @@ export const ClothMoreAbout = () => {
                 <div className="flex items-center mb-[5px]">
                   <span className="mr-[5px]">Магазин</span> <StarIcon />
                 </div>
-                <div className="border whitespace-nowrap overflow-x-auto text-[16px] text-black min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+                <div className="border overflow-y-auto h-[80px] break-all text-[16px] text-black min-h-[42px] border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                   {data?.shop?.name ? data?.shop?.name : "-"}
                 </div>
               </div>
@@ -495,26 +495,26 @@ export const ClothMoreAbout = () => {
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Название на русском</span> <StarIcon />
             </div>
-            <div className="overflow-x-auto min-h-[42px] whitespace-nowrap h-fit break-all flex items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
+            <div className="overflow-y-auto h-[80px] break-all border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
               {data?.name_ru}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Название на узбекском</span>{" "}
               <StarIcon />
             </div>
-            <div className="overflow-x-auto min-h-[42px] whitespace-nowrap h-fit flex items-center border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
+            <div className="overflow-y-auto h-[80px] break-all border border-[#E5E5E5] text-black rounded-[8px] p-3 mb-[25px]">
               {data?.name_uz}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Описание на русском</span>
             </div>
-            <div className="overflow-x-auto min-h-[42px] h-fit flex whitespace-nowrap items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
+            <div className="overflow-y-auto h-[120px] break-all border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
               {data?.description_ru ? data?.description_ru : "-"}
             </div>
             <div className="flex items-center mb-[5px]">
               <span className="mr-[5px]">Описание на узбекском</span>
             </div>
-            <div className="overflow-x-auto min-h-[42px] h-fit whitespace-nowrap flex items-center border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
+            <div className="overflow-y-auto h-[120px] break-all border border-[#E5E5E5] rounded-[8px] text-black p-3 mb-[25px]">
               {data?.description_uz ? data?.description_uz : "-"}
             </div>
             <div className="flex items-center mb-[5px]">
@@ -527,7 +527,7 @@ export const ClothMoreAbout = () => {
               <div className="flex items-center mb-[5px]">
                 <span className="mr-[5px]">Магазин</span> <StarIcon />
               </div>
-              <div className="border whitespace-nowrap overflow-x-auto text-[16px] text-black min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+              <div className="border overflow-y-auto h-[80px] break-all text-[16px] text-black border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                 {data?.shop?.name ? data?.shop?.name : "-"}
               </div>
             </div>
