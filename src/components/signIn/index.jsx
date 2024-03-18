@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, CSSProperties } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 import {
   CircleNextIcon,
@@ -17,6 +18,12 @@ export const SignInComponent = () => {
     eyeShow: true,
   });
 
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
+
   const [errorMsg, setErrorMsg] = useState({
     msg: "",
     visibility: false,
@@ -27,7 +34,10 @@ export const SignInComponent = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
+  const [loader, setLoader] = useState(false);
+
   const signIn = async () => {
+    setLoader(true);
     const reqObj = {
       email: emailRef.current.value,
       password: passwordRef.current.value,
@@ -41,11 +51,13 @@ export const SignInComponent = () => {
         sessionStorage.setItem("token", data.data.access_token);
         sessionStorage.setItem("email", reqObj.email);
         sessionStorage.setItem("password", reqObj.password);
+        setLoader(false);
         navigate("/sellers");
         location.reload();
       }
     } catch (error) {
       setErrorMsg({ visibility: true, msg: error?.response?.data?.message });
+      setLoader(false);
       setTimeout(() => {
         setErrorMsg({ ...errorMsg, visibility: false });
       }, 5000);
@@ -127,12 +139,18 @@ export const SignInComponent = () => {
             onClick={signIn}
             className="w-full active:scale-95 cursor-pointer select-none active:opacity-70 h-[40px] xs:h-12 rounded-lg flex items-center gap-x-[10px] justify-center bg-weatherWinterColor"
           >
-            <span className="text-center text-base md:text-lg text-white not-italic font-AeonikProMedium">
-              Войти в систему
-            </span>
-            <span>
-              <CircleNextIcon />
-            </span>
+            {loader ? (
+              <ClipLoader color="#ffffff" size={30} />
+            ) : (
+              <div className="w-full flex items-center gap-x-[10px] justify-center">
+                <span className="text-center text-base md:text-lg text-white not-italic font-AeonikProMedium">
+                  Войти в систему
+                </span>
+                <span>
+                  <CircleNextIcon />
+                </span>
+              </div>
+            )}
           </div>
         </form>
       </div>
