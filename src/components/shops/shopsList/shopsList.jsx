@@ -175,12 +175,12 @@ export default function ShopsList() {
       });
     }
     if (showSellers === "updated") {
-      seller = filteredData?.find((seller) => {
+      seller = filteredData?.updated_shops?.find((seller) => {
         return seller.id === id;
       });
     }
     if (showSellers === "pending") {
-      seller = filteredData?.find((seller) => {
+      seller = filteredData?.pending_shops?.find((seller) => {
         return seller.id === id;
       });
     }
@@ -209,12 +209,12 @@ export default function ShopsList() {
       });
     }
     if (showSellers === "updated") {
-      seller = filteredData?.find((seller) => {
+      seller = filteredData?.updated_shops?.find((seller) => {
         return seller.id === id;
       });
     }
     if (showSellers === "pending") {
-      seller = filteredData?.find((seller) => {
+      seller = filteredData?.pending_shops?.find((seller) => {
         return seller.id === id;
       });
     }

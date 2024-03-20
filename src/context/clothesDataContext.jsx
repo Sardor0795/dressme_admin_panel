@@ -25,9 +25,9 @@ export const ClothesDataContextProvider = ({ children }) => {
         },
       }).then((d) => {
         if (d?.status === 200) {
-          setData(d?.data?.sellers_products?.data);
+          setData(d?.data);
           setLoader(false);
-        }
+         }
       });
     }
   }, []);
@@ -38,7 +38,7 @@ export const ClothesDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
-      setData(d?.data?.sellers_products?.data);
+      setData(d?.data);
     });
   };
 
