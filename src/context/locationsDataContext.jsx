@@ -23,8 +23,7 @@ export const LocationsDataContextProvider = ({ children }) => {
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
       }).then((d) => {
-        console.log(d,'bu d');
-        setData(d?.data);
+         setData(d?.data);
         setLoader(false);
       });
     }
