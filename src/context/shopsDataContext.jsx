@@ -6,7 +6,7 @@ import { createContext, useEffect, useState } from "react";
 export const ShopsDataContext = createContext();
 
 export const ShopsDataContextProvider = ({ children }) => {
-  const [loader, setLoader] = useState(true);
+  const [loaderShop, setLoaderShop] = useState(true);
 
   const [dataShops, setDataShops] = useState([]);
 
@@ -15,7 +15,7 @@ export const ShopsDataContextProvider = ({ children }) => {
   const url = "https://api.dressme.uz";
 
   setTimeout(() => {
-    setLoader(false);
+    setLoaderShop(false);
   }, 2000);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const ShopsDataContextProvider = ({ children }) => {
         },
       }).then((d) => {
         setDataShops(d?.data);
-        setLoader(false);
+        setLoaderShop(false);
       });
     }
   }, []);
@@ -40,10 +40,10 @@ export const ShopsDataContextProvider = ({ children }) => {
       setDataShops(d?.data);
     });
   };
-
+  console.log(loaderShop, 'loaderShop-contextr');
   return (
     <ShopsDataContext.Provider
-      value={[dataShops, setDataShops, reFetch, loader, setLoader]}
+      value={[dataShops, loaderShop,reFetch]}
     >
       {children}
     </ShopsDataContext.Provider>

@@ -28,15 +28,13 @@ export default function ShopsList() {
   const [modalOpen, setModalOpen] = useState(false);
   const [searchName, setSearchName] = useState("");
 
-  const [dataShops, loader] = useContext(ShopsDataContext);
-
-  const [, setId] = useContext(IdsContext);
+  const [dataShops, loaderShop] = useContext(ShopsDataContext);
+   const [, setId] = useContext(IdsContext);
 
   const [reFetch] = useContext(ShopsDataContext);
   const [locationsReFetch] = useContext(LocationsDataContext);
   const [clothesReFetch] = useContext(ClothesDataContext);
   const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
-  // console.log(dataShops, 'dataShops');
   let newData = dataShops;
   const [showSellers, setShowSellers] = useContext(SellersContext);
 
@@ -123,7 +121,7 @@ export default function ShopsList() {
   let allowedCount = dataShops?.approved_shops?.length;
   let notAllowedCount = dataShops?.declined_shops?.length;
   let updatedCount = dataShops?.updated_shops?.length;
- 
+
 
   let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
 
@@ -898,7 +896,7 @@ export default function ShopsList() {
           ) :
             showSellers === "approved" ?
               <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-                {loader ? (
+                {loaderShop ? (
                   <div
                     style={{
                       backgroundImage: `url('${WiFiLoader}')`,
@@ -1028,7 +1026,7 @@ export default function ShopsList() {
           ) :
             showSellers === "declined" ?
               <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]  ">
-                {loader ? (
+                {loaderShop ? (
                   <div
                     style={{
                       backgroundImage: `url('${WiFiLoader}')`,
@@ -1157,7 +1155,7 @@ export default function ShopsList() {
           ) :
             showSellers === "updated" ?
               <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-                {loader ? (
+                {loaderShop ? (
                   <div
                     style={{
                       backgroundImage: `url('${WiFiLoader}')`,
@@ -1285,7 +1283,7 @@ export default function ShopsList() {
           ) :
             showSellers === "pending" ?
               <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-                {loader ? (
+                {loaderShop ? (
                   <div
                     style={{
                       backgroundImage: `url('${WiFiLoader}')`,
