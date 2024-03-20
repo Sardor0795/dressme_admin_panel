@@ -27,7 +27,7 @@ export const ClothesDataContextProvider = ({ children }) => {
         if (d?.status === 200) {
           setData(d?.data);
           setLoader(false);
-         }
+        }
       });
     }
   }, []);
@@ -44,7 +44,7 @@ export const ClothesDataContextProvider = ({ children }) => {
 
   return (
     <ClothesDataContext.Provider
-      value={[data, setData, reFetch, loader, setLoader]}
+      value={[data, loader, reFetch]}
     >
       {children}
     </ClothesDataContext.Provider>

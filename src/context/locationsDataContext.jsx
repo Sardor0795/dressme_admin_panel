@@ -23,7 +23,7 @@ export const LocationsDataContextProvider = ({ children }) => {
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
       }).then((d) => {
-         setData(d?.data);
+        setData(d?.data);
         setLoader(false);
       });
     }
@@ -41,7 +41,7 @@ export const LocationsDataContextProvider = ({ children }) => {
 
   return (
     <LocationsDataContext.Provider
-      value={[data, setData, reFetch, loader, setLoader]}
+      value={[data, loader ]}
     >
       {children}
     </LocationsDataContext.Provider>
