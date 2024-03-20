@@ -174,12 +174,12 @@ export default function ShopsList() {
         return seller.id === id;
       });
     }
-    if (showSellers?.updated_shops === "updated") {
+    if (showSellers === "updated") {
       seller = filteredData?.find((seller) => {
         return seller.id === id;
       });
     }
-    if (showSellers?.pending_shops === "pending") {
+    if (showSellers === "pending") {
       seller = filteredData?.find((seller) => {
         return seller.id === id;
       });
@@ -208,12 +208,12 @@ export default function ShopsList() {
         return seller.id === id;
       });
     }
-    if (showSellers?.updated_shops === "updated") {
+    if (showSellers === "updated") {
       seller = filteredData?.find((seller) => {
         return seller.id === id;
       });
     }
-    if (showSellers?.pending_shops === "pending") {
+    if (showSellers === "pending") {
       seller = filteredData?.find((seller) => {
         return seller.id === id;
       });

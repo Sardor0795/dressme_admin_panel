@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
-import { ReFreshTokenContext } from "./reFreshToken";
+import { createContext, useEffect, useState } from "react";
+// import { ReFreshTokenContext } from "./reFreshToken";
 
 export const ShopsDataContext = createContext();
 
@@ -10,7 +10,7 @@ export const ShopsDataContextProvider = ({ children }) => {
 
   const [dataShops, setDataShops] = useState([]);
 
-  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
+  // const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const url = "https://api.dressme.uz";
 
