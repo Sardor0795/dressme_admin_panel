@@ -25,7 +25,7 @@ export const ShopsDataContextProvider = ({ children }) => {
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
       }).then((d) => {
-        setDataShops(d?.data?.sellers_shops);
+        setDataShops(d?.data);
         setLoader(false);
       });
     }
@@ -37,7 +37,7 @@ export const ShopsDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
-      setDataShops(d?.data?.sellers_shops);
+      setDataShops(d?.data);
     });
   };
 

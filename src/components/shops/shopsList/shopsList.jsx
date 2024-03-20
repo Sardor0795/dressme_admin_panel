@@ -27,15 +27,15 @@ export default function ShopsList() {
   const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [dataShops, setDataShops, , loader] = useContext(ShopsDataContext);
+  const [dataShops, loader] = useContext(ShopsDataContext);
 
   const [, setId] = useContext(IdsContext);
 
-  const [, , reFetch] = useContext(ShopsDataContext);
-  const [, , locationsReFetch] = useContext(LocationsDataContext);
-  const [, , clothesReFetch] = useContext(ClothesDataContext);
+  const [reFetch] = useContext(ShopsDataContext);
+  const [locationsReFetch] = useContext(LocationsDataContext);
+  const [clothesReFetch] = useContext(ClothesDataContext);
   const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
-
+  // console.log(dataShops, 'dataShops');
   let newData = dataShops;
 
   const [filteredData, setFilteredData] = useState([]);
@@ -45,47 +45,78 @@ export default function ShopsList() {
   }, [newData]);
 
   const filterFunc = (e) => {
-    const filtered = dataShops?.map((seller) => {
-      const filteredShops = seller?.shops?.filter((shop) => {
-        return shop?.name.toLowerCase().includes(e.target.value.toLowerCase());
+    if (showSellers === "pending") {
+      const filtered = dataShops?.pending_shops?.map((seller) => {
+        const filteredShops = seller?.shops?.filter((shop) => {
+          return shop?.name.toLowerCase().includes(e.target.value.toLowerCase());
+        })
+
+        return { ...seller, shops: filteredShops };
       });
+      setFilteredData(filtered);
+    }
+    if (showSellers === "approved") {
+      const filtered = dataShops?.approved_shops?.map((seller) => {
+        const filteredShops = seller?.shops?.filter((shop) => {
+          return shop?.name.toLowerCase().includes(e.target.value.toLowerCase());
+        })
 
-      return { ...seller, shops: filteredShops };
-    });
+        return { ...seller, shops: filteredShops };
+      });
+      setFilteredData(filtered);
+    }
+    if (showSellers === "declined") {
+      const filtered = dataShops?.declined_shops?.map((seller) => {
+        const filteredShops = seller?.shops?.filter((shop) => {
+          return shop?.name.toLowerCase().includes(e.target.value.toLowerCase());
+        })
 
-    setFilteredData(filtered);
+        return { ...seller, shops: filteredShops };
+      });
+      setFilteredData(filtered);
+    }
+    if (showSellers === "updated") {
+      const filtered = dataShops?.updated_shops?.map((seller) => {
+        const filteredShops = seller?.shops?.filter((shop) => {
+          return shop?.name.toLowerCase().includes(e.target.value.toLowerCase());
+        })
+
+        return { ...seller, shops: filteredShops };
+      });
+      setFilteredData(filtered);
+    }
   };
 
-  // // Count items -----------
+  // Count items -----------
 
-  let waitingCount = 0;
-  let allowedCount = 0;
-  let notAllowedCount = 0;
-  let updatedCount = 0;
+  let waitingCount = dataShops?.pending_shops?.length;
+  let allowedCount = dataShops?.approved_shops?.length;
+  let notAllowedCount = dataShops?.declined_shops?.length;
+  let updatedCount = dataShops?.updated_shops?.length;
 
-  filteredData?.forEach((sellers_shops) => {
-    sellers_shops?.shops?.forEach((shop) => {
-      if (shop?.status === "pending") {
-        ++waitingCount;
-      } else if (shop?.status === "approved") {
-        ++allowedCount;
-      } else if (shop?.status === "declined") {
-        ++notAllowedCount;
-      } else if (shop?.status === "updated") {
-        ++updatedCount;
-      }
-    });
-  });
+  // filteredData?.forEach((sellers_shops) => {
+  //   sellers_shops?.shops?.forEach((shop) => {
+  //     if (shop?.status === "pending") {
+  //       ++waitingCount;
+  //     } else if (shop?.status === "approved") {
+  //       ++allowedCount;
+  //     } else if (shop?.status === "declined") {
+  //       ++notAllowedCount;
+  //     } else if (shop?.status === "updated") {
+  //       ++updatedCount;
+  //     }
+  //   });
+  // });
 
   let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
 
   // let checkIndicator = allChecked ? "allNotCheck" : "allCheck";
 
-  const onCheck = (id) => {};
+  const onCheck = (id) => { };
 
   // Products Context
   const [showSellers, setShowSellers] = useContext(SellersContext);
-
+  // console.log(showSellers, 'showSellers');
   let dataCount = 0;
   if (showSellers === "pending") {
     dataCount = waitingCount;
@@ -132,9 +163,27 @@ export default function ShopsList() {
   const [checkedShops, setCheckedShops] = useState([]);
 
   const shopIdCheck = (id) => {
-    const seller = filteredData?.find((seller) => {
-      return seller.id === id;
-    });
+    let seller = []
+    if (showSellers === "approved") {
+      seller = filteredData?.approved_shops?.find((seller) => {
+        return seller.id === id;
+      });
+    }
+    if (showSellers === "declined") {
+      seller = filteredData?.declined_shops?.find((seller) => {
+        return seller.id === id;
+      });
+    }
+    if (showSellers?.updated_shops === "updated") {
+      seller = filteredData?.find((seller) => {
+        return seller.id === id;
+      });
+    }
+    if (showSellers?.pending_shops === "pending") {
+      seller = filteredData?.find((seller) => {
+        return seller.id === id;
+      });
+    }
 
     // Extract product IDs if shop_id matches
     const matchingProductIDs = seller?.shops?.map((shop) => {
@@ -147,9 +196,28 @@ export default function ShopsList() {
   };
 
   const delCheck = (id) => {
-    const seller = filteredData?.find((seller) => {
-      return seller.id === id;
-    });
+    let seller = []
+
+    if (showSellers === "approved") {
+      seller = filteredData?.approved_shops?.find((seller) => {
+        return seller.id === id;
+      });
+    }
+    if (showSellers === "declined") {
+      seller = filteredData?.declined_shops?.find((seller) => {
+        return seller.id === id;
+      });
+    }
+    if (showSellers?.updated_shops === "updated") {
+      seller = filteredData?.find((seller) => {
+        return seller.id === id;
+      });
+    }
+    if (showSellers?.pending_shops === "pending") {
+      seller = filteredData?.find((seller) => {
+        return seller.id === id;
+      });
+    }
 
     // Extract product IDs if shop_id matches
     const matchingProductIDs = seller?.shops?.map((shop) => {
@@ -167,17 +235,54 @@ export default function ShopsList() {
   const selectAllIds = () => {
     const sellerIds = [];
     const shopIds = [];
-
-    filteredData?.forEach((seller) => {
-      seller?.shops?.forEach((shop) => {
-        if (shop) {
-          shopIds.push(shop.id);
+    if (showSellers === "pending") {
+      filteredData?.pending_shops?.forEach((seller) => {
+        seller?.shops?.forEach((shop) => {
+          if (shop) {
+            shopIds.push(shop.id);
+          }
+        });
+        if (seller) {
+          sellerIds.push(seller.id);
         }
       });
-      if (seller) {
-        sellerIds.push(seller.id);
-      }
-    });
+    }
+    if (showSellers === "approved") {
+      filteredData?.approved_shops?.forEach((seller) => {
+        seller?.shops?.forEach((shop) => {
+          if (shop) {
+            shopIds.push(shop.id);
+          }
+        });
+        if (seller) {
+          sellerIds.push(seller.id);
+        }
+      });
+    }
+    if (showSellers === "declined") {
+      filteredData?.declined_shops?.forEach((seller) => {
+        seller?.shops?.forEach((shop) => {
+          if (shop) {
+            shopIds.push(shop.id);
+          }
+        });
+        if (seller) {
+          sellerIds.push(seller.id);
+        }
+      });
+    }
+    if (showSellers === "updated") {
+      filteredData?.updated_shops?.forEach((seller) => {
+        seller?.shops?.forEach((shop) => {
+          if (shop) {
+            shopIds.push(shop.id);
+          }
+        });
+        if (seller) {
+          sellerIds.push(seller.id);
+        }
+      });
+    }
 
     // Set the arrays
     setMassiveCheckeds(shopIds);
@@ -224,6 +329,7 @@ export default function ShopsList() {
         }
       });
   };
+  // console.log(filteredData, 'filteredData');
 
   return (
     <div>
@@ -292,11 +398,10 @@ export default function ShopsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#12C724]"
-                        : "text-[#12c7245e] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#12C724]"
+                      : "text-[#12c7245e] cursor-not-allowed"
+                      }`}
                     type="button"
                   >
                     Одобрить
@@ -310,11 +415,10 @@ export default function ShopsList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#E51515]"
-                        : "text-[#85444485] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#E51515]"
+                      : "text-[#85444485] cursor-not-allowed"
+                      }`}
                   >
                     Отказать
                   </button>
@@ -330,11 +434,10 @@ export default function ShopsList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#E51515]"
-                        : "text-[#85444485] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#E51515]"
+                      : "text-[#85444485] cursor-not-allowed"
+                      }`}
                   >
                     Отказать
                   </button>
@@ -348,11 +451,10 @@ export default function ShopsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#12C724]"
-                        : "text-[#12c7245e] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#12C724]"
+                      : "text-[#12c7245e] cursor-not-allowed"
+                      }`}
                     type="button"
                   >
                     Одобрить
@@ -367,11 +469,10 @@ export default function ShopsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#12C724]"
-                        : "text-[#12c7245e] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#12C724]"
+                      : "text-[#12c7245e] cursor-not-allowed"
+                      }`}
                     type="button"
                   >
                     Одобрить
@@ -388,11 +489,10 @@ export default function ShopsList() {
               setAllChecked(false);
               setShowSellers("pending");
             }}
-            className={`${
-              showSellers === "pending"
-                ? "text-[#007DCA] border-[#007DCA]"
-                : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${showSellers === "pending"
+              ? "text-[#007DCA] border-[#007DCA]"
+              : "text-[#303030] border-[#F2F2F2]"
+              } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Ожидающие магазины</div>{" "}
             <div>({waitingCount})</div>
@@ -402,11 +502,10 @@ export default function ShopsList() {
               setAllChecked(false);
               setShowSellers("approved");
             }}
-            className={`${
-              showSellers === "approved"
-                ? "text-[#007DCA] border-[#007DCA]"
-                : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${showSellers === "approved"
+              ? "text-[#007DCA] border-[#007DCA]"
+              : "text-[#303030] border-[#F2F2F2]"
+              } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Одобренные магазины</div>{" "}
             <div>({allowedCount})</div>
@@ -416,11 +515,10 @@ export default function ShopsList() {
               setAllChecked(false);
               setShowSellers("declined");
             }}
-            className={`${
-              showSellers === "declined"
-                ? "text-[#007DCA] border-[#007DCA]"
-                : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${showSellers === "declined"
+              ? "text-[#007DCA] border-[#007DCA]"
+              : "text-[#303030] border-[#F2F2F2]"
+              } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Отказанные магазины</div>{" "}
             <div>({notAllowedCount})</div>
@@ -430,11 +528,10 @@ export default function ShopsList() {
               setAllChecked(false);
               setShowSellers("updated");
             }}
-            className={`${
-              showSellers === "updated"
-                ? "text-[#007DCA] border-[#007DCA]"
-                : "text-[#303030] border-[#F2F2F2]"
-            } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${showSellers === "updated"
+              ? "text-[#007DCA] border-[#007DCA]"
+              : "text-[#303030] border-[#F2F2F2]"
+              } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Обновленные магазины</div>{" "}
             <div>({updatedCount})</div>
@@ -453,16 +550,14 @@ export default function ShopsList() {
             >
               Выбрать все
               <div
-                className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
-                  allChecked
-                    ? "bg-[#007DCA] border-[#007DCA]"
-                    : "bg-white border-checkboxBorder"
-                } flex items-center justify-center rounded`}
+                className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${allChecked
+                  ? "bg-[#007DCA] border-[#007DCA]"
+                  : "bg-white border-checkboxBorder"
+                  } flex items-center justify-center rounded`}
               >
                 <span
-                  className={`${
-                    allChecked ? "flex items-center justify-center" : "hidden"
-                  }`}
+                  className={`${allChecked ? "flex items-center justify-center" : "hidden"
+                    }`}
                 >
                   <CheckIcon size={"small"} />
                 </span>
@@ -487,11 +582,10 @@ export default function ShopsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#12C724]"
-                        : "text-[#12c7245e] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#12C724]"
+                      : "text-[#12c7245e] cursor-not-allowed"
+                      }`}
                     type="button"
                   >
                     Одобрить
@@ -505,11 +599,10 @@ export default function ShopsList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#E51515]"
-                        : "text-[#85444485] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#E51515]"
+                      : "text-[#85444485] cursor-not-allowed"
+                      }`}
                   >
                     Отказать
                   </button>
@@ -525,11 +618,10 @@ export default function ShopsList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#E51515]"
-                        : "text-[#85444485] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#E51515]"
+                      : "text-[#85444485] cursor-not-allowed"
+                      }`}
                   >
                     Отказать
                   </button>
@@ -543,11 +635,10 @@ export default function ShopsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#12C724]"
-                        : "text-[#12c7245e] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#12C724]"
+                      : "text-[#12c7245e] cursor-not-allowed"
+                      }`}
                     type="button"
                   >
                     Одобрить
@@ -562,11 +653,10 @@ export default function ShopsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
-                      massiveCheckeds?.length > 0
-                        ? "text-[#12C724]"
-                        : "text-[#12c7245e] cursor-not-allowed"
-                    }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
+                      ? "text-[#12C724]"
+                      : "text-[#12c7245e] cursor-not-allowed"
+                      }`}
                     type="button"
                   >
                     Одобрить
@@ -577,7 +667,7 @@ export default function ShopsList() {
           </div>
         ) : null}
 
-        <div className="mt-4 hidden md:flex justify-end items-center md:justify-between mx-auto pb-6 select-none">
+        <div className="mt-4 hidden md:flex justify-end items-center md:justify-between mx-auto pb-6 select-none  ">
           <section className="flex items-center w-fit bg-LocationSelectBg rounded-lg overflow-hidden">
             <button
               type="button"
@@ -585,11 +675,10 @@ export default function ShopsList() {
                 setAllChecked(false);
                 setShowSellers("pending");
               }}
-              className={`${
-                showSellers === "pending"
-                  ? "text-weatherWinterColor border-[1.5px]"
-                  : "text[#303030]"
-              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${showSellers === "pending"
+                ? "text-weatherWinterColor border-[1.5px]"
+                : "text[#303030]"
+                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <WaitingForAllowIcon />
@@ -603,11 +692,10 @@ export default function ShopsList() {
                 setAllChecked(false);
                 setShowSellers("approved");
               }}
-              className={`${
-                showSellers === "approved"
-                  ? "text-weatherWinterColor border-[1.5px]"
-                  : "text[#303030]"
-              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${showSellers === "approved"
+                ? "text-weatherWinterColor border-[1.5px]"
+                : "text[#303030]"
+                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <AllowedIcon />
@@ -621,11 +709,10 @@ export default function ShopsList() {
                 setAllChecked(false);
                 setShowSellers("declined");
               }}
-              className={`${
-                showSellers === "declined"
-                  ? "text-weatherWinterColor border-[1.5px]"
-                  : "text[#303030]"
-              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${showSellers === "declined"
+                ? "text-weatherWinterColor border-[1.5px]"
+                : "text[#303030]"
+                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <NotAllowedIcon />
@@ -639,11 +726,10 @@ export default function ShopsList() {
                 setAllChecked(false);
                 setShowSellers("updated");
               }}
-              className={`${
-                showSellers === "updated"
-                  ? "text-weatherWinterColor border-[1.5px]"
-                  : "text[#303030]"
-              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${showSellers === "updated"
+                ? "text-weatherWinterColor border-[1.5px]"
+                : "text[#303030]"
+                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <EditedIcon />
@@ -660,136 +746,103 @@ export default function ShopsList() {
           >
             Выбрать все
             <div
-              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
-                allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-              } hidden md:flex items-center justify-center rounded ml-[10px]`}
+              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${allChecked
+                ? "bg-[#007DCA] border-[#007DCA]"
+                : "bg-white border-checkboxBorder"
+                } hidden md:flex items-center justify-center rounded ml-[10px]`}
             >
               <span
-                className={`${
-                  allChecked ? "flex items-center justify-center" : "hidden"
-                }`}
+                className={`${allChecked ? "flex items-center justify-center" : "hidden"
+                  }`}
               >
                 <CheckIcon />
               </span>
             </div>
           </div>
         </div>
-
-        {dataCount ? (
-          filteredData?.map((item) => {
-            return item?.shops?.length ? (
-              <div className="w-full" key={item?.id}>
-                <div className="mx-auto font-AeonikProRegular text-[16px]">
-                  {item?.shops?.find((v) => v?.status === showSellers) ? (
-                    <div className="w-full">
-                      <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                        <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                          <div
-                            className="flex items-center cursor-pointer"
-                            onClick={() => {
-                              if (checkedShops?.includes(item?.id)) {
-                                setCheckedShops((prevState) =>
-                                  prevState.filter((id) => id !== item?.id)
-                                );
-                                delCheck(item?.id);
-                              } else {
-                                setCheckedShops([...checkedShops, item?.id]);
-
-                                shopIdCheck(item?.id);
-                              }
-                            }}
-                          >
+        <div className="w-full  ">
+          {/* approved_shops */}
+          {dataCount ? (
+            filteredData?.approved_shops?.map((item) => {
+              return item?.shops?.length ? (
+                <div className="w-full  " key={item?.id}>
+                  <div className="mx-auto font-AeonikProRegular text-[16px]">
+                    {item?.shops?.find((v) => v?.status === showSellers) ? (
+                      <div className="w-full">
+                        <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
                             <div
-                              className={`min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
-                                checkedShops?.includes(item?.id)
+                              className="flex items-center cursor-pointer"
+                              onClick={() => {
+                                if (checkedShops?.includes(item?.id)) {
+                                  setCheckedShops((prevState) =>
+                                    prevState.filter((id) => id !== item?.id)
+                                  );
+                                  delCheck(item?.id);
+                                } else {
+                                  setCheckedShops([...checkedShops, item?.id]);
+
+                                  shopIdCheck(item?.id);
+                                }
+                              }}
+                            >
+                              <div
+                                className={`min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(item?.id)
                                   ? "bg-[#007DCA] border-[#007DCA]"
                                   : "bg-white border-checkboxBorder"
-                              } flex items-center justify-center rounded mr-[8px]`}
-                            >
-                              <span
-                                className={`${
-                                  checkedShops?.includes(item?.id)
+                                  } flex items-center justify-center rounded mr-[8px]`}
+                              >
+                                <span
+                                  className={`${checkedShops?.includes(item?.id)
                                     ? "hidden md:flex items-center justify-center"
                                     : "hidden"
-                                }`}
-                              >
-                                <CheckIcon />
-                              </span>
-                              <span
-                                className={`${
-                                  checkedShops?.includes(item?.id)
+                                    }`}
+                                >
+                                  <CheckIcon />
+                                </span>
+                                <span
+                                  className={`${checkedShops?.includes(item?.id)
                                     ? "flex md:hidden items-center justify-center"
                                     : "hidden"
-                                }`}
-                              >
-                                <CheckIcon size={"small"} />
-                              </span>
+                                    }`}
+                                >
+                                  <CheckIcon size={"small"} />
+                                </span>
+                              </div>
+                              <button className="text-[#007DCA] mr-[7px]">
+                                {item?.name}
+                              </button>
                             </div>
-                            <button className="text-[#007DCA] mr-[7px]">
-                              {item?.name}
-                            </button>
-                          </div>
-                          ({item?.shops?.length || 0})
-                        </div>
-                      </div>
-
-                      <div className="mb-[18px] flex items-center text-tableTextTitle">
-                        <div className=" min-w-[24px]  min-h-[24px] hidden md:flex mr-[8px]"></div>
-                        <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                          <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                            No:
-                          </div>
-                          <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                            Фото
-                          </div>
-                          <div className="w-[26%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                            Название
-                          </div>
-                          <div className="w-[9%] pl-[2px] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                            Пол
-                          </div>
-                          <div className="w-[45%] pl-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                            Доставка
+                            ({item?.shops?.length || 0})
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  ) : null}
 
-                  <div className="w-full ">
-                    {/* Status Waiting */}
-
-                    {showSellers === "pending"
-                      ? item?.shops?.map((data, index) => {
-                          return (
-                            <div key={data?.id}>
-                              {data?.status === "pending" ? (
-                                <div className="mb-8">
-                                  <ShopsItem
-                                    data={data}
-                                    index={index}
-                                    onCheck={onCheck}
-                                    showSellers={showSellers}
-                                    toast={toast}
-                                    setModalOpen={setModalOpen}
-                                    setMassiveCheckeds={setMassiveCheckeds}
-                                    massiveCheckeds={massiveCheckeds}
-                                    allChecked={allChecked}
-                                    setSomeChecked={setSomeChecked}
-                                    checkedShops={checkedShops}
-                                  />
-                                </div>
-                              ) : null}
+                        <div className="mb-[18px] flex items-center text-tableTextTitle">
+                          <div className=" min-w-[24px]  min-h-[24px] hidden md:flex mr-[8px]"></div>
+                          <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                            <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              No:
                             </div>
-                          );
-                        })
-                      : null}
-
-                    {/* Status Allowed */}
-                    {showSellers === "approved"
-                      ? item?.shops?.map((data, index) => {
+                            <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Фото
+                            </div>
+                            <div className="w-[26%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Название
+                            </div>
+                            <div className="w-[9%] pl-[2px] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Пол
+                            </div>
+                            <div className="w-[45%] pl-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Доставка
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : null}
+                    <div className="w-full ">
+                      {/* Status Allowed */}
+                      {showSellers === "approved"
+                        ? item?.shops?.map((data, index) => {
                           return (
                             <div key={data?.id}>
                               {data?.status === "approved" ? (
@@ -812,12 +865,113 @@ export default function ShopsList() {
                             </div>
                           );
                         })
-                      : null}
+                        : null}
 
-                    {/* Status NotAllowed */}
 
-                    {showSellers === "declined"
-                      ? item?.shops?.map((data, index) => {
+                    </div>
+                  </div>
+                </div>
+              ) : null;
+            })
+          ) : (
+            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+              {loader ? (
+                <div
+                  style={{
+                    backgroundImage: `url('${WiFiLoader}')`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center center",
+                  }}
+                  className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
+                ></div>
+              ) : (
+                <div className="font-AeonikProMedium text-xl">Нет магазинов</div>
+              )}
+            </div>
+          )}
+          {/* declined_shops */}
+          {dataCount ? (
+            filteredData?.declined_shops?.map((item) => {
+              return item?.shops?.length ? (
+                <div className="w-full  " key={item?.id}>
+                  <div className="mx-auto font-AeonikProRegular text-[16px]">
+                    {item?.shops?.find((v) => v?.status === showSellers) ? (
+                      <div className="w-full">
+                        <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                            <div
+                              className="flex items-center cursor-pointer"
+                              onClick={() => {
+                                if (checkedShops?.includes(item?.id)) {
+                                  setCheckedShops((prevState) =>
+                                    prevState.filter((id) => id !== item?.id)
+                                  );
+                                  delCheck(item?.id);
+                                } else {
+                                  setCheckedShops([...checkedShops, item?.id]);
+
+                                  shopIdCheck(item?.id);
+                                }
+                              }}
+                            >
+                              <div
+                                className={`min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(item?.id)
+                                  ? "bg-[#007DCA] border-[#007DCA]"
+                                  : "bg-white border-checkboxBorder"
+                                  } flex items-center justify-center rounded mr-[8px]`}
+                              >
+                                <span
+                                  className={`${checkedShops?.includes(item?.id)
+                                    ? "hidden md:flex items-center justify-center"
+                                    : "hidden"
+                                    }`}
+                                >
+                                  <CheckIcon />
+                                </span>
+                                <span
+                                  className={`${checkedShops?.includes(item?.id)
+                                    ? "flex md:hidden items-center justify-center"
+                                    : "hidden"
+                                    }`}
+                                >
+                                  <CheckIcon size={"small"} />
+                                </span>
+                              </div>
+                              <button className="text-[#007DCA] mr-[7px]">
+                                {item?.name}
+                              </button>
+                            </div>
+                            ({item?.shops?.length || 0})
+                          </div>
+                        </div>
+
+                        <div className="mb-[18px] flex items-center text-tableTextTitle">
+                          <div className=" min-w-[24px]  min-h-[24px] hidden md:flex mr-[8px]"></div>
+                          <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                            <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              No:
+                            </div>
+                            <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Фото
+                            </div>
+                            <div className="w-[26%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Название
+                            </div>
+                            <div className="w-[9%] pl-[2px] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Пол
+                            </div>
+                            <div className="w-[45%] pl-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Доставка
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : null}
+                    <div className="w-full ">
+                      {/* Status declined */}
+                      {showSellers === "declined"
+                        ? item?.shops?.map((data, index) => {
                           return (
                             <div key={data?.id}>
                               {data?.status === "declined" ? (
@@ -840,12 +994,112 @@ export default function ShopsList() {
                             </div>
                           );
                         })
-                      : null}
+                        : null}
 
-                    {/* Status Updated */}
+                    </div>
+                  </div>
+                </div>
+              ) : null;
+            })
+          ) : (
+            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+              {loader ? (
+                <div
+                  style={{
+                    backgroundImage: `url('${WiFiLoader}')`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center center",
+                  }}
+                  className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
+                ></div>
+              ) : (
+                <div className="font-AeonikProMedium text-xl">Нет магазинов</div>
+              )}
+            </div>
+          )}
+          {/* updated_shops */}
+          {dataCount ? (
+            filteredData?.updated_shops?.map((item) => {
+              return item?.shops?.length ? (
+                <div className="w-full  " key={item?.id}>
+                  <div className="mx-auto font-AeonikProRegular text-[16px]">
+                    {item?.shops?.find((v) => v?.status === showSellers) ? (
+                      <div className="w-full">
+                        <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                            <div
+                              className="flex items-center cursor-pointer"
+                              onClick={() => {
+                                if (checkedShops?.includes(item?.id)) {
+                                  setCheckedShops((prevState) =>
+                                    prevState.filter((id) => id !== item?.id)
+                                  );
+                                  delCheck(item?.id);
+                                } else {
+                                  setCheckedShops([...checkedShops, item?.id]);
 
-                    {showSellers === "updated"
-                      ? item?.shops?.map((data, index) => {
+                                  shopIdCheck(item?.id);
+                                }
+                              }}
+                            >
+                              <div
+                                className={`min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(item?.id)
+                                  ? "bg-[#007DCA] border-[#007DCA]"
+                                  : "bg-white border-checkboxBorder"
+                                  } flex items-center justify-center rounded mr-[8px]`}
+                              >
+                                <span
+                                  className={`${checkedShops?.includes(item?.id)
+                                    ? "hidden md:flex items-center justify-center"
+                                    : "hidden"
+                                    }`}
+                                >
+                                  <CheckIcon />
+                                </span>
+                                <span
+                                  className={`${checkedShops?.includes(item?.id)
+                                    ? "flex md:hidden items-center justify-center"
+                                    : "hidden"
+                                    }`}
+                                >
+                                  <CheckIcon size={"small"} />
+                                </span>
+                              </div>
+                              <button className="text-[#007DCA] mr-[7px]">
+                                {item?.name}
+                              </button>
+                            </div>
+                            ({item?.shops?.length || 0})
+                          </div>
+                        </div>
+
+                        <div className="mb-[18px] flex items-center text-tableTextTitle">
+                          <div className=" min-w-[24px]  min-h-[24px] hidden md:flex mr-[8px]"></div>
+                          <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                            <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              No:
+                            </div>
+                            <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Фото
+                            </div>
+                            <div className="w-[26%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Название
+                            </div>
+                            <div className="w-[9%] pl-[2px] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Пол
+                            </div>
+                            <div className="w-[45%] pl-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Доставка
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : null}
+                    <div className="w-full ">
+                      {/* Status updated */}
+                      {showSellers === "updated"
+                        ? item?.shops?.map((data, index) => {
                           return (
                             <div key={data?.id}>
                               {data?.status === "updated" ? (
@@ -868,29 +1122,158 @@ export default function ShopsList() {
                             </div>
                           );
                         })
-                      : null}
+                        : null}
+
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : null;
-          })
-        ) : (
-          <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-            {loader ? (
-              <div
-                style={{
-                  backgroundImage: `url('${WiFiLoader}')`,
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center center",
-                }}
-                className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
-              ></div>
-            ) : (
-              <div className="font-AeonikProMedium text-xl">Нет магазинов</div>
-            )}
-          </div>
-        )}
+              ) : null;
+            })
+          ) : (
+            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+              {loader ? (
+                <div
+                  style={{
+                    backgroundImage: `url('${WiFiLoader}')`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center center",
+                  }}
+                  className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
+                ></div>
+              ) : (
+                <div className="font-AeonikProMedium text-xl">Нет магазинов</div>
+              )}
+            </div>
+          )}
+          {/* pending_shops */}
+          {dataCount ? (
+            filteredData?.pending_shops?.map((item) => {
+              return item?.shops?.length ? (
+                <div className="w-full  " key={item?.id}>
+                  <div className="mx-auto font-AeonikProRegular text-[16px]">
+                    {item?.shops?.find((v) => v?.status === showSellers) ? (
+                      <div className="w-full">
+                        <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
+                          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                            <div
+                              className="flex items-center cursor-pointer"
+                              onClick={() => {
+                                if (checkedShops?.includes(item?.id)) {
+                                  setCheckedShops((prevState) =>
+                                    prevState.filter((id) => id !== item?.id)
+                                  );
+                                  delCheck(item?.id);
+                                } else {
+                                  setCheckedShops([...checkedShops, item?.id]);
+
+                                  shopIdCheck(item?.id);
+                                }
+                              }}
+                            >
+                              <div
+                                className={`min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(item?.id)
+                                  ? "bg-[#007DCA] border-[#007DCA]"
+                                  : "bg-white border-checkboxBorder"
+                                  } flex items-center justify-center rounded mr-[8px]`}
+                              >
+                                <span
+                                  className={`${checkedShops?.includes(item?.id)
+                                    ? "hidden md:flex items-center justify-center"
+                                    : "hidden"
+                                    }`}
+                                >
+                                  <CheckIcon />
+                                </span>
+                                <span
+                                  className={`${checkedShops?.includes(item?.id)
+                                    ? "flex md:hidden items-center justify-center"
+                                    : "hidden"
+                                    }`}
+                                >
+                                  <CheckIcon size={"small"} />
+                                </span>
+                              </div>
+                              <button className="text-[#007DCA] mr-[7px]">
+                                {item?.name}
+                              </button>
+                            </div>
+                            ({item?.shops?.length || 0})
+                          </div>
+                        </div>
+
+                        <div className="mb-[18px] flex items-center text-tableTextTitle">
+                          <div className=" min-w-[24px]  min-h-[24px] hidden md:flex mr-[8px]"></div>
+                          <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                            <div className="w-[4%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              No:
+                            </div>
+                            <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Фото
+                            </div>
+                            <div className="w-[26%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Название
+                            </div>
+                            <div className="w-[9%] pl-[2px] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Пол
+                            </div>
+                            <div className="w-[45%] pl-2 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                              Доставка
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : null}
+                    <div className="w-full ">
+                      {showSellers === "pending"
+                        ? item?.shops?.map((data, index) => {
+                          return (
+                            <div key={data?.id}>
+                              {data?.status === "pending" ? (
+                                <div className="mb-8">
+                                  <ShopsItem
+                                    data={data}
+                                    index={index}
+                                    onCheck={onCheck}
+                                    showSellers={showSellers}
+                                    toast={toast}
+                                    setModalOpen={setModalOpen}
+                                    setMassiveCheckeds={setMassiveCheckeds}
+                                    massiveCheckeds={massiveCheckeds}
+                                    allChecked={allChecked}
+                                    setSomeChecked={setSomeChecked}
+                                    checkedShops={checkedShops}
+                                  />
+                                </div>
+                              ) : null}
+                            </div>
+                          );
+                        })
+                        : null}
+
+                    </div>
+                  </div>
+                </div>
+              ) : null;
+            })
+          ) : (
+            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+              {loader ? (
+                <div
+                  style={{
+                    backgroundImage: `url('${WiFiLoader}')`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center center",
+                  }}
+                  className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
+                ></div>
+              ) : (
+                <div className="font-AeonikProMedium text-xl">Нет магазинов</div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
 
       <CancelShopsModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
