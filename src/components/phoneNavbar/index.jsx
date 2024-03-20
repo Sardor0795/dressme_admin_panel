@@ -2,17 +2,17 @@ import { useState } from "react";
 import { BurgerMenuIcon, SearchIcon } from "../../assets/icon";
 import PhoneModal from "./phoneModal";
 
-export const PhoneNavbar = ({ filterFuncCloThes, filterFuncSellers }) => {
+export const PhoneNavbar = ({ filterFuncCloThes, filterFuncSellers, searchName,
+  setSearchName }) => {
   const [phoneModalOpen, setPhoneModalOpen] = useState(false);
-
-  return (
-    <>
+   return (
+    <> 
       <div className="flex w-full items-center justify-between h-[35px]">
         <button onClick={() => setPhoneModalOpen(true)}>
           <BurgerMenuIcon />
         </button>
 
-        <label className="px-[13px] relative w-full max-w-[200px] md:hidden flex items-center border border-searchBgColor rounded-lg">
+        <label className="px-[13px]  relative w-full max-w-[200px] md:hidden flex items-center border border-searchBgColor rounded-lg">
           {filterFuncCloThes ? (
             <input
               className="text-[13px] md:text-base outline-none w-full h-[30px] xs:h-12 placeholder-not-italic placeholder-font-AeonikProMedium  placeholder-text-black pr-8"
@@ -20,7 +20,8 @@ export const PhoneNavbar = ({ filterFuncCloThes, filterFuncSellers }) => {
               placeholder="Поиск"
               required
               inputMode="search"
-              onChange={(e) => filterFuncCloThes(e)}
+              value={searchName}
+              onChange={(e) => setSearchName(e?.target?.value)}
             />
           ) : (
             <input
