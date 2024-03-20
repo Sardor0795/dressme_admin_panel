@@ -26,6 +26,8 @@ import axios from "axios";
 export default function ClothesList() {
   const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
+  const [searchName, setSearchName] = useState("");
+  const [showSellers, setShowSellers] = useContext(SellersContext);
 
   const [data, loader] = useContext(ClothesDataContext);
 
@@ -37,28 +39,87 @@ export default function ClothesList() {
   let newData = data;
 
   const [filteredData, setFilteredData] = useState([]);
- 
+
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
+  // console.log(data, 'data product');
 
-  const filterFunc = (e) => {
-    const filtered = data?.map((seller) => {
-      const filteredShops = seller?.shops?.map((shop) => {
-        const filteredProducts = shop?.products?.filter((product) => {
-          return product?.name_ru
-            .toLowerCase()
-            .includes(e.target.value.toLowerCase());
-        });
+  
 
-        return { ...shop, products: filteredProducts };
-      });
+  const [shopIdList, setShopIdList] = useState([]);
+  useEffect(() => {
+    if (showSellers === "approved") {
+      setShopIdList([])
+      data?.approved_products?.map(value1 => {
+        value1?.shops?.map(value2 => {
+          value2?.products?.map(value3 => {
+            if (searchName) {
+              if (value3?.name_uz?.toLowerCase().includes(searchName.toLowerCase())) {
+                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              }
+            } else if (!searchName) {
+              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+            }
+          })
+        })
+      })
+    }
+    if (showSellers === "pending") {
+      setShopIdList([])
+      data?.pending_products?.map(value1 => {
+        value1?.shops?.map(value2 => {
+          value2?.products?.map(value3 => {
+            if (searchName) {
+              if (value3?.name_uz?.toLowerCase().includes(searchName.toLowerCase())) {
+                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              }
+            } else if (!searchName) {
+              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+            }
+          })
+        })
+      })
+    }
+    if (showSellers === "declined") {
+      setShopIdList([])
+      data?.declined_products?.map(value1 => {
+        value1?.shops?.map(value2 => {
+          value2?.products?.map(value3 => {
+            if (searchName) {
+              if (value3?.name_uz?.toLowerCase().includes(searchName.toLowerCase())) {
+                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              }
+            } else if (!searchName) {
+              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+            }
+          })
+        })
+      })
+    }
+    if (showSellers === "updated") {
+      setShopIdList([])
+      data?.updated_products?.map(value1 => {
+        value1?.shops?.map(value2 => {
+          value2?.products?.map(value3 => {
+            if (searchName) {
+              if (value3?.name_uz?.toLowerCase().includes(searchName.toLowerCase())) {
+                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              }
+            } else if (!searchName) {
+              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+            }
+          })
+        })
+      })
+    }
 
-      return { ...seller, shops: filteredShops };
-    });
-
-    setFilteredData(filtered);
-  };
+  }, [showSellers, searchName, data])
+  useEffect(() => {
+    return () => {
+      setSearchName("")
+    }
+  }, [showSellers])
 
   // // Count items -----------
 
@@ -115,7 +176,6 @@ export default function ClothesList() {
   }, []);
 
   // Products Context
-  const [showSellers, setShowSellers] = useContext(SellersContext);
 
   let dataCount = 0;
   if (showSellers === "pending") {
@@ -127,7 +187,7 @@ export default function ClothesList() {
   } else if (showSellers === "updated") {
     dataCount = updatedCount;
   }
-
+// console
   // up btn
 
   useEffect(() => {
@@ -147,7 +207,7 @@ export default function ClothesList() {
       }
     });
   }, []);
-
+// console.log(shopIdList,'shopIdList');
   // Select all -----------------
 
   const [someChecked, setSomeChecked] = useState(false);
@@ -437,7 +497,11 @@ export default function ClothesList() {
     <div>
       <div className="fixed md:static bg-white w-full top-0 px-4 md:mb-[15px] left-0 right-0 md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
-          <PhoneNavbar filterFuncCloThes={filterFunc} />
+          <PhoneNavbar
+            filterFuncCloThes={"shop"}
+            searchName={searchName}
+            setSearchName={setSearchName}
+          />
         </div>
 
         {showSellers === "pending" ? (
@@ -467,8 +531,8 @@ export default function ClothesList() {
             type="email"
             placeholder="Поиск"
             required
-            inputMode="search"
-            onChange={(e) => filterFunc(e)}
+            value={searchName}
+            onChange={(e) => setSearchName(e?.target?.value)}
           />
           <button className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
             <SearchIcon />
@@ -865,9 +929,9 @@ export default function ClothesList() {
             </div>
           </div>
         </div>
-        <div className="border border-red-600">
+        <div className=" ">
           {dataCount ? (
-            filteredData?.pending_products?.map((item) => {
+            filteredData?.pending_products?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
               return (
                 <div className="w-full" key={item?.id}>
                   <div className="mx-auto font-AeonikProRegular text-[16px]">
@@ -888,7 +952,7 @@ export default function ClothesList() {
                               {item_2?.products?.length ? (
                                 <div className="w-full">
                                   <div className="">
-                                    {item_2?.products?.map((item_3) => {
+                                    {item_2?.products?.filter(e => searchName ? e?.name_uz?.toLowerCase()?.includes(searchName?.toLowerCase()) : e)?.map((item_3) => {
                                       if (item_3?.status === "pending") {
                                         ++index;
                                       }
@@ -1039,7 +1103,7 @@ export default function ClothesList() {
                 </div>
               );
             })
-          ) : (
+          ) : showSellers === "pending" ?
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1054,10 +1118,10 @@ export default function ClothesList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет товаров</div>
               )}
-            </div>
-          )}
+            </div> : null
+          }
           {dataCount ? (
-            filteredData?.approved_products?.map((item) => {
+            filteredData?.approved_products?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
               return (
                 <div className="w-full" key={item?.id}>
                   <div className="mx-auto font-AeonikProRegular text-[16px]">
@@ -1079,7 +1143,7 @@ export default function ClothesList() {
                               {item_2?.products?.length ? (
                                 <div className="w-full">
                                   <div className="">
-                                    {item_2?.products?.map((item_3) => {
+                                    {item_2?.products?.filter(e => searchName ? e?.name_uz?.toLowerCase()?.includes(searchName?.toLowerCase()) : e)?.map((item_3) => {
                                       if (item_3?.status === "approved") {
                                         ++index;
                                       }
@@ -1231,7 +1295,7 @@ export default function ClothesList() {
                 </div>
               );
             })
-          ) : (
+          ) : showSellers === "approved" ?
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1246,10 +1310,10 @@ export default function ClothesList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет товаров</div>
               )}
-            </div>
-          )}
+            </div> : null
+          }
           {dataCount ? (
-            filteredData?.declined_products?.map((item) => {
+            filteredData?.declined_products?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
               return (
                 <div className="w-full" key={item?.id}>
                   <div className="mx-auto font-AeonikProRegular text-[16px]">
@@ -1271,7 +1335,7 @@ export default function ClothesList() {
                               {item_2?.products?.length ? (
                                 <div className="w-full">
                                   <div className="">
-                                    {item_2?.products?.map((item_3) => {
+                                    {item_2?.products?.filter(e => searchName ? e?.name_uz?.toLowerCase()?.includes(searchName?.toLowerCase()) : e)?.map((item_3) => {
                                       if (item_3?.status === "declined") {
                                         ++index;
                                       }
@@ -1422,7 +1486,7 @@ export default function ClothesList() {
                 </div>
               );
             })
-          ) : (
+          ) : showSellers === "declined" ?
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1437,10 +1501,10 @@ export default function ClothesList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет товаров</div>
               )}
-            </div>
-          )}
+            </div> : null
+          }
           {dataCount ? (
-            filteredData?.updated_products?.map((item) => {
+            filteredData?.updated_products?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
               return (
                 <div className="w-full" key={item?.id}>
                   <div className="mx-auto font-AeonikProRegular text-[16px]">
@@ -1462,7 +1526,7 @@ export default function ClothesList() {
                               {item_2?.products?.length ? (
                                 <div className="w-full">
                                   <div className="">
-                                    {item_2?.products?.map((item_3) => {
+                                    {item_2?.products?.filter(e => searchName ? e?.name_uz?.toLowerCase()?.includes(searchName?.toLowerCase()) : e)?.map((item_3) => {
                                       if (item_3?.status === "updated") {
                                         ++index;
                                       }
@@ -1612,7 +1676,7 @@ export default function ClothesList() {
                 </div>
               );
             })
-          ) : (
+          ) : showSellers === "updated" ?
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1627,8 +1691,8 @@ export default function ClothesList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет товаров</div>
               )}
-            </div>
-          )}
+            </div> : null
+          }
         </div>
       </div>
 
