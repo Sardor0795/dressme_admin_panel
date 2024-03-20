@@ -37,6 +37,12 @@ export default function SellersList() {
 
   const [data, setData, , loader] = useContext(SellersDataContext);
 
+  const allCount =
+    data?.approved_sellers?.length +
+    data?.pending_sellers?.length +
+    data?.declined_sellers?.length +
+    data?.updated_sellers?.length;
+
   const [, setId] = useContext(IdsContext);
 
   let newData = data;
@@ -374,7 +380,7 @@ export default function SellersList() {
                 Общее количество:
               </span>
               <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
-                {/* {data?.length} */}
+                {allCount}
               </span>
             </div>
             {/* Выбранные */}
@@ -670,7 +676,7 @@ export default function SellersList() {
               <span className="mr-[5px]">
                 <WaitingForAllowIcon />
               </span>
-              <span>Ожидающие продавцы ({waitingCount})</span>
+              <span>Ожидающие продавцы ({data?.pending_sellers?.length})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
