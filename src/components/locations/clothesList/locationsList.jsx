@@ -27,8 +27,10 @@ import { ReFreshTokenContext } from "../../../context/reFreshToken";
 export default function LocationsList() {
   const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
+  const [showSellers, setShowSellers] = useContext(SellersContext);
 
   const [data, setData, , loader] = useContext(LocationsDataContext);
+  const [searchName, setSearchName] = useState("");
 
   const [, , reFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
@@ -39,56 +41,110 @@ export default function LocationsList() {
   let newData = data;
 
   const [filteredData, setFilteredData] = useState([]);
-  console.log(data, 'data');
+  // (data, 'data');
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
 
-  const filterFunc = (e) => {
-    const filtered = data?.map((seller) => {
-      const filteredShops = seller?.shops?.map((shop) => {
-        const filteredProducts = shop?.shop_locations.filter((product) => {
-          let addres = product?.address;
-          let region = product?.region?.name_ru;
-          let sub_region = product?.sub_region?.name_ru;
-          return (
-            addres.toLowerCase().includes(e.target.value.toLowerCase()) ||
-            region.toLowerCase().includes(e.target.value.toLowerCase()) ||
-            sub_region.toLowerCase().includes(e.target.value.toLowerCase())
-          );
-        });
+  
 
-        return { ...shop, shop_locations: filteredProducts };
-      });
+  const [shopIdList, setShopIdList] = useState([]);
+  useEffect(() => {
+    if (showSellers === "approved") {
+      setShopIdList([])
+      data?.approved_locations?.map((value1) => {
+        value1?.shops?.map(value2 => {
+          value2?.shop_locations?.map(value3 => {
+            // console.log(value3,'value3');
+            if (searchName) {
+              if (
+                value3?.address.toLowerCase().includes(searchName.toLowerCase()) ||
+                value3?.region?.name_ru?.toLowerCase().includes(searchName.toLowerCase()) ||
+                value3?.sub_region?.name_ru?.toLowerCase().includes(searchName.toLowerCase())
+              ) {
+                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              }
+            } else if (!searchName) {
+              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+            }
+          })
+        })
+      })
 
-      return { ...seller, shops: filteredShops };
-    });
+    }
+    if (showSellers === "pending") {
+      setShopIdList([])
+      data?.pending_locations?.map((value1) => {
+        value1?.shops?.map(value2 => {
+          value2?.shop_locations?.map(value3 => {
+            if (searchName) {
+              if (
+                value3?.address.toLowerCase().includes(searchName.toLowerCase()) ||
+                value3?.region?.name_ru?.toLowerCase().includes(searchName.toLowerCase()) ||
+                value3?.sub_region?.name_ru?.toLowerCase().includes(searchName.toLowerCase())
+              ) {
+                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              }
+            } else if (!searchName) {
+              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+            }
+          })
+        })
+      })
+    }
+    if (showSellers === "declined") {
+      setShopIdList([])
+      data?.declined_locations?.map((value1) => {
+        value1?.shops?.map(value2 => {
+          value2?.shop_locations?.map(value3 => {
+            if (searchName) {
+              if (
+                value3?.address.toLowerCase().includes(searchName.toLowerCase()) ||
+                value3?.region?.name_ru?.toLowerCase().includes(searchName.toLowerCase()) ||
+                value3?.sub_region?.name_ru?.toLowerCase().includes(searchName.toLowerCase())
+              ) {
+                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              }
+            } else if (!searchName) {
+              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+            }
+          })
+        })
+      })
+    }
+    if (showSellers === "updated") {
+      setShopIdList([])
+      data?.updated_locations?.map((value1) => {
+        value1?.shops?.map(value2 => {
+          value2?.shop_locations?.map(value3 => {
+            if (searchName) {
+              if (
+                value3?.address.toLowerCase().includes(searchName.toLowerCase()) ||
+                value3?.region?.name_ru?.toLowerCase().includes(searchName.toLowerCase()) ||
+                value3?.sub_region?.name_ru?.toLowerCase().includes(searchName.toLowerCase())
+              ) {
+                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              }
+            } else if (!searchName) {
+              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+            }
+          })
+        })
+      })
+    }
 
-    setFilteredData(filtered);
-  };
-
-  // // Count items -----------
-
+  }, [showSellers, searchName, data])
+  useEffect(() => {
+    return () => {
+      setSearchName("")
+    }
+  }, [showSellers])
 
   let waitingCount = data?.pending_locations?.length;
   let allowedCount = data?.approved_locations?.length;
   let notAllowedCount = data?.declined_locations?.length;
   let updatedCount = data?.updated_locations?.length;
-  // filteredData?.forEach((seller) => {
-  //   seller?.shops?.forEach((shop) => {
-  //     shop?.shop_locations?.forEach((product) => {
-  //       if (product?.status === "pending") {
-  //         ++waitingCount;
-  //       } else if (product?.status === "approved") {
-  //         ++allowedCount;
-  //       } else if (product?.status === "declined") {
-  //         ++notAllowedCount;
-  //       } else if (product?.status === "updated") {
-  //         ++updatedCount;
-  //       }
-  //     });
-  //   });
-  // });
+
 
   let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
 
@@ -101,7 +157,6 @@ export default function LocationsList() {
   }, []);
 
   // Products Context
-  const [showSellers, setShowSellers] = useContext(SellersContext);
 
   let dataCount = 0;
   if (showSellers === "pending") {
@@ -420,7 +475,11 @@ export default function LocationsList() {
     <div>
       <div className="fixed md:static bg-white w-full z-10 top-0 px-4 md:mb-[15px] left-0 right-0 md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
-          <PhoneNavbar filterFuncCloThes={filterFunc} />
+          <PhoneNavbar  
+          
+          filterFuncCloThes={"location"}
+          searchName={searchName}
+          setSearchName={setSearchName}/>
         </div>
 
         {showSellers === "pending" ? (
@@ -451,7 +510,9 @@ export default function LocationsList() {
             placeholder="Поиск"
             required
             inputMode="search"
-            onChange={(e) => filterFunc(e)}
+            // onChange={(e) => filterFunc(e)}
+            value={searchName}
+            onChange={(e) => setSearchName(e?.target?.value)}
           />
           <button className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
             <SearchIcon />
@@ -846,9 +907,9 @@ export default function LocationsList() {
           </div>
         </div>
         <div className="w-full  ">
-        
+
           {dataCount ? (
-            filteredData?.pending_locations?.map((item) => {
+            filteredData?.pending_locations?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
               return (
                 <div className="w-full  " key={item?.id}>
                   <div className="mx-auto font-AeonikProRegular text-[16px] ">
@@ -1028,7 +1089,7 @@ export default function LocationsList() {
                 </div>
               );
             })
-          ) : (
+          ) : showSellers === "pending" ?
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1043,10 +1104,12 @@ export default function LocationsList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет локаций</div>
               )}
-            </div>
-          )}
+            </div> : null
+          }
           {dataCount ? (
-            filteredData?.approved_locations?.map((item) => {
+            filteredData?.approved_locations?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
+              // console.log(item, 'item approved_locations');
+
               return (
                 <div className="w-full  " key={item?.id}>
                   <div className="mx-auto font-AeonikProRegular text-[16px] ">
@@ -1226,30 +1289,31 @@ export default function LocationsList() {
                 </div>
               );
             })
-          ) : (
-            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-              {loader ? (
-                <div
-                  style={{
-                    backgroundImage: `url('${WiFiLoader}')`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center center",
-                  }}
-                  className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
-                ></div>
-              ) : (
-                <div className="font-AeonikProMedium text-xl">Нет локаций</div>
-              )}
-            </div>
-          )}
+          ) :
+            showSellers === "approved" ?
+              <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+                {loader ? (
+                  <div
+                    style={{
+                      backgroundImage: `url('${WiFiLoader}')`,
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center center",
+                    }}
+                    className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
+                  ></div>
+                ) : (
+                  <div className="font-AeonikProMedium text-xl">Нет локаций</div>
+                )}
+              </div> : null
+          }
           {dataCount ? (
-            filteredData?.declined_locations?.map((item) => {
+            filteredData?.declined_locations?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
               return (
                 <div className="w-full  " key={item?.id}>
                   <div className="mx-auto font-AeonikProRegular text-[16px] ">
                     <div className="w-full ">
- 
+
                       {/* Status NotAllowed */}
 
                       {showSellers === "declined"
@@ -1425,7 +1489,7 @@ export default function LocationsList() {
                 </div>
               );
             })
-          ) : (
+          ) : showSellers === "declined" ?
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1440,10 +1504,10 @@ export default function LocationsList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет локаций</div>
               )}
-            </div>
-          )}
+            </div> : null
+          }
           {dataCount ? (
-            filteredData?.updated_locations?.map((item) => {
+            filteredData?.updated_locations?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
               return (
                 <div className="w-full  " key={item?.id}>
                   <div className="mx-auto font-AeonikProRegular text-[16px] ">
@@ -1622,7 +1686,7 @@ export default function LocationsList() {
                 </div>
               );
             })
-          ) : (
+          ) : showSellers === "updated" ?
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1637,8 +1701,8 @@ export default function LocationsList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет локаций</div>
               )}
-            </div>
-          )}
+            </div> : null
+          }
         </div>
       </div>
       <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
