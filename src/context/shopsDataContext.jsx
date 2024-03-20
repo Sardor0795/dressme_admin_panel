@@ -40,11 +40,8 @@ export const ShopsDataContextProvider = ({ children }) => {
       setDataShops(d?.data);
     });
   };
-  console.log(loaderShop, 'loaderShop-contextr');
   return (
-    <ShopsDataContext.Provider
-      value={[dataShops, loaderShop,reFetch]}
-    >
+    <ShopsDataContext.Provider value={[dataShops, loaderShop, reFetch]}>
       {children}
     </ShopsDataContext.Provider>
   );

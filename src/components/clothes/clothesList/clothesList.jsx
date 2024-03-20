@@ -45,81 +45,118 @@ export default function ClothesList() {
   }, [newData]);
   // console.log(data, 'data product');
 
-  
-
   const [shopIdList, setShopIdList] = useState([]);
   useEffect(() => {
     if (showSellers === "approved") {
-      setShopIdList([])
-      data?.approved_products?.map(value1 => {
-        value1?.shops?.map(value2 => {
-          value2?.products?.map(value3 => {
+      setShopIdList([]);
+      data?.approved_products?.map((value1) => {
+        value1?.shops?.map((value2) => {
+          value2?.products?.map((value3) => {
             if (searchName) {
-              if (value3?.name_uz?.toLowerCase().includes(searchName.toLowerCase())) {
-                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              if (
+                value3?.name_uz
+                  ?.toLowerCase()
+                  .includes(searchName.toLowerCase())
+              ) {
+                setShopIdList((shopIdList) => [
+                  ...shopIdList,
+                  Number(value1?.id),
+                ]);
               }
             } else if (!searchName) {
-              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              setShopIdList((shopIdList) => [
+                ...shopIdList,
+                Number(value1?.id),
+              ]);
             }
-          })
-        })
-      })
+          });
+        });
+      });
     }
     if (showSellers === "pending") {
-      setShopIdList([])
-      data?.pending_products?.map(value1 => {
-        value1?.shops?.map(value2 => {
-          value2?.products?.map(value3 => {
+      setShopIdList([]);
+      data?.pending_products?.map((value1) => {
+        value1?.shops?.map((value2) => {
+          value2?.products?.map((value3) => {
             if (searchName) {
-              if (value3?.name_uz?.toLowerCase().includes(searchName.toLowerCase())) {
-                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              if (
+                value3?.name_uz
+                  ?.toLowerCase()
+                  .includes(searchName.toLowerCase())
+              ) {
+                setShopIdList((shopIdList) => [
+                  ...shopIdList,
+                  Number(value1?.id),
+                ]);
               }
             } else if (!searchName) {
-              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              setShopIdList((shopIdList) => [
+                ...shopIdList,
+                Number(value1?.id),
+              ]);
             }
-          })
-        })
-      })
+          });
+        });
+      });
     }
     if (showSellers === "declined") {
-      setShopIdList([])
-      data?.declined_products?.map(value1 => {
-        value1?.shops?.map(value2 => {
-          value2?.products?.map(value3 => {
+      setShopIdList([]);
+      data?.declined_products?.map((value1) => {
+        value1?.shops?.map((value2) => {
+          value2?.products?.map((value3) => {
             if (searchName) {
-              if (value3?.name_uz?.toLowerCase().includes(searchName.toLowerCase())) {
-                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              if (
+                value3?.name_uz
+                  ?.toLowerCase()
+                  .includes(searchName.toLowerCase())
+              ) {
+                setShopIdList((shopIdList) => [
+                  ...shopIdList,
+                  Number(value1?.id),
+                ]);
               }
             } else if (!searchName) {
-              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              setShopIdList((shopIdList) => [
+                ...shopIdList,
+                Number(value1?.id),
+              ]);
             }
-          })
-        })
-      })
+          });
+        });
+      });
     }
     if (showSellers === "updated") {
-      setShopIdList([])
-      data?.updated_products?.map(value1 => {
-        value1?.shops?.map(value2 => {
-          value2?.products?.map(value3 => {
+      setShopIdList([]);
+      data?.updated_products?.map((value1) => {
+        value1?.shops?.map((value2) => {
+          value2?.products?.map((value3) => {
             if (searchName) {
-              if (value3?.name_uz?.toLowerCase().includes(searchName.toLowerCase())) {
-                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              if (
+                value3?.name_uz
+                  ?.toLowerCase()
+                  .includes(searchName.toLowerCase())
+              ) {
+                setShopIdList((shopIdList) => [
+                  ...shopIdList,
+                  Number(value1?.id),
+                ]);
               }
             } else if (!searchName) {
-              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
+              setShopIdList((shopIdList) => [
+                ...shopIdList,
+                Number(value1?.id),
+              ]);
             }
-          })
-        })
-      })
+          });
+        });
+      });
     }
-
-  }, [showSellers, searchName, data])
+  }, [showSellers, searchName, data]);
   useEffect(() => {
     return () => {
-      setSearchName("")
-    }
-  }, [showSellers])
+      setSearchName("");
+    };
+  }, [showSellers]);
 
   // // Count items -----------
 
@@ -187,7 +224,7 @@ export default function ClothesList() {
   } else if (showSellers === "updated") {
     dataCount = updatedCount;
   }
-// console
+  // console
   // up btn
 
   useEffect(() => {
@@ -207,7 +244,6 @@ export default function ClothesList() {
       }
     });
   }, []);
-// console.log(shopIdList,'shopIdList');
   // Select all -----------------
 
   const [someChecked, setSomeChecked] = useState(false);
@@ -219,86 +255,90 @@ export default function ClothesList() {
   const shopIdCheck = (id) => {
     const idString = id.toString();
 
-    let productIDs = []
+    let productIDs = [];
 
     if (showSellers === "approved") {
-      productIDs = filteredData?.approved_products?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.products.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
+      productIDs = filteredData?.approved_products
+        ?.flatMap((seller) => {
+          return seller?.shops?.flatMap((shop) => {
+            // Filter products by shop_id
+            const filteredProducts = shop?.products.filter((product) => {
+              // Convert shop_id to string for comparison
+              return product?.shop_id === idString;
+            });
 
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
+            // Extract product IDs if shop_id matches
+            const matchingProductIDs = filteredProducts?.map((product) => {
+              // Convert product ID to number
+              return parseInt(product?.id);
+            });
 
-          return matchingProductIDs;
-        });
-      })
+            return matchingProductIDs;
+          });
+        })
         .flat();
     }
     if (showSellers === "declined") {
-      productIDs = filteredData?.declined_products?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.products.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
+      productIDs = filteredData?.declined_products
+        ?.flatMap((seller) => {
+          return seller?.shops?.flatMap((shop) => {
+            // Filter products by shop_id
+            const filteredProducts = shop?.products.filter((product) => {
+              // Convert shop_id to string for comparison
+              return product?.shop_id === idString;
+            });
 
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
+            // Extract product IDs if shop_id matches
+            const matchingProductIDs = filteredProducts?.map((product) => {
+              // Convert product ID to number
+              return parseInt(product?.id);
+            });
 
-          return matchingProductIDs;
-        });
-      })
+            return matchingProductIDs;
+          });
+        })
         .flat();
     }
     if (showSellers === "updated") {
-      productIDs = filteredData?.updated_products?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.products.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
+      productIDs = filteredData?.updated_products
+        ?.flatMap((seller) => {
+          return seller?.shops?.flatMap((shop) => {
+            // Filter products by shop_id
+            const filteredProducts = shop?.products.filter((product) => {
+              // Convert shop_id to string for comparison
+              return product?.shop_id === idString;
+            });
 
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
+            // Extract product IDs if shop_id matches
+            const matchingProductIDs = filteredProducts?.map((product) => {
+              // Convert product ID to number
+              return parseInt(product?.id);
+            });
 
-          return matchingProductIDs;
-        });
-      })
+            return matchingProductIDs;
+          });
+        })
         .flat();
     }
     if (showSellers === "pending") {
-      productIDs = filteredData?.pending_products?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.products.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
+      productIDs = filteredData?.pending_products
+        ?.flatMap((seller) => {
+          return seller?.shops?.flatMap((shop) => {
+            // Filter products by shop_id
+            const filteredProducts = shop?.products.filter((product) => {
+              // Convert shop_id to string for comparison
+              return product?.shop_id === idString;
+            });
 
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
+            // Extract product IDs if shop_id matches
+            const matchingProductIDs = filteredProducts?.map((product) => {
+              // Convert product ID to number
+              return parseInt(product?.id);
+            });
 
-          return matchingProductIDs;
-        });
-      })
+            return matchingProductIDs;
+          });
+        })
         .flat();
     }
     // Set the array of product IDs
@@ -308,86 +348,90 @@ export default function ClothesList() {
   const delCheck = (id) => {
     const idString = id.toString();
 
-    let productIDs = []
+    let productIDs = [];
 
     if (showSellers === "approved") {
-      filteredData?.approved_products?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.products?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
+      productIDs = filteredData?.approved_products
+        ?.flatMap((seller) => {
+          return seller?.shops?.flatMap((shop) => {
+            // Filter products by shop_id
+            const filteredProducts = shop?.products?.filter((product) => {
+              // Convert shop_id to string for comparison
+              return product?.shop_id === idString;
+            });
 
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
+            // Extract product IDs if shop_id matches
+            const matchingProductIDs = filteredProducts?.map((product) => {
+              // Convert product ID to number
+              return parseInt(product?.id);
+            });
 
-          return matchingProductIDs;
-        });
-      })
+            return matchingProductIDs;
+          });
+        })
         .flat();
     }
     if (showSellers === "declined") {
-      filteredData?.declined_products?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.products?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
+      productIDs = filteredData?.declined_products
+        ?.flatMap((seller) => {
+          return seller?.shops?.flatMap((shop) => {
+            // Filter products by shop_id
+            const filteredProducts = shop?.products?.filter((product) => {
+              // Convert shop_id to string for comparison
+              return product?.shop_id === idString;
+            });
 
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
+            // Extract product IDs if shop_id matches
+            const matchingProductIDs = filteredProducts?.map((product) => {
+              // Convert product ID to number
+              return parseInt(product?.id);
+            });
 
-          return matchingProductIDs;
-        });
-      })
+            return matchingProductIDs;
+          });
+        })
         .flat();
     }
     if (showSellers === "updated") {
-      filteredData?.updated_products?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.products?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
+      productIDs = filteredData?.updated_products
+        ?.flatMap((seller) => {
+          return seller?.shops?.flatMap((shop) => {
+            // Filter products by shop_id
+            const filteredProducts = shop?.products?.filter((product) => {
+              // Convert shop_id to string for comparison
+              return product?.shop_id === idString;
+            });
 
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
+            // Extract product IDs if shop_id matches
+            const matchingProductIDs = filteredProducts?.map((product) => {
+              // Convert product ID to number
+              return parseInt(product?.id);
+            });
 
-          return matchingProductIDs;
-        });
-      })
+            return matchingProductIDs;
+          });
+        })
         .flat();
     }
     if (showSellers === "pending") {
-      filteredData?.pending_products?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.products?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
+      productIDs = filteredData?.pending_products
+        ?.flatMap((seller) => {
+          return seller?.shops?.flatMap((shop) => {
+            // Filter products by shop_id
+            const filteredProducts = shop?.products?.filter((product) => {
+              // Convert shop_id to string for comparison
+              return product?.shop_id === idString;
+            });
 
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
+            // Extract product IDs if shop_id matches
+            const matchingProductIDs = filteredProducts?.map((product) => {
+              // Convert product ID to number
+              return parseInt(product?.id);
+            });
 
-          return matchingProductIDs;
-        });
-      })
+            return matchingProductIDs;
+          });
+        })
         .flat();
     }
 
@@ -399,13 +443,16 @@ export default function ClothesList() {
   };
 
   const selectAllIds = () => {
-
-    let result = []
+    let result = [];
     if (showSellers === "pending") {
-      result = filteredData?.pending_locations?.reduce(
+      result = filteredData?.pending_products?.reduce(
         (acc, seller) => {
           seller?.shops?.forEach((shop) => {
-            acc?.productIDs?.push(...shop?.products.filter((product) => product?.status === showSellers).map((product) => parseInt(product?.id)));
+            acc?.productIDs?.push(
+              ...shop?.products
+                .filter((product) => product?.status === showSellers)
+                .map((product) => parseInt(product?.id))
+            );
             acc?.shopIDs?.push(parseInt(shop?.id));
           });
           return acc;
@@ -414,10 +461,14 @@ export default function ClothesList() {
       );
     }
     if (showSellers === "approved") {
-      result = filteredData?.approved_locations?.reduce(
+      result = filteredData?.approved_products?.reduce(
         (acc, seller) => {
           seller?.shops?.forEach((shop) => {
-            acc?.productIDs?.push(...shop?.products.filter((product) => product?.status === showSellers).map((product) => parseInt(product?.id)));
+            acc?.productIDs?.push(
+              ...shop?.products
+                .filter((product) => product?.status === showSellers)
+                .map((product) => parseInt(product?.id))
+            );
             acc?.shopIDs?.push(parseInt(shop?.id));
           });
           return acc;
@@ -426,10 +477,14 @@ export default function ClothesList() {
       );
     }
     if (showSellers === "declined") {
-      result = filteredData?.declined_locations?.reduce(
+      result = filteredData?.declined_products?.reduce(
         (acc, seller) => {
           seller?.shops?.forEach((shop) => {
-            acc?.productIDs?.push(...shop?.products.filter((product) => product?.status === showSellers).map((product) => parseInt(product?.id)));
+            acc?.productIDs?.push(
+              ...shop?.products
+                .filter((product) => product?.status === showSellers)
+                .map((product) => parseInt(product?.id))
+            );
             acc?.shopIDs?.push(parseInt(shop?.id));
           });
           return acc;
@@ -438,10 +493,14 @@ export default function ClothesList() {
       );
     }
     if (showSellers === "updated") {
-      result = filteredData?.updated_locations?.reduce(
+      result = filteredData?.updated_products?.reduce(
         (acc, seller) => {
           seller?.shops?.forEach((shop) => {
-            acc?.productIDs?.push(...shop?.products.filter((product) => product?.status === showSellers).map((product) => parseInt(product?.id)));
+            acc?.productIDs?.push(
+              ...shop?.products
+                .filter((product) => product?.status === showSellers)
+                .map((product) => parseInt(product?.id))
+            );
             acc?.shopIDs?.push(parseInt(shop?.id));
           });
           return acc;
@@ -565,10 +624,11 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -582,10 +642,11 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#E51515]"
-                      : "text-[#85444485] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#E51515]"
+                        : "text-[#85444485] cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -601,10 +662,11 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#E51515]"
-                      : "text-[#85444485] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#E51515]"
+                        : "text-[#85444485] cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -618,10 +680,11 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -636,10 +699,11 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -656,10 +720,11 @@ export default function ClothesList() {
               setAllChecked(false);
               setShowSellers("pending");
             }}
-            className={`${showSellers === "pending"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-              } border-b pb-[12px] text-center text-[13px] ll:text-[13px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${
+              showSellers === "pending"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[13px] ll:text-[13px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Ожидающие товары</div>{" "}
             <div>({waitingCount})</div>
@@ -669,10 +734,11 @@ export default function ClothesList() {
               setAllChecked(false);
               setShowSellers("approved");
             }}
-            className={`${showSellers === "approved"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-              } border-b pb-[12px] text-center text-[13px] ll:text-[13px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${
+              showSellers === "approved"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[13px] ll:text-[13px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Одобренные товары</div>{" "}
             <div>({allowedCount})</div>
@@ -682,10 +748,11 @@ export default function ClothesList() {
               setAllChecked(false);
               setShowSellers("declined");
             }}
-            className={`${showSellers === "declined"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-              } border-b pb-[12px] text-center text-[13px] ll:text-[13px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${
+              showSellers === "declined"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[13px] ll:text-[13px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Отказанные товары</div>{" "}
             <div>({notAllowedCount})</div>
@@ -695,10 +762,11 @@ export default function ClothesList() {
               setAllChecked(false);
               setShowSellers("updated");
             }}
-            className={`${showSellers === "updated"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-              } border-b pb-[12px] text-center text-[13px] ll:text-[13px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${
+              showSellers === "updated"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[13px] ll:text-[13px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Обновленные товары</div>{" "}
             <div>({updatedCount})</div>
@@ -718,14 +786,16 @@ export default function ClothesList() {
             >
               Выбрать все
               <div
-                className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-                  } flex items-center justify-center rounded`}
+                className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
+                  allChecked
+                    ? "bg-[#007DCA] border-[#007DCA]"
+                    : "bg-white border-checkboxBorder"
+                } flex items-center justify-center rounded`}
               >
                 <span
-                  className={`${allChecked ? "flex items-center justify-center" : "hidden"
-                    }`}
+                  className={`${
+                    allChecked ? "flex items-center justify-center" : "hidden"
+                  }`}
                 >
                   <CheckIcon size={"small"} />
                 </span>
@@ -750,10 +820,11 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -767,10 +838,11 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#E51515]"
-                      : "text-[#85444485] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#E51515]"
+                        : "text-[#85444485] cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -786,10 +858,11 @@ export default function ClothesList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#E51515]"
-                      : "text-[#85444485] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#E51515]"
+                        : "text-[#85444485] cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -803,10 +876,11 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -821,10 +895,11 @@ export default function ClothesList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -843,10 +918,11 @@ export default function ClothesList() {
                 setAllChecked(false);
                 setShowSellers("pending");
               }}
-              className={`${showSellers === "pending"
-                ? "text-weatherWinterColor border-[1.5px]"
-                : "text[#303030]"
-                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${
+                showSellers === "pending"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <WaitingForAllowIcon />
@@ -860,10 +936,11 @@ export default function ClothesList() {
                 setAllChecked(false);
                 setShowSellers("approved");
               }}
-              className={`${showSellers === "approved"
-                ? "text-weatherWinterColor border-[1.5px]"
-                : "text[#303030]"
-                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${
+                showSellers === "approved"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <AllowedIcon />
@@ -877,10 +954,11 @@ export default function ClothesList() {
                 setAllChecked(false);
                 setShowSellers("declined");
               }}
-              className={`${showSellers === "declined"
-                ? "text-weatherWinterColor border-[1.5px]"
-                : "text[#303030]"
-                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${
+                showSellers === "declined"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <NotAllowedIcon />
@@ -894,10 +972,11 @@ export default function ClothesList() {
                 setAllChecked(false);
                 setShowSellers("updated");
               }}
-              className={`${showSellers === "updated"
-                ? "text-weatherWinterColor border-[1.5px]"
-                : "text[#303030]"
-                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${
+                showSellers === "updated"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <EditedIcon />
@@ -915,14 +994,16 @@ export default function ClothesList() {
           >
             Выбрать все
             <div
-              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${allChecked
-                ? "bg-[#007DCA] border-[#007DCA]"
-                : "bg-white border-checkboxBorder"
-                } hidden md:flex items-center justify-center rounded ml-[10px]`}
+              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
+                allChecked
+                  ? "bg-[#007DCA] border-[#007DCA]"
+                  : "bg-white border-checkboxBorder"
+              } hidden md:flex items-center justify-center rounded ml-[10px]`}
             >
               <span
-                className={`${allChecked ? "flex items-center justify-center" : "hidden"
-                  }`}
+                className={`${
+                  allChecked ? "flex items-center justify-center" : "hidden"
+                }`}
               >
                 <CheckIcon />
               </span>
@@ -931,179 +1012,206 @@ export default function ClothesList() {
         </div>
         <div className=" ">
           {dataCount ? (
-            filteredData?.pending_products?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
-              return (
-                <div className="w-full" key={item?.id}>
-                  <div className="mx-auto font-AeonikProRegular text-[16px]">
-                    <div className="w-full ">
-                      {/* Status Waiting */}
+            filteredData?.pending_products
+              ?.filter((e) => shopIdList?.includes(e?.id))
+              ?.map((item) => {
+                return (
+                  <div className="w-full" key={item?.id}>
+                    <div className="mx-auto font-AeonikProRegular text-[16px]">
+                      <div className="w-full ">
+                        {/* Status Waiting */}
 
-                      {showSellers === "pending"
-                        ? item?.shops?.map((item_2) => {
-                          let index = 0;
-                          let productLength = 0;
-                          item_2?.products?.forEach((v) => {
-                            if (v?.status === "pending") {
-                              ++productLength;
-                            }
-                          });
-                          return (
-                            <div key={item_2?.id}>
-                              {item_2?.products?.length ? (
-                                <div className="w-full">
-                                  <div className="">
-                                    {item_2?.products?.filter(e => searchName ? e?.name_uz?.toLowerCase()?.includes(searchName?.toLowerCase()) : e)?.map((item_3) => {
-                                      if (item_3?.status === "pending") {
-                                        ++index;
-                                      }
+                        {showSellers === "pending"
+                          ? item?.shops?.map((item_2) => {
+                              let index = 0;
+                              let productLength = 0;
+                              item_2?.products?.forEach((v) => {
+                                if (v?.status === "pending") {
+                                  ++productLength;
+                                }
+                              });
+                              return (
+                                <div key={item_2?.id}>
+                                  {item_2?.products?.length ? (
+                                    <div className="w-full">
+                                      <div className="">
+                                        {item_2?.products
+                                          ?.filter((e) =>
+                                            searchName
+                                              ? e?.name_uz
+                                                  ?.toLowerCase()
+                                                  ?.includes(
+                                                    searchName?.toLowerCase()
+                                                  )
+                                              : e
+                                          )
+                                          ?.map((item_3) => {
+                                            if (item_3?.status === "pending") {
+                                              ++index;
+                                            }
 
-                                      return (
-                                        <div key={item_3?.id}>
-                                          {item_3?.status === "pending" ? (
-                                            <div className="mb-8">
-                                              {index === 1 ? (
-                                                <div className="w-ful">
-                                                  <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                                                      <div
-                                                        className="flex items-center cursor-pointer"
-                                                        onClick={() => {
-                                                          if (
-                                                            checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                          ) {
-                                                            setCheckedShops(
-                                                              (prevState) =>
-                                                                prevState.filter(
-                                                                  (id) =>
-                                                                    id !==
+                                            return (
+                                              <div key={item_3?.id}>
+                                                {item_3?.status ===
+                                                "pending" ? (
+                                                  <div className="mb-8">
+                                                    {index === 1 ? (
+                                                      <div className="w-ful">
+                                                        <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                            <div
+                                                              className="flex items-center cursor-pointer"
+                                                              onClick={() => {
+                                                                if (
+                                                                  checkedShops?.includes(
                                                                     item_2?.id
-                                                                )
-                                                            );
-                                                            delCheck(
-                                                              item_2?.id
-                                                            );
-                                                          } else {
-                                                            setCheckedShops([
-                                                              ...checkedShops,
-                                                              item_2?.id,
-                                                            ]);
+                                                                  )
+                                                                ) {
+                                                                  setCheckedShops(
+                                                                    (
+                                                                      prevState
+                                                                    ) =>
+                                                                      prevState.filter(
+                                                                        (id) =>
+                                                                          id !==
+                                                                          item_2?.id
+                                                                      )
+                                                                  );
+                                                                  delCheck(
+                                                                    item_2?.id
+                                                                  );
+                                                                } else {
+                                                                  setCheckedShops(
+                                                                    [
+                                                                      ...checkedShops,
+                                                                      item_2?.id,
+                                                                    ]
+                                                                  );
 
-                                                            shopIdCheck(
-                                                              item_2?.id
-                                                            );
-                                                          }
-                                                        }}
-                                                      >
-                                                        <div
-                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                            } flex items-center justify-center rounded mr-[8px]`}
-                                                        >
-                                                          <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
-                                                          >
-                                                            <CheckIcon />
-                                                          </span>
-                                                          <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
-                                                          >
-                                                            <CheckIcon
-                                                              size={"small"}
-                                                            />
-                                                          </span>
+                                                                  shopIdCheck(
+                                                                    item_2?.id
+                                                                  );
+                                                                }
+                                                              }}
+                                                            >
+                                                              <div
+                                                                className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                                                  checkedShops?.includes(
+                                                                    item_2?.id
+                                                                  )
+                                                                    ? "bg-[#007DCA] border-[#007DCA]"
+                                                                    : "bg-white border-checkboxBorder"
+                                                                } flex items-center justify-center rounded mr-[8px]`}
+                                                              >
+                                                                <span
+                                                                  className={`${
+                                                                    checkedShops?.includes(
+                                                                      item_2?.id
+                                                                    )
+                                                                      ? "hidden md:flex items-center justify-center"
+                                                                      : "hidden"
+                                                                  }`}
+                                                                >
+                                                                  <CheckIcon />
+                                                                </span>
+                                                                <span
+                                                                  className={`${
+                                                                    checkedShops?.includes(
+                                                                      item_2?.id
+                                                                    )
+                                                                      ? "flex md:hidden items-center justify-center"
+                                                                      : "hidden"
+                                                                  }`}
+                                                                >
+                                                                  <CheckIcon
+                                                                    size={
+                                                                      "small"
+                                                                    }
+                                                                  />
+                                                                </span>
+                                                              </div>
+                                                              <button className="text-[#007DCA] mr-[7px]">
+                                                                {item?.name}
+                                                              </button>
+                                                            </div>
+                                                            -
+                                                            <div className="break-all px-2">
+                                                              {item_2?.name}
+                                                            </div>
+                                                            ({productLength})
+                                                          </div>
                                                         </div>
-                                                        <button className="text-[#007DCA] mr-[7px]">
-                                                          {item?.name}
-                                                        </button>
-                                                      </div>
-                                                      -
-                                                      <div className="break-all px-2">
-                                                        {item_2?.name}
-                                                      </div>
-                                                      ({productLength})
-                                                    </div>
-                                                  </div>
 
-                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
-                                                    <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                      <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        No:
+                                                        <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                                          <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                                          <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                                            <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              No:
+                                                            </div>
+                                                            <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Фото
+                                                            </div>
+                                                            <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Название
+                                                            </div>
+                                                            <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Артикул
+                                                            </div>
+                                                            <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Тип
+                                                            </div>
+                                                            <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Дата
+                                                            </div>
+                                                            <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Цена
+                                                            </div>
+                                                          </div>
+                                                        </div>
                                                       </div>
-                                                      <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Фото
-                                                      </div>
-                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Название
-                                                      </div>
-                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Артикул
-                                                      </div>
-                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Тип
-                                                      </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Дата
-                                                      </div>
-                                                      <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Цена
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              ) : null}
+                                                    ) : null}
 
-                                              <ClothesItem
-                                                data={item_3}
-                                                key={item_3?.id}
-                                                index={index}
-                                                setModalOpen={setModalOpen}
-                                                toast={toast}
-                                                showSellers={showSellers}
-                                                setMassiveCheckeds={
-                                                  setMassiveCheckeds
-                                                }
-                                                massiveCheckeds={
-                                                  massiveCheckeds
-                                                }
-                                                allChecked={allChecked}
-                                                setSomeChecked={setSomeChecked}
-                                                checkedShops={checkedShops}
-                                              />
-                                            </div>
-                                          ) : null}
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
+                                                    <ClothesItem
+                                                      data={item_3}
+                                                      key={item_3?.id}
+                                                      index={index}
+                                                      setModalOpen={
+                                                        setModalOpen
+                                                      }
+                                                      toast={toast}
+                                                      showSellers={showSellers}
+                                                      setMassiveCheckeds={
+                                                        setMassiveCheckeds
+                                                      }
+                                                      massiveCheckeds={
+                                                        massiveCheckeds
+                                                      }
+                                                      allChecked={allChecked}
+                                                      setSomeChecked={
+                                                        setSomeChecked
+                                                      }
+                                                      checkedShops={
+                                                        checkedShops
+                                                      }
+                                                    />
+                                                  </div>
+                                                ) : null}
+                                              </div>
+                                            );
+                                          })}
+                                      </div>
+                                    </div>
+                                  ) : null}
                                 </div>
-                              ) : null}
-                            </div>
-                          );
-                        })
-                        : null}
-
+                              );
+                            })
+                          : null}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })
-          ) : showSellers === "pending" ?
+                );
+              })
+          ) : showSellers === "pending" ? (
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1118,184 +1226,209 @@ export default function ClothesList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет товаров</div>
               )}
-            </div> : null
-          }
+            </div>
+          ) : null}
           {dataCount ? (
-            filteredData?.approved_products?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
-              return (
-                <div className="w-full" key={item?.id}>
-                  <div className="mx-auto font-AeonikProRegular text-[16px]">
-                    <div className="w-full ">
+            filteredData?.approved_products
+              ?.filter((e) => shopIdList?.includes(e?.id))
+              ?.map((item) => {
+                return (
+                  <div className="w-full" key={item?.id}>
+                    <div className="mx-auto font-AeonikProRegular text-[16px]">
+                      <div className="w-full ">
+                        {/* Status Allowed */}
 
-                      {/* Status Allowed */}
+                        {showSellers === "approved"
+                          ? item?.shops?.map((item_2) => {
+                              let index = 0;
+                              let productLength = 0;
+                              item_2?.products?.forEach((v) => {
+                                if (v?.status === "approved") {
+                                  ++productLength;
+                                }
+                              });
+                              return (
+                                <div key={item_2?.id}>
+                                  {item_2?.products?.length ? (
+                                    <div className="w-full">
+                                      <div className="">
+                                        {item_2?.products
+                                          ?.filter((e) =>
+                                            searchName
+                                              ? e?.name_uz
+                                                  ?.toLowerCase()
+                                                  ?.includes(
+                                                    searchName?.toLowerCase()
+                                                  )
+                                              : e
+                                          )
+                                          ?.map((item_3) => {
+                                            if (item_3?.status === "approved") {
+                                              ++index;
+                                            }
 
-                      {showSellers === "approved"
-                        ? item?.shops?.map((item_2) => {
-                          let index = 0;
-                          let productLength = 0;
-                          item_2?.products?.forEach((v) => {
-                            if (v?.status === "approved") {
-                              ++productLength;
-                            }
-                          });
-                          return (
-                            <div key={item_2?.id}>
-                              {item_2?.products?.length ? (
-                                <div className="w-full">
-                                  <div className="">
-                                    {item_2?.products?.filter(e => searchName ? e?.name_uz?.toLowerCase()?.includes(searchName?.toLowerCase()) : e)?.map((item_3) => {
-                                      if (item_3?.status === "approved") {
-                                        ++index;
-                                      }
-
-                                      return (
-                                        <div key={item_3?.id}>
-                                          {item_3?.status === "approved" ? (
-                                            <div className="mb-8">
-                                              {index === 1 ? (
-                                                <div className="w-ful">
-                                                  <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                                                      <div
-                                                        className="flex items-center cursor-pointer"
-                                                        onClick={() => {
-                                                          if (
-                                                            checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                          ) {
-                                                            setCheckedShops(
-                                                              (prevState) =>
-                                                                prevState.filter(
-                                                                  (id) =>
-                                                                    id !==
+                                            return (
+                                              <div key={item_3?.id}>
+                                                {item_3?.status ===
+                                                "approved" ? (
+                                                  <div className="mb-8">
+                                                    {index === 1 ? (
+                                                      <div className="w-ful">
+                                                        <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                            <div
+                                                              className="flex items-center cursor-pointer"
+                                                              onClick={() => {
+                                                                if (
+                                                                  checkedShops?.includes(
                                                                     item_2?.id
-                                                                )
-                                                            );
-                                                            delCheck(
-                                                              item_2?.id
-                                                            );
-                                                          } else {
-                                                            setCheckedShops([
-                                                              ...checkedShops,
-                                                              item_2?.id,
-                                                            ]);
+                                                                  )
+                                                                ) {
+                                                                  setCheckedShops(
+                                                                    (
+                                                                      prevState
+                                                                    ) =>
+                                                                      prevState.filter(
+                                                                        (id) =>
+                                                                          id !==
+                                                                          item_2?.id
+                                                                      )
+                                                                  );
+                                                                  delCheck(
+                                                                    item_2?.id
+                                                                  );
+                                                                } else {
+                                                                  setCheckedShops(
+                                                                    [
+                                                                      ...checkedShops,
+                                                                      item_2?.id,
+                                                                    ]
+                                                                  );
 
-                                                            shopIdCheck(
-                                                              item_2?.id
-                                                            );
-                                                          }
-                                                        }}
-                                                      >
-                                                        <div
-                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                            } flex items-center justify-center rounded mr-[8px]`}
-                                                        >
-                                                          <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
-                                                          >
-                                                            <CheckIcon />
-                                                          </span>
-                                                          <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
-                                                          >
-                                                            <CheckIcon
-                                                              size={"small"}
-                                                            />
-                                                          </span>
+                                                                  shopIdCheck(
+                                                                    item_2?.id
+                                                                  );
+                                                                }
+                                                              }}
+                                                            >
+                                                              <div
+                                                                className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                                                  checkedShops?.includes(
+                                                                    item_2?.id
+                                                                  )
+                                                                    ? "bg-[#007DCA] border-[#007DCA]"
+                                                                    : "bg-white border-checkboxBorder"
+                                                                } flex items-center justify-center rounded mr-[8px]`}
+                                                              >
+                                                                <span
+                                                                  className={`${
+                                                                    checkedShops?.includes(
+                                                                      item_2?.id
+                                                                    )
+                                                                      ? "hidden md:flex items-center justify-center"
+                                                                      : "hidden"
+                                                                  }`}
+                                                                >
+                                                                  <CheckIcon />
+                                                                </span>
+                                                                <span
+                                                                  className={`${
+                                                                    checkedShops?.includes(
+                                                                      item_2?.id
+                                                                    )
+                                                                      ? "flex md:hidden items-center justify-center"
+                                                                      : "hidden"
+                                                                  }`}
+                                                                >
+                                                                  <CheckIcon
+                                                                    size={
+                                                                      "small"
+                                                                    }
+                                                                  />
+                                                                </span>
+                                                              </div>
+                                                              <button className="text-[#007DCA] mr-[7px]">
+                                                                {item?.name}{" "}
+                                                              </button>
+                                                            </div>
+                                                            -
+                                                            <div className="break-all px-2">
+                                                              {item_2?.name}
+                                                            </div>
+                                                            ({productLength})
+                                                          </div>
                                                         </div>
-                                                        <button className="text-[#007DCA] mr-[7px]">
-                                                          {item?.name}
-                                                        </button>
-                                                      </div>
-                                                      -
-                                                      <div className="break-all px-2">
-                                                        {item_2?.name}
-                                                      </div>
-                                                      ({productLength})
-                                                    </div>
-                                                  </div>
 
-                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
-                                                    <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                      <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        No:
+                                                        <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                                          <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                                          <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                                            <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              No:
+                                                            </div>
+                                                            <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Фото
+                                                            </div>
+                                                            <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Название
+                                                            </div>
+                                                            <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Артикул
+                                                            </div>
+                                                            <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Тип
+                                                            </div>
+                                                            <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Дата
+                                                            </div>
+                                                            <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Цена
+                                                            </div>
+                                                          </div>
+                                                        </div>
                                                       </div>
-                                                      <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Фото
-                                                      </div>
-                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Название
-                                                      </div>
-                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Артикул
-                                                      </div>
-                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Тип
-                                                      </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Дата
-                                                      </div>
-                                                      <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Цена
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              ) : null}
+                                                    ) : null}
 
-                                              <ClothesItem
-                                                data={item_3}
-                                                key={item_3?.id}
-                                                index={index}
-                                                setModalOpen={setModalOpen}
-                                                toast={toast}
-                                                showSellers={showSellers}
-                                                setMassiveCheckeds={
-                                                  setMassiveCheckeds
-                                                }
-                                                massiveCheckeds={
-                                                  massiveCheckeds
-                                                }
-                                                allChecked={allChecked}
-                                                setSomeChecked={setSomeChecked}
-                                                checkedShops={checkedShops}
-                                              />
-                                            </div>
-                                          ) : null}
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
+                                                    <ClothesItem
+                                                      data={item_3}
+                                                      key={item_3?.id}
+                                                      index={index}
+                                                      setModalOpen={
+                                                        setModalOpen
+                                                      }
+                                                      toast={toast}
+                                                      showSellers={showSellers}
+                                                      setMassiveCheckeds={
+                                                        setMassiveCheckeds
+                                                      }
+                                                      massiveCheckeds={
+                                                        massiveCheckeds
+                                                      }
+                                                      allChecked={allChecked}
+                                                      setSomeChecked={
+                                                        setSomeChecked
+                                                      }
+                                                      checkedShops={
+                                                        checkedShops
+                                                      }
+                                                    />
+                                                  </div>
+                                                ) : null}
+                                              </div>
+                                            );
+                                          })}
+                                      </div>
+                                    </div>
+                                  ) : null}
                                 </div>
-                              ) : null}
-                            </div>
-                          );
-                        })
-                        : null}
-
-
+                              );
+                            })
+                          : null}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })
-          ) : showSellers === "approved" ?
+                );
+              })
+          ) : showSellers === "approved" ? (
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1310,183 +1443,209 @@ export default function ClothesList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет товаров</div>
               )}
-            </div> : null
-          }
+            </div>
+          ) : null}
           {dataCount ? (
-            filteredData?.declined_products?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
-              return (
-                <div className="w-full" key={item?.id}>
-                  <div className="mx-auto font-AeonikProRegular text-[16px]">
-                    <div className="w-full ">
+            filteredData?.declined_products
+              ?.filter((e) => shopIdList?.includes(e?.id))
+              ?.map((item) => {
+                return (
+                  <div className="w-full" key={item?.id}>
+                    <div className="mx-auto font-AeonikProRegular text-[16px]">
+                      <div className="w-full ">
+                        {/* Status NotAllowed */}
 
-                      {/* Status NotAllowed */}
+                        {showSellers === "declined"
+                          ? item?.shops?.map((item_2) => {
+                              let index = 0;
+                              let productLength = 0;
+                              item_2?.products?.forEach((v) => {
+                                if (v?.status === "declined") {
+                                  ++productLength;
+                                }
+                              });
+                              return (
+                                <div key={item_2?.id}>
+                                  {item_2?.products?.length ? (
+                                    <div className="w-full">
+                                      <div className="">
+                                        {item_2?.products
+                                          ?.filter((e) =>
+                                            searchName
+                                              ? e?.name_uz
+                                                  ?.toLowerCase()
+                                                  ?.includes(
+                                                    searchName?.toLowerCase()
+                                                  )
+                                              : e
+                                          )
+                                          ?.map((item_3) => {
+                                            if (item_3?.status === "declined") {
+                                              ++index;
+                                            }
 
-                      {showSellers === "declined"
-                        ? item?.shops?.map((item_2) => {
-                          let index = 0;
-                          let productLength = 0;
-                          item_2?.products?.forEach((v) => {
-                            if (v?.status === "declined") {
-                              ++productLength;
-                            }
-                          });
-                          return (
-                            <div key={item_2?.id}>
-                              {item_2?.products?.length ? (
-                                <div className="w-full">
-                                  <div className="">
-                                    {item_2?.products?.filter(e => searchName ? e?.name_uz?.toLowerCase()?.includes(searchName?.toLowerCase()) : e)?.map((item_3) => {
-                                      if (item_3?.status === "declined") {
-                                        ++index;
-                                      }
-
-                                      return (
-                                        <div key={item_3?.id}>
-                                          {item_3?.status === "declined" ? (
-                                            <div className="mb-8">
-                                              {index === 1 ? (
-                                                <div className="w-ful">
-                                                  <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                                                      <div
-                                                        className="flex items-center cursor-pointer"
-                                                        onClick={() => {
-                                                          if (
-                                                            checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                          ) {
-                                                            setCheckedShops(
-                                                              (prevState) =>
-                                                                prevState.filter(
-                                                                  (id) =>
-                                                                    id !==
+                                            return (
+                                              <div key={item_3?.id}>
+                                                {item_3?.status ===
+                                                "declined" ? (
+                                                  <div className="mb-8">
+                                                    {index === 1 ? (
+                                                      <div className="w-ful">
+                                                        <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                            <div
+                                                              className="flex items-center cursor-pointer"
+                                                              onClick={() => {
+                                                                if (
+                                                                  checkedShops?.includes(
                                                                     item_2?.id
-                                                                )
-                                                            );
-                                                            delCheck(
-                                                              item_2?.id
-                                                            );
-                                                          } else {
-                                                            setCheckedShops([
-                                                              ...checkedShops,
-                                                              item_2?.id,
-                                                            ]);
+                                                                  )
+                                                                ) {
+                                                                  setCheckedShops(
+                                                                    (
+                                                                      prevState
+                                                                    ) =>
+                                                                      prevState.filter(
+                                                                        (id) =>
+                                                                          id !==
+                                                                          item_2?.id
+                                                                      )
+                                                                  );
+                                                                  delCheck(
+                                                                    item_2?.id
+                                                                  );
+                                                                } else {
+                                                                  setCheckedShops(
+                                                                    [
+                                                                      ...checkedShops,
+                                                                      item_2?.id,
+                                                                    ]
+                                                                  );
 
-                                                            shopIdCheck(
-                                                              item_2?.id
-                                                            );
-                                                          }
-                                                        }}
-                                                      >
-                                                        <div
-                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                            } flex items-center justify-center rounded mr-[8px]`}
-                                                        >
-                                                          <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
-                                                          >
-                                                            <CheckIcon />
-                                                          </span>
-                                                          <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
-                                                          >
-                                                            <CheckIcon
-                                                              size={"small"}
-                                                            />
-                                                          </span>
+                                                                  shopIdCheck(
+                                                                    item_2?.id
+                                                                  );
+                                                                }
+                                                              }}
+                                                            >
+                                                              <div
+                                                                className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                                                  checkedShops?.includes(
+                                                                    item_2?.id
+                                                                  )
+                                                                    ? "bg-[#007DCA] border-[#007DCA]"
+                                                                    : "bg-white border-checkboxBorder"
+                                                                } flex items-center justify-center rounded mr-[8px]`}
+                                                              >
+                                                                <span
+                                                                  className={`${
+                                                                    checkedShops?.includes(
+                                                                      item_2?.id
+                                                                    )
+                                                                      ? "hidden md:flex items-center justify-center"
+                                                                      : "hidden"
+                                                                  }`}
+                                                                >
+                                                                  <CheckIcon />
+                                                                </span>
+                                                                <span
+                                                                  className={`${
+                                                                    checkedShops?.includes(
+                                                                      item_2?.id
+                                                                    )
+                                                                      ? "flex md:hidden items-center justify-center"
+                                                                      : "hidden"
+                                                                  }`}
+                                                                >
+                                                                  <CheckIcon
+                                                                    size={
+                                                                      "small"
+                                                                    }
+                                                                  />
+                                                                </span>
+                                                              </div>
+                                                              <button className="text-[#007DCA] mr-[7px]">
+                                                                {item?.name}
+                                                              </button>
+                                                            </div>
+                                                            -
+                                                            <div className="break-all px-2">
+                                                              {item_2?.name}
+                                                            </div>
+                                                            ({productLength})
+                                                          </div>
                                                         </div>
-                                                        <button className="text-[#007DCA] mr-[7px]">
-                                                          {item?.name}
-                                                        </button>
-                                                      </div>
-                                                      -
-                                                      <div className="break-all px-2">
-                                                        {item_2?.name}
-                                                      </div>
-                                                      ({productLength})
-                                                    </div>
-                                                  </div>
 
-                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
-                                                    <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                      <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        No:
+                                                        <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                                          <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                                          <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                                            <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              No:
+                                                            </div>
+                                                            <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Фото
+                                                            </div>
+                                                            <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Название
+                                                            </div>
+                                                            <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Артикул
+                                                            </div>
+                                                            <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Тип
+                                                            </div>
+                                                            <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Дата
+                                                            </div>
+                                                            <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Цена
+                                                            </div>
+                                                          </div>
+                                                        </div>
                                                       </div>
-                                                      <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Фото
-                                                      </div>
-                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Название
-                                                      </div>
-                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Артикул
-                                                      </div>
-                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Тип
-                                                      </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Дата
-                                                      </div>
-                                                      <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Цена
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              ) : null}
+                                                    ) : null}
 
-                                              <ClothesItem
-                                                data={item_3}
-                                                key={item_3?.id}
-                                                index={index}
-                                                setModalOpen={setModalOpen}
-                                                toast={toast}
-                                                showSellers={showSellers}
-                                                setMassiveCheckeds={
-                                                  setMassiveCheckeds
-                                                }
-                                                massiveCheckeds={
-                                                  massiveCheckeds
-                                                }
-                                                allChecked={allChecked}
-                                                setSomeChecked={setSomeChecked}
-                                                checkedShops={checkedShops}
-                                              />
-                                            </div>
-                                          ) : null}
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
+                                                    <ClothesItem
+                                                      data={item_3}
+                                                      key={item_3?.id}
+                                                      index={index}
+                                                      setModalOpen={
+                                                        setModalOpen
+                                                      }
+                                                      toast={toast}
+                                                      showSellers={showSellers}
+                                                      setMassiveCheckeds={
+                                                        setMassiveCheckeds
+                                                      }
+                                                      massiveCheckeds={
+                                                        massiveCheckeds
+                                                      }
+                                                      allChecked={allChecked}
+                                                      setSomeChecked={
+                                                        setSomeChecked
+                                                      }
+                                                      checkedShops={
+                                                        checkedShops
+                                                      }
+                                                    />
+                                                  </div>
+                                                ) : null}
+                                              </div>
+                                            );
+                                          })}
+                                      </div>
+                                    </div>
+                                  ) : null}
                                 </div>
-                              ) : null}
-                            </div>
-                          );
-                        })
-                        : null}
-
+                              );
+                            })
+                          : null}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })
-          ) : showSellers === "declined" ?
+                );
+              })
+          ) : showSellers === "declined" ? (
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1501,182 +1660,209 @@ export default function ClothesList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет товаров</div>
               )}
-            </div> : null
-          }
+            </div>
+          ) : null}
           {dataCount ? (
-            filteredData?.updated_products?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
-              return (
-                <div className="w-full" key={item?.id}>
-                  <div className="mx-auto font-AeonikProRegular text-[16px]">
-                    <div className="w-full ">
+            filteredData?.updated_products
+              ?.filter((e) => shopIdList?.includes(e?.id))
+              ?.map((item) => {
+                return (
+                  <div className="w-full" key={item?.id}>
+                    <div className="mx-auto font-AeonikProRegular text-[16px]">
+                      <div className="w-full ">
+                        {/* Status Updated */}
 
-                      {/* Status Updated */}
+                        {showSellers === "updated"
+                          ? item?.shops?.map((item_2) => {
+                              let index = 0;
+                              let productLength = 0;
+                              item_2?.products?.forEach((v) => {
+                                if (v?.status === "updated") {
+                                  ++productLength;
+                                }
+                              });
+                              return (
+                                <div key={item_2?.id}>
+                                  {item_2?.products?.length ? (
+                                    <div className="w-full">
+                                      <div className="">
+                                        {item_2?.products
+                                          ?.filter((e) =>
+                                            searchName
+                                              ? e?.name_uz
+                                                  ?.toLowerCase()
+                                                  ?.includes(
+                                                    searchName?.toLowerCase()
+                                                  )
+                                              : e
+                                          )
+                                          ?.map((item_3) => {
+                                            if (item_3?.status === "updated") {
+                                              ++index;
+                                            }
 
-                      {showSellers === "updated"
-                        ? item?.shops?.map((item_2) => {
-                          let index = 0;
-                          let productLength = 0;
-                          item_2?.products?.forEach((v) => {
-                            if (v?.status === "updated") {
-                              ++productLength;
-                            }
-                          });
-                          return (
-                            <div key={item_2?.id}>
-                              {item_2?.products?.length ? (
-                                <div className="w-full">
-                                  <div className="">
-                                    {item_2?.products?.filter(e => searchName ? e?.name_uz?.toLowerCase()?.includes(searchName?.toLowerCase()) : e)?.map((item_3) => {
-                                      if (item_3?.status === "updated") {
-                                        ++index;
-                                      }
-
-                                      return (
-                                        <div key={item_3?.id}>
-                                          {item_3?.status === "updated" ? (
-                                            <div className="mb-8">
-                                              {index === 1 ? (
-                                                <div className="w-ful">
-                                                  <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
-                                                      <div
-                                                        className="flex items-center cursor-pointer"
-                                                        onClick={() => {
-                                                          if (
-                                                            checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                          ) {
-                                                            setCheckedShops(
-                                                              (prevState) =>
-                                                                prevState.filter(
-                                                                  (id) =>
-                                                                    id !==
+                                            return (
+                                              <div key={item_3?.id}>
+                                                {item_3?.status ===
+                                                "updated" ? (
+                                                  <div className="mb-8">
+                                                    {index === 1 ? (
+                                                      <div className="w-ful">
+                                                        <div className="flex items-center justify-between mb-1 md:mb-7 font-AeonikProMedium text-[16px]">
+                                                          <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                            <div
+                                                              className="flex items-center cursor-pointer"
+                                                              onClick={() => {
+                                                                if (
+                                                                  checkedShops?.includes(
                                                                     item_2?.id
-                                                                )
-                                                            );
-                                                            delCheck(
-                                                              item_2?.id
-                                                            );
-                                                          } else {
-                                                            setCheckedShops([
-                                                              ...checkedShops,
-                                                              item_2?.id,
-                                                            ]);
+                                                                  )
+                                                                ) {
+                                                                  setCheckedShops(
+                                                                    (
+                                                                      prevState
+                                                                    ) =>
+                                                                      prevState.filter(
+                                                                        (id) =>
+                                                                          id !==
+                                                                          item_2?.id
+                                                                      )
+                                                                  );
+                                                                  delCheck(
+                                                                    item_2?.id
+                                                                  );
+                                                                } else {
+                                                                  setCheckedShops(
+                                                                    [
+                                                                      ...checkedShops,
+                                                                      item_2?.id,
+                                                                    ]
+                                                                  );
 
-                                                            shopIdCheck(
-                                                              item_2?.id
-                                                            );
-                                                          }
-                                                        }}
-                                                      >
-                                                        <div
-                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                            } flex items-center justify-center rounded mr-[8px]`}
-                                                        >
-                                                          <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
-                                                          >
-                                                            <CheckIcon />
-                                                          </span>
-                                                          <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
-                                                          >
-                                                            <CheckIcon
-                                                              size={"small"}
-                                                            />
-                                                          </span>
+                                                                  shopIdCheck(
+                                                                    item_2?.id
+                                                                  );
+                                                                }
+                                                              }}
+                                                            >
+                                                              <div
+                                                                className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                                                  checkedShops?.includes(
+                                                                    item_2?.id
+                                                                  )
+                                                                    ? "bg-[#007DCA] border-[#007DCA]"
+                                                                    : "bg-white border-checkboxBorder"
+                                                                } flex items-center justify-center rounded mr-[8px]`}
+                                                              >
+                                                                <span
+                                                                  className={`${
+                                                                    checkedShops?.includes(
+                                                                      item_2?.id
+                                                                    )
+                                                                      ? "hidden md:flex items-center justify-center"
+                                                                      : "hidden"
+                                                                  }`}
+                                                                >
+                                                                  <CheckIcon />
+                                                                </span>
+                                                                <span
+                                                                  className={`${
+                                                                    checkedShops?.includes(
+                                                                      item_2?.id
+                                                                    )
+                                                                      ? "flex md:hidden items-center justify-center"
+                                                                      : "hidden"
+                                                                  }`}
+                                                                >
+                                                                  <CheckIcon
+                                                                    size={
+                                                                      "small"
+                                                                    }
+                                                                  />
+                                                                </span>
+                                                              </div>
+                                                              <button className="text-[#007DCA] mr-[7px]">
+                                                                {item?.name}
+                                                              </button>
+                                                            </div>
+                                                            -
+                                                            <div className="break-all px-2">
+                                                              {item_2?.name}
+                                                            </div>
+                                                            ({productLength})
+                                                          </div>
                                                         </div>
-                                                        <button className="text-[#007DCA] mr-[7px]">
-                                                          {item?.name}
-                                                        </button>
-                                                      </div>
-                                                      -
-                                                      <div className="break-all px-2">
-                                                        {item_2?.name}
-                                                      </div>
-                                                      ({productLength})
-                                                    </div>
-                                                  </div>
 
-                                                  <div className="mb-[10px] flex items-center text-tableTextTitle">
-                                                    <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
-                                                    <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
-                                                      <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        No:
+                                                        <div className="mb-[10px] flex items-center text-tableTextTitle">
+                                                          <div className=" min-w-[24px]  min-h-[24px] hidden md:flex  mr-[8px]"></div>
+                                                          <div className="hidden border-lightBorderColor border rounded-[12px] bg-lightBgColor px-5 h-10 md:flex items-center w-full">
+                                                            <div className="w-[3%]  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              No:
+                                                            </div>
+                                                            <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Фото
+                                                            </div>
+                                                            <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Название
+                                                            </div>
+                                                            <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Артикул
+                                                            </div>
+                                                            <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Тип
+                                                            </div>
+                                                            <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Дата
+                                                            </div>
+                                                            <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
+                                                              Цена
+                                                            </div>
+                                                          </div>
+                                                        </div>
                                                       </div>
-                                                      <div className="w-[9%] text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Фото
-                                                      </div>
-                                                      <div className="w-[16%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Название
-                                                      </div>
-                                                      <div className="w-[12%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Артикул
-                                                      </div>
-                                                      <div className="w-[10%] px-4  text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Тип
-                                                      </div>
-                                                      <div className="w-[11%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Дата
-                                                      </div>
-                                                      <div className="w-[31%] px-4 text-[#3F6175] text-lg not-italic font-AeonikProMedium">
-                                                        Цена
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              ) : null}
+                                                    ) : null}
 
-                                              <ClothesItem
-                                                data={item_3}
-                                                key={item_3?.id}
-                                                index={index}
-                                                setModalOpen={setModalOpen}
-                                                toast={toast}
-                                                showSellers={showSellers}
-                                                setMassiveCheckeds={
-                                                  setMassiveCheckeds
-                                                }
-                                                massiveCheckeds={
-                                                  massiveCheckeds
-                                                }
-                                                allChecked={allChecked}
-                                                setSomeChecked={setSomeChecked}
-                                                checkedShops={checkedShops}
-                                              />
-                                            </div>
-                                          ) : null}
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
+                                                    <ClothesItem
+                                                      data={item_3}
+                                                      key={item_3?.id}
+                                                      index={index}
+                                                      setModalOpen={
+                                                        setModalOpen
+                                                      }
+                                                      toast={toast}
+                                                      showSellers={showSellers}
+                                                      setMassiveCheckeds={
+                                                        setMassiveCheckeds
+                                                      }
+                                                      massiveCheckeds={
+                                                        massiveCheckeds
+                                                      }
+                                                      allChecked={allChecked}
+                                                      setSomeChecked={
+                                                        setSomeChecked
+                                                      }
+                                                      checkedShops={
+                                                        checkedShops
+                                                      }
+                                                    />
+                                                  </div>
+                                                ) : null}
+                                              </div>
+                                            );
+                                          })}
+                                      </div>
+                                    </div>
+                                  ) : null}
                                 </div>
-                              ) : null}
-                            </div>
-                          );
-                        })
-                        : null}
+                              );
+                            })
+                          : null}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })
-          ) : showSellers === "updated" ?
+                );
+              })
+          ) : showSellers === "updated" ? (
             <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
               {loader ? (
                 <div
@@ -1691,8 +1877,8 @@ export default function ClothesList() {
               ) : (
                 <div className="font-AeonikProMedium text-xl">Нет товаров</div>
               )}
-            </div> : null
-          }
+            </div>
+          ) : null}
         </div>
       </div>
 
