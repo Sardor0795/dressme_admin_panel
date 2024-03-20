@@ -23,7 +23,8 @@ export const LocationsDataContextProvider = ({ children }) => {
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
       }).then((d) => {
-        setData(d?.data?.sellers_locations);
+        console.log(d,'bu d');
+        setData(d?.data);
         setLoader(false);
       });
     }
@@ -35,7 +36,7 @@ export const LocationsDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
-      setData(d?.data?.sellers_locations);
+      setData(d?.data);
     });
   };
 
