@@ -36,6 +36,7 @@ export default function SellersList() {
   const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const [data, setData, , loader] = useContext(SellersDataContext);
+
   const [, setId] = useContext(IdsContext);
 
   let newData = data;
@@ -62,17 +63,17 @@ export default function SellersList() {
   let notAllowedCount = 0;
   let updatedCount = 0;
 
-  filteredData?.forEach((v) => {
-    if (v?.status === "pending") {
-      ++waitingCount;
-    } else if (v?.status === "approved") {
-      ++allowedCount;
-    } else if (v?.status === "declined") {
-      ++notAllowedCount;
-    } else if (v?.status === "updated") {
-      ++updatedCount;
-    }
-  });
+  // filteredData?.forEach((v) => {
+  //   if (v?.status === "pending") {
+  //     ++waitingCount;
+  //   } else if (v?.status === "approved") {
+  //     ++allowedCount;
+  //   } else if (v?.status === "declined") {
+  //     ++notAllowedCount;
+  //   } else if (v?.status === "updated") {
+  //     ++updatedCount;
+  //   }
+  // });
 
   // -----------------
 
@@ -85,16 +86,16 @@ export default function SellersList() {
   // ------- sellers context
   const [showSellers, setShowSellers] = useContext(SellersContext);
 
-  let dataCount = 0;
-  if (showSellers === "pending") {
-    dataCount = waitingCount;
-  } else if (showSellers === "approved") {
-    dataCount = allowedCount;
-  } else if (showSellers === "declined") {
-    dataCount = notAllowedCount;
-  } else if (showSellers === "updated") {
-    dataCount = updatedCount;
-  }
+  let dataCount = 1;
+  // if (showSellers === "pending") {
+  //   dataCount = waitingCount;
+  // } else if (showSellers === "approved") {
+  //   dataCount = allowedCount;
+  // } else if (showSellers === "declined") {
+  //   dataCount = notAllowedCount;
+  // } else if (showSellers === "updated") {
+  //   dataCount = updatedCount;
+  // }
 
   let index = 0;
 
@@ -214,7 +215,7 @@ export default function SellersList() {
           } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Ожидающие продавцы</div>{" "}
-          <div>({waitingCount})</div>
+          <div>({data?.pending_sellers?.length})</div>
         </div>
         <div
           onClick={() => {
@@ -228,7 +229,7 @@ export default function SellersList() {
           } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Одобренные продавцы</div>{" "}
-          <div> ({allowedCount})</div>
+          <div> ({data?.approved_sellers?.length})</div>
         </div>
         <div
           onClick={() => {
@@ -242,7 +243,7 @@ export default function SellersList() {
           } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Отказанные продавцы</div>{" "}
-          <div>({notAllowedCount})</div>
+          <div>({data?.declined_sellers?.length})</div>
         </div>
         <div
           onClick={() => {
@@ -256,13 +257,13 @@ export default function SellersList() {
           } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]"> Обновленные продавцы</div>{" "}
-          <div>({updatedCount})</div>
+          <div>({data?.updated_sellers?.length})</div>
         </div>
       </div>
 
       <div className="w-full mt-4">
         {/* Mobile selected */}
-        {dataCount > 0 ? (
+        {/* {dataCount > 0 ? (
           <div className="w-full md:hidden flex items-center justify-between pb-[24px]">
             <div className=" font-AeonikProMedium text-[13px] ls:text-[13px] ll:text-[13px] md:text-lg text-mobileTextColor">
               Выбранные:
@@ -364,7 +365,7 @@ export default function SellersList() {
               ) : null}
             </div>
           </div>
-        ) : null}
+        ) : null} */}
 
         <div className="hidden w-full md:flex items-center justify-between gap-x-1">
           <div className="w-fit md:w-full flex items-center justify-between gap-x-1 md:mb-[0]">
@@ -373,7 +374,7 @@ export default function SellersList() {
                 Общее количество:
               </span>
               <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
-                {data?.length}
+                {/* {data?.length} */}
               </span>
             </div>
             {/* Выбранные */}
@@ -516,7 +517,7 @@ export default function SellersList() {
                   Общее количество:
                 </span>
                 <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
-                  {data?.length}
+                  {/* {data?.length} */}
                 </span>
               </div>
               {/* Выбранные */}
@@ -825,90 +826,78 @@ export default function SellersList() {
             {/* Status Waiting */}
 
             {showSellers === "pending"
-              ? filteredData?.map((data) => {
-                  if (data?.status === "pending") {
-                    ++index;
-                    return (
-                      <SellerItems
-                        data={data}
-                        key={data?.id}
-                        index={index}
-                        setModalOpen={setModalOpen}
-                        toast={toast}
-                        showSellers={showSellers}
-                        setMassiveCheckeds={setMassiveCheckeds}
-                        massiveCheckeds={massiveCheckeds}
-                        allChecked={allChecked}
-                        setSomeChecked={setSomeChecked}
-                      />
-                    );
-                  }
+              ? data?.pending_sellers?.map((data, i) => {
+                  return (
+                    <SellerItems
+                      data={data}
+                      key={data?.id}
+                      index={i + 1}
+                      setModalOpen={setModalOpen}
+                      toast={toast}
+                      showSellers={showSellers}
+                      setMassiveCheckeds={setMassiveCheckeds}
+                      massiveCheckeds={massiveCheckeds}
+                      allChecked={allChecked}
+                      setSomeChecked={setSomeChecked}
+                    />
+                  );
                 })
               : null}
             {/* Status Allowed */}
             {showSellers === "approved"
-              ? filteredData?.map((data) => {
-                  if (data?.status === "approved") {
-                    ++index;
-                    return (
-                      <SellerItems
-                        data={data}
-                        key={data?.id}
-                        index={index}
-                        setModalOpen={setModalOpen}
-                        toast={toast}
-                        setMassiveCheckeds={setMassiveCheckeds}
-                        massiveCheckeds={massiveCheckeds}
-                        showSellers={showSellers}
-                        allChecked={allChecked}
-                        setSomeChecked={setSomeChecked}
-                      />
-                    );
-                  }
+              ? data?.approved_sellers?.map((data, i) => {
+                  return (
+                    <SellerItems
+                      data={data}
+                      key={data?.id}
+                      index={i + 1}
+                      setModalOpen={setModalOpen}
+                      toast={toast}
+                      setMassiveCheckeds={setMassiveCheckeds}
+                      massiveCheckeds={massiveCheckeds}
+                      showSellers={showSellers}
+                      allChecked={allChecked}
+                      setSomeChecked={setSomeChecked}
+                    />
+                  );
                 })
               : null}
             {/* Status NotAllowed */}
             {showSellers === "declined"
-              ? filteredData?.map((data) => {
-                  if (data?.status === "declined") {
-                    ++index;
-                    return (
-                      <SellerItems
-                        data={data}
-                        key={data?.id}
-                        index={index}
-                        setModalOpen={setModalOpen}
-                        toast={toast}
-                        setMassiveCheckeds={setMassiveCheckeds}
-                        massiveCheckeds={massiveCheckeds}
-                        showSellers={showSellers}
-                        allChecked={allChecked}
-                        setSomeChecked={setSomeChecked}
-                      />
-                    );
-                  }
+              ? data?.declined_sellers?.map((data, i) => {
+                  return (
+                    <SellerItems
+                      data={data}
+                      key={data?.id}
+                      index={i + 1}
+                      setModalOpen={setModalOpen}
+                      toast={toast}
+                      setMassiveCheckeds={setMassiveCheckeds}
+                      massiveCheckeds={massiveCheckeds}
+                      showSellers={showSellers}
+                      allChecked={allChecked}
+                      setSomeChecked={setSomeChecked}
+                    />
+                  );
                 })
               : null}
             {/* Status NotAllowed */}
             {showSellers === "updated"
-              ? filteredData?.map((data) => {
-                  if (data?.status === "updated") {
-                    ++index;
-                    return (
-                      <SellerItems
-                        data={data}
-                        key={data?.id}
-                        index={index}
-                        setModalOpen={setModalOpen}
-                        toast={toast}
-                        setMassiveCheckeds={setMassiveCheckeds}
-                        massiveCheckeds={massiveCheckeds}
-                        showSellers={showSellers}
-                        allChecked={allChecked}
-                        setSomeChecked={setSomeChecked}
-                      />
-                    );
-                  }
+              ? data?.updated_sellers?.map((data, i) => {
+                  return (
+                    <SellerItems
+                      data={data}
+                      key={data?.id}
+                      index={i + 1}
+                      setModalOpen={setModalOpen}
+                      toast={toast}
+                      setMassiveCheckeds={setMassiveCheckeds}
+                      massiveCheckeds={massiveCheckeds}
+                      showSellers={showSellers}
+                      allChecked={allChecked}
+                      setSomeChecked={setSomeChecked}
+                    />
+                  );
                 })
               : null}
           </div>
