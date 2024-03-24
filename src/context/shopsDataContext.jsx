@@ -1,21 +1,21 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
-// import { ReFreshTokenContext } from "./reFreshToken";
+import { createContext, useContext, useEffect, useState } from "react";
+import { ReFreshTokenContext } from "./reFreshToken";
 
 export const ShopsDataContext = createContext();
 
 export const ShopsDataContextProvider = ({ children }) => {
-  const [loaderShop, setLoaderShop] = useState(true);
+  const [loader, setLoader] = useState(true);
 
   const [dataShops, setDataShops] = useState([]);
 
-  // const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
+  const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
   const url = "https://api.dressme.uz";
 
   setTimeout(() => {
-    setLoaderShop(false);
+    setLoader(false);
   }, 2000);
 
   useEffect(() => {
@@ -25,8 +25,8 @@ export const ShopsDataContextProvider = ({ children }) => {
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
       }).then((d) => {
-        setDataShops(d?.data);
-        setLoaderShop(false);
+        setDataShops(d?.data?.sellers_shops);
+        setLoader(false);
       });
     }
   }, []);
@@ -37,11 +37,14 @@ export const ShopsDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
-      setDataShops(d?.data);
+      setDataShops(d?.data?.sellers_shops);
     });
   };
+
   return (
-    <ShopsDataContext.Provider value={[dataShops, loaderShop, reFetch]}>
+    <ShopsDataContext.Provider
+      value={[dataShops, setDataShops, reFetch, loader, setLoader]}
+    >
       {children}
     </ShopsDataContext.Provider>
   );

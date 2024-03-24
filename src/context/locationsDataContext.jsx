@@ -23,7 +23,7 @@ export const LocationsDataContextProvider = ({ children }) => {
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },
       }).then((d) => {
-        setData(d?.data);
+        setData(d?.data?.sellers_locations);
         setLoader(false);
       });
     }
@@ -35,13 +35,13 @@ export const LocationsDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
-      setData(d?.data);
+      setData(d?.data?.sellers_locations);
     });
   };
 
   return (
     <LocationsDataContext.Provider
-      value={[data, loader ]}
+      value={[data, setData, reFetch, loader, setLoader]}
     >
       {children}
     </LocationsDataContext.Provider>

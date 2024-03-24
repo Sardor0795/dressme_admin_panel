@@ -27,10 +27,8 @@ import { ReFreshTokenContext } from "../../../context/reFreshToken";
 export default function LocationsList() {
   const url = "https://api.dressme.uz";
   const [modalOpen, setModalOpen] = useState(false);
-  const [showSellers, setShowSellers] = useContext(SellersContext);
 
   const [data, setData, , loader] = useContext(LocationsDataContext);
-  const [searchName, setSearchName] = useState("");
 
   const [, , reFetch] = useContext(LocationsDataContext);
   const [, , clothesReFetch] = useContext(ClothesDataContext);
@@ -41,110 +39,56 @@ export default function LocationsList() {
   let newData = data;
 
   const [filteredData, setFilteredData] = useState([]);
-  // (data, 'data');
+
   useEffect(() => {
     setFilteredData(newData);
   }, [newData]);
 
-  
+  const filterFunc = (e) => {
+    const filtered = data?.map((seller) => {
+      const filteredShops = seller?.shops?.map((shop) => {
+        const filteredProducts = shop?.shop_locations.filter((product) => {
+          let addres = product?.address;
+          let region = product?.region?.name_ru;
+          let sub_region = product?.sub_region?.name_ru;
+          return (
+            addres.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            region.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            sub_region.toLowerCase().includes(e.target.value.toLowerCase())
+          );
+        });
 
-  const [shopIdList, setShopIdList] = useState([]);
-  useEffect(() => {
-    if (showSellers === "approved") {
-      setShopIdList([])
-      data?.approved_locations?.map((value1) => {
-        value1?.shops?.map(value2 => {
-          value2?.shop_locations?.map(value3 => {
-            // console.log(value3,'value3');
-            if (searchName) {
-              if (
-                value3?.address.toLowerCase().includes(searchName.toLowerCase()) ||
-                value3?.region?.name_ru?.toLowerCase().includes(searchName.toLowerCase()) ||
-                value3?.sub_region?.name_ru?.toLowerCase().includes(searchName.toLowerCase())
-              ) {
-                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
-              }
-            } else if (!searchName) {
-              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
-            }
-          })
-        })
-      })
+        return { ...shop, shop_locations: filteredProducts };
+      });
 
-    }
-    if (showSellers === "pending") {
-      setShopIdList([])
-      data?.pending_locations?.map((value1) => {
-        value1?.shops?.map(value2 => {
-          value2?.shop_locations?.map(value3 => {
-            if (searchName) {
-              if (
-                value3?.address.toLowerCase().includes(searchName.toLowerCase()) ||
-                value3?.region?.name_ru?.toLowerCase().includes(searchName.toLowerCase()) ||
-                value3?.sub_region?.name_ru?.toLowerCase().includes(searchName.toLowerCase())
-              ) {
-                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
-              }
-            } else if (!searchName) {
-              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
-            }
-          })
-        })
-      })
-    }
-    if (showSellers === "declined") {
-      setShopIdList([])
-      data?.declined_locations?.map((value1) => {
-        value1?.shops?.map(value2 => {
-          value2?.shop_locations?.map(value3 => {
-            if (searchName) {
-              if (
-                value3?.address.toLowerCase().includes(searchName.toLowerCase()) ||
-                value3?.region?.name_ru?.toLowerCase().includes(searchName.toLowerCase()) ||
-                value3?.sub_region?.name_ru?.toLowerCase().includes(searchName.toLowerCase())
-              ) {
-                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
-              }
-            } else if (!searchName) {
-              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
-            }
-          })
-        })
-      })
-    }
-    if (showSellers === "updated") {
-      setShopIdList([])
-      data?.updated_locations?.map((value1) => {
-        value1?.shops?.map(value2 => {
-          value2?.shop_locations?.map(value3 => {
-            if (searchName) {
-              if (
-                value3?.address.toLowerCase().includes(searchName.toLowerCase()) ||
-                value3?.region?.name_ru?.toLowerCase().includes(searchName.toLowerCase()) ||
-                value3?.sub_region?.name_ru?.toLowerCase().includes(searchName.toLowerCase())
-              ) {
-                setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
-              }
-            } else if (!searchName) {
-              setShopIdList((shopIdList) => [...shopIdList, Number(value1?.id)]);
-            }
-          })
-        })
-      })
-    }
+      return { ...seller, shops: filteredShops };
+    });
 
-  }, [showSellers, searchName, data])
-  useEffect(() => {
-    return () => {
-      setSearchName("")
-    }
-  }, [showSellers])
+    setFilteredData(filtered);
+  };
 
-  let waitingCount = data?.pending_locations?.length;
-  let allowedCount = data?.approved_locations?.length;
-  let notAllowedCount = data?.declined_locations?.length;
-  let updatedCount = data?.updated_locations?.length;
+  // // Count items -----------
 
+  let waitingCount = 0;
+  let allowedCount = 0;
+  let notAllowedCount = 0;
+  let updatedCount = 0;
+
+  filteredData?.forEach((seller) => {
+    seller?.shops?.forEach((shop) => {
+      shop?.shop_locations?.forEach((product) => {
+        if (product?.status === "pending") {
+          ++waitingCount;
+        } else if (product?.status === "approved") {
+          ++allowedCount;
+        } else if (product?.status === "declined") {
+          ++notAllowedCount;
+        } else if (product?.status === "updated") {
+          ++updatedCount;
+        }
+      });
+    });
+  });
 
   let allCount = waitingCount + allowedCount + notAllowedCount + updatedCount;
 
@@ -157,6 +101,7 @@ export default function LocationsList() {
   }, []);
 
   // Products Context
+  const [showSellers, setShowSellers] = useContext(SellersContext);
 
   let dataCount = 0;
   if (showSellers === "pending") {
@@ -200,10 +145,8 @@ export default function LocationsList() {
   const shopIdCheck = (id) => {
     const idString = id.toString();
 
-    let productIDs = []
-
-    if (showSellers === "approved") {
-      productIDs = filteredData?.approved_locations?.flatMap((seller) => {
+    const productIDs = filteredData
+      ?.flatMap((seller) => {
         return seller?.shops?.flatMap((shop) => {
           // Filter products by shop_id
           const filteredProducts = shop?.shop_locations?.filter((product) => {
@@ -220,68 +163,7 @@ export default function LocationsList() {
           return matchingProductIDs;
         });
       })
-        .flat();
-    }
-    if (showSellers === "declined") {
-      productIDs = filteredData?.declined_locations?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.shop_locations?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
-
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
-
-          return matchingProductIDs;
-        });
-      })
-        .flat();
-    }
-    if (showSellers === "updated") {
-      productIDs = filteredData?.updated_locations?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.shop_locations?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
-
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
-
-          return matchingProductIDs;
-        });
-      })
-        .flat();
-    }
-    if (showSellers === "pending") {
-      productIDs = filteredData?.pending_locations?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.shop_locations?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
-
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
-
-          return matchingProductIDs;
-        });
-      })
-        .flat();
-    }
+      .flat(); // Flatten the array of arrays
 
     // Set the array of product IDs
     setMassiveCheckeds([...massiveCheckeds, ...productIDs]);
@@ -290,16 +172,15 @@ export default function LocationsList() {
   const delCheck = (id) => {
     const idString = id.toString();
 
-    let productIDs = []
-
-    if (showSellers === "approved") {
-      productIDs = filteredData?.approved_locations?.flatMap((seller) => {
+    const productIDs = filteredData
+      ?.flatMap((seller) => {
         return seller?.shops?.flatMap((shop) => {
           // Filter products by shop_id
           const filteredProducts = shop?.shop_locations?.filter((product) => {
             // Convert shop_id to string for comparison
             return product?.shop_id === idString;
           });
+
           // Extract product IDs if shop_id matches
           const matchingProductIDs = filteredProducts?.map((product) => {
             // Convert product ID to number
@@ -309,65 +190,9 @@ export default function LocationsList() {
           return matchingProductIDs;
         });
       })
-        .flat();
-    }
-    if (showSellers === "declined") {
-      productIDs = filteredData?.declined_locations?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.shop_locations?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
+      .flat(); // Flatten the array of arrays
 
-          return matchingProductIDs;
-        });
-      })
-        .flat();
-    }
-    if (showSellers === "updated") {
-      productIDs = filteredData?.updated_locations?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.shop_locations?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
-
-          return matchingProductIDs;
-        });
-      })
-        .flat();
-    }
-    if (showSellers === "pending") {
-      productIDs = filteredData?.pending_locations?.flatMap((seller) => {
-        return seller?.shops?.flatMap((shop) => {
-          // Filter products by shop_id
-          const filteredProducts = shop?.shop_locations?.filter((product) => {
-            // Convert shop_id to string for comparison
-            return product?.shop_id === idString;
-          });
-          // Extract product IDs if shop_id matches
-          const matchingProductIDs = filteredProducts?.map((product) => {
-            // Convert product ID to number
-            return parseInt(product?.id);
-          });
-
-          return matchingProductIDs;
-        });
-      })
-        .flat();
-    }
+    // Set the array of product IDs
 
     const filteredArray = massiveCheckeds.filter(
       (num) => !productIDs.includes(num)
@@ -377,55 +202,21 @@ export default function LocationsList() {
   };
 
   const selectAllIds = () => {
-    let result = []
-    if (showSellers === "pending") {
-      result = filteredData?.pending_locations?.reduce((acc, seller) => {
+    const result = filteredData?.reduce(
+      (acc, seller) => {
         seller?.shops?.forEach((shop) => {
-          acc?.productIDs?.push(...shop?.shop_locations?.filter((product) => product?.status === showSellers)?.map((product) => parseInt(product?.id))
+          acc?.productIDs?.push(
+            ...shop?.shop_locations
+              .filter((product) => product?.status === showSellers)
+              .map((product) => parseInt(product?.id))
           );
           acc?.shopIDs?.push(parseInt(shop?.id));
         });
         return acc;
       },
-        { productIDs: [], shopIDs: [] }
-      );
-    }
-    if (showSellers === "approved") {
-      result = filteredData?.approved_locations?.reduce((acc, seller) => {
-        seller?.shops?.forEach((shop) => {
-          acc?.productIDs?.push(...shop?.shop_locations?.filter((product) => product?.status === showSellers)?.map((product) => parseInt(product?.id))
-          );
-          acc?.shopIDs?.push(parseInt(shop?.id));
-        });
-        return acc;
-      },
-        { productIDs: [], shopIDs: [] }
-      );
-    }
-    if (showSellers === "declined") {
-      result = filteredData?.declined_locations?.reduce((acc, seller) => {
-        seller?.shops?.forEach((shop) => {
-          acc?.productIDs?.push(...shop?.shop_locations?.filter((product) => product?.status === showSellers)?.map((product) => parseInt(product?.id))
-          );
-          acc?.shopIDs?.push(parseInt(shop?.id));
-        });
-        return acc;
-      },
-        { productIDs: [], shopIDs: [] }
-      );
-    }
-    if (showSellers === "updated") {
-      result = filteredData?.updated_locations?.reduce((acc, seller) => {
-        seller?.shops?.forEach((shop) => {
-          acc?.productIDs?.push(...shop?.shop_locations?.filter((product) => product?.status === showSellers)?.map((product) => parseInt(product?.id))
-          );
-          acc?.shopIDs?.push(parseInt(shop?.id));
-        });
-        return acc;
-      },
-        { productIDs: [], shopIDs: [] }
-      );
-    }
+      { productIDs: [], shopIDs: [] }
+    );
+
     // Set the arrays
     setMassiveCheckeds([...result.productIDs]);
     setCheckedShops([...result.shopIDs]);
@@ -475,11 +266,7 @@ export default function LocationsList() {
     <div>
       <div className="fixed md:static bg-white w-full z-10 top-0 px-4 md:mb-[15px] left-0 right-0 md:border-b py-[18px] flex items-center justify-between">
         <div className="block md:hidden w-full">
-          <PhoneNavbar  
-          
-          filterFuncCloThes={"location"}
-          searchName={searchName}
-          setSearchName={setSearchName}/>
+          <PhoneNavbar filterFuncCloThes={filterFunc} />
         </div>
 
         {showSellers === "pending" ? (
@@ -510,9 +297,7 @@ export default function LocationsList() {
             placeholder="Поиск"
             required
             inputMode="search"
-            // onChange={(e) => filterFunc(e)}
-            value={searchName}
-            onChange={(e) => setSearchName(e?.target?.value)}
+            onChange={(e) => filterFunc(e)}
           />
           <button className="bg-[#F7F7F7] h-full w-[50px] rounded-r-lg flex items-center justify-center absolute top-0 right-0 active:scale-90">
             <SearchIcon />
@@ -545,10 +330,11 @@ export default function LocationsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -562,10 +348,11 @@ export default function LocationsList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#E51515]"
-                      : "text-[#85444485] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#E51515]"
+                        : "text-[#85444485] cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -581,10 +368,11 @@ export default function LocationsList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#E51515]"
-                      : "text-[#85444485] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#E51515]"
+                        : "text-[#85444485] cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -598,10 +386,11 @@ export default function LocationsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -616,10 +405,11 @@ export default function LocationsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -636,10 +426,11 @@ export default function LocationsList() {
               setAllChecked(false);
               setShowSellers("pending");
             }}
-            className={`${showSellers === "pending"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-              } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${
+              showSellers === "pending"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Ожидающие локации</div>{" "}
             <div>({waitingCount})</div>
@@ -649,10 +440,11 @@ export default function LocationsList() {
               setAllChecked(false);
               setShowSellers("approved");
             }}
-            className={`${showSellers === "approved"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-              } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${
+              showSellers === "approved"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Одобренные локации</div>{" "}
             <div>({allowedCount})</div>
@@ -662,10 +454,11 @@ export default function LocationsList() {
               setAllChecked(false);
               setShowSellers("declined");
             }}
-            className={`${showSellers === "declined"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-              } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${
+              showSellers === "declined"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Отказанные локации</div>{" "}
             <div>({notAllowedCount})</div>
@@ -675,10 +468,11 @@ export default function LocationsList() {
               setAllChecked(false);
               setShowSellers("updated");
             }}
-            className={`${showSellers === "updated"
-              ? "text-[#007DCA] border-[#007DCA]"
-              : "text-[#303030] border-[#F2F2F2]"
-              } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
+            className={`${
+              showSellers === "updated"
+                ? "text-[#007DCA] border-[#007DCA]"
+                : "text-[#303030] border-[#F2F2F2]"
+            } border-b pb-[12px] text-center text-[13px] ll:text-[14px] px-[2x] cursor-pointer font-AeonikProRegular`}
           >
             <div className="mb-[3px]">Обновленные локации</div>{" "}
             <div>({updatedCount})</div>
@@ -696,14 +490,16 @@ export default function LocationsList() {
             >
               Выбрать все
               <div
-                className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${allChecked
-                  ? "bg-[#007DCA] border-[#007DCA]"
-                  : "bg-white border-checkboxBorder"
-                  } flex items-center justify-center rounded`}
+                className={`ml-[8px] cursor-pointer min-w-[18px] min-h-[18px] border border-checkboxBorder ${
+                  allChecked
+                    ? "bg-[#007DCA] border-[#007DCA]"
+                    : "bg-white border-checkboxBorder"
+                } flex items-center justify-center rounded`}
               >
                 <span
-                  className={`${allChecked ? "flex items-center justify-center" : "hidden"
-                    }`}
+                  className={`${
+                    allChecked ? "flex items-center justify-center" : "hidden"
+                  }`}
                 >
                   <CheckIcon size={"small"} />
                 </span>
@@ -728,10 +524,11 @@ export default function LocationsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -745,10 +542,11 @@ export default function LocationsList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#E51515]"
-                      : "text-[#85444485] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#E51515]"
+                        : "text-[#85444485] cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -764,10 +562,11 @@ export default function LocationsList() {
                       }
                     }}
                     type="button"
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#E51515]"
-                      : "text-[#85444485] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#E51515]"
+                        : "text-[#85444485] cursor-not-allowed"
+                    }`}
                   >
                     Отказать
                   </button>
@@ -781,10 +580,11 @@ export default function LocationsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -799,10 +599,11 @@ export default function LocationsList() {
                         allApproveFunc();
                       }
                     }}
-                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${massiveCheckeds?.length > 0
-                      ? "text-[#12C724]"
-                      : "text-[#12c7245e] cursor-not-allowed"
-                      }`}
+                    className={`text-[13px] md:text-lg not-italic font-AeonikProMedium ${
+                      massiveCheckeds?.length > 0
+                        ? "text-[#12C724]"
+                        : "text-[#12c7245e] cursor-not-allowed"
+                    }`}
                     type="button"
                   >
                     Одобрить
@@ -821,10 +622,11 @@ export default function LocationsList() {
                 setAllChecked(false);
                 setShowSellers("pending");
               }}
-              className={`${showSellers === "pending"
-                ? "text-weatherWinterColor border-[1.5px]"
-                : "text[#303030]"
-                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${
+                showSellers === "pending"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <WaitingForAllowIcon />
@@ -838,10 +640,11 @@ export default function LocationsList() {
                 setAllChecked(false);
                 setShowSellers("approved");
               }}
-              className={`${showSellers === "approved"
-                ? "text-weatherWinterColor border-[1.5px]"
-                : "text[#303030]"
-                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${
+                showSellers === "approved"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <AllowedIcon />
@@ -855,10 +658,11 @@ export default function LocationsList() {
                 setAllChecked(false);
                 setShowSellers("declined");
               }}
-              className={`${showSellers === "declined"
-                ? "text-weatherWinterColor border-[1.5px]"
-                : "text[#303030]"
-                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${
+                showSellers === "declined"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <NotAllowedIcon />
@@ -872,10 +676,11 @@ export default function LocationsList() {
                 setAllChecked(false);
                 setShowSellers("updated");
               }}
-              className={`${showSellers === "updated"
-                ? "text-weatherWinterColor border-[1.5px]"
-                : "text[#303030]"
-                }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
+              className={`${
+                showSellers === "updated"
+                  ? "text-weatherWinterColor border-[1.5px]"
+                  : "text[#303030]"
+              }  text-[16px] leading-none not-italic font-AeonikProMedium	 border-weatherWinterColor w-[260px] h-[44px] rounded-lg flex items-center justify-center gap-x-1`}
             >
               <span className="mr-[5px]">
                 <EditedIcon />
@@ -892,32 +697,33 @@ export default function LocationsList() {
           >
             Выбрать все
             <div
-              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${allChecked
-                ? "bg-[#007DCA] border-[#007DCA]"
-                : "bg-white border-checkboxBorder"
-                } hidden md:flex items-center justify-center rounded ml-[10px]`}
+              className={`cursor-pointer min-w-[24px] min-h-[24px] border border-checkboxBorder ${
+                allChecked
+                  ? "bg-[#007DCA] border-[#007DCA]"
+                  : "bg-white border-checkboxBorder"
+              } hidden md:flex items-center justify-center rounded ml-[10px]`}
             >
               <span
-                className={`${allChecked ? "flex items-center justify-center" : "hidden"
-                  }`}
+                className={`${
+                  allChecked ? "flex items-center justify-center" : "hidden"
+                }`}
               >
                 <CheckIcon />
               </span>
             </div>
           </div>
         </div>
-        <div className="w-full  ">
 
-          {dataCount ? (
-            filteredData?.pending_locations?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
-              return (
-                <div className="w-full  " key={item?.id}>
-                  <div className="mx-auto font-AeonikProRegular text-[16px] ">
-                    <div className="w-full ">
-                      {/* Status Waiting */}
+        {dataCount ? (
+          filteredData?.map((item) => {
+            return (
+              <div className="w-full" key={item?.id}>
+                <div className="mx-auto font-AeonikProRegular text-[16px]">
+                  <div className="w-full ">
+                    {/* Status Waiting */}
 
-                      {showSellers === "pending"
-                        ? item?.shops?.map((item_2) => {
+                    {showSellers === "pending"
+                      ? item?.shops?.map((item_2) => {
                           let index = 0;
                           let productLength = 0;
                           item_2?.shop_locations?.forEach((v) => {
@@ -975,30 +781,33 @@ export default function LocationsList() {
                                                         }}
                                                       >
                                                         <div
-                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                            } flex items-center justify-center rounded mr-[8px]`}
-                                                        >
-                                                          <span
-                                                            className={`${checkedShops?.includes(
+                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                                            checkedShops?.includes(
                                                               item_2?.id
                                                             )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
+                                                              ? "bg-[#007DCA] border-[#007DCA]"
+                                                              : "bg-white border-checkboxBorder"
+                                                          } flex items-center justify-center rounded mr-[8px]`}
+                                                        >
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "hidden md:flex items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
                                                           >
                                                             <CheckIcon />
                                                           </span>
                                                           <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "flex md:hidden items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
                                                           >
                                                             <CheckIcon
                                                               size={"small"}
@@ -1081,43 +890,12 @@ export default function LocationsList() {
                             </div>
                           );
                         })
-                        : null}
+                      : null}
 
+                    {/* Status Allowed */}
 
-                    </div>
-                  </div>
-                </div>
-              );
-            })
-          ) : showSellers === "pending" ?
-            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-              {loader ? (
-                <div
-                  style={{
-                    backgroundImage: `url('${WiFiLoader}')`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center center",
-                  }}
-                  className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
-                ></div>
-              ) : (
-                <div className="font-AeonikProMedium text-xl">Нет локаций</div>
-              )}
-            </div> : null
-          }
-          {dataCount ? (
-            filteredData?.approved_locations?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
-              // console.log(item, 'item approved_locations');
-
-              return (
-                <div className="w-full  " key={item?.id}>
-                  <div className="mx-auto font-AeonikProRegular text-[16px] ">
-                    <div className="w-full ">
-                      {/* Status Allowed */}
-
-                      {showSellers === "approved"
-                        ? item?.shops?.map((item_2) => {
+                    {showSellers === "approved"
+                      ? item?.shops?.map((item_2) => {
                           let index = 0;
                           let productLength = 0;
                           item_2?.shop_locations?.forEach((v) => {
@@ -1175,30 +953,33 @@ export default function LocationsList() {
                                                         }}
                                                       >
                                                         <div
-                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                            } flex items-center justify-center rounded mr-[8px]`}
-                                                        >
-                                                          <span
-                                                            className={`${checkedShops?.includes(
+                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                                            checkedShops?.includes(
                                                               item_2?.id
                                                             )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
+                                                              ? "bg-[#007DCA] border-[#007DCA]"
+                                                              : "bg-white border-checkboxBorder"
+                                                          } flex items-center justify-center rounded mr-[8px]`}
+                                                        >
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "hidden md:flex items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
                                                           >
                                                             <CheckIcon />
                                                           </span>
                                                           <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "flex md:hidden items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
                                                           >
                                                             <CheckIcon
                                                               size={"small"}
@@ -1281,43 +1062,12 @@ export default function LocationsList() {
                             </div>
                           );
                         })
-                        : null}
+                      : null}
 
+                    {/* Status NotAllowed */}
 
-                    </div>
-                  </div>
-                </div>
-              );
-            })
-          ) :
-            showSellers === "approved" ?
-              <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-                {loader ? (
-                  <div
-                    style={{
-                      backgroundImage: `url('${WiFiLoader}')`,
-                      backgroundSize: "cover",
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "center center",
-                    }}
-                    className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
-                  ></div>
-                ) : (
-                  <div className="font-AeonikProMedium text-xl">Нет локаций</div>
-                )}
-              </div> : null
-          }
-          {dataCount ? (
-            filteredData?.declined_locations?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
-              return (
-                <div className="w-full  " key={item?.id}>
-                  <div className="mx-auto font-AeonikProRegular text-[16px] ">
-                    <div className="w-full ">
-
-                      {/* Status NotAllowed */}
-
-                      {showSellers === "declined"
-                        ? item?.shops?.map((item_2) => {
+                    {showSellers === "declined"
+                      ? item?.shops?.map((item_2) => {
                           let index = 0;
                           let productLength = 0;
                           item_2?.shop_locations?.forEach((v) => {
@@ -1375,30 +1125,33 @@ export default function LocationsList() {
                                                         }}
                                                       >
                                                         <div
-                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                            } flex items-center justify-center rounded mr-[8px]`}
-                                                        >
-                                                          <span
-                                                            className={`${checkedShops?.includes(
+                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                                            checkedShops?.includes(
                                                               item_2?.id
                                                             )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
+                                                              ? "bg-[#007DCA] border-[#007DCA]"
+                                                              : "bg-white border-checkboxBorder"
+                                                          } flex items-center justify-center rounded mr-[8px]`}
+                                                        >
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "hidden md:flex items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
                                                           >
                                                             <CheckIcon />
                                                           </span>
                                                           <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "flex md:hidden items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
                                                           >
                                                             <CheckIcon
                                                               size={"small"}
@@ -1481,42 +1234,12 @@ export default function LocationsList() {
                             </div>
                           );
                         })
-                        : null}
+                      : null}
 
+                    {/* Status Updated */}
 
-                    </div>
-                  </div>
-                </div>
-              );
-            })
-          ) : showSellers === "declined" ?
-            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-              {loader ? (
-                <div
-                  style={{
-                    backgroundImage: `url('${WiFiLoader}')`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center center",
-                  }}
-                  className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
-                ></div>
-              ) : (
-                <div className="font-AeonikProMedium text-xl">Нет локаций</div>
-              )}
-            </div> : null
-          }
-          {dataCount ? (
-            filteredData?.updated_locations?.filter((e) => shopIdList?.includes(e?.id))?.map((item) => {
-              return (
-                <div className="w-full  " key={item?.id}>
-                  <div className="mx-auto font-AeonikProRegular text-[16px] ">
-                    <div className="w-full ">
-
-                      {/* Status Updated */}
-
-                      {showSellers === "updated"
-                        ? item?.shops?.map((item_2) => {
+                    {showSellers === "updated"
+                      ? item?.shops?.map((item_2) => {
                           let index = 0;
                           let productLength = 0;
                           item_2?.shop_locations?.forEach((v) => {
@@ -1574,30 +1297,33 @@ export default function LocationsList() {
                                                         }}
                                                       >
                                                         <div
-                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${checkedShops?.includes(
-                                                            item_2?.id
-                                                          )
-                                                            ? "bg-[#007DCA] border-[#007DCA]"
-                                                            : "bg-white border-checkboxBorder"
-                                                            } flex items-center justify-center rounded mr-[8px]`}
-                                                        >
-                                                          <span
-                                                            className={`${checkedShops?.includes(
+                                                          className={`cursor-pointer min-w-[18px] min-h-[18px] md:min-w-[24px] md:min-h-[24px] border border-checkboxBorder ${
+                                                            checkedShops?.includes(
                                                               item_2?.id
                                                             )
-                                                              ? "hidden md:flex items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
+                                                              ? "bg-[#007DCA] border-[#007DCA]"
+                                                              : "bg-white border-checkboxBorder"
+                                                          } flex items-center justify-center rounded mr-[8px]`}
+                                                        >
+                                                          <span
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "hidden md:flex items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
                                                           >
                                                             <CheckIcon />
                                                           </span>
                                                           <span
-                                                            className={`${checkedShops?.includes(
-                                                              item_2?.id
-                                                            )
-                                                              ? "flex md:hidden items-center justify-center"
-                                                              : "hidden"
-                                                              }`}
+                                                            className={`${
+                                                              checkedShops?.includes(
+                                                                item_2?.id
+                                                              )
+                                                                ? "flex md:hidden items-center justify-center"
+                                                                : "hidden"
+                                                            }`}
                                                           >
                                                             <CheckIcon
                                                               size={"small"}
@@ -1680,31 +1406,31 @@ export default function LocationsList() {
                             </div>
                           );
                         })
-                        : null}
-                    </div>
+                      : null}
                   </div>
                 </div>
-              );
-            })
-          ) : showSellers === "updated" ?
-            <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
-              {loader ? (
-                <div
-                  style={{
-                    backgroundImage: `url('${WiFiLoader}')`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center center",
-                  }}
-                  className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
-                ></div>
-              ) : (
-                <div className="font-AeonikProMedium text-xl">Нет локаций</div>
-              )}
-            </div> : null
-          }
-        </div>
+              </div>
+            );
+          })
+        ) : (
+          <div className="flex items-center justify-center bg-lightBgColor rounded-lg h-[calc(100vh-280px)]">
+            {loader ? (
+              <div
+                style={{
+                  backgroundImage: `url('${WiFiLoader}')`,
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center center",
+                }}
+                className="w-[60px] h-[60px] md:w-[100px] md:h-[100px]"
+              ></div>
+            ) : (
+              <div className="font-AeonikProMedium text-xl">Нет локаций</div>
+            )}
+          </div>
+        )}
       </div>
+
       <CancelModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
 
       <button

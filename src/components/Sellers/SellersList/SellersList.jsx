@@ -35,35 +35,10 @@ export default function SellersList() {
   const [, , clothesReFetch] = useContext(ClothesDataContext);
   const [reFreshTokenFunc] = useContext(ReFreshTokenContext);
 
-  // ------- sellers context
-  const [showSellers, setShowSellers] = useContext(SellersContext);
-
   const [data, setData, , loader] = useContext(SellersDataContext);
-
-  const allCount =
-    data?.approved_sellers?.length +
-    data?.pending_sellers?.length +
-    data?.declined_sellers?.length +
-    data?.updated_sellers?.length;
-
   const [, setId] = useContext(IdsContext);
 
-  let newData = [];
-
-  let dataCount = 0;
-  if (showSellers === "pending") {
-    dataCount = data?.pending_sellers?.length;
-    newData = data?.pending_sellers;
-  } else if (showSellers === "approved") {
-    dataCount = data?.approved_sellers?.length;
-    newData = data?.approved_sellers;
-  } else if (showSellers === "declined") {
-    dataCount = data?.declined_sellers?.length;
-    newData = data?.declined_sellers;
-  } else if (showSellers === "updated") {
-    dataCount = data?.updated_sellers?.length;
-    newData = data?.updated_sellers;
-  }
+  let newData = data;
 
   const url = "https://api.dressme.uz";
 
@@ -74,28 +49,30 @@ export default function SellersList() {
   }, [newData]);
 
   const filterFunc = (e) => {
-    if (showSellers === "pending") {
-      const filteredData = data?.pending_sellers?.filter((v) =>
-        v?.name.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      setFilteredData(filteredData);
-    } else if (showSellers === "approved") {
-      const filteredData = data?.approved_sellers?.filter((v) =>
-        v?.name.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      setFilteredData(filteredData);
-    } else if (showSellers === "declined") {
-      const filteredData = data?.declined_sellers?.filter((v) =>
-        v?.name.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      setFilteredData(filteredData);
-    } else if (showSellers === "updated") {
-      const filteredData = data?.updated_sellers?.filter((v) =>
-        v?.name.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      setFilteredData(filteredData);
-    }
+    const filteredData = data?.filter((v) =>
+      v?.name.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredData(filteredData);
   };
+
+  // Count items -----------
+
+  let waitingCount = 0;
+  let allowedCount = 0;
+  let notAllowedCount = 0;
+  let updatedCount = 0;
+
+  filteredData?.forEach((v) => {
+    if (v?.status === "pending") {
+      ++waitingCount;
+    } else if (v?.status === "approved") {
+      ++allowedCount;
+    } else if (v?.status === "declined") {
+      ++notAllowedCount;
+    } else if (v?.status === "updated") {
+      ++updatedCount;
+    }
+  });
 
   // -----------------
 
@@ -104,6 +81,22 @@ export default function SellersList() {
       top: 0,
     });
   }, []);
+
+  // ------- sellers context
+  const [showSellers, setShowSellers] = useContext(SellersContext);
+
+  let dataCount = 0;
+  if (showSellers === "pending") {
+    dataCount = waitingCount;
+  } else if (showSellers === "approved") {
+    dataCount = allowedCount;
+  } else if (showSellers === "declined") {
+    dataCount = notAllowedCount;
+  } else if (showSellers === "updated") {
+    dataCount = updatedCount;
+  }
+
+  let index = 0;
 
   // up btn
 
@@ -221,7 +214,7 @@ export default function SellersList() {
           } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Ожидающие продавцы</div>{" "}
-          <div>({data?.pending_sellers?.length})</div>
+          <div>({waitingCount})</div>
         </div>
         <div
           onClick={() => {
@@ -235,7 +228,7 @@ export default function SellersList() {
           } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Одобренные продавцы</div>{" "}
-          <div> ({data?.approved_sellers?.length})</div>
+          <div> ({allowedCount})</div>
         </div>
         <div
           onClick={() => {
@@ -249,7 +242,7 @@ export default function SellersList() {
           } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]">Отказанные продавцы</div>{" "}
-          <div>({data?.declined_sellers?.length})</div>
+          <div>({notAllowedCount})</div>
         </div>
         <div
           onClick={() => {
@@ -263,7 +256,7 @@ export default function SellersList() {
           } border-b pb-[12px] text-center text-[13px] ll:text-[14px] cursor-pointer font-AeonikProRegular`}
         >
           <div className="mb-[3pxs]"> Обновленные продавцы</div>{" "}
-          <div>({data?.updated_sellers?.length})</div>
+          <div>({updatedCount})</div>
         </div>
       </div>
 
@@ -380,7 +373,7 @@ export default function SellersList() {
                 Общее количество:
               </span>
               <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
-                {allCount ? allCount : null}
+                {data?.length}
               </span>
             </div>
             {/* Выбранные */}
@@ -523,7 +516,7 @@ export default function SellersList() {
                   Общее количество:
                 </span>
                 <span className="text[#303030] text-[13px] md:text-[20px] not-italic font-AeonikProMedium">
-                  {allCount ? allCount : null}
+                  {data?.length}
                 </span>
               </div>
               {/* Выбранные */}
@@ -676,7 +669,7 @@ export default function SellersList() {
               <span className="mr-[5px]">
                 <WaitingForAllowIcon />
               </span>
-              <span>Ожидающие продавцы ({data?.pending_sellers?.length})</span>
+              <span>Ожидающие продавцы ({waitingCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -694,9 +687,7 @@ export default function SellersList() {
               <span className="mr-[5px]">
                 <AllowedIcon />
               </span>
-              <span>
-                Одобренные продавцы ({data?.approved_sellers?.length})
-              </span>
+              <span>Одобренные продавцы ({allowedCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -714,9 +705,7 @@ export default function SellersList() {
               <span className="mr-[5px]">
                 <NotAllowedIcon />
               </span>
-              <span>
-                Отказанные продавцы ({data?.declined_sellers?.length})
-              </span>
+              <span>Отказанные продавцы ({notAllowedCount})</span>
             </button>
             <span className="w-[1px] h-5 bg-[#C5C5C5] mx-[5px]"></span>
             <button
@@ -734,9 +723,7 @@ export default function SellersList() {
               <span className="mr-[5px]">
                 <EditedIcon />
               </span>
-              <span>
-                Обновленные продавцы ({data?.updated_sellers?.length})
-              </span>
+              <span>Обновленные продавцы ({updatedCount})</span>
             </button>
           </section>
 
@@ -835,22 +822,95 @@ export default function SellersList() {
           )}
 
           <div className="w-full flex flex-col gap-y-[10px]">
-            {filteredData?.map((data, i) => {
-              return (
-                <SellerItems
-                  data={data}
-                  key={data?.id}
-                  index={i + 1}
-                  setModalOpen={setModalOpen}
-                  toast={toast}
-                  showSellers={showSellers}
-                  setMassiveCheckeds={setMassiveCheckeds}
-                  massiveCheckeds={massiveCheckeds}
-                  allChecked={allChecked}
-                  setSomeChecked={setSomeChecked}
-                />
-              );
-            })}
+            {/* Status Waiting */}
+
+            {showSellers === "pending"
+              ? filteredData?.map((data) => {
+                  if (data?.status === "pending") {
+                    ++index;
+                    return (
+                      <SellerItems
+                        data={data}
+                        key={data?.id}
+                        index={index}
+                        setModalOpen={setModalOpen}
+                        toast={toast}
+                        showSellers={showSellers}
+                        setMassiveCheckeds={setMassiveCheckeds}
+                        massiveCheckeds={massiveCheckeds}
+                        allChecked={allChecked}
+                        setSomeChecked={setSomeChecked}
+                      />
+                    );
+                  }
+                })
+              : null}
+            {/* Status Allowed */}
+            {showSellers === "approved"
+              ? filteredData?.map((data) => {
+                  if (data?.status === "approved") {
+                    ++index;
+                    return (
+                      <SellerItems
+                        data={data}
+                        key={data?.id}
+                        index={index}
+                        setModalOpen={setModalOpen}
+                        toast={toast}
+                        setMassiveCheckeds={setMassiveCheckeds}
+                        massiveCheckeds={massiveCheckeds}
+                        showSellers={showSellers}
+                        allChecked={allChecked}
+                        setSomeChecked={setSomeChecked}
+                      />
+                    );
+                  }
+                })
+              : null}
+            {/* Status NotAllowed */}
+            {showSellers === "declined"
+              ? filteredData?.map((data) => {
+                  if (data?.status === "declined") {
+                    ++index;
+                    return (
+                      <SellerItems
+                        data={data}
+                        key={data?.id}
+                        index={index}
+                        setModalOpen={setModalOpen}
+                        toast={toast}
+                        setMassiveCheckeds={setMassiveCheckeds}
+                        massiveCheckeds={massiveCheckeds}
+                        showSellers={showSellers}
+                        allChecked={allChecked}
+                        setSomeChecked={setSomeChecked}
+                      />
+                    );
+                  }
+                })
+              : null}
+            {/* Status NotAllowed */}
+            {showSellers === "updated"
+              ? filteredData?.map((data) => {
+                  if (data?.status === "updated") {
+                    ++index;
+                    return (
+                      <SellerItems
+                        data={data}
+                        key={data?.id}
+                        index={index}
+                        setModalOpen={setModalOpen}
+                        toast={toast}
+                        setMassiveCheckeds={setMassiveCheckeds}
+                        massiveCheckeds={massiveCheckeds}
+                        showSellers={showSellers}
+                        allChecked={allChecked}
+                        setSomeChecked={setSomeChecked}
+                      />
+                    );
+                  }
+                })
+              : null}
           </div>
         </div>
       </div>

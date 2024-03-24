@@ -25,7 +25,7 @@ export const SellersDataContextProvider = ({ children }) => {
         },
       })
         .then((d) => {
-          setData(d?.data);
+          setData(d?.data?.sellers);
           setLoader(false);
         })
         .catch((v) => {
@@ -45,7 +45,7 @@ export const SellersDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
-      setData(d?.data);
+      setData(d?.data?.sellers);
     });
   };
 

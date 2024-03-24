@@ -25,7 +25,7 @@ export const ClothesDataContextProvider = ({ children }) => {
         },
       }).then((d) => {
         if (d?.status === 200) {
-          setData(d?.data);
+          setData(d?.data?.sellers_products?.data);
           setLoader(false);
         }
       });
@@ -38,13 +38,13 @@ export const ClothesDataContextProvider = ({ children }) => {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     }).then((d) => {
-      setData(d?.data);
+      setData(d?.data?.sellers_products?.data);
     });
   };
 
   return (
     <ClothesDataContext.Provider
-      value={[data, loader, reFetch]}
+      value={[data, setData, reFetch, loader, setLoader]}
     >
       {children}
     </ClothesDataContext.Provider>
