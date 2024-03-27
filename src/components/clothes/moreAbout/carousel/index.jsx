@@ -31,6 +31,7 @@ export default function Carousel({ data, height }) {
     url_File2: null,
     changed2: false,
   });
+  console.log(imageTwo, "uuuuuuuuuuu");
   const [imageThree, setImageThree] = useState({
     id3: null,
     product_color_id3: null,
@@ -401,7 +402,7 @@ export default function Carousel({ data, height }) {
                 <div className="h-full flex items-center justify-center ">
                   <div
                     style={{
-                      backgroundImage: `url(${imageOne?.url_photo1})`,
+                      backgroundImage: `url("${imageOne?.url_photo1}")`,
                       backgroundPosition: "center center",
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
@@ -441,7 +442,7 @@ export default function Carousel({ data, height }) {
                 >
                   <div
                     style={{
-                      backgroundImage: `url(${imageTwo?.url_photo2})`,
+                      backgroundImage: `url("${imageTwo?.url_photo2}")`,
                       backgroundPosition: "center center",
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
@@ -503,7 +504,7 @@ export default function Carousel({ data, height }) {
                 >
                   <div
                     style={{
-                      backgroundImage: `url(${imageThree?.url_photo3})`,
+                      backgroundImage: `url("${imageThree?.url_photo3}")`,
                       backgroundPosition: "center center",
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
@@ -565,7 +566,7 @@ export default function Carousel({ data, height }) {
                 >
                   <div
                     style={{
-                      backgroundImage: `url(${imageFour?.url_photo4})`,
+                      backgroundImage: `url("${imageFour?.url_photo4}")`,
                       backgroundPosition: "center center",
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
