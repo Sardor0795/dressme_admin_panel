@@ -119,7 +119,7 @@ export default function ShopsItem({
         key={data?.id}
         className="w-full h-fit md:h-[100px] border border-borderColor md:pr-10 p-[10px] rounded-lg flex md:flex-row flex-col items-center"
       >
-        <div className="w-full md:w-[40%] flex flex-col md:flex-row items-center md:justify-start md:border-0 border-b border-borderColor">
+        <div className="w-full md:w-[35%] flex flex-col md:flex-row items-center md:justify-start md:border-0 border-b border-borderColor">
           <div className="w-full md:w-fit flex items-center justify-between md:justify-start md:pr-7 md:pl-5 text-xl font-AeonikProMedium ">
             <div
               onClick={() => {
@@ -175,8 +175,12 @@ export default function ShopsItem({
               />
             </figure>
             <div className="w-fit flex flex-col ml-5 md:ml-8">
-              <p className="relative md:block hidden max-h-[56px] overflow-hidden w-fit max-w-[350px] break-all md:pr-4 text-[13px] md:w-full ls:text-[14px] xs:text-xl font-AeonikProMedium mb-3">
-                {data?.name || null}
+              <p className="relative md:block hidden max-h-[56px] overflow-hidden w-fit max-w-[350px] break-all md:pr-12 text-[13px] md:w-full ls:text-[14px] xs:text-xl font-AeonikProMedium mb-3">
+                {data?.name || null} Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Voluptate atque fugiat deserunt quia aut
+                voluptas hic odio sapiente? Vero molestiae maxime, adipisci
+                deleniti nihil dolorem omnis exercitationem. Ullam, ea
+                voluptatem?
                 <span className="absolute right-[16px] top-[28px] w-full block linearGr h-[28px]"></span>
               </p>
               <p className="md:hidden w-fit break-all md:pr-4 text-[13px] md:w-full ls:text-[14px] xs:text-xl font-AeonikProMedium mb-3">
@@ -200,7 +204,7 @@ export default function ShopsItem({
             </div>
           </div>
         </div>
-        <div className="w-full md:w-[29%] flex items-center gap-x-[10px] mt-3 md:mt-0">
+        <div className="ml-auto w-full md:w-[34%] flex items-center gap-x-[10px] mt-3 md:mt-0">
           <div className="md:w-[30%] flex items-center gap-x-1 ">
             {(Number(data?.gender?.id) === 3 ||
               Number(data?.gender?.id) == 1) && (
@@ -216,7 +220,7 @@ export default function ShopsItem({
             )}
           </div>
 
-          <div className="md:w-fit text-[13px] md:text-base w-full min-w-[120px] md:min-w-[250px] h-[36px] md:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
+          <div className="md:w-fit text-[13px] md:text-base w-full min-w-[120px] md:min-w-[150px] h-[36px] md:h-12 flex items-center justify-center px-1 ls:px-[10px] ll:px-5 md:px-0 active:opacity-70 border border-borderColor rounded-lg  gap-x-1 ll:gap-x-3 ">
             <img src={deliveryIcon} alt="" />
             <span className="font-AeonikProMedium">
               {data?.delivery?.name_ru}
