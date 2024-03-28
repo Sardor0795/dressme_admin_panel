@@ -176,11 +176,7 @@ export default function ShopsItem({
             </figure>
             <div className="w-fit flex flex-col ml-5 md:ml-8">
               <p className="relative md:block hidden max-h-[56px] overflow-hidden w-fit max-w-[350px] break-all md:pr-12 text-[13px] md:w-full ls:text-[14px] xs:text-xl font-AeonikProMedium mb-3">
-                {data?.name || null} Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Voluptate atque fugiat deserunt quia aut
-                voluptas hic odio sapiente? Vero molestiae maxime, adipisci
-                deleniti nihil dolorem omnis exercitationem. Ullam, ea
-                voluptatem?
+                {data?.name || null}
                 <span className="absolute right-[16px] top-[28px] w-full block linearGr h-[28px]"></span>
               </p>
               <p className="md:hidden w-fit break-all md:pr-4 text-[13px] md:w-full ls:text-[14px] xs:text-xl font-AeonikProMedium mb-3">
