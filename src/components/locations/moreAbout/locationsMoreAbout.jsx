@@ -373,9 +373,9 @@ export const LocationsMoreAbout = () => {
                             <div className="flex font-AeonikProMedium items-center text-[#303030] text-[13px] md:text-base not-italic leading-0 tracking-[0,16px] ">
                               Регион
                             </div>
-                            <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
+                            <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[8px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
                               <div className="flex items-center text-[#000]  ">
-                                <span className="ml-1 font-AeonikProRegular text-[13px] md:text-base">
+                                <span className="font-AeonikProRegular text-[13px] md:text-base">
                                   {shopLocationsData?.region?.name_ru},{" "}
                                   {shopLocationsData?.sub_region?.name_ru}
                                 </span>
@@ -416,9 +416,9 @@ export const LocationsMoreAbout = () => {
                             <div className="flex font-AeonikProMedium items-center text-[#303030] text-[13px] md:text-base not-italic leading-0 tracking-[0,16px] ">
                               Регион
                             </div>
-                            <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
+                            <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[8px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
                               <div className="flex items-center text-[#000]  ">
-                                <span className="ml-1 font-AeonikProRegular text-[13px] md:text-base">
+                                <span className="font-AeonikProRegular text-[13px] md:text-base">
                                   {shopLocationsData?.region?.name_ru},{" "}
                                   {shopLocationsData?.sub_region?.name_ru}
                                 </span>
