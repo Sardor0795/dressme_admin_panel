@@ -223,15 +223,18 @@ export const ClothMoreAbout = () => {
           <div className="md:pr-[30px] pt-[20px] md:pt-0 md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[25px] w-full md:w-[54%]">
             {/* 1 */}
             <div className="font-AeonikProRegular text-[16px] w-full md:w-[50%]">
-              <div className="flex flex-wrap gap-[11px] md:gap-[0]">
+              <div className="flex flex-wrap">
                 <div className="w-full">
                   <div className="flex items-center mb-[5px]">
                     <span className="mr-[5px]">Раздел одежды</span> <StarIcon />
                   </div>
                   <div className="border whitespace-nowrap overflow-x-auto text-[16px] text-black min-h-[42px] h-fit border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                     {sections?.length > 1
-                      ? sections?.map((item) => {
-                          return item?.name_ru + ", ";
+                      ? sections?.map((item, i) => {
+                          return (
+                            item?.name_ru +
+                            `${i + 1 === sections?.length ? "" : ", "}`
+                          );
                         })
                       : sections[0]?.name_ru}
                   </div>
@@ -246,8 +249,11 @@ export const ClothMoreAbout = () => {
                 } md:hidden flex items-center whitespace-nowrap overflow-x-auto h-fit text-[16px] text-black border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]`}
                   >
                     {subSections?.length > 1
-                      ? subSections?.map((item) => {
-                          return item?.name_ru + ", ";
+                      ? subSections?.map((item, i) => {
+                          return (
+                            item?.name_ru +
+                            `${i + 1 === subSections?.length ? "" : ", "}`
+                          );
                         })
                       : subSections[0]?.name_ru
                       ? subSections[0]?.name_ru
@@ -393,8 +399,11 @@ export const ClothMoreAbout = () => {
                 className={`hidden md:block border border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]`}
               >
                 {subSections?.length > 1
-                  ? subSections?.map((item) => {
-                      return item?.name_ru + ", ";
+                  ? subSections?.map((item, i) => {
+                      return (
+                        item?.name_ru +
+                        `${i + 1 === subSections?.length ? "" : ", "}`
+                      );
                     })
                   : subSections[0]?.name_ru
                   ? subSections[0]?.name_ru
