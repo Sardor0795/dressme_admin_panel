@@ -452,7 +452,25 @@ export const LocationsMoreAbout = () => {
               }
                 text-[13px] md:text-base leading-4 text-black font-AeonikProRegular`}
                           >
-                            {shopLocationsData?.assistant_phone || "-"}
+                            {shopLocationsData?.assistant_phone
+                              ? `(${shopLocationsData?.assistant_phone?.slice(
+                                  3,
+                                  5
+                                )}) `
+                              : null}
+                            {shopLocationsData?.assistant_phone
+                              ?.slice(5)
+                              .split("")
+                              .map((item, i) => {
+                                if (i === 3) {
+                                  return `–${item}`;
+                                } else if (i === 5) {
+                                  return `–${item}`;
+                                } else {
+                                  return item;
+                                }
+                              })}
+                            {shopLocationsData?.assistant_phone ? null : "-"}
                           </div>
                         </div>
                       </div>
@@ -476,7 +494,27 @@ export const LocationsMoreAbout = () => {
                                 : null
                             } text-[13px] md:text-base leading-4 text-black font-AeonikProRegular`}
                           >
-                            {shopLocationsData?.second_assistant_phone || "-"}
+                            {shopLocationsData?.second_assistant_phone
+                              ? `(${shopLocationsData?.second_assistant_phone?.slice(
+                                  3,
+                                  5
+                                )}) `
+                              : null}
+                            {shopLocationsData?.second_assistant_phone
+                              ?.slice(5)
+                              .split("")
+                              .map((item, i) => {
+                                if (i === 3) {
+                                  return `–${item}`;
+                                } else if (i === 5) {
+                                  return `–${item}`;
+                                } else {
+                                  return item;
+                                }
+                              })}
+                            {shopLocationsData?.second_assistant_phone
+                              ? null
+                              : "-"}
                           </div>
                         </div>
                       </div>

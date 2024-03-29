@@ -31,7 +31,6 @@ export default function Carousel({ data, height }) {
     url_File2: null,
     changed2: false,
   });
-  console.log(imageTwo, "uuuuuuuuuuu");
   const [imageThree, setImageThree] = useState({
     id3: null,
     product_color_id3: null,

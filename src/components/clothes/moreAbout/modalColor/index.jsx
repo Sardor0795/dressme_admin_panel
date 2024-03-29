@@ -30,8 +30,12 @@ export const ColorModal = ({
                 return (
                   <div
                     key={item?.id}
-                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] pb-3 rounded-lg"
+                    className="relative pt-[50px] text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] pb-3 rounded-lg"
                   >
+                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
+                      {index < 9 ? <span>0</span> : null}
+                      {index + 1}
+                    </div>
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="w-full md:w-fit mb-[34px]">
                         <div className="font-AeonikProMedium text-[16px] mb-[10px]">
@@ -166,12 +170,16 @@ export const ColorModal = ({
           {/* Category 2 */}
 
           {category === "2"
-            ? data?.sizes?.map((item) => {
+            ? data?.sizes?.map((item, i) => {
                 return (
                   <div
                     key={item?.id}
-                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
+                    className="relative pt-[50px] text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
                   >
+                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
+                      {i < 9 ? <span>0</span> : null}
+                      {i + 1}
+                    </div>
                     <div className=" flex flex-wrap md:flex-nowrap justify-between">
                       <div className="w-full md:w-fit mb-[34px]">
                         <div className="font-AeonikProMedium text-[16px] mb-[10px]">
@@ -330,12 +338,16 @@ export const ColorModal = ({
           {/* Category 3 */}
 
           {category === "3"
-            ? data?.sizes?.map((item) => {
+            ? data?.sizes?.map((item, i) => {
                 return (
                   <div
                     key={item?.id}
-                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
+                    className="relative pt-[50px] text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
                   >
+                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
+                      {i < 9 ? <span>0</span> : null}
+                      {i + 1}
+                    </div>
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="w-full md:w-fit mb-[34px] pr-[10px]">
                         <div className="font-AeonikProMedium text-[16px] mb-[10px]">
@@ -479,12 +491,16 @@ export const ColorModal = ({
           {/* Category 4 */}
 
           {category === "4"
-            ? data?.sizes?.map((item) => {
+            ? data?.sizes?.map((item, i) => {
                 return (
                   <div
                     key={item?.id}
-                    className="text-[#303030] border border-[F0F0F0] p-[20px] md:p-[30px] mb-[15px] last:mb-[0] rounded-lg"
+                    className="relative pt-[50px] text-[#303030] border border-[F0F0F0] p-[20px] md:p-[30px] mb-[15px] last:mb-[0] rounded-lg"
                   >
+                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
+                      {i < 9 ? <span>0</span> : null}
+                      {i + 1}
+                    </div>
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="mb-[34px] w-full md:w-fit">
                         <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
@@ -591,12 +607,16 @@ export const ColorModal = ({
           {/* Category 5 */}
 
           {category === "5"
-            ? data?.sizes?.map((item) => {
+            ? data?.sizes?.map((item, i) => {
                 return (
                   <div
                     key={item?.id}
-                    className="text-[#303030] border mb-[15px] last:mb-[0] border-[F0F0F0] p-[30px] rounded-lg"
+                    className="relative pt-[50px] text-[#303030] border mb-[15px] last:mb-[0] border-[F0F0F0] p-[30px] rounded-lg"
                   >
+                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
+                      {i < 9 ? <span>0</span> : null}
+                      {i + 1}
+                    </div>
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="mb-[34px] w-full md:w-fit">
                         <div className="flex items-center font-AeonikProMedium text-[16px] mb-[10px] text-[#303030]">
