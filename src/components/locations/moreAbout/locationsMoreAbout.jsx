@@ -445,12 +445,12 @@ export const LocationsMoreAbout = () => {
                         <div className="w-[65%] md:w-[70%] h-[42px] overflow-hidden">
                           <div
                             className={`w-full px-4 outline-none flex items-center font-AeonikProRegular h-full not-italic
-              ${
-                shopLocationsData?.assistant_phone
-                  ? "font-AeonikProMedium"
-                  : null
-              }
-                text-[13px] md:text-base leading-4 text-black font-AeonikProRegular`}
+                                  ${
+                                    shopLocationsData?.assistant_phone
+                                      ? "font-AeonikProMedium"
+                                      : null
+                                  }
+                                    text-[13px] md:text-base leading-4 text-black font-AeonikProRegular`}
                           >
                             {shopLocationsData?.assistant_phone
                               ? `(${shopLocationsData?.assistant_phone?.slice(

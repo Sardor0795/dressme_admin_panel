@@ -70,9 +70,9 @@ export const SignInComponent = () => {
     }
   };
 
-  useEffect(() => {
-    passwordRef?.current?.focus();
-  }, []);
+  // useEffect(() => {
+  //   passwordRef?.current?.focus();
+  // }, []);
 
   return (
     <div className="flex items-center justify-center h-[100vh] px-[35px]">

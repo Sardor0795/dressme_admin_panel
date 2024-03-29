@@ -356,9 +356,9 @@ export default function LocationMoreAbout() {
                           <div className="flex items-center text-[#303030] text-[13px] md:text-base font-AeonikProMedium leading-4 tracking-[0,16px] ">
                             Регион
                           </div>
-                          <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
+                          <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[8px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
                             <div className="flex items-center text-[#000] text-[13px] md:text-base">
-                              <span className="ml-1">
+                              <span>
                                 {shopLocationsData?.region?.name_ru},{" "}
                                 {shopLocationsData?.sub_region?.name_ru}
                               </span>
@@ -399,9 +399,9 @@ export default function LocationMoreAbout() {
                           <div className="flex items-center text-[#303030] text-[13px] md:text-base font-AeonikProMedium leading-4 tracking-[0,16px] ">
                             Регион
                           </div>
-                          <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[15px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
+                          <div className="w-full h-8 md:h-11 mt-[6px] md:mt-[10px] px-[8px] flex items-center justify-between font-AeonikProRegular rounded-lg border border-searchBgColor">
                             <div className="flex items-center text-[#000] text-[13px] md:text-base">
-                              <span className="ml-1">
+                              <span>
                                 {shopLocationsData?.region?.name_ru},{" "}
                                 {shopLocationsData?.sub_region?.name_ru}
                               </span>
@@ -427,14 +427,32 @@ export default function LocationMoreAbout() {
                       <div className="w-[65%] md:w-[70%] h-[42px] overflow-hidden">
                         <div
                           className={`w-full flex items-center px-4 outline-none font-AeonikProRegular h-full not-italic
-              ${
-                shopLocationsData?.assistant_phone
-                  ? "font-AeonikProMedium"
-                  : null
-              }
-                text-[13px] md:text-base leading-4 text-black`}
+                          ${
+                            shopLocationsData?.assistant_phone
+                              ? "font-AeonikProMedium"
+                              : null
+                          }
+                            text-[13px] md:text-base leading-4 text-black font-AeonikProRegular`}
                         >
-                          {shopLocationsData?.assistant_phone || "-"}
+                          {shopLocationsData?.assistant_phone
+                            ? `(${shopLocationsData?.assistant_phone?.slice(
+                                3,
+                                5
+                              )}) `
+                            : null}
+                          {shopLocationsData?.assistant_phone
+                            ?.slice(5)
+                            .split("")
+                            .map((item, i) => {
+                              if (i === 3) {
+                                return `–${item}`;
+                              } else if (i === 5) {
+                                return `–${item}`;
+                              } else {
+                                return item;
+                              }
+                            })}
+                          {shopLocationsData?.assistant_phone ? null : "-"}
                         </div>
                       </div>
                     </div>
@@ -458,7 +476,27 @@ export default function LocationMoreAbout() {
                               : null
                           } text-[13px] md:text-base leading-4 text-black`}
                         >
-                          {shopLocationsData?.second_assistant_phone || "-"}
+                          {shopLocationsData?.second_assistant_phone
+                            ? `(${shopLocationsData?.second_assistant_phone?.slice(
+                                3,
+                                5
+                              )}) `
+                            : null}
+                          {shopLocationsData?.second_assistant_phone
+                            ?.slice(5)
+                            .split("")
+                            .map((item, i) => {
+                              if (i === 3) {
+                                return `–${item}`;
+                              } else if (i === 5) {
+                                return `–${item}`;
+                              } else {
+                                return item;
+                              }
+                            })}
+                          {shopLocationsData?.second_assistant_phone
+                            ? null
+                            : "-"}
                         </div>
                       </div>
                     </div>
