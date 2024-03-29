@@ -30,11 +30,34 @@ export const ColorModal = ({
                 return (
                   <div
                     key={item?.id}
-                    className="relative pt-[50px] text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] pb-3 rounded-lg"
+                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] pb-3 rounded-lg"
                   >
-                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
-                      {index < 9 ? <span>0</span> : null}
-                      {index + 1}
+                    <div className="flex items-center mb-[30px]">
+                      {data?.colors?.map((color) => {
+                        if (color?.pivot?.id === item?.product_color_id) {
+                          return (
+                            <div className="w-full flex items-center justify-start">
+                              <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
+                                Цвет:
+                              </span>
+                              <span
+                                style={{ background: color?.hex }}
+                                className={`border ${
+                                  color?.id === 12 || color?.id === 2
+                                    ? "text-black"
+                                    : "text-white"
+                                }  rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] not-italic font-AeonikProMedium px-[15px] py-1`}
+                              >
+                                {color.name_ru}
+                              </span>
+                            </div>
+                          );
+                        }
+                      })}
+                      <div className=" text-[#8C8C8C] font-AeonikProMedium">
+                        {i < 9 ? <span>0</span> : null}
+                        {i + 1}
+                      </div>
                     </div>
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="w-full md:w-fit mb-[34px]">
@@ -148,20 +171,6 @@ export const ColorModal = ({
                         </div>
                       </div>
                     </div>
-                    {item?.product_color_id ===
-                    data?.colors[index]?.pivot?.id ? (
-                      <div className="w-full flex items-center justify-start mt-3 md:mt-0">
-                        <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProRegular">
-                          Цвет:
-                        </span>
-                        <span
-                          style={{ background: data?.colors[index]?.hex }}
-                          className="border text-white rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] ll:text-md  not-italic font-AeonikProRegular px-[15px] py-1"
-                        >
-                          {data?.colors[index]?.name_ru}
-                        </span>
-                      </div>
-                    ) : null}
                   </div>
                 );
               })
@@ -174,11 +183,34 @@ export const ColorModal = ({
                 return (
                   <div
                     key={item?.id}
-                    className="relative pt-[50px] text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
+                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
                   >
-                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
-                      {i < 9 ? <span>0</span> : null}
-                      {i + 1}
+                    <div className="flex items-center mb-[30px]">
+                      {data?.colors?.map((color) => {
+                        if (color?.pivot?.id === item?.product_color_id) {
+                          return (
+                            <div className="w-full flex items-center justify-start">
+                              <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
+                                Цвет:
+                              </span>
+                              <span
+                                style={{ background: color?.hex }}
+                                className={`border ${
+                                  color?.id === 12 || color?.id === 2
+                                    ? "text-black"
+                                    : "text-white"
+                                }  rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] not-italic font-AeonikProMedium px-[15px] py-1`}
+                              >
+                                {color.name_ru}
+                              </span>
+                            </div>
+                          );
+                        }
+                      })}
+                      <div className=" text-[#8C8C8C] font-AeonikProMedium">
+                        {i < 9 ? <span>0</span> : null}
+                        {i + 1}
+                      </div>
                     </div>
                     <div className=" flex flex-wrap md:flex-nowrap justify-between">
                       <div className="w-full md:w-fit mb-[34px]">
@@ -342,11 +374,34 @@ export const ColorModal = ({
                 return (
                   <div
                     key={item?.id}
-                    className="relative pt-[50px] text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
+                    className="text-[#303030] mb-[15px] last:mb-[0] border border-[F0F0F0] p-[30px] rounded-lg"
                   >
-                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
-                      {i < 9 ? <span>0</span> : null}
-                      {i + 1}
+                    <div className="flex items-center mb-[30px]">
+                      {data?.colors?.map((color) => {
+                        if (color?.pivot?.id === item?.product_color_id) {
+                          return (
+                            <div className="w-full flex items-center justify-start">
+                              <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
+                                Цвет:
+                              </span>
+                              <span
+                                style={{ background: color?.hex }}
+                                className={`border ${
+                                  color?.id === 12 || color?.id === 2
+                                    ? "text-black"
+                                    : "text-white"
+                                }  rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] not-italic font-AeonikProMedium px-[15px] py-1`}
+                              >
+                                {color.name_ru}
+                              </span>
+                            </div>
+                          );
+                        }
+                      })}
+                      <div className=" text-[#8C8C8C] font-AeonikProMedium">
+                        {i < 9 ? <span>0</span> : null}
+                        {i + 1}
+                      </div>
                     </div>
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="w-full md:w-fit mb-[34px] pr-[10px]">
@@ -495,11 +550,34 @@ export const ColorModal = ({
                 return (
                   <div
                     key={item?.id}
-                    className="relative pt-[50px] text-[#303030] border border-[F0F0F0] p-[20px] md:p-[30px] mb-[15px] last:mb-[0] rounded-lg"
+                    className="text-[#303030] border border-[F0F0F0] p-[20px] md:p-[30px] mb-[15px] last:mb-[0] rounded-lg"
                   >
-                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
-                      {i < 9 ? <span>0</span> : null}
-                      {i + 1}
+                    <div className="flex items-center mb-[30px]">
+                      {data?.colors?.map((color) => {
+                        if (color?.pivot?.id === item?.product_color_id) {
+                          return (
+                            <div className="w-full flex items-center justify-start">
+                              <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
+                                Цвет:
+                              </span>
+                              <span
+                                style={{ background: color?.hex }}
+                                className={`border ${
+                                  color?.id === 12 || color?.id === 2
+                                    ? "text-black"
+                                    : "text-white"
+                                }  rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] not-italic font-AeonikProMedium px-[15px] py-1`}
+                              >
+                                {color.name_ru}
+                              </span>
+                            </div>
+                          );
+                        }
+                      })}
+                      <div className=" text-[#8C8C8C] font-AeonikProMedium">
+                        {i < 9 ? <span>0</span> : null}
+                        {i + 1}
+                      </div>
                     </div>
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="mb-[34px] w-full md:w-fit">
@@ -611,11 +689,34 @@ export const ColorModal = ({
                 return (
                   <div
                     key={item?.id}
-                    className="relative pt-[50px] text-[#303030] border mb-[15px] last:mb-[0] border-[F0F0F0] p-[30px] rounded-lg"
+                    className="text-[#303030] border mb-[15px] last:mb-[0] border-[F0F0F0] p-[30px] rounded-lg"
                   >
-                    <div className="absolute text-center w-full top-[10px] left-[10px] text-[#8C8C8C] font-AeonikProMedium">
-                      {i < 9 ? <span>0</span> : null}
-                      {i + 1}
+                    <div className="flex items-center mb-[30px]">
+                      {data?.colors?.map((color) => {
+                        if (color?.pivot?.id === item?.product_color_id) {
+                          return (
+                            <div className="w-full flex items-center justify-start">
+                              <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
+                                Цвет:
+                              </span>
+                              <span
+                                style={{ background: color?.hex }}
+                                className={`border ${
+                                  color?.id === 12 || color?.id === 2
+                                    ? "text-black"
+                                    : "text-white"
+                                }  rounded-[15px] ml-3 h-fit  whitespace-nowrap flex items-center justify-center text-[14px] not-italic font-AeonikProMedium px-[15px] py-1`}
+                              >
+                                {color.name_ru}
+                              </span>
+                            </div>
+                          );
+                        }
+                      })}
+                      <div className=" text-[#8C8C8C] font-AeonikProMedium">
+                        {i < 9 ? <span>0</span> : null}
+                        {i + 1}
+                      </div>
                     </div>
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
                       <div className="mb-[34px] w-full md:w-fit">
