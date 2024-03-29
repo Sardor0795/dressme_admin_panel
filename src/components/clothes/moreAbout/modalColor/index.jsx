@@ -55,8 +55,8 @@ export const ColorModal = ({
                         }
                       })}
                       <div className=" text-[#8C8C8C] font-AeonikProMedium">
-                        {i < 9 ? <span>0</span> : null}
-                        {i + 1}
+                        {index < 9 ? <span>0</span> : null}
+                        {index + 1}
                       </div>
                     </div>
                     <div className="flex flex-wrap md:flex-nowrap justify-between">
