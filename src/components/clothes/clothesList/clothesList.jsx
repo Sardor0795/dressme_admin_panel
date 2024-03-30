@@ -811,6 +811,7 @@ export default function ClothesList() {
                                                         </div>
                                                         <button className="text-[#007DCA] mr-[7px]">
                                                           {item?.name}
+                                                          {" " + item?.surname}
                                                         </button>
                                                       </div>
                                                       -
@@ -1142,6 +1143,7 @@ export default function ClothesList() {
                                                         </div>
                                                         <button className="text-[#007DCA] mr-[7px]">
                                                           {item?.name}
+                                                          {" " + item?.surname}
                                                         </button>
                                                       </div>
                                                       -
@@ -1307,6 +1309,7 @@ export default function ClothesList() {
                                                         </div>
                                                         <button className="text-[#007DCA] mr-[7px]">
                                                           {item?.name}
+                                                          {" " + item?.surname}
                                                         </button>
                                                       </div>
                                                       -
