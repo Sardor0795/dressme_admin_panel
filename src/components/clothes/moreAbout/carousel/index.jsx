@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MenuCloseIcons, NoImg, StarIcon } from "../../../../assets/icon";
 
-export default function Carousel({ data, height }) {
+export default function Carousel({ data, filteredPhotos }) {
   const [imageOne, setImageOne] = useState({
     id1: null,
     product_color_id1: null,
@@ -56,189 +56,142 @@ export default function Carousel({ data, height }) {
     changed4: false,
   });
 
-  // const [colorOne, setColorOne] = useState({
-  //   id1: 1,
-  //   color_hex1: null,
-  //   color_name_uz1: null,
-  //   color_name_ru1: null,
-  //   color_pivot_id1: null,
-  //   color_pivot_color_id1: null,
-  //   color_pivot_product_id1: null,
-  // });
-  // const [colorTwo, setColorTwo] = useState({
-  //   id2: 2,
-  //   color_hex2: null,
-  //   color_id2: null,
-  //   color_name_uz2: null,
-  //   color_name_ru2: null,
-  //   color_pivot_id2: null,
-  //   color_pivot_color_id2: null,
-  //   color_pivot_product_id2: null,
-  // });
-  // const [colorThree, setColorThree] = useState({
-  //   id3: 3,
-  //   color_hex3: null,
-  //   color_id3: null,
-  //   color_name_uz3: null,
-  //   color_name_ru3: null,
-  //   color_pivot_id3: null,
-  //   color_pivot_color_id3: null,
-  //   color_pivot_product_id3: null,
-  // });
-  // const [colorFour, setColorFour] = useState({
-  //   id4: 4,
-  //   color_hex4: null,
-  //   color_name_uz4: null,
-  //   color_name_ru4: null,
-  //   product_color_id4: null,
-  //   color_pivot_id4: null,
-  //   color_pivot_color_id4: null,
-  //   color_pivot_product_id4: null,
-  // });
-
   useEffect(() => {
-    if (data?.photos) {
+    if (filteredPhotos?.length) {
       setImageOne({
-        id1: (data.photos[0]?.id && data.photos[0]?.id) || null,
+        id1: (filteredPhotos[0]?.id && filteredPhotos[0]?.id) || null,
         product_color_id1:
-          (data.photos[0]?.product_color_id &&
-            data.photos[0]?.product_color_id) ||
+          (filteredPhotos[0]?.product_color_id &&
+            filteredPhotos[0]?.product_color_id) ||
           null,
         product_id1:
-          (data.photos[0]?.product_id && data.photos[0]?.product_id) || null,
-        status1: (data.photos[0]?.status && data.photos[0]?.status) || null,
+          (filteredPhotos[0]?.product_id && filteredPhotos[0]?.product_id) ||
+          null,
+        status1:
+          (filteredPhotos[0]?.status && filteredPhotos[0]?.status) || null,
         url_photo1:
-          (data.photos[0]?.url_photo && data.photos[0]?.url_photo) || null,
+          (filteredPhotos[0]?.url_photo && filteredPhotos[0]?.url_photo) ||
+          null,
         url_photo_change1:
-          (data.photos[0]?.url_photo && data.photos[0]?.url_photo) || null,
+          (filteredPhotos[0]?.url_photo && filteredPhotos[0]?.url_photo) ||
+          null,
       });
 
       setImageTwo({
-        id2: (data?.photos[1]?.id && data?.photos[1]?.id) || null,
+        id2: (filteredPhotos[1]?.id && filteredPhotos[1]?.id) || null,
         product_color_id2:
-          (data?.photos[1]?.product_color_id &&
-            data?.photos[1]?.product_color_id) ||
+          (filteredPhotos[1]?.product_color_id &&
+            filteredPhotos[1]?.product_color_id) ||
           null,
         product_id2:
-          (data?.photos[1]?.product_id && data?.photos[1]?.product_id) || null,
-        status2: (data?.photos[1]?.status && data?.photos[1]?.status) || null,
+          (filteredPhotos[1]?.product_id && filteredPhotos[1]?.product_id) ||
+          null,
+        status2:
+          (filteredPhotos[1]?.status && filteredPhotos[1]?.status) || null,
         url_photo2:
-          (data?.photos[1]?.url_photo && data?.photos[1]?.url_photo) || null,
+          (filteredPhotos[1]?.url_photo && filteredPhotos[1]?.url_photo) ||
+          null,
         url_photo_change2:
-          (data?.photos[1]?.url_photo && data?.photos[1]?.url_photo) || null,
+          (filteredPhotos[1]?.url_photo && filteredPhotos[1]?.url_photo) ||
+          null,
       });
 
       setImageThree({
-        id3: (data?.photos[2]?.id && data?.photos[2]?.id) || null,
+        id3: (filteredPhotos[2]?.id && filteredPhotos[2]?.id) || null,
         product_color_id3:
-          (data?.photos[2]?.product_color_id &&
-            data?.photos[2]?.product_color_id) ||
+          (filteredPhotos[2]?.product_color_id &&
+            filteredPhotos[2]?.product_color_id) ||
           null,
         product_id3:
-          (data?.photos[2]?.product_id && data?.photos[2]?.product_id) || null,
-        status3: (data?.photos[2]?.status && data?.photos[2]?.status) || null,
+          (filteredPhotos[2]?.product_id && filteredPhotos[2]?.product_id) ||
+          null,
+        status3:
+          (filteredPhotos[2]?.status && filteredPhotos[2]?.status) || null,
         url_photo3:
-          (data?.photos[2]?.url_photo && data?.photos[2]?.url_photo) || null,
+          (filteredPhotos[2]?.url_photo && filteredPhotos[2]?.url_photo) ||
+          null,
         url_photo_change3:
-          (data?.photos[2]?.url_photo && data?.photos[2]?.url_photo) || null,
+          (filteredPhotos[2]?.url_photo && filteredPhotos[2]?.url_photo) ||
+          null,
       });
 
       setImageFour({
-        id4: (data.photos[3]?.id && data.photos[3]?.id) || null,
+        id4: (filteredPhotos[3]?.id && filteredPhotos[3]?.id) || null,
         product_color_id4:
-          (data.photos[3]?.product_color_id &&
-            data.photos[3]?.product_color_id) ||
+          (filteredPhotos[3]?.product_color_id &&
+            filteredPhotos[3]?.product_color_id) ||
           null,
         product_id4:
-          (data.photos[3]?.product_id && data.photos[3]?.product_id) || null,
-        status4: (data.photos[3]?.status && data.photos[3]?.status) || null,
+          (filteredPhotos[3]?.product_id && filteredPhotos[3]?.product_id) ||
+          null,
+        status4:
+          (filteredPhotos[3]?.status && filteredPhotos[3]?.status) || null,
         url_photo4:
-          (data.photos[3]?.url_photo && data.photos[3]?.url_photo) || null,
+          (filteredPhotos[3]?.url_photo && filteredPhotos[3]?.url_photo) ||
+          null,
         url_photo_change4:
-          (data.photos[3]?.url_photo && data.photos[3]?.url_photo) || null,
+          (filteredPhotos[3]?.url_photo && filteredPhotos[3]?.url_photo) ||
+          null,
+      });
+    } else {
+      let id = data?.colors[0]?.pivot?.id;
+
+      const filtered = data?.photos?.filter(
+        (item) => item?.product_color_id === id
+      );
+
+      setImageOne({
+        id1: (filtered[0]?.id && filtered[0]?.id) || null,
+        product_color_id1:
+          (filtered[0]?.product_color_id && filtered[0]?.product_color_id) ||
+          null,
+        product_id1:
+          (filtered[0]?.product_id && filtered[0]?.product_id) || null,
+        status1: (filtered[0]?.status && filtered[0]?.status) || null,
+        url_photo1: (filtered[0]?.url_photo && filtered[0]?.url_photo) || null,
+        url_photo_change1:
+          (filtered[0]?.url_photo && filtered[0]?.url_photo) || null,
+      });
+      setImageTwo({
+        id2: (filtered[1]?.id && filtered[1]?.id) || null,
+        product_color_id2:
+          (filtered[1]?.product_color_id && filtered[1]?.product_color_id) ||
+          null,
+        product_id2:
+          (filtered[1]?.product_id && filtered[1]?.product_id) || null,
+        status2: (filtered[1]?.status && filtered[1]?.status) || null,
+        url_photo2: (filtered[1]?.url_photo && filtered[1]?.url_photo) || null,
+        url_photo_change2:
+          (filtered[1]?.url_photo && filtered[1]?.url_photo) || null,
+      });
+
+      setImageThree({
+        id3: (filtered[2]?.id && filtered[2]?.id) || null,
+        product_color_id3:
+          (filtered[2]?.product_color_id && filtered[2]?.product_color_id) ||
+          null,
+        product_id3:
+          (filtered[2]?.product_id && filtered[2]?.product_id) || null,
+        status3: (filtered[2]?.status && filtered[2]?.status) || null,
+        url_photo3: (filtered[2]?.url_photo && filtered[2]?.url_photo) || null,
+        url_photo_change3:
+          (filtered[2]?.url_photo && filtered[2]?.url_photo) || null,
+      });
+
+      setImageFour({
+        id4: (filtered[3]?.id && filtered[3]?.id) || null,
+        product_color_id4:
+          (filtered[3]?.product_color_id && filtered[3]?.product_color_id) ||
+          null,
+        product_id4:
+          (filtered[3]?.product_id && filtered[3]?.product_id) || null,
+        status4: (filtered[3]?.status && filtered[3]?.status) || null,
+        url_photo4: (filtered[3]?.url_photo && filtered[3]?.url_photo) || null,
+        url_photo_change4:
+          (filtered[3]?.url_photo && filtered[3]?.url_photo) || null,
       });
     }
-  }, [data?.photos]);
-
-  // useEffect(() => {
-  //   if (data?.colors) {
-  //     setColorOne({
-  //       id1: (data.colors[0]?.id && data.colors[0]?.id) || null,
-  //       color_hex1: (data.colors[0]?.hex && data.colors[0]?.hex) || null,
-  //       color_name_uz1:
-  //         (data.colors[0]?.name_uz && data.colors[0]?.name_uz) || null,
-  //       color_name_ru1:
-  //         (data.colors[0]?.name_ru && data.colors[0]?.name_ru) || null,
-  //       color_pivot_id1:
-  //         (data.colors[0]?.pivot?.id && data.colors[0]?.pivot?.id) || null,
-  //       color_pivot_color_id1:
-  //         (data.colors[0]?.pivot?.color_id &&
-  //           data.colors[0]?.pivot?.color_id) ||
-  //         null,
-  //       color_pivot_product_id1:
-  //         (data.colors[0]?.pivot?.product_id &&
-  //           data.colors[0]?.pivot?.product_id) ||
-  //         null,
-  //     });
-
-  //     setColorTwo({
-  //       id2: (data?.colors[1]?.id && data?.colors[1]?.id) || null,
-  //       color_hex2: (data?.colors[1]?.hex && data?.colors[1]?.hex) || null,
-  //       color_name_uz2:
-  //         (data?.colors[1]?.name_uz && data?.colors[1]?.name_uz) || null,
-  //       color_name_ru2:
-  //         (data?.colors[1]?.name_ru && data?.colors[1]?.name_ru) || null,
-  //       color_pivot_id2:
-  //         (data?.colors[1]?.pivot?.id && data?.colors[1]?.pivot?.id) || null,
-  //       color_pivot_color_id2:
-  //         (data?.colors[1]?.pivot?.color_id &&
-  //           data?.colors[1]?.pivot?.color_id) ||
-  //         null,
-  //       color_pivot_product_id2:
-  //         (data?.colors[1]?.pivot?.product_id &&
-  //           data?.colors[1]?.pivot?.product_id) ||
-  //         null,
-  //     });
-
-  //     setColorThree({
-  //       id3: (data?.colors[2]?.id && data?.colors[2]?.id) || null,
-  //       color_hex3: (data?.colors[2]?.hex && data?.colors[2]?.hex) || null,
-  //       color_name_uz3:
-  //         (data?.colors[2]?.name_uz && data?.colors[2]?.name_uz) || null,
-  //       color_name_ru3:
-  //         (data?.colors[2]?.name_ru && data?.colors[2]?.name_ru) || null,
-  //       color_pivot_id3:
-  //         (data?.colors[2]?.pivot?.id && data?.colors[2]?.pivot?.id) || null,
-  //       color_pivot_color_id3:
-  //         (data?.colors[2]?.pivot?.color_id &&
-  //           data?.colors[2]?.pivot?.color_id) ||
-  //         null,
-  //       color_pivot_product_id3:
-  //         (data?.colors[2]?.pivot?.product_id &&
-  //           data?.colors[2]?.pivot?.product_id) ||
-  //         null,
-  //     });
-
-  //     setColorFour({
-  //       id4: (data?.colors[3]?.id && data?.colors[3]?.id) || null,
-  //       color_hex4: (data?.colors[1]?.hex && data?.colors[3]?.hex) || null,
-  //       color_name_uz4:
-  //         (data?.colors[3]?.name_uz && data?.colors[3]?.name_uz) || null,
-  //       color_name_ru4:
-  //         (data?.colors[3]?.name_ru && data?.colors[3]?.name_ru) || null,
-  //       color_pivot_id4:
-  //         (data?.colors[3]?.pivot?.id && data?.colors[3]?.pivot?.id) || null,
-  //       color_pivot_color_id4:
-  //         (data?.colors[3]?.pivot?.color_id &&
-  //           data?.colors[3]?.pivot?.color_id) ||
-  //         null,
-  //       color_pivot_product_id4:
-  //         (data?.colors[3]?.pivot?.product_id &&
-  //           data?.colors[3]?.pivot?.product_id) ||
-  //         null,
-  //     });
-  //   }
-  // }, [data?.colors]);
+  }, [filteredPhotos]);
 
   const [modalId, setModalId] = useState(null);
   const [modalOfCarsouel, setModalOfCarsouel] = useState(false);
@@ -269,16 +222,7 @@ export default function Carousel({ data, height }) {
           Фото
         </div>
         <StarIcon />
-        {/* {imageOne?.product_color_id1 === colorOne?.color_pivot_id1 && (
-          <div className="ml-auto w-fit flex h-[22px] items-center my-[6px] mr-[10px]">
-            <div className="w-fit h-fit flex items-center gap-x-3">
-              <span
-                style={{ background: colorOne?.color_hex1 }}
-                className={`w-[22px] h-[22px] rounded-full border`}
-              ></span>
-            </div>
-          </div>
-        )} */}
+
         {data?.colors?.map((item) => {
           if (imageOne?.product_color_id1 === item?.pivot?.id) {
             return (
@@ -451,30 +395,6 @@ export default function Carousel({ data, height }) {
                 </div>
               )}
             </button>
-            {/* {imageTwo?.product_color_id2 && (
-              <div className="mb-[5px]">
-                <div className="w-fit h-fit flex items-center mt-2">
-                  <span
-                    style={{ background: colorTwo?.color_hex2 }}
-                    className={`w-[22px] h-[22px] rounded-full border`}
-                  ></span>
-                </div>
-              </div>
-            )} */}
-            {data?.colors?.map((item) => {
-              if (imageTwo?.product_color_id2 === item?.pivot?.id) {
-                return (
-                  <div key={item?.id} className="mb-[5px]">
-                    <div className="w-fit h-fit flex items-center mt-2">
-                      <span
-                        style={{ background: item?.hex }}
-                        className={`w-[22px] h-[22px] rounded-full border`}
-                      ></span>
-                    </div>
-                  </div>
-                );
-              }
-            })}
           </div>
 
           {/* IMG THREE */}
@@ -513,30 +433,6 @@ export default function Carousel({ data, height }) {
                 </div>
               )}
             </button>
-            {/* {imageThree?.product_color_id3 && (
-              <div className="mb-[5px]">
-                <div className="w-fit h-fit flex items-center mt-2">
-                  <span
-                    style={{ background: colorThree?.color_hex3 }}
-                    className={`w-[22px] h-[22px] rounded-full border`}
-                  ></span>
-                </div>
-              </div>
-            )} */}
-            {data?.colors?.map((item) => {
-              if (imageThree?.product_color_id3 === item?.pivot?.id) {
-                return (
-                  <div key={item?.id} className="mb-[5px]">
-                    <div className="w-fit h-fit flex items-center mt-2">
-                      <span
-                        style={{ background: item?.hex }}
-                        className={`w-[22px] h-[22px] rounded-full border`}
-                      ></span>
-                    </div>
-                  </div>
-                );
-              }
-            })}
           </div>
 
           {/* IMG FOUR */}
@@ -575,30 +471,6 @@ export default function Carousel({ data, height }) {
                 </div>
               )}
             </button>
-            {/* {imageFour?.product_color_id4 && (
-              <div className="mb-[5px]">
-                <div className="w-fit h-fit flex items-center mt-2">
-                  <span
-                    style={{ background: colorFour?.color_hex4 }}
-                    className={`w-[22px] h-[22px] rounded-full border`}
-                  ></span>
-                </div>
-              </div>
-            )} */}
-            {data?.colors?.map((item) => {
-              if (imageFour?.product_color_id4 === item?.pivot?.id) {
-                return (
-                  <div key={item?.id} className="mb-[5px]">
-                    <div className="w-fit h-fit flex items-center mt-2">
-                      <span
-                        style={{ background: item?.hex }}
-                        className={`w-[22px] h-[22px] rounded-full border`}
-                      ></span>
-                    </div>
-                  </div>
-                );
-              }
-            })}
           </div>
         </div>
       </div>

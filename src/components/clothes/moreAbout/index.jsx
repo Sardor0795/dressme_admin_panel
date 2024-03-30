@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { BackIcon, StarIcon } from "../../../assets/icon";
+import { BackIcon, CheckedIcon, StarIcon } from "../../../assets/icon";
 import CancelModal from "./modalCancel";
 import { ColorModal } from "./modalColor";
 import Carousel from "./carousel";
@@ -15,7 +15,6 @@ import WiFiLoader from "../../../assets/loader/wifi_loader.gif";
 export const ClothMoreAbout = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [colorModalOpen, setColorModalOpen] = useState(false);
-  // const [allPhotosModalOpen, setAllPhotosModalOpen] = useState(false);
 
   const [loader, setLoader] = useState(true);
 
@@ -111,6 +110,24 @@ export const ClothMoreAbout = () => {
       }
     });
   }, []);
+
+  // change carousel imgs
+
+  const [colorId, setColorId] = useState(1);
+
+  const [filteredPhotos, setFilteredPhotos] = useState([]);
+
+  const filterPhotos = (id) => {
+    setFilteredPhotos(
+      data?.photos?.filter((item) => item?.product_color_id === id)
+    );
+  };
+
+  // useEffect(() => {
+  //   if (!data?.length) {
+  //     filterPhotos(data?.colors[0]?.pivot?.id);
+  //   }
+  // }, []);
 
   return (
     <div className="flex flex-col w-full">
@@ -217,12 +234,63 @@ export const ClothMoreAbout = () => {
       ) : (
         <div className="flex flex-wrap md:flex-nowrap w-full md:gap-[30px]">
           <div className="w-full md:w-[20%] md:max-w-[350px] md:h-[400px]">
-            <Carousel data={data} height={"h-[377px]"} />
+            <Carousel
+              data={data}
+              filteredPhotos={filteredPhotos}
+              height={"h-[377px]"}
+              colorId={colorId}
+            />
           </div>
 
-          <div className="md:pr-[30px] pt-[20px] md:pt-0 md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[25px] w-full md:w-[54%]">
+          <div className="md:pr-[30px] pt-[30px] md:pt-0 md:border-r border-[#E5E5E5] flex flex-wrap md:flex-nowrap gap-[25px] w-full md:w-[54%]">
             {/* 1 */}
+
             <div className="font-AeonikProRegular text-[16px] w-full md:w-[50%]">
+              <div className="flex md:hidden gap-[11px] md:gap-[0]">
+                <div className="w-full">
+                  <div className="flex items-center mb-[5px]">
+                    <span className="mr-[5px]">Сезон одежды</span> <StarIcon />
+                  </div>
+                  <div className="flex items-center border h-[40px] border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]">
+                    {seasons?.length
+                      ? seasons?.map((item) => {
+                          return (
+                            <span key={item?.id}>{item?.name_ru + " "}</span>
+                          );
+                        })
+                      : "-"}
+                  </div>
+                </div>
+                <div className="w-full md:hidden">
+                  <div className="flex items-center mb-[5px]">
+                    <span className="mr-[5px]">Цвет</span> <StarIcon />
+                  </div>
+                  <div className="p-[8px] w-fit h-[40px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
+                    {colors?.length
+                      ? colors?.map((item, i) => {
+                          return (
+                            <div
+                              key={item?.id}
+                              onClick={() => {
+                                filterPhotos(item?.pivot?.id);
+                                setColorId(i + 1);
+                              }}
+                              style={{ backgroundColor: item?.hex }}
+                              className={`hover:scale-110 duration-300 mr-[8px] border last:mr-0 w-[22px] h-[22px] rounded-[50%] flex items-center justify-center cursor-pointer`}
+                            >
+                              {i + 1 === colorId ? (
+                                <CheckedIcon
+                                  color={item?.id === 1 ? "#fff" : "#000"}
+                                />
+                              ) : null}
+                            </div>
+                          );
+                        })
+                      : "-"}
+                  </div>
+                </div>
+              </div>
+
               <div className="flex flex-wrap">
                 <div className="w-full">
                   <div className="flex items-center mb-[5px]">
@@ -262,7 +330,7 @@ export const ClothMoreAbout = () => {
                 </div>
               </div>
 
-              <div className="flex gap-[11px] md:gap-[0]">
+              <div className="md:flex hidden gap-[11px] md:gap-[0]">
                 <div className="w-full">
                   <div className="flex items-center mb-[5px]">
                     <span className="mr-[5px]">Сезон одежды</span> <StarIcon />
@@ -283,13 +351,23 @@ export const ClothMoreAbout = () => {
                   </div>
                   <div className="p-[8px] w-fit h-[40px] flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px]">
                     {colors?.length
-                      ? colors?.map((item) => {
+                      ? colors?.map((item, i) => {
                           return (
                             <div
                               key={item?.id}
+                              onClick={() => {
+                                filterPhotos(item?.pivot?.id);
+                                setColorId(i + 1);
+                              }}
                               style={{ backgroundColor: item?.hex }}
-                              className={`mr-[8px] border last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
-                            ></div>
+                              className={`hover:scale-110 duration-300 mr-[8px] border last:mr-0 w-[22px] h-[22px] rounded-[50%] flex items-center justify-center cursor-pointer`}
+                            >
+                              {i + 1 === colorId ? (
+                                <CheckedIcon
+                                  color={item?.id === 1 ? "#fff" : "#000"}
+                                />
+                              ) : null}
+                            </div>
                           );
                         })
                       : "-"}
@@ -414,13 +492,23 @@ export const ClothMoreAbout = () => {
               </div>
               <div className="w-fit h-[42px] px-[10px] hidden md:flex items-center justify-center border border-[#E5E5E5] rounded-[8px] mb-[25px] min-w-[43px]">
                 {colors?.length
-                  ? colors?.map((item) => {
+                  ? colors?.map((item, i) => {
                       return (
                         <div
                           key={item?.id}
+                          onClick={() => {
+                            filterPhotos(item?.pivot?.id);
+                            setColorId(i + 1);
+                          }}
                           style={{ backgroundColor: item?.hex }}
-                          className={`mr-[8px] border last:mr-0 w-[22px] h-[22px] rounded-[50%]`}
-                        ></div>
+                          className={`hover:scale-110 duration-300 mr-[8px] border last:mr-0 w-[22px] h-[22px] rounded-[50%] flex items-center justify-center cursor-pointer`}
+                        >
+                          {i + 1 === colorId ? (
+                            <CheckedIcon
+                              color={item?.id === 1 ? "#fff" : "#000"}
+                            />
+                          ) : null}
+                        </div>
                       );
                     })
                   : "-"}

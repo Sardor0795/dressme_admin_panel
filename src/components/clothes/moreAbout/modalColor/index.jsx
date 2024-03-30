@@ -36,7 +36,10 @@ export const ColorModal = ({
                       {data?.colors?.map((color) => {
                         if (color?.pivot?.id === item?.product_color_id) {
                           return (
-                            <div className="w-full flex items-center justify-start">
+                            <div
+                              key={color?.id}
+                              className="w-full flex items-center justify-start"
+                            >
                               <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
                                 Цвет:
                               </span>
@@ -189,7 +192,10 @@ export const ColorModal = ({
                       {data?.colors?.map((color) => {
                         if (color?.pivot?.id === item?.product_color_id) {
                           return (
-                            <div className="w-full flex items-center justify-start">
+                            <div
+                              key={color?.id}
+                              className="w-full flex items-center justify-start"
+                            >
                               <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
                                 Цвет:
                               </span>
@@ -380,7 +386,10 @@ export const ColorModal = ({
                       {data?.colors?.map((color) => {
                         if (color?.pivot?.id === item?.product_color_id) {
                           return (
-                            <div className="w-full flex items-center justify-start">
+                            <div
+                              key={color?.id}
+                              className="w-full flex items-center justify-start"
+                            >
                               <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
                                 Цвет:
                               </span>
@@ -556,7 +565,10 @@ export const ColorModal = ({
                       {data?.colors?.map((color) => {
                         if (color?.pivot?.id === item?.product_color_id) {
                           return (
-                            <div className="w-full flex items-center justify-start">
+                            <div
+                              key={color?.id}
+                              className="w-full flex items-center justify-start"
+                            >
                               <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
                                 Цвет:
                               </span>
@@ -695,7 +707,10 @@ export const ColorModal = ({
                       {data?.colors?.map((color) => {
                         if (color?.pivot?.id === item?.product_color_id) {
                           return (
-                            <div className="w-full flex items-center justify-start">
+                            <div
+                              key={color?.id}
+                              className="w-full flex items-center justify-start"
+                            >
                               <span className="text-gray-800 text-base flex items-center not-italic font-AeonikProMedium">
                                 Цвет:
                               </span>
