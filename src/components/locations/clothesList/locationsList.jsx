@@ -748,9 +748,9 @@ export default function LocationsList() {
                                               {index === 1 ? (
                                                 <div className="w-ful">
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                    <div className="text-[20px] md:text-[24px] w-full font-AeonikProMedium flex items-center flex-wrap">
                                                       <div
-                                                        className="flex items-center cursor-pointer"
+                                                        className="flex w-full md:w-fit items-center cursor-pointer"
                                                         onClick={() => {
                                                           if (
                                                             checkedShops?.includes(
@@ -814,16 +814,20 @@ export default function LocationsList() {
                                                             />
                                                           </span>
                                                         </div>
-                                                        <button className="text-[#007DCA] mr-[7px]">
+                                                        <button className="text-[#007DCA] md:mr-[7px]">
                                                           {item?.name}
+                                                          {" " + item?.surname}
                                                         </button>
                                                       </div>
-                                                      -
-                                                      <div className="break-all px-2">
-                                                        {item_2?.name}
-                                                        {" " + item?.surname}
+                                                      <div className="flex text-[16px] md:text-[24px] text-center pl-[26px] md:pl-0 items-center mt-[10px] md:mt-0">
+                                                        <span className="hidden md:inline-block">
+                                                          -
+                                                        </span>
+                                                        <div className="break-all pr-2 md:px-2">
+                                                          {item_2?.name}
+                                                        </div>
+                                                        ({productLength})
                                                       </div>
-                                                      ({productLength})
                                                     </div>
                                                   </div>
                                                   <div className="w-full hidden md:flex mb-[10px]">
@@ -921,9 +925,9 @@ export default function LocationsList() {
                                               {index === 1 ? (
                                                 <div className="w-ful">
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                    <div className="text-[20px] md:text-[24px] w-full font-AeonikProMedium flex items-center flex-wrap">
                                                       <div
-                                                        className="flex items-center cursor-pointer"
+                                                        className="flex w-full md:w-fit items-center cursor-pointer"
                                                         onClick={() => {
                                                           if (
                                                             checkedShops?.includes(
@@ -987,16 +991,20 @@ export default function LocationsList() {
                                                             />
                                                           </span>
                                                         </div>
-                                                        <button className="text-[#007DCA] mr-[7px]">
+                                                        <button className="text-[#007DCA] md:mr-[7px]">
                                                           {item?.name}
                                                           {" " + item?.surname}
                                                         </button>
                                                       </div>
-                                                      -
-                                                      <div className="break-all px-2">
-                                                        {item_2?.name}
+                                                      <div className="flex text-[16px] md:text-[24px] text-center pl-[26px] md:pl-0 items-center mt-[10px] md:mt-0">
+                                                        <span className="hidden md:inline-block">
+                                                          -
+                                                        </span>
+                                                        <div className="break-all pr-2 md:px-2">
+                                                          {item_2?.name}
+                                                        </div>
+                                                        ({productLength})
                                                       </div>
-                                                      ({productLength})
                                                     </div>
                                                   </div>
                                                   <div className="w-full hidden md:flex mb-[10px]">
@@ -1094,9 +1102,9 @@ export default function LocationsList() {
                                               {index === 1 ? (
                                                 <div className="w-ful">
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                    <div className="text-[20px] md:text-[24px] w-full font-AeonikProMedium flex items-center flex-wrap">
                                                       <div
-                                                        className="flex items-center cursor-pointer"
+                                                        className="flex w-full md:w-fit items-center cursor-pointer"
                                                         onClick={() => {
                                                           if (
                                                             checkedShops?.includes(
@@ -1160,16 +1168,20 @@ export default function LocationsList() {
                                                             />
                                                           </span>
                                                         </div>
-                                                        <button className="text-[#007DCA] mr-[7px]">
+                                                        <button className="text-[#007DCA] md:mr-[7px]">
                                                           {item?.name}
                                                           {" " + item?.surname}
                                                         </button>
                                                       </div>
-                                                      -
-                                                      <div className="break-all px-2">
-                                                        {item_2?.name}
+                                                      <div className="flex text-[16px] md:text-[24px] text-center pl-[26px] md:pl-0 items-center mt-[10px] md:mt-0">
+                                                        <span className="hidden md:inline-block">
+                                                          -
+                                                        </span>
+                                                        <div className="break-all pr-2 md:px-2">
+                                                          {item_2?.name}
+                                                        </div>
+                                                        ({productLength})
                                                       </div>
-                                                      ({productLength})
                                                     </div>
                                                   </div>
                                                   <div className="w-full hidden md:flex mb-[10px]">
@@ -1267,9 +1279,9 @@ export default function LocationsList() {
                                               {index === 1 ? (
                                                 <div className="w-ful">
                                                   <div className="flex items-center justify-between mb-4 md:mb-7 font-AeonikProMedium text-[16px]">
-                                                    <div className="text-[20px] md:text-[24px] font-AeonikProMedium flex items-center">
+                                                    <div className="text-[20px] md:text-[24px] w-full font-AeonikProMedium flex items-center flex-wrap">
                                                       <div
-                                                        className="flex items-center cursor-pointer"
+                                                        className="flex w-full md:w-fit items-center cursor-pointer"
                                                         onClick={() => {
                                                           if (
                                                             checkedShops?.includes(
@@ -1333,16 +1345,20 @@ export default function LocationsList() {
                                                             />
                                                           </span>
                                                         </div>
-                                                        <button className="text-[#007DCA] mr-[7px]">
+                                                        <button className="text-[#007DCA] md:mr-[7px]">
                                                           {item?.name}
                                                           {" " + item?.surname}
                                                         </button>
                                                       </div>
-                                                      -
-                                                      <div className="break-all px-2">
-                                                        {item_2?.name}
+                                                      <div className="flex text-[16px] md:text-[24px] text-center pl-[26px] md:pl-0 items-center mt-[10px] md:mt-0">
+                                                        <span className="hidden md:inline-block">
+                                                          -
+                                                        </span>
+                                                        <div className="break-all pr-2 md:px-2">
+                                                          {item_2?.name}
+                                                        </div>
+                                                        ({productLength})
                                                       </div>
-                                                      ({productLength})
                                                     </div>
                                                   </div>
                                                   <div className="w-full hidden md:flex mb-[10px]">
