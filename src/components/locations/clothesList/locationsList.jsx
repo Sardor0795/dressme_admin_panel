@@ -821,6 +821,7 @@ export default function LocationsList() {
                                                       -
                                                       <div className="break-all px-2">
                                                         {item_2?.name}
+                                                        {" " + item?.surname}
                                                       </div>
                                                       ({productLength})
                                                     </div>
@@ -988,6 +989,7 @@ export default function LocationsList() {
                                                         </div>
                                                         <button className="text-[#007DCA] mr-[7px]">
                                                           {item?.name}
+                                                          {" " + item?.surname}
                                                         </button>
                                                       </div>
                                                       -
@@ -1160,6 +1162,7 @@ export default function LocationsList() {
                                                         </div>
                                                         <button className="text-[#007DCA] mr-[7px]">
                                                           {item?.name}
+                                                          {" " + item?.surname}
                                                         </button>
                                                       </div>
                                                       -
@@ -1332,6 +1335,7 @@ export default function LocationsList() {
                                                         </div>
                                                         <button className="text-[#007DCA] mr-[7px]">
                                                           {item?.name}
+                                                          {" " + item?.surname}
                                                         </button>
                                                       </div>
                                                       -
