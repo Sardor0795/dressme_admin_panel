@@ -141,7 +141,7 @@ export const LocationsMoreAbout = () => {
         ></section>
 
         <section
-          className={`fixed z-[201] rounded-lg bg-white mx-4 my-auto w-fit h-fit md:m-auto cursor-pointer flex flex-col items-center justify-center inset-0  ${
+          className={`fixed z-[201] rounded-lg bg-white w-fit h-fit mx-4 my-auto md:m-auto cursor-pointer flex flex-col items-center justify-center inset-0  ${
             modalOfCarsouel ? "" : "hidden"
           }`}
         >
@@ -162,7 +162,7 @@ export const LocationsMoreAbout = () => {
                           <img
                             src={shopLocationsData?.url_image_path_one}
                             alt="backImg"
-                            className="w-full h-fit	 border border-searchBgColor rounded-lg"
+                            className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
                           />
                         )}
                       </div>
@@ -177,7 +177,7 @@ export const LocationsMoreAbout = () => {
                           <img
                             src={shopLocationsData?.url_image_path_two}
                             alt="backImg"
-                            className="w-full h-fit	 border border-searchBgColor rounded-lg"
+                            className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
                           />
                         )}
                       </div>
@@ -192,7 +192,7 @@ export const LocationsMoreAbout = () => {
                           <img
                             src={shopLocationsData?.url_image_path_three}
                             alt="backImg"
-                            className="w-full h-fit	 border border-searchBgColor rounded-lg"
+                            className="w-[670px] h-[80vh]	 border border-searchBgColor object-contain rounded-lg"
                           />
                         )}
                       </div>

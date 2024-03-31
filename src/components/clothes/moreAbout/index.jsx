@@ -252,12 +252,15 @@ export const ClothMoreAbout = () => {
                     <span className="mr-[5px]">Сезон одежды</span> <StarIcon />
                   </div>
                   <div className="flex items-center border h-[40px] border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]">
-                    {seasons?.length
-                      ? seasons?.map((item) => {
+                    {seasons?.length > 1
+                      ? seasons?.map((item, i) => {
                           return (
-                            <span key={item?.id}>{item?.name_ru + " "}</span>
+                            item?.name_ru +
+                            `${i + 1 === seasons?.length ? "" : ", "}`
                           );
                         })
+                      : seasons[0]?.name_ru
+                      ? seasons[0]?.name_ru
                       : "-"}
                   </div>
                 </div>
@@ -336,12 +339,15 @@ export const ClothMoreAbout = () => {
                     <span className="mr-[5px]">Сезон одежды</span> <StarIcon />
                   </div>
                   <div className="flex items-center border h-[40px] border-[#E5E5E5] text-[16px] text-black rounded-[8px] p-3 mb-[25px]">
-                    {seasons?.length
-                      ? seasons?.map((item) => {
+                    {seasons?.length > 1
+                      ? seasons?.map((item, i) => {
                           return (
-                            <span key={item?.id}>{item?.name_ru + " "}</span>
+                            item?.name_ru +
+                            `${i + 1 === seasons?.length ? "" : ", "}`
                           );
                         })
+                      : seasons[0]?.name_ru
+                      ? seasons[0]?.name_ru
                       : "-"}
                   </div>
                 </div>
