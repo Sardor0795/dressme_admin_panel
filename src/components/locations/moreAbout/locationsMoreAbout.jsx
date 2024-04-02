@@ -454,12 +454,12 @@ export const LocationsMoreAbout = () => {
                           >
                             {shopLocationsData?.assistant_phone
                               ? `(${shopLocationsData?.assistant_phone?.slice(
-                                  3,
-                                  5
+                                  4,
+                                  6
                                 )}) `
                               : null}
                             {shopLocationsData?.assistant_phone
-                              ?.slice(5)
+                              ?.slice(6)
                               .split("")
                               .map((item, i) => {
                                 if (i === 3) {
@@ -496,12 +496,12 @@ export const LocationsMoreAbout = () => {
                           >
                             {shopLocationsData?.second_assistant_phone
                               ? `(${shopLocationsData?.second_assistant_phone?.slice(
-                                  3,
-                                  5
+                                  4,
+                                  6
                                 )}) `
                               : null}
                             {shopLocationsData?.second_assistant_phone
-                              ?.slice(5)
+                              ?.slice(6)
                               .split("")
                               .map((item, i) => {
                                 if (i === 3) {
