@@ -77,7 +77,7 @@ export default function LocationsItem({
   }, [allChecked]);
 
   return (
-    <div className="flex items-center w-full mb-8">
+    <div className="flex items-center w-full mb-8 max-w-[440px] mx-auto md:mx-0 md:max-w-none">
       <div
         onClick={() => {
           setSomeChecked(true);
@@ -196,7 +196,7 @@ export default function LocationsItem({
         </ul>
 
         {/* Mobile */}
-        <div className=" rounded-xl p-[10px] mb-1 md:hidden w-full">
+        <div className="max-w-[440px] mx-auto rounded-xl p-[10px] mb-1 md:hidden w-full">
           <div className="mb-2 flex justify-between items-center">
             <div
               onClick={() => {
@@ -241,10 +241,10 @@ export default function LocationsItem({
             </Link>
           </div>
 
-          <div className="mb-3 h-[148px]">
-            <figure className="w-full h-full rounded-lg overflow-hidden">
+          <div className="mb-3">
+            <figure className="w-full rounded-lg overflow-hidden h-[218px]">
               <img
-                className="w-[100%] h-[100%]  object-cover"
+                className="w-[100%] h-[100%]  object-cover "
                 src={data?.url_image_path_one}
                 alt=""
               />

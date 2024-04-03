@@ -151,9 +151,9 @@ export default function ShopLocations() {
                   </ul>
 
                   {/* Mobile */}
-                  <div className="border rounded-xl border-[##F2F2F2] p-[10px] mb-3 md:hidden w-full">
-                    <div className="mb-3 h-[148px]">
-                      <figure className="w-full h-full rounded-lg overflow-hidden">
+                  <div className="border max-w-[440px] mx-auto rounded-xl border-[##F2F2F2] p-[10px] mb-3 md:hidden w-full">
+                    <div className="mb-3">
+                      <figure className="w-full h-[218px] rounded-lg overflow-hidden">
                         <img
                           className="w-[100%] h-[100%]  object-cover"
                           src={data?.url_image_path_one}

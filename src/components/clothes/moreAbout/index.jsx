@@ -440,7 +440,7 @@ export const ClothMoreAbout = () => {
               <div className="flex items-center mb-[5px]">
                 <span className="mr-[5px]">Состав на русском</span>
               </div>
-              <div className="h-[40px] border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+              <div className=" border whitespace-nowrap min-h-[42px] overflow-x-auto border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                 {data?.composition_ru ? (
                   <span className="font-AeonikProRegular text-[16px] text-black">
                     {data?.composition_ru}
@@ -453,7 +453,7 @@ export const ClothMoreAbout = () => {
               <div className="flex md:hidden items-center mb-[5px]">
                 <span className="mr-[5px]">Состав на узбекском</span>
               </div>
-              <div className="h-[40px] flex md:hidden items-center border border-[#E5E5E5] rounded-[8px] p-3">
+              <div className="whitespace-nowrap min-h-[42px] overflow-x-auto flex md:hidden items-center border border-[#E5E5E5] rounded-[8px] p-3">
                 {data?.composition_uz ? (
                   <span className="flex items-center font-AeonikProRegular text-[16px] text-black">
                     {data?.composition_uz}
@@ -553,7 +553,7 @@ export const ClothMoreAbout = () => {
               <div className="md:flex hidden items-center mb-[5px]">
                 <span className="mr-[5px]">Состав на узбекском</span>
               </div>
-              <div className="h-[40px] md:flex hidden items-center border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
+              <div className="whitespace-nowrap min-h-[42px] overflow-x-auto md:flex hidden items-center border border-[#E5E5E5] rounded-[8px] p-3 mb-[25px]">
                 {data?.composition_uz ? (
                   <span className="flex items-center font-AeonikProRegular text-[16px] text-black">
                     {data?.composition_uz}
