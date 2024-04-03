@@ -290,7 +290,7 @@ export default function LocationMoreAbout() {
                       <img
                         src={shopLocationsData?.url_image_path_one}
                         alt="backImg"
-                        className="w-full h-full object-fill rounded-lg"
+                        className="w-full h-full object-cover rounded-lg"
                       />
                     ) : (
                       <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center leading-none text-[13px] md:text-base font-AeonikProRegular md:font-AeonikProMedium">
@@ -313,7 +313,7 @@ export default function LocationMoreAbout() {
                       <img
                         src={shopLocationsData?.url_image_path_two}
                         alt="backImg"
-                        className="w-full h-full object-fill rounded-lg"
+                        className="w-full h-full object-cover rounded-lg"
                       />
                     ) : (
                       <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center leading-none text-[13px] md:text-base font-AeonikProRegular md:font-AeonikProMedium">
@@ -336,7 +336,7 @@ export default function LocationMoreAbout() {
                       <img
                         src={shopLocationsData?.url_image_path_three}
                         alt="backImg"
-                        className="w-full h-full object-fill rounded-lg"
+                        className="w-full h-full object-cover rounded-lg"
                       />
                     ) : (
                       <span className="w-[70%] h-[70%] md:w-full md:h-full flex items-center justify-center  leading-none text-[13px] md:text-base font-AeonikProRegular md:font-AeonikProMedium">
